@@ -60,7 +60,7 @@ export default function SalesPage() {
     
     try {
       // Call your backend API to verify payment
-      const response = await fetch('ebook-backend-production-8f68.up.railway.app', {
+      const response = await fetch('https://ebook-backend-production-8f68.up.railway.app/api/verify-payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
