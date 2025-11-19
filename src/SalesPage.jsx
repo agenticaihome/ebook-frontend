@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Check, Shield, Clock, TrendingUp, Zap, Book, Lock, AlertCircle, Download, ArrowRight, Coins } from 'lucide-react';
+import { Check, Shield, Clock, TrendingUp, Zap, Book, Lock, AlertCircle, Download, Coins } from 'lucide-react';
 
 export default function SalesPage() {
   const [currentPage, setCurrentPage] = useState('home'); // home, ergo, purchase
