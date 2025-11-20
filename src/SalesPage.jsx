@@ -232,7 +232,7 @@ export default function SalesPage() {
                       <div>
                         <strong>Install Nautilus Wallet</strong>
                         <p className="text-sm text-gray-600 mt-1">
-                          Go to <a href="https://nautilus-wallet.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">nautilus-wallet.io</a> and install the Chrome extension (works on Chrome, Brave, Edge)
+                          Go to <a href="https://chromewebstore.google.com/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai?hl=en&pli=1" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">nautilus-wallet.io</a> and install the Chrome extension (works on Chrome, Brave, Edge)
                         </p>
                       </div>
                     </li>
@@ -247,7 +247,7 @@ export default function SalesPage() {
                       <span className="font-bold text-blue-600 mr-3 min-w-[24px]">3.</span>
                       <div>
                         <strong>Click "Buy" in Nautilus</strong>
-                        <p className="text-sm text-gray-600 mt-1">In Nautilus wallet, click the "Buy" button (or visit <a href="https://ergo.banxa.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">ergo.banxa.com</a>) → This opens Banxa payment gateway</p>
+                        <p className="text-sm text-gray-600 mt-1">In Nautilus wallet, click the "Buy" button " target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">ergo.banxa.com</a>) → This opens Banxa payment gateway</p>
                       </div>
                     </li>
                     <li className="flex items-start">
@@ -268,7 +268,7 @@ export default function SalesPage() {
                   
                   <div className="bg-blue-100 border border-blue-300 rounded-lg p-3 mt-4">
                     <p className="text-sm text-blue-900 mb-2">
-                      <strong>💳 Banxa Fees:</strong> Typically 3-5% on credit/debit card purchases
+                      <strong>💳 Banxa Fees:</strong> Typically 2-5% on credit/debit card purchases
                     </p>
                     <p className="text-xs text-blue-800">
                       ✅ Accepted cards: Visa, Mastercard, some debit cards • ❌ Not accepted: Amex, prepaid cards
