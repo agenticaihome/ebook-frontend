@@ -843,7 +843,7 @@ export default function SalesPage() {
                 onClick={handlePurchaseClick}
                 className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:shadow-xl transition-shadow mb-3"
               >
-                Purchase Parts 2-5 with ERG
+                Buy the Complete Book with Instant Delivery
               </button>
 
               <div className="text-xs text-gray-500">
