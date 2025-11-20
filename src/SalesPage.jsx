@@ -2,42 +2,48 @@ import React, { useState, useEffect } from 'react';
 import { Check, Shield, Clock, TrendingUp, Zap, Book, Lock, AlertCircle, Download, Coins } from 'lucide-react';
 
 export default function SalesPage() {
-  const [currentPage, setCurrentPage] = useState('home'); // home, ergo, purchase
+  const [currentPage, setCurrentPage] = useState('home');
   const [email, setEmail] = useState('');
   const [transactionId, setTransactionId] = useState('');
   const [paymentStep, setPaymentStep] = useState('initial');
-  const [ergPrice, setErgPrice] = useState(0.55); // Default fallback price
+  const [priceInfo, setPriceInfo] = useState({
+    ergAmount: 0,
+    ergUsdPrice: 0,
+    priceUsd: 15.00
+  });
   const [priceLoading, setPriceLoading] = useState(true);
   
-  const BOOK_PRICE_USD = 15.00;
-  const BOOK_PRICE_ERG = (BOOK_PRICE_USD / ergPrice).toFixed(2);
   const WALLET_ADDRESS = "9gxmJ4attdDx1NnZL7tWkN2U9iwZbPWWSEcfcPHbJXc7xsLq6QK";
+  const BACKEND_URL = 'https://ebook-backend-production-8f68.up.railway.app';
 
-  // Fetch live ERG price from CoinGecko
+  // Fetch live ERG price from backend
   useEffect(() => {
-    const fetchErgPrice = async () => {
+    const fetchPrice = async () => {
       try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=usd');
+        const response = await fetch(`${BACKEND_URL}/api/price`);
         const data = await response.json();
-        if (data.ergo && data.ergo.usd) {
-          setErgPrice(data.ergo.usd);
+        
+        if (data.success) {
+          setPriceInfo({
+            ergAmount: data.ergAmount,
+            ergUsdPrice: data.ergUsdPrice,
+            priceUsd: data.priceUsd
+          });
         }
         setPriceLoading(false);
       } catch (error) {
-        console.error('Error fetching ERG price:', error);
+        console.error('Error fetching price:', error);
         setPriceLoading(false);
-        // Keep default price of 0.55 if fetch fails
       }
     };
 
-    fetchErgPrice();
+    fetchPrice();
     // Refresh price every 5 minutes
-    const interval = setInterval(fetchErgPrice, 5 * 60 * 1000);
+    const interval = setInterval(fetchPrice, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
   const handleGetFree = () => {
-    // Direct download of Part 1 PDF
     window.open('/part1.pdf', '_blank');
   };
 
@@ -59,8 +65,7 @@ export default function SalesPage() {
     setPaymentStep('confirming');
     
     try {
-      // Call your backend API to verify payment
-      const response = await fetch('https://ebook-backend-production-8f68.up.railway.app/api/verify-payment', {
+      const response = await fetch(`${BACKEND_URL}/api/verify-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +80,6 @@ export default function SalesPage() {
       
       if (data.success) {
         setPaymentStep('confirmed');
-        console.log('Payment verified:', data.transaction);
       } else {
         setPaymentStep('awaiting');
         alert(`Payment verification failed: ${data.error}`);
@@ -193,19 +197,19 @@ export default function SalesPage() {
                         <div className="mb-3">
                           <div className="text-sm text-gray-600 mb-1">Ebook Price</div>
                           <div className="text-4xl font-bold text-gray-900 mb-2">
-                            {BOOK_PRICE_ERG} ERG
+                            {priceInfo.ergAmount.toFixed(2)} ERG
                           </div>
                           <div className="text-lg text-gray-600">
-                            ≈ ${BOOK_PRICE_USD.toFixed(2)} USD
+                            ≈ ${priceInfo.priceUsd.toFixed(2)} USD
                           </div>
                         </div>
                         
                         <div className="border-t border-gray-300 pt-3 mt-3">
                           <div className="text-sm text-gray-500">
-                            Current ERG Price: ${ergPrice.toFixed(4)} USD
+                            Current ERG Price: ${priceInfo.ergUsdPrice.toFixed(4)} USD
                           </div>
                           <div className="text-xs text-gray-400 mt-1">
-                            Price updates every 5 minutes via CoinGecko
+                            Price updates every 5 minutes • Always $15 USD worth of ERG
                           </div>
                         </div>
                       </>
@@ -232,7 +236,7 @@ export default function SalesPage() {
                       <div>
                         <strong>Install Nautilus Wallet</strong>
                         <p className="text-sm text-gray-600 mt-1">
-                          Go to <a href="https://chromewebstore.google.com/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai?hl=en&pli=1" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">nautilus-wallet.io</a> and install the Chrome extension (works on Chrome, Brave, Edge)
+                          Go to <a href="https://chromewebstore.google.com/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai?hl=en&pli=1" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Chrome Web Store</a> and install the Nautilus extension (works on Chrome, Brave, Edge)
                         </p>
                       </div>
                     </li>
@@ -247,21 +251,21 @@ export default function SalesPage() {
                       <span className="font-bold text-blue-600 mr-3 min-w-[24px]">3.</span>
                       <div>
                         <strong>Click "Buy" in Nautilus</strong>
-                        <p className="text-sm text-gray-600 mt-1">In Nautilus wallet, click the "Buy" button " target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">ergo.banxa.com</a>) → This opens Banxa payment gateway</p>
+                        <p className="text-sm text-gray-600 mt-1">In Nautilus wallet, click the "Buy" button → This opens Banxa payment gateway</p>
                       </div>
                     </li>
                     <li className="flex items-start">
                       <span className="font-bold text-blue-600 mr-3 min-w-[24px]">4.</span>
                       <div>
-                        <strong>Buy ERG with Card</strong>
-                        <p className="text-sm text-gray-600 mt-1">Enter the amount you want (see current price above) → Enter credit/debit card info → Complete ID verification (takes 2-5 min first time) → Confirm purchase</p>
+                        <strong>Buy $20-25 worth of ERG</strong>
+                        <p className="text-sm text-gray-600 mt-1">Enter amount → Enter credit/debit card info → Complete ID verification (takes 2-5 min first time) → Confirm purchase</p>
                       </div>
                     </li>
                     <li className="flex items-start">
                       <span className="font-bold text-blue-600 mr-3 min-w-[24px]">5.</span>
                       <div>
                         <strong>Wait for ERG to Arrive (5-15 minutes)</strong>
-                        <p className="text-sm text-gray-600 mt-1">ERG will appear in your Nautilus wallet automatically! You'll see the balance update. Then come back here and purchase the ebook!</p>
+                        <p className="text-sm text-gray-600 mt-1">ERG will appear in your Nautilus wallet automatically! Then come back here and purchase the ebook!</p>
                       </div>
                     </li>
                   </ol>
@@ -297,9 +301,8 @@ export default function SalesPage() {
                       <div>
                         <strong>Get USDT (Stablecoin)</strong>
                         <p className="text-sm text-gray-600 mt-1">
-                          <strong>Option A:</strong> Click "Buy Crypto" → Use credit card to buy USDT<br/>
-                          <strong>Option B:</strong> If you have crypto elsewhere, send USDT/BTC/ETH to CoinEx, then trade for USDT<br/>
-                          <span className="text-xs">(USDT is a stablecoin = $1 USD each. Check the current price above to know how much to buy)</span>
+                          <strong>Option A:</strong> Click "Buy Crypto" → Use credit card to buy $20-25 USDT<br/>
+                          <strong>Option B:</strong> If you have crypto elsewhere, send USDT/BTC/ETH to CoinEx, then trade for USDT
                         </p>
                       </div>
                     </li>
@@ -307,14 +310,14 @@ export default function SalesPage() {
                       <span className="font-bold text-green-600 mr-3 min-w-[24px]">3.</span>
                       <div>
                         <strong>Trade USDT for ERG</strong>
-                        <p className="text-sm text-gray-600 mt-1">Click "Markets" → Search "ERG/USDT" → Click it → On trading page, click "Buy ERG" → Enter the amount you need (see current price above) → Click "Buy" to confirm</p>
+                        <p className="text-sm text-gray-600 mt-1">Click "Markets" → Search "ERG/USDT" → Click it → On trading page, click "Buy ERG" → Buy $20-25 worth → Click "Buy" to confirm</p>
                       </div>
                     </li>
                     <li className="flex items-start">
                       <span className="font-bold text-green-600 mr-3 min-w-[24px]">4.</span>
                       <div>
                         <strong>That's it! You can pay directly from CoinEx</strong>
-                        <p className="text-sm text-gray-600 mt-1">When you're ready to buy the ebook, you can send the ERG <strong>directly from your CoinEx account</strong> to the payment address. No need to withdraw to a wallet first! (Though we recommend Nautilus or Terminus for holding ERG long-term)</p>
+                        <p className="text-sm text-gray-600 mt-1">When you're ready to buy the ebook, you can send the ERG <strong>directly from your CoinEx account</strong> to the payment address. No need to withdraw to a wallet first!</p>
                       </div>
                     </li>
                   </ol>
@@ -322,12 +325,6 @@ export default function SalesPage() {
                   <div className="bg-green-100 border border-green-300 rounded-lg p-3 mt-4">
                     <p className="text-sm text-green-900 mb-1">
                       <strong>✅ Benefits:</strong> No KYC/ID needed • Available worldwide • Super low fees (~0.1%) • Can pay directly from exchange
-                    </p>
-                  </div>
-                  
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
-                    <p className="text-xs text-gray-700">
-                      <strong>💡 Optional:</strong> If you want to hold ERG long-term, install <a href="https://nautilus-wallet.io" target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Nautilus</a> (desktop) or <a href="https://terminus.money" target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Terminus</a> (mobile) and withdraw your ERG there. But for just buying the ebook, you can pay directly from CoinEx!
                     </p>
                   </div>
                 </div>
@@ -360,8 +357,7 @@ export default function SalesPage() {
                       <div>
                         <strong>Buy Crypto with Card</strong>
                         <p className="text-sm text-gray-600 mt-1">
-                          Click "Buy Crypto" (top of page) → Select "Credit/Debit Card" → Choose USDT → Enter the amount you want (check current price above) → Enter card details → Complete purchase<br/>
-                          <span className="text-xs">(Or deposit USDT/crypto if you already have some)</span>
+                          Click "Buy Crypto" (top of page) → Select "Credit/Debit Card" → Choose USDT → Enter $20-25 → Enter card details → Complete purchase
                         </p>
                       </div>
                     </li>
@@ -369,14 +365,14 @@ export default function SalesPage() {
                       <span className="font-bold text-purple-600 mr-3 min-w-[24px]">4.</span>
                       <div>
                         <strong>Trade USDT for ERG</strong>
-                        <p className="text-sm text-gray-600 mt-1">Go to "Trade" → "Spot Trading" → Search "ERG/USDT" → Click "Buy" → Enter the amount you need → Click "Buy ERG" → Trade completes instantly!</p>
+                        <p className="text-sm text-gray-600 mt-1">Go to "Trade" → "Spot Trading" → Search "ERG/USDT" → Click "Buy" → Buy $20-25 worth → Click "Buy ERG" → Trade completes instantly!</p>
                       </div>
                     </li>
                     <li className="flex items-start">
                       <span className="font-bold text-purple-600 mr-3 min-w-[24px]">5.</span>
                       <div>
                         <strong>Ready to pay! You can send directly from KuCoin</strong>
-                        <p className="text-sm text-gray-600 mt-1">When buying the ebook, you can send ERG <strong>directly from your KuCoin account</strong> to the payment address. Just go to Assets → Withdraw → Enter payment address. No separate wallet needed! (Though <a href="https://nautilus-wallet.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 underline">Nautilus</a> or <a href="https://terminus.money" target="_blank" rel="noopener noreferrer" className="text-purple-600 underline">Terminus</a> are great for holding ERG long-term)</p>
+                        <p className="text-sm text-gray-600 mt-1">When buying the ebook, send ERG <strong>directly from your KuCoin account</strong> to the payment address. No separate wallet needed!</p>
                       </div>
                     </li>
                   </ol>
@@ -384,12 +380,6 @@ export default function SalesPage() {
                   <div className="bg-purple-100 border border-purple-300 rounded-lg p-3 mt-4">
                     <p className="text-sm text-purple-900 mb-1">
                       <strong>📱 Bonus:</strong> KuCoin has excellent mobile apps for iOS and Android - manage everything on the go!
-                    </p>
-                  </div>
-                  
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
-                    <p className="text-xs text-gray-700">
-                      <strong>💡 Optional:</strong> Install <a href="https://nautilus-wallet.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 underline">Nautilus</a> (desktop) or <a href="https://terminus.money" target="_blank" rel="noopener noreferrer" className="text-purple-600 underline">Terminus</a> (mobile) if you want to hold ERG for future use. But for purchasing the ebook, paying directly from KuCoin works perfectly!
                     </p>
                   </div>
                 </div>
@@ -434,7 +424,7 @@ export default function SalesPage() {
                     </table>
                   </div>
                   <p className="text-xs text-gray-600 mt-3 italic">
-                    * Current ebook price shown above. You can pay directly from exchanges - no wallet needed!
+                    * Book is always $15 USD worth of ERG • Price shown above updates automatically
                   </p>
                 </div>
 
@@ -442,13 +432,11 @@ export default function SalesPage() {
                 <div className="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mt-6">
                   <h4 className="font-bold text-gray-900 mb-3">💡 Helpful Tips:</h4>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    <li>• <strong>How much to buy:</strong> Check the current price above - buy a little extra to cover small transaction fees (usually less than $0.10)</li>
-                    <li>• <strong>Pay from exchange:</strong> With CoinEx or KuCoin, you can send ERG directly from the exchange to buy the ebook - no separate wallet needed!</li>
-                    <li>• <strong>Wallet options:</strong> US users need Nautilus for Banxa direct purchase. Exchanges don't require wallets for payment - you can send directly from CoinEx or KuCoin.</li>
-                    <li>• <strong>Seed phrase security:</strong> If you create a wallet, write down your seed phrase on paper, never screenshot or save digitally, NEVER share with anyone</li>
-                    <li>• <strong>Wait times:</strong> Banxa takes 5-15 min. Exchange purchases are instant. Blockchain confirmations take ~2 minutes</li>
-                    <li>• <strong>Extra ERG?:</strong> If you buy a bit extra, you can hold it or trade it back later. ERG is a legitimate cryptocurrency with real value!</li>
-                    <li>• <strong>Need help?:</strong> Ergo community is super friendly! Join Discord or Telegram (links at ergoplatform.org)</li>
+                    <li>• <strong>How much to buy:</strong> Buy $20-25 worth of ERG (covers the $15 book price + transaction fees)</li>
+                    <li>• <strong>Dynamic pricing:</strong> The ERG amount adjusts automatically to always equal $15 USD</li>
+                    <li>• <strong>Pay from exchange:</strong> With CoinEx or KuCoin, you can send ERG directly from the exchange - no wallet needed!</li>
+                    <li>• <strong>Transaction fees:</strong> Ergo blockchain fees are usually less than $0.10</li>
+                    <li>• <strong>Extra ERG?:</strong> If you buy extra, you can hold it or trade it back later. ERG is a real cryptocurrency!</li>
                   </ul>
                 </div>
 
@@ -458,57 +446,33 @@ export default function SalesPage() {
                   
                   <div className="space-y-4">
                     <div>
-                      <p className="font-semibold text-gray-900 mb-1">🤔 "I've never used crypto before. Is this hard?"</p>
-                      <p className="text-sm text-gray-700">Not at all! If you're a US user, it's as easy as buying something with a credit card. Just follow the Banxa steps above - takes 15 minutes total. For international users, it's like signing up for any website + a couple extra steps.</p>
+                      <p className="font-semibold text-gray-900 mb-1">💰 "How much should I actually buy?"</p>
+                      <p className="text-sm text-gray-700">Buy about $20-25 worth of ERG. The book costs $15 USD in ERG (amount shown above), and the extra covers transaction fees. Current price updates every 5 minutes!</p>
                     </div>
 
                     <div>
-                      <p className="font-semibold text-gray-900 mb-1">💰 "How much should I actually buy?"</p>
-                      <p className="text-sm text-gray-700">Check the current price displayed above! Buy a little extra beyond the ebook price to cover small transaction fees (usually less than $0.10). Any extra ERG you have can be kept or traded back.</p>
+                      <p className="font-semibold text-gray-900 mb-1">📈 "Why does the ERG amount change?"</p>
+                      <p className="text-sm text-gray-700">The book price is fixed at $15 USD, but ERG's market price fluctuates. Our system automatically calculates how much ERG equals $15, so you always pay the same USD value!</p>
+                    </div>
+
+                    <div>
+                      <p className="font-semibold text-gray-900 mb-1">🤔 "I've never used crypto before. Is this hard?"</p>
+                      <p className="text-sm text-gray-700">Not at all! If you're a US user, it's as easy as buying something with a credit card. Just follow the Banxa steps above - takes 15 minutes total.</p>
                     </div>
 
                     <div>
                       <p className="font-semibold text-gray-900 mb-1">🔒 "Is this safe? What about scams?"</p>
-                      <p className="text-sm text-gray-700">Yes! Nautilus is a non-custodial wallet (YOU control your money). Banxa, KuCoin, and CoinEx are all established, legitimate services used by millions. Just never share your seed phrase with anyone - that's the golden rule!</p>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">⏱️ "How long does this take?"</p>
-                      <p className="text-sm text-gray-700">
-                        • <strong>US (Banxa):</strong> 15-20 minutes total<br/>
-                        • <strong>International (CoinEx):</strong> 15-20 minutes total (no wallet needed, pay from exchange!)<br/>
-                        • <strong>International (KuCoin):</strong> 25-30 minutes total (includes ID verification)
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">🌍 "I already have Bitcoin/Ethereum. Can I use that?"</p>
-                      <p className="text-sm text-gray-700">Yes! Send your BTC or ETH to KuCoin or CoinEx, trade it for USDT, then trade USDT for ERG. You can then pay for the ebook directly from the exchange!</p>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">💳 "Do I need a Nautilus wallet?"</p>
-                      <p className="text-sm text-gray-700">Only if you're a US user buying with Banxa (Banxa is built into Nautilus). For CoinEx or KuCoin, you can pay directly from the exchange - no wallet needed!</p>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">🆘 "What if I mess up or need help?"</p>
-                      <p className="text-sm text-gray-700">No worries! The Ergo community is incredibly helpful and friendly. Join the Discord or Telegram (links at <a href="https://ergoplatform.org" target="_blank" rel="noopener noreferrer" className="text-purple-600 underline">ergoplatform.org</a>). People help newcomers all the time! You can also reach out to agenticaiathome@gmail.com</p>
+                      <p className="text-sm text-gray-700">Yes! Nautilus is a non-custodial wallet (YOU control your money). Banxa, KuCoin, and CoinEx are all established, legitimate services used by millions.</p>
                     </div>
 
                     <div>
                       <p className="font-semibold text-gray-900 mb-1">💳 "Can I just use PayPal or credit card directly?"</p>
-                      <p className="text-sm text-gray-700">Unfortunately no - PayPal charges 10%+ fees and freezes accounts randomly. Credit card processors are even worse for crypto. That's exactly why I use ERG - to keep prices low and payments censorship-resistant! The trade-off is this one-time setup, but you'll be able to use ERG for future purchases too.</p>
+                      <p className="text-sm text-gray-700">Unfortunately no - PayPal charges 10%+ fees and freezes accounts randomly. Credit card processors are even worse for crypto. That's exactly why I use ERG - to keep prices low!</p>
                     </div>
 
                     <div>
-                      <p className="font-semibold text-gray-900 mb-1">📱 "Can I do this on my phone?"</p>
-                      <p className="text-sm text-gray-700">Partially! KuCoin and CoinEx have mobile apps. For Nautilus, you'll need a desktop/laptop browser with Chrome, Brave, or Edge. But you can do the exchange stuff on mobile, then final payment on desktop.</p>
-                    </div>
-
-                    <div>
-                      <p className="font-semibold text-gray-900 mb-1">🎯 "What happens after I buy ERG?"</p>
-                      <p className="text-sm text-gray-700">Come back to this page! Click "Purchase Parts 2-5", enter your email, and follow the payment instructions. You'll send 27.27 ERG from your Nautilus wallet to my address, submit your transaction ID, and you'll receive the ebook PDFs via email within minutes!</p>
+                      <p className="font-semibold text-gray-900 mb-1">🆘 "What if I need help?"</p>
+                      <p className="text-sm text-gray-700">The Ergo community is incredibly helpful! Join the Discord or Telegram (links at <a href="https://ergoplatform.org" target="_blank" rel="noopener noreferrer" className="text-purple-600 underline">ergoplatform.org</a>). You can also email agenticaiathome@gmail.com</p>
                     </div>
                   </div>
                 </div>
@@ -517,7 +481,7 @@ export default function SalesPage() {
               <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl border-2 border-yellow-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">🌍 Supporting Decentralization</h3>
                 <p className="text-gray-700">
-                  By accepting Ergo, I'm supporting a fairer financial system. One where creators can sell directly to readers without massive platform fees, where privacy is respected, and where innovation thrives. This is the future of digital commerce.
+                  By accepting Ergo, I'm supporting a fairer financial system. One where creators can sell directly to readers without massive platform fees, where privacy is respected, and where innovation thrives.
                 </p>
               </div>
 
@@ -570,8 +534,15 @@ export default function SalesPage() {
                     <div className="mb-4">
                       <p className="text-sm text-gray-700 font-semibold mb-2">Payment Amount:</p>
                       <div className="bg-purple-100 border-2 border-purple-300 rounded-lg p-4 text-center">
-                        <p className="text-3xl font-bold text-purple-600">{BOOK_PRICE_ERG} ERG</p>
-                        <p className="text-sm text-gray-600 mt-1">≈ ${BOOK_PRICE_USD} USD at current rate</p>
+                        {priceLoading ? (
+                          <p className="text-lg text-gray-500">Loading price...</p>
+                        ) : (
+                          <>
+                            <p className="text-3xl font-bold text-purple-600">{priceInfo.ergAmount.toFixed(2)} ERG</p>
+                            <p className="text-sm text-gray-600 mt-1">= ${priceInfo.priceUsd.toFixed(2)} USD at current rate</p>
+                            <p className="text-xs text-gray-500 mt-1">ERG Price: ${priceInfo.ergUsdPrice.toFixed(4)}</p>
+                          </>
+                        )}
                       </div>
                     </div>
 
@@ -596,23 +567,19 @@ export default function SalesPage() {
                             <li>1. Open your Nautilus wallet extension</li>
                             <li>2. Click "Send"</li>
                             <li>3. Paste the address above</li>
-                            <li>4. Enter amount: {BOOK_PRICE_ERG} ERG</li>
+                            <li>4. Enter amount: <strong>{priceInfo.ergAmount.toFixed(2)} ERG</strong></li>
                             <li>5. Confirm and send</li>
                           </ol>
                         </li>
-                        <li className="mt-3"><strong>Using Other Ergo Wallets:</strong>
-                          <p className="ml-4 mt-1">Any Ergo wallet works! Just send {BOOK_PRICE_ERG} ERG to the address above.</p>
+                        <li className="mt-3"><strong>From CoinEx/KuCoin:</strong>
+                          <p className="ml-4 mt-1">Go to Withdraw/Send → Select ERG → Paste address → Send {priceInfo.ergAmount.toFixed(2)} ERG</p>
                         </li>
                       </ol>
                     </div>
 
                     <div className="bg-green-50 border border-green-200 rounded-lg p-3 mt-4">
                       <p className="text-xs text-gray-700">
-                        💡 <strong>Don't have Nautilus?</strong> Download it from{' '}
-                        <a href="https://nautilus-wallet.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:underline">
-                          nautilus-wallet.io
-                        </a>
-                        {' '}and set it up in minutes!
+                        💡 <strong>Don't have ERG yet?</strong> Click the button below to see how to get it!
                       </p>
                     </div>
                   </div>
@@ -640,7 +607,7 @@ export default function SalesPage() {
                         className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 font-mono text-sm"
                       />
                       <p className="text-xs text-gray-500 mt-1">
-                        Find this in your Nautilus wallet under "Transactions" after sending
+                        Find this in your wallet under "Transactions" after sending
                       </p>
                     </div>
                     
@@ -660,12 +627,6 @@ export default function SalesPage() {
                     <p className="font-semibold text-gray-900">What happens next?</p>
                     <p className="mt-1">After verification, Parts 2-5 will be sent to <strong>{email}</strong> within 5 minutes. Check your inbox and spam folder!</p>
                   </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-4">
-                  <p className="text-sm text-gray-700">
-                    <strong>💰 Transaction Fees:</strong> Ergo blockchain fees are typically $0.05 or less—much cheaper than 3-5% credit card fees!
-                  </p>
                 </div>
 
                 {/* Don't have ERG? Help section */}
@@ -709,7 +670,7 @@ export default function SalesPage() {
 
                   <div className="mt-4 bg-white border border-blue-200 rounded-lg p-3">
                     <p className="text-xs text-gray-600">
-                      <strong>How much do I need?</strong> Buy about $20 worth of ERG (approximately 36 ERG at current prices). This covers the 27.27 ERG book price with some extra.
+                      <strong>How much do I need?</strong> Buy about $20-25 worth of ERG. The book costs $15 USD (shown above in ERG), and the extra covers transaction fees.
                     </p>
                   </div>
                 </div>
@@ -845,12 +806,22 @@ export default function SalesPage() {
             </p>
             
             <div className="bg-purple-50 rounded-xl p-8 max-w-md mx-auto mb-6">
-              <div className="text-5xl font-bold text-purple-600 mb-2">
-                {BOOK_PRICE_ERG} ERG
-              </div>
-              <div className="text-gray-500 mb-4">
-                (≈ ${BOOK_PRICE_USD} USD)
-              </div>
+              {priceLoading ? (
+                <div className="text-gray-500">Loading price...</div>
+              ) : (
+                <>
+                  <div className="text-5xl font-bold text-purple-600 mb-2">
+                    {priceInfo.ergAmount.toFixed(2)} ERG
+                  </div>
+                  <div className="text-gray-500 mb-4">
+                    = ${priceInfo.priceUsd.toFixed(2)} USD
+                  </div>
+                  <div className="text-xs text-gray-500 mb-4">
+                    Current ERG Price: ${priceInfo.ergUsdPrice.toFixed(4)} • Updates every 5 min
+                  </div>
+                </>
+              )}
+              
               <div className="text-sm text-gray-600 mb-4">
                 <button
                   onClick={() => setCurrentPage('ergo')}
@@ -884,7 +855,7 @@ export default function SalesPage() {
 
             <div className="flex items-center justify-center space-x-2 text-sm text-gray-500">
               <Lock className="w-4 h-4" />
-              <span>Secure blockchain payment • Instant delivery • Transaction fee: ~$0.05</span>
+              <span>Secure blockchain payment • Instant delivery • Always $15 USD in ERG</span>
             </div>
           </div>
         </div>
