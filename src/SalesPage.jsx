@@ -518,7 +518,7 @@ export default function SalesPage() {
           </button>
 
           <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4 text-center">Purchase Parts 2-5</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-4 text-center">Purchase the Complete Agentic AI at Home Book</h1>
             <p className="text-center text-gray-600 mb-8">Complete your collection and get the full book!</p>
 
             {paymentStep === 'awaiting' && (
