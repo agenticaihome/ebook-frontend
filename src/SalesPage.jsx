@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Check, Shield, Clock, TrendingUp, Zap, Book, Lock, AlertCircle, Download, Coins, CreditCard, ArrowRight, Loader } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Shield, Zap, Book, Lock, AlertCircle, Download, Coins, CreditCard, ArrowRight, Loader } from 'lucide-react';
 
 export default function SalesPage() {
   const [currentPage, setCurrentPage] = useState('home');
   const [email, setEmail] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState(null); // 'stripe' or 'ergo'
   const [ergoPriceInfo, setErgoPriceInfo] = useState(null);
-  const [ergoRequestId, setErgoRequestId] = useState(null);
   const [ergoPayUrl, setErgoPayUrl] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState('initial'); // initial, processing, awaiting, confirmed, failed
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
   
   const BACKEND_URL = 'https://ebook-backend-production-8f68.up.railway.app';
-  const WALLET_ADDRESS = "9gxmJ4attdDx1NnZL7tWkN2U9iwZbPWWSEcfcPHbJXc7xsLq6QK";
 
   const handleGetFree = () => {
     window.open('/part1.pdf', '_blank');
@@ -117,15 +114,9 @@ export default function SalesPage() {
     setTimeout(() => clearInterval(interval), 15 * 60 * 1000);
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    alert('Copied to clipboard!');
-  };
-
   const closeModal = () => {
     setShowModal(false);
     setPaymentStatus('initial');
-    setErgoRequestId(null);
     setErgoPayUrl(null);
     setError(null);
   };
@@ -461,7 +452,7 @@ export default function SalesPage() {
             {paymentStatus === 'awaiting' && ergoPayUrl && (
               <div className="text-center">
                 <Coins className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Scan to Pay with Ergo</h3>
+                <h3 className="text-2xl font-bold mb-4">Pay with Ergo</h3>
                 
                 {ergoPriceInfo && (
                   <div className="bg-green-50 rounded-lg p-4 mb-6 text-left">
@@ -480,7 +471,8 @@ export default function SalesPage() {
                   </div>
                 )}
 
-                <div className="bg-white border-4 border-gray-200 rounded-lg p-4 mb-6">
+                {/* QR Code */}
+                <div className="bg-white border-4 border-gray-200 rounded-lg p-4 mb-4">
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(ergoPayUrl)}`}
                     alt="QR Code"
@@ -488,11 +480,39 @@ export default function SalesPage() {
                   />
                 </div>
 
-                <div className="text-left space-y-3 text-sm text-gray-700 mb-6">
-                  <p>1. Open your Ergo wallet (Nautilus, SAFEW, etc.)</p>
-                  <p>2. Scan the QR code above</p>
-                  <p>3. Confirm the transaction</p>
-                  <p>4. Wait for confirmation (usually 2-3 minutes)</p>
+                {/* Clickable Link */}
+                <div className="mb-6">
+                  <a
+                    href={ergoPayUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition"
+                  >
+                    <Coins className="w-5 h-5 mr-2" />
+                    Open in Wallet App
+                  </a>
+                  <p className="text-xs text-gray-600 mt-2">
+                    Click if you have Nautilus or SAFEW installed
+                  </p>
+                </div>
+
+                {/* Instructions */}
+                <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                  <p className="font-semibold text-gray-900 mb-3">Two Ways to Pay:</p>
+                  <div className="text-left space-y-3 text-sm text-gray-700">
+                    <div>
+                      <p className="font-semibold text-gray-900">📱 Mobile Wallet:</p>
+                      <p>1. Open Nautilus or SAFEW mobile app</p>
+                      <p>2. Scan the QR code above</p>
+                      <p>3. Confirm the transaction</p>
+                    </div>
+                    <div className="border-t pt-3">
+                      <p className="font-semibold text-gray-900">💻 Browser Wallet:</p>
+                      <p>1. Install Nautilus browser extension</p>
+                      <p>2. Click "Open in Wallet App" button</p>
+                      <p>3. Confirm the transaction</p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-center text-purple-600 mb-4">
