@@ -5,6 +5,7 @@ export default function SalesPage() {
   const [currentPage, setCurrentPage] = useState('home');
   const [email, setEmail] = useState('');
   const [ergoPriceInfo, setErgoPriceInfo] = useState(null);
+  const [ergoRequestId, setErgoRequestId] = useState(null);
   const [ergoPayUrl, setErgoPayUrl] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState('initial'); // initial, processing, awaiting, confirmed, failed
   const [showModal, setShowModal] = useState(false);
@@ -117,6 +118,7 @@ export default function SalesPage() {
   const closeModal = () => {
     setShowModal(false);
     setPaymentStatus('initial');
+    setErgoRequestId(null);
     setErgoPayUrl(null);
     setError(null);
   };
