@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Check, Shield, Clock, TrendingUp, Zap, Book, Lock, AlertCircle, Download, Coins, CreditCard, ArrowRight, Loader } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Shield, Zap, Book, Lock, AlertCircle, Download, Coins, CreditCard, ArrowRight, Loader } from 'lucide-react';
 
 export default function SalesPage() {
   const [currentPage, setCurrentPage] = useState('home');
   const [email, setEmail] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState(null); // 'stripe' or 'ergo'
   const [ergoPriceInfo, setErgoPriceInfo] = useState(null);
-  const [ergoRequestId, setErgoRequestId] = useState(null);
   const [ergoPayUrl, setErgoPayUrl] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState('initial'); // initial, processing, awaiting, confirmed, failed
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
   
   const BACKEND_URL = 'https://ebook-backend-production-8f68.up.railway.app';
-  const WALLET_ADDRESS = "9gxmJ4attdDx1NnZL7tWkN2U9iwZbPWWSEcfcPHbJXc7xsLq6QK";
 
   const handleGetFree = () => {
     window.open('/part1.pdf', '_blank');
@@ -117,15 +114,9 @@ export default function SalesPage() {
     setTimeout(() => clearInterval(interval), 15 * 60 * 1000);
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    alert('Copied to clipboard!');
-  };
-
   const closeModal = () => {
     setShowModal(false);
     setPaymentStatus('initial');
-    setErgoRequestId(null);
     setErgoPayUrl(null);
     setError(null);
   };
