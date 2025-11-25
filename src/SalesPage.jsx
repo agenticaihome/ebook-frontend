@@ -335,6 +335,34 @@ export default function SalesPage() {
           </p>
 
           <div className="space-y-8">
+            {/* Part 1 */}
+            <div className="border-l-4 border-teal-500 pl-6 relative">
+              <div className="absolute -left-[1.65rem] top-0 bg-teal-500 text-white px-2 py-1 rounded text-xs font-bold uppercase tracking-wide transform -translate-y-1/2 shadow-sm">
+                Free
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">🚀 Part 1: Introduction & Understanding</h3>
+              <p className="text-gray-700 mb-4">
+                The foundation. Understand what agents are, how they work, and how to control them safely.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm mb-4">
+                <div className="bg-teal-50 rounded-lg p-4">
+                  <p className="font-semibold text-gray-900 mb-2">🧠 Understanding Agents</p>
+                  <p className="text-gray-700">The 5 Powers (Perceive, Reason, Plan, Act, Learn). Why 2024-25 changed everything.</p>
+                </div>
+                <div className="bg-teal-50 rounded-lg p-4">
+                  <p className="font-semibold text-gray-900 mb-2">🔒 Privacy & Security</p>
+                  <p className="text-gray-700">The 3 Types of Agents (Cloud vs. Local vs. Sovereign). The 10-Point Security Checklist.</p>
+                </div>
+              </div>
+              <button
+                onClick={handleGetFree}
+                className="inline-flex items-center text-teal-600 font-bold hover:text-teal-700 hover:underline transition"
+              >
+                <Download className="w-4 h-4 mr-2" />
+                Download Part 1 Now (Free, No Strings Attached)
+              </button>
+            </div>
+
             {/* Part 2 */}
             <div className="border-l-4 border-purple-500 pl-6">
               <h3 className="text-2xl font-bold text-gray-900 mb-3">📚 Part 2: Getting Started - Your First Agents</h3>
