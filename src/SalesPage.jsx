@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check, Shield, Zap, Book, Lock, AlertCircle, Download, Coins, CreditCard, ArrowRight, Loader } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function SalesPage() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -10,7 +11,7 @@ export default function SalesPage() {
   const [paymentStatus, setPaymentStatus] = useState('initial'); // initial, processing, awaiting, confirmed, failed
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState(null);
-  
+
   const BACKEND_URL = 'https://ebook-backend-production-8f68.up.railway.app';
 
   const handleGetFree = () => {
@@ -80,7 +81,7 @@ export default function SalesPage() {
           walletAddress: data.walletAddress
         });
         setPaymentStatus('awaiting');
-        
+
         // Start polling for payment confirmation
         startPaymentPolling(data.requestId);
       } else {
@@ -141,7 +142,7 @@ export default function SalesPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">
               Why Pay with <span className="text-green-600">Ergo</span>?
             </h1>
-            
+
             <div className="prose prose-lg max-w-none">
               <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6 mb-8">
                 <h2 className="text-2xl font-bold text-green-800 mb-4">💰 50% Discount for Crypto Users!</h2>
@@ -151,7 +152,7 @@ export default function SalesPage() {
               </div>
 
               <h2 className="text-2xl font-bold text-gray-900 mb-4">🔒 Why Ergo is Better Than Credit Cards:</h2>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
                   <Shield className="w-8 h-8 text-green-600 mr-4 flex-shrink-0 mt-1" />
@@ -255,13 +256,13 @@ export default function SalesPage() {
             🚀 2026's Most Important Guide
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Stop Managing Your Life.<br/>
+            Stop Managing Your Life.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
               Start Living It.
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Discover how autonomous AI agents can save you 15+ hours per week, reduce stress, 
+            Discover how autonomous AI agents can save you 15+ hours per week, reduce stress,
             and handle the mental load of modern life—while protecting your privacy.
           </p>
         </div>
@@ -281,7 +282,7 @@ export default function SalesPage() {
                 </div>
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">What You'll Learn:</h3>
               <ul className="space-y-3">
@@ -310,7 +311,7 @@ export default function SalesPage() {
             <Download className="w-16 h-16 mx-auto mb-4" />
             <h3 className="text-3xl font-bold mb-4">Get Part 1 FREE!</h3>
             <p className="text-xl mb-6 text-green-50">
-              Download the introduction and Understanding AI Agents chapters completely free. 
+              Download the introduction and Understanding AI Agents chapters completely free.
               See if this book is right for you!
             </p>
             <button
@@ -346,10 +347,10 @@ export default function SalesPage() {
 
           {/* Payment Options */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            
+
             {/* Stripe Option */}
             <div className="border-4 border-gray-200 rounded-2xl p-8 hover:border-purple-400 transition cursor-pointer"
-                 onClick={handleStripePayment}>
+              onClick={handleStripePayment}>
               <div className="text-center">
                 <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CreditCard className="w-10 h-10 text-purple-600" />
@@ -371,7 +372,7 @@ export default function SalesPage() {
                     Secure Checkout
                   </div>
                 </div>
-                <button 
+                <button
                   className="w-full bg-purple-600 text-white py-4 rounded-lg font-bold hover:bg-purple-700 transition transform hover:scale-105 disabled:opacity-50"
                   disabled={paymentStatus === 'processing'}
                 >
@@ -382,7 +383,7 @@ export default function SalesPage() {
 
             {/* Ergo Option */}
             <div className="border-4 border-green-400 rounded-2xl p-8 hover:border-green-600 transition cursor-pointer relative"
-                 onClick={handleErgoPayment}>
+              onClick={handleErgoPayment}>
               <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                 50% OFF
               </div>
@@ -407,21 +408,24 @@ export default function SalesPage() {
                     Lower Fees
                   </div>
                 </div>
-                <button 
+                <button
                   className="w-full bg-green-600 text-white py-4 rounded-lg font-bold hover:bg-green-700 transition transform hover:scale-105 disabled:opacity-50"
                   disabled={paymentStatus === 'processing'}
                 >
                   {paymentStatus === 'processing' ? 'Processing...' : 'Pay with ERG →'}
                 </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setCurrentPage('why-ergo');
-                  }}
-                  className="w-full mt-3 text-green-600 hover:text-green-700 font-semibold text-sm underline"
+                <Link
+                  to="/how-to-buy-ergo"
+                  className="block w-full mt-3 text-green-600 hover:text-green-700 font-semibold text-sm underline"
+                >
+                  How to Buy Ergo? Step-by-Step Guide →
+                </Link>
+                <Link
+                  to="/why-ergo"
+                  className="block w-full mt-3 text-green-600 hover:text-green-700 font-semibold text-sm underline"
                 >
                   Why Ergo? Learn more →
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -437,7 +441,7 @@ export default function SalesPage() {
         </div>
 
         {/* Social Proof, Features, etc. - Keep your existing sections */}
-        
+
       </div>
 
       {/* Ergo Payment Modal */}
@@ -456,7 +460,7 @@ export default function SalesPage() {
               <div className="text-center">
                 <Coins className="w-16 h-16 text-green-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold mb-4">Pay with Ergo Wallet</h3>
-                
+
                 {ergoPriceInfo && (
                   <div className="bg-green-50 rounded-lg p-4 mb-6 text-left">
                     <div className="flex justify-between mb-2">
@@ -497,7 +501,7 @@ export default function SalesPage() {
                 {/* Mobile: Scan QR code */}
                 <div className="bg-white border-4 border-gray-200 rounded-lg p-4 mb-4 inline-block">
                   <p className="text-sm text-gray-600 mb-2">Scan with mobile wallet:</p>
-                  <img 
+                  <img
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${encodeURIComponent(ergoPayUrl)}`}
                     alt="ErgoPay QR Code"
                     className="w-full max-w-xs mx-auto"
