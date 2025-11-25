@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import SalesPage from './SalesPage';
 import HowToBuyErgo from './HowToBuyErgo';
 import WhyErgo from './WhyErgo';
