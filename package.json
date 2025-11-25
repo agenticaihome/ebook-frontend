@@ -1,6 +1,5 @@
 {
   "name": "agenticai-frontend",
-  "homepage": "https://agenticaihome.github.io/ebook-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
