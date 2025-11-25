@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.4efb37a3.css",
-    "main.js": "/static/js/main.10947817.js",
-    "static/media/WhyErgo": "/static/media/WhyErgo.232d74e7939998a9ef9b",
-    "index.html": "/index.html"
+    "main.css": "/ebook-frontend/static/css/main.4efb37a3.css",
+    "main.js": "/ebook-frontend/static/js/main.a7b80cc8.js",
+    "static/media/WhyErgo": "/ebook-frontend/static/media/WhyErgo.232d74e7939998a9ef9b",
+    "index.html": "/ebook-frontend/index.html"
   },
   "entrypoints": [
     "static/css/main.4efb37a3.css",
-    "static/js/main.10947817.js"
+    "static/js/main.a7b80cc8.js"
   ]
 }
