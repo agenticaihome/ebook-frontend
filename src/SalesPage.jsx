@@ -305,6 +305,151 @@ export default function SalesPage() {
           </div>
         </div>
 
+        {/* Value Proposition: Time & Money Savings */}
+        <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-2xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">The Real ROI of AI Automation</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="text-5xl font-bold mb-2">15+</div>
+              <div className="text-xl mb-2">Hours Saved Per Week</div>
+              <div className="text-purple-200 text-sm">That's 780 hours per year back in your life</div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold mb-2">$500+</div>
+              <div className="text-xl mb-2">Monthly Savings</div>
+              <div className="text-purple-200 text-sm">On groceries, subscriptions, and utilities = $6,000/year</div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold mb-2">300x</div>
+              <div className="text-xl mb-2">Return on Investment</div>
+              <div className="text-purple-200 text-sm">$20 investment → $6,000+ annual value</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Inside the Book: Detailed Parts Preview */}
+        <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 text-center mb-4">What's Inside the Book</h2>
+          <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Each part builds on the last, taking you from complete beginner to confident AI automation expert.
+          </p>
+
+          <div className="space-y-8">
+            {/* Part 2 */}
+            <div className="border-l-4 border-purple-500 pl-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">📚 Part 2: Setting Up Your First AI Agent</h3>
+              <p className="text-gray-700 mb-4">
+                Get hands-on immediately. You'll set up your first working AI agent in under 30 minutes using beginner-friendly tools.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <p className="font-semibold text-gray-900 mb-2">You'll Learn:</p>
+                  <ul className="space-y-1 text-gray-700 text-sm">
+                    <li className="flex items-start"><Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />Choosing the right AI platform for your needs</li>
+                    <li className="flex items-start"><Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />Step-by-step setup with screenshots</li>
+                    <li className="flex items-start"><Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />Creating your first automation workflow</li>
+                    <li className="flex items-start"><Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />Testing and debugging basics</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900 mb-2">By the End:</p>
+                  <p className="text-gray-700 text-sm">You'll have a working AI agent handling a real task in your life—maybe it's managing your calendar, tracking expenses, or sending daily summaries.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Part 3 */}
+            <div className="border-l-4 border-blue-500 pl-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">🏠 Part 3: Automating Daily Life</h3>
+              <p className="text-gray-700 mb-4">
+                The transformation begins here. Learn battle-tested automations that tackle the mental load of modern life.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4 text-sm">
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <p className="font-semibold text-gray-900 mb-2">🍽️ Meal Planning</p>
+                  <p className="text-gray-700">AI creates weekly meal plans based on your dietary preferences, generates shopping lists, and finds the best deals.</p>
+                </div>
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <p className="font-semibold text-gray-900 mb-2">📅 Schedule Optimization</p>
+                  <p className="text-gray-700">Auto-schedule appointments, manage conflicts, and get intelligent reminders for what matters most.</p>
+                </div>
+                <div className="bg-blue-50 rounded-lg p-4">
+                  <p className="font-semibold text-gray-900 mb-2">💰 Budget Tracking</p>
+                  <p className="text-gray-700">Monitor spending, identify waste, and get alerts when subscriptions can be cancelled or negotiated.</p>
+                </div>
+              </div>
+              <p className="mt-4 text-gray-700 text-sm italic">Real example: One reader saved $127/month by automating subscription audits and price comparisons.</p>
+            </div>
+
+            {/* Part 4 */}
+            <div className="border-l-4 border-green-500 pl-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">🔒 Part 4: Privacy & Security First</h3>
+              <p className="text-gray-700 mb-4">
+                This is what sets this book apart. Most AI guides ignore privacy. We make it central.
+              </p>
+              <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                <p className="font-semibold text-gray-900 mb-2">Critical Topics Covered:</p>
+                <ul className="space-y-2 text-gray-700 text-sm">
+                  <li className="flex items-start"><Lock className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" /><strong>Local-first AI:</strong> Run powerful models on your own hardware, no cloud required</li>
+                  <li className="flex items-start"><Lock className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" /><strong>Data minimization:</strong> Share only what's necessary, encrypt everything else</li>
+                  <li className="flex items-start"><Lock className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" /><strong>Vendor lock-in:</strong> How to avoid getting trapped in one ecosystem</li>
+                  <li className="flex items-start"><Lock className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" /><strong>Common mistakes:</strong> The 7 privacy pitfalls that trip up 90% of users</li>
+                </ul>
+              </div>
+              <p className="text-gray-700 text-sm">Sleep better knowing your personal data isn't being sold or analyzed without your consent.</p>
+            </div>
+
+            {/* Part 5 */}
+            <div className="border-l-4 border-indigo-500 pl-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">🚀 Part 5: Advanced Multi-Agent Systems</h3>
+              <p className="text-gray-700 mb-4">
+                Ready for the next level? Build systems where multiple AI agents work together to handle complex workflows.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <p className="font-semibold text-gray-900 mb-2">Advanced Workflows:</p>
+                  <ul className="space-y-1 text-gray-700 text-sm">
+                    <li className="flex items-start"><Zap className="w-4 h-4 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />Home management dashboard (energy, security, maintenance)</li>
+                    <li className="flex items-start"><Zap className="w-4 h-4 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />Family coordination system (schedules, tasks, communications)</li>
+                    <li className="flex items-start"><Zap className="w-4 h-4 text-indigo-500 mr-2 mt-0.5 flex-shrink-0" />Personal research assistant (news, studies, summaries)</li>
+                  </ul>
+                </div>
+                <div className="bg-indigo-50 rounded-lg p-4">
+                  <p className="font-semibold text-gray-900 mb-2">🔮 Future-Proofing:</p>
+                  <p className="text-gray-700 text-sm mb-2">Technology changes fast. This section teaches principles, not just specific tools.</p>
+                  <p className="text-gray-700 text-sm">You'll understand <em>how to think</em> about AI agents so you can adapt as new platforms emerge.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Who This Is For */}
+        <div className="bg-gradient-to-r from-teal-500 to-cyan-600 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-2xl">
+          <h2 className="text-3xl font-bold text-center mb-8">Is This Book Right for You?</h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 flex items-center"><Check className="w-6 h-6 mr-2" />Perfect For:</h3>
+              <ul className="space-y-3">
+                <li>✅ Busy professionals drowning in tasks</li>
+                <li>✅ Parents managing family logistics</li>
+                <li>✅ Tech-curious people wanting practical AI skills</li>
+                <li>✅ Anyone feeling overwhelmed by decision fatigue</li>
+                <li>✅ Privacy-conscious individuals seeking alternatives to Big Tech</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 flex items-center"><AlertCircle className="w-6 h-6 mr-2" />NOT For:</h3>
+              <ul className="space-y-3 text-teal-100">
+                <li>❌ People expecting a magic "do everything" button</li>
+                <li>❌ Those unwilling to spend 2-3 hours learning</li>
+                <li>❌ Enterprise/corporate deployment (this is for personal use)</li>
+              </ul>
+              <p className="mt-4 text-sm italic">We're being honest: This requires some setup. But once configured, it runs on autopilot.</p>
+            </div>
+          </div>
+        </div>
+
         {/* Free Part 1 Offer */}
         <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white mb-12 shadow-2xl">
           <div className="max-w-3xl mx-auto text-center">
@@ -330,7 +475,7 @@ export default function SalesPage() {
             <p className="text-xl text-gray-600">Choose your payment method</p>
           </div>
 
-          {/* Email Input */}
+          {/* Email Input with Explanation */}
           <div className="max-w-md mx-auto mb-8">
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Your Email Address
@@ -343,6 +488,12 @@ export default function SalesPage() {
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 text-lg"
               required
             />
+            <div className="mt-3 bg-blue-50 border border-blue-200 rounded-lg p-3 flex items-start">
+              <Shield className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-blue-800">
+                <strong>Why email?</strong> We deliver your ebook instantly to your inbox. No spam, no marketing emails—just your purchase.
+              </div>
+            </div>
           </div>
 
           {/* Payment Options */}
