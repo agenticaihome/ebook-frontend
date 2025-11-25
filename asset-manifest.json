@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ebook-frontend/static/css/main.4efb37a3.css",
-    "main.js": "/ebook-frontend/static/js/main.ebafc1ea.js",
-    "index.html": "/ebook-frontend/index.html"
+    "main.css": "/static/css/main.4efb37a3.css",
+    "main.js": "/static/js/main.ebafc1ea.js",
+    "index.html": "/index.html"
   },
   "entrypoints": [
     "static/css/main.4efb37a3.css",
