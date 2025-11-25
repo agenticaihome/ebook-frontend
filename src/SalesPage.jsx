@@ -72,7 +72,7 @@ export default function SalesPage() {
 
       if (data.success) {
         setErgoRequestId(data.requestId);
-        setErgoPayUrl(data.ergoPayUrl);  // This is the ergopay:// URL
+        setErgoPayUrl(data.ergoPayUrl);  // ErgoPay URL from TokenJay
         setErgoPriceInfo({
           ergAmount: data.ergAmount,
           ergPriceUsd: data.ergPriceUsd,
@@ -455,13 +455,13 @@ export default function SalesPage() {
             {paymentStatus === 'awaiting' && ergoPayUrl && (
               <div className="text-center">
                 <Coins className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Complete Payment with Ergo</h3>
+                <h3 className="text-2xl font-bold mb-4">Pay with Ergo Wallet</h3>
                 
                 {ergoPriceInfo && (
                   <div className="bg-green-50 rounded-lg p-4 mb-6 text-left">
                     <div className="flex justify-between mb-2">
-                      <span className="text-gray-700">Amount to Pay:</span>
-                      <span className="font-bold text-lg">{ergoPriceInfo.ergAmount.toFixed(4)} ERG</span>
+                      <span className="text-gray-700">Amount:</span>
+                      <span className="font-bold text-xl text-green-700">{ergoPriceInfo.ergAmount.toFixed(4)} ERG</span>
                     </div>
                     <div className="flex justify-between mb-2">
                       <span className="text-gray-700">ERG Price:</span>
@@ -474,26 +474,29 @@ export default function SalesPage() {
                   </div>
                 )}
 
-                {/* Desktop Users: Clickable ErgoPay Button */}
+                {/* Desktop: Click to open wallet */}
                 <div className="mb-6">
                   <a
                     href={ergoPayUrl}
                     className="inline-flex items-center bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition shadow-lg"
                   >
                     <Coins className="w-6 h-6 mr-2" />
-                    Pay with Nautilus Wallet
+                    Open Nautilus Wallet
                   </a>
-                  <p className="text-sm text-gray-600 mt-3">
-                    ✅ Click if you have Nautilus or SAFEW wallet installed
+                  <p className="text-sm text-gray-600 mt-2">
+                    ✅ If you have Nautilus/SAFEW installed
                   </p>
                 </div>
 
-                <div className="my-6 border-t pt-6">
-                  <p className="text-gray-700 mb-4 font-semibold">OR scan QR code with mobile wallet:</p>
+                <div className="my-4 flex items-center">
+                  <div className="flex-1 border-t border-gray-300"></div>
+                  <span className="px-4 text-gray-500 text-sm">OR</span>
+                  <div className="flex-1 border-t border-gray-300"></div>
                 </div>
 
-                {/* Mobile Users: QR Code */}
-                <div className="bg-white border-4 border-gray-200 rounded-lg p-6 mb-4 inline-block">
+                {/* Mobile: Scan QR code */}
+                <div className="bg-white border-4 border-gray-200 rounded-lg p-4 mb-4 inline-block">
+                  <p className="text-sm text-gray-600 mb-2">Scan with mobile wallet:</p>
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${encodeURIComponent(ergoPayUrl)}`}
                     alt="ErgoPay QR Code"
@@ -503,18 +506,17 @@ export default function SalesPage() {
 
                 {/* Instructions */}
                 <div className="bg-blue-50 rounded-lg p-4 mb-6 text-left">
-                  <p className="font-semibold text-gray-900 mb-3">📱 Mobile Instructions:</p>
-                  <div className="space-y-2 text-sm text-gray-700">
-                    <p>1. Open your Ergo mobile wallet (Nautilus/SAFEW)</p>
-                    <p>2. Scan the QR code above</p>
-                    <p>3. Review and confirm the transaction</p>
-                    <p>4. Your ebook will be sent automatically!</p>
+                  <p className="font-semibold text-gray-900 mb-2">📱 How to Pay:</p>
+                  <div className="space-y-1 text-sm text-gray-700">
+                    <p><strong>Desktop:</strong> Click the green button above</p>
+                    <p><strong>Mobile:</strong> Scan QR code with your Ergo wallet</p>
+                    <p className="pt-2 border-t mt-2 text-xs text-gray-600">Your ebook will be sent automatically after payment!</p>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-center text-purple-600 mb-4">
                   <Loader className="w-5 h-5 animate-spin mr-2" />
-                  <span className="font-semibold">Waiting for payment confirmation...</span>
+                  <span className="font-semibold">Waiting for payment...</span>
                 </div>
 
                 <button
