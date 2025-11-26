@@ -253,7 +253,7 @@ export default function SalesPage() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
           <div className="inline-block bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            🚀 2026's Most Important Guide
+            🦷 Root Cause Efficiency for the Modern Family
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Stop Managing Your Life.<br />
@@ -262,8 +262,7 @@ export default function SalesPage() {
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Discover how autonomous AI agents can save you 15+ hours per week, reduce stress,
-            and handle the mental load of modern life—while protecting your privacy.
+            Discover how a Doctor of Digital Systems uses AI agents to treat the root cause of your time crisis—saving 15+ hours per week through precision delegation.
           </p>
 
 
@@ -276,7 +275,7 @@ export default function SalesPage() {
                 <div className="text-center">
                   <Book className="w-20 h-20 mx-auto mb-4 opacity-90" />
                   <h2 className="text-3xl font-bold mb-2">AGENTIC AI AT HOME</h2>
-                  <p className="text-purple-100 mb-4">By Data-Driven Dad</p>
+                  <p className="text-purple-100 mb-4">By The Doctor of Digital Systems (DDS)</p>
                   <div className="bg-white/20 backdrop-blur rounded-lg p-4">
                     <p className="text-sm">250+ Pages • 5 Parts • 15 Chapters • 2026 Edition</p>
                   </div>
@@ -289,13 +288,13 @@ export default function SalesPage() {
             <h3 className="text-2xl font-bold text-gray-900 mb-4">What You'll Learn:</h3>
             <ul className="space-y-3">
               {[
-                'Set up your first AI agent in under 30 minutes',
-                'Automate morning routines, meals, and household tasks',
-                'Protect your privacy while using powerful AI tools',
-                'Build multi-agent systems that work together',
-                'Save $500+/month on groceries, subscriptions, utilities',
-                'Reduce decision fatigue and mental overwhelm',
-                'Prepare for the AI-powered home of 2026 and beyond'
+                'Diagnose the root cause of your time crisis (mental load, not laziness)',
+                'Choose your AI platform (Google/Microsoft/Apple)',
+                'Implement privacy and security protocols (infection control)',
+                'Build your first AI agents (Morning, Kitchen, Household)',
+                'Achieve 5-8 hours of cognitive relief per week',
+                'Treat decision fatigue with precision delegation',
+                'Deploy Root Cause Efficiency in your home'
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start">
                   <Check className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
@@ -332,12 +331,12 @@ export default function SalesPage() {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-purple-900 mb-1">Meet Your AI Sidekick</h3>
+              <h3 className="text-xl font-bold text-purple-900 mb-1">Meet Your Precision AI Instrument</h3>
               <p className="text-sm text-purple-600 font-semibold mb-2">Captain Efficiency</p>
             </div>
           </div>
           <p className="text-purple-800 italic relative z-10">
-            "Beep boop! Captain Efficiency here! I'm your friendly neighborhood robot. I handle the boring stuff—reminders, lists, and math—so you can handle the human stuff."
+            "Think of me as the precision instrument that goes in after the Doc finds the problem. He diagnoses. I treat. Together, we save the tooth—and your sanity."
           </p>
         </div>
       </div>
@@ -346,7 +345,7 @@ export default function SalesPage() {
 
       {/* Value Proposition: Time & Money Savings */}
       <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-2xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">The Real ROI of AI Automation</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">The Clinical Results: Root Cause Treatment</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center">
             <div className="text-5xl font-bold mb-2">10+</div>
@@ -379,18 +378,22 @@ export default function SalesPage() {
             <div className="absolute -left-[1.65rem] top-0 bg-teal-500 text-white px-2 py-1 rounded text-xs font-bold uppercase tracking-wide transform -translate-y-1/2 shadow-sm">
               Free
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">🚀 Part 1: Introduction & Understanding</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">🦷 Part 1: DIAGNOSIS - Finding the Root Cause of Your Time Crisis</h3>
             <p className="text-gray-700 mb-4">
-              The foundation. Understand what agents are, how they work, and how to control them safely.
+              The diagnostic phase. Identify the root cause of your time crisis and select your treatment instruments.
             </p>
             <div className="grid md:grid-cols-2 gap-4 text-sm mb-4">
               <div className="bg-teal-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🧠 Understanding Agents</p>
-                <p className="text-gray-700">The 5 Powers (Perceive, Reason, Plan, Act, Learn). Why 2024-25 changed everything.</p>
+                <p className="font-semibold text-gray-900 mb-2">📊 Chapter 1: The Diagnosis</p>
+                <p className="text-gray-700">What's really killing your time. Understanding mental load as the root cause infection.</p>
               </div>
               <div className="bg-teal-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🔒 Privacy & Security</p>
-                <p className="text-gray-700">The 3 Types of Agents (Cloud vs. Local vs. Sovereign). The 10-Point Security Checklist.</p>
+                <p className="font-semibold text-gray-900 mb-2">🔧 Chapter 2: The Instrument Tray</p>
+                <p className="text-gray-700">Choosing your AI platform (Google/Microsoft/Apple). Selecting the right tools for your hands.</p>
+              </div>
+              <div className="bg-teal-50 rounded-lg p-4">
+                <p className="font-semibold text-gray-900 mb-2">🔒 Chapter 3: Infection Control</p>
+                <p className="text-gray-700">Privacy, security, and boundaries. The three commandments of AI privacy.</p>
               </div>
             </div>
             <button
@@ -491,19 +494,19 @@ export default function SalesPage() {
           <div>
             <h3 className="text-2xl font-semibold mb-4 flex items-center"><Check className="w-6 h-6 mr-2" />Perfect For:</h3>
             <ul className="space-y-3">
-              <li>✅ Busy professionals drowning in email & meetings</li>
-              <li>✅ Parents managing complex family logistics</li>
-              <li>✅ Freelancers balancing multiple clients</li>
-              <li>✅ Anyone feeling "decision fatigue" by 10 AM</li>
-              <li>✅ Privacy-conscious users (sovereign/local options included)</li>
+              <li>✅ Busy professionals suffering from decision fatigue</li>
+              <li>✅ Parents drowning in household mental load</li>
+              <li>✅ Healthcare workers managing complex schedules</li>
+              <li>✅ Anyone seeking cognitive relief (not just "more time")</li>
+              <li>✅ Privacy-conscious users who want local AI options</li>
             </ul>
           </div>
           <div>
             <h3 className="text-2xl font-semibold mb-4 flex items-center"><AlertCircle className="w-6 h-6 mr-2" />NOT For:</h3>
             <ul className="space-y-3 text-teal-100">
               <li>❌ People expecting a magic "do everything" button</li>
-              <li>❌ Those unwilling to spend 2-3 hours on initial setup</li>
-              <li>❌ Enterprise/corporate deployment (this is for personal use)</li>
+              <li>❌ Those unwilling to spend 2-3 hours on diagnosis and setup</li>
+              <li>❌ Anyone looking for surface-level productivity hacks (we treat root causes)</li>
             </ul>
             <p className="mt-4 text-sm italic">"The gap between understanding and implementation is where most people get stuck. This book bridges that gap."</p>
           </div>
