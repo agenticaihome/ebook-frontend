@@ -251,6 +251,27 @@ export default function SalesPage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
       {/* Hero Section */}
       <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <div className="inline-block bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            🚀 2026's Most Important Guide
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Stop Managing Your Life.<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+              Start Living It.
+            </span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Discover how autonomous AI agents can save you 15+ hours per week, reduce stress,
+            and handle the mental load of modern life—while protecting your privacy.
+          </p>
+
+          {/* Motivational Graphic */}
+          <div className="flex justify-center mb-12">
+            <img src="/wait_vs_work_graphic.png" alt="Good things happen to those who work" className="h-32 md:h-40 object-contain hover:scale-105 transition duration-300" />
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg p-8 text-white shadow-xl">
@@ -287,23 +308,36 @@ export default function SalesPage() {
         </div>
       </div>
 
-      {/* About the Author & Captain Efficiency */}
-      <div className="grid md:grid-cols-2 gap-8 mb-12">
-        {/* About the Author */}
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">The Resident Who Cracked the Code</h2>
-          <p className="text-gray-700">
-            I’m not a tech guru. I’m a resident. Between 50+ hour work weeks and two kids under 3, my life was chaos. I realized I was managing my household like a chaotic startup. So I built a system of 'AI Agents' to handle the chores and mental load.
-          </p>
-        </div>
+      {/* Captain Efficiency (Author Removed) */}
+      <div className="max-w-4xl mx-auto mb-12 px-4">
+        <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-purple-100 rounded-full opacity-50 blur-xl"></div>
 
-        {/* Captain Efficiency */}
-        <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-8 flex flex-col justify-center">
-          <div className="flex items-center mb-4">
-            <div className="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center mr-4 text-xl">🤖</div>
-            <h3 className="text-xl font-bold text-blue-900">Captain Efficiency</h3>
+          <div className="flex items-start mb-4 relative z-10">
+            <div className="mr-6 flex-shrink-0">
+              {/* Custom Captain Efficiency SVG */}
+              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Head */}
+                <rect x="20" y="30" width="60" height="50" rx="10" fill="white" stroke="#7C3AED" strokeWidth="3" />
+                {/* Eyes */}
+                <circle cx="35" cy="50" r="6" fill="#10B981" />
+                <circle cx="65" cy="50" r="6" fill="#10B981" />
+                {/* Mouth */}
+                <path d="M40 70 Q50 75 60 70" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" />
+                {/* Antenna */}
+                <line x1="50" y1="30" x2="50" y2="15" stroke="#7C3AED" strokeWidth="3" />
+                <circle cx="50" cy="10" r="5" fill="#10B981" />
+                {/* Ears/Bolts */}
+                <rect x="15" y="45" width="5" height="20" rx="2" fill="#C4B5FD" />
+                <rect x="80" y="45" width="5" height="20" rx="2" fill="#C4B5FD" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-purple-900 mb-1">Meet Your AI Sidekick</h3>
+              <p className="text-sm text-purple-600 font-semibold mb-2">Captain Efficiency</p>
+            </div>
           </div>
-          <p className="text-blue-800 italic">
+          <p className="text-purple-800 italic relative z-10">
             "Beep boop! Captain Efficiency here! I'm your friendly neighborhood robot. I handle the boring stuff—reminders, lists, and math—so you can handle the human stuff."
           </p>
         </div>
