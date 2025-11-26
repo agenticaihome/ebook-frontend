@@ -348,13 +348,7 @@ export default function SalesPage() {
         </div>
       </div>
 
-      {/* Why Privacy Matters (Healthcare Angle) */}
-      <div className="bg-white rounded-2xl shadow-xl p-8 mb-12 border-l-8 border-green-500">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Privacy isn't a feature. It's a standard.</h2>
-        <p className="text-gray-700">
-          As someone who works in healthcare, I'm trained to think about privacy first. I apply that same standard to my family's data. That's why this guide focuses on <strong>Private, Local AI</strong> and <strong>Ergo (Digital Cash)</strong> payments. Minimum necessary access. You own your data.
-        </p>
-      </div>
+
 
       {/* Value Proposition: Time & Money Savings */}
       <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-2xl">
