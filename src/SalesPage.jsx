@@ -271,14 +271,20 @@ export default function SalesPage() {
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg p-8 text-white shadow-xl">
-              <div className="text-center">
-                <Book className="w-20 h-20 mx-auto mb-4 opacity-90" />
-                <h2 className="text-3xl font-bold mb-2">AGENTIC AI AT HOME</h2>
-                <p className="text-purple-100 mb-4">By Data-Driven Dad</p>
-                <div className="bg-white/20 backdrop-blur rounded-lg p-4">
-                  <p className="text-sm">250+ Pages • 5 Parts • 15 Chapters • 2026 Edition</p>
+            <div className="relative">
+              <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg p-8 text-white shadow-xl relative z-10">
+                <div className="text-center">
+                  <Book className="w-20 h-20 mx-auto mb-4 opacity-90" />
+                  <h2 className="text-3xl font-bold mb-2">AGENTIC AI AT HOME</h2>
+                  <p className="text-purple-100 mb-4">By Data-Driven Dad</p>
+                  <div className="bg-white/20 backdrop-blur rounded-lg p-4">
+                    <p className="text-sm">250+ Pages • 5 Parts • 15 Chapters • 2026 Edition</p>
+                  </div>
                 </div>
+              </div>
+              {/* Floating Captain Efficiency */}
+              <div className="absolute -top-12 -left-12 w-32 h-32 z-20 hidden md:block animate-bounce-slow">
+                <img src="/captain_hero.png" alt="Captain Efficiency" className="w-full h-full object-contain drop-shadow-2xl" />
               </div>
             </div>
           </div>
