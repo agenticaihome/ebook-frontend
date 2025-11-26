@@ -282,14 +282,18 @@ export default function SalesPage() {
                   </div>
                 </div>
               </div>
-              {/* Floating Captain Efficiency */}
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-32 h-32 z-20 hidden md:block animate-bounce-slow">
-                <img src="/captain_hero.png" alt="Captain Efficiency" className="w-full h-full object-contain drop-shadow-2xl" />
+              {/* Floating Captain Efficiency - Pointing */}
+              <div className="absolute -top-12 -right-8 w-36 h-36 z-20 hidden md:block">
+                <img src="/captain_pointing.png" alt="Captain Efficiency" className="w-full h-full object-contain drop-shadow-2xl animate-bounce-slow" />
+              </div>
+              {/* E Badge Decoration */}
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 z-20 hidden md:block opacity-80">
+                <img src="/captain_e_badge.png" alt="Efficiency Badge" className="w-full h-full object-contain" />
               </div>
             </div>
           </div>
 
-          <div>
+          <div className="relative">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">What You'll Learn:</h3>
             <ul className="space-y-3">
               {[
@@ -307,6 +311,10 @@ export default function SalesPage() {
                 </li>
               ))}
             </ul>
+            {/* Captain Thumbs Up */}
+            <div className="absolute -bottom-8 -right-8 w-24 h-24 hidden lg:block">
+              <img src="/captain_thumbsup.png" alt="Captain Efficiency Thumbs Up" className="w-full h-full object-contain drop-shadow-xl" />
+            </div>
           </div>
         </div>
       </div>
