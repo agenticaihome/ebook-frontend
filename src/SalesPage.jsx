@@ -256,15 +256,18 @@ export default function SalesPage() {
             🚀 2026's Most Important Guide
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Stop Managing Your Life.<br />
+            I’m a Resident. I work 50+ hours a week. I have 2 toddlers.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-              Start Living It.
+              Here is how I automate my home to survive.
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Discover how autonomous AI agents can save you 15+ hours per week, reduce stress,
-            and handle the mental load of modern life—while protecting your privacy.
+            Meet <strong>Data-Driven Dad</strong> and <strong>Captain Efficiency</strong>. The anonymous survival guide for busy parents who need their time back.
           </p>
+          <div className="flex justify-center gap-4 mb-8">
+            <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center text-xs text-gray-500">3D Dad Avatar</div>
+            <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center text-xs text-blue-500">Cute Robot Avatar</div>
+          </div>
         </div>
 
         {/* Book Preview */}
@@ -275,7 +278,7 @@ export default function SalesPage() {
                 <div className="text-center">
                   <Book className="w-20 h-20 mx-auto mb-4 opacity-90" />
                   <h2 className="text-3xl font-bold mb-2">AGENTIC AI AT HOME</h2>
-                  <p className="text-purple-100 mb-4">By Dr. Maya Patel</p>
+                  <p className="text-purple-100 mb-4">By Data-Driven Dad</p>
                   <div className="bg-white/20 backdrop-blur rounded-lg p-4">
                     <p className="text-sm">250+ Pages • 5 Parts • 15 Chapters • 2026 Edition</p>
                   </div>
@@ -303,6 +306,36 @@ export default function SalesPage() {
               </ul>
             </div>
           </div>
+        </div>
+
+        {/* About the Author & Captain Efficiency */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* About the Author */}
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Resident Who Cracked the Code</h2>
+            <p className="text-gray-700">
+              I’m not a tech guru. I’m a resident. Between 50+ hour work weeks and two kids under 3, my life was chaos. I realized I was managing my household like a chaotic startup. So I built a system of 'AI Agents' to handle the chores and mental load.
+            </p>
+          </div>
+
+          {/* Captain Efficiency */}
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-8 flex flex-col justify-center">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center mr-4 text-xl">🤖</div>
+              <h3 className="text-xl font-bold text-blue-900">Captain Efficiency</h3>
+            </div>
+            <p className="text-blue-800 italic">
+              "Beep boop! Captain Efficiency here! I'm your friendly neighborhood robot. I handle the boring stuff—reminders, lists, and math—so you can handle the human stuff."
+            </p>
+          </div>
+        </div>
+
+        {/* Why Privacy Matters (Healthcare Angle) */}
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12 border-l-8 border-green-500">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Privacy isn't a feature. It's a standard.</h2>
+          <p className="text-gray-700">
+            As someone who works in healthcare, I'm trained to think about privacy first. I apply that same standard to my family's data. That's why this guide focuses on <strong>Private, Local AI</strong> and <strong>Ergo (Digital Cash)</strong> payments. Minimum necessary access. You own your data.
+          </p>
         </div>
 
         {/* Value Proposition: Time & Money Savings */}
