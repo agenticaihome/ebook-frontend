@@ -266,10 +266,7 @@ export default function SalesPage() {
             and handle the mental load of modern life—while protecting your privacy.
           </p>
 
-          {/* Motivational Graphic */}
-          <div className="flex justify-center mb-12">
-            <img src="/wait_vs_work_graphic.png" alt="Good things happen to those who work" className="h-32 md:h-40 object-contain hover:scale-105 transition duration-300" />
-          </div>
+
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -308,38 +305,46 @@ export default function SalesPage() {
         </div>
       </div>
 
-      {/* Captain Efficiency (Author Removed) */}
-      <div className="max-w-4xl mx-auto mb-12 px-4">
-        <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-purple-100 rounded-full opacity-50 blur-xl"></div>
+      {/* Captain Efficiency & Motivational Graphic */}
+      <div className="max-w-6xl mx-auto mb-12 px-4">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          {/* Captain Efficiency Card */}
+          <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden h-full">
+            <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-purple-100 rounded-full opacity-50 blur-xl"></div>
 
-          <div className="flex items-start mb-4 relative z-10">
-            <div className="mr-6 flex-shrink-0">
-              {/* Custom Captain Efficiency SVG */}
-              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Head */}
-                <rect x="20" y="30" width="60" height="50" rx="10" fill="white" stroke="#7C3AED" strokeWidth="3" />
-                {/* Eyes */}
-                <circle cx="35" cy="50" r="6" fill="#10B981" />
-                <circle cx="65" cy="50" r="6" fill="#10B981" />
-                {/* Mouth */}
-                <path d="M40 70 Q50 75 60 70" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" />
-                {/* Antenna */}
-                <line x1="50" y1="30" x2="50" y2="15" stroke="#7C3AED" strokeWidth="3" />
-                <circle cx="50" cy="10" r="5" fill="#10B981" />
-                {/* Ears/Bolts */}
-                <rect x="15" y="45" width="5" height="20" rx="2" fill="#C4B5FD" />
-                <rect x="80" y="45" width="5" height="20" rx="2" fill="#C4B5FD" />
-              </svg>
+            <div className="flex items-start mb-4 relative z-10">
+              <div className="mr-6 flex-shrink-0">
+                {/* Custom Captain Efficiency SVG */}
+                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Head */}
+                  <rect x="20" y="30" width="60" height="50" rx="10" fill="white" stroke="#7C3AED" strokeWidth="3" />
+                  {/* Eyes */}
+                  <circle cx="35" cy="50" r="6" fill="#10B981" />
+                  <circle cx="65" cy="50" r="6" fill="#10B981" />
+                  {/* Mouth */}
+                  <path d="M40 70 Q50 75 60 70" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" />
+                  {/* Antenna */}
+                  <line x1="50" y1="30" x2="50" y2="15" stroke="#7C3AED" strokeWidth="3" />
+                  <circle cx="50" cy="10" r="5" fill="#10B981" />
+                  {/* Ears/Bolts */}
+                  <rect x="15" y="45" width="5" height="20" rx="2" fill="#C4B5FD" />
+                  <rect x="80" y="45" width="5" height="20" rx="2" fill="#C4B5FD" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-purple-900 mb-1">Meet Your AI Sidekick</h3>
+                <p className="text-sm text-purple-600 font-semibold mb-2">Captain Efficiency</p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-bold text-purple-900 mb-1">Meet Your AI Sidekick</h3>
-              <p className="text-sm text-purple-600 font-semibold mb-2">Captain Efficiency</p>
-            </div>
+            <p className="text-purple-800 italic relative z-10">
+              "Beep boop! Captain Efficiency here! I'm your friendly neighborhood robot. I handle the boring stuff—reminders, lists, and math—so you can handle the human stuff."
+            </p>
           </div>
-          <p className="text-purple-800 italic relative z-10">
-            "Beep boop! Captain Efficiency here! I'm your friendly neighborhood robot. I handle the boring stuff—reminders, lists, and math—so you can handle the human stuff."
-          </p>
+
+          {/* Motivational Graphic */}
+          <div className="flex justify-center items-center bg-white rounded-2xl shadow-xl p-8 h-full border-2 border-gray-100">
+            <img src="/wait_vs_work_graphic.png" alt="Good things happen to those who work" className="w-full max-w-md object-contain hover:scale-105 transition duration-300" />
+          </div>
         </div>
       </div>
 
