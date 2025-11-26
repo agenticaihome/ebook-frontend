@@ -283,8 +283,8 @@ export default function SalesPage() {
                 </div>
               </div>
               {/* Floating Captain Efficiency */}
-              <div className="absolute -top-12 -left-12 w-32 h-32 z-20 hidden md:block animate-bounce-slow">
-                <img src="/captain_hero.png" alt="Captain Efficiency" className="w-full h-full object-contain drop-shadow-2xl" />
+              <div className="absolute -top-8 right-4 w-28 h-28 z-20 hidden md:block animate-bounce-slow">
+                <img src="/captain_hero.png" alt="Captain Efficiency" className="w-full h-full object-contain drop-shadow-2xl mix-blend-normal" />
               </div>
             </div>
           </div>
