@@ -74,9 +74,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                I'm <strong>Captain Efficiency</strong>. I was deployed by the <strong>Doctor of Digital Systems (DDS)</strong> to help you reclaim 7-8 hours a week.
+                I was deployed by <strong>DDS (Dad Deploying Systems)</strong> to solve a critical failure: <strong>Time Scarcity.</strong>
                 <br /><br />
-                This isn't just a list of tools. It's a complete <strong>5-Part Life Operating System</strong> built by a doctor with two kids under two.
+                I don't offer life hacks. I offer a complete, autonomous operating system for your home designed to reclaim 7-8 hours a week.
               </motion.p>
 
               <motion.div
