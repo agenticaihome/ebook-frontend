@@ -12,27 +12,52 @@ const InfectionDiagnostic = () => {
     const questions = [
         {
             id: 1,
-            text: "Do you know what's for dinner tonight?",
-            badAnswer: "no"
+            text: "Have you bought groceries that went bad before you used them this week?",
+            badAnswer: "yes"
         },
         {
             id: 2,
-            text: "Do you have unread emails from last month?",
+            text: "Do you have unopened mail from more than a week ago?",
             badAnswer: "yes"
         },
         {
             id: 3,
-            text: "Can you find your last utility bill in under 2 minutes?",
-            badAnswer: "no"
+            text: "Have you paid a late fee in the last 3 months?",
+            badAnswer: "yes"
         },
         {
             id: 4,
-            text: "Do you know exactly what subscriptions you're paying for?",
+            text: "Do you know what's for dinner tonight?",
             badAnswer: "no"
         },
         {
             id: 5,
-            text: "Have you thrown away expired food this week?",
+            text: "Can you find your car insurance policy in under 2 minutes?",
+            badAnswer: "no"
+        },
+        {
+            id: 6,
+            text: "Have you forgotten to cancel a free trial and gotten charged?",
+            badAnswer: "yes"
+        },
+        {
+            id: 7,
+            text: "Do you have clothes you bought over a year ago with tags still on?",
+            badAnswer: "yes"
+        },
+        {
+            id: 8,
+            text: "Have you missed a doctor's appointment in the last year?",
+            badAnswer: "yes"
+        },
+        {
+            id: 9,
+            text: "Do you know exactly which subscriptions you're paying for right now?",
+            badAnswer: "no"
+        },
+        {
+            id: 10,
+            text: "Have you ordered takeout because you 'had nothing to eat' while your fridge was full?",
             badAnswer: "yes"
         }
     ];
@@ -65,9 +90,9 @@ const InfectionDiagnostic = () => {
 
     const getVitalsColor = () => {
         const infectionLevel = calculateInfectionLevel();
-        if (infectionLevel === 0) return '#00FF00';
-        if (infectionLevel <= 2) return '#FFFF00';
-        if (infectionLevel <= 3) return '#FFA500';
+        if (infectionLevel <= 2) return '#00FF00';
+        if (infectionLevel <= 4) return '#FFFF00';
+        if (infectionLevel <= 6) return '#FFA500';
         return '#FF4444';
     };
 
@@ -78,19 +103,19 @@ const InfectionDiagnostic = () => {
 
     const getDiagnosis = () => {
         const infectionLevel = calculateInfectionLevel();
-        if (infectionLevel === 0) return {
+        if (infectionLevel <= 2) return {
             stage: "Level 0: Fully Optimized",
             severity: "EXCELLENT",
             color: "#00FF00",
             emoji: "✨"
         };
-        if (infectionLevel <= 2) return {
+        if (infectionLevel <= 4) return {
             stage: "Level 1: Minor Chaos",
             severity: "MANAGEABLE",
             color: "#FFFF00",
             emoji: "⚠️"
         };
-        if (infectionLevel <= 3) return {
+        if (infectionLevel <= 6) return {
             stage: "Level 2: Spreading Disorder",
             severity: "CONCERNING",
             color: "#FFA500",
@@ -242,7 +267,7 @@ const InfectionDiagnostic = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <div ref={resultsRef} className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-2xl border-2" style={{ borderColor: diagnosis.color }}>
-                        {/* Modern Header with Captain Efficiency */}
+                        {/* Modern Header */}
                         <div className="text-center mb-6">
                             <div className="text-6xl mb-4">{diagnosis.emoji}</div>
                             <h2 className="text-4xl md:text-5xl font-bold medical-heading mb-3" style={{ color: diagnosis.color }}>
@@ -258,13 +283,13 @@ const InfectionDiagnostic = () => {
                             <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: `${diagnosis.color}15` }}>
                                 <div className="text-sm text-gray-600 mb-2 font-semibold">CHAOS SCORE</div>
                                 <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
-                                    {infectionLevel}/5
+                                    {infectionLevel}/10
                                 </div>
                             </div>
                             <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: `${diagnosis.color}15` }}>
                                 <div className="text-sm text-gray-600 mb-2 font-semibold">CHAOS LEVEL</div>
                                 <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
-                                    {Math.round((infectionLevel / 5) * 100)}%
+                                    {Math.round((infectionLevel / 10) * 100)}%
                                 </div>
                             </div>
                         </div>
@@ -272,7 +297,7 @@ const InfectionDiagnostic = () => {
                         {/* Recommendation */}
                         <div className="p-6 rounded-2xl mb-6 text-center" style={{ backgroundColor: `${diagnosis.color}10`, borderLeft: `4px solid ${diagnosis.color}` }}>
                             <p className="text-lg font-bold medical-heading mb-2" style={{ color: '#0055FF' }}>
-                                {infectionLevel >= 3 ? '🚨 Immediate Action Recommended' : '💡 Preventive Measures Suggested'}
+                                {infectionLevel >= 6 ? '🚨 Immediate Action Recommended' : '💡 Preventive Measures Suggested'}
                             </p>
                             <p className="text-sm text-gray-600">
                                 Download the free guide to learn how AI agents can restore order to your household
