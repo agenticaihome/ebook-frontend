@@ -267,45 +267,49 @@ export default function SalesPage() {
             </div>
 
             {/* Ergo Card */}
-            <div className="glass-card-lg p-8 border-green-200 hover:border-green-400 transition-all relative overflow-hidden group">
+            <div className="border-4 border-green-400 rounded-2xl p-8 hover:border-green-600 transition cursor-pointer relative bg-white"
+              onClick={handleErgoPayment}>
               <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">
                 50% OFF
               </div>
 
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-6">
-                  <Coins className="w-8 h-8 text-green-600" />
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 mb-4 flex items-center justify-center">
+                  {/* Ergo Logo SVG */}
+                  <svg viewBox="0 0 512 512" className="w-full h-full text-black fill-current">
+                    <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 416c-105.9 0-192-86.1-192-192S150.1 64 256 64s192 86.1 192 192-86.1 192-192 192z" />
+                    <path d="M346.5 176.5c-15.6-15.6-40.9-15.6-56.6 0L256 210.5l-33.9-33.9c-15.6-15.6-40.9-15.6-56.6 0s-15.6 40.9 0 56.6L256 323.8l90.5-90.5c15.6-15.8 15.6-41.1 0-56.8z" />
+                  </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Crypto Access</h3>
-                <div className="flex items-baseline gap-1 mb-6">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Pay with Ergo</h3>
+                <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-bold text-green-600">$20</span>
-                  <span className="text-slate-500">USD (in ERG)</span>
+                  <span className="text-slate-500">USD</span>
                 </div>
+              </div>
 
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-center gap-3 text-slate-700">
-                    <Check className="w-5 h-5 text-green-500" /> Privacy Focused
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-700">
-                    <Check className="w-5 h-5 text-green-500" /> No Middlemen
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-700">
-                    <Check className="w-5 h-5 text-green-500" /> Tech-Savvy Discount
-                  </li>
-                </ul>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3 text-slate-700">
+                  <Check className="w-5 h-5 text-green-500" /> Privacy Focused
+                </li>
+                <li className="flex items-center gap-3 text-slate-700">
+                  <Check className="w-5 h-5 text-green-500" /> No Middlemen
+                </li>
+                <li className="flex items-center gap-3 text-slate-700">
+                  <Check className="w-5 h-5 text-green-500" /> Tech-Savvy Discount
+                </li>
+              </ul>
 
-                <button
-                  onClick={handleErgoPayment}
-                  className="w-full bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition-colors shadow-lg shadow-green-200"
-                >
-                  Pay with Ergo
-                </button>
+              <button
+                className="w-full bg-green-600 text-white py-4 rounded-lg font-bold hover:bg-green-700 transition transform hover:scale-105"
+              >
+                Pay with ERG →
+              </button>
 
-                <div className="mt-4 text-center">
-                  <Link to="/how-to-buy-ergo" className="text-sm text-green-600 font-medium hover:underline">
-                    How to buy Ergo?
-                  </Link>
-                </div>
+              <div className="mt-4 text-center">
+                <Link to="/how-to-buy-ergo" className="text-sm text-green-600 font-medium hover:underline" onClick={(e) => e.stopPropagation()}>
+                  How to buy Ergo?
+                </Link>
               </div>
             </div>
           </div>

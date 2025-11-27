@@ -7,6 +7,9 @@ import Dashboard from './Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import Part1 from './pages/Part1';
 import Part2 from './pages/Part2';
+import Part3 from './pages/Part3';
+import Part4 from './pages/Part4';
+import Part5 from './pages/Part5';
 import HowToBuyErgo from './HowToBuyErgo';
 import WhyErgo from './WhyErgo';
 
@@ -32,6 +35,9 @@ function App() {
         {/* Webbook Chapters */}
         <Route path="/part1" element={<Part1 />} />
         <Route path="/part2" element={<Part2 />} />
+        <Route path="/part3" element={<Part3 />} />
+        <Route path="/part4" element={<Part4 />} />
+        <Route path="/part5" element={<Part5 />} />
 
         {/* Protected Routes */}
         <Route
