@@ -67,7 +67,7 @@ const CaptainHero = ({
                 />
 
                 <img
-                    src="/assets/captain-efficiency.png"
+                    src="/assets/captain-efficiency-v2.png"
                     alt="Captain Efficiency"
                     className="w-full h-auto drop-shadow-2xl"
                 />
