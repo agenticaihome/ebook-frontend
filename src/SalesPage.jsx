@@ -248,14 +248,14 @@ export default function SalesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen sterile-bg">
       {/* Hero Section */}
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <div className="inline-block bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block diagnostic-badge px-4 py-2 rounded-full text-sm mb-4">
             🦷 Root Cause Efficiency for the Modern Family
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 medical-heading">
             Stop Managing Your Life.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
               Start Living It.
@@ -271,7 +271,7 @@ export default function SalesPage() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg p-8 text-white shadow-xl relative z-10">
+              <div className="clinical-gradient-blue glass-card-lg rounded-lg p-8 text-white shadow-clinical-xl relative z-10">
                 <div className="text-center">
                   <Book className="w-20 h-20 mx-auto mb-4 opacity-90" />
                   <h2 className="text-3xl font-bold mb-2">AGENTIC AI AT HOME</h2>
@@ -308,7 +308,7 @@ export default function SalesPage() {
 
       {/* Captain Efficiency */}
       <div className="max-w-4xl mx-auto mb-12 px-4">
-        <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden">
+        <div className="glass-card-lg p-8 flex flex-col justify-center relative overflow-hidden float-effect">
           <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-purple-100 rounded-full opacity-50 blur-xl"></div>
 
           <div className="flex items-start mb-4 relative z-10">
@@ -331,8 +331,8 @@ export default function SalesPage() {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-bold text-purple-900 mb-1">Meet Your Precision AI Instrument</h3>
-              <p className="text-sm text-purple-600 font-semibold mb-2">Captain Efficiency</p>
+              <h3 className="text-xl font-bold mb-1 medical-heading" style={{ color: "#0055FF" }}>Meet Your Precision AI Instrument</h3>
+              <p className="text-sm font-semibold mb-2" style={{ color: "#00DDDD" }}>Captain Efficiency</p>
             </div>
           </div>
           <p className="text-purple-800 italic relative z-10">
@@ -344,8 +344,8 @@ export default function SalesPage() {
 
 
       {/* Value Proposition: Time & Money Savings */}
-      <div className="bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-2xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">The Clinical Results: Root Cause Treatment</h2>
+      <div className="clinical-gradient-blue glass-card-xl rounded-2xl p-8 md:p-12 text-white mb-12 shadow-clinical-xl">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 medical-heading">The Clinical Results: Root Cause Treatment</h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center">
             <div className="text-5xl font-bold mb-2">10+</div>
@@ -488,8 +488,8 @@ export default function SalesPage() {
       </div>
 
       {/* Who This Is For */}
-      <div className="bg-gradient-to-r from-teal-500 to-cyan-600 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-2xl">
-        <h2 className="text-3xl font-bold text-center mb-8">Is This Book Right for You?</h2>
+      <div className="clinical-gradient-mint glass-card-xl rounded-2xl p-8 md:p-12 text-white mb-12 shadow-clinical-xl">
+        <h2 className="text-3xl font-bold text-center mb-8 medical-heading">Is This Book Right for You?</h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div>
             <h3 className="text-2xl font-semibold mb-4 flex items-center"><Check className="w-6 h-6 mr-2" />Perfect For:</h3>

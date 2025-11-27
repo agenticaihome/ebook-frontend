@@ -1,0 +1,176 @@
+/* Medical Glassmorphism Design System */
+/* High-Tech Clinical Aesthetic for DDS */
+
+/* Import Inter Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* CSS Custom Properties - Clinical Color Palette */
+:root {
+  /* Primary Colors */
+  --color-primary-blue: #0055FF;
+  --color-surgical-mint: #00DDDD;
+  --color-alert-red: #FF4444;
+  
+  /* Glass Effect Colors */
+  --glass-white: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: rgba(0, 85, 255, 0.1);
+  
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --letter-spacing-tight: -0.02em;
+  
+  /* Shadows */
+  --shadow-glass: 0 8px 32px rgba(0, 85, 255, 0.1);
+  --shadow-glass-lg: 0 12px 48px rgba(0, 85, 255, 0.15);
+  --shadow-glass-xl: 0 16px 64px rgba(0, 85, 255, 0.2);
+}
+
+/* Glass Card Base Class */
+.glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--glass-white);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+  border-radius: 16px;
+}
+
+.glass-card-lg {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass-lg);
+  border-radius: 20px;
+}
+
+.glass-card-xl {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass-xl);
+  border-radius: 24px;
+}
+
+/* Clinical Gradient Overlays */
+.clinical-gradient-blue {
+  background: linear-gradient(135deg, 
+    rgba(0, 85, 255, 0.9) 0%, 
+    rgba(0, 136, 255, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.clinical-gradient-mint {
+  background: linear-gradient(135deg, 
+    rgba(0, 221, 221, 0.9) 0%, 
+    rgba(0, 255, 204, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Infection Zone (Alert) */
+.infection-zone {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  box-shadow: 0 4px 16px rgba(255, 68, 68, 0.15);
+}
+
+/* Medical Precision Typography */
+.medical-heading {
+  font-family: var(--font-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 700;
+}
+
+.medical-body {
+  font-family: var(--font-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Floating Effect */
+.float-effect {
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.float-effect:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0, 85, 255, 0.2);
+}
+
+/* Sterile Background */
+.sterile-bg {
+  background: linear-gradient(135deg, 
+    #f0f9ff 0%, 
+    #e0f2fe 50%, 
+    #f0fdfa 100%);
+}
+
+/* Clinical Depth Shadows */
+.shadow-clinical {
+  box-shadow: var(--shadow-glass);
+}
+
+.shadow-clinical-lg {
+  box-shadow: var(--shadow-glass-lg);
+}
+
+.shadow-clinical-xl {
+  box-shadow: var(--shadow-glass-xl);
+}
+
+/* Precision Border */
+.precision-border {
+  border: 1px solid var(--glass-border);
+}
+
+.precision-border-blue {
+  border: 1px solid rgba(0, 85, 255, 0.3);
+}
+
+.precision-border-mint {
+  border: 1px solid rgba(0, 221, 221, 0.3);
+}
+
+/* Glass Button */
+.glass-button {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 16px rgba(0, 85, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 24px rgba(0, 85, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Diagnostic Badge */
+.diagnostic-badge {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 85, 255, 0.1);
+  border: 1px solid rgba(0, 85, 255, 0.2);
+  color: var(--color-primary-blue);
+  font-family: var(--font-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 600;
+}
+
+/* Treatment Badge */
+.treatment-badge {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 221, 221, 0.1);
+  border: 1px solid rgba(0, 221, 221, 0.2);
+  color: var(--color-surgical-mint);
+  font-family: var(--font-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 600;
+}
