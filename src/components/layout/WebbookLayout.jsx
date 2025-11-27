@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, BookOpen, Shield, Zap, Home } from 'lucide-react';
+import { Menu, X, ChevronRight, BookOpen, Shield, Zap, Home, HelpCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const WebbookLayout = ({ children }) => {
@@ -90,7 +90,7 @@ const WebbookLayout = ({ children }) => {
                 </nav>
 
                 <div className="px-4 pb-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-4">
-                    Payment Help
+                    Support & Help
                 </div>
                 <nav className="px-4 space-y-2 mb-4">
                     <Link
@@ -128,6 +128,18 @@ const WebbookLayout = ({ children }) => {
                             <BookOpen size={18} />
                         </span>
                         <span className="font-medium text-sm">How to Buy ERG</span>
+                    </Link>
+                    <Link
+                        to="/faq"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${location.pathname === '/faq'
+                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
+                            : 'text-slate-600 hover:bg-slate-50'
+                            }`}
+                    >
+                        <span className={location.pathname === '/faq' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                            <HelpCircle size={18} />
+                        </span>
+                        <span className="font-medium text-sm">FAQ & Support</span>
                     </Link>
                 </nav>
 
