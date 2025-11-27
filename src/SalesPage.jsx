@@ -41,7 +41,7 @@ export default function SalesPage() {
                 size="lg"
                 className="scale-100 md:scale-110"
                 message="SYSTEM ONLINE. Efficiency protocols engaged."
-                videoSrc="/assets/captain-waving.mp4"
+                videoSrc="/assets/captain-waving.mp4?v=new"
                 imageSrc="/assets/captain-efficiency-dark.png" // Fallback
               />
             </div>
