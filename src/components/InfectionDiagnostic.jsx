@@ -267,8 +267,15 @@ const InfectionDiagnostic = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <div ref={resultsRef} className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-2xl border-2" style={{ borderColor: diagnosis.color }}>
-                        {/* Modern Header */}
+                        {/* Modern Header with Captain Efficiency */}
                         <div className="text-center mb-6">
+                            <div className="flex justify-center mb-4">
+                                <img
+                                    src="/captain_hero.png"
+                                    alt="Captain Efficiency"
+                                    className="w-32 h-32 object-contain"
+                                />
+                            </div>
                             <div className="text-6xl mb-4">{diagnosis.emoji}</div>
                             <h2 className="text-4xl md:text-5xl font-bold medical-heading mb-3" style={{ color: diagnosis.color }}>
                                 {diagnosis.stage}
