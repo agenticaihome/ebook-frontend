@@ -1,49 +1,230 @@
-import React from 'react';
+import React, { useState } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import PaywallGate from '../components/common/PaywallGate';
+import CaptainHero from '../components/CaptainHero';
 import CaptainTip from '../components/CaptainTip';
+import GoalHierarchyBuilder from '../components/GoalHierarchyBuilder';
+import WeeklyReviewTemplateGenerator from '../components/WeeklyReviewTemplateGenerator';
+import SmartHomeReadinessAssessment from '../components/SmartHomeReadinessAssessment';
+import SystemHealthDiagnostic from '../components/SystemHealthDiagnostic';
+import PersonalizedLaunchPlanGenerator from '../components/PersonalizedLaunchPlanGenerator';
 import { motion } from 'framer-motion';
-import { Network, Cpu, Globe } from 'lucide-react';
+import { Layers, Home, Wrench, Flag, ArrowRight, CheckCircle, Zap } from 'lucide-react';
 
 const Part5 = () => {
-    const hasAccess = false;
+    const [activeChapter, setActiveChapter] = useState(13);
+
+    const chapters = [
+        { id: 13, title: 'Life Operating System', icon: Layers },
+        { id: 14, title: 'Smart Home (Optional)', icon: Home },
+        { id: 15, title: 'Maintenance & Future', icon: Wrench },
+        { id: 16, title: 'Conclusion', icon: Flag }
+    ];
+
+    const scrollToChapter = (chapterId) => {
+        setActiveChapter(chapterId);
+        const element = document.getElementById(`chapter-${chapterId}`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
 
     return (
         <WebbookLayout>
-            <div className="max-w-4xl mx-auto px-6 py-12">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-12 border-b border-slate-200 pb-8"
-                >
-                    <div className="text-sm font-bold text-purple-600 uppercase tracking-wider mb-2">Part 5</div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Advanced Systems</h1>
-                    <p className="text-xl text-slate-600 leading-relaxed">
-                        You've mastered the basics. Now we enter the lab.
-                        This section covers local LLMs, home server automation, and building "The 100-Year Plan" for your family's digital legacy.
-                    </p>
-                </motion.div>
+            <div className="min-h-screen bg-[#0f0f1a] text-white">
+                {/* Hero Section */}
+                <section className="relative pt-24 pb-16 px-6 overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                        <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse" />
+                        <div className="absolute bottom-0 left-10 w-64 h-64 bg-cyan-900/20 rounded-full blur-3xl" />
+                    </div>
 
-                {/* Free Preview */}
-                <section className="mb-12">
-                    <h2 className="text-3xl font-bold text-slate-800 mb-6">5.1 The Sovereign Cloud</h2>
-                    <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-                        True agency means owning your intelligence. We'll show you how to run open-source models (like Llama 3) on your own hardware,
-                        ensuring total privacy and zero subscription fees.
-                    </p>
+                    <div className="max-w-4xl mx-auto relative z-10">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-center mb-12"
+                        >
+                            <div className="text-sm font-bold text-purple-400 uppercase tracking-wider mb-4">Part 5: Capstone</div>
+                            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                                The Life <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500">Operating System</span>
+                            </h1>
+                            <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+                                From individual agents to a unified system. This is where automation becomes transformation.
+                            </p>
+                        </motion.div>
 
-                    <CaptainTip type="pro" title="Local Intelligence" pose="smart">
-                        Running a local LLM isn't just for coders anymore. Tools like Ollama and LM Studio make it as easy as installing an app.
-                        Your data never leaves your house.
-                    </CaptainTip>
+                        {/* Chapter Navigation */}
+                        <div className="grid md:grid-cols-4 gap-4 mb-12">
+                            {chapters.map((chapter) => {
+                                const Icon = chapter.icon;
+                                return (
+                                    <button
+                                        key={chapter.id}
+                                        onClick={() => scrollToChapter(chapter.id)}
+                                        className={`p-4 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
+                                                ? 'border-purple-500 bg-purple-900/20'
+                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                            }`}
+                                    >
+                                        <Icon className={activeChapter === chapter.id ? 'text-purple-400' : 'text-slate-500'} size={24} />
+                                        <div className="mt-2 text-xs font-mono text-slate-400">Chapter {chapter.id === 16 ? 'End' : chapter.id}</div>
+                                        <div className="font-bold text-white text-sm">{chapter.title}</div>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </section>
 
-                {/* Gated Content */}
-                {hasAccess ? (
-                    <div>Full content...</div>
-                ) : (
-                    <PaywallGate />
-                )}
+                {/* Chapter 13: Life Operating System */}
+                <section id="chapter-13" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    <div className="max-w-4xl mx-auto">
+                        <CaptainHero
+                            size="md"
+                            message="Congratulations. You've built an army of agents. But right now, they're working in silos. What if your Recovery Agent could tell your Calendar Agent to cancel meetings? That's not just automation. That's a Life Operating System."
+                        />
+
+                        <div className="mt-12 prose prose-invert prose-lg max-w-none">
+                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 13: Multi-Agent Systems</h2>
+
+                            <div className="bg-gradient-to-r from-purple-900/30 to-indigo-900/30 p-6 rounded-xl border border-purple-500/50 my-8">
+                                <h3 className="text-xl font-bold text-purple-400 mb-3">The Architecture</h3>
+                                <ul className="space-y-3 text-slate-300">
+                                    <li className="flex items-start gap-3">
+                                        <span className="bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded text-xs font-bold mt-1">L3</span>
+                                        <span><strong>Quarterly Architect:</strong> Sets the big vision (Health, Career, Family).</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded text-xs font-bold mt-1">L2</span>
+                                        <span><strong>Weekly Strategist:</strong> Aligns this week's actions with quarterly goals.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded text-xs font-bold mt-1">L1</span>
+                                        <span><strong>Daily Engine:</strong> Your agents (Morning, Kitchen, Calendar) executing the plan.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">Building Your Goal Hierarchy</h3>
+                            <p className="text-slate-300 mb-6">
+                                Your agents need to know what they are optimizing FOR. Let's define the "Commander's Intent."
+                            </p>
+
+                            <GoalHierarchyBuilder />
+
+                            <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Weekly Review Ritual</h3>
+                            <p className="text-slate-300 mb-6">
+                                This is the heartbeat of your system. 30 minutes on Sunday saves 5 hours of chaos during the week.
+                            </p>
+
+                            <WeeklyReviewTemplateGenerator />
+
+                            <CaptainTip type="pro" title="The Compound Effect">
+                                "In Month 1, you'll save 5 hours/week. By Month 6, as agents start coordinating automatically, you'll save 10-12 hours/week. That's an entire extra workday, every single week."
+                            </CaptainTip>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Chapter 14: Smart Home (Optional) */}
+                <section id="chapter-14" className="py-16 px-6">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="flex items-center gap-3 mb-6 opacity-70">
+                            <Home className="text-slate-500" />
+                            <span className="text-slate-500 font-mono uppercase tracking-widest text-sm">Optional Module</span>
+                        </div>
+
+                        <CaptainHero
+                            size="md"
+                            message="You don't NEED smart home gear. But if you have it, let's make it actually smart. Most people use Alexa as a glorified egg timer. We're going to make your home ANTICIPATE your needs."
+                        />
+
+                        <div className="mt-12 prose prose-invert prose-lg max-w-none">
+                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 14: Smart Home Integration</h2>
+
+                            <div className="grid md:grid-cols-2 gap-6 my-8">
+                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <h4 className="text-white font-bold mb-3">Dumb Smart Home</h4>
+                                    <p className="text-sm text-slate-400 italic">"Hey Google, turn on the lights."</p>
+                                    <p className="text-sm text-slate-400 mt-2">Reactive. Manual. Glorified remote control.</p>
+                                </div>
+                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <h4 className="text-cyan-400 font-bold mb-3">Intelligent Home</h4>
+                                    <p className="text-sm text-slate-300 italic">Lights fade up 15 min before alarm. Coffee starts. Thermostat adjusts.</p>
+                                    <p className="text-sm text-slate-400 mt-2">Proactive. Anticipatory. Magic.</p>
+                                </div>
+                            </div>
+
+                            <SmartHomeReadinessAssessment />
+
+                            <h3 className="text-2xl font-bold text-white mt-12 mb-4">High-Value Automations</h3>
+                            <div className="space-y-4">
+                                <div className="p-4 bg-slate-800/50 rounded-xl border-l-4 border-yellow-500">
+                                    <h4 className="font-bold text-white">☀️ Morning Wake-Up</h4>
+                                    <p className="text-sm text-slate-400">Lights brighten 15m before alarm. Thermostat warms up. Coffee starts.</p>
+                                </div>
+                                <div className="p-4 bg-slate-800/50 rounded-xl border-l-4 border-blue-500">
+                                    <h4 className="font-bold text-white">🌙 Wind-Down Sequence</h4>
+                                    <p className="text-sm text-slate-400">At 9 PM: Lights shift warm (2700K), dim to 40%. Screens dim. Brain gets the signal.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Chapter 15: Maintenance */}
+                <section id="chapter-15" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    <div className="max-w-4xl mx-auto">
+                        <CaptainHero
+                            size="md"
+                            message="Systems entropy is real. Things break. Life changes. Your system needs a mechanic. That mechanic is you, once a month."
+                        />
+
+                        <div className="mt-12 prose prose-invert prose-lg max-w-none">
+                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 15: Maintenance & Optimization</h2>
+
+                            <SystemHealthDiagnostic />
+
+                            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 my-8">
+                                <h3 className="text-xl font-bold text-white mb-4">The Golden Rule of Maintenance</h3>
+                                <p className="text-slate-300 mb-4">
+                                    <strong>"Friction Log" everything.</strong>
+                                </p>
+                                <p className="text-sm text-slate-400">
+                                    If you have to manually do a task twice, write it down. If an agent gives you bad advice, write it down. Once a month, fix the top 3 friction points. That's how you get to 99% reliability.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Conclusion */}
+                <section id="chapter-16" className="py-16 px-6">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="text-center mb-12">
+                            <div className="inline-block p-4 rounded-full bg-green-900/30 text-green-400 mb-6 border border-green-500/30">
+                                <Flag size={48} />
+                            </div>
+                            <h2 className="text-5xl font-bold text-white mb-6">Your Action Plan</h2>
+                            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+                                Knowledge isn't power. Action is. Let's build your custom roadmap to launch this system in 30 days.
+                            </p>
+                        </div>
+
+                        <PersonalizedLaunchPlanGenerator />
+
+                        <div className="mt-16 p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 text-center">
+                            <h3 className="text-2xl font-bold text-white mb-4">One Final Thought</h3>
+                            <p className="text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                                "This isn't about the technology. It's about getting your LIFE back. The hours you save are for your kids, your partner, your health, your dreams. <br /><br />
+                                AI agents aren't the point. A life well-lived is the point. <br /><br />
+                                Now go build something."
+                            </p>
+                            <div className="text-cyan-400 font-bold text-lg">— Captain Efficiency 🤖</div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </WebbookLayout>
     );
