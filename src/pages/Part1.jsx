@@ -1,109 +1,166 @@
-import React from 'react';
+import React, { useState } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import CaptainTip from '../components/interactive/CaptainTip';
+import CaptainHero from '../components/interactive/CaptainHero';
 import InteractiveDiagram from '../components/interactive/InteractiveDiagram';
 import { motion } from 'framer-motion';
+import { Brain, AlertTriangle } from 'lucide-react';
 
 const Part1 = () => {
+    const [scanStatus, setScanStatus] = useState('idle'); // idle, scanning, complete
+
+    const runScan = () => {
+        setScanStatus('scanning');
+        setTimeout(() => setScanStatus('complete'), 3000);
+    };
+
     return (
         <WebbookLayout>
             <div className="max-w-4xl mx-auto px-6 py-12">
-                {/* Chapter Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-12 border-b border-slate-200 pb-8"
-                >
-                    <div className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-2">Part 1</div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">The Diagnosis</h1>
-                    <p className="text-xl text-slate-600 leading-relaxed">
-                        Before we can treat the chaos, we must understand its source. It's not about being lazy or disorganized.
-                        It's about a fundamental mismatch between the modern world's demands and the human brain's capacity.
-                    </p>
-                </motion.div>
 
-                {/* Section 1: The Mental Load */}
-                <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-slate-800 mb-6">1.1 The Invisible Infection</h2>
-                    <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-                        Imagine your brain is a computer. Every task you have to remember—buying milk, calling the plumber,
-                        scheduling the dentist—is an open browser tab. Eventually, the computer slows down. It crashes.
-                        This is <strong>Mental Load</strong>.
-                    </p>
+                {/* Hero Section */}
+                <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
+                    <div className="flex-1">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-2">Part 1</div>
+                            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Infection</span>
+                            </h1>
+                            <p className="text-xl text-slate-600 leading-relaxed">
+                                You're not disorganized. You're depleted. Let's find the root cause of your time crisis.
+                            </p>
+                        </motion.div>
+                    </div>
+                    <div className="flex-1 flex justify-center">
+                        <CaptainHero
+                            size="lg"
+                            message="I'm Captain Efficiency! I'm here to scan your systems for cognitive leaks. Ready?"
+                        />
+                    </div>
+                </div>
 
-                    <CaptainTip type="info" title="Cognitive RAM" pose="thinking">
-                        Studies show the average parent holds <strong>20-30 active "open loops"</strong> in their mind at any given moment.
-                        This constant background processing reduces your IQ by up to 10 points during stressful periods.
-                    </CaptainTip>
+                {/* Interactive Scanner */}
+                <section className="mb-24 bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-20 -mr-16 -mt-16" />
 
-                    <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-                        The problem isn't the work itself. Doing the laundry takes 5 minutes.
-                        <em>Remembering</em> to do the laundry, checking if you have detergent, and timing it so it doesn't mildew...
-                        that's the heavy lifting.
-                    </p>
+                    <div className="relative z-10 text-center max-w-2xl mx-auto">
+                        <h2 className="text-3xl font-bold mb-6">Mental Load Scanner</h2>
+                        <p className="text-slate-300 mb-8">
+                            Let's run a diagnostic on your current cognitive load.
+                        </p>
+
+                        {scanStatus === 'idle' && (
+                            <button
+                                onClick={runScan}
+                                className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg shadow-blue-500/30 flex items-center gap-2 mx-auto"
+                            >
+                                <Brain /> Initiate Scan
+                            </button>
+                        )}
+
+                        {scanStatus === 'scanning' && (
+                            <div className="space-y-4">
+                                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                                    <motion.div
+                                        className="h-full bg-blue-500"
+                                        initial={{ width: "0%" }}
+                                        animate={{ width: "100%" }}
+                                        transition={{ duration: 3 }}
+                                    />
+                                </div>
+                                <p className="text-blue-300 font-mono text-sm animate-pulse">
+                                    ANALYZING DECISION FATIGUE... CHECKING MEMORY LEAKS...
+                                </p>
+                            </div>
+                        )}
+
+                        {scanStatus === 'complete' && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="bg-red-500/20 border border-red-500/50 rounded-xl p-6"
+                            >
+                                <div className="flex items-center justify-center gap-3 mb-4 text-red-400">
+                                    <AlertTriangle size={32} />
+                                    <h3 className="text-2xl font-bold">CRITICAL LOAD DETECTED</h3>
+                                </div>
+                                <p className="text-lg mb-4">
+                                    Your "RAM" is full. You are carrying 35,000+ daily decisions.
+                                </p>
+                                <div className="grid grid-cols-3 gap-4 text-center">
+                                    <div className="bg-slate-800 p-3 rounded-lg">
+                                        <div className="text-2xl font-bold text-red-400">92%</div>
+                                        <div className="text-xs text-slate-400">FATIGUE</div>
+                                    </div>
+                                    <div className="bg-slate-800 p-3 rounded-lg">
+                                        <div className="text-2xl font-bold text-orange-400">14%</div>
+                                        <div className="text-xs text-slate-400">EFFICIENCY</div>
+                                    </div>
+                                    <div className="bg-slate-800 p-3 rounded-lg">
+                                        <div className="text-2xl font-bold text-yellow-400">High</div>
+                                        <div className="text-xs text-slate-400">STRESS</div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </div>
                 </section>
 
-                {/* Interactive Diagram: The Cycle of Chaos */}
+                {/* Content Section */}
                 <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-slate-800 mb-8">1.2 The Cycle of Chaos</h2>
-                    <InteractiveDiagram
-                        title="How the Infection Spreads"
-                        steps={[
-                            {
-                                label: "Trigger",
-                                title: "The Initial Spark",
-                                description: "A small event occurs. You run out of milk. A bill arrives. A school email pings.",
-                                details: ["External Stimuli", "Immediate Urgency", "Disruption"]
-                            },
-                            {
-                                label: "Overload",
-                                title: "Cognitive Bottleneck",
-                                description: "You try to hold this new task in your memory while juggling 20 others. Your brain enters 'Reactive Mode'.",
-                                details: ["Stress Response", "Memory Failure", "Anxiety Spike"]
-                            },
-                            {
-                                label: "Failure",
-                                title: "The Drop",
-                                description: "Inevitably, something slips. You forget the milk. You pay the late fee. You feel like a failure.",
-                                details: ["Guilt", "Financial Cost", "Loss of Confidence"]
-                            }
-                        ]}
-                    />
-                </section>
-
-                {/* Section 2: The Solution */}
-                <section className="mb-16">
-                    <h2 className="text-3xl font-bold text-slate-800 mb-6">1.3 The Agentic Cure</h2>
-                    <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-                        The solution is not to "try harder". It's to build a system that remembers <em>for</em> you.
-                        In the past, wealthy families had butlers and housekeepers. Today, we have <strong>AI Agents</strong>.
-                    </p>
-
-                    <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl mb-8">
-                        <h3 className="font-bold text-blue-900 text-lg mb-2">Definition: Agentic AI</h3>
-                        <p className="text-blue-800">
-                            An AI system that can perceive its environment, reason about how to achieve a goal, and take action to achieve it.
-                            Unlike a chatbot (which talks), an agent <strong>does</strong>.
+                    <h2 className="text-3xl font-bold text-slate-800 mb-6">The Diagnosis</h2>
+                    <div className="prose prose-lg text-slate-600 max-w-none">
+                        <p>
+                            By day, I'm a resident saving teeth. By night, I'm a Dad Deploying Systems.
+                            When I come home, I'm buried under permission slips, grocery chaos, and the endless mental gymnastics of keeping a household running.
+                        </p>
+                        <p>
+                            Most people think root canals are torture. They're not. With the right specialist, they're relief.
+                            The pain was already there—the infection was causing it. I just remove the source.
                         </p>
                     </div>
-
-                    <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-                        In Part 2, we will start building your first agents. But first, we need to choose your platform.
-                    </p>
                 </section>
 
-                {/* Next Chapter CTA */}
-                <div className="flex justify-end mt-12">
-                    <a href="/part2" className="group flex items-center gap-4 text-right hover:opacity-80 transition-opacity">
-                        <div>
-                            <div className="text-sm text-slate-500 uppercase tracking-wider font-bold">Next Chapter</div>
-                            <div className="text-2xl font-bold text-blue-600 group-hover:underline">Part 2: Getting Started</div>
-                        </div>
-                        <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
-                            →
-                        </div>
-                    </a>
+                <CaptainTip type="info" title="Clinical Note" pose="smart">
+                    "Mental Load" is the invisible work of managing a household. Remembering, planning, and coordinating takes more energy than the actual doing.
+                </CaptainTip>
+
+                <InteractiveDiagram
+                    title="The Path to Recovery"
+                    steps={[
+                        {
+                            label: "Step 1",
+                            title: "Diagnosis",
+                            description: "Identifying the invisible labor draining your energy.",
+                            details: ["Track Decisions", "Identify Leaks", "Measure Fatigue"]
+                        },
+                        {
+                            label: "Step 2",
+                            title: "Triage",
+                            description: "Stopping the bleeding by delegating urgent tasks.",
+                            details: ["Morning Brief", "Meal Planning", "Calendar Sync"]
+                        },
+                        {
+                            label: "Step 3",
+                            title: "Systematize",
+                            description: "Building permanent agents to handle the load forever.",
+                            details: ["Household Agent", "Finance Agent", "Travel Agent"]
+                        }
+                    ]}
+                />
+
+                <div className="mt-16 flex justify-center">
+                    <CaptainHero
+                        size="md"
+                        message="Don't worry! In Part 2, we'll start building your team of agents to fix this."
+                        position="center"
+                    />
                 </div>
+
             </div>
         </WebbookLayout>
     );
