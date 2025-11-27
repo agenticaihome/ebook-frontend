@@ -1,0 +1,250 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Activity, TrendingUp, AlertCircle } from 'lucide-react';
+
+const MentalLoadCalculator = () => {
+    const [inputs, setInputs] = useState({
+        emailHours: 2,
+        adminHours: 5,
+        recurringTasks: 10,
+        forgetFrequency: 'sometimes',
+        stressLevel: 5
+    });
+    const [showResults, setShowResults] = useState(false);
+
+    const handleInputChange = (field, value) => {
+        setInputs({ ...inputs, [field]: value });
+    };
+
+    const calculateResults = () => {
+        const { emailHours, adminHours, recurringTasks, forgetFrequency, stressLevel } = inputs;
+
+        // Mental load score calculation (1-10)
+        let score = 0;
+        score += Math.min(emailHours * 1.5, 3); // Max 3 points from email
+        score += Math.min(adminHours * 0.4, 2); // Max 2 points from admin
+        score += Math.min(recurringTasks * 0.15, 2); // Max 2 points from tasks
+        score += forgetFrequency === 'often' ? 2 : forgetFrequency === 'sometimes' ? 1 : 0;
+        score += stressLevel * 0.1;
+        score = Math.min(Math.round(score), 10);
+
+        // Hours recoverable
+        const recoverable = Math.round(emailHours * 0.5 + adminHours * 0.6);
+
+        // Top intervention areas
+        const areas = [];
+        if (emailHours >= 2) areas.push({ name: 'Email Management', impact: 'High', agent: 'Email Agent' });
+        if (adminHours >= 4) areas.push({ name: 'Life Admin', impact: 'High', agent: 'Morning Agent' });
+        if (recurringTasks >= 15) areas.push({ name: 'Task Tracking', impact: 'Medium', agent: 'Household Agent' });
+        if (stressLevel >= 7) areas.push({ name: 'Decision Fatigue', impact: 'High', agent: 'Calendar Agent' });
+
+        // Comparison
+        const avgScore = 6.5;
+        const comparison = score > avgScore ? 'above' : score < avgScore ? 'below' : 'at';
+
+        return { score, recoverable, areas: areas.slice(0, 3), comparison, avgScore };
+    };
+
+    const results = showResults ? calculateResults() : null;
+
+    const getScoreColor = (score) => {
+        if (score <= 3) return 'text-green-400';
+        if (score <= 6) return 'text-yellow-400';
+        return 'text-red-400';
+    };
+
+    const getScoreLabel = (score) => {
+        if (score <= 3) return 'Manageable';
+        if (score <= 6) return 'Moderate Load';
+        if (score <= 8) return 'High Load';
+        return 'Critical Overload';
+    };
+
+    return (
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+            <div className="flex items-center gap-3 mb-6">
+                <Activity className="text-cyan-400" size={28} />
+                <h3 className="text-2xl font-bold text-white">Mental Load Calculator</h3>
+            </div>
+
+            {!showResults ? (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="space-y-6"
+                >
+                    <div>
+                        <label className="block text-white font-medium mb-3">
+                            Hours spent on email daily
+                        </label>
+                        <input
+                            type="range"
+                            min="0"
+                            max="8"
+                            step="0.5"
+                            value={inputs.emailHours}
+                            onChange={(e) => handleInputChange('emailHours', parseFloat(e.target.value))}
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                        />
+                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                            <span>0 hours</span>
+                            <span className="text-cyan-400 font-bold">{inputs.emailHours} hours</span>
+                            <span>8 hours</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-white font-medium mb-3">
+                            Hours spent on "life admin" weekly
+                        </label>
+                        <input
+                            type="range"
+                            min="0"
+                            max="20"
+                            value={inputs.adminHours}
+                            onChange={(e) => handleInputChange('adminHours', parseInt(e.target.value))}
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                        />
+                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                            <span>0 hours</span>
+                            <span className="text-cyan-400 font-bold">{inputs.adminHours} hours</span>
+                            <span>20 hours</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-white font-medium mb-3">
+                            Number of recurring tasks you track mentally
+                        </label>
+                        <input
+                            type="range"
+                            min="0"
+                            max="50"
+                            value={inputs.recurringTasks}
+                            onChange={(e) => handleInputChange('recurringTasks', parseInt(e.target.value))}
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                        />
+                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                            <span>0 tasks</span>
+                            <span className="text-cyan-400 font-bold">{inputs.recurringTasks} tasks</span>
+                            <span>50+ tasks</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-white font-medium mb-3">
+                            How often do you forget important things?
+                        </label>
+                        <div className="grid grid-cols-3 gap-3">
+                            {['rarely', 'sometimes', 'often'].map((freq) => (
+                                <button
+                                    key={freq}
+                                    onClick={() => handleInputChange('forgetFrequency', freq)}
+                                    className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgetFrequency === freq
+                                            ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        }`}
+                                >
+                                    {freq}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-white font-medium mb-3">
+                            Stress level around managing daily life (1-10)
+                        </label>
+                        <input
+                            type="range"
+                            min="1"
+                            max="10"
+                            value={inputs.stressLevel}
+                            onChange={(e) => handleInputChange('stressLevel', parseInt(e.target.value))}
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                        />
+                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                            <span>Low (1)</span>
+                            <span className="text-cyan-400 font-bold">{inputs.stressLevel}</span>
+                            <span>High (10)</span>
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={() => setShowResults(true)}
+                        className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all mt-4"
+                    >
+                        Calculate My Mental Load
+                    </button>
+                </motion.div>
+            ) : (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                >
+                    <div className="text-center mb-8">
+                        <div className="mb-4">
+                            <div className={`text-6xl font-bold ${getScoreColor(results.score)}`}>
+                                {results.score}/10
+                            </div>
+                            <div className="text-slate-400 mt-2">{getScoreLabel(results.score)}</div>
+                        </div>
+                        <div className="inline-flex items-center gap-2 text-sm text-slate-400">
+                            <TrendingUp size={16} />
+                            <span>
+                                You're {results.comparison} the course average ({results.avgScore})
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4 mb-6">
+                        <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 p-6 rounded-xl border border-cyan-500/30">
+                            <div className="text-sm text-slate-400 mb-1">Hours Potentially Recoverable</div>
+                            <div className="text-cyan-400 font-bold text-3xl">{results.recoverable} hrs/week</div>
+                            <div className="text-xs text-slate-500 mt-2">
+                                That's {results.recoverable * 52} hours per year!
+                            </div>
+                        </div>
+                        <div className="bg-gradient-to-br from-purple-900/30 to-purple-900/10 p-6 rounded-xl border border-purple-500/30">
+                            <div className="text-sm text-slate-400 mb-1">Intervention Priority</div>
+                            <div className="text-purple-400 font-bold text-3xl">{results.areas.length} areas</div>
+                            <div className="text-xs text-slate-500 mt-2">
+                                Focus here for maximum impact
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700">
+                        <div className="flex items-center gap-2 mb-4">
+                            <AlertCircle className="text-cyan-400" size={20} />
+                            <h4 className="text-white font-bold">Top 3 Areas for Agent Intervention</h4>
+                        </div>
+                        <div className="space-y-3">
+                            {results.areas.map((area, idx) => (
+                                <div key={idx} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+                                    <div>
+                                        <div className="text-white font-medium">{area.name}</div>
+                                        <div className="text-sm text-slate-400">Recommended: {area.agent}</div>
+                                    </div>
+                                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${area.impact === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'
+                                        }`}>
+                                        {area.impact} Impact
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={() => setShowResults(false)}
+                        className="mt-6 w-full text-cyan-400 hover:text-cyan-300 font-medium"
+                    >
+                        Recalculate
+                    </button>
+                </motion.div>
+            )}
+        </div>
+    );
+};
+
+export default MentalLoadCalculator;
