@@ -43,7 +43,7 @@ const CaptainHero = ({
                     initial={{ opacity: 0, scale: 0.8, y: 10 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     className={`
-            mb-4 bg-white rounded-2xl p-4 shadow-xl border-2 border-blue-100 
+            mb-4 bg-white rounded-2xl p-4 shadow-xl border-2 border-cyan-400 
             relative max-w-xs text-center z-10
             after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 
             after:-translate-x-1/2 after:border-l-[10px] after:border-l-transparent 
@@ -51,7 +51,7 @@ const CaptainHero = ({
             after:border-t-white
           `}
                 >
-                    <p className="text-slate-800 font-medium">{message}</p>
+                    <p className="text-slate-800 font-medium text-sm">{message}</p>
                 </motion.div>
             )}
 

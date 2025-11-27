@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
-import { Book, Check, Download, AlertCircle, Coins, Shield, Zap, Lock, CreditCard, ArrowRight, LogIn, ChevronDown } from 'lucide-react';
+import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
-import CaptainTip from './components/interactive/CaptainTip';
-import InteractiveDiagram from './components/interactive/InteractiveDiagram';
-import AgentSimulation from './components/interactive/AgentSimulation';
-import ChaosCalculator from './components/ChaosCalculator';
-import InfectionDiagnostic from './components/InfectionDiagnostic';
+import CaptainHero from './components/interactive/CaptainHero';
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
@@ -15,327 +11,243 @@ export default function SalesPage() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const BACKEND_URL = 'http://localhost:8080';
-
-  const handleStripePayment = async () => {
-    if (!email || !email.includes('@')) {
-      alert('Please enter a valid email address');
-      return;
-    }
-    setPaymentStatus('processing');
-    setError(null);
-    try {
-      const response = await fetch(`${BACKEND_URL}/api/payment/stripe/checkout`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      const data = await response.json();
-      if (data.success && data.checkoutUrl) {
-        window.location.href = data.checkoutUrl;
-      } else {
-        setError(data.error || 'Failed to create checkout session');
-        setPaymentStatus('initial');
-      }
-    } catch (err) {
-      console.error('Stripe payment error:', err);
-      setError('Network error. Please try again.');
-      setPaymentStatus('initial');
-    }
-  };
-
   const handleErgoPayment = () => {
     navigate('/pay-ergo');
   };
 
+  const handleStripePayment = () => {
+    // Placeholder for Stripe logic
+    alert("Stripe integration coming soon!");
+  };
+
   return (
     <WebbookLayout>
-      <div className="min-h-screen sterile-bg relative pb-24">
+      <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-cyan-500/30">
 
-        {/* Hero Section */}
-        <section className="relative pt-20 pb-32 px-4 overflow-hidden">
-          <div className="max-w-6xl mx-auto text-center relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-block diagnostic-badge px-4 py-2 rounded-full text-sm mb-6"
-            >
-              🦷 Root Cause Efficiency for the Modern Family
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 medical-heading leading-tight"
-            >
-              Stop Managing Your Life.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">
-                Start Living It.
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed"
-            >
-              The world's first <strong>Interactive Agentic Webbook</strong>. Discover how a Doctor of Digital Systems uses AI agents to treat the root cause of your time crisis.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col md:flex-row gap-4 justify-center"
-            >
-              <Link
-                to="/part1"
-                className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 flex items-center justify-center gap-2"
-              >
-                <BookOpen size={20} /> Start Reading Free
-              </Link>
-              <button
-                onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
-              >
-                <Zap size={20} className="text-yellow-500" /> Get Full Access
-              </button>
-            </motion.div>
-          </div>
-
-          {/* Abstract Background Elements */}
+        {/* HERO SECTION */}
+        <section className="relative pt-24 pb-32 px-6 overflow-hidden">
+          {/* Background Glows */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute top-20 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute top-20 right-10 w-64 h-64 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-32 left-1/2 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+            <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+            {/* Left: Captain E */}
+            <div className="flex justify-center md:justify-end order-2 md:order-1">
+              <CaptainHero
+                size="lg"
+                className="scale-125 md:scale-150 transform translate-y-10"
+                message="SYSTEM ONLINE. Efficiency protocols engaged."
+              />
+            </div>
+
+            {/* Right: Copy */}
+            <div className="order-1 md:order-2 text-center md:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-900/30 border border-cyan-500/50 text-cyan-400 text-xs font-mono mb-6"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                SYSTEM ONLINE
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+              >
+                Welcome, <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">human.</span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
+              >
+                I'm <strong>Captain Efficiency</strong>. I was deployed by the DDS after he hit critical failure.
+                Now I'm here to help you build your own team of AI agents.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+              >
+                <button
+                  onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/50 flex items-center justify-center gap-2"
+                >
+                  <Lock size={20} /> UNLOCK ACCESS — $40
+                </button>
+                <button
+                  onClick={handleErgoPayment}
+                  className="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-900/50 flex items-center justify-center gap-2"
+                >
+                  <Coins size={20} /> PAY WITH ERGO — $20
+                </button>
+              </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Interactive Problem Statement */}
-        <section className="max-w-4xl mx-auto px-4 mb-24">
-          <CaptainTip type="warning" title="The Diagnosis" pose="alert">
-            Most people think they have a "time management" problem. They don't. They have a <strong>Mental Load Infection</strong>.
-            Trying to fix it with a calendar app is like putting a band-aid on a cavity.
-          </CaptainTip>
+        {/* MISSION BRIEFING SECTION */}
+        <section className="py-24 bg-[#131320] border-y border-slate-800">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
+              <p className="text-slate-400">Unlock all 5 parts. I'll guide you through each one.</p>
+            </div>
 
-          <InteractiveDiagram
-            title="The Root Cause of Chaos"
-            steps={[
-              {
-                label: "Symptoms",
-                title: "Surface Level Chaos",
-                description: "Missed appointments, rotting groceries, late fees, and constant exhaustion.",
-                details: ["Decision Fatigue", "Reactive Mode", "Anxiety"]
-              },
-              {
-                label: "Diagnosis",
-                title: "Mental Load Infection",
-                description: "The invisible work of managing a household. Remembering, planning, and coordinating takes more energy than doing.",
-                details: ["Cognitive Overload", "Context Switching", "Memory Leaks"]
-              },
-              {
-                label: "Treatment",
-                title: "Agentic Delegation",
-                description: "Offloading the 'management' layer to AI agents. You become the CEO, not the secretary.",
-                details: ["Automated Planning", "Proactive Reminders", "Systematic Execution"]
-              }
-            ]}
-          />
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {[
+                { id: '01', title: 'DIAGNOSIS', icon: <Activity />, status: 'OPEN', link: '/part1' },
+                { id: '02', title: 'TREATMENT', icon: <Zap />, status: 'LOCKED' },
+                { id: '03', title: 'PRODUCTIVITY', icon: <Terminal />, status: 'LOCKED' },
+                { id: '04', title: 'WELLNESS', icon: <Shield />, status: 'LOCKED' },
+                { id: '05', title: 'ADVANCED', icon: <Database />, status: 'LOCKED' }
+              ].map((part, index) => (
+                <Link
+                  to={part.link || '#pricing'}
+                  key={index}
+                  className={`
+                    relative p-6 rounded-2xl border transition-all group
+                    ${part.status === 'OPEN'
+                      ? 'bg-cyan-900/20 border-cyan-500/50 hover:bg-cyan-900/30 cursor-pointer'
+                      : 'bg-slate-800/50 border-slate-700 hover:border-slate-600 cursor-not-allowed opacity-75'}
+                  `}
+                >
+                  <div className="text-xs font-mono text-slate-500 mb-2">PART {part.id}</div>
+                  <div className={`mb-4 ${part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
+                    {part.icon}
+                  </div>
+                  <div className="font-bold text-sm mb-2">{part.title}</div>
+                  <div className="absolute top-4 right-4">
+                    {part.status === 'LOCKED' && <Lock size={14} className="text-slate-600" />}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
         </section>
 
-        {/* Agent Simulation Demo */}
-        <section className="bg-slate-900 py-24 text-white mb-24">
-          <div className="max-w-6xl mx-auto px-4">
+        {/* RESULTS SECTION */}
+        <section className="py-24 px-6 relative overflow-hidden">
+          <div className="max-w-5xl mx-auto bg-slate-800/50 rounded-3xl p-8 md:p-12 border border-slate-700 backdrop-blur-sm relative">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-block px-3 py-1 rounded-full bg-green-900/50 text-green-400 text-xs font-bold mb-4 border border-green-800">
-                  LIVE DEMO
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Meet Your New Staff</h2>
-                <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                  Imagine waking up and your day is already planned. Your groceries are ordered. Your emails are drafted.
-                  This isn't sci-fi. It's <strong>Agentic AI</strong>.
-                </p>
-
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center flex-shrink-0">
-                      <Zap className="text-yellow-400" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-xl mb-1">Morning Agent</h3>
-                      <p className="text-slate-400 text-sm">Briefs you on weather, schedule, and priorities before you leave bed.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center flex-shrink-0">
-                      <Shield className="text-blue-400" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-xl mb-1">Home Agent</h3>
-                      <p className="text-slate-400 text-sm">Monitors bills, maintenance, and supplies so you never run out.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <AgentSimulation
-                  agentName="morning-brief"
-                  task="Generate Daily Briefing"
-                  steps={[
-                    { action: "FETCH", detail: "Weather data for New York: 72°F, Clear" },
-                    { action: "SCAN", detail: "Calendar: 3 meetings found" },
-                    { action: "PRIORITIZE", detail: "Top Priority: Project Deadline at 5PM" },
-                    { action: "COMPILE", detail: "Drafting briefing summary..." },
-                    { action: "SEND", detail: "Briefing sent to user's phone" }
-                  ]}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Diagnostic Tools */}
-        <section className="max-w-6xl mx-auto px-4 mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Assess Your Situation</h2>
-            <p className="text-slate-600">Use our clinical tools to measure your household efficiency.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <ChaosCalculator />
-            <InfectionDiagnostic />
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section id="pricing" className="max-w-5xl mx-auto px-4 mb-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Choose Your Treatment Plan</h2>
-            <p className="text-slate-600 text-lg">One-time payment. Lifetime access to the interactive webbook.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Stripe Card */}
-            <div className="glass-card-lg p-8 hover:border-blue-300 transition-all relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full -mr-16 -mt-16 opacity-50 group-hover:scale-110 transition-transform" />
-
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                  <CreditCard className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Standard Access</h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold text-slate-900">$40</span>
-                  <span className="text-slate-500">USD</span>
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-center gap-3 text-slate-700">
-                    <Check className="w-5 h-5 text-green-500" /> Instant Access
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-700">
-                    <Check className="w-5 h-5 text-green-500" /> Secure Stripe Checkout
-                  </li>
-                  <li className="flex items-center gap-3 text-slate-700">
-                    <Check className="w-5 h-5 text-green-500" /> All 5 Parts Included
-                  </li>
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <Activity className="text-green-400" /> SYSTEM PERFORMANCE REPORT
+                </h2>
+                <ul className="space-y-4">
+                  {[
+                    "7-8 hours/week recovered",
+                    "44 emails → 2-3 emails daily",
+                    "$30-40/week grocery savings",
+                    "'What's for dinner?' eliminated"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-300">
+                      <Check className="text-green-400 flex-shrink-0" /> {item}
+                    </li>
+                  ))}
                 </ul>
-
-                <div className="mb-6">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500 mb-3"
-                  />
-                  <button
-                    onClick={handleStripePayment}
-                    disabled={paymentStatus === 'processing'}
-                    className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors disabled:opacity-50"
-                  >
-                    {paymentStatus === 'processing' ? 'Processing...' : 'Pay with Card'}
-                  </button>
+                <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700">
+                  <p className="text-slate-400 italic text-sm">
+                    "These are real results from my creator's household. Your results begin when you unlock the system."
+                  </p>
+                  <div className="mt-2 text-cyan-400 font-bold text-sm">— Captain E</div>
                 </div>
-                {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+              </div>
+              <div className="flex justify-center">
+                <CaptainHero size="md" message="Efficiency is not optional. It's the objective." />
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Ergo Card */}
-            <div className="border-4 border-green-400 rounded-2xl p-8 hover:border-green-600 transition cursor-pointer relative bg-white"
-              onClick={handleErgoPayment}>
-              <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">
+        {/* CREATOR SECTION */}
+        <section className="py-16 px-6 text-center">
+          <div className="max-w-2xl mx-auto">
+            <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">WHO DEPLOYED ME?</h3>
+            <h2 className="text-3xl font-bold mb-6">The Dad Deploying Systems (DDS)</h2>
+            <p className="text-slate-400 leading-relaxed mb-8">
+              Army veteran. Father of two under two. He built me at midnight between feedings when chaos hit critical.
+              He built the system. I deliver it. You benefit.
+            </p>
+          </div>
+        </section>
+
+        {/* PRICING SECTION */}
+        <section id="pricing" className="py-24 px-6 bg-[#131320]">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Access Method</h2>
+            <p className="text-slate-400">I don't judge your payment method. I only judge inefficiency.</p>
+          </div>
+
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+            {/* Standard Access */}
+            <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-purple-500 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <CreditCard size={120} />
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Standard Access</h3>
+              <div className="text-4xl font-bold text-white mb-6">$40 <span className="text-sm text-slate-400 font-normal">USD</span></div>
+              <ul className="space-y-4 mb-8 text-slate-300">
+                <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Full access to all 5 parts</li>
+                <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Immediate unlock</li>
+                <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Secure Stripe Checkout</li>
+              </ul>
+              <button
+                onClick={handleStripePayment}
+                className="w-full bg-purple-600 hover:bg-purple-500 text-white py-4 rounded-xl font-bold transition-colors"
+              >
+                Pay with Card
+              </button>
+            </div>
+
+            {/* Crypto Access */}
+            <div className="bg-slate-800 rounded-2xl p-8 border-2 border-green-500/50 hover:border-green-400 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-bl-xl">
                 50% OFF
               </div>
-
-              <div className="flex flex-col items-center mb-6">
-                <div className="w-20 h-20 mb-4 flex items-center justify-center">
-                  {/* Ergo Logo SVG */}
-                  <svg viewBox="0 0 512 512" className="w-full h-full text-black fill-current">
-                    <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zm0 416c-105.9 0-192-86.1-192-192S150.1 64 256 64s192 86.1 192 192-86.1 192-192 192z" />
-                    <path d="M346.5 176.5c-15.6-15.6-40.9-15.6-56.6 0L256 210.5l-33.9-33.9c-15.6-15.6-40.9-15.6-56.6 0s-15.6 40.9 0 56.6L256 323.8l90.5-90.5c15.6-15.8 15.6-41.1 0-56.8z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Pay with Ergo</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-green-600">$20</span>
-                  <span className="text-slate-500">USD</span>
-                </div>
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Coins size={120} />
               </div>
-
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3 text-slate-700">
-                  <Check className="w-5 h-5 text-green-500" /> Privacy Focused
-                </li>
-                <li className="flex items-center gap-3 text-slate-700">
-                  <Check className="w-5 h-5 text-green-500" /> No Middlemen
-                </li>
-                <li className="flex items-center gap-3 text-slate-700">
-                  <Check className="w-5 h-5 text-green-500" /> Tech-Savvy Discount
-                </li>
+              <h3 className="text-2xl font-bold mb-2 text-green-400">Crypto Access</h3>
+              <div className="text-4xl font-bold text-white mb-6">$20 <span className="text-sm text-slate-400 font-normal">in ERG</span></div>
+              <ul className="space-y-4 mb-8 text-slate-300">
+                <li className="flex gap-3"><Check size={18} className="text-green-400" /> 50% Discount applied</li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400" /> Support decentralized commerce</li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400" /> Private & Secure</li>
               </ul>
-
               <button
-                className="w-full bg-green-600 text-white py-4 rounded-lg font-bold hover:bg-green-700 transition transform hover:scale-105"
+                onClick={handleErgoPayment}
+                className="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20"
               >
-                Pay with ERG →
+                Pay with ERG
               </button>
-
-              <div className="mt-4 text-center">
-                <Link to="/how-to-buy-ergo" className="text-sm text-green-600 font-medium hover:underline" onClick={(e) => e.stopPropagation()}>
-                  How to buy Ergo?
-                </Link>
-              </div>
             </div>
           </div>
         </section>
+
+        {/* FOOTER */}
+        <footer className="py-12 text-center border-t border-slate-800">
+          <div className="flex justify-center mb-6">
+            <CaptainHero size="sm" message="I'll be waiting on the other side." />
+          </div>
+          <p className="text-slate-500 text-sm">
+            © 2025 Agentic AI at Home. All systems nominal.
+          </p>
+        </footer>
 
       </div>
     </WebbookLayout>
-  );
-}
-
-function BookOpen({ size, className }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-    </svg>
   );
 }
