@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Book, Check, Download, AlertCircle, Coins, X, Shield, Zap, Lock, CreditCard, ArrowRight, Loader } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ChaosCalculator from './components/ChaosCalculator';
+import InfectionDiagnostic from './components/InfectionDiagnostic';
 
 export default function SalesPage() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -369,6 +370,11 @@ export default function SalesPage() {
       {/* Chaos Calculator */}
       <div className="max-w-6xl mx-auto px-4 mb-12">
         <ChaosCalculator />
+      </div>
+
+      {/* Infection Diagnostic Quiz */}
+      <div className="max-w-6xl mx-auto px-4 mb-12">
+        <InfectionDiagnostic />
       </div>
 
       {/* Inside the Book: Detailed Parts Preview */}
