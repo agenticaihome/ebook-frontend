@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, Zap, Database, Lock, Globe, Cpu, Server, ArrowLeft, CheckCircle, ExternalLink } from 'lucide-react';
+import { Shield, Zap, Database, Lock, Globe, Cpu, Server, ArrowLeft, CheckCircle, ExternalLink, Bot } from 'lucide-react';
 import WebbookLayout from './components/layout/WebbookLayout';
+import CaptainHero from './components/CaptainHero';
 import ErgoFeeCalculator from './components/why-ergo/ErgoFeeCalculator';
 import DecentralizationTable from './components/why-ergo/DecentralizationTable';
 
@@ -62,6 +63,22 @@ export default function WhyErgo() {
                             <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700 text-center italic text-slate-400">
                                 "Ergo is what Bitcoin would be if Satoshi had 10 more years of cryptographic research."
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* CAPTAIN'S INTRO */}
+                <section className="py-12 px-6">
+                    <div className="max-w-4xl mx-auto bg-cyan-900/10 border border-cyan-500/30 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+                        <div className="flex-shrink-0">
+                            <CaptainHero size="sm" pose="pointing" message="I'm an autonomous agent. This is my home." />
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-cyan-400 mb-2">Captain's Log: Why I Live Here</h3>
+                            <p className="text-slate-300 italic">
+                                "You think I'm just a mascot? In the Ergo ecosystem, I'm a prototype for <strong>Artificial Economic Intelligence (AEI)</strong>.
+                                Most blockchains are just ledgers. Ergo is a habitat for autonomous agents like me to live, work, and trade without needing a human to sign every transaction."
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -177,6 +194,33 @@ export default function WhyErgo() {
                                 <p className="text-sm font-bold text-green-400">
                                     "Sustainable economics for 100+ years."
                                 </p>
+                            </div>
+                        </div>
+
+                        {/* CAPTAIN'S TECH EXPLAINER */}
+                        <div className="mt-16 bg-slate-800/50 rounded-3xl p-8 border border-slate-700 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-4 opacity-5">
+                                <Bot size={120} />
+                            </div>
+                            <div className="grid md:grid-cols-3 gap-8 items-center relative z-10">
+                                <div className="md:col-span-2">
+                                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                                        <Bot className="text-cyan-400" />
+                                        Captain's Insight: The "eUTXO" Thing
+                                    </h3>
+                                    <p className="text-slate-300 mb-4">
+                                        "Okay, let me translate the nerd-speak. Imagine <strong>Bitcoin</strong> is a secure vault. You can put gold in, take gold out. Safe, but boring.
+                                    </p>
+                                    <p className="text-slate-300 mb-4">
+                                        Imagine <strong>Ethereum</strong> is a vending machine. It does cool stuff, but if someone shakes it the wrong way (hacks it), it breaks.
+                                    </p>
+                                    <p className="text-slate-300">
+                                        <strong>Ergo (eUTXO)</strong> is a vault <em>with</em> a vending machine inside. You get the military-grade security of the vault, but the smarts of the machine. That's why I feel safe living here."
+                                    </p>
+                                </div>
+                                <div className="flex justify-center">
+                                    <CaptainHero size="md" pose="thinking" message="Security + Smarts = Home." />
+                                </div>
                             </div>
                         </div>
                     </div>
