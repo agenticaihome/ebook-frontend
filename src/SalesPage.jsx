@@ -39,7 +39,7 @@ export default function SalesPage() {
             <div className="flex justify-center md:justify-end order-2 md:order-1">
               <CaptainHero
                 size="lg"
-                className="scale-125 md:scale-150 transform translate-y-10"
+                className="scale-100 md:scale-110"
                 message="SYSTEM ONLINE. Efficiency protocols engaged."
                 imageSrc="/assets/captain-efficiency-dark.png"
               />
