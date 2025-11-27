@@ -12,6 +12,8 @@ import Part4 from './pages/Part4';
 import Part5 from './pages/Part5';
 import HowToBuyErgo from './HowToBuyErgo';
 import WhyErgo from './WhyErgo';
+import HowToPay from './HowToPay';
+import WalletGuide from './WalletGuide';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -31,6 +33,8 @@ function App() {
         <Route path="/pay-ergo" element={<ErgoPaymentPage />} />
         <Route path="/how-to-buy-ergo" element={<HowToBuyErgo />} />
         <Route path="/why-ergo" element={<WhyErgo />} />
+        <Route path="/how-to-pay" element={<HowToPay />} />
+        <Route path="/wallet-guide" element={<WalletGuide />} />
 
         {/* Webbook Chapters */}
         <Route path="/part1" element={<Part1 />} />
