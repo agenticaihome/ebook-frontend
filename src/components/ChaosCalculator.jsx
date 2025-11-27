@@ -14,8 +14,8 @@ const ChaosCalculator = () => {
     );
 
     // Determine if we're in "infection zone"
-    const isInfected = annualCost > 2000;
-    const showCTA = annualCost > 1000;
+    const isInfected = annualCost > 5000;
+    const showCTA = annualCost > 2000;
 
     // Calculate coin stack height (max 10 coins)
     const coinCount = Math.min(Math.floor(annualCost / 500), 10);
@@ -162,11 +162,11 @@ const ChaosCalculator = () => {
                             transition={{ delay: 0.3 }}
                         >
                             <button
-                                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                onClick={() => window.open('/part1.pdf', '_blank')}
                                 className="glass-button px-8 py-4 rounded-lg font-bold text-lg shadow-clinical-lg hover:shadow-clinical-xl transition-all"
-                                style={{ color: '#FF4444' }}
+                                style={{ color: '#0055FF' }}
                             >
-                                🩹 Stop the Bleeding (Get the Book for $29)
+                                📥 Download Part 1 Free
                             </button>
                         </motion.div>
                     )}
