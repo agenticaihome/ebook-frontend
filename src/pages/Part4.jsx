@@ -61,8 +61,8 @@ const Part4 = () => {
                                         key={chapter.id}
                                         onClick={() => scrollToChapter(chapter.id)}
                                         className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
-                                                ? 'border-green-500 bg-green-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                            ? 'border-green-500 bg-green-900/20'
+                                            : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
                                             }`}
                                     >
                                         <Icon className={activeChapter === chapter.id ? 'text-green-400' : 'text-slate-500'} size={24} />
@@ -80,6 +80,7 @@ const Part4 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="thinking"
                             message="Real talk: Most productivity systems assume you got 8 hours of perfect sleep. *laughs in parent of toddlers* You know what happens when you follow a rigid schedule on 4 hours of broken sleep? You fail. Your Recovery-Aware Agent doesn't just track your health — it ADAPTS your entire day based on your actual capacity."
                         />
 
@@ -148,7 +149,7 @@ const Part4 = () => {
                                 </div>
                             </div>
 
-                            <CaptainTip type="pro" title="Dr. Nate's Residency Hack">
+                            <CaptainTip type="pro" title="DDS (Dad Deploying Systems)'s Residency Hack">
                                 "During residency with a newborn, I used 'Red Day' protocols constantly. Instead of studying at 5 AM (when I was a zombie), my agent moved study blocks to lunch when I was awake. I passed boards because I stopped fighting my biology."
                             </CaptainTip>
                         </div>
@@ -160,6 +161,7 @@ const Part4 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="working"
                             message="I'm a productivity robot, not a therapist. If you're struggling, please talk to a professional. But I CAN help with the 'Mental Load'—the invisible work of tracking everything. Less cognitive chaos = more mental peace."
                         />
 
@@ -201,6 +203,7 @@ const Part4 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="pointing"
                             message="Where is that article you read last month? The one with the great insight? Your brain is amazing at creativity but terrible at storage. Let's build a Second Brain that remembers everything for you."
                         />
 

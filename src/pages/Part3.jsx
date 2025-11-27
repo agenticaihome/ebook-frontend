@@ -79,6 +79,7 @@ const Part3 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="working"
                             message="HELP! I'm drowning in— wait, these aren't even my emails! The average professional receives 121 emails per day. That's 44,000 per year. Most are garbage. Some are important. A few are URGENT. Your job isn't to read all of them. Your job is to find the ones that matter and handle them fast. Let's build your Email Agent!"
                         />
 
@@ -158,6 +159,7 @@ const Part3 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="pointing"
                             message="Let me guess: You've got back-to-back meetings, no time to actually DO the work, and somehow you're still behind. Meetings aren't work. They're talking about work. Your Calendar Agent doesn't just manage your schedule — it PROTECTS your time. Let's take back your calendar!"
                         />
 
@@ -223,6 +225,7 @@ const Part3 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="thinking"
                             message="Pop quiz: What did you spend on subscriptions last month? If you're like most people, you have NO IDEA. Money just... disappears. Your Finance Agent won't judge your spending. It will make it VISIBLE. Let's build your personal AI CFO!"
                         />
 

@@ -63,8 +63,8 @@ const Part5 = () => {
                                         key={chapter.id}
                                         onClick={() => scrollToChapter(chapter.id)}
                                         className={`p-4 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
-                                                ? 'border-purple-500 bg-purple-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                            ? 'border-purple-500 bg-purple-900/20'
+                                            : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
                                             }`}
                                     >
                                         <Icon className={activeChapter === chapter.id ? 'text-purple-400' : 'text-slate-500'} size={24} />
@@ -82,6 +82,7 @@ const Part5 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="celebrating"
                             message="Congratulations. You've built an army of agents. But right now, they're working in silos. What if your Recovery Agent could tell your Calendar Agent to cancel meetings? That's not just automation. That's a Life Operating System."
                         />
 
@@ -137,6 +138,7 @@ const Part5 = () => {
 
                         <CaptainHero
                             size="md"
+                            pose="pointing"
                             message="You don't NEED smart home gear. But if you have it, let's make it actually smart. Most people use Alexa as a glorified egg timer. We're going to make your home ANTICIPATE your needs."
                         />
 
@@ -178,6 +180,7 @@ const Part5 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="working"
                             message="Systems entropy is real. Things break. Life changes. Your system needs a mechanic. That mechanic is you, once a month."
                         />
 

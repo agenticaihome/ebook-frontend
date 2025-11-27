@@ -79,6 +79,7 @@ const Part2 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="celebrating"
                             message="Rise and shine! Or... is it more like 'stumble out of bed in a panic'? Here's the thing about mornings: they set the tone for your ENTIRE day. Start chaotic, stay chaotic. But mornings are also PERFECT for your first agent because they're repetitive, low-stakes, and results are immediate. Tonight, you're going to set up ONE simple thing. Tomorrow morning, you'll feel the difference. Let's build your Morning Agent!"
                         />
 
@@ -191,6 +192,7 @@ const Part2 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="thinking"
                             message="Pop quiz: How many hours per week do you spend on food? Thinking about food. Planning food. Shopping for food. Preparing food. Arguing about food. For most families, it's 10-15 hours. And most of that mental energy is wasted on the SAME questions every week: 'What should we have for dinner?' 'Do we have any chicken?' 'Who's going to the store?' Your Kitchen Agent handles the boring stuff so you can enjoy the eating stuff. Let's end the dinner dilemma!"
                         />
 
@@ -316,6 +318,7 @@ const Part2 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="working"
                             message="Quick question: When was the last time you changed your HVAC filter? What about your car oil? Checked your smoke detector batteries? I'm not trying to make you feel bad. I'm making a point: household maintenance is BORING, and boring things get forgotten. Until they become EXPENSIVE. The good news? Boring and repetitive is where AI SHINES. Your Household Agent handles the stuff you'd forget anyway — before it becomes a crisis."
                         />
 

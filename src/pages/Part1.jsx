@@ -61,8 +61,8 @@ const Part1 = () => {
                                         key={chapter.id}
                                         onClick={() => scrollToChapter(chapter.id)}
                                         className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
-                                                ? 'border-cyan-500 bg-cyan-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                            ? 'border-cyan-500 bg-cyan-900/20'
+                                            : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
                                             }`}
                                     >
                                         <Icon className={activeChapter === chapter.id ? 'text-cyan-400' : 'text-slate-500'} size={24} />
@@ -80,6 +80,7 @@ const Part1 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="pointing"
                             message="Hey there! I'm Captain Efficiency — your friendly AI guide through this course. You've probably used AI before. Asked ChatGPT a question. Maybe had Siri set a timer. But here's the thing: that's like having a genius assistant who only works when you're standing over their shoulder, giving instructions word by word. What if that assistant could just... handle things? Anticipate what you need? Take action without being asked? THAT'S what AI agents do. And that's what we're going to build together."
                         />
 
@@ -196,6 +197,7 @@ const Part1 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="thinking"
                             message="Okay, so you're sold on agents. Now what? There are approximately one billion AI tools out there. Okay, not a billion. But it FEELS like a billion. ChatGPT. Claude. Gemini. Copilot. Siri. Alexa. Zapier. Make. n8n. STOP. Deep breath. You don't need all of them. You probably need TWO or THREE, tops. Let me help you pick the right ones for YOUR situation — without the tech jargon headache."
                         />
 
@@ -315,6 +317,7 @@ const Part1 = () => {
                     <div className="max-w-4xl mx-auto">
                         <CaptainHero
                             size="md"
+                            pose="working"
                             message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. You don't have to share everything to get massive value. This chapter is about informed consent — understanding exactly what you're sharing, with whom, and how to protect yourself. Let's make you informed, not paranoid."
                         />
 
