@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 const ChaosCalculator = () => {
     const [weeklyTakeout, setWeeklyTakeout] = useState(100);
     const [foodWaste, setFoodWaste] = useState(20);
-    const [decisionFatigueHours, setDecisionFatigueHours] = useState(5);
+    const [uselessSubscriptions, setUselessSubscriptions] = useState(50);
 
     // Calculate annual cost
     const annualCost = Math.round(
         (weeklyTakeout * 52) + // Weekly takeout annualized
         ((weeklyTakeout * 52) * (foodWaste / 100)) + // Food waste
-        (decisionFatigueHours * 52 * 50) // Decision fatigue: hours/week × 52 weeks × $50/hour
+        (uselessSubscriptions * 12) // Useless subscriptions annualized
     );
 
     // Determine if we're in "infection zone"
@@ -27,7 +27,7 @@ const ChaosCalculator = () => {
                     💸 Calculate Your Annual Cost of Chaos
                 </h2>
                 <p className="text-gray-600 medical-body">
-                    Calculate the true cost of mental load: Food chaos + Decision fatigue + Cognitive overhead
+                    Based on real data from Chapters 5 & 6: Food chaos + Subscription waste + Household inefficiency
                 </p>
             </div>
 
@@ -74,23 +74,23 @@ const ChaosCalculator = () => {
                         </div>
                     </div>
 
-                    {/* Slider 3: Decision Fatigue Hours */}
+                    {/* Slider 3: Useless Subscriptions */}
                     <div>
                         <label className="block text-sm font-semibold mb-2 medical-body" style={{ color: '#0055FF' }}>
-                            Decision Fatigue: {decisionFatigueHours} hours/week
+                            Useless Subscriptions: ${uselessSubscriptions}/month
                         </label>
                         <input
                             type="range"
                             min="0"
-                            max="20"
-                            step="1"
-                            value={decisionFatigueHours}
-                            onChange={(e) => setDecisionFatigueHours(Number(e.target.value))}
+                            max="200"
+                            step="10"
+                            value={uselessSubscriptions}
+                            onChange={(e) => setUselessSubscriptions(Number(e.target.value))}
                             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-clinical"
                         />
                         <div className="flex justify-between text-xs text-gray-500 mt-1">
-                            <span>0 hrs</span>
-                            <span>20 hrs/week</span>
+                            <span>$0</span>
+                            <span>$200/month</span>
                         </div>
                     </div>
                 </div>
@@ -192,9 +192,9 @@ const ChaosCalculator = () => {
                         </p>
                     </div>
                     <div className="glass-card p-4">
-                        <p className="text-gray-600 mb-1">Decision Fatigue (Annual)</p>
+                        <p className="text-gray-600 mb-1">Useless Subscriptions (Annual)</p>
                         <p className="text-2xl font-bold" style={{ color: '#0055FF' }}>
-                            ${(decisionFatigueHours * 52 * 50).toLocaleString()}
+                            ${(uselessSubscriptions * 12).toLocaleString()}
                         </p>
                     </div>
                 </div>
