@@ -74,8 +74,8 @@ const WebbookLayout = ({ children }) => {
                             key={chapter.id}
                             to={chapter.path}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${location.pathname === chapter.path
-                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
-                                    : 'text-slate-600 hover:bg-slate-50'
+                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
+                                : 'text-slate-600 hover:bg-slate-50'
                                 }`}
                         >
                             <span className={location.pathname === chapter.path ? 'text-blue-200' : 'text-slate-400 group-hover:text-blue-500'}>
@@ -87,6 +87,48 @@ const WebbookLayout = ({ children }) => {
                             )}
                         </Link>
                     ))}
+                </nav>
+
+                <div className="px-4 pb-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-4">
+                    Payment Help
+                </div>
+                <nav className="px-4 space-y-2 mb-4">
+                    <Link
+                        to="/why-ergo"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${location.pathname === '/why-ergo'
+                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
+                            : 'text-slate-600 hover:bg-slate-50'
+                            }`}
+                    >
+                        <span className={location.pathname === '/why-ergo' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                            <Zap size={18} />
+                        </span>
+                        <span className="font-medium text-sm">Why Ergo?</span>
+                    </Link>
+                    <Link
+                        to="/how-to-pay"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${location.pathname === '/how-to-pay'
+                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
+                            : 'text-slate-600 hover:bg-slate-50'
+                            }`}
+                    >
+                        <span className={location.pathname === '/how-to-pay' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                            <Shield size={18} />
+                        </span>
+                        <span className="font-medium text-sm">How to Pay Guide</span>
+                    </Link>
+                    <Link
+                        to="/how-to-buy-ergo"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${location.pathname === '/how-to-buy-ergo'
+                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
+                            : 'text-slate-600 hover:bg-slate-50'
+                            }`}
+                    >
+                        <span className={location.pathname === '/how-to-buy-ergo' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                            <BookOpen size={18} />
+                        </span>
+                        <span className="font-medium text-sm">How to Buy ERG</span>
+                    </Link>
                 </nav>
 
                 <div className="p-4 border-t border-slate-100">
