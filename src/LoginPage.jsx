@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock, Key, CreditCard, ArrowRight, AlertCircle } from 'lucide-react';
 import { api } from './services/api';
