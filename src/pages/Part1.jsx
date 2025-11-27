@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import CaptainTip from '../components/interactive/CaptainTip';
-import CaptainHero from '../components/interactive/CaptainHero';
-import InteractiveDiagram from '../components/interactive/InteractiveDiagram';
+import CaptainTip from '../components/CaptainTip';
+import CaptainHero from '../components/CaptainHero';
+import InteractiveDiagram from '../components/InteractiveDiagram';
 import { motion } from 'framer-motion';
 import { Brain, AlertTriangle } from 'lucide-react';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PaywallGate from '../components/common/PaywallGate';
-import CaptainTip from '../components/interactive/CaptainTip';
+import CaptainTip from '../components/CaptainTip';
 import { motion } from 'framer-motion';
 
 const Part2 = () => {

@@ -3,7 +3,7 @@ import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Termin
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
-import CaptainHero from './components/interactive/CaptainHero';
+import CaptainHero from './components/CaptainHero';
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');

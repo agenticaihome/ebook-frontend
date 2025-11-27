@@ -21,14 +21,14 @@ const InteractiveDiagram = ({ steps, title }) => {
                             key={index}
                             onClick={() => setActiveStep(index)}
                             className={`w-full text-left p-4 rounded-xl mb-2 transition-all flex items-center justify-between group ${activeStep === index
-                                    ? 'bg-white shadow-md border border-blue-100'
-                                    : 'hover:bg-white/50'
+                                ? 'bg-white shadow-md border border-blue-100'
+                                : 'hover:bg-white/50'
                                 }`}
                         >
                             <div className="flex items-center gap-3">
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${activeStep === index
-                                        ? 'bg-blue-600 text-white'
-                                        : 'bg-slate-200 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600'
+                                    ? 'bg-blue-600 text-white'
+                                    : 'bg-slate-200 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600'
                                     }`}>
                                     {index + 1}
                                 </div>
