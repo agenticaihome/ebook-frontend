@@ -262,35 +262,6 @@ const InfectionDiagnostic = () => {
             ) : (
                 /* Results Card */
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <div ref={resultsRef} className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-2xl border-2" style={{ borderColor: diagnosis.color }}>
-                        {/* Modern Header with Captain Efficiency */}
-                        <div className="text-center mb-6">
-                            <div className="flex justify-center mb-4">
-                                <div className="bg-white rounded-full p-4 shadow-lg">
-                                    <img
-                                        src="/captain_hero.png"
-                                        alt="Captain Efficiency"
-                                        className="w-24 h-24 object-contain"
-                                    />
-                                </div>
-                            </div>
-                            <div className="text-6xl mb-4">{diagnosis.emoji}</div>
-                            <h2 className="text-4xl md:text-5xl font-bold medical-heading mb-3" style={{ color: diagnosis.color }}>
-                                {diagnosis.stage}
-                            </h2>
-                            <div className="inline-block px-6 py-3 rounded-full font-bold text-white shadow-lg" style={{ backgroundColor: diagnosis.color }}>
-                                {diagnosis.severity}
-                            </div>
-                        </div>
-
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                            <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: `${diagnosis.color}15` }}>
-                                <div className="text-sm text-gray-600 mb-2 font-semibold">CHAOS SCORE</div>
                                 <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
                                     {infectionLevel}/10
                                 </div>
@@ -301,26 +272,26 @@ const InfectionDiagnostic = () => {
                                     {Math.round((infectionLevel / 10) * 100)}%
                                 </div>
                             </div>
-                        </div>
+                        </div >
 
-                        {/* Recommendation */}
-                        <div className="p-6 rounded-2xl mb-6 text-center" style={{ backgroundColor: `${diagnosis.color}10`, borderLeft: `4px solid ${diagnosis.color}` }}>
+    {/* Recommendation */ }
+    < div className = "p-6 rounded-2xl mb-6 text-center" style = {{ backgroundColor: `${diagnosis.color}10`, borderLeft: `4px solid ${diagnosis.color}` }}>
                             <p className="text-lg font-bold medical-heading mb-2" style={{ color: '#0055FF' }}>
                                 {infectionLevel >= 6 ? '🚨 Immediate Action Recommended' : '💡 Preventive Measures Suggested'}
                             </p>
                             <p className="text-sm text-gray-600">
                                 Download the free guide to learn how AI agents can restore order to your household
                             </p>
-                        </div>
+                        </div >
 
-                        {/* Disclaimer */}
-                        <div className="text-center text-xs text-gray-400 border-t pt-4">
-                            *Entertainment purposes only. Not medical or professional advice.
-                        </div>
-                    </div>
+    {/* Disclaimer */ }
+    < div className = "text-center text-xs text-gray-400 border-t pt-4" >
+                            * Entertainment purposes only.Not medical or professional advice.
+                        </div >
+                    </div >
 
-                    {/* Social Share Buttons */}
-                    <div className="flex flex-wrap gap-3 justify-center mt-8">
+    {/* Social Share Buttons */ }
+    < div className = "flex flex-wrap gap-3 justify-center mt-8" >
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -357,27 +328,27 @@ const InfectionDiagnostic = () => {
                         >
                             <span>📥</span> Download Image
                         </motion.button>
-                    </div>
+                    </div >
 
-                    {/* Retake Button */}
-                    <div className="text-center mt-4">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => {
-                                setCurrentQuestion(0);
-                                setAnswers([]);
-                                setShowResults(false);
-                            }}
-                            className="px-8 py-3 rounded-lg font-bold shadow-lg glass-card"
-                            style={{ color: '#0055FF' }}
-                        >
-                            🔄 Retake Assessment
-                        </motion.button>
-                    </div>
-                </motion.div>
+    {/* Retake Button */ }
+    < div className = "text-center mt-4" >
+        <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+                setCurrentQuestion(0);
+                setAnswers([]);
+                setShowResults(false);
+            }}
+            className="px-8 py-3 rounded-lg font-bold shadow-lg glass-card"
+            style={{ color: '#0055FF' }}
+        >
+            🔄 Retake Assessment
+        </motion.button>
+                    </div >
+                </motion.div >
             )}
-        </div>
+        </div >
     );
 };
 
