@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const ChaosCalculator = () => {
     const [weeklyTakeout, setWeeklyTakeout] = useState(100);
@@ -11,17 +11,6 @@ const ChaosCalculator = () => {
         (weeklyTakeout * 52) + // Weekly takeout annualized
         ((weeklyTakeout * 52) * (foodWaste / 100)) + // Food waste
         (lateFees * 12) // Monthly late fees annualized
-    );
-
-    // Animated number with spring physics
-    const springValue = useSpring(annualCost, {
-        stiffness: 100,
-        damping: 30,
-        mass: 0.8
-    });
-
-    const displayValue = useTransform(springValue, (latest) =>
-        Math.round(latest).toLocaleString()
     );
 
     // Determine if we're in "infection zone"
@@ -116,16 +105,22 @@ const ChaosCalculator = () => {
                         <motion.div
                             className="text-5xl md:text-6xl font-bold medical-heading"
                             style={{ color: isInfected ? '#FF4444' : '#0055FF' }}
+                            key={annualCost}
+                            initial={{ opacity: 0, scale: 0.8 }}
                             animate={isInfected ? {
+                                opacity: 1,
                                 scale: [1, 1.05, 1],
-                            } : {}}
+                            } : {
+                                opacity: 1,
+                                scale: 1
+                            }}
                             transition={{
-                                duration: 1,
+                                duration: isInfected ? 1 : 0.3,
                                 repeat: isInfected ? Infinity : 0,
                                 repeatType: "reverse"
                             }}
                         >
-                            ${displayValue}
+                            ${annualCost.toLocaleString()}
                         </motion.div>
                         {isInfected && (
                             <motion.p
