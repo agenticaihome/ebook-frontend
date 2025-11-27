@@ -41,11 +41,11 @@ const CaptainHero = ({
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 className={`relative flex-shrink-0 ${sizeClasses[size]}`}
             >
-                <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-xl animate-pulse" />
+                <div className="absolute inset-0 bg-cyan-500/40 rounded-full blur-2xl animate-pulse scale-110" />
                 <img
                     src={finalImageSrc}
                     alt="Captain Efficiency"
-                    className="relative z-10 w-full h-full object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]"
+                    className="relative z-10 w-full h-full object-contain"
                 />
             </motion.div>
 
