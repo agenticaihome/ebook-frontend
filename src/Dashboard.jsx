@@ -102,7 +102,7 @@ const Dashboard = () => {
                                         className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
                                     >
                                         <Download size={18} />
-                                        Download PDF
+                                        Access System Materials
                                     </button>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@ const Dashboard = () => {
                                     <BookOpen className="text-slate-500" size={32} />
                                 </div>
                                 <h3 className="text-xl font-bold text-white mb-2">No purchases found</h3>
-                                <p className="text-slate-400 mb-6">You haven't purchased any ebooks yet.</p>
+                                <p className="text-slate-400 mb-6">You haven't purchased the system yet.</p>
                                 <button
                                     onClick={() => navigate('/pay-ergo')}
                                     className="bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg transition-colors"

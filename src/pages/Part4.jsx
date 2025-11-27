@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import CaptainHero from '../components/CaptainHero';
 import CaptainTip from '../components/CaptainTip';
@@ -10,6 +11,7 @@ import { motion } from 'framer-motion';
 import { Activity, Brain, BookOpen, ArrowRight, Heart, Moon, Database, Coffee } from 'lucide-react';
 
 const Part4 = () => {
+    const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(10);
 
     const chapters = [
@@ -264,7 +266,7 @@ const Part4 = () => {
                                 </div>
                             </div>
                             <button
-                                onClick={() => window.location.href = '/part5'}
+                                onClick={() => navigate('/part5')}
                                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
                             >
                                 Continue to Part 5: The Life OS

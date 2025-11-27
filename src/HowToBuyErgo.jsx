@@ -30,7 +30,7 @@ export default function HowToBuyErgo() {
                             How to Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Ergo (ERG)</span>
                         </h1>
                         <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            Follow this simple guide to purchase Ergo and save 50% on your ebook.
+                            Follow this simple guide to purchase Ergo and save 50% on the system.
                         </p>
                         <div className="mt-6 inline-block bg-green-900/20 border border-green-500/30 rounded-full px-6 py-2 text-green-400 text-sm font-bold">
                             Recommendation: Buy ~$25 USD worth of ERG.
@@ -240,7 +240,7 @@ export default function HowToBuyErgo() {
                                 <Send className="w-8 h-8 mr-4 text-green-400" />
                                 <div>
                                     <h2 className="text-2xl font-bold text-white">Sending to Your Wallet</h2>
-                                    <p className="text-green-200 text-sm">The final step to pay for your ebook</p>
+                                    <p className="text-green-200 text-sm">The final step to pay for your system</p>
                                 </div>
                             </div>
                         </div>

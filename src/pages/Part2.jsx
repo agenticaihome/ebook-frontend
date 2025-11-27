@@ -6,10 +6,12 @@ import MorningChaosCalculator from '../components/MorningChaosCalculator';
 import MorningBriefBuilder from '../components/MorningBriefBuilder';
 import FoodChaosCalculator from '../components/FoodChaosCalculator';
 import HouseholdChaosCalculator from '../components/HouseholdChaosCalculator';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Coffee, UtensilsCrossed, Home, ArrowRight, CheckCircle, Clock, DollarSign } from 'lucide-react';
 
 const Part2 = () => {
+    const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(4);
 
     const chapters = [
@@ -449,7 +451,7 @@ const Part2 = () => {
                                 </div>
                             </div>
                             <button
-                                onClick={() => window.location.href = '/part3'}
+                                onClick={() => navigate('/part3')}
                                 className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
                             >
                                 Continue to Part 3: Digital Life Automation

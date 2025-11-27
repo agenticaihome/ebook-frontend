@@ -19,7 +19,7 @@ export default function SalesPage() {
 
   const handleStripePayment = () => {
     // Placeholder for Stripe logic
-    alert("Stripe integration coming soon!");
+    alert("The Standard Access waitlist is currently full. Please use Crypto Access for immediate entry.");
   };
 
   return (
@@ -90,7 +90,7 @@ export default function SalesPage() {
                   onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
                   className="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/50 flex items-center justify-center gap-2"
                 >
-                  <Lock size={20} /> UNLOCK ACCESS — $40
+                  <Lock size={20} /> UNLOCK SYSTEM — $40
                 </button>
                 <button
                   onClick={handleErgoPayment}
@@ -298,7 +298,7 @@ export default function SalesPage() {
                 onClick={handleStripePayment}
                 className="w-full bg-purple-600 hover:bg-purple-500 text-white py-4 rounded-xl font-bold transition-colors"
               >
-                Pay with Card
+                Join Waitlist
               </button>
             </div>
 

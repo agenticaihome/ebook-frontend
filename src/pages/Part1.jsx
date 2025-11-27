@@ -7,10 +7,12 @@ import MentalLoadCalculator from '../components/MentalLoadCalculator';
 import ToolRecommendationQuiz from '../components/ToolRecommendationQuiz';
 import PrivacyAssessment from '../components/PrivacyAssessment';
 import AgentConstitutionBuilder from '../components/AgentConstitutionBuilder';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
 
 const Part1 = () => {
+    const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(1);
 
     const chapters = [
@@ -419,7 +421,7 @@ const Part1 = () => {
                                 You now understand what AI agents are, which tools to use, and how to protect your privacy. You're ready to build your first agent!
                             </p>
                             <button
-                                onClick={() => window.location.href = '/part2'}
+                                onClick={() => navigate('/part2')}
                                 className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
                             >
                                 Continue to Part 2: Building Your First Agent

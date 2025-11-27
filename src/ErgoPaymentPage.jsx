@@ -66,7 +66,7 @@ const ErgoPaymentPage = () => {
                                 <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
                                     <div className="flex justify-between items-center mb-2">
                                         <span className="text-slate-400">Item</span>
-                                        <span className="text-white font-medium">Agentic AI Ebook</span>
+                                        <span className="text-white font-medium">Agentic AI System</span>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className="text-slate-400">Price</span>
@@ -101,7 +101,7 @@ const ErgoPaymentPage = () => {
                                 <div className="space-y-1">
                                     <h3 className="text-yellow-500 font-semibold text-sm">SAVE THIS CODE!</h3>
                                     <p className="text-yellow-200/80 text-xs">
-                                        You MUST save this code. It is the only way to claim your ebook after payment.
+                                        You MUST save this code. It is the only way to claim your system access after payment.
                                     </p>
                                 </div>
                             </div>

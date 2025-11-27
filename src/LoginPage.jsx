@@ -67,8 +67,8 @@ const LoginPage = () => {
                     <button
                         onClick={() => setActiveTab('email')}
                         className={`flex-1 py-4 text-sm font-medium transition-colors ${activeTab === 'email'
-                                ? 'text-blue-400 border-b-2 border-blue-400 bg-slate-800/50'
-                                : 'text-slate-400 hover:text-slate-200'
+                            ? 'text-blue-400 border-b-2 border-blue-400 bg-slate-800/50'
+                            : 'text-slate-400 hover:text-slate-200'
                             }`}
                     >
                         Email Login
@@ -76,8 +76,8 @@ const LoginPage = () => {
                     <button
                         onClick={() => setActiveTab('ergo')}
                         className={`flex-1 py-4 text-sm font-medium transition-colors ${activeTab === 'ergo'
-                                ? 'text-orange-400 border-b-2 border-orange-400 bg-slate-800/50'
-                                : 'text-slate-400 hover:text-slate-200'
+                            ? 'text-orange-400 border-b-2 border-orange-400 bg-slate-800/50'
+                            : 'text-slate-400 hover:text-slate-200'
                             }`}
                     >
                         Claim Ergo Purchase
@@ -195,7 +195,7 @@ const LoginPage = () => {
 
                 <div className="p-4 bg-slate-900/50 text-center border-t border-slate-700">
                     <p className="text-slate-500 text-xs">
-                        Need help? <a href="#" className="text-blue-400 hover:underline">Contact Support</a>
+                        Need help? <Link to="/faq" className="text-blue-400 hover:underline">Contact Support</Link>
                     </p>
                 </div>
             </div>

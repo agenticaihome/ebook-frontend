@@ -226,6 +226,16 @@ const Part5 = () => {
                             </p>
                             <div className="text-cyan-400 font-bold text-lg">— Captain Efficiency 🤖</div>
                         </div>
+
+                        <div className="mt-12 text-center">
+                            <button
+                                onClick={() => window.location.href = '/dashboard'}
+                                className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold transition-all border border-slate-700 hover:border-slate-600"
+                            >
+                                Return to Dashboard
+                                <ArrowRight size={20} />
+                            </button>
+                        </div>
                     </div>
                 </section>
             </div>

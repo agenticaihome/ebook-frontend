@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
+import SchematicPlaceholder from './components/SchematicPlaceholder';
 
 export default function HowToPay() {
     const [device, setDevice] = useState('desktop'); // desktop, ios, android
@@ -39,13 +40,6 @@ export default function HowToPay() {
                     Estimated time: {time}
                 </p>
             </div>
-        </div>
-    );
-
-    const ScreenshotPlaceholder = ({ label }) => (
-        <div className="w-full h-64 bg-slate-800/50 rounded-xl border-2 border-dashed border-slate-700 flex flex-col items-center justify-center text-slate-500 mb-6">
-            <div className="mb-2">[SCREENSHOT]</div>
-            <div className="text-sm">{label}</div>
         </div>
     );
 
@@ -165,13 +159,13 @@ export default function HowToPay() {
                                     <div>
                                         <h4 className="font-bold text-white mb-2">1. Install the Extension</h4>
                                         <p className="text-slate-400 mb-4">Click "Add to Chrome" and confirm the popup.</p>
-                                        <ScreenshotPlaceholder label="Chrome Web Store: Add to Chrome Button" />
+                                        <SchematicPlaceholder type="browser" label="Chrome Web Store" subLabel="Click 'Add to Chrome'" />
                                     </div>
 
                                     <div>
                                         <h4 className="font-bold text-white mb-2">2. Create Your Wallet</h4>
                                         <p className="text-slate-400 mb-4">Click the Nautilus icon in your toolbar and select "Create Wallet". Set a spending password (write it down!).</p>
-                                        <ScreenshotPlaceholder label="Nautilus: Create Wallet Screen" />
+                                        <SchematicPlaceholder type="browser" label="Nautilus Wallet" subLabel="Create New Wallet" />
                                     </div>
 
                                     <div className="bg-red-900/20 border border-red-500/50 p-6 rounded-xl">
@@ -196,7 +190,7 @@ export default function HowToPay() {
                                         <p className="text-slate-400 mb-4">
                                             Once created, you'll see your address starting with "9". Click the copy button.
                                         </p>
-                                        <ScreenshotPlaceholder label="Wallet Dashboard: Address Highlighted" />
+                                        <SchematicPlaceholder type="browser" label="Wallet Dashboard" subLabel="Copy Address (Starts with '9')" />
                                     </div>
                                 </div>
                             )}
@@ -205,7 +199,7 @@ export default function HowToPay() {
                                 <div className="space-y-8">
                                     <h3 className="text-xl font-bold text-white mb-4">Option B: Ergo Mobile Wallet (iOS)</h3>
                                     <p className="text-slate-400">Instructions for iOS...</p>
-                                    <ScreenshotPlaceholder label="App Store: Ergo Wallet" />
+                                    <SchematicPlaceholder type="mobile" label="App Store" subLabel="Search 'Ergo Wallet'" />
                                     {/* Add iOS specific steps here similar to desktop */}
                                 </div>
                             )}
@@ -214,7 +208,7 @@ export default function HowToPay() {
                                 <div className="space-y-8">
                                     <h3 className="text-xl font-bold text-white mb-4">Option C: Ergo Mobile Wallet (Android)</h3>
                                     <p className="text-slate-400">Instructions for Android...</p>
-                                    <ScreenshotPlaceholder label="Play Store: Ergo Wallet" />
+                                    <SchematicPlaceholder type="mobile" label="Play Store" subLabel="Search 'Ergo Wallet'" />
                                     {/* Add Android specific steps here similar to desktop */}
                                 </div>
                             )}
@@ -237,7 +231,7 @@ export default function HowToPay() {
                                 <div>
                                     <h4 className="font-bold text-white mb-2">1. Create Account</h4>
                                     <p className="text-slate-400 mb-4">Go to CoinEx.com and sign up with your email.</p>
-                                    <ScreenshotPlaceholder label="CoinEx Signup Page" />
+                                    <SchematicPlaceholder type="browser" label="CoinEx Exchange" subLabel="Sign Up Page" />
                                 </div>
 
                                 <div>
@@ -245,7 +239,7 @@ export default function HowToPay() {
                                     <p className="text-slate-400 mb-4">
                                         Click "Buy Crypto", select <strong>ERG</strong>, and enter <strong>$25</strong>. Pay with your card.
                                     </p>
-                                    <ScreenshotPlaceholder label="CoinEx Buy Crypto Page" />
+                                    <SchematicPlaceholder type="card" label="Buy Crypto" subLabel="Select ERG + Credit Card" />
                                 </div>
 
                                 <div>
@@ -258,7 +252,7 @@ export default function HowToPay() {
                                             ⚠️ Triple-check the address! If you send to the wrong place, it's gone.
                                         </p>
                                     </div>
-                                    <ScreenshotPlaceholder label="CoinEx Withdrawal Page" />
+                                    <SchematicPlaceholder type="browser" label="Withdraw Funds" subLabel="Paste YOUR Wallet Address" />
                                 </div>
                             </div>
                         </div>
@@ -276,7 +270,7 @@ export default function HowToPay() {
                                 <p className="text-slate-400 mb-4">
                                     On our checkout page, you'll see the <strong>Exact ERG Amount</strong> and our <strong>Wallet Address</strong>.
                                 </p>
-                                <ScreenshotPlaceholder label="Checkout Page with QR Code" />
+                                <SchematicPlaceholder type="qr" label="Checkout Page" subLabel="Scan QR or Copy Address" />
                             </div>
 
                             <div>
@@ -284,7 +278,7 @@ export default function HowToPay() {
                                 <p className="text-slate-400 mb-4">
                                     Open Nautilus (or your mobile app). Click "Send". Paste our address and the EXACT amount.
                                 </p>
-                                <ScreenshotPlaceholder label="Wallet Send Screen" />
+                                <SchematicPlaceholder type="mobile" label="Send Transaction" subLabel="Paste Address + Exact Amount" />
                             </div>
 
                             <div>
@@ -313,6 +307,19 @@ export default function HowToPay() {
                                 You just set up a non-custodial wallet, bought crypto, and made a peer-to-peer transaction.
                                 <br />
                                 <strong>Welcome to the future of money.</strong>
+                            </p>
+                        </div>
+
+                        <div className="mt-12">
+                            <Link
+                                to="/pay-ergo"
+                                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-green-500/25"
+                            >
+                                Ready? Go to Checkout
+                                <ArrowRight size={20} />
+                            </Link>
+                            <p className="text-slate-500 text-sm mt-4">
+                                Don't worry, the checkout page has instructions too.
                             </p>
                         </div>
                     </div>

@@ -735,7 +735,7 @@ export default function FAQ() {
                                     to="/pay-ergo"
                                     className="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-green-900/20"
                                 >
-                                    Get the Course ($20 with ERG)
+                                    Get the System ($20 with ERG)
                                 </Link>
                                 <a
                                     href="mailto:support@agenticai.home"
