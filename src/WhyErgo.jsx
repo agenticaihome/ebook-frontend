@@ -1,134 +1,349 @@
 import React from 'react';
-import { ArrowLeft, Shield, Users, Lock, Zap, Heart, Globe, Send, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Shield, Zap, Database, Lock, Globe, Cpu, Server, ArrowLeft, CheckCircle, ExternalLink } from 'lucide-react';
+import WebbookLayout from './components/layout/WebbookLayout';
+import ErgoFeeCalculator from './components/why-ergo/ErgoFeeCalculator';
+import DecentralizationTable from './components/why-ergo/DecentralizationTable';
 
 export default function WhyErgo() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 via-teal-50 to-emerald-50">
-            <div className="max-w-4xl mx-auto px-4 py-12">
-                {/* Navigation */}
-                <Link
-                    to="/"
-                    className="inline-flex items-center text-green-700 hover:text-green-800 font-semibold mb-8 transition-colors"
-                >
-                    <ArrowLeft className="w-5 h-5 mr-2" />
-                    Back to Home
-                </Link>
+        <WebbookLayout>
+            <div className="min-h-screen bg-[#0f0f1a] text-slate-300 font-sans selection:bg-green-500/30">
 
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                        Why We Chose <span className="text-green-600">Ergo</span>
-                    </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        It's not just a cryptocurrency. It's a movement to give regular people control over their own money.
-                    </p>
-                </div>
-
-                {/* Core Values */}
-                <div className="grid md:grid-cols-2 gap-8 mb-16">
-                    <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
-                        <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                            <Users className="w-8 h-8 text-green-600" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Money for the People</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            Most cryptocurrencies today are owned by big venture capital firms before they even launch. Ergo is different. It had <strong>no private sale and no pre-mine</strong>. It was launched fairly, meaning everyone had the same chance to earn it from day one. It's truly the people's money.
-                        </p>
+                {/* HERO SECTION */}
+                <section className="relative py-24 px-6 overflow-hidden border-b border-slate-800">
+                    <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                        <div className="absolute top-20 right-10 w-96 h-96 bg-green-900/20 rounded-full blur-3xl animate-pulse"></div>
                     </div>
 
-                    <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
-                        <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                            <Lock className="w-8 h-8 text-green-600" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Privacy is a Human Right</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            In a digital world, your financial data is often sold or tracked. Ergo is built to protect you. It offers optional privacy tools that act like a digital shield, keeping your business <em>your business</em>. You shouldn't have to sacrifice privacy for convenience.
-                        </p>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
-                        <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                            <Shield className="w-8 h-8 text-green-600" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Unbreakable Security</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            Ergo uses the same battle-tested security model as Bitcoin (Proof of Work), but with modern upgrades. It's designed to be secure for decades, not just for the next bull run. It's a financial system built to last.
-                        </p>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
-                        <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                            <Heart className="w-8 h-8 text-green-600" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Fair & Accessible</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            You don't need a supercomputer to participate. Ergo is designed so that ordinary people can mine it with consumer hardware. It prevents huge mining farms from taking over, keeping the network decentralized and in the hands of the community.
-                        </p>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
-                        <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                            <Zap className="w-8 h-8 text-green-600" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Fast & Low Fees</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            Sending money shouldn't cost a fortune. On Ergo, transactions cost a fraction of a cent and settle in minutes. It's efficient, scalable, and built for real-world usage, not just speculation.
-                        </p>
-                    </div>
-
-                    <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition duration-300">
-                        <div className="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                            <Sprout className="w-8 h-8 text-green-600" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">Sustainable Economics</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            Ergo is built to last. Its unique economic model recycles lost coins to support the network, ensuring it remains stable and secure for generations to come. It's a living system.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Community & Resources */}
-                <div className="text-center mb-16">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6">Join the Movement</h2>
-                    <div className="flex flex-wrap justify-center gap-4">
-                        <a
-                            href="https://ergoplatform.org/en/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
-                        >
-                            <Globe className="w-5 h-5 mr-2" />
-                            Visit Ergo Platform
-                        </a>
-                        <a
-                            href="https://t.me/ergoplatform"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
-                        >
-                            <Send className="w-5 h-5 mr-2" />
-                            Join Telegram Community
-                        </a>
-                    </div>
-                </div>
-
-                {/* Call to Action */}
-                <div className="bg-gradient-to-r from-green-600 to-emerald-700 rounded-3xl p-12 text-center text-white shadow-2xl">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join the Future?</h2>
-                    <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-                        By paying with Ergo, you aren't just saving money—you're supporting a fair, open, and private financial system.
-                    </p>
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <Link
-                            to="/how-to-buy-ergo"
-                            className="bg-white text-green-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition shadow-lg"
-                        >
-                            Show Me How to Buy Ergo
+                    <div className="max-w-4xl mx-auto text-center relative z-10">
+                        <Link to="/" className="inline-flex items-center text-green-400 hover:text-green-300 mb-8 transition-colors">
+                            <ArrowLeft size={16} className="mr-2" /> Back to Course
                         </Link>
+                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                            Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Ergo?</span>
+                        </h1>
+                        <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                            The most undervalued, technically superior blockchain in existence.
+                            <br />
+                            <span className="text-green-400 font-bold">And why I give you 50% off for using it.</span>
+                        </p>
                     </div>
-                </div>
+                </section>
+
+                {/* SECTION 1: THE SHORT VERSION */}
+                <section className="py-16 px-6 bg-[#131320]">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                                <Zap className="text-yellow-400" /> The Short Version
+                            </h2>
+                            <div className="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 className="font-bold text-green-400 mb-3 uppercase tracking-wider text-sm">Why I Accept It</h3>
+                                    <ul className="space-y-2">
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-green-500" /> Lower fees than credit cards</li>
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-green-500" /> True peer-to-peer payment</li>
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-green-500" /> Privacy-respecting</li>
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-green-500" /> <strong>50% Discount for you</strong></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-orange-400 mb-3 uppercase tracking-wider text-sm">Why It's Superior</h3>
+                                    <ul className="space-y-2">
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-orange-500" /> Bitcoin's security + Ethereum's smarts</li>
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-orange-500" /> No VC backing / Fair Launch</li>
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-orange-500" /> ASIC-Resistant Mining (Fair)</li>
+                                        <li className="flex gap-2"><CheckCircle size={18} className="text-orange-500" /> Built by academic researchers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700 text-center italic text-slate-400">
+                                "Ergo is what Bitcoin would be if Satoshi had 10 more years of cryptographic research."
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 2: MY PERSONAL JOURNEY */}
+                <section className="py-24 px-6">
+                    <div className="max-w-3xl mx-auto prose prose-invert prose-lg">
+                        <h2 className="text-3xl font-bold text-white mb-8">My Journey to the Rabbit Hole</h2>
+                        <p>
+                            Like most people, I started with Bitcoin, then Ethereum. Then I watched the 2021 cycle's excesses—VCs dumping tokens, celebrity scams, and centralized "DeFi" that wasn't decentralized at all.
+                        </p>
+                        <p>
+                            I asked myself: <strong>"What would a blockchain look like if built correctly from first principles?"</strong>
+                        </p>
+                        <p>
+                            I found Ergo. The more I read the whitepapers, the more I realized this wasn't hype—this was substance. It was built by people who understood the flaws of previous generations and solved them mathematically.
+                        </p>
+                        <p>
+                            Now, I'm not just holding. I'm building commerce on it. This isn't speculation; it's conviction based on understanding.
+                        </p>
+                    </div>
+                </section>
+
+                {/* SECTION 3: ORIGIN STORY */}
+                <section className="py-24 px-6 bg-[#131320] border-y border-slate-800">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-12 text-center">The Origin Story: Why It Matters</h2>
+
+                        <div className="grid md:grid-cols-2 gap-12 mb-12">
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-4">The Founders</h3>
+                                <p className="mb-4">
+                                    <strong>Alexander Chepurnoy (kushti)</strong>: Core dev of Nxt, co-founder of smartcontract.com (Chainlink), and a researcher who wrote foundational papers on proof-of-work.
+                                </p>
+                                <p>
+                                    <strong>Dmitry Meshkov</strong>: PhD researcher, co-author of Bitcoin's security analysis papers.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white mb-4">The Fair Launch (2019)</h3>
+                                <ul className="space-y-3">
+                                    <li className="flex items-center gap-3 text-green-400"><CheckCircle size={20} /> NO Premine (Founders got 0)</li>
+                                    <li className="flex items-center gap-3 text-green-400"><CheckCircle size={20} /> NO ICO (No VC sales)</li>
+                                    <li className="flex items-center gap-3 text-green-400"><CheckCircle size={20} /> NO Venture Capital</li>
+                                    <li className="flex items-center gap-3 text-green-400"><CheckCircle size={20} /> 100% Mined like Bitcoin</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-800 p-6 rounded-xl border-l-4 border-green-500">
+                            <p className="text-white font-bold mb-2">Why this matters:</p>
+                            <p className="text-slate-400">
+                                Most "crypto projects" are VC exit liquidity schemes. Founders hold massive bags and dump on retail.
+                                Ergo's team had to BUILD value, not extract it. This is Bitcoin-level integrity in a post-2017 world.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 4: TECHNICAL SUPERIORITY */}
+                <section className="py-24 px-6">
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center">Technical Superiority (The Substance)</h2>
+
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {/* Feature 1 */}
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                                <div className="text-green-400 mb-4"><Database size={32} /></div>
+                                <h3 className="text-xl font-bold text-white mb-3">1. Extended UTXO (eUTXO)</h3>
+                                <p className="text-slate-400 mb-4">
+                                    Bitcoin uses UTXO (secure but limited). Ethereum uses Accounts (flexible but vulnerable).
+                                    Ergo combines them.
+                                </p>
+                                <p className="text-sm font-bold text-green-400">
+                                    "Bitcoin's security with Ethereum's programmability."
+                                </p>
+                            </div>
+
+                            {/* Feature 2 */}
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                                <div className="text-green-400 mb-4"><Cpu size={32} /></div>
+                                <h3 className="text-xl font-bold text-white mb-3">2. Autolykos (Mining)</h3>
+                                <p className="text-slate-400 mb-4">
+                                    Memory-hard Proof-of-Work designed to be ASIC-resistant.
+                                    Regular people with GPUs can mine it. No massive mining farms controlling the chain.
+                                </p>
+                                <p className="text-sm font-bold text-green-400">
+                                    "True to Satoshi's 'one CPU, one vote' vision."
+                                </p>
+                            </div>
+
+                            {/* Feature 3 */}
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                                <div className="text-green-400 mb-4"><Shield size={32} /></div>
+                                <h3 className="text-xl font-bold text-white mb-3">3. Sigma Protocols</h3>
+                                <p className="text-slate-400 mb-4">
+                                    Zero-knowledge proofs built into the core. Enable privacy features (mixers, ring signatures)
+                                    without needing a separate "privacy coin."
+                                </p>
+                                <p className="text-sm font-bold text-green-400">
+                                    "Optional, cryptographic privacy."
+                                </p>
+                            </div>
+
+                            {/* Feature 4 */}
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                                <div className="text-green-400 mb-4"><Server size={32} /></div>
+                                <h3 className="text-xl font-bold text-white mb-3">4. Storage Rent</h3>
+                                <p className="text-slate-400 mb-4">
+                                    Solves blockchain bloat. Lost coins slowly return to circulation.
+                                    Miners are paid to store data, ensuring long-term sustainability.
+                                </p>
+                                <p className="text-sm font-bold text-green-400">
+                                    "Sustainable economics for 100+ years."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 5: DECENTRALIZATION COMPARISON */}
+                <section className="py-24 px-6 bg-[#131320] border-y border-slate-800">
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-12 text-center">The Honest Comparison</h2>
+                        <DecentralizationTable />
+                    </div>
+                </section>
+
+                {/* SECTION 6: THE ECOSYSTEM */}
+                <section className="py-24 px-6">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-12 text-center">Not Vaporware. Real Apps.</h2>
+                        <div className="grid md:grid-cols-3 gap-6 text-center">
+                            <div className="p-6 bg-slate-800/30 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">Spectrum DEX</h3>
+                                <p className="text-sm text-slate-400">Decentralized Exchange</p>
+                            </div>
+                            <div className="p-6 bg-slate-800/30 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">SigmaFi</h3>
+                                <p className="text-sm text-slate-400">P2P Lending</p>
+                            </div>
+                            <div className="p-6 bg-slate-800/30 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">Ergo Mixer</h3>
+                                <p className="text-sm text-slate-400">Non-custodial Privacy</p>
+                            </div>
+                            <div className="p-6 bg-slate-800/30 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">Rosen Bridge</h3>
+                                <p className="text-sm text-slate-400">Trustless Cross-Chain</p>
+                            </div>
+                            <div className="p-6 bg-slate-800/30 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">SkyHarbor</h3>
+                                <p className="text-sm text-slate-400">NFT Marketplace</p>
+                            </div>
+                            <div className="p-6 bg-slate-800/30 rounded-xl border border-green-500/30">
+                                <h3 className="font-bold text-green-400 mb-2">Agentic AI</h3>
+                                <p className="text-sm text-slate-400">This Course!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 7: WHY ERGO FOR PAYMENTS */}
+                <section className="py-24 px-6 bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-12 text-center">Why I Accept Ergo (The Math)</h2>
+                        <ErgoFeeCalculator />
+                    </div>
+                </section>
+
+                {/* SECTION 8: THE VISION */}
+                <section className="py-24 px-6 bg-gradient-to-b from-[#131320] to-[#0f0f1a]">
+                    <div className="max-w-3xl mx-auto text-center">
+                        <Globe size={48} className="mx-auto text-green-400 mb-6" />
+                        <h2 className="text-3xl font-bold text-white mb-6">The World I Want to Build</h2>
+                        <p className="text-xl text-slate-300 leading-relaxed mb-8">
+                            "Commerce without surveillance. Finance without gatekeepers. Programmable money controlled by users, not platforms."
+                        </p>
+                        <p className="text-slate-400">
+                            Every credit card transaction strengthens the surveillance economy.
+                            Every ERG transaction supports decentralized commerce.
+                            I'm voting with my wallet.
+                        </p>
+                    </div>
+                </section>
+
+                {/* SECTION 9: HOW TO START */}
+                <section className="py-24 px-6">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-12 text-center">How to Get Started</h2>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div className="bg-slate-800 p-6 rounded-xl">
+                                <div className="text-green-400 font-bold mb-2">STEP 1</div>
+                                <h3 className="text-xl font-bold text-white mb-2">Get a Wallet</h3>
+                                <p className="text-slate-400">Nautilus (Browser) or Ergo Mobile Wallet (iOS/Android).</p>
+                            </div>
+                            <div className="bg-slate-800 p-6 rounded-xl">
+                                <div className="text-green-400 font-bold mb-2">STEP 2</div>
+                                <h3 className="text-xl font-bold text-white mb-2">Get ERG</h3>
+                                <p className="text-slate-400">KuCoin, Gate.io, or CoinEx. (Not on Coinbase yet—we're early).</p>
+                            </div>
+                            <div className="bg-slate-800 p-6 rounded-xl">
+                                <div className="text-green-400 font-bold mb-2">STEP 3</div>
+                                <h3 className="text-xl font-bold text-white mb-2">Explore</h3>
+                                <p className="text-slate-400">Visit Sigmaverse.io to see the ecosystem.</p>
+                            </div>
+                            <div className="bg-slate-800 p-6 rounded-xl">
+                                <div className="text-green-400 font-bold mb-2">STEP 4</div>
+                                <h3 className="text-xl font-bold text-white mb-2">Use It</h3>
+                                <p className="text-slate-400">Buy this course for 50% off!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 10: OBJECTIONS */}
+                <section className="py-24 px-6 bg-[#131320]">
+                    <div className="max-w-3xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-12 text-center">Common Objections</h2>
+                        <div className="space-y-6">
+                            <div className="bg-slate-800/50 p-6 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">"It has a small market cap. Is it safe?"</h3>
+                                <p className="text-slate-400">Small cap = early opportunity. Bitcoin was $1 once. The tech is battle-tested.</p>
+                            </div>
+                            <div className="bg-slate-800/50 p-6 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">"Why isn't it on Coinbase?"</h3>
+                                <p className="text-slate-400">Decentralized projects don't pay millions for listings. Listings follow volume. It's organic.</p>
+                            </div>
+                            <div className="bg-slate-800/50 p-6 rounded-xl">
+                                <h3 className="font-bold text-white mb-2">"Proof-of-Work is bad for the environment."</h3>
+                                <p className="text-slate-400">Ergo is 1000x more efficient than Bitcoin. Energy secures the network against tyranny.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 12: CLOSING */}
+                <section className="py-24 px-6 text-center">
+                    <div className="max-w-3xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-8">Let's Build Something Real.</h2>
+                        <p className="text-xl text-slate-300 mb-8 italic">
+                            "I'm not asking you to speculate on ERG's price. I'm asking you to USE it. That's how we build the future we want."
+                        </p>
+                        <div className="text-green-400 font-bold text-lg mb-2">DDS</div>
+                        <div className="text-slate-500 text-sm">Dad Deploying Systems | Doctor of Digital Systems</div>
+                    </div>
+                </section>
+
+                {/* SECTION 11: RESOURCES */}
+                <section className="py-12 px-6 border-t border-slate-800 bg-[#0a0a12]">
+                    <div className="max-w-4xl mx-auto grid md:grid-cols-4 gap-8 text-sm">
+                        <div>
+                            <h4 className="font-bold text-white mb-4">Official</h4>
+                            <ul className="space-y-2 text-slate-400">
+                                <li><a href="https://ergoplatform.org" target="_blank" rel="noreferrer" className="hover:text-green-400">Ergo Platform</a></li>
+                                <li><a href="https://docs.ergoplatform.org" target="_blank" rel="noreferrer" className="hover:text-green-400">Documentation</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-white mb-4">Community</h4>
+                            <ul className="space-y-2 text-slate-400">
+                                <li><a href="https://reddit.com/r/ergonauts" target="_blank" rel="noreferrer" className="hover:text-green-400">Reddit</a></li>
+                                <li><a href="https://discord.gg/ergo" target="_blank" rel="noreferrer" className="hover:text-green-400">Discord</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-white mb-4">Tools</h4>
+                            <ul className="space-y-2 text-slate-400">
+                                <li><a href="https://explorer.ergoplatform.com" target="_blank" rel="noreferrer" className="hover:text-green-400">Explorer</a></li>
+                                <li><a href="https://sigmaverse.io" target="_blank" rel="noreferrer" className="hover:text-green-400">Sigmaverse</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-white mb-4">Wallets</h4>
+                            <ul className="space-y-2 text-slate-400">
+                                <li><a href="https://nautilus.wallet" target="_blank" rel="noreferrer" className="hover:text-green-400">Nautilus</a></li>
+                                <li><a href="https://ergoplatform.org/en/get-erg/#Wallets" target="_blank" rel="noreferrer" className="hover:text-green-400">Mobile Wallets</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
             </div>
-        </div>
+        </WebbookLayout>
     );
 }
