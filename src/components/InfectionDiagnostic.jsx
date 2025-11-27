@@ -262,36 +262,52 @@ const InfectionDiagnostic = () => {
             ) : (
                 /* Results Card */
                 <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="w-full"
+                >
+                    <div ref={resultsRef} className="bg-white rounded-2xl p-8 shadow-xl mb-8 border-2" style={{ borderColor: diagnosis.color }}>
+                        <div className="text-6xl mb-4">{diagnosis.emoji}</div>
+                        <h3 className="text-3xl font-bold mb-2 medical-heading" style={{ color: diagnosis.color }}>
+                            {diagnosis.stage}
+                        </h3>
+                        <p className="text-xl font-bold mb-6" style={{ color: diagnosis.color }}>
+                            SEVERITY: {diagnosis.severity}
+                        </p>
+
+                        <div className="grid grid-cols-2 gap-4 mb-6">
+                            <div className="bg-gray-50 p-6 rounded-2xl">
+                                <div className="text-sm text-gray-600 mb-2 font-semibold">INFECTION SCORE</div>
                                 <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
                                     {infectionLevel}/10
                                 </div>
                             </div>
-                            <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: `${diagnosis.color}15` }}>
+                            <div className="bg-gray-50 p-6 rounded-2xl">
                                 <div className="text-sm text-gray-600 mb-2 font-semibold">CHAOS LEVEL</div>
                                 <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
                                     {Math.round((infectionLevel / 10) * 100)}%
                                 </div>
                             </div>
-                        </div >
+                        </div>
 
-    {/* Recommendation */ }
-    < div className = "p-6 rounded-2xl mb-6 text-center" style = {{ backgroundColor: `${diagnosis.color}10`, borderLeft: `4px solid ${diagnosis.color}` }}>
+                        {/* Recommendation */}
+                        <div className="p-6 rounded-2xl mb-6 text-center" style={{ backgroundColor: `${diagnosis.color}10`, borderLeft: `4px solid ${diagnosis.color}` }}>
                             <p className="text-lg font-bold medical-heading mb-2" style={{ color: '#0055FF' }}>
                                 {infectionLevel >= 6 ? '🚨 Immediate Action Recommended' : '💡 Preventive Measures Suggested'}
                             </p>
                             <p className="text-sm text-gray-600">
                                 Download the free guide to learn how AI agents can restore order to your household
                             </p>
-                        </div >
+                        </div>
 
-    {/* Disclaimer */ }
-    < div className = "text-center text-xs text-gray-400 border-t pt-4" >
-                            * Entertainment purposes only.Not medical or professional advice.
-                        </div >
-                    </div >
+                        {/* Disclaimer */}
+                        <div className="text-center text-xs text-gray-400 border-t pt-4">
+                            * Entertainment purposes only. Not medical or professional advice.
+                        </div>
+                    </div>
 
-    {/* Social Share Buttons */ }
-    < div className = "flex flex-wrap gap-3 justify-center mt-8" >
+                    {/* Social Share Buttons */}
+                    <div className="flex flex-wrap gap-3 justify-center mt-8">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -328,25 +344,25 @@ const InfectionDiagnostic = () => {
                         >
                             <span>📥</span> Download Image
                         </motion.button>
-                    </div >
+                    </div>
 
-    {/* Retake Button */ }
-    < div className = "text-center mt-4" >
-        <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-                setCurrentQuestion(0);
-                setAnswers([]);
-                setShowResults(false);
-            }}
-            className="px-8 py-3 rounded-lg font-bold shadow-lg glass-card"
-            style={{ color: '#0055FF' }}
-        >
-            🔄 Retake Assessment
-        </motion.button>
-                    </div >
-                </motion.div >
+                    {/* Retake Button */}
+                    <div className="text-center mt-4">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                                setCurrentQuestion(0);
+                                setAnswers([]);
+                                setShowResults(false);
+                            }}
+                            className="px-8 py-3 rounded-lg font-bold shadow-lg glass-card"
+                            style={{ color: '#0055FF' }}
+                        >
+                            🔄 Retake Assessment
+                        </motion.button>
+                    </div>
+                </motion.div>
             )}
         </div >
     );
