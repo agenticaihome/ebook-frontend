@@ -5,7 +5,8 @@ const CaptainHero = ({
     message,
     position = 'right', // 'left' | 'right' | 'center'
     size = 'md', // 'sm' | 'md' | 'lg'
-    className = ''
+    className = '',
+    imageSrc = '/assets/captain-efficiency-v2.png' // Default to the standard one
 }) => {
     const sizeClasses = {
         sm: 'w-32',
@@ -67,7 +68,7 @@ const CaptainHero = ({
                 />
 
                 <img
-                    src="/assets/captain-efficiency-v2.png"
+                    src={imageSrc}
                     alt="Captain Efficiency"
                     className="w-full h-auto drop-shadow-2xl"
                 />
