@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Check, Shield, Zap, Book, Lock, AlertCircle, Download, Coins, CreditCard, ArrowRight, Loader } from 'lucide-react';
+import { Book, Check, Download, AlertCircle, Coins, X, Shield, Zap, Lock, CreditCard, ArrowRight, Loader } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ChaosCalculator from './components/ChaosCalculator';
 
 export default function SalesPage() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -363,6 +364,11 @@ export default function SalesPage() {
             <div className="text-purple-200 text-sm">$20 investment → Life-changing results</div>
           </div>
         </div>
+      </div>
+
+      {/* Chaos Calculator */}
+      <div className="max-w-6xl mx-auto px-4 mb-12">
+        <ChaosCalculator />
       </div>
 
       {/* Inside the Book: Detailed Parts Preview */}
