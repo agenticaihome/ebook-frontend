@@ -78,10 +78,47 @@ const InfectionDiagnostic = () => {
 
     const getDiagnosis = () => {
         const infectionLevel = calculateInfectionLevel();
-        if (infectionLevel === 0) return { stage: "Stage 0: Clean Bill of Health", severity: "HEALTHY", color: "#00FF00" };
-        if (infectionLevel <= 2) return { stage: "Stage 1: Early Infection", severity: "MILD", color: "#FFFF00" };
-        if (infectionLevel <= 3) return { stage: "Stage 2: Spreading Chaos", severity: "MODERATE", color: "#FFA500" };
-        return { stage: "Stage 3: Systemic Overload", severity: "CRITICAL", color: "#FF4444" };
+        if (infectionLevel === 0) return {
+            stage: "Level 0: Fully Optimized",
+            severity: "EXCELLENT",
+            color: "#00FF00",
+            emoji: "✨"
+        };
+        if (infectionLevel <= 2) return {
+            stage: "Level 1: Minor Chaos",
+            severity: "MANAGEABLE",
+            color: "#FFFF00",
+            emoji: "⚠️"
+        };
+        if (infectionLevel <= 3) return {
+            stage: "Level 2: Spreading Disorder",
+            severity: "CONCERNING",
+            color: "#FFA500",
+            emoji: "🔥"
+        };
+        return {
+            stage: "Level 3: Total Chaos",
+            severity: "CRITICAL",
+            color: "#FF4444",
+            emoji: "🚨"
+        };
+    };
+
+    const shareToTwitter = () => {
+        const diagnosis = getDiagnosis();
+        const text = `I just took the Household Chaos Assessment and got: ${diagnosis.stage}! ${diagnosis.emoji} Find out your chaos level:`;
+        const url = window.location.href;
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+    };
+
+    const shareToFacebook = () => {
+        const url = window.location.href;
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+    };
+
+    const shareToLinkedIn = () => {
+        const url = window.location.href;
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
     };
 
     const downloadResults = async () => {
@@ -91,7 +128,7 @@ const InfectionDiagnostic = () => {
                 scale: 2
             });
             const link = document.createElement('a');
-            link.download = 'chaos-diagnosis.png';
+            link.download = 'chaos-assessment.png';
             link.href = canvas.toDataURL();
             link.click();
         }
@@ -107,10 +144,13 @@ const InfectionDiagnostic = () => {
                     {/* Header */}
                     <div className="text-center mb-8">
                         <h2 className="text-3xl md:text-4xl font-bold mb-3 medical-heading" style={{ color: '#0055FF' }}>
-                            🩺 Infection Diagnostic Quiz
+                            🎯 Household Chaos Assessment
                         </h2>
                         <p className="text-gray-600 medical-body">
-                            Answer honestly to discover your chaos infection level
+                            Answer honestly to discover your household chaos level
+                        </p>
+                        <p className="text-xs text-gray-400 mt-2">
+                            *For entertainment purposes only. Not actual medical advice.
                         </p>
                     </div>
 
@@ -201,72 +241,92 @@ const InfectionDiagnostic = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div ref={resultsRef} className="bg-white p-8 rounded-2xl border-4" style={{ borderColor: diagnosis.color }}>
-                        {/* Medical Chart Header */}
-                        <div className="text-center mb-6 pb-6 border-b-2" style={{ borderColor: diagnosis.color }}>
-                            <div className="text-sm font-mono text-gray-500 mb-2">MEDICAL DIAGNOSTIC REPORT</div>
-                            <h2 className="text-4xl font-bold medical-heading mb-2" style={{ color: diagnosis.color }}>
+                    <div ref={resultsRef} className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-2xl border-2" style={{ borderColor: diagnosis.color }}>
+                        {/* Modern Header with Captain Efficiency */}
+                        <div className="text-center mb-6">
+                            <div className="text-6xl mb-4">{diagnosis.emoji}</div>
+                            <h2 className="text-4xl md:text-5xl font-bold medical-heading mb-3" style={{ color: diagnosis.color }}>
                                 {diagnosis.stage}
                             </h2>
-                            <div className="inline-block px-4 py-2 rounded-full font-bold text-white" style={{ backgroundColor: diagnosis.color }}>
-                                SEVERITY: {diagnosis.severity}
+                            <div className="inline-block px-6 py-3 rounded-full font-bold text-white shadow-lg" style={{ backgroundColor: diagnosis.color }}>
+                                {diagnosis.severity}
                             </div>
                         </div>
 
-                        {/* Infection Score */}
-                        <div className="grid grid-cols-2 gap-6 mb-6">
-                            <div className="text-center p-4 glass-card">
-                                <div className="text-sm text-gray-600 mb-1">INFECTION SCORE</div>
+                        {/* Stats Grid */}
+                        <div className="grid grid-cols-2 gap-4 mb-6">
+                            <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: `${diagnosis.color}15` }}>
+                                <div className="text-sm text-gray-600 mb-2 font-semibold">CHAOS SCORE</div>
                                 <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
                                     {infectionLevel}/5
                                 </div>
                             </div>
-                            <div className="text-center p-4 glass-card">
-                                <div className="text-sm text-gray-600 mb-1">CHAOS LEVEL</div>
+                            <div className="text-center p-6 rounded-2xl" style={{ backgroundColor: `${diagnosis.color}15` }}>
+                                <div className="text-sm text-gray-600 mb-2 font-semibold">CHAOS LEVEL</div>
                                 <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
                                     {Math.round((infectionLevel / 5) * 100)}%
                                 </div>
                             </div>
                         </div>
 
-                        {/* Prescription */}
-                        <div className="p-6 rounded-lg mb-6" style={{ backgroundColor: `${diagnosis.color}20` }}>
-                            <div className="text-sm font-semibold mb-2" style={{ color: diagnosis.color }}>
-                                📋 PRESCRIPTION
-                            </div>
-                            <p className="text-lg font-bold medical-heading" style={{ color: '#0055FF' }}>
-                                {infectionLevel >= 3 ? 'Immediate Agent Deployment Required' : 'Preventive Agent Deployment Recommended'}
+                        {/* Recommendation */}
+                        <div className="p-6 rounded-2xl mb-6 text-center" style={{ backgroundColor: `${diagnosis.color}10`, borderLeft: `4px solid ${diagnosis.color}` }}>
+                            <p className="text-lg font-bold medical-heading mb-2" style={{ color: '#0055FF' }}>
+                                {infectionLevel >= 3 ? '🚨 Immediate Action Recommended' : '💡 Preventive Measures Suggested'}
                             </p>
-                            <p className="text-sm text-gray-600 mt-2">
-                                Download the free guide to learn how AI agents can cure your household chaos
+                            <p className="text-sm text-gray-600">
+                                Download the free guide to learn how AI agents can restore order to your household
                             </p>
                         </div>
 
-                        {/* Footer */}
-                        <div className="text-center text-xs text-gray-500 font-mono">
-                            DIAGNOSED BY: Dr. Domestic Surgeon | REPORT ID: #{Math.random().toString(36).substr(2, 9).toUpperCase()}
+                        {/* Disclaimer */}
+                        <div className="text-center text-xs text-gray-400 border-t pt-4">
+                            *Entertainment purposes only. Not medical or professional advice.
                         </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-4 justify-center mt-8">
+                    {/* Social Share Buttons */}
+                    <div className="flex flex-wrap gap-3 justify-center mt-8">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            animate={{
-                                scale: [1, 1.1, 1],
-                            }}
-                            transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                repeatType: "reverse"
-                            }}
-                            onClick={downloadResults}
-                            className="px-8 py-4 rounded-lg font-bold text-lg shadow-clinical-xl"
-                            style={{ backgroundColor: diagnosis.color, color: 'white' }}
+                            onClick={shareToTwitter}
+                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2"
+                            style={{ backgroundColor: '#1DA1F2', color: 'white' }}
                         >
-                            📸 Download & Share Results
+                            <span>🐦</span> Share on Twitter
                         </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={shareToFacebook}
+                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2"
+                            style={{ backgroundColor: '#4267B2', color: 'white' }}
+                        >
+                            <span>📘</span> Share on Facebook
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={shareToLinkedIn}
+                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2"
+                            style={{ backgroundColor: '#0077B5', color: 'white' }}
+                        >
+                            <span>💼</span> Share on LinkedIn
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={downloadResults}
+                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2 glass-card"
+                            style={{ color: '#0055FF' }}
+                        >
+                            <span>📥</span> Download Image
+                        </motion.button>
+                    </div>
+
+                    {/* Retake Button */}
+                    <div className="text-center mt-4">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -275,10 +335,10 @@ const InfectionDiagnostic = () => {
                                 setAnswers([]);
                                 setShowResults(false);
                             }}
-                            className="px-8 py-4 rounded-lg font-bold text-lg shadow-clinical-lg glass-card"
+                            className="px-8 py-3 rounded-lg font-bold shadow-lg glass-card"
                             style={{ color: '#0055FF' }}
                         >
-                            🔄 Retake Quiz
+                            🔄 Retake Assessment
                         </motion.button>
                     </div>
                 </motion.div>
