@@ -1,41 +1,36 @@
 import React, { useState } from 'react';
-import { Book, Check, Download, AlertCircle, Coins, Shield, Zap, Lock, CreditCard, ArrowRight, LogIn } from 'lucide-react';
+import { Book, Check, Download, AlertCircle, Coins, Shield, Zap, Lock, CreditCard, ArrowRight, LogIn, ChevronDown } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import WebbookLayout from './components/layout/WebbookLayout';
+import CaptainTip from './components/interactive/CaptainTip';
+import InteractiveDiagram from './components/interactive/InteractiveDiagram';
+import AgentSimulation from './components/interactive/AgentSimulation';
 import ChaosCalculator from './components/ChaosCalculator';
 import InfectionDiagnostic from './components/InfectionDiagnostic';
 
 export default function SalesPage() {
-  const [currentPage, setCurrentPage] = useState('home');
   const [email, setEmail] = useState('');
   const [paymentStatus, setPaymentStatus] = useState('initial');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const BACKEND_URL = 'http://localhost:8080'; // Updated to localhost for dev
+  const BACKEND_URL = 'http://localhost:8080';
 
-  const handleGetFree = () => {
-    window.open('/part1.pdf', '_blank');
-  };
-
-  // Stripe Payment Flow
   const handleStripePayment = async () => {
     if (!email || !email.includes('@')) {
       alert('Please enter a valid email address');
       return;
     }
-
     setPaymentStatus('processing');
     setError(null);
-
     try {
       const response = await fetch(`${BACKEND_URL}/api/payment/stripe/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
       });
-
       const data = await response.json();
-
       if (data.success && data.checkoutUrl) {
         window.location.href = data.checkoutUrl;
       } else {
@@ -49,548 +44,294 @@ export default function SalesPage() {
     }
   };
 
-  // Ergo Payment Flow - Redirect to new page
   const handleErgoPayment = () => {
     navigate('/pay-ergo');
   };
 
-  // Render Why Ergo page
-  if (currentPage === 'why-ergo') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <button
-            onClick={() => setCurrentPage('home')}
-            className="mb-8 flex items-center text-purple-600 hover:text-purple-700 font-semibold"
-          >
-            <ArrowRight className="w-5 h-5 mr-2 rotate-180" />
-            Back to Home
-          </button>
-
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">
-              Why Pay with <span className="text-green-600">Ergo</span>?
-            </h1>
-
-            <div className="prose prose-lg max-w-none">
-              <div className="bg-green-50 border-2 border-green-200 rounded-xl p-6 mb-8">
-                <h2 className="text-2xl font-bold text-green-800 mb-4">💰 50% Discount for Crypto Users!</h2>
-                <p className="text-green-900 text-xl">
-                  Pay <strong>$20 USD</strong> in ERG instead of $40 via credit card. We reward tech-savvy early adopters who value privacy and decentralization.
-                </p>
-              </div>
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">🔒 Why Ergo is Better Than Credit Cards:</h2>
-
-              <div className="space-y-6 mb-8">
-                <div className="flex items-start">
-                  <Shield className="w-8 h-8 text-green-600 mr-4 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Privacy Protection</h3>
-                    <p className="text-gray-700">
-                      No credit card numbers, no personal data shared with payment processors. Your purchase is pseudonymous - only you and the blockchain know.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Coins className="w-8 h-8 text-green-600 mr-4 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Lower Fees = Lower Price</h3>
-                    <p className="text-gray-700">
-                      Credit card processors take 3-5% + fees. Ergo transactions cost pennies. We pass the savings directly to you.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Lock className="w-8 h-8 text-green-600 mr-4 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">No Chargebacks or Fraud</h3>
-                    <p className="text-gray-700">
-                      Blockchain payments are final and secure. No risk of stolen credit cards or fraudulent disputes.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Zap className="w-8 h-8 text-green-600 mr-4 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Direct & Immediate</h3>
-                    <p className="text-gray-700">
-                      Payment goes directly from your wallet to mine. No middlemen, no delays, no banks involved.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">🌍 What is Ergo?</h2>
-              <p className="text-gray-700 mb-4">
-                Ergo (ERG) is a proof-of-work cryptocurrency focused on privacy, security, and efficiency. It's designed for real-world financial applications with:
-              </p>
-              <ul className="space-y-2 text-gray-700 mb-6">
-                <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                  <span><strong>True decentralization</strong> - No pre-mine, no ICO, fair launch</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                  <span><strong>Privacy features</strong> - Optional privacy for transactions</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                  <span><strong>Efficient</strong> - Low fees, fast confirmations (~2 minutes)</span>
-                </li>
-                <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
-                  <span><strong>Sustainable</strong> - Energy-efficient mining</span>
-                </li>
-              </ul>
-
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">📱 How to Get ERG:</h2>
-              <div className="bg-gray-50 rounded-xl p-6 mb-6">
-                <ol className="space-y-3 text-gray-700">
-                  <li><strong>1. Get a wallet:</strong> Download <a href="https://nautilus.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700">Nautilus Wallet</a> (Chrome extension) or <a href="https://ergoplatform.org/en/get-erg/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700">SAFEW</a></li>
-                  <li><strong>2. Buy ERG:</strong> Use exchanges like <a href="https://www.gate.io" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700">Gate.io</a>, <a href="https://www.coinex.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700">CoinEx</a>, or decentralized options</li>
-                  <li><strong>3. Send to your wallet:</strong> Withdraw ERG from exchange to your wallet address</li>
-                  <li><strong>4. Pay here:</strong> Scan QR code when purchasing - it's that easy!</li>
-                </ol>
-              </div>
-
-              <div className="bg-purple-50 border-2 border-purple-200 rounded-xl p-6">
-                <h3 className="text-xl font-bold text-purple-900 mb-3">🎁 Special Offer for ERG Users</h3>
-                <p className="text-purple-900 mb-4">
-                  As a thank you for supporting decentralized payments, you get <strong>50% off the regular price</strong>. That's $20 instead of $40!
-                </p>
-                <button
-                  onClick={() => setCurrentPage('home')}
-                  className="bg-purple-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-purple-700 transition transform hover:scale-105"
-                >
-                  Get Started with ERG Payment →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen sterile-bg relative">
-      {/* Login Button */}
-      <div className="absolute top-6 right-6 z-50">
-        <Link
-          to="/login"
-          className="bg-white/90 hover:bg-white text-purple-600 font-semibold py-2 px-6 rounded-full shadow-lg backdrop-blur-sm transition-all flex items-center gap-2"
-        >
-          <LogIn size={18} />
-          Login
-        </Link>
-      </div>
+    <WebbookLayout>
+      <div className="min-h-screen sterile-bg relative pb-24">
 
-      {/* Hero Section */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <div className="inline-block diagnostic-badge px-4 py-2 rounded-full text-sm mb-4">
-            🦷 Root Cause Efficiency for the Modern Family
+        {/* Hero Section */}
+        <section className="relative pt-20 pb-32 px-4 overflow-hidden">
+          <div className="max-w-6xl mx-auto text-center relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-block diagnostic-badge px-4 py-2 rounded-full text-sm mb-6"
+            >
+              🦷 Root Cause Efficiency for the Modern Family
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 medical-heading leading-tight"
+            >
+              Stop Managing Your Life.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">
+                Start Living It.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            >
+              The world's first <strong>Interactive Agentic Webbook</strong>. Discover how a Doctor of Digital Systems uses AI agents to treat the root cause of your time crisis.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col md:flex-row gap-4 justify-center"
+            >
+              <Link
+                to="/part1"
+                className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 flex items-center justify-center gap-2"
+              >
+                <BookOpen size={20} /> Start Reading Free
+              </Link>
+              <button
+                onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+              >
+                <Zap size={20} className="text-yellow-500" /> Get Full Access
+              </button>
+            </motion.div>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 medical-heading">
-            Stop Managing Your Life.<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
-              Start Living It.
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Discover how a Doctor of Digital Systems uses AI agents to treat the root cause of your time crisis—saving 15+ hours per week through precision delegation.
-          </p>
-        </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="relative">
-              <div className="clinical-gradient-blue glass-card-lg rounded-lg p-8 text-white shadow-clinical-xl relative z-10">
-                <div className="text-center">
-                  <Book className="w-20 h-20 mx-auto mb-4 opacity-90" />
-                  <h2 className="text-3xl font-bold mb-2">AGENTIC AI AT HOME</h2>
-                  <p className="text-purple-100 mb-4">By The Doctor of Digital Systems (DDS)</p>
-                  <div className="bg-white/20 backdrop-blur rounded-lg p-4">
-                    <p className="text-sm">250+ Pages • 5 Parts • 15 Chapters • 2026 Edition</p>
+          {/* Abstract Background Elements */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div className="absolute top-20 right-10 w-64 h-64 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-32 left-1/2 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+          </div>
+        </section>
+
+        {/* Interactive Problem Statement */}
+        <section className="max-w-4xl mx-auto px-4 mb-24">
+          <CaptainTip type="warning" title="The Diagnosis" pose="alert">
+            Most people think they have a "time management" problem. They don't. They have a <strong>Mental Load Infection</strong>.
+            Trying to fix it with a calendar app is like putting a band-aid on a cavity.
+          </CaptainTip>
+
+          <InteractiveDiagram
+            title="The Root Cause of Chaos"
+            steps={[
+              {
+                label: "Symptoms",
+                title: "Surface Level Chaos",
+                description: "Missed appointments, rotting groceries, late fees, and constant exhaustion.",
+                details: ["Decision Fatigue", "Reactive Mode", "Anxiety"]
+              },
+              {
+                label: "Diagnosis",
+                title: "Mental Load Infection",
+                description: "The invisible work of managing a household. Remembering, planning, and coordinating takes more energy than doing.",
+                details: ["Cognitive Overload", "Context Switching", "Memory Leaks"]
+              },
+              {
+                label: "Treatment",
+                title: "Agentic Delegation",
+                description: "Offloading the 'management' layer to AI agents. You become the CEO, not the secretary.",
+                details: ["Automated Planning", "Proactive Reminders", "Systematic Execution"]
+              }
+            ]}
+          />
+        </section>
+
+        {/* Agent Simulation Demo */}
+        <section className="bg-slate-900 py-24 text-white mb-24">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="inline-block px-3 py-1 rounded-full bg-green-900/50 text-green-400 text-xs font-bold mb-4 border border-green-800">
+                  LIVE DEMO
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Meet Your New Staff</h2>
+                <p className="text-slate-400 text-lg mb-8 leading-relaxed">
+                  Imagine waking up and your day is already planned. Your groceries are ordered. Your emails are drafted.
+                  This isn't sci-fi. It's <strong>Agentic AI</strong>.
+                </p>
+
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center flex-shrink-0">
+                      <Zap className="text-yellow-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-xl mb-1">Morning Agent</h3>
+                      <p className="text-slate-400 text-sm">Briefs you on weather, schedule, and priorities before you leave bed.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center flex-shrink-0">
+                      <Shield className="text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-xl mb-1">Home Agent</h3>
+                      <p className="text-slate-400 text-sm">Monitors bills, maintenance, and supplies so you never run out.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">What You'll Learn:</h3>
-            <ul className="space-y-3">
-              {[
-                'Diagnose the root cause of your time crisis (mental load, not laziness)',
-                'Choose your AI platform (Google/Microsoft/Apple)',
-                'Implement privacy and security protocols (infection control)',
-                'Build your first AI agents (Morning, Kitchen, Household)',
-                'Achieve 5-8 hours of cognitive relief per week',
-                'Treat decision fatigue with precision delegation',
-                'Deploy Root Cause Efficiency in your home'
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-start">
-                  <Check className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Captain Efficiency */}
-      <div className="max-w-4xl mx-auto mb-12 px-4">
-        <div className="glass-card-lg p-8 flex flex-col justify-center relative overflow-hidden float-effect">
-          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-purple-100 rounded-full opacity-50 blur-xl"></div>
-
-          <div className="flex items-start mb-4 relative z-10">
-
-            <div>
-              <h3 className="text-xl font-bold mb-1 medical-heading" style={{ color: "#0055FF" }}>Meet Your Precision AI Instrument</h3>
-              <p className="text-sm font-semibold mb-2" style={{ color: "#00DDDD" }}>Captain Efficiency</p>
-            </div>
-          </div>
-          <p className="text-purple-800 italic relative z-10">
-            "Think of me as the precision instrument that goes in after the Doc finds the problem. He diagnoses. I treat. Together, we save the tooth—and your sanity."
-          </p>
-        </div>
-      </div>
-
-      {/* Value Proposition: Time & Money Savings */}
-      <div className="clinical-gradient-blue glass-card-xl rounded-2xl p-8 md:p-12 text-white mb-12 shadow-clinical-xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 medical-heading">The Clinical Results: Root Cause Treatment</h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="text-5xl font-bold mb-2">10+</div>
-            <div className="text-xl mb-2">Hours Saved Per Week</div>
-            <div className="text-purple-200 text-sm">Reclaim 500+ hours/year for what matters</div>
-          </div>
-          <div className="text-center">
-            <div className="text-5xl font-bold mb-2">$10k+</div>
-            <div className="text-xl mb-2">Annual Value</div>
-            <div className="text-purple-200 text-sm">From savings, efficiency, and reclaimed time</div>
-          </div>
-          <div className="text-center">
-            <div className="text-5xl font-bold mb-2">300x</div>
-            <div className="text-xl mb-2">Return on Investment</div>
-            <div className="text-purple-200 text-sm">$20 investment → Life-changing results</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Chaos Calculator */}
-      <div className="max-w-6xl mx-auto px-4 mb-12">
-        <ChaosCalculator />
-      </div>
-
-      {/* Infection Diagnostic Quiz */}
-      <div className="max-w-6xl mx-auto px-4 mb-12">
-        <InfectionDiagnostic />
-      </div>
-
-      {/* Inside the Book: Detailed Parts Preview */}
-      <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-12">
-        <h2 className="text-4xl font-bold text-gray-900 text-center mb-4">What's Inside the Book</h2>
-        <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-          A complete system. 15 Chapters. 5 Parts. Zero fluff.
-        </p>
-
-        <div className="space-y-8">
-          {/* Part 1 */}
-          <div className="border-l-4 border-teal-500 pl-6 relative">
-            <div className="absolute -left-[1.65rem] top-0 bg-teal-500 text-white px-2 py-1 rounded text-xs font-bold uppercase tracking-wide transform -translate-y-1/2 shadow-sm">
-              Free
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">🦷 Part 1: DIAGNOSIS - Finding the Root Cause of Your Time Crisis</h3>
-            <p className="text-gray-700 mb-4">
-              The diagnostic phase. Identify the root cause of your time crisis and select your treatment instruments.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4 text-sm mb-4">
-              <div className="bg-teal-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">📊 Chapter 1: The Diagnosis</p>
-                <p className="text-gray-700">What's really killing your time. Understanding mental load as the root cause infection.</p>
-              </div>
-              <div className="bg-teal-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🔧 Chapter 2: The Instrument Tray</p>
-                <p className="text-gray-700">Choosing your AI platform (Google/Microsoft/Apple). Selecting the right tools for your hands.</p>
-              </div>
-              <div className="bg-teal-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🔒 Chapter 3: Infection Control</p>
-                <p className="text-gray-700">Privacy, security, and boundaries. The three commandments of AI privacy.</p>
-              </div>
-            </div>
-            <button
-              onClick={handleGetFree}
-              className="inline-flex items-center text-teal-600 font-bold hover:text-teal-700 hover:underline transition"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Download Part 1 Now (Free, No Strings Attached)
-            </button>
-          </div>
-
-          {/* Part 2 */}
-          <div className="border-l-4 border-purple-500 pl-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">📚 Part 2: Getting Started - Your First Agents</h3>
-            <p className="text-gray-700 mb-4">
-              Build your foundation with three essential agents that handle the chaos of daily life.
-            </p>
-            <div className="grid md:grid-cols-3 gap-4 text-sm">
-              <div className="bg-purple-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">☀️ Morning Agent</p>
-                <p className="text-gray-700">Wake up to a 3-minute brief: weather, priorities, and schedule. Start calm, not reactive.</p>
-              </div>
-              <div className="bg-purple-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🍳 Kitchen Agent</p>
-                <p className="text-gray-700">Automated meal planning, smart shopping lists, and grocery coordination. Save ~$530/month.</p>
-              </div>
-              <div className="bg-purple-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🏠 Home Agent</p>
-                <p className="text-gray-700">The "Essential 5" reminders: HVAC, warranties, bills, and supplies. Never miss a due date.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Part 3 */}
-          <div className="border-l-4 border-blue-500 pl-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">💼 Part 3: Work & Productivity</h3>
-            <p className="text-gray-700 mb-4">
-              Reclaim your workday. Move from "firefighting" to focused, high-impact work.
-            </p>
-            <div className="grid md:grid-cols-3 gap-4 text-sm">
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">📧 Email Agent</p>
-                <p className="text-gray-700">Smart triage (Urgent vs. Low), auto-draft responses, and follow-up tracking. Inbox Zero on autopilot.</p>
-              </div>
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">📅 Calendar Agent</p>
-                <p className="text-gray-700">Defend deep work blocks, optimize meeting times, and auto-prep briefings for every call.</p>
-              </div>
-              <div className="bg-blue-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🚀 Work Agent</p>
-                <p className="text-gray-700">"Daily Top 3" prioritization, smart scheduling based on energy levels, and project tracking.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Part 4 */}
-          <div className="border-l-4 border-green-500 pl-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">❤️ Part 4: Health, Wellness & Learning</h3>
-            <p className="text-gray-700 mb-4">
-              Use AI to support your physical and mental wellbeing, not just your productivity.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <p className="font-semibold text-gray-900 mb-2">Health & Mental Wellness:</p>
-                <ul className="space-y-1 text-gray-700 text-sm">
-                  <li className="flex items-start"><Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" /><strong>Health Agent:</strong> Track meds, symptoms, and appointments</li>
-                  <li className="flex items-start"><Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" /><strong>Mental Health:</strong> Daily check-ins, pattern recognition, and coping strategies</li>
-                  <li className="flex items-start"><Check className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" /><strong>Privacy First:</strong> Your sensitive data stays secure</li>
+                <AgentSimulation
+                  agentName="morning-brief"
+                  task="Generate Daily Briefing"
+                  steps={[
+                    { action: "FETCH", detail: "Weather data for New York: 72°F, Clear" },
+                    { action: "SCAN", detail: "Calendar: 3 meetings found" },
+                    { action: "PRIORITIZE", detail: "Top Priority: Project Deadline at 5PM" },
+                    { action: "COMPILE", detail: "Drafting briefing summary..." },
+                    { action: "SEND", detail: "Briefing sent to user's phone" }
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Diagnostic Tools */}
+        <section className="max-w-6xl mx-auto px-4 mb-24">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Assess Your Situation</h2>
+            <p className="text-slate-600">Use our clinical tools to measure your household efficiency.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <ChaosCalculator />
+            <InfectionDiagnostic />
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="max-w-5xl mx-auto px-4 mb-24">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Choose Your Treatment Plan</h2>
+            <p className="text-slate-600 text-lg">One-time payment. Lifetime access to the interactive webbook.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Stripe Card */}
+            <div className="glass-card-lg p-8 hover:border-blue-300 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full -mr-16 -mt-16 opacity-50 group-hover:scale-110 transition-transform" />
+
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+                  <CreditCard className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Standard Access</h3>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl font-bold text-slate-900">$40</span>
+                  <span className="text-slate-500">USD</span>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center gap-3 text-slate-700">
+                    <Check className="w-5 h-5 text-green-500" /> Instant Access
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-700">
+                    <Check className="w-5 h-5 text-green-500" /> Secure Stripe Checkout
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-700">
+                    <Check className="w-5 h-5 text-green-500" /> All 5 Parts Included
+                  </li>
                 </ul>
-              </div>
-              <div className="bg-green-50 rounded-lg p-4">
-                <p className="font-semibold text-gray-900 mb-2">🎓 Learning Agent:</p>
-                <p className="text-gray-700 text-sm mb-2">Turn AI into your personal tutor.</p>
-                <p className="text-gray-700 text-sm">Personalized curriculums, adaptive practice schedules, and resource curation for any skill (languages, music, cooking).</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Part 5 */}
-          <div className="border-l-4 border-indigo-500 pl-6">
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">🔮 Part 5: Advanced Systems & Future</h3>
-            <p className="text-gray-700 mb-4">
-              The cutting edge. Coordinate multiple agents into a seamless ecosystem.
-            </p>
-            <div className="bg-indigo-50 rounded-lg p-4">
-              <p className="font-semibold text-gray-900 mb-2">Multi-Agent Coordination:</p>
-              <p className="text-gray-700 text-sm mb-2">What happens when your Health Agent tells your Calendar Agent you slept poorly? (Hint: It clears your morning schedule).</p>
-              <p className="text-gray-700 text-sm">Plus: Smart Home Revolution and the future of Embodied AI.</p>
+                <div className="mb-6">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500 mb-3"
+                  />
+                  <button
+                    onClick={handleStripePayment}
+                    disabled={paymentStatus === 'processing'}
+                    className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  >
+                    {paymentStatus === 'processing' ? 'Processing...' : 'Pay with Card'}
+                  </button>
+                </div>
+                {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+              </div>
+            </div>
+
+            {/* Ergo Card */}
+            <div className="glass-card-lg p-8 border-green-200 hover:border-green-400 transition-all relative overflow-hidden group">
+              <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">
+                50% OFF
+              </div>
+
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-6">
+                  <Coins className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-2">Crypto Access</h3>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl font-bold text-green-600">$20</span>
+                  <span className="text-slate-500">USD (in ERG)</span>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  <li className="flex items-center gap-3 text-slate-700">
+                    <Check className="w-5 h-5 text-green-500" /> Privacy Focused
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-700">
+                    <Check className="w-5 h-5 text-green-500" /> No Middlemen
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-700">
+                    <Check className="w-5 h-5 text-green-500" /> Tech-Savvy Discount
+                  </li>
+                </ul>
+
+                <button
+                  onClick={handleErgoPayment}
+                  className="w-full bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition-colors shadow-lg shadow-green-200"
+                >
+                  Pay with Ergo
+                </button>
+
+                <div className="mt-4 text-center">
+                  <Link to="/how-to-buy-ergo" className="text-sm text-green-600 font-medium hover:underline">
+                    How to buy Ergo?
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+
       </div>
+    </WebbookLayout>
+  );
+}
 
-      {/* Who This Is For */}
-      <div className="clinical-gradient-mint glass-card-xl rounded-2xl p-8 md:p-12 text-white mb-12 shadow-clinical-xl">
-        <h2 className="text-3xl font-bold text-center mb-8 medical-heading">Is This Book Right for You?</h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div>
-            <h3 className="text-2xl font-semibold mb-4 flex items-center"><Check className="w-6 h-6 mr-2" />Perfect For:</h3>
-            <ul className="space-y-3">
-              <li>✅ Busy professionals suffering from decision fatigue</li>
-              <li>✅ Parents drowning in household mental load</li>
-              <li>✅ Healthcare workers managing complex schedules</li>
-              <li>✅ Anyone seeking cognitive relief (not just "more time")</li>
-              <li>✅ Privacy-conscious users who want local AI options</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-2xl font-semibold mb-4 flex items-center"><AlertCircle className="w-6 h-6 mr-2" />NOT For:</h3>
-            <ul className="space-y-3 text-teal-100">
-              <li>❌ People expecting a magic "do everything" button</li>
-              <li>❌ Those unwilling to spend 2-3 hours on diagnosis and setup</li>
-              <li>❌ Anyone looking for surface-level productivity hacks (we treat root causes)</li>
-            </ul>
-            <p className="mt-4 text-sm italic">"The gap between understanding and implementation is where most people get stuck. This book bridges that gap."</p>
-          </div>
-        </div>
-
-        {/* Motivational Graphic */}
-        <div className="mt-12 flex justify-center">
-          <div className="bg-white rounded-xl p-6 shadow-lg transform rotate-1 hover:rotate-0 transition duration-300 max-w-md">
-            <img src="/wait_vs_work_graphic.png" alt="Good things happen to those who work" className="w-full object-contain" />
-            <p className="text-center text-gray-500 text-sm mt-3 font-medium">Action &gt; Waiting</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Free Part 1 Offer */}
-      <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white mb-12 shadow-2xl">
-        <div className="max-w-3xl mx-auto text-center">
-          <Download className="w-16 h-16 mx-auto mb-4" />
-          <h3 className="text-3xl font-bold mb-4">Get Part 1 FREE!</h3>
-          <p className="text-xl mb-6 text-green-50">
-            Download the introduction and Understanding AI Agents chapters completely free.
-            See if this book is right for you!
-          </p>
-          <button
-            onClick={handleGetFree}
-            className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-green-50 transition transform hover:scale-105 shadow-lg"
-          >
-            Download Part 1 Free →
-          </button>
-        </div>
-      </div>
-
-      {/* Dual Pricing Section */}
-      <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-12">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Get the Complete Ebook</h2>
-          <p className="text-xl text-gray-600">Choose your payment method</p>
-        </div>
-
-        {/* Email Input with Explanation */}
-        <div className="max-w-md mx-auto mb-8">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Your Email Address
-          </label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
-            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 text-lg"
-            required
-          />
-          <div className="mt-3 bg-blue-50 border border-blue-200 rounded-lg p-3 flex items-start">
-            <Shield className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-blue-800">
-              <strong>Why email?</strong> We deliver your ebook instantly to your inbox. No spam, no marketing emails—just your purchase.
-            </div>
-          </div>
-        </div>
-
-        {/* Payment Options */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-          {/* Stripe Option */}
-          <div className="border-4 border-gray-200 rounded-2xl p-8 hover:border-purple-400 transition cursor-pointer"
-            onClick={handleStripePayment}>
-            <div className="text-center">
-              <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CreditCard className="w-10 h-10 text-purple-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Pay with Card</h3>
-              <div className="text-5xl font-bold text-purple-600 mb-2">$40</div>
-              <p className="text-gray-600 mb-6">Standard Price</p>
-              <div className="space-y-2 text-left mb-6">
-                <div className="flex items-center text-sm text-gray-700">
-                  <Check className="w-5 h-5 text-green-500 mr-2" />
-                  Credit/Debit Card
-                </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <Check className="w-5 h-5 text-green-500 mr-2" />
-                  Instant Access
-                </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <Check className="w-5 h-5 text-green-500 mr-2" />
-                  Secure Checkout
-                </div>
-              </div>
-              <button
-                className="w-full bg-purple-600 text-white py-4 rounded-lg font-bold hover:bg-purple-700 transition transform hover:scale-105 disabled:opacity-50"
-                disabled={paymentStatus === 'processing'}
-              >
-                {paymentStatus === 'processing' ? 'Processing...' : 'Pay with Card →'}
-              </button>
-            </div>
-          </div>
-
-          {/* Ergo Option */}
-          <div className="border-4 border-green-400 rounded-2xl p-8 hover:border-green-600 transition cursor-pointer relative"
-            onClick={handleErgoPayment}>
-            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-              50% OFF
-            </div>
-            <div className="text-center">
-              <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Coins className="w-10 h-10 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Pay with Ergo</h3>
-              <div className="text-5xl font-bold text-green-600 mb-2">$20</div>
-              <p className="text-gray-600 mb-6">Tech-Literacy Discount</p>
-              <div className="space-y-2 text-left mb-6">
-                <div className="flex items-center text-sm text-gray-700">
-                  <Check className="w-5 h-5 text-green-500 mr-2" />
-                  ERG Cryptocurrency
-                </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <Check className="w-5 h-5 text-green-500 mr-2" />
-                  Privacy-Focused
-                </div>
-                <div className="flex items-center text-sm text-gray-700">
-                  <Check className="w-5 h-5 text-green-500 mr-2" />
-                  Lower Fees
-                </div>
-              </div>
-              <button
-                className="w-full bg-green-600 text-white py-4 rounded-lg font-bold hover:bg-green-700 transition transform hover:scale-105 disabled:opacity-50"
-              >
-                Pay with ERG →
-              </button>
-              <Link
-                to="/how-to-buy-ergo"
-                className="block w-full mt-3 text-green-600 hover:text-green-700 font-semibold text-sm underline"
-                onClick={(e) => e.stopPropagation()}
-              >
-                How to Buy Ergo? Step-by-Step Guide →
-              </Link>
-              <Link
-                to="/why-ergo"
-                className="block w-full mt-3 text-green-600 hover:text-green-700 font-semibold text-sm underline"
-                onClick={(e) => e.stopPropagation()}
-              >
-                Why Ergo? Learn more →
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {error && (
-          <div className="mt-6 max-w-2xl mx-auto bg-red-50 border-2 border-red-200 rounded-lg p-4">
-            <div className="flex items-start">
-              <AlertCircle className="w-6 h-6 text-red-600 mr-3 flex-shrink-0 mt-0.5" />
-              <p className="text-red-800">{error}</p>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+function BookOpen({ size, className }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+    </svg>
   );
 }

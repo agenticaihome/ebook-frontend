@@ -1,0 +1,187 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronRight, BookOpen, Shield, Zap, Home } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+
+const WebbookLayout = ({ children }) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [isCaptainOpen, setIsCaptainOpen] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const location = useLocation();
+
+    // Handle Scroll Progress
+    useEffect(() => {
+        const handleScroll = () => {
+            const totalScroll = document.documentElement.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scroll = `${totalScroll / windowHeight}`;
+            setScrollProgress(Number(scroll));
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Mobile: Auto-close sidebar on route change
+    useEffect(() => {
+        if (window.innerWidth < 768) {
+            setIsSidebarOpen(false);
+        }
+    }, [location]);
+
+    const chapters = [
+        { id: 'part1', title: 'Part 1: Diagnosis', path: '/part1', icon: <BookOpen size={18} /> },
+        { id: 'part2', title: 'Part 2: Getting Started', path: '/part2', icon: <Zap size={18} /> },
+        { id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3', icon: <Shield size={18} /> },
+        { id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4', icon: <BookOpen size={18} /> },
+        { id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5', icon: <Zap size={18} /> },
+    ];
+
+    return (
+        <div className="min-h-screen bg-slate-50 flex">
+            {/* Sidebar Navigation */}
+            <motion.aside
+                initial={{ width: 280 }}
+                animate={{ width: isSidebarOpen ? 280 : 0 }}
+                className={`fixed md:relative z-40 h-screen bg-white border-r border-slate-200 shadow-xl overflow-hidden flex flex-col`}
+            >
+                <div className="p-6 border-b border-slate-100 flex justify-between items-center">
+                    <Link to="/" className="flex items-center gap-2 font-bold text-blue-600">
+                        <Shield size={24} />
+                        <span>Agentic AI</span>
+                    </Link>
+                    <button onClick={() => setIsSidebarOpen(false)} className="md:hidden text-slate-400">
+                        <X size={24} />
+                    </button>
+                </div>
+
+                <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+                    <Link
+                        to="/"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${location.pathname === '/' ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-50'
+                            }`}
+                    >
+                        <Home size={18} />
+                        <span className="font-medium">Home</span>
+                    </Link>
+
+                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                        Table of Contents
+                    </div>
+
+                    {chapters.map((chapter) => (
+                        <Link
+                            key={chapter.id}
+                            to={chapter.path}
+                            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group ${location.pathname === chapter.path
+                                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
+                                    : 'text-slate-600 hover:bg-slate-50'
+                                }`}
+                        >
+                            <span className={location.pathname === chapter.path ? 'text-blue-200' : 'text-slate-400 group-hover:text-blue-500'}>
+                                {chapter.icon}
+                            </span>
+                            <span className="font-medium text-sm">{chapter.title}</span>
+                            {location.pathname === chapter.path && (
+                                <ChevronRight size={16} className="ml-auto text-blue-200" />
+                            )}
+                        </Link>
+                    ))}
+                </nav>
+
+                <div className="p-4 border-t border-slate-100">
+                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl border border-blue-100">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                                CE
+                            </div>
+                            <div>
+                                <p className="text-xs font-bold text-blue-900">Captain Efficiency</p>
+                                <p className="text-[10px] text-blue-600">AI Assistant Active</p>
+                            </div>
+                        </div>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                            "I'm here to help you navigate the agentic future!"
+                        </p>
+                    </div>
+                </div>
+            </motion.aside>
+
+            {/* Main Content Area */}
+            <div className="flex-1 flex flex-col min-w-0">
+                {/* Top Bar */}
+                <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-200 h-16 flex items-center px-4 justify-between">
+                    <div className="flex items-center gap-4">
+                        {!isSidebarOpen && (
+                            <button
+                                onClick={() => setIsSidebarOpen(true)}
+                                className="p-2 hover:bg-slate-100 rounded-lg text-slate-600 transition-colors"
+                            >
+                                <Menu size={24} />
+                            </button>
+                        )}
+                        <h1 className="font-semibold text-slate-800 truncate">
+                            {chapters.find(c => c.path === location.pathname)?.title || 'Agentic AI at Home'}
+                        </h1>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                        <Link to="/login" className="text-sm font-medium text-slate-600 hover:text-blue-600">
+                            Login
+                        </Link>
+                        <Link to="/pay-ergo" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                            Get the Book
+                        </Link>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="absolute bottom-0 left-0 h-1 bg-slate-100 w-full">
+                        <motion.div
+                            className="h-full bg-blue-600"
+                            style={{ width: `${scrollProgress * 100}%` }}
+                        />
+                    </div>
+                </header>
+
+                {/* Page Content */}
+                <main className="flex-1 overflow-x-hidden">
+                    {children}
+                </main>
+            </div>
+
+            {/* Floating Captain Helper */}
+            <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
+                <AnimatePresence>
+                    {isCaptainOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                            className="bg-white p-6 rounded-2xl shadow-2xl border border-blue-100 w-72 mb-2 relative"
+                        >
+                            <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white transform rotate-45 border-r border-b border-blue-100"></div>
+                            <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
+                                <Zap size={16} className="text-yellow-500" />
+                                Quick Tip
+                            </h3>
+                            <p className="text-sm text-slate-600 leading-relaxed">
+                                Did you know? You can automate your grocery list using a simple text-based agent. Check out Chapter 2!
+                            </p>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setIsCaptainOpen(!isCaptainOpen)}
+                    className="w-14 h-14 bg-blue-600 rounded-full shadow-xl flex items-center justify-center text-white border-4 border-white ring-4 ring-blue-100"
+                >
+                    <span className="font-bold text-xl">CE</span>
+                </motion.button>
+            </div>
+        </div>
+    );
+};
+
+export default WebbookLayout;
