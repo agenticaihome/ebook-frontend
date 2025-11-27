@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
+import TimeBackCalculator from './components/landing/TimeBackCalculator';
+import BeforeAfterComparison from './components/landing/BeforeAfterComparison';
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
@@ -72,8 +74,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                I'm <strong>Captain Efficiency</strong>. I was deployed by the DDS after he hit critical failure.
-                Now I'm here to help you build your own team of AI agents.
+                I'm <strong>Captain Efficiency</strong>. I was deployed by the <strong>Doctor of Digital Systems (DDS)</strong> to help you reclaim 7-8 hours a week.
+                <br /><br />
+                This isn't just a list of tools. It's a complete <strong>5-Part Life Operating System</strong> built by a doctor with two kids under two.
               </motion.p>
 
               <motion.div
@@ -99,27 +102,29 @@ export default function SalesPage() {
           </div>
         </section>
 
-        {/* MISSION BRIEFING SECTION */}
+        {/* COURSE OVERVIEW SECTION */}
         <section className="py-24 bg-[#131320] border-y border-slate-800">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
-              <p className="text-slate-400">Unlock all 5 parts. I'll guide you through each one.</p>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                A systematic progression from basic tools to a fully autonomous Life Operating System.
+              </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               {[
-                { id: '01', title: 'DIAGNOSIS', icon: <Activity />, status: 'OPEN', link: '/part1' },
-                { id: '02', title: 'TREATMENT', icon: <Zap />, status: 'LOCKED' },
-                { id: '03', title: 'PRODUCTIVITY', icon: <Terminal />, status: 'LOCKED' },
-                { id: '04', title: 'WELLNESS', icon: <Shield />, status: 'LOCKED' },
-                { id: '05', title: 'ADVANCED', icon: <Database />, status: 'LOCKED' }
+                { id: '01', title: 'FOUNDATIONS', desc: 'AI Stack & Privacy', icon: <Terminal />, status: 'OPEN', link: '/part1' },
+                { id: '02', title: 'DAILY OPS', desc: 'Morning, Kitchen, Home', icon: <Zap />, status: 'LOCKED' },
+                { id: '03', title: 'DIGITAL LIFE', desc: 'Email, Calendar, Finance', icon: <Activity />, status: 'LOCKED' },
+                { id: '04', title: 'HEALTH', desc: 'Recovery & Second Brain', icon: <Shield />, status: 'LOCKED' },
+                { id: '05', title: 'LIFE OS', desc: 'Multi-Agent Systems', icon: <Database />, status: 'LOCKED' }
               ].map((part, index) => (
                 <Link
                   to={part.link || '#pricing'}
                   key={index}
                   className={`
-                    relative p-6 rounded-2xl border transition-all group
+                    relative p-6 rounded-2xl border transition-all group hover:-translate-y-1
                     ${part.status === 'OPEN'
                       ? 'bg-cyan-900/20 border-cyan-500/50 hover:bg-cyan-900/30 cursor-pointer'
                       : 'bg-slate-800/50 border-slate-700 hover:border-slate-600 cursor-not-allowed opacity-75'}
@@ -129,13 +134,89 @@ export default function SalesPage() {
                   <div className={`mb-4 ${part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
                     {part.icon}
                   </div>
-                  <div className="font-bold text-sm mb-2">{part.title}</div>
+                  <div className="font-bold text-sm mb-1">{part.title}</div>
+                  <div className="text-xs text-slate-500">{part.desc}</div>
                   <div className="absolute top-4 right-4">
                     {part.status === 'LOCKED' && <Lock size={14} className="text-slate-600" />}
                   </div>
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* DIFFERENTIATORS SECTION */}
+        <section className="py-24 px-6 bg-[#0f0f1a]">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">WHY THIS SYSTEM IS DIFFERENT</h2>
+              <p className="text-slate-400">Most courses teach you prompts. We build you a staff.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Feature 1 */}
+              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors">
+                <div className="bg-cyan-900/30 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-cyan-400">
+                  <Activity size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Recovery-Aware Agent</h3>
+                <p className="text-slate-400 leading-relaxed mb-4">
+                  "When your toddler keeps you up all night, your AI automatically adjusts your schedule."
+                </p>
+                <ul className="text-sm text-slate-500 space-y-2">
+                  <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Sleep/Energy tracking</li>
+                  <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Red/Yellow/Green day protocols</li>
+                </ul>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-purple-500/50 transition-colors">
+                <div className="bg-purple-900/30 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+                  <Database size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Second Brain Agent</h3>
+                <p className="text-slate-400 leading-relaxed mb-4">
+                  "Upload 50 case files → searchable database indexed by diagnosis, treatment, and outcome."
+                </p>
+                <ul className="text-sm text-slate-500 space-y-2">
+                  <li className="flex gap-2"><Check size={16} className="text-purple-500" /> Instant document retrieval</li>
+                  <li className="flex gap-2"><Check size={16} className="text-purple-500" /> Study systems for exams</li>
+                </ul>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                <div className="bg-green-900/30 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400">
+                  <Zap size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Life Operating System</h3>
+                <p className="text-slate-400 leading-relaxed mb-4">
+                  "Not just automation — a strategic brain that coordinates everything toward your goals."
+                </p>
+                <ul className="text-sm text-slate-500 space-y-2">
+                  <li className="flex gap-2"><Check size={16} className="text-green-500" /> Multi-agent coordination</li>
+                  <li className="flex gap-2"><Check size={16} className="text-green-500" /> Goal Hierarchy alignment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* TRANSFORMATION SECTION */}
+        <section className="py-24 px-6 bg-[#131320] border-y border-slate-800">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">FROM CHAOS TO SYSTEM</h2>
+              <p className="text-slate-400">Stop fighting entropy. Start managing it.</p>
+            </div>
+            <BeforeAfterComparison />
+          </div>
+        </section>
+
+        {/* CALCULATOR SECTION */}
+        <section className="py-24 px-6 bg-[#0f0f1a]">
+          <div className="max-w-4xl mx-auto">
+            <TimeBackCalculator />
           </div>
         </section>
 
@@ -149,10 +230,10 @@ export default function SalesPage() {
                 </h2>
                 <ul className="space-y-4">
                   {[
-                    "7-8 hours/week recovered",
-                    "44 emails → 2-3 emails daily",
-                    "$30-40/week grocery savings",
-                    "'What's for dinner?' eliminated"
+                    "7-8 hours/week recovered (Minimum)",
+                    "Inbox Zero maintained daily",
+                    "Mental Load offloaded to 'Second Brain'",
+                    "Sleep & Energy protected by 'Recovery Agent'"
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-300">
                       <Check className="text-green-400 flex-shrink-0" /> {item}
@@ -161,7 +242,7 @@ export default function SalesPage() {
                 </ul>
                 <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700">
                   <p className="text-slate-400 italic text-sm">
-                    "These are real results from my creator's household. Your results begin when you unlock the system."
+                    "These are real results from the DDS household. Your results begin when you unlock the system."
                   </p>
                   <div className="mt-2 text-cyan-400 font-bold text-sm">— Captain E</div>
                 </div>
@@ -169,8 +250,8 @@ export default function SalesPage() {
               <div className="flex justify-center">
                 <CaptainHero
                   size="md"
+                  pose="celebrating"
                   message="Efficiency is not optional. It's the objective."
-                  imageSrc="/assets/captain-efficiency-dark.png"
                 />
               </div>
             </div>
@@ -181,10 +262,13 @@ export default function SalesPage() {
         <section className="py-16 px-6 text-center">
           <div className="max-w-2xl mx-auto">
             <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">WHO DEPLOYED ME?</h3>
-            <h2 className="text-3xl font-bold mb-6">The Dad Deploying Systems (DDS)</h2>
+            <h2 className="text-3xl font-bold mb-6">The Doctor of Digital Systems (DDS)</h2>
             <p className="text-slate-400 leading-relaxed mb-8">
-              Army veteran. Father of two under two. He built me at midnight between feedings when chaos hit critical.
-              He built the system. I deliver it. You benefit.
+              Endodontic resident working 50+ hour weeks. Father of two under two.
+              He didn't build this system for fun. He built it to survive.
+              <br /><br />
+              "I needed a way to be a present father and a high-performing doctor without burning out.
+              Prompts weren't enough. I needed agents."
             </p>
           </div>
         </section>
@@ -238,6 +322,31 @@ export default function SalesPage() {
               >
                 Pay with ERG
               </button>
+              <div className="mt-4 text-center">
+                <Link to="/why-ergo" className="text-sm text-green-400 hover:text-green-300 underline decoration-dotted">
+                  Why pay with Ergo?
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section className="py-24 px-6 bg-[#0f0f1a] border-t border-slate-800">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-12 text-center">FREQUENTLY ASKED QUESTIONS</h2>
+            <div className="space-y-8">
+              {[
+                { q: "Do I need to know how to code?", a: "No. The course teaches you how to use no-code tools and natural language to build your agents." },
+                { q: "Is my data secure?", a: "Yes. Part 1 is entirely dedicated to privacy, security, and choosing local-first tools where possible." },
+                { q: "What if I use Android/Windows?", a: "The system is platform-agnostic. We use tools that work on all major operating systems." },
+                { q: "How much time does it take to set up?", a: "You can build your first agent (Morning Agent) in about 30 minutes. The full system is built progressively over 30 days." }
+              ].map((faq, i) => (
+                <div key={i} className="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                  <h3 className="font-bold text-lg mb-2 text-slate-200">{faq.q}</h3>
+                  <p className="text-slate-400">{faq.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
