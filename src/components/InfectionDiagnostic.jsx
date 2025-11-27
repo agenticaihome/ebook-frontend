@@ -270,11 +270,13 @@ const InfectionDiagnostic = () => {
                         {/* Modern Header with Captain Efficiency */}
                         <div className="text-center mb-6">
                             <div className="flex justify-center mb-4">
-                                <img
-                                    src="/captain_hero.png"
-                                    alt="Captain Efficiency"
-                                    className="w-32 h-32 object-contain"
-                                />
+                                <div className="bg-white rounded-full p-4 shadow-lg">
+                                    <img
+                                        src="/captain_hero.png"
+                                        alt="Captain Efficiency"
+                                        className="w-24 h-24 object-contain"
+                                    />
+                                </div>
                             </div>
                             <div className="text-6xl mb-4">{diagnosis.emoji}</div>
                             <h2 className="text-4xl md:text-5xl font-bold medical-heading mb-3" style={{ color: diagnosis.color }}>
