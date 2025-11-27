@@ -7,7 +7,8 @@ const CaptainHero = ({
     size = 'md', // 'sm' | 'md' | 'lg'
     className = '',
     pose = 'default', // 'default' | 'thinking' | 'pointing' | 'celebrating' | 'working'
-    imageSrc // Optional override
+    imageSrc, // Optional override
+    videoSrc // Optional video override
 }) => {
     // Map poses to image files
     const poseImages = {
@@ -34,7 +35,7 @@ const CaptainHero = ({
 
     return (
         <div className={`flex items-center gap-4 md:gap-8 ${containerClasses[position]} ${className}`}>
-            {/* Character Image */}
+            {/* Character Image or Video */}
             <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -42,11 +43,22 @@ const CaptainHero = ({
                 className={`relative flex-shrink-0 ${sizeClasses[size]}`}
             >
                 <div className="absolute inset-0 bg-cyan-500/40 rounded-full blur-2xl animate-pulse scale-110" />
-                <img
-                    src={finalImageSrc}
-                    alt="Captain Efficiency"
-                    className="relative z-10 w-full h-full object-contain"
-                />
+                {videoSrc ? (
+                    <video
+                        src={videoSrc}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="relative z-10 w-full h-full object-contain"
+                    />
+                ) : (
+                    <img
+                        src={finalImageSrc}
+                        alt="Captain Efficiency"
+                        className="relative z-10 w-full h-full object-contain"
+                    />
+                )}
             </motion.div>
 
             {/* Message Bubble */}
