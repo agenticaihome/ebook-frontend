@@ -1,5 +1,5 @@
-// Use Railway URL in production, localhost in development
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+// Use environment variable or default to localhost
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080/api';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
