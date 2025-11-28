@@ -86,17 +86,17 @@ export default function SalesPage() {
                 transition={{ delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
               >
-                <button
-                  onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/50 flex items-center justify-center gap-2"
+                <Link
+                  to="/part1"
+                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-900/50 flex items-center justify-center gap-2"
                 >
-                  <Lock size={20} /> UNLOCK SYSTEM — $40
-                </button>
+                  <Zap size={20} /> START FREE — PART 1
+                </Link>
                 <button
-                  onClick={handleErgoPayment}
-                  className="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-900/50 flex items-center justify-center gap-2"
+                  onClick={() => document.getElementById('course-overview').scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2"
                 >
-                  <Coins size={20} /> PAY WITH ERGO — $20
+                  View All 5 Parts
                 </button>
               </motion.div>
             </div>
@@ -104,18 +104,22 @@ export default function SalesPage() {
         </section>
 
         {/* COURSE OVERVIEW SECTION */}
-        <section className="py-24 bg-[#131320] border-y border-slate-800">
+        <section id="course-overview" className="py-24 bg-[#131320] border-y border-slate-800">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">
+              <p className="text-slate-400 max-w-2xl mx-auto mb-4">
                 A systematic progression from basic tools to a fully autonomous Life Operating System.
               </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30">
+                <span className="text-green-400 font-bold text-sm">✓ Part 1 is FREE</span>
+                <span className="text-slate-500 text-xs">• Parts 2-5 unlock with purchase</span>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               {[
-                { id: '01', title: 'FOUNDATIONS', desc: 'AI Stack & Privacy', icon: <Terminal />, status: 'OPEN', link: '/part1' },
+                { id: '01', title: 'FOUNDATIONS', desc: 'AI Stack & Privacy', icon: <Terminal />, status: 'FREE', link: '/part1' },
                 { id: '02', title: 'DAILY OPS', desc: 'Morning, Kitchen, Home', icon: <Zap />, status: 'LOCKED' },
                 { id: '03', title: 'DIGITAL LIFE', desc: 'Email, Calendar, Finance', icon: <Activity />, status: 'LOCKED' },
                 { id: '04', title: 'HEALTH', desc: 'Recovery & Second Brain', icon: <Shield />, status: 'LOCKED' },
@@ -126,18 +130,21 @@ export default function SalesPage() {
                   key={index}
                   className={`
                     relative p-6 rounded-2xl border transition-all group hover:-translate-y-1
-                    ${part.status === 'OPEN'
-                      ? 'bg-cyan-900/20 border-cyan-500/50 hover:bg-cyan-900/30 cursor-pointer'
-                      : 'bg-slate-800/50 border-slate-700 hover:border-slate-600 cursor-not-allowed opacity-75'}
+                    ${part.status === 'FREE'
+                      ? 'bg-green-900/20 border-green-500/50 hover:bg-green-900/30 cursor-pointer'
+                      : part.status === 'OPEN'
+                        ? 'bg-cyan-900/20 border-cyan-500/50 hover:bg-cyan-900/30 cursor-pointer'
+                        : 'bg-slate-800/50 border-slate-700 hover:border-slate-600 cursor-not-allowed opacity-75'}
                   `}
                 >
                   <div className="text-xs font-mono text-slate-500 mb-2">PART {part.id}</div>
-                  <div className={`mb-4 ${part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
+                  <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
                     {part.icon}
                   </div>
                   <div className="font-bold text-sm mb-1">{part.title}</div>
                   <div className="text-xs text-slate-500">{part.desc}</div>
                   <div className="absolute top-4 right-4">
+                    {part.status === 'FREE' && <span className="text-xs font-bold text-green-400 bg-green-500/20 px-2 py-1 rounded">FREE</span>}
                     {part.status === 'LOCKED' && <Lock size={14} className="text-slate-600" />}
                   </div>
                 </Link>
