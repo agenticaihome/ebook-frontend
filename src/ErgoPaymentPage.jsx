@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Wallet, Copy, Check, AlertTriangle, ArrowRight, ShieldCheck,
-    CheckCircle2, Clock, Smartphone, Loader2
+    CheckCircle2, Clock, Smartphone, Loader2, ExternalLink
 } from 'lucide-react';
-import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
 
 const ErgoPaymentPage = () => {
@@ -96,15 +95,16 @@ const ErgoPaymentPage = () => {
         setError('');
 
         try {
-            // We can use the claim endpoint or check-recent
-            // For manual TX ID, we might want a specific verify endpoint, 
-            // but checkRecentErgoPayment scans the blockchain anyway.
-            // Let's rely on checkRecent first.
             const result = await api.checkRecentErgoPayment(accessCode);
 
             if (result.success && result.status === 'PAID') {
                 confirmPayment(result.transactionId);
             } else {
+                // If backend check fails, maybe the user JUST paid and it's not confirmed yet.
+                // Or maybe the amount is slightly different.
+                // But we can't do much else without a backend proxy to Explorer.
+                // The backend checkRecentErgoPayment DOES scan the blockchain.
+                // So if it returns false, the tx is likely not found or invalid.
                 setError('Payment not found yet. Please wait a moment if you just sent it.');
             }
         } catch (err) {
@@ -204,197 +204,61 @@ const ErgoPaymentPage = () => {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="space-y-6"
                         >
-                            {/* Step-by-Step Instructions */}
-                            <div className="bg-gradient-to-r from-cyan-900/40 to-blue-900/40 backdrop-blur-lg border-2 border-cyan-500/50 rounded-2xl p-6">
-                                <div className="flex items-start gap-4 mb-4">
-                                    <div className="flex-shrink-0">
-                                        <div className="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center">
-                                            <CheckCircle2 className="w-6 h-6 text-cyan-400" />
-                                        </div>
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold text-white mb-2">
-                                            How to Complete Your Payment
-                                        </h3>
-                                        <p className="text-cyan-100 text-sm">
-                                            Follow these simple steps to unlock instant access to all 5 parts
-                                        </p>
-                                    </div>
+                            {/* MewPayments Integration */}
+                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8 text-center">
+                                <div className="w-20 h-20 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <ExternalLink className="w-10 h-10 text-cyan-400" />
                                 </div>
-
-                                <div className="space-y-3 ml-16">
-                                    <div className="flex items-start gap-3">
-                                        <div className="flex-shrink-0 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                                            1
-                                        </div>
-                                        <div>
-                                            <p className="text-white font-semibold">Choose Your Payment Method</p>
-                                            <p className="text-cyan-200 text-sm">
-                                                <strong>Mobile:</strong> Click "Open Wallet App" to pay with one tap<br />
-                                                <strong>Desktop:</strong> Scan the QR code with your mobile wallet<br />
-                                                <strong>Manual:</strong> Use the wallet address and amount shown below
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-3">
-                                        <div className="flex-shrink-0 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                                            2
-                                        </div>
-                                        <div>
-                                            <p className="text-white font-semibold">Send {ergAmount?.toFixed(4)} ERG</p>
-                                            <p className="text-cyan-200 text-sm">
-                                                Send exactly <strong className="text-cyan-400">{ergAmount?.toFixed(4)} ERG</strong> to the wallet address below
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-start gap-3">
-                                        <div className="flex-shrink-0 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                                            3
-                                        </div>
-                                        <div>
-                                            <p className="text-white font-semibold">Automatic Confirmation</p>
-                                            <p className="text-cyan-200 text-sm">
-                                                We'll detect your payment automatically. Or paste your Transaction ID below for instant verification.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Payment Methods */}
-                            <div className="grid md:grid-cols-2 gap-6">
-                                {/* Mobile: ErgoPay Deep Link */}
-                                <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                                            <Smartphone className="w-6 h-6 text-green-400" />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-lg font-bold text-white">Mobile Payment</h3>
-                                            <p className="text-sm text-slate-400">ErgoPay (Terminus, Nautilus)</p>
-                                        </div>
-                                    </div>
-                                    <a
-                                        href={ergoPayUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block w-full bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold text-center transition-all flex items-center justify-center gap-2"
-                                    >
-                                        <Wallet className="w-5 h-5" />
-                                        Open Wallet App
-                                    </a>
-                                    <p className="text-xs text-slate-400 mt-3 text-center">
-                                        Tap to open your Ergo wallet app automatically
-                                    </p>
-                                </div>
-
-                                {/* Desktop: ErgoPay QR Code */}
-                                <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                                            <Wallet className="w-6 h-6 text-purple-400" />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-lg font-bold text-white">Scan to Pay</h3>
-                                            <p className="text-sm text-slate-400">ErgoPay QR Code</p>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white p-4 rounded-xl">
-                                        <QRCodeSVG value={ergoPayUrl || walletAddress} size={180} className="mx-auto" />
-                                    </div>
-                                    <p className="text-xs text-slate-400 mt-3 text-center">
-                                        Scan with mobile wallet to pay instantly
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Manual Payment Info */}
-                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                                    <Wallet className="w-5 h-5 text-cyan-400" />
-                                    Manual Payment Details
+                                <h3 className="text-2xl font-bold text-white mb-4">
+                                    Complete Payment via MewPayments
                                 </h3>
+                                <p className="text-slate-300 mb-8 max-w-lg mx-auto">
+                                    Click the button below to pay securely using MewPayments.
+                                    After paying, <strong>copy your Transaction ID</strong> and paste it below to access your content.
+                                </p>
 
-                                <div className="space-y-4">
-                                    <div>
-                                        <label className="text-sm text-slate-400 block mb-2">Wallet Address</label>
-                                        <div className="flex gap-2">
-                                            <input
-                                                type="text"
-                                                value={walletAddress}
-                                                readOnly
-                                                className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white text-sm font-mono"
-                                            />
-                                            <button
-                                                onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
-                                                className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg transition-all"
-                                            >
-                                                {copiedAddress ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-slate-400" />}
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label className="text-sm text-slate-400 block mb-2">Amount</label>
-                                        <div className="bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white">
-                                            {ergAmount?.toFixed(4)} ERG
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label className="text-sm text-slate-400 block mb-2">Access Code</label>
-                                        <div className="flex gap-2">
-                                            <input
-                                                type="text"
-                                                value={accessCode}
-                                                readOnly
-                                                className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-cyan-400 text-lg font-mono font-bold text-center"
-                                            />
-                                            <button
-                                                onClick={() => copyToClipboard(accessCode, setCopiedCode)}
-                                                className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg transition-all"
-                                            >
-                                                {copiedCode ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-slate-400" />}
-                                            </button>
-                                        </div>
-                                        <p className="text-xs text-slate-400 mt-2">Save this code to verify your payment</p>
-                                    </div>
-                                </div>
+                                <a
+                                    href="https://payment.mewfinance.com/pay?id=17643540154951y0yiv97x"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/50"
+                                >
+                                    Pay Now with Ergo
+                                    <ExternalLink className="w-5 h-5" />
+                                </a>
                             </div>
 
-                            {/* Manual TX ID Verification */}
+                            {/* Verification Section */}
                             <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
                                 <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
                                     <ShieldCheck className="w-5 h-5 text-cyan-400" />
-                                    Manual Verification
+                                    Verify Your Payment
                                 </h3>
                                 <p className="text-slate-400 text-sm mb-4">
-                                    Skip the wait - verify instantly with your TX ID
+                                    Paste your Transaction ID (TX ID) from MewPayments or your wallet to get instant access.
                                 </p>
                                 <div className="flex gap-2">
                                     <input
                                         type="text"
                                         value={manualTxId}
                                         onChange={(e) => setManualTxId(e.target.value)}
-                                        placeholder="Enter transaction ID..."
-                                        className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500"
+                                        placeholder="Enter transaction ID (e.g., 885c...)"
+                                        className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 font-mono"
                                     />
                                     <button
                                         onClick={handleManualCheck}
                                         disabled={checkingPayment}
-                                        className="bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-600 text-white px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2"
+                                        className="bg-green-600 hover:bg-green-500 disabled:bg-slate-600 text-white px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2"
                                     >
                                         {checkingPayment ? (
                                             <>
                                                 <Loader2 className="w-4 h-4 animate-spin" />
-                                                Checking...
+                                                Verifying...
                                             </>
                                         ) : (
                                             <>
                                                 <CheckCircle2 className="w-4 h-4" />
-                                                Verify
+                                                Verify Access
                                             </>
                                         )}
                                     </button>
@@ -407,12 +271,12 @@ const ErgoPaymentPage = () => {
                                 )}
                             </div>
 
-                            {/* Auto-checking status */}
-                            <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 text-center">
-                                <div className="flex items-center justify-center gap-2 text-blue-300">
-                                    <Clock className="w-5 h-5 animate-pulse" />
-                                    <span className="text-sm">Auto-checking for payment every 15 seconds...</span>
-                                </div>
+                            {/* Auto-checking status (Background) */}
+                            <div className="text-center">
+                                <p className="text-slate-500 text-xs flex items-center justify-center gap-2">
+                                    <Clock className="w-3 h-3 animate-pulse" />
+                                    We are also scanning for your payment automatically...
+                                </p>
                             </div>
                         </motion.div>
                     )}
