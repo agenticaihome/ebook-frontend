@@ -20,6 +20,7 @@ const WhyErgo = lazy(() => import('./WhyErgo'));
 const HowToPay = lazy(() => import('./HowToPay'));
 const WalletGuide = lazy(() => import('./WalletGuide'));
 const FAQ = lazy(() => import('./FAQ'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -92,6 +93,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          {/* 404 Catch-all */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </Router>

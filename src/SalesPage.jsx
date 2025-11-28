@@ -40,7 +40,7 @@ export default function SalesPage() {
               <CaptainHero
                 size="lg"
                 className="scale-100 md:scale-110"
-                message="SYSTEM ONLINE. Efficiency protocols engaged."
+                message="You're running on 4 hours of sleep and cold coffee. Let's work with what we've got."
                 videoSrc="/assets/captain-waving.mp4?v=new"
                 imageSrc="/assets/captain-efficiency-dark.png" // Fallback
               />
@@ -77,7 +77,9 @@ export default function SalesPage() {
               >
                 I was deployed by <strong>DDS (Dad Deploying Systems)</strong> to solve a critical failure: <strong>Time Scarcity.</strong>
                 <br /><br />
-                I don't offer life hacks. I offer a complete, autonomous operating system for your home designed to reclaim 7-8 hours a week.
+                I don't offer life hacks. I offer a complete, autonomous operating system for your home.
+                <br /><br />
+                You're not lazy. You're just making 400 decisions before 9am. Let's automate half of them.
               </motion.p>
 
               <motion.div
@@ -252,14 +254,14 @@ export default function SalesPage() {
                   <p className="text-slate-400 italic text-sm">
                     "These are real results from the DDS household. Your results begin when you unlock the system."
                   </p>
-                  <div className="mt-2 text-cyan-400 font-bold text-sm">— Captain E</div>
+                  <div className="mt-2 text-cyan-400 font-bold text-sm">— Captain Efficiency</div>
                 </div>
               </div>
               <div className="flex justify-center">
                 <CaptainHero
                   size="md"
                   pose="celebrating"
-                  message="Efficiency is not optional. It's the objective."
+                  message="You don't need more willpower. You need fewer decisions."
                 />
               </div>
             </div>
@@ -285,7 +287,7 @@ export default function SalesPage() {
         <section id="pricing" className="py-24 px-6 bg-[#131320]">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Access Method</h2>
-            <p className="text-slate-400">I don't judge your payment method. I only judge inefficiency.</p>
+            <p className="text-slate-400">Cheaper than one month of that meal kit service you forgot to pause.</p>
           </div>
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">

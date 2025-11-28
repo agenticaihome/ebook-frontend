@@ -83,7 +83,7 @@ const Part1 = () => {
                         <CaptainHero
                             size="md"
                             pose="pointing"
-                            message="Hey there! I'm Captain Efficiency — your friendly AI guide through this course. You've probably used AI before. Asked ChatGPT a question. Maybe had Siri set a timer. But here's the thing: that's like having a genius assistant who only works when you're standing over their shoulder, giving instructions word by word. What if that assistant could just... handle things? Anticipate what you need? Take action without being asked? THAT'S what AI agents do. And that's what we're going to build together."
+                            message="I'm Captain Efficiency. I'm not here to add to your to-do list. I'm here to delete half of it. You've probably used ChatGPT. Maybe asked Siri to set a timer. That's like having a genius assistant who only works when you stand over their shoulder. Real agents don't wait for instructions. They anticipate. They handle things. They let you finish a coffee while it's still hot. That's what we're building."
                         />
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">

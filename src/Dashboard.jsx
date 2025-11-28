@@ -81,8 +81,8 @@ const Dashboard = () => {
                     className="space-y-8"
                 >
                     <div>
-                        <h1 className="text-3xl font-bold text-white mb-2">My Library</h1>
-                        <p className="text-slate-400">Access your purchased content and resources.</p>
+                        <h1 className="text-3xl font-bold text-white mb-2">Welcome back. Your systems missed you.</h1>
+                        <p className="text-slate-400">Ready to pick up where we left off?</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
