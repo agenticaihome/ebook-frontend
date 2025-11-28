@@ -60,7 +60,7 @@ export default function SalesPage() {
               <CaptainHero
                 size="lg"
                 className="scale-100 md:scale-110"
-                message="You're running on 4 hours of sleep and cold coffee. Let's work with what we've got."
+                message="You're running on 4 hours of sleep and 3 deadlines. Let's work with what we've got."
                 videoSrc="/assets/captain-waving.mp4?v=new"
                 imageSrc="/assets/captain-efficiency-dark.png" // Fallback
               />
@@ -95,7 +95,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                The interactive webbook that teaches busy parents how to build a "Household Staff" of autonomous AI agents.
+                The interactive webbook that teaches busy professionals how to build a "Household Staff" of autonomous AI agents.
                 <br /><br />
                 Stop drowning in tasks. Start deploying agents.
               </motion.p>
@@ -189,7 +189,7 @@ export default function SalesPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-4">Recovery-Aware Agent</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
-                  "When your toddler keeps you up all night, your AI automatically adjusts your schedule."
+                  "When your schedule implodes, your AI automatically adjusts your calendar and recovery plan."
                 </p>
                 <ul className="text-sm text-slate-500 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Sleep/Energy tracking</li>
@@ -292,10 +292,10 @@ export default function SalesPage() {
             <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">WHO DEPLOYED ME?</h3>
             <h2 className="text-3xl font-bold mb-6">The Doctor of Digital Systems (DDS)</h2>
             <p className="text-slate-400 leading-relaxed mb-8">
-              Endodontic resident working 50+ hour weeks. Father of two under two.
+              Endodontic resident working 50+ hour weeks.
               He didn't build this system for fun. He built it to survive.
               <br /><br />
-              "I needed a way to be a present father and a high-performing doctor without burning out.
+              "I needed a way to be a high-performing doctor and a present human being without burning out.
               Prompts weren't enough. I needed agents."
             </p>
           </div>

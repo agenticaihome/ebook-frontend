@@ -21,6 +21,7 @@ const HowToPay = lazy(() => import('./HowToPay'));
 const WalletGuide = lazy(() => import('./WalletGuide'));
 const FAQ = lazy(() => import('./FAQ'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const SuccessPage = lazy(() => import('./pages/SuccessPage'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -76,6 +77,7 @@ function App() {
           <Route path="/how-to-pay" element={<HowToPay />} />
           <Route path="/wallet-guide" element={<WalletGuide />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/success" element={<SuccessPage />} />
 
           {/* Webbook Chapters */}
           <Route path="/part1" element={<Part1 />} />

@@ -104,5 +104,14 @@ export const api = {
       body: JSON.stringify({ email }),
     });
     return handleResponse(response);
+  },
+
+  verifyStripePayment: async (sessionId) => {
+    const response = await fetch(`${API_URL}/payment/stripe/verify`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify({ sessionId }),
+    });
+    return handleResponse(response);
   }
 };
