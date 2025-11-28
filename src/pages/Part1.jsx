@@ -421,11 +421,30 @@ const Part1 = () => {
                             <p className="text-slate-300 mb-6">
                                 You now understand what AI agents are, which tools to use, and how to protect your privacy. You're ready to build your first agent!
                             </p>
+
+                            {/* Upsell CTA */}
+                            <div className="bg-slate-900/80 p-6 rounded-xl border border-yellow-500/30 mb-8 max-w-2xl mx-auto">
+                                <div className="text-yellow-400 font-bold mb-2 uppercase tracking-wider text-sm">Next Step: Implementation</div>
+                                <h4 className="text-xl font-bold text-white mb-3">Ready to Deploy Your "Morning Agent"?</h4>
+                                <p className="text-slate-400 text-sm mb-4">
+                                    In Part 2, we stop talking theory and start building. You'll copy-paste the exact prompts to automate your morning briefing, meal planning, and household chores.
+                                </p>
+                                <a
+                                    href="/#pricing"
+                                    className="inline-block w-full md:w-auto bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg transition-colors mb-2"
+                                >
+                                    Unlock Full System ($39.99)
+                                </a>
+                                <div className="text-xs text-slate-500 mt-2">
+                                    Includes all 5 parts + 30-day money-back guarantee
+                                </div>
+                            </div>
+
                             <button
                                 onClick={() => navigate('/part2')}
-                                className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
+                                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-all"
                             >
-                                Continue to Part 2: Building Your First Agent
+                                Continue to Part 2 (Preview)
                                 <ArrowRight size={20} />
                             </button>
                         </div>

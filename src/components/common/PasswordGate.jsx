@@ -35,13 +35,24 @@ const PasswordGate = ({ children, partName = "This Section" }) => {
                     <div className="w-16 h-16 bg-cyan-900/30 rounded-full flex items-center justify-center mx-auto mb-6 border border-cyan-500/30">
                         <Lock className="text-cyan-400" size={32} />
                     </div>
-                    <h1 className="text-3xl font-bold mb-4">Restricted Access</h1>
+                    <h1 className="text-3xl font-bold mb-4">Level 2 Clearance Required</h1>
                     <p className="text-slate-300 mb-6">
-                        Parts 2-5 will be ready for purchase on <span className="text-cyan-400 font-bold">December 4th</span>.
+                        The "Morning Agent" protocols are locked.
+                        <br />
+                        Upgrade to full access to deploy your household staff.
                     </p>
-                    <p className="text-sm text-slate-400">
-                        Please enter the password to continue previewing.
-                    </p>
+
+                    <div className="flex flex-col gap-4 justify-center items-center mb-8">
+                        <a
+                            href="/#pricing"
+                            className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-green-900/20 transition-all transform hover:scale-105"
+                        >
+                            Get Full Access
+                        </a>
+                        <div className="text-sm text-slate-500">
+                            Already have a password? Enter it below.
+                        </div>
+                    </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">

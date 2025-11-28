@@ -315,7 +315,7 @@ export default function SalesPage() {
                 <CreditCard size={120} />
               </div>
               <h3 className="text-2xl font-bold mb-2">Standard Access</h3>
-              <div className="text-4xl font-bold text-white mb-6">$40 <span className="text-sm text-slate-400 font-normal">USD</span></div>
+              <div className="text-4xl font-bold text-white mb-6">$39.99 <span className="text-sm text-slate-400 font-normal">USD</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
                 <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Full access to all 5 parts</li>
                 <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Immediate unlock</li>
@@ -361,7 +361,7 @@ export default function SalesPage() {
                 <Coins size={120} />
               </div>
               <h3 className="text-2xl font-bold mb-2 text-green-400">Crypto Access</h3>
-              <div className="text-4xl font-bold text-white mb-6">$20 <span className="text-sm text-slate-400 font-normal">in ERG</span></div>
+              <div className="text-4xl font-bold text-white mb-6">$29.99 <span className="text-sm text-slate-400 font-normal">in ERG</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
                 <li className="flex gap-3"><Check size={18} className="text-green-400" /> 50% Tech Literacy Discount</li>
                 <li className="flex gap-3"><Check size={18} className="text-green-400" /> Support decentralized commerce</li>

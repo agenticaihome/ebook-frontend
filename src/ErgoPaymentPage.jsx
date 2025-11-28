@@ -153,7 +153,7 @@ const ErgoPaymentPage = () => {
                         Pay with <span className="text-cyan-400">ERG</span>
                     </h1>
                     <p className="text-xl text-slate-300">
-                        Amount Due: <span className="font-bold text-white text-2xl">$20.00 USD</span>
+                        Amount Due: <span className="font-bold text-white text-2xl">$29.99 USD</span>
                         <span className="block text-sm text-slate-400 mt-1">(≈ {ergAmount?.toFixed(4)} ERG)</span>
                     </p>
                     <p className="text-sm text-slate-400 mt-2">
@@ -279,7 +279,7 @@ const ErgoPaymentPage = () => {
                                         <label className="text-sm text-slate-400 block mb-1">Send exactly:</label>
                                         <div className="flex items-center gap-2">
                                             <div className="bg-slate-900 px-4 py-3 rounded-lg flex-1 border border-slate-700 flex flex-col justify-center">
-                                                <span className="text-green-400 font-mono text-lg font-bold">$20.00 USD</span>
+                                                <span className="text-green-400 font-mono text-lg font-bold">$29.99 USD</span>
                                                 <span className="text-slate-500 text-xs font-mono">≈ {ergAmount} ERG</span>
                                             </div>
                                             <button
@@ -311,7 +311,7 @@ const ErgoPaymentPage = () => {
                                     <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 flex items-start gap-3">
                                         <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
                                         <p className="text-sm text-yellow-200">
-                                            <strong>Important:</strong> Send the EXACT amount. Payment is detected automatically on the blockchain.
+                                            <strong>CRITICAL:</strong> Send the <u>EXACT</u> amount shown above. If the amount does not match exactly, the system will not auto-unlock.
                                         </p>
                                     </div>
                                 </div>
@@ -329,6 +329,10 @@ const ErgoPaymentPage = () => {
                                     <p className="text-xs text-slate-500 hidden md:block">
                                         Checking blockchain every 10s • ID: {accessCode?.substring(0, 8)}
                                     </p>
+                                    <div className="hidden md:flex items-center gap-2 bg-slate-800 px-3 py-1 rounded-full border border-cyan-500/30">
+                                        <span className="text-xs text-cyan-400 font-bold">Captain Efficiency:</span>
+                                        <span className="text-xs text-slate-300">"I'm watching the blockchain for your transaction..."</span>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
