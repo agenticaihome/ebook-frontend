@@ -321,7 +321,6 @@ export default function SalesPage() {
                 <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>5 Pre-made Agent Prompts</span></li>
                 <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Kitchen Optimization Template</span></li>
                 <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Household Maintenance Schedule</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Private Discord Access</span></li>
               </ul>
 
               <div className="space-y-4">

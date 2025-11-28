@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Wrench, Volume2, VolumeX, Calculator, Activity } from 'lucide-react';
+import { Home, BookOpen, Wrench, Volume2, VolumeX, Calculator, Activity, LayoutDashboard } from 'lucide-react';
 import { useSound } from '../../context/SoundContext';
 
 const MobileBottomNav = () => {
@@ -46,6 +46,11 @@ const MobileBottomNav = () => {
                     <Link to="/" className={`flex flex-col items-center gap-1 ${isActive('/') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <Home size={24} />
                         <span className="text-[10px] font-bold">Home</span>
+                    </Link>
+
+                    <Link to="/dashboard" className={`flex flex-col items-center gap-1 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                        <LayoutDashboard size={24} />
+                        <span className="text-[10px] font-bold">Dash</span>
                     </Link>
 
                     <Link to="/part1" className={`flex flex-col items-center gap-1 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-500'}`}>

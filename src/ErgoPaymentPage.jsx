@@ -109,10 +109,15 @@ const ErgoPaymentPage = () => {
         setTimeout(() => setCopiedState(false), 2000);
     };
 
+    const [isConnectingWallet, setIsConnectingWallet] = useState(false);
+    const [walletError, setWalletError] = useState('');
+
     const connectNautilus = async () => {
+        setIsConnectingWallet(true);
+        setWalletError('');
         try {
             if (typeof window.ergo_request_read_access === 'undefined') {
-                alert('Nautilus Wallet is not installed!');
+                setWalletError('Nautilus Wallet is not installed or not detected.');
                 return;
             }
 
@@ -122,10 +127,14 @@ const ErgoPaymentPage = () => {
                 const address = addresses[0];
                 setUserWalletAddress(address);
                 setNautilusConnected(true);
+            } else {
+                setWalletError('Connection rejected by user.');
             }
         } catch (err) {
             console.error('Nautilus connection failed:', err);
-            alert('Failed to connect to Nautilus.');
+            setWalletError('Failed to connect. Please try again.');
+        } finally {
+            setIsConnectingWallet(false);
         }
     };
 
@@ -239,10 +248,11 @@ const ErgoPaymentPage = () => {
                                         <div className="flex flex-col md:flex-row items-center gap-4">
                                             <button
                                                 onClick={connectNautilus}
-                                                className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2"
+                                                disabled={isConnectingWallet}
+                                                className="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2"
                                             >
-                                                <Wallet className="w-5 h-5" />
-                                                Connect Nautilus Wallet
+                                                {isConnectingWallet ? <Loader2 className="w-5 h-5 animate-spin" /> : <Wallet className="w-5 h-5" />}
+                                                {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus Wallet'}
                                             </button>
                                             <p className="text-sm text-slate-400">
                                                 Connect to verify address, then send manually below.
@@ -250,16 +260,32 @@ const ErgoPaymentPage = () => {
                                         </div>
                                     ) : (
                                         <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
-                                            <p className="text-green-400 font-semibold flex items-center gap-2 mb-2">
-                                                <CheckCircle2 className="w-5 h-5" />
-                                                Nautilus Connected!
-                                            </p>
-                                            <p className="text-slate-300 text-sm">
-                                                Your address: <span className="font-mono text-slate-400">{userWalletAddress.substring(0, 10)}...{userWalletAddress.substring(userWalletAddress.length - 5)}</span>
-                                            </p>
-                                            <p className="text-white mt-2">
+                                            <div className="flex justify-between items-start">
+                                                <div>
+                                                    <p className="text-green-400 font-semibold flex items-center gap-2 mb-2">
+                                                        <CheckCircle2 className="w-5 h-5" />
+                                                        Nautilus Connected!
+                                                    </p>
+                                                    <p className="text-slate-300 text-sm">
+                                                        Your address: <span className="font-mono text-slate-400">{userWalletAddress.substring(0, 10)}...{userWalletAddress.substring(userWalletAddress.length - 5)}</span>
+                                                    </p>
+                                                </div>
+                                                <button
+                                                    onClick={() => setNautilusConnected(false)}
+                                                    className="text-xs text-slate-500 hover:text-white underline"
+                                                >
+                                                    Disconnect
+                                                </button>
+                                            </div>
+                                            <p className="text-white mt-2 text-sm">
                                                 Now please use <strong>Option 3</strong> to send the exact amount manually.
                                             </p>
+                                        </div>
+                                    )}
+                                    {walletError && (
+                                        <div className="mt-3 text-red-400 text-sm flex items-center gap-2">
+                                            <AlertTriangle className="w-4 h-4" />
+                                            {walletError}
                                         </div>
                                     )}
                                 </div>
