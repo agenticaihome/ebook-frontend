@@ -55,7 +55,7 @@ export default function SalesPage() {
           </div>
 
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-            {/* Left: Captain E */}
+            {/* Left: Captain Efficiency */}
             <div className="flex justify-center md:justify-end order-2 md:order-1">
               <CaptainHero
                 size="lg"

@@ -14,14 +14,28 @@ const PasswordGate = ({ children, partName = "This Section" }) => {
         }
     }, [partName]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (password === 'password') {
-            setIsAuthenticated(true);
-            sessionStorage.setItem(`auth_${partName}`, 'true');
-            setError('');
-        } else {
-            setError('Incorrect password');
+
+        try {
+            // Simple hash for "password" to prevent plain text viewing
+            // SHA-256 for 'password'
+            const msgBuffer = new TextEncoder().encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            // Hash for "password" = 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+            if (hashHex === '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8') {
+                setIsAuthenticated(true);
+                sessionStorage.setItem(`auth_${partName}`, 'true');
+                setError('');
+            } else {
+                setError('Incorrect password');
+            }
+        } catch (err) {
+            console.error("Auth error:", err);
+            setError('Authentication failed');
         }
     };
 
