@@ -3,146 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Wallet, Copy, Check, AlertTriangle, ArrowRight, ShieldCheck,
-    CheckCircle2, Clock, Smartphone, ExternalLink, Loader2
+    CheckCircle2, Clock, Smartphone, Loader2
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-
-// Configuration
-const ERGO_WALLET_ADDRESS = '9gxmJ4attdDx1NnZL7tWkN2U9iwZbPWWSEcfcPHbJXc7xsLq6QK';
-const PRICE_USD = 20;
-const EXPLORER_API = 'https://api.ergoplatform.com/api/v1';
-
-// Helper: Generate unique access code
-const generateAccessCode = () => {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let code = 'ERGO-';
-    for (let i = 0; i < 8; i++) {
-        code += chars[Math.floor(Math.random() * chars.length)];
-    }
-    return code;
-};
-
-// Helper: Get ERG price from CoinGecko
-const getErgPrice = async () => {
-    try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=usd');
-        const data = await response.json();
-        return data.ergo.usd;
-    } catch (error) {
-        console.error('Failed to fetch ERG price:', error);
-        return 1.5; // Fallback price
-    }
-};
-
-// Helper: Convert USD to nanoERG
-const usdToNanoErg = (usd, ergPriceUsd) => {
-    const erg = usd / ergPriceUsd;
-    return Math.floor(erg * 1_000_000_000); // ERG to nanoERG
-};
-
-// Helper: Check recent transactions for payment
-const checkErgoPayment = async (walletAddress, expectedAmount) => {
-    try {
-        console.log('🔍 Starting payment check...');
-
-        // Get the timestamp when access code was created
-        const paymentData = localStorage.getItem('ergo_payment');
-        if (!paymentData) {
-            console.warn('⚠️ No payment data found in localStorage');
-            return null;
-        }
-
-        const { timestamp: createdTimestamp } = JSON.parse(paymentData);
-        console.log('✅ Payment session created at:', new Date(createdTimestamp).toLocaleString());
-
-        const url = `${EXPLORER_API}/addresses/${walletAddress}/transactions?limit=20`;
-        console.log('📡 Fetching from:', url);
-
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            console.error('❌ API returned error:', response.status, response.statusText);
-            return null;
-        }
-
-        const data = await response.json();
-        console.log('📦 API Response structure:', Object.keys(data));
-        console.log('📊 Full response:', JSON.stringify(data, null, 2));
-
-        // Handle different API response structures
-        const transactions = data.items || data.transactions || data || [];
-        console.log(`📝 Found ${transactions.length} transactions`);
-
-        if (transactions.length === 0) {
-            console.log('⚠️ No transactions found in response');
-            return null;
-        }
-
-        // Look for transaction with matching amount (±5% tolerance) AND created AFTER access code
-        const minAmount = expectedAmount * 0.95;
-        const maxAmount = expectedAmount * 1.05;
-
-        console.log(`💰 Looking for amount between ${minAmount} and ${maxAmount} nanoERG`);
-        console.log(`💰 Expected: ${expectedAmount} nanoERG (${(expectedAmount / 1e9).toFixed(4)} ERG)`);
-
-        const payment = transactions.find((tx, index) => {
-            console.log(`\n--- Checking transaction ${index + 1}/${transactions.length} ---`);
-            console.log('TX ID:', tx.id);
-            console.log('Timestamp:', new Date(tx.timestamp).toLocaleString());
-            console.log('Created after payment session?', tx.timestamp > createdTimestamp);
-
-            // CRITICAL FIX: Only check transactions created AFTER the access code
-            if (tx.timestamp <= createdTimestamp) {
-                console.log('⏩ Skipping - transaction is too old');
-                return false;
-            }
-
-            if (!tx.outputs || tx.outputs.length === 0) {
-                console.log('⏩ Skipping - no outputs');
-                return false;
-            }
-
-            console.log(`🔍 Checking ${tx.outputs.length} outputs...`);
-
-            const matchingOutput = tx.outputs.find((output, outIndex) => {
-                const addressMatch = output.address === walletAddress;
-                const amountMatch = output.value >= minAmount && output.value <= maxAmount;
-
-                console.log(`  Output ${outIndex + 1}:`, {
-                    address: output.address.substring(0, 20) + '...',
-                    addressMatch,
-                    value: output.value,
-                    valueERG: (output.value / 1e9).toFixed(4),
-                    amountMatch
-                });
-
-                return addressMatch && amountMatch;
-            });
-
-            if (matchingOutput) {
-                console.log('✅ MATCH FOUND! Transaction:', tx.id);
-                return true;
-            }
-
-            return false;
-        });
-
-        if (payment) {
-            console.log('🎉 Payment verified! TX ID:', payment.id);
-            return payment.id;
-        } else {
-            console.log('❌ No matching payment found');
-            return null;
-        }
-    } catch (error) {
-        console.error('💥 Error in checkErgoPayment:', error);
-        console.error('Error details:', {
-            message: error.message,
-            stack: error.stack
-        });
-        return null;
-    }
-};
+import { api } from '../services/api';
 
 const ErgoPaymentPage = () => {
     const navigate = useNavigate();
@@ -151,7 +15,8 @@ const ErgoPaymentPage = () => {
     const [accessCode, setAccessCode] = useState('');
     const [ergPrice, setErgPrice] = useState(null);
     const [ergAmount, setErgAmount] = useState(null);
-    const [nanoErgAmount, setNanoErgAmount] = useState(null);
+    const [ergoPayUrl, setErgoPayUrl] = useState('');
+    const [walletAddress, setWalletAddress] = useState('');
     const [copiedAddress, setCopiedAddress] = useState(false);
     const [copiedCode, setCopiedCode] = useState(false);
     const [manualTxId, setManualTxId] = useState('');
@@ -173,34 +38,32 @@ const ErgoPaymentPage = () => {
 
             return () => clearInterval(interval);
         }
-    }, [step, paymentStatus, nanoErgAmount]);
+    }, [step, paymentStatus, accessCode]);
 
     const initializePayment = async () => {
         setIsLoading(true);
         try {
-            // Get current ERG price
-            const price = await getErgPrice();
-            const ergNeeded = PRICE_USD / price;
-            const nanoErg = usdToNanoErg(PRICE_USD, price);
+            const result = await api.initiateErgoPayment();
 
-            setErgPrice(price);
-            setErgAmount(ergNeeded);
-            setNanoErgAmount(nanoErg);
+            if (result.success) {
+                setAccessCode(result.accessCode);
+                setWalletAddress(result.walletAddress);
+                setErgAmount(result.ergAmount);
+                setErgPrice(result.ergPriceUsd);
+                setErgoPayUrl(result.ergoPayUrl);
 
-            // Generate unique access code
-            const code = generateAccessCode();
-            setAccessCode(code);
-
-            // Save to localStorage for persistence
-            localStorage.setItem('ergo_payment', JSON.stringify({
-                accessCode: code,
-                timestamp: Date.now(),
-                expectedAmount: nanoErg,
-                paid: false
-            }));
-
+                // Save to localStorage for persistence/recovery
+                localStorage.setItem('ergo_payment', JSON.stringify({
+                    accessCode: result.accessCode,
+                    timestamp: Date.now(),
+                    paid: false
+                }));
+            } else {
+                setError('Failed to initialize payment: ' + result.error);
+            }
         } catch (err) {
-            setError('Failed to initialize payment. Please refresh the page.');
+            console.error(err);
+            setError('Failed to connect to payment server. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -211,11 +74,15 @@ const ErgoPaymentPage = () => {
     };
 
     const autoCheckPayment = async () => {
-        if (!nanoErgAmount) return;
+        if (!accessCode) return;
 
-        const txId = await checkErgoPayment(ERGO_WALLET_ADDRESS, nanoErgAmount);
-        if (txId) {
-            confirmPayment(txId);
+        try {
+            const result = await api.checkRecentErgoPayment(accessCode);
+            if (result.success && result.status === 'PAID') {
+                confirmPayment(result.transactionId);
+            }
+        } catch (err) {
+            console.error('Auto-check failed', err);
         }
     };
 
@@ -229,26 +96,16 @@ const ErgoPaymentPage = () => {
         setError('');
 
         try {
-            // For manual TX ID, just verify it exists on blockchain
-            const response = await fetch(`${EXPLORER_API}/transactions/${manualTxId}`);
+            // We can use the claim endpoint or check-recent
+            // For manual TX ID, we might want a specific verify endpoint, 
+            // but checkRecentErgoPayment scans the blockchain anyway.
+            // Let's rely on checkRecent first.
+            const result = await api.checkRecentErgoPayment(accessCode);
 
-            if (response.ok) {
-                const tx = await response.json();
-
-                // Verify transaction sent to our wallet with correct amount
-                const validOutput = tx.outputs.find(output =>
-                    output.address === ERGO_WALLET_ADDRESS &&
-                    output.value >= nanoErgAmount * 0.95 &&
-                    output.value <= nanoErgAmount * 1.05
-                );
-
-                if (validOutput) {
-                    confirmPayment(manualTxId);
-                } else {
-                    setError('Transaction does not match expected payment amount and address');
-                }
+            if (result.success && result.status === 'PAID') {
+                confirmPayment(result.transactionId);
             } else {
-                setError('Transaction not found. Please check the TX ID');
+                setError('Payment not found yet. Please wait a moment if you just sent it.');
             }
         } catch (err) {
             setError('Failed to verify transaction. Please try again.');
@@ -261,18 +118,16 @@ const ErgoPaymentPage = () => {
         setPaymentStatus('CONFIRMED');
 
         // Update localStorage
-        const payment = JSON.parse(localStorage.getItem('ergo_payment'));
+        const payment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
         payment.paid = true;
         payment.txId = txId;
-        payment.confirmedAt = Date.now();
         localStorage.setItem('ergo_payment', JSON.stringify(payment));
 
         console.log('✅ Payment confirmed! Redirecting to account creation...');
 
         // Redirect to account creation page after 2 seconds
         setTimeout(() => {
-            const email = payment.email || '';
-            navigate(`/create-account?payment_id=${payment.accessCode}&email=${email}&type=ergo`);
+            navigate(`/create-account?payment_id=${accessCode}&type=ergo`);
         }, 2000);
     };
 
@@ -282,22 +137,12 @@ const ErgoPaymentPage = () => {
         setTimeout(() => setCopied(false), 2000);
     };
 
-    const copyPaymentDetails = () => {
-        const details = `Send ${ergAmount?.toFixed(4)} ERG to:
-${ERGO_WALLET_ADDRESS}
-
-Access Code: ${accessCode}`;
-        navigator.clipboard.writeText(details);
-        setCopiedAddress(true);
-        setTimeout(() => setCopiedAddress(false), 3000);
-    };
-
     if (isLoading) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-4">
                     <Loader2 className="w-12 h-12 text-cyan-400 animate-spin" />
-                    <p className="text-white text-lg">Initializing payment...</p>
+                    <p className="text-white text-lg">Initializing secure payment...</p>
                 </div>
             </div>
         );
@@ -316,7 +161,7 @@ Access Code: ${accessCode}`;
                         Pay with <span className="text-cyan-400">ERG</span>
                     </h1>
                     <p className="text-xl text-slate-300">
-                        ${PRICE_USD} USD = {ergAmount?.toFixed(2)} ERG
+                        ${(ergAmount * ergPrice)?.toFixed(2)} USD = {ergAmount?.toFixed(2)} ERG
                     </p>
                     <p className="text-sm text-slate-400 mt-2">
                         Tech Literacy Discount • 50% off vs Card Payment
@@ -399,7 +244,7 @@ Access Code: ${accessCode}`;
                                         <div>
                                             <p className="text-white font-semibold">Send {ergAmount?.toFixed(4)} ERG</p>
                                             <p className="text-cyan-200 text-sm">
-                                                Send exactly <strong className="text-cyan-400">{ergAmount?.toFixed(4)} ERG (${PRICE_USD} USD)</strong> to the wallet address below
+                                                Send exactly <strong className="text-cyan-400">{ergAmount?.toFixed(4)} ERG</strong> to the wallet address below
                                             </p>
                                         </div>
                                     </div>
@@ -411,35 +256,16 @@ Access Code: ${accessCode}`;
                                         <div>
                                             <p className="text-white font-semibold">Automatic Confirmation</p>
                                             <p className="text-cyan-200 text-sm">
-                                                We'll detect your payment within ~30 seconds. Or paste your Transaction ID below for instant verification.
+                                                We'll detect your payment automatically. Or paste your Transaction ID below for instant verification.
                                             </p>
                                         </div>
                                     </div>
-
-                                    <div className="flex items-start gap-3">
-                                        <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                                            ✓
-                                        </div>
-                                        <div>
-                                            <p className="text-white font-semibold">Get Instant Access</p>
-                                            <p className="text-cyan-200 text-sm">
-                                                You'll be automatically redirected to your dashboard with full access to all 5 parts!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="mt-4 ml-16 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                                    <p className="text-yellow-200 text-sm flex items-center gap-2">
-                                        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                                        <span><strong>Important:</strong> Save your Access Code (<span className="font-mono text-cyan-400">{accessCode}</span>) in case you need to verify your payment manually.</span>
-                                    </p>
                                 </div>
                             </div>
 
                             {/* Payment Methods */}
                             <div className="grid md:grid-cols-2 gap-6">
-                                {/* Mobile: Copy Payment Details */}
+                                {/* Mobile: ErgoPay Deep Link */}
                                 <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
@@ -447,46 +273,39 @@ Access Code: ${accessCode}`;
                                         </div>
                                         <div>
                                             <h3 className="text-lg font-bold text-white">Mobile Payment</h3>
-                                            <p className="text-sm text-slate-400">Copy to your wallet</p>
+                                            <p className="text-sm text-slate-400">ErgoPay (Terminus, Nautilus)</p>
                                         </div>
                                     </div>
-                                    <button
-                                        onClick={copyPaymentDetails}
-                                        className="block w-full bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold text-center transition-all"
+                                    <a
+                                        href={ergoPayUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block w-full bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold text-center transition-all flex items-center justify-center gap-2"
                                     >
-                                        {copiedAddress ? (
-                                            <div className="flex items-center justify-center gap-2">
-                                                <Check className="w-5 h-5" />
-                                                Copied!
-                                            </div>
-                                        ) : (
-                                            <div className="flex items-center justify-center gap-2">
-                                                <Copy className="w-5 h-5" />
-                                                Copy Payment Details
-                                            </div>
-                                        )}
-                                    </button>
+                                        <Wallet className="w-5 h-5" />
+                                        Open Wallet App
+                                    </a>
                                     <p className="text-xs text-slate-400 mt-3 text-center">
-                                        Then paste into your Nautilus or Ergo wallet
+                                        Tap to open your Ergo wallet app automatically
                                     </p>
                                 </div>
 
-                                {/* Desktop: QR Code */}
+                                {/* Desktop: ErgoPay QR Code */}
                                 <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
                                             <Wallet className="w-6 h-6 text-purple-400" />
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-bold text-white">Wallet Address QR</h3>
-                                            <p className="text-sm text-slate-400">Scan to get address</p>
+                                            <h3 className="text-lg font-bold text-white">Scan to Pay</h3>
+                                            <p className="text-sm text-slate-400">ErgoPay QR Code</p>
                                         </div>
                                     </div>
                                     <div className="bg-white p-4 rounded-xl">
-                                        <QRCodeSVG value={ERGO_WALLET_ADDRESS} size={180} className="mx-auto" />
+                                        <QRCodeSVG value={ergoPayUrl || walletAddress} size={180} className="mx-auto" />
                                     </div>
                                     <p className="text-xs text-slate-400 mt-3 text-center">
-                                        Scan with mobile wallet to get address, then send {ergAmount?.toFixed(4)} ERG
+                                        Scan with mobile wallet to pay instantly
                                     </p>
                                 </div>
                             </div>
@@ -504,12 +323,12 @@ Access Code: ${accessCode}`;
                                         <div className="flex gap-2">
                                             <input
                                                 type="text"
-                                                value={ERGO_WALLET_ADDRESS}
+                                                value={walletAddress}
                                                 readOnly
                                                 className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white text-sm font-mono"
                                             />
                                             <button
-                                                onClick={() => copyToClipboard(ERGO_WALLET_ADDRESS, setCopiedAddress)}
+                                                onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
                                                 className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg transition-all"
                                             >
                                                 {copiedAddress ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-slate-400" />}
@@ -520,7 +339,7 @@ Access Code: ${accessCode}`;
                                     <div>
                                         <label className="text-sm text-slate-400 block mb-2">Amount</label>
                                         <div className="bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white">
-                                            {ergAmount?.toFixed(4)} ERG ({PRICE_USD} USD)
+                                            {ergAmount?.toFixed(4)} ERG
                                         </div>
                                     </div>
 
@@ -541,33 +360,6 @@ Access Code: ${accessCode}`;
                                             </button>
                                         </div>
                                         <p className="text-xs text-slate-400 mt-2">Save this code to verify your payment</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Smart Notification */}
-                            <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 backdrop-blur-lg border border-blue-500/30 rounded-xl p-6">
-                                <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0">
-                                        <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                                            <Clock className="w-6 h-6 text-blue-400 animate-pulse" />
-                                        </div>
-                                    </div>
-                                    <div className="flex-1">
-                                        <h4 className="text-white font-bold mb-2 flex items-center gap-2">
-                                            <CheckCircle2 className="w-5 h-5 text-green-400" />
-                                            Payment Sent? Here's What Happens Next
-                                        </h4>
-                                        <div className="space-y-2 text-sm">
-                                            <p className="text-blue-200">
-                                                ⏱ <strong>Automatic Detection:</strong> We're checking the blockchain every 15 seconds.
-                                                Your payment should be confirmed automatically within ~30 seconds.
-                                            </p>
-                                            <p className="text-purple-200">
-                                                ⚡ <strong>Faster Option:</strong> Have your transaction ID?
-                                                Enter it below for <span className="text-cyan-400 font-bold">instant verification</span>!
-                                            </p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -642,11 +434,11 @@ Access Code: ${accessCode}`;
                             </motion.div>
                             <h2 className="text-3xl font-bold text-white mb-4">Payment Confirmed!</h2>
                             <p className="text-green-300 text-lg mb-8">
-                                Redirecting to your dashboard...
+                                Redirecting to account creation...
                             </p>
                             <div className="flex items-center justify-center gap-2">
                                 <Loader2 className="w-5 h-5 text-green-400 animate-spin" />
-                                <span className="text-green-400">Loading content...</span>
+                                <span className="text-green-400">Loading...</span>
                             </div>
                         </motion.div>
                     )}
