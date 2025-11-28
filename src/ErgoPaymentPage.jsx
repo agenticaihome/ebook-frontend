@@ -6,7 +6,7 @@ import {
     CheckCircle2, Clock, Smartphone, Loader2
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-import { api } from '../services/api';
+import { api } from './services/api';
 
 const ErgoPaymentPage = () => {
     const navigate = useNavigate();
