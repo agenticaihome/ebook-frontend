@@ -213,8 +213,15 @@ const ErgoPaymentPage = () => {
         setTimeout(() => setCopied(false), 2000);
     };
 
-    // Generate ErgoPay URI
-    const ergoPayUri = `ergopay://payment?address=${ERGO_WALLET_ADDRESS}&amount=${nanoErgAmount}&description=Course%20Access%20${accessCode}`;
+    const copyPaymentDetails = () => {
+        const details = `Send ${ergAmount?.toFixed(4)} ERG to:
+${ERGO_WALLET_ADDRESS}
+
+Access Code: ${accessCode}`;
+        navigator.clipboard.writeText(details);
+        setCopiedAddress(true);
+        setTimeout(() => setCopiedAddress(false), 3000);
+    };
 
     if (isLoading) {
         return (
@@ -363,25 +370,35 @@ const ErgoPaymentPage = () => {
 
                             {/* Payment Methods */}
                             <div className="grid md:grid-cols-2 gap-6">
-                                {/* Mobile: ErgoPay Deep Link */}
+                                {/* Mobile: Copy Payment Details */}
                                 <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
                                             <Smartphone className="w-6 h-6 text-green-400" />
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-bold text-white">Mobile Wallet</h3>
-                                            <p className="text-sm text-slate-400">One-click payment</p>
+                                            <h3 className="text-lg font-bold text-white">Mobile Payment</h3>
+                                            <p className="text-sm text-slate-400">Copy to your wallet</p>
                                         </div>
                                     </div>
-                                    <a
-                                        href={ergoPayUri}
+                                    <button
+                                        onClick={copyPaymentDetails}
                                         className="block w-full bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold text-center transition-all"
                                     >
-                                        Open Wallet App
-                                    </a>
+                                        {copiedAddress ? (
+                                            <div className="flex items-center justify-center gap-2">
+                                                <Check className="w-5 h-5" />
+                                                Copied!
+                                            </div>
+                                        ) : (
+                                            <div className="flex items-center justify-center gap-2">
+                                                <Copy className="w-5 h-5" />
+                                                Copy Payment Details
+                                            </div>
+                                        )}
+                                    </button>
                                     <p className="text-xs text-slate-400 mt-3 text-center">
-                                        Works with Nautilus, SAFEW, Ergo Wallet
+                                        Then paste into your Nautilus or Ergo wallet
                                     </p>
                                 </div>
 
@@ -389,18 +406,18 @@ const ErgoPaymentPage = () => {
                                 <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                                            <QRCodeSVG value={ergoPayUri} size={24} fgColor="#a78bfa" bgColor="transparent" />
+                                            <Wallet className="w-6 h-6 text-purple-400" />
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-bold text-white">Desktop</h3>
-                                            <p className="text-sm text-slate-400">Scan QR code</p>
+                                            <h3 className="text-lg font-bold text-white">Wallet Address QR</h3>
+                                            <p className="text-sm text-slate-400">Scan to get address</p>
                                         </div>
                                     </div>
                                     <div className="bg-white p-4 rounded-xl">
-                                        <QRCodeSVG value={ergoPayUri} size={180} className="mx-auto" />
+                                        <QRCodeSVG value={ERGO_WALLET_ADDRESS} size={180} className="mx-auto" />
                                     </div>
                                     <p className="text-xs text-slate-400 mt-3 text-center">
-                                        Scan with mobile wallet
+                                        Scan with mobile wallet to get address, then send {ergAmount?.toFixed(4)} ERG
                                     </p>
                                 </div>
                             </div>
