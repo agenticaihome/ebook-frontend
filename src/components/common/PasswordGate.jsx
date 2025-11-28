@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
+import CaptainHero from '../CaptainHero';
 
 const PasswordGate = ({ children, partName = "This Section" }) => {
     const [password, setPassword] = useState('');
@@ -32,8 +33,11 @@ const PasswordGate = ({ children, partName = "This Section" }) => {
         <div className="min-h-screen bg-[#0f0f1a] text-white flex items-center justify-center px-6">
             <div className="max-w-md w-full">
                 <div className="text-center mb-8">
-                    <div className="w-16 h-16 bg-cyan-900/30 rounded-full flex items-center justify-center mx-auto mb-6 border border-cyan-500/30">
-                        <Lock className="text-cyan-400" size={32} />
+                    <div className="flex justify-center mb-6">
+                        <CaptainHero
+                            size="md"
+                            message="I need to verify your clearance level before we can proceed to operations."
+                        />
                     </div>
                     <h1 className="text-3xl font-bold mb-4">Level 2 Clearance Required</h1>
                     <p className="text-slate-300 mb-6">

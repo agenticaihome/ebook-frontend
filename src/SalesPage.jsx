@@ -317,9 +317,11 @@ export default function SalesPage() {
               <h3 className="text-2xl font-bold mb-2">Standard Access</h3>
               <div className="text-4xl font-bold text-white mb-6">$39.99 <span className="text-sm text-slate-400 font-normal">USD</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
-                <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Full access to all 5 parts</li>
-                <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Immediate unlock</li>
-                <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Secure Stripe Checkout</li>
+                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Full access to all 5 parts</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>5 Pre-made Agent Prompts</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Kitchen Optimization Template</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Household Maintenance Schedule</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Private Discord Access</span></li>
               </ul>
 
               <div className="space-y-4">
@@ -363,9 +365,11 @@ export default function SalesPage() {
               <h3 className="text-2xl font-bold mb-2 text-green-400">Crypto Access</h3>
               <div className="text-4xl font-bold text-white mb-6">$29.99 <span className="text-sm text-slate-400 font-normal">in ERG</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
-                <li className="flex gap-3"><Check size={18} className="text-green-400" /> 50% Tech Literacy Discount</li>
-                <li className="flex gap-3"><Check size={18} className="text-green-400" /> Support decentralized commerce</li>
-                <li className="flex gap-3"><Check size={18} className="text-green-400" /> Private & Secure</li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>Everything in Standard Access</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>50% Tech Literacy Discount</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>"Early Adopter" Badge</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>Support decentralized commerce</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>Private & Secure</span></li>
               </ul>
               <div className="mt-auto">
                 <button
