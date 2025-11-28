@@ -7,6 +7,7 @@ import MentalLoadCalculator from '../components/MentalLoadCalculator';
 import ToolRecommendationQuiz from '../components/ToolRecommendationQuiz';
 import PrivacyAssessment from '../components/PrivacyAssessment';
 import AgentConstitutionBuilder from '../components/AgentConstitutionBuilder';
+import SocialShare from '../components/tools/SocialShare';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
@@ -430,6 +431,11 @@ const Part1 = () => {
                         </div>
                     </div>
                 </section>
+                {/* Social Share */}
+                <SocialShare
+                    title="I'm diagnosing my 'Time Infection' with Agentic AI. It's time to reclaim my schedule!"
+                    hashtags={["AgenticAI", "TimeManagement", "Productivity"]}
+                />
             </div>
         </WebbookLayout>
     );

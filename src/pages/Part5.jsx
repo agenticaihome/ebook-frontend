@@ -8,6 +8,7 @@ import WeeklyReviewTemplateGenerator from '../components/WeeklyReviewTemplateGen
 import SmartHomeReadinessAssessment from '../components/SmartHomeReadinessAssessment';
 import SystemHealthDiagnostic from '../components/SystemHealthDiagnostic';
 import PersonalizedLaunchPlanGenerator from '../components/PersonalizedLaunchPlanGenerator';
+import SocialShare from '../components/tools/SocialShare';
 import { motion } from 'framer-motion';
 import { Layers, Home, Wrench, Flag, ArrowRight, CheckCircle, Zap } from 'lucide-react';
 
@@ -240,6 +241,12 @@ const Part5 = () => {
                             </div>
                         </div>
                     </section>
+
+                    {/* Social Share */}
+                    <SocialShare
+                        title="I've built a complete Life OS with Agentic AI. Check out the system!"
+                        hashtags={["AgenticAI", "LifeOS", "Automation"]}
+                    />
                 </div>
             </PasswordGate>
         </WebbookLayout>

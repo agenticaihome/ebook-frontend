@@ -1,14 +1,45 @@
 import React, { useState } from 'react';
-import { Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { Clock, ArrowRight, Sparkles, Download, Lock } from 'lucide-react';
+import {
+    TwitterShareButton,
+    LinkedinShareButton,
+    FacebookShareButton,
+    TwitterIcon,
+    LinkedinIcon,
+    FacebookIcon
+} from 'react-share';
 
 export default function TimeBackCalculator() {
     const [emailHours, setEmailHours] = useState(5);
     const [choreHours, setChoreHours] = useState(4);
     const [planningHours, setPlanningHours] = useState(3);
+    const [isUnlocked, setIsUnlocked] = useState(false);
 
     const totalHours = emailHours + choreHours + planningHours;
     const savedHours = Math.round(totalHours * 0.7); // Assume 70% efficiency gain
     const yearlySaved = savedHours * 52;
+
+    const shareUrl = "https://agenticaihome.com";
+    const shareTitle = `I just found out I can reclaim ${savedHours} hours/week with Agentic AI! Check your potential savings:`;
+
+    const handleShare = () => {
+        // "Soft" verification: Listen for window focus after they return from the share dialog
+        const checkFocus = () => {
+            window.removeEventListener('focus', checkFocus);
+            // Add a small delay to make it feel like we're "verifying"
+            setTimeout(() => {
+                setIsUnlocked(true);
+                // Optional: Track the "unlock" event
+                try {
+                    const unlocks = JSON.parse(localStorage.getItem('agent_unlocks') || '[]');
+                    unlocks.push({ type: 'triage_agent', timestamp: new Date().toISOString() });
+                    localStorage.setItem('agent_unlocks', JSON.stringify(unlocks));
+                } catch (e) { }
+            }, 1000);
+        };
+
+        window.addEventListener('focus', checkFocus);
+    };
 
     return (
         <div className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 backdrop-blur-sm">
@@ -31,7 +62,7 @@ export default function TimeBackCalculator() {
                         max="20"
                         value={emailHours}
                         onChange={(e) => setEmailHours(parseInt(e.target.value))}
-                        className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                        className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                     />
                 </div>
 
@@ -46,7 +77,7 @@ export default function TimeBackCalculator() {
                         max="20"
                         value={choreHours}
                         onChange={(e) => setChoreHours(parseInt(e.target.value))}
-                        className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                        className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                     />
                 </div>
 
@@ -61,12 +92,12 @@ export default function TimeBackCalculator() {
                         max="10"
                         value={planningHours}
                         onChange={(e) => setPlanningHours(parseInt(e.target.value))}
-                        className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                        className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                     />
                 </div>
             </div>
 
-            <div className="bg-gradient-to-r from-cyan-900/50 to-purple-900/50 rounded-xl p-6 border border-cyan-500/30 text-center">
+            <div className="bg-gradient-to-r from-cyan-900/50 to-purple-900/50 rounded-xl p-6 border border-cyan-500/30 text-center mb-6">
                 <div className="text-slate-400 text-sm mb-1">POTENTIAL TIME RECLAIMED</div>
                 <div className="text-4xl font-bold text-white mb-2 flex items-center justify-center gap-2">
                     <Sparkles className="text-yellow-400 w-6 h-6" />
@@ -75,6 +106,47 @@ export default function TimeBackCalculator() {
                 <div className="text-cyan-400 font-mono text-sm">
                     That's {yearlySaved} hours per year!
                 </div>
+            </div>
+
+            {/* Referral / Unlock System */}
+            <div className="bg-slate-900/80 rounded-xl p-4 border border-slate-700 text-center">
+                {!isUnlocked ? (
+                    <div>
+                        <div className="flex items-center justify-center gap-2 text-white font-bold mb-2">
+                            <Lock size={16} className="text-slate-400" />
+                            Unlock Free Agent Template
+                        </div>
+                        <p className="text-xs text-slate-400 mb-4">
+                            Share your results to unlock a free "Daily Triage Agent" template.
+                        </p>
+                        <div className="flex justify-center gap-4" onClickCapture={handleShare}>
+                            <TwitterShareButton url={shareUrl} title={shareTitle} hashtags={["AgenticAI", "Productivity"]}>
+                                <TwitterIcon size={32} round />
+                            </TwitterShareButton>
+                            <LinkedinShareButton url={shareUrl} title={shareTitle} summary={shareTitle} source="Agentic AI at Home">
+                                <LinkedinIcon size={32} round />
+                            </LinkedinShareButton>
+                            <FacebookShareButton url={shareUrl} quote={shareTitle} hashtag="#AgenticAI">
+                                <FacebookIcon size={32} round />
+                            </FacebookShareButton>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="animate-in fade-in zoom-in duration-500">
+                        <div className="flex items-center justify-center gap-2 text-green-400 font-bold mb-2">
+                            <Sparkles size={16} />
+                            Template Unlocked!
+                        </div>
+                        <a
+                            href="/triage-agent.json"
+                            download="Daily_Triage_Agent.json"
+                            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors"
+                        >
+                            <Download size={16} />
+                            Download Triage Agent (.json)
+                        </a>
+                    </div>
+                )}
             </div>
         </div>
     );

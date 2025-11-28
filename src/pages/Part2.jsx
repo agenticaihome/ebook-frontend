@@ -7,6 +7,7 @@ import MorningChaosCalculator from '../components/MorningChaosCalculator';
 import MorningBriefBuilder from '../components/MorningBriefBuilder';
 import FoodChaosCalculator from '../components/FoodChaosCalculator';
 import HouseholdChaosCalculator from '../components/HouseholdChaosCalculator';
+import SocialShare from '../components/tools/SocialShare';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Coffee, UtensilsCrossed, Home, ArrowRight, CheckCircle, Clock, DollarSign } from 'lucide-react';
@@ -462,6 +463,12 @@ const Part2 = () => {
                             </div>
                         </div>
                     </section>
+
+                    {/* Social Share */}
+                    <SocialShare
+                        title="Just set up my first AI Agent for daily ops! The future of home management is here."
+                        hashtags={["AgenticAI", "SmartHome", "AI"]}
+                    />
                 </div>
             </PasswordGate>
         </WebbookLayout>

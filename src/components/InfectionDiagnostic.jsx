@@ -1,12 +1,55 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import html2canvas from 'html2canvas';
+
+const CaptainMemePopup = ({ onClose }) => {
+    return (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <motion.div
+                initial={{ scale: 0.5, opacity: 0, rotate: -10 }}
+                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                exit={{ scale: 0.5, opacity: 0 }}
+                className="bg-white rounded-2xl max-w-md w-full overflow-hidden relative"
+            >
+                <div className="bg-blue-600 p-4 text-center">
+                    <h3 className="text-white font-bold text-xl uppercase">Mission Accomplished!</h3>
+                </div>
+                <div className="p-6 text-center">
+                    <div className="mb-4 relative inline-block">
+                        <img
+                            src="/assets/captain-hero.png" // Assuming this exists, or use a placeholder/emoji
+                            alt="Captain Efficiency"
+                            className="w-32 h-32 mx-auto rounded-full border-4 border-blue-500 object-cover bg-slate-900"
+                        />
+                        <div className="absolute -bottom-2 -right-2 bg-yellow-400 text-black font-bold px-3 py-1 rounded-full text-xs transform rotate-12 shadow-lg">
+                            BOOM!
+                        </div>
+                    </div>
+                    <h4 className="text-2xl font-black text-slate-800 mb-2">
+                        "You survived the diagnostic!"
+                    </h4>
+                    <p className="text-slate-600 mb-6">
+                        Don't let your friends live in chaos. Challenge them to beat your score!
+                    </p>
+
+                    <button
+                        onClick={onClose}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors"
+                    >
+                        I'll Share the Wisdom 🫡
+                    </button>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
 
 const InfectionDiagnostic = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
     const [showResults, setShowResults] = useState(false);
     const [direction, setDirection] = useState(0);
+    const [showMemePopup, setShowMemePopup] = useState(false);
     const resultsRef = useRef(null);
 
     const questions = [
@@ -74,6 +117,8 @@ const InfectionDiagnostic = () => {
         } else {
             setTimeout(() => {
                 setShowResults(true);
+                // Show popup after a short delay
+                setTimeout(() => setShowMemePopup(true), 1500);
             }, 300);
         }
     };
@@ -129,7 +174,20 @@ const InfectionDiagnostic = () => {
         };
     };
 
+    const trackShare = (platform) => {
+        // Anonymous tracking
+        try {
+            const shares = JSON.parse(localStorage.getItem('chaos_shares') || '[]');
+            shares.push({ platform, timestamp: new Date().toISOString() });
+            localStorage.setItem('chaos_shares', JSON.stringify(shares));
+            console.log(`Tracked share to ${platform}`);
+        } catch (e) {
+            console.error("Tracking failed", e);
+        }
+    };
+
     const shareToTwitter = () => {
+        trackShare('twitter');
         const diagnosis = getDiagnosis();
         const text = `I just took the Household Chaos Assessment and got: ${diagnosis.stage}! ${diagnosis.emoji} Find out your chaos level:`;
         const url = window.location.href;
@@ -137,11 +195,13 @@ const InfectionDiagnostic = () => {
     };
 
     const shareToFacebook = () => {
+        trackShare('facebook');
         const url = window.location.href;
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
     };
 
     const shareToLinkedIn = () => {
+        trackShare('linkedin');
         const url = window.location.href;
         window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
     };
@@ -163,7 +223,13 @@ const InfectionDiagnostic = () => {
     const infectionLevel = calculateInfectionLevel();
 
     return (
-        <div className="glass-card-xl p-8 md:p-12 max-w-4xl mx-auto">
+        <div className="glass-card-xl p-8 md:p-12 max-w-4xl mx-auto relative">
+            <AnimatePresence>
+                {showMemePopup && (
+                    <CaptainMemePopup onClose={() => setShowMemePopup(false)} />
+                )}
+            </AnimatePresence>
+
             {!showResults ? (
                 <>
                     {/* Header */}

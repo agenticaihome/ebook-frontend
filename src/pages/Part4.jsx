@@ -8,6 +8,7 @@ import SleepCapacityCalculator from '../components/SleepCapacityCalculator';
 import MentalLoadAssessment from '../components/MentalLoadAssessment';
 import KnowledgeChaosAssessment from '../components/KnowledgeChaosAssessment';
 import StudySystemGenerator from '../components/StudySystemGenerator';
+import SocialShare from '../components/tools/SocialShare';
 import { motion } from 'framer-motion';
 import { Activity, Brain, BookOpen, ArrowRight, Heart, Moon, Database, Coffee } from 'lucide-react';
 
@@ -277,6 +278,12 @@ const Part4 = () => {
                             </div>
                         </div>
                     </section>
+
+                    {/* Social Share */}
+                    <SocialShare
+                        title="Using AI to optimize my health and sleep. The data doesn't lie!"
+                        hashtags={["AgenticAI", "Biohacking", "HealthTech"]}
+                    />
                 </div>
             </PasswordGate>
         </WebbookLayout>
