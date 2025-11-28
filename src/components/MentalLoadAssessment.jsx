@@ -118,7 +118,7 @@ const MentalLoadAssessment = () => {
                                 <button
                                     key={index}
                                     onClick={() => handleAnswer(option.score)}
-                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white"
+                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
                                 >
                                     {option.label}
                                 </button>

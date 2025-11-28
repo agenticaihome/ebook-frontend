@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Battery, Moon, Coffee, AlertTriangle } from 'lucide-react';
+import CaptainTooltip from './tools/CaptainTooltip';
 
 const SleepCapacityCalculator = () => {
     const [inputs, setInputs] = useState({
@@ -103,14 +104,17 @@ const SleepCapacityCalculator = () => {
                     </div>
 
                     <div>
-                        <label className="block text-white font-medium mb-3">Sleep Quality (1-10)</label>
+                        <label className="flex items-center text-white font-medium mb-3">
+                            Sleep Quality (1-10)
+                            <CaptainTooltip content="Rate based on how refreshed you felt upon waking, not just duration. 10 = Woke up naturally without an alarm." />
+                        </label>
                         <input
                             type="range"
                             min="1"
                             max="10"
                             value={inputs.sleepQuality}
                             onChange={(e) => handleInputChange('sleepQuality', parseInt(e.target.value))}
-                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         />
                         <div className="flex justify-between text-sm text-slate-400 mt-2">
                             <span>Terrible (1)</span>
@@ -120,15 +124,18 @@ const SleepCapacityCalculator = () => {
                     </div>
 
                     <div>
-                        <label className="block text-white font-medium mb-3">Disruptions</label>
+                        <label className="flex items-center text-white font-medium mb-3">
+                            Disruptions
+                            <CaptainTooltip content="Minor = 1-2 brief awakenings. Significant = 30+ mins awake or multiple interruptions (e.g., kids, pets)." />
+                        </label>
                         <div className="grid grid-cols-3 gap-3">
                             {['none', 'minor', 'significant'].map((opt) => (
                                 <button
                                     key={opt}
                                     onClick={() => handleInputChange('disruptions', opt)}
-                                    className={`p-3 rounded-xl border-2 transition-all capitalize text-sm ${inputs.disruptions === opt
-                                            ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                    className={`p-3 rounded-xl border-2 transition-all capitalize text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 ${inputs.disruptions === opt
+                                        ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt}
@@ -146,18 +153,21 @@ const SleepCapacityCalculator = () => {
                                 max="14"
                                 value={inputs.consecutiveBadNights}
                                 onChange={(e) => handleInputChange('consecutiveBadNights', parseInt(e.target.value))}
-                                className="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-white"
+                                className="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
                             />
                         </div>
                         <div>
-                            <label className="block text-white font-medium mb-3 text-sm">Est. Sleep Debt (hrs)</label>
+                            <label className="flex items-center text-white font-medium mb-3 text-sm">
+                                Est. Sleep Debt (hrs)
+                                <CaptainTooltip content="Rough estimate of missed hours relative to your need over the last 14 days." />
+                            </label>
                             <input
                                 type="number"
                                 min="0"
                                 max="50"
                                 value={inputs.sleepDebt}
                                 onChange={(e) => handleInputChange('sleepDebt', parseInt(e.target.value))}
-                                className="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-white"
+                                className="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
                             />
                         </div>
                     </div>

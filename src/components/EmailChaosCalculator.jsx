@@ -76,7 +76,7 @@ const EmailChaosCalculator = () => {
                             max="200"
                             value={inputs.dailyEmails}
                             onChange={(e) => handleInputChange('dailyEmails', parseInt(e.target.value))}
-                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         />
                         <div className="flex justify-between text-sm text-slate-400 mt-2">
                             <span>10</span>
@@ -94,7 +94,7 @@ const EmailChaosCalculator = () => {
                             step="0.5"
                             value={inputs.dailyHours}
                             onChange={(e) => handleInputChange('dailyHours', parseFloat(e.target.value))}
-                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         />
                         <div className="flex justify-between text-sm text-slate-400 mt-2">
                             <span>0.5 hrs</span>
@@ -115,9 +115,9 @@ const EmailChaosCalculator = () => {
                                 <button
                                     key={opt.val}
                                     onClick={() => handleInputChange('checkFrequency', opt.val)}
-                                    className={`p-3 rounded-xl border-2 transition-all text-sm ${inputs.checkFrequency === opt.val
-                                            ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                    className={`p-3 rounded-xl border-2 transition-all text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 ${inputs.checkFrequency === opt.val
+                                        ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt.label}
@@ -138,9 +138,9 @@ const EmailChaosCalculator = () => {
                                 <button
                                     key={opt.val}
                                     onClick={() => handleInputChange('painPoint', opt.val)}
-                                    className={`p-3 rounded-xl border-2 transition-all text-sm ${inputs.painPoint === opt.val
-                                            ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                    className={`p-3 rounded-xl border-2 transition-all text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 ${inputs.painPoint === opt.val
+                                        ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt.label}
