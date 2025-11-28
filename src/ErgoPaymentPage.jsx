@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    Wallet, Copy, Check, AlertTriangle, ArrowRight, ShieldCheck,
-    CheckCircle2, Clock, Smartphone, Loader2, ExternalLink
+    Wallet, Copy, Check, AlertTriangle, ArrowRight,
+    CheckCircle2, Clock, Smartphone, Loader2
 } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
 
 const ErgoPaymentPage = () => {
@@ -17,9 +18,6 @@ const ErgoPaymentPage = () => {
     const [ergoPayUrl, setErgoPayUrl] = useState('');
     const [walletAddress, setWalletAddress] = useState('');
     const [copiedAddress, setCopiedAddress] = useState(false);
-    const [copiedCode, setCopiedCode] = useState(false);
-    const [manualTxId, setManualTxId] = useState('');
-    const [checkingPayment, setCheckingPayment] = useState(false);
     const [paymentStatus, setPaymentStatus] = useState('WAITING'); // WAITING, CHECKING, CONFIRMED
     const [error, setError] = useState('');
 
@@ -28,12 +26,12 @@ const ErgoPaymentPage = () => {
         initializePayment();
     }, []);
 
-    // Auto-check for payment every 15 seconds
+    // Auto-check for payment every 5 seconds (TokenJay is fast)
     useEffect(() => {
         if (step === 2 && paymentStatus === 'WAITING') {
             const interval = setInterval(() => {
                 autoCheckPayment();
-            }, 15000);
+            }, 5000);
 
             return () => clearInterval(interval);
         }
@@ -82,32 +80,6 @@ const ErgoPaymentPage = () => {
             }
         } catch (err) {
             console.error('Auto-check failed', err);
-        }
-    };
-
-    const handleManualCheck = async () => {
-        if (!manualTxId.trim()) {
-            setError('Please enter a transaction ID');
-            return;
-        }
-
-        setCheckingPayment(true);
-        setError('');
-
-        try {
-            // Use the claim endpoint to verify the specific transaction ID
-            const result = await api.claimErgoPayment(manualTxId, accessCode);
-
-            if (result.success) {
-                confirmPayment(manualTxId);
-            } else {
-                setError(result.error || 'Payment not found or invalid. Please check the TX ID.');
-            }
-        } catch (err) {
-            console.error(err);
-            setError('Failed to verify transaction. Please try again.');
-        } finally {
-            setCheckingPayment(false);
         }
     };
 
@@ -201,93 +173,84 @@ const ErgoPaymentPage = () => {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="space-y-6"
                         >
-                            {/* MewPayments Integration */}
-                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8 text-center overflow-hidden relative">
-                                {/* Header Image */}
-                                <div className="mb-6 -mx-8 -mt-8">
-                                    <img
-                                        src="/mew-header.png"
-                                        alt="Mew Payments"
-                                        className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity"
-                                    />
-                                </div>
-
-                                <h3 className="text-2xl font-bold text-white mb-4">
-                                    Complete Payment via MewPayments
-                                </h3>
-                                <p className="text-slate-300 mb-8 max-w-lg mx-auto">
-                                    Click the button below to pay securely using MewPayments.
-                                    After paying, <strong>copy your Transaction ID</strong> and paste it below to access your content.
-                                </p>
-
-                                <a
-                                    href="https://payment.mewfinance.com/pay?id=17643540154951y0yiv97x"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/50 mb-8"
-                                >
-                                    Pay Now with Ergo
-                                    <ExternalLink className="w-5 h-5" />
-                                </a>
-
-                                {/* Features Image */}
-                                <div className="mt-4 rounded-xl overflow-hidden border border-slate-700/50">
-                                    <img
-                                        src="/mew-features.png"
-                                        alt="Mew Features"
-                                        className="w-full h-auto"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Verification Section */}
-                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                                    <ShieldCheck className="w-5 h-5 text-cyan-400" />
-                                    Verify Your Payment
-                                </h3>
-                                <p className="text-slate-400 text-sm mb-4">
-                                    Paste your Transaction ID (TX ID) from MewPayments or your wallet to get instant access.
-                                </p>
-                                <div className="flex gap-2">
-                                    <input
-                                        type="text"
-                                        value={manualTxId}
-                                        onChange={(e) => setManualTxId(e.target.value)}
-                                        placeholder="Enter transaction ID (e.g., 885c...)"
-                                        className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500 font-mono"
-                                    />
-                                    <button
-                                        onClick={handleManualCheck}
-                                        disabled={checkingPayment}
-                                        className="bg-green-600 hover:bg-green-500 disabled:bg-slate-600 text-white px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2"
-                                    >
-                                        {checkingPayment ? (
-                                            <>
-                                                <Loader2 className="w-4 h-4 animate-spin" />
-                                                Verifying...
-                                            </>
-                                        ) : (
-                                            <>
-                                                <CheckCircle2 className="w-4 h-4" />
-                                                Verify Access
-                                            </>
-                                        )}
-                                    </button>
-                                </div>
-                                {error && (
-                                    <div className="mt-3 flex items-center gap-2 text-red-400 text-sm">
-                                        <AlertTriangle className="w-4 h-4" />
-                                        {error}
+                            {/* Step-by-Step Instructions */}
+                            <div className="bg-gradient-to-r from-cyan-900/40 to-blue-900/40 backdrop-blur-lg border-2 border-cyan-500/50 rounded-2xl p-6">
+                                <div className="flex items-start gap-4 mb-4">
+                                    <div className="flex-shrink-0">
+                                        <div className="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                                            <CheckCircle2 className="w-6 h-6 text-cyan-400" />
+                                        </div>
                                     </div>
-                                )}
+                                    <div className="flex-1">
+                                        <h3 className="text-xl font-bold text-white mb-2">
+                                            How to Complete Your Payment
+                                        </h3>
+                                        <p className="text-cyan-100 text-sm">
+                                            Scan the QR code or click the button to pay securely via TokenJay/ErgoPay.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* Auto-checking status (Background) */}
+                            {/* Payment Methods */}
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {/* Mobile: ErgoPay Deep Link */}
+                                <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                                            <Smartphone className="w-6 h-6 text-green-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold text-white">Mobile Payment</h3>
+                                            <p className="text-sm text-slate-400">ErgoPay (Terminus, Nautilus)</p>
+                                        </div>
+                                    </div>
+                                    <a
+                                        href={ergoPayUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block w-full bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold text-center transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <Wallet className="w-5 h-5" />
+                                        Open Wallet App
+                                    </a>
+                                    <p className="text-xs text-slate-400 mt-3 text-center">
+                                        Tap to open your Ergo wallet app automatically
+                                    </p>
+                                </div>
+
+                                {/* Desktop: ErgoPay QR Code */}
+                                <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                                            <Wallet className="w-6 h-6 text-purple-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold text-white">Scan to Pay</h3>
+                                            <p className="text-sm text-slate-400">ErgoPay QR Code</p>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white p-4 rounded-xl">
+                                        <QRCodeSVG value={ergoPayUrl || walletAddress} size={180} className="mx-auto" />
+                                    </div>
+                                    <p className="text-xs text-slate-400 mt-3 text-center">
+                                        Scan with mobile wallet to pay instantly
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Auto-checking status */}
+                            <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 text-center">
+                                <div className="flex items-center justify-center gap-2 text-blue-300">
+                                    <Clock className="w-5 h-5 animate-pulse" />
+                                    <span className="text-sm">Waiting for payment confirmation... (Checking every 5s)</span>
+                                </div>
+                            </div>
+
+                            {/* Manual Address Fallback */}
                             <div className="text-center">
-                                <p className="text-slate-500 text-xs flex items-center justify-center gap-2">
-                                    <Clock className="w-3 h-3 animate-pulse" />
-                                    We are also scanning for your payment automatically...
+                                <p className="text-slate-500 text-xs">
+                                    Payment Request ID: <span className="font-mono text-slate-400">{accessCode}</span>
                                 </p>
                             </div>
                         </motion.div>
