@@ -7,6 +7,7 @@ import SalesPage from './SalesPage';
 // Lazy load everything else (loaded on-demand)
 const LoginPage = lazy(() => import('./LoginPage'));
 const ErgoPaymentPage = lazy(() => import('./ErgoPaymentPage'));
+const CreateAccountPage = lazy(() => import('./pages/CreateAccountPage'));
 const Dashboard = lazy(() => import('./Dashboard'));
 const ProtectedRoute = lazy(() => import('./components/ProtectedRoute'));
 const Part1 = lazy(() => import('./pages/Part1'));
@@ -68,6 +69,7 @@ function App() {
           <Route path="/" element={<SalesPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/pay-ergo" element={<ErgoPaymentPage />} />
+          <Route path="/create-account" element={<CreateAccountPage />} />
           <Route path="/how-to-buy-ergo" element={<HowToBuyErgo />} />
           <Route path="/why-ergo" element={<WhyErgo />} />
           <Route path="/how-to-pay" element={<HowToPay />} />
