@@ -96,6 +96,23 @@ export const api = {
     return handleResponse(response);
   },
 
+  // Access Control
+  verifyAccess: async (password) => {
+    try {
+      const response = await fetch(`${API_URL}/auth/verify-access`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      });
+      return await response.json();
+    } catch (error) {
+      console.error('Auth verification error:', error);
+      return { success: false, error: 'Connection failed' };
+    }
+  },
+
   // Stripe
   createStripeCheckout: async (email) => {
     const response = await fetch(`${API_URL}/payment/stripe/checkout`, {

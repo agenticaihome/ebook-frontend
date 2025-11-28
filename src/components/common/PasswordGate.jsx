@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Lock, ArrowRight } from 'lucide-react';
 import CaptainHero from '../CaptainHero';
+import { api } from '../../services/api';
 
 const PasswordGate = ({ children, partName = "This Section" }) => {
     const [password, setPassword] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const auth = sessionStorage.getItem(`auth_${partName}`);
@@ -16,26 +18,23 @@ const PasswordGate = ({ children, partName = "This Section" }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+        setError('');
 
         try {
-            // Simple hash for "password" to prevent plain text viewing
-            // SHA-256 for 'password'
-            const msgBuffer = new TextEncoder().encode(password);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            const response = await api.verifyAccess(password);
 
-            // Hash for "password" = 5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
-            if (hashHex === '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8') {
+            if (response.success) {
                 setIsAuthenticated(true);
                 sessionStorage.setItem(`auth_${partName}`, 'true');
-                setError('');
             } else {
-                setError('Incorrect password');
+                setError(response.error || 'Incorrect password');
             }
         } catch (err) {
             console.error("Auth error:", err);
-            setError('Authentication failed');
+            setError('Authentication failed. Please try again.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -80,7 +79,8 @@ const PasswordGate = ({ children, partName = "This Section" }) => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter password"
-                            className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                            disabled={isLoading}
+                            className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors disabled:opacity-50"
                         />
                     </div>
 
@@ -92,10 +92,11 @@ const PasswordGate = ({ children, partName = "This Section" }) => {
 
                     <button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+                        disabled={isLoading}
+                        className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Unlock Access
-                        <ArrowRight size={18} />
+                        {isLoading ? 'Verifying...' : 'Unlock Access'}
+                        {!isLoading && <ArrowRight size={18} />}
                     </button>
                 </form>
             </div>
