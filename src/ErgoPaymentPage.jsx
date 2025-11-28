@@ -95,19 +95,16 @@ const ErgoPaymentPage = () => {
         setError('');
 
         try {
-            const result = await api.checkRecentErgoPayment(accessCode);
+            // Use the claim endpoint to verify the specific transaction ID
+            const result = await api.claimErgoPayment(manualTxId, accessCode);
 
-            if (result.success && result.status === 'PAID') {
-                confirmPayment(result.transactionId);
+            if (result.success) {
+                confirmPayment(manualTxId);
             } else {
-                // If backend check fails, maybe the user JUST paid and it's not confirmed yet.
-                // Or maybe the amount is slightly different.
-                // But we can't do much else without a backend proxy to Explorer.
-                // The backend checkRecentErgoPayment DOES scan the blockchain.
-                // So if it returns false, the tx is likely not found or invalid.
-                setError('Payment not found yet. Please wait a moment if you just sent it.');
+                setError(result.error || 'Payment not found or invalid. Please check the TX ID.');
             }
         } catch (err) {
+            console.error(err);
             setError('Failed to verify transaction. Please try again.');
         } finally {
             setCheckingPayment(false);
