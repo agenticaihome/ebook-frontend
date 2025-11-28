@@ -283,6 +283,84 @@ const ErgoPaymentPage = () => {
                             exit={{ opacity: 0, scale: 0.95 }}
                             className="space-y-6"
                         >
+                            {/* Step-by-Step Instructions */}
+                            <div className="bg-gradient-to-r from-cyan-900/40 to-blue-900/40 backdrop-blur-lg border-2 border-cyan-500/50 rounded-2xl p-6">
+                                <div className="flex items-start gap-4 mb-4">
+                                    <div className="flex-shrink-0">
+                                        <div className="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                                            <CheckCircle2 className="w-6 h-6 text-cyan-400" />
+                                        </div>
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-xl font-bold text-white mb-2">
+                                            How to Complete Your Payment
+                                        </h3>
+                                        <p className="text-cyan-100 text-sm">
+                                            Follow these simple steps to unlock instant access to all 5 parts
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-3 ml-16">
+                                    <div className="flex items-start gap-3">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                            1
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-semibold">Choose Your Payment Method</p>
+                                            <p className="text-cyan-200 text-sm">
+                                                <strong>Mobile:</strong> Click "Open Wallet App" to pay with one tap<br />
+                                                <strong>Desktop:</strong> Scan the QR code with your mobile wallet<br />
+                                                <strong>Manual:</strong> Use the wallet address and amount shown below
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                            2
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-semibold">Send {ergAmount?.toFixed(4)} ERG</p>
+                                            <p className="text-cyan-200 text-sm">
+                                                Send exactly <strong className="text-cyan-400">{ergAmount?.toFixed(4)} ERG (${PRICE_USD} USD)</strong> to the wallet address below
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                            3
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-semibold">Automatic Confirmation</p>
+                                            <p className="text-cyan-200 text-sm">
+                                                We'll detect your payment within ~30 seconds. Or paste your Transaction ID below for instant verification.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                            ✓
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-semibold">Get Instant Access</p>
+                                            <p className="text-cyan-200 text-sm">
+                                                You'll be automatically redirected to your dashboard with full access to all 5 parts!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-4 ml-16 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                                    <p className="text-yellow-200 text-sm flex items-center gap-2">
+                                        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                                        <span><strong>Important:</strong> Save your Access Code (<span className="font-mono text-cyan-400">{accessCode}</span>) in case you need to verify your payment manually.</span>
+                                    </p>
+                                </div>
+                            </div>
+
                             {/* Payment Methods */}
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* Mobile: ErgoPay Deep Link */}
