@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import html2canvas from 'html2canvas';
+import { useSound } from '../context/SoundContext';
+import { AlertTriangle, CheckCircle, Clock, ArrowRight, Share2, Download, X } from 'lucide-react';
 
 const CaptainMemePopup = ({ onClose }) => {
     return (
@@ -51,6 +53,7 @@ const InfectionDiagnostic = () => {
     const [direction, setDirection] = useState(0);
     const [showMemePopup, setShowMemePopup] = useState(false);
     const resultsRef = useRef(null);
+    const { playChime } = useSound();
 
     const questions = [
         {
@@ -108,6 +111,7 @@ const InfectionDiagnostic = () => {
     const handleAnswer = (answer) => {
         const newAnswers = [...answers, answer];
         setAnswers(newAnswers);
+        playChime('click');
 
         if (currentQuestion < questions.length - 1) {
             setDirection(answer === 'yes' ? 1 : -1);
@@ -117,6 +121,7 @@ const InfectionDiagnostic = () => {
         } else {
             setTimeout(() => {
                 setShowResults(true);
+                playChime('success');
                 // Show popup after a short delay
                 setTimeout(() => setShowMemePopup(true), 1500);
             }, 300);
@@ -255,70 +260,52 @@ const InfectionDiagnostic = () => {
                                 {currentQuestion + 1} / {questions.length}
                             </span>
                         </div>
-                        <div className="relative h-16 bg-black rounded-lg overflow-hidden">
-                            {/* EKG Line */}
-                            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-                                <motion.path
-                                    d={`M 0,32 ${answers.map((_, i) => {
-                                        const x = ((i + 1) / questions.length) * 100;
-                                        const isBad = answers[i] === questions[i].badAnswer;
-                                        return `L ${x},${isBad ? Math.random() * 20 + 10 : 32}`;
-                                    }).join(' ')} L 100,32`}
-                                    stroke={getVitalsColor()}
-                                    strokeWidth="2"
-                                    fill="none"
-                                    initial={{ pathLength: 0 }}
-                                    animate={{ pathLength: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                />
-                            </svg>
-                            {/* Progress Bar */}
+                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden relative">
                             <motion.div
-                                className="absolute bottom-0 left-0 h-1"
+                                className="h-full relative"
                                 style={{ backgroundColor: getVitalsColor() }}
-                                initial={{ width: '0%' }}
+                                initial={{ width: 0 }}
                                 animate={{ width: getVitalsWidth() }}
-                                transition={{ duration: 0.3 }}
-                            />
+                                transition={{ duration: 0.5 }}
+                            >
+                                <div className="absolute top-0 right-0 w-full h-full animate-pulse bg-white/30"></div>
+                            </motion.div>
                         </div>
                     </div>
 
                     {/* Question Card */}
-                    <div className="relative h-96 flex items-center justify-center">
-                        <AnimatePresence mode="wait" custom={direction}>
+                    <div className="relative h-64">
+                        <AnimatePresence initial={false} custom={direction}>
                             <motion.div
                                 key={currentQuestion}
                                 custom={direction}
-                                initial={{ x: direction > 0 ? 300 : -300, opacity: 0, rotate: direction > 0 ? 10 : -10 }}
-                                animate={{ x: 0, opacity: 1, rotate: 0 }}
-                                exit={{ x: direction > 0 ? -300 : 300, opacity: 0, rotate: direction > 0 ? -10 : 10 }}
+                                initial={{ x: direction > 0 ? 1000 : -1000, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                exit={{ x: direction > 0 ? -1000 : 1000, opacity: 0 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                 className="absolute w-full"
                             >
-                                <div className="glass-card p-8 text-center">
-                                    <div className="text-6xl mb-6">🔬</div>
-                                    <h3 className="text-2xl font-bold mb-8 medical-heading" style={{ color: '#0055FF' }}>
+                                <div className="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-blue-500">
+                                    <h3 className="text-2xl font-medium text-gray-800 mb-8 leading-relaxed">
                                         {questions[currentQuestion].text}
                                     </h3>
-                                    <div className="flex gap-4 justify-center">
-                                        <motion.button
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <button
                                             onClick={() => handleAnswer('yes')}
-                                            className="px-12 py-4 rounded-lg font-bold text-lg shadow-clinical-lg"
-                                            style={{ backgroundColor: '#00DDDD', color: 'white' }}
+                                            className="p-4 rounded-xl border-2 border-red-100 hover:border-red-500 hover:bg-red-50 transition-all group"
                                         >
-                                            ✓ YES
-                                        </motion.button>
-                                        <motion.button
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
+                                            <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">😱</div>
+                                            <div className="font-bold text-red-600">YES</div>
+                                            <div className="text-xs text-red-400">Guilty as charged</div>
+                                        </button>
+                                        <button
                                             onClick={() => handleAnswer('no')}
-                                            className="px-12 py-4 rounded-lg font-bold text-lg shadow-clinical-lg"
-                                            style={{ backgroundColor: '#FF4444', color: 'white' }}
+                                            className="p-4 rounded-xl border-2 border-green-100 hover:border-green-500 hover:bg-green-50 transition-all group"
                                         >
-                                            ✗ NO
-                                        </motion.button>
+                                            <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">😌</div>
+                                            <div className="font-bold text-green-600">NO</div>
+                                            <div className="text-xs text-green-400">I'm good here</div>
+                                        </button>
                                     </div>
                                 </div>
                             </motion.div>
@@ -326,111 +313,57 @@ const InfectionDiagnostic = () => {
                     </div>
                 </>
             ) : (
-                /* Results Card */
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="w-full"
+                    className="text-center"
+                    ref={resultsRef}
                 >
-                    <div ref={resultsRef} className="bg-white rounded-2xl p-8 shadow-xl mb-8 border-2" style={{ borderColor: diagnosis.color }}>
-                        <div className="text-6xl mb-4">{diagnosis.emoji}</div>
-                        <h3 className="text-3xl font-bold mb-2 medical-heading" style={{ color: diagnosis.color }}>
+                    <div className="mb-8">
+                        <div className="inline-block p-6 rounded-full bg-slate-50 mb-4 shadow-inner">
+                            <div className="text-6xl animate-bounce">{diagnosis.emoji}</div>
+                        </div>
+                        <h2 className="text-4xl font-black mb-2" style={{ color: diagnosis.color }}>
+                            {diagnosis.severity}
+                        </h2>
+                        <h3 className="text-2xl text-gray-700 font-bold mb-4">
                             {diagnosis.stage}
                         </h3>
-                        <p className="text-xl font-bold mb-6" style={{ color: diagnosis.color }}>
-                            SEVERITY: {diagnosis.severity}
+                        <p className="text-gray-600 max-w-lg mx-auto mb-8">
+                            You answered "YES" to {infectionLevel} out of {questions.length} chaos indicators.
+                            {infectionLevel > 5
+                                ? " Your household is running in survival mode. It's time to install an operating system."
+                                : " You have some systems in place, but friction is slowing you down."}
                         </p>
-
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                            <div className="bg-gray-50 p-6 rounded-2xl">
-                                <div className="text-sm text-gray-600 mb-2 font-semibold">INFECTION SCORE</div>
-                                <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
-                                    {infectionLevel}/10
-                                </div>
-                            </div>
-                            <div className="bg-gray-50 p-6 rounded-2xl">
-                                <div className="text-sm text-gray-600 mb-2 font-semibold">CHAOS LEVEL</div>
-                                <div className="text-5xl font-bold medical-heading" style={{ color: diagnosis.color }}>
-                                    {Math.round((infectionLevel / 10) * 100)}%
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Recommendation */}
-                        <div className="p-6 rounded-2xl mb-6 text-center" style={{ backgroundColor: `${diagnosis.color}10`, borderLeft: `4px solid ${diagnosis.color}` }}>
-                            <p className="text-lg font-bold medical-heading mb-2" style={{ color: '#0055FF' }}>
-                                {infectionLevel >= 6 ? '🚨 Immediate Action Recommended' : '💡 Preventive Measures Suggested'}
-                            </p>
-                            <p className="text-sm text-gray-600">
-                                Download the free guide to learn how AI agents can restore order to your household
-                            </p>
-                        </div>
-
-                        {/* Disclaimer */}
-                        <div className="text-center text-xs text-gray-400 border-t pt-4">
-                            * Entertainment purposes only. Not medical or professional advice.
-                        </div>
                     </div>
 
-                    {/* Social Share Buttons */}
-                    <div className="flex flex-wrap gap-3 justify-center mt-8">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                    <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8">
+                        <button
                             onClick={shareToTwitter}
-                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2"
-                            style={{ backgroundColor: '#1DA1F2', color: 'white' }}
+                            className="flex items-center justify-center gap-2 p-4 bg-black text-white rounded-xl hover:bg-gray-800 transition-all"
                         >
-                            <span>🐦</span> Share on Twitter
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={shareToFacebook}
-                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2"
-                            style={{ backgroundColor: '#4267B2', color: 'white' }}
-                        >
-                            <span>📘</span> Share on Facebook
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={shareToLinkedIn}
-                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2"
-                            style={{ backgroundColor: '#0077B5', color: 'white' }}
-                        >
-                            <span>💼</span> Share on LinkedIn
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            <Share2 size={20} /> Share Result
+                        </button>
+                        <button
                             onClick={downloadResults}
-                            className="px-6 py-3 rounded-lg font-bold shadow-lg flex items-center gap-2 glass-card"
-                            style={{ color: '#0055FF' }}
+                            className="flex items-center justify-center gap-2 p-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all"
                         >
-                            <span>📥</span> Download Image
-                        </motion.button>
+                            <Download size={20} /> Save Report
+                        </button>
                     </div>
 
-                    {/* Retake Button */}
-                    <div className="text-center mt-4">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => {
-                                setCurrentQuestion(0);
-                                setAnswers([]);
-                                setShowResults(false);
-                            }}
-                            className="px-8 py-3 rounded-lg font-bold shadow-lg glass-card"
-                            style={{ color: '#0055FF' }}
-                        >
-                            🔄 Retake Assessment
-                        </motion.button>
+                    <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                        <h4 className="font-bold text-blue-900 mb-2">Prescription:</h4>
+                        <p className="text-blue-800 mb-4">
+                            Start Part 1 of the Agentic Home Webbook immediately.
+                        </p>
+                        <button className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30">
+                            Begin Treatment <ArrowRight className="inline ml-2" size={20} />
+                        </button>
                     </div>
                 </motion.div>
             )}
-        </div >
+        </div>
     );
 };
 

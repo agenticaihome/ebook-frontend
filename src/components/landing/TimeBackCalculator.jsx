@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Clock, ArrowRight, Sparkles, Download, Lock } from 'lucide-react';
+import { Clock, Sparkles, Download, Lock } from 'lucide-react';
+import { useSound } from '../../context/SoundContext';
 import {
     TwitterShareButton,
     LinkedinShareButton,
@@ -14,6 +15,7 @@ export default function TimeBackCalculator() {
     const [choreHours, setChoreHours] = useState(4);
     const [planningHours, setPlanningHours] = useState(3);
     const [isUnlocked, setIsUnlocked] = useState(false);
+    const { playChime } = useSound();
 
     const totalHours = emailHours + choreHours + planningHours;
     const savedHours = Math.round(totalHours * 0.7); // Assume 70% efficiency gain
@@ -29,6 +31,7 @@ export default function TimeBackCalculator() {
             // Add a small delay to make it feel like we're "verifying"
             setTimeout(() => {
                 setIsUnlocked(true);
+                playChime('success');
                 // Optional: Track the "unlock" event
                 try {
                     const unlocks = JSON.parse(localStorage.getItem('agent_unlocks') || '[]');

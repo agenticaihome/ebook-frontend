@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const CaptainHero = ({
@@ -10,6 +10,15 @@ const CaptainHero = ({
     imageSrc, // Optional override
     videoSrc // Optional video override
 }) => {
+    const [name, setName] = useState(localStorage.getItem('user_name') || '');
+    const [isEditing, setIsEditing] = useState(false);
+
+    const handleNameSubmit = (e) => {
+        e.preventDefault();
+        localStorage.setItem('user_name', name);
+        setIsEditing(false);
+    };
+
     // Map poses to image files
     const poseImages = {
         default: '/assets/captain-efficiency-dark.png',
@@ -32,6 +41,11 @@ const CaptainHero = ({
         right: 'flex-row-reverse',
         center: 'flex-col'
     };
+
+    const personalizedMessage = message ? message.replace(
+        "I'm Captain Efficiency.",
+        `I'm Captain Efficiency${name ? `, Agent ${name}` : ''}.`
+    ) : "";
 
     return (
         <div className={`flex items-center gap-4 md:gap-8 ${containerClasses[position]} ${className}`}>
@@ -76,12 +90,37 @@ const CaptainHero = ({
                         ${position === 'center' ? '-top-2 left-1/2 -translate-x-1/2 border-b-0 border-r-0 rotate-[45deg]' : ''}
                     `} />
 
-                    <div className="text-cyan-400 font-bold text-xs uppercase tracking-wider mb-1">
-                        Captain Efficiency
+                    <div className="flex items-center gap-2 mb-1">
+                        <div className="text-cyan-400 font-bold text-xs uppercase tracking-wider">
+                            Captain Efficiency
+                        </div>
+                        {!name && !isEditing && (
+                            <button
+                                onClick={() => setIsEditing(true)}
+                                className="text-[10px] text-slate-500 hover:text-cyan-400 underline"
+                            >
+                                (Set Name)
+                            </button>
+                        )}
                     </div>
-                    <p className="text-slate-200 text-sm md:text-base leading-relaxed">
-                        "{message}"
-                    </p>
+
+                    {isEditing ? (
+                        <form onSubmit={handleNameSubmit} className="mb-2 flex gap-2">
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Enter your name"
+                                className="bg-slate-900 border border-slate-600 rounded px-2 py-1 text-sm text-white focus:border-cyan-500 outline-none w-full"
+                                autoFocus
+                            />
+                            <button type="submit" className="text-xs bg-cyan-600 px-2 py-1 rounded text-white hover:bg-cyan-500">Save</button>
+                        </form>
+                    ) : (
+                        <p className="text-slate-200 text-sm md:text-base leading-relaxed">
+                            "{personalizedMessage}"
+                        </p>
+                    )}
                 </motion.div>
             )}
         </div>
