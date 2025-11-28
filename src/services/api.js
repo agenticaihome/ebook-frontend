@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:8080/api';
+// Use Railway URL in production, localhost in development
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
