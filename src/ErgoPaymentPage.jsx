@@ -204,8 +204,8 @@ const ErgoPaymentPage = () => {
                                     <div className="mb-10">
                                         <p className="text-slate-400 text-sm uppercase tracking-widest mb-2">Total Amount</p>
                                         <div className="flex items-baseline justify-center gap-3">
-                                            <span className="text-5xl font-bold text-white">$29.99</span>
-                                            <span className="text-xl text-slate-500 line-through">$59.99</span>
+                                            <span className="text-5xl font-bold text-white">$19.99</span>
+                                            <span className="text-xl text-slate-500 line-through">$39.99</span>
                                         </div>
                                         <div className="mt-4 inline-block bg-cyan-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20">
                                             <p className="text-cyan-400 text-sm font-medium">≈ {ergAmount?.toFixed(4)} ERG</p>
@@ -351,7 +351,7 @@ const ErgoPaymentPage = () => {
                                         <div>
                                             <p className="text-white font-medium">Awaiting Transaction...</p>
                                             <p className="text-xs text-slate-400">
-                                                Monitoring blockchain • Tolerance: ±0.001 ERG
+                                                Monitoring blockchain for payment...
                                             </p>
                                         </div>
                                     </div>
