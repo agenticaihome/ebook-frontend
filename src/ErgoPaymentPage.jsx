@@ -369,11 +369,41 @@ const ErgoPaymentPage = () => {
                                 </div>
                             </div>
 
+                            {/* Smart Notification */}
+                            <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 backdrop-blur-lg border border-blue-500/30 rounded-xl p-6">
+                                <div className="flex items-start gap-4">
+                                    <div className="flex-shrink-0">
+                                        <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                                            <Clock className="w-6 h-6 text-blue-400 animate-pulse" />
+                                        </div>
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="text-white font-bold mb-2 flex items-center gap-2">
+                                            <CheckCircle2 className="w-5 h-5 text-green-400" />
+                                            Payment Sent? Here's What Happens Next
+                                        </h4>
+                                        <div className="space-y-2 text-sm">
+                                            <p className="text-blue-200">
+                                                ⏱ <strong>Automatic Detection:</strong> We're checking the blockchain every 15 seconds.
+                                                Your payment should be confirmed automatically within ~30 seconds.
+                                            </p>
+                                            <p className="text-purple-200">
+                                                ⚡ <strong>Faster Option:</strong> Have your transaction ID?
+                                                Enter it below for <span className="text-cyan-400 font-bold">instant verification</span>!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Manual TX ID Verification */}
                             <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                <h3 className="text-lg font-bold text-white mb-4">Already Paid?</h3>
-                                <p className="text-slate-300 text-sm mb-4">
-                                    Enter your transaction ID to verify payment manually
+                                <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                                    <ShieldCheck className="w-5 h-5 text-cyan-400" />
+                                    Manual Verification
+                                </h3>
+                                <p className="text-slate-400 text-sm mb-4">
+                                    Skip the wait - verify instantly with your TX ID
                                 </p>
                                 <div className="flex gap-2">
                                     <input
