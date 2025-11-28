@@ -211,7 +211,7 @@ const ErgoPaymentPage = () => {
                                     </div>
                                     <div className="flex-1 text-center md:text-left">
                                         <p className="text-slate-300 mb-4">
-                                            Scan with <strong>Ergo Wallet App</strong> or <strong>Terminus</strong> on iOS/Android.
+                                            Scan with <strong>Ergo Wallet App</strong> on iOS/Android.
                                             <br />
                                             <span className="text-xs text-slate-400">Your wallet will show approx. $20 USD.</span>
                                         </p>
