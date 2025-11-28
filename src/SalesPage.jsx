@@ -1,25 +1,45 @@
 import React, { useState } from 'react';
-import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal } from 'lucide-react';
+import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal, Loader2, AlertCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
 import TimeBackCalculator from './components/landing/TimeBackCalculator';
 import BeforeAfterComparison from './components/landing/BeforeAfterComparison';
+import { api } from './services/api';
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
-  const [paymentStatus, setPaymentStatus] = useState('initial');
-  const [error, setError] = useState(null);
+  const [isStripeLoading, setIsStripeLoading] = useState(false);
+  const [stripeError, setStripeError] = useState(null);
   const navigate = useNavigate();
 
   const handleErgoPayment = () => {
     navigate('/pay-ergo');
   };
 
-  const handleStripePayment = () => {
-    // Placeholder for Stripe logic
-    alert("The Standard Access waitlist is currently full. Please use Crypto Access for immediate entry.");
+  const handleStripePayment = async () => {
+    if (!email || !email.includes('@')) {
+      setStripeError("Please enter a valid email address.");
+      return;
+    }
+
+    setIsStripeLoading(true);
+    setStripeError(null);
+
+    try {
+      const result = await api.createStripeCheckout(email);
+      if (result.success && result.checkoutUrl) {
+        window.location.href = result.checkoutUrl;
+      } else {
+        setStripeError("Failed to initialize checkout. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setStripeError(err.message || "Connection error. Please try again.");
+    } finally {
+      setIsStripeLoading(false);
+    }
   };
 
   return (
@@ -66,7 +86,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
               >
-                Welcome, <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">human.</span>
+                Reclaim 10 Hours/Week with <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">AI Agents.</span>
               </motion.h1>
 
               <motion.p
@@ -75,11 +95,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                I was deployed by <strong>DDS (Dad Deploying Systems)</strong> to solve a critical failure: <strong>Time Scarcity.</strong>
+                The interactive webbook that teaches busy parents how to build a "Household Staff" of autonomous AI agents.
                 <br /><br />
-                I don't offer life hacks. I offer a complete, autonomous operating system for your home.
-                <br /><br />
-                You're not lazy. You're just making 400 decisions before 9am. Let's automate half of them.
+                Stop drowning in tasks. Start deploying agents.
               </motion.p>
 
               <motion.div
@@ -92,13 +110,13 @@ export default function SalesPage() {
                   to="/part1"
                   className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-900/50 flex items-center justify-center gap-2"
                 >
-                  <Zap size={20} /> START FREE — PART 1
+                  <Zap size={20} /> Read Part 1 for Free
                 </Link>
                 <button
-                  onClick={() => document.getElementById('course-overview').scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
                   className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2"
                 >
-                  View All 5 Parts
+                  Get Full Access
                 </button>
               </motion.div>
             </div>
@@ -111,7 +129,7 @@ export default function SalesPage() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
               <p className="text-slate-400 max-w-2xl mx-auto mb-4">
-                A systematic progression from basic tools to a fully autonomous Life Operating System.
+                A systematic progression from basic tools to a fully autonomous Household Autopilot.
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30">
                 <span className="text-green-400 font-bold text-sm">✓ Part 1 is FREE</span>
@@ -199,7 +217,7 @@ export default function SalesPage() {
                 <div className="bg-green-900/30 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400">
                   <Zap size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Life Operating System</h3>
+                <h3 className="text-xl font-bold mb-4">Household Autopilot</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "Not just automation — a strategic brain that coordinates everything toward your goals."
                 </p>
@@ -292,27 +310,50 @@ export default function SalesPage() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
             {/* Standard Access */}
-            <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-purple-500 transition-all group relative overflow-hidden">
+            <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-purple-500 transition-all group relative overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <CreditCard size={120} />
               </div>
               <h3 className="text-2xl font-bold mb-2">Standard Access</h3>
               <div className="text-4xl font-bold text-white mb-6">$40 <span className="text-sm text-slate-400 font-normal">USD</span></div>
-              <ul className="space-y-4 mb-8 text-slate-300">
+              <ul className="space-y-4 mb-8 text-slate-300 flex-1">
                 <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Full access to all 5 parts</li>
                 <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Immediate unlock</li>
                 <li className="flex gap-3"><Check size={18} className="text-purple-400" /> Secure Stripe Checkout</li>
               </ul>
-              <button
-                onClick={handleStripePayment}
-                className="w-full bg-purple-600 hover:bg-purple-500 text-white py-4 rounded-xl font-bold transition-colors"
-              >
-                Join Waitlist
-              </button>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm text-slate-400 mb-2 text-left">Your Email Address</label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="name@example.com"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                  />
+                </div>
+
+                {stripeError && (
+                  <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 p-3 rounded-lg">
+                    <AlertCircle size={16} />
+                    {stripeError}
+                  </div>
+                )}
+
+                <button
+                  onClick={handleStripePayment}
+                  disabled={isStripeLoading}
+                  className="w-full bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
+                >
+                  {isStripeLoading ? <Loader2 className="animate-spin" /> : 'Get Instant Access'}
+                </button>
+                <p className="text-xs text-slate-500">Secure payment via Stripe. 30-day money-back guarantee.</p>
+              </div>
             </div>
 
             {/* Crypto Access */}
-            <div className="bg-slate-800 rounded-2xl p-8 border-2 border-green-500/50 hover:border-green-400 transition-all group relative overflow-hidden">
+            <div className="bg-slate-800 rounded-2xl p-8 border-2 border-green-500/50 hover:border-green-400 transition-all group relative overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-bl-xl">
                 50% OFF
               </div>
@@ -321,21 +362,23 @@ export default function SalesPage() {
               </div>
               <h3 className="text-2xl font-bold mb-2 text-green-400">Crypto Access</h3>
               <div className="text-4xl font-bold text-white mb-6">$20 <span className="text-sm text-slate-400 font-normal">in ERG</span></div>
-              <ul className="space-y-4 mb-8 text-slate-300">
-                <li className="flex gap-3"><Check size={18} className="text-green-400" /> 50% Discount applied</li>
+              <ul className="space-y-4 mb-8 text-slate-300 flex-1">
+                <li className="flex gap-3"><Check size={18} className="text-green-400" /> 50% Tech Literacy Discount</li>
                 <li className="flex gap-3"><Check size={18} className="text-green-400" /> Support decentralized commerce</li>
                 <li className="flex gap-3"><Check size={18} className="text-green-400" /> Private & Secure</li>
               </ul>
-              <button
-                onClick={handleErgoPayment}
-                className="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20"
-              >
-                Pay with ERG
-              </button>
-              <div className="mt-4 text-center">
-                <Link to="/why-ergo" className="text-sm text-green-400 hover:text-green-300 underline decoration-dotted">
-                  Why pay with Ergo?
-                </Link>
+              <div className="mt-auto">
+                <button
+                  onClick={handleErgoPayment}
+                  className="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20"
+                >
+                  Pay with ERG
+                </button>
+                <div className="mt-4 text-center">
+                  <Link to="/why-ergo" className="text-sm text-green-400 hover:text-green-300 underline decoration-dotted">
+                    Why pay with Ergo?
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

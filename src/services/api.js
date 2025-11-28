@@ -94,5 +94,15 @@ export const api = {
       body: JSON.stringify({ accessCode }),
     });
     return handleResponse(response);
+  },
+
+  // Stripe
+  createStripeCheckout: async (email) => {
+    const response = await fetch(`${API_URL}/payment/stripe/checkout`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify({ email }),
+    });
+    return handleResponse(response);
   }
 };
