@@ -153,7 +153,8 @@ const ErgoPaymentPage = () => {
                         Pay with <span className="text-cyan-400">ERG</span>
                     </h1>
                     <p className="text-xl text-slate-300">
-                        Amount Due: <span className="font-bold text-white">{ergAmount?.toFixed(4)} ERG</span> (≈ ${(ergAmount * ergPrice)?.toFixed(2)} USD)
+                        Amount Due: <span className="font-bold text-white text-2xl">$20.00 USD</span>
+                        <span className="block text-sm text-slate-400 mt-1">(≈ {ergAmount?.toFixed(4)} ERG)</span>
                     </p>
                     <p className="text-sm text-slate-400 mt-2">
                         Tech Literacy Discount • 50% off vs Card Payment
@@ -211,6 +212,8 @@ const ErgoPaymentPage = () => {
                                     <div className="flex-1 text-center md:text-left">
                                         <p className="text-slate-300 mb-4">
                                             Scan with <strong>Ergo Wallet App</strong> or <strong>Terminus</strong> on iOS/Android.
+                                            <br />
+                                            <span className="text-xs text-slate-400">Your wallet will show approx. $20 USD.</span>
                                         </p>
                                         <a
                                             href={ergoPayUrl}
@@ -275,9 +278,10 @@ const ErgoPaymentPage = () => {
                                     <div>
                                         <label className="text-sm text-slate-400 block mb-1">Send exactly:</label>
                                         <div className="flex items-center gap-2">
-                                            <code className="bg-slate-900 px-4 py-3 rounded-lg text-green-400 font-mono text-lg flex-1 border border-slate-700">
-                                                {ergAmount} ERG
-                                            </code>
+                                            <div className="bg-slate-900 px-4 py-3 rounded-lg flex-1 border border-slate-700 flex flex-col justify-center">
+                                                <span className="text-green-400 font-mono text-lg font-bold">$20.00 USD</span>
+                                                <span className="text-slate-500 text-xs font-mono">≈ {ergAmount} ERG</span>
+                                            </div>
                                             <button
                                                 onClick={() => copyToClipboard(ergAmount.toString(), setCopiedAmount)}
                                                 className="bg-slate-700 hover:bg-slate-600 text-white p-3 rounded-lg transition-colors"
