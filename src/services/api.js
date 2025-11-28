@@ -84,5 +84,14 @@ export const api = {
       body: JSON.stringify({ transactionId, accessCode }),
     });
     return handleResponse(response);
+  },
+
+  checkRecentErgoPayment: async (accessCode) => {
+    const response = await fetch(`${API_URL}/payment/ergo/check-recent`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify({ accessCode }),
+    });
+    return handleResponse(response);
   }
 };
