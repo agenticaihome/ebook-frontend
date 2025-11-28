@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Wallet, Copy, Check, AlertTriangle, ArrowRight,
-    CheckCircle2, Clock, Smartphone, Loader2, Monitor, ExternalLink
+    CheckCircle2, Clock, Smartphone, Loader2, Monitor, ExternalLink, ShieldCheck
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
@@ -140,33 +140,47 @@ const ErgoPaymentPage = () => {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-                <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-12 h-12 text-cyan-400 animate-spin" />
-                    <p className="text-white text-lg">Initializing secure payment...</p>
+            <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center relative overflow-hidden">
+                {/* Background Blobs */}
+                <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px]" />
+
+                <div className="flex flex-col items-center gap-6 relative z-10">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-cyan-500/30 blur-xl rounded-full" />
+                        <Loader2 className="w-16 h-16 text-cyan-400 animate-spin relative z-10" />
+                    </div>
+                    <p className="text-white text-xl font-light tracking-wide">Initializing secure channel...</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-12 px-4">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-[#0f0f1a] text-white py-12 px-4 relative overflow-hidden font-sans">
+            {/* Ambient Background */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-purple-900/20 rounded-full blur-[120px] opacity-50" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-cyan-900/20 rounded-full blur-[100px] opacity-50" />
+            </div>
+
+            <div className="max-w-5xl mx-auto relative z-10">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-12"
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16"
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Pay with <span className="text-cyan-400">ERG</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
+                        <ShieldCheck className="w-4 h-4 text-green-400" />
+                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">Secure Payment Gateway</span>
+                    </div>
+                    <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 mb-6 tracking-tight">
+                        Unlock <span className="text-cyan-400">Full Access</span>
                     </h1>
-                    <p className="text-xl text-slate-300">
-                        Amount Due: <span className="font-bold text-white text-2xl">$29.99 USD</span>
-                        <span className="block text-sm text-slate-400 mt-1">(≈ {ergAmount?.toFixed(4)} ERG)</span>
-                    </p>
-                    <p className="text-sm text-slate-400 mt-2">
-                        Tech Literacy Discount • 50% off vs Card Payment
+                    <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                        Join the elite efficient. Pay with Ergo to receive your <span className="text-white font-semibold">50% Tech Literacy Discount</span>.
                     </p>
                 </motion.div>
 
@@ -174,26 +188,42 @@ const ErgoPaymentPage = () => {
                     {step === 1 && (
                         <motion.div
                             key="step1"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8"
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                            transition={{ duration: 0.5 }}
+                            className="max-w-2xl mx-auto"
                         >
-                            <div className="text-center">
-                                <div className="w-20 h-20 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <Wallet className="w-10 h-10 text-cyan-400" />
+                            <div className="group relative">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+                                <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center shadow-2xl">
+                                    <div className="w-24 h-24 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-white/10 shadow-inner">
+                                        <Wallet className="w-10 h-10 text-cyan-400" />
+                                    </div>
+
+                                    <div className="mb-10">
+                                        <p className="text-slate-400 text-sm uppercase tracking-widest mb-2">Total Amount</p>
+                                        <div className="flex items-baseline justify-center gap-3">
+                                            <span className="text-5xl font-bold text-white">$29.99</span>
+                                            <span className="text-xl text-slate-500 line-through">$59.99</span>
+                                        </div>
+                                        <div className="mt-4 inline-block bg-cyan-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20">
+                                            <p className="text-cyan-400 text-sm font-medium">≈ {ergAmount?.toFixed(4)} ERG</p>
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={handleStartPayment}
+                                        className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white p-5 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/20 hover:shadow-cyan-900/40 hover:scale-[1.02] flex items-center justify-center gap-3 group"
+                                    >
+                                        Proceed to Payment
+                                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+
+                                    <p className="mt-6 text-sm text-slate-500">
+                                        Secure, decentralized transaction. Instant confirmation.
+                                    </p>
                                 </div>
-                                <h2 className="text-2xl font-bold text-white mb-4">Ready to Pay?</h2>
-                                <p className="text-slate-300 mb-8">
-                                    You'll get instant access after payment confirmation
-                                </p>
-                                <button
-                                    onClick={handleStartPayment}
-                                    className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/50 flex items-center gap-2 mx-auto"
-                                >
-                                    Continue to Payment
-                                    <ArrowRight className="w-5 h-5" />
-                                </button>
                             </div>
                         </motion.div>
                     )}
@@ -201,174 +231,132 @@ const ErgoPaymentPage = () => {
                     {step === 2 && paymentStatus === 'WAITING' && (
                         <motion.div
                             key="step2"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            className="space-y-6"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
                         >
-                            {/* OPTION 1: Mobile Wallet */}
-                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
-                                        <Smartphone className="w-5 h-5 text-green-400" />
+                            {/* Left Column: QR & Mobile */}
+                            <div className="space-y-6">
+                                <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="w-12 h-12 bg-green-500/10 rounded-2xl flex items-center justify-center border border-green-500/20">
+                                            <Smartphone className="w-6 h-6 text-green-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-bold text-white">Scan to Pay</h3>
+                                            <p className="text-sm text-slate-400">Use Ergo Wallet App</p>
+                                        </div>
                                     </div>
-                                    <h3 className="text-lg font-bold text-white">OPTION 1: Mobile Wallet (Ergo Wallet App)</h3>
-                                </div>
-                                <div className="flex flex-col md:flex-row items-center gap-8">
-                                    <div className="bg-white p-4 rounded-xl">
-                                        <QRCodeSVG value={ergoPayUrl} size={160} />
+
+                                    <div className="bg-white p-6 rounded-2xl shadow-inner mx-auto max-w-[280px]">
+                                        <QRCodeSVG value={ergoPayUrl} size={232} className="w-full h-auto" />
                                     </div>
-                                    <div className="flex-1 text-center md:text-left">
-                                        <p className="text-slate-300 mb-4">
-                                            Scan with <strong>Ergo Wallet App</strong> on iOS/Android.
-                                            <br />
-                                            <span className="text-xs text-slate-400">Your wallet will show approx. $20 USD.</span>
-                                        </p>
+
+                                    <div className="mt-8 text-center">
                                         <a
                                             href={ergoPayUrl}
-                                            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+                                            className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-medium transition-colors border-b border-green-400/30 hover:border-green-400 pb-0.5"
                                         >
                                             <ExternalLink className="w-4 h-4" />
-                                            Open in Wallet App
+                                            Open directly in Wallet App
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* OPTION 2: Browser Wallet */}
-                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
-                                        <Monitor className="w-5 h-5 text-blue-400" />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white">OPTION 2: Browser Wallet</h3>
-                                </div>
-                                <div className="text-center md:text-left">
-                                    {!nautilusConnected ? (
-                                        <div className="flex flex-col md:flex-row items-center gap-4">
-                                            <button
-                                                onClick={connectNautilus}
-                                                disabled={isConnectingWallet}
-                                                className="bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-bold transition-all flex items-center gap-2"
-                                            >
-                                                {isConnectingWallet ? <Loader2 className="w-5 h-5 animate-spin" /> : <Wallet className="w-5 h-5" />}
-                                                {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus Wallet'}
-                                            </button>
-                                            <p className="text-sm text-slate-400">
-                                                Connect to verify address, then send manually below.
-                                            </p>
-                                        </div>
-                                    ) : (
-                                        <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
-                                            <div className="flex justify-between items-start">
-                                                <div>
-                                                    <p className="text-green-400 font-semibold flex items-center gap-2 mb-2">
-                                                        <CheckCircle2 className="w-5 h-5" />
-                                                        Nautilus Connected!
-                                                    </p>
-                                                    <p className="text-slate-300 text-sm">
-                                                        Your address: <span className="font-mono text-slate-400">{userWalletAddress.substring(0, 10)}...{userWalletAddress.substring(userWalletAddress.length - 5)}</span>
-                                                    </p>
-                                                </div>
-                                                <button
-                                                    onClick={() => setNautilusConnected(false)}
-                                                    className="text-xs text-slate-500 hover:text-white underline"
-                                                >
-                                                    Disconnect
-                                                </button>
-                                            </div>
-                                            <p className="text-white mt-2 text-sm">
-                                                Now please use <strong>Option 3</strong> to send the exact amount manually.
-                                            </p>
-                                        </div>
-                                    )}
-                                    {walletError && (
-                                        <div className="mt-3 text-red-400 text-sm flex items-center gap-2">
-                                            <AlertTriangle className="w-4 h-4" />
-                                            {walletError}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* OPTION 3: Manual Transfer */}
-                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center">
-                                        <Copy className="w-5 h-5 text-purple-400" />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white">OPTION 3: Manual Transfer</h3>
-                                </div>
-
-                                <div className="space-y-4">
-                                    <div>
-                                        <label className="text-sm text-slate-400 block mb-1">Send exactly:</label>
-                                        <div className="flex items-center gap-2">
-                                            <div className="bg-slate-900 px-4 py-3 rounded-lg flex-1 border border-slate-700 flex flex-col justify-center">
-                                                <span className="text-green-400 font-mono text-lg font-bold">$29.99 USD</span>
-                                                <span className="text-slate-500 text-xs font-mono">≈ {ergAmount} ERG</span>
-                                            </div>
-                                            <button
-                                                onClick={() => copyToClipboard(ergAmount.toString(), setCopiedAmount)}
-                                                className="bg-slate-700 hover:bg-slate-600 text-white p-3 rounded-lg transition-colors"
-                                                title="Copy Amount"
-                                            >
-                                                {copiedAmount ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5" />}
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label className="text-sm text-slate-400 block mb-1">To address:</label>
-                                        <div className="flex items-center gap-2">
-                                            <code className="bg-slate-900 px-4 py-3 rounded-lg text-slate-300 font-mono text-sm break-all flex-1 border border-slate-700">
-                                                {walletAddress}
-                                            </code>
-                                            <button
-                                                onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
-                                                className="bg-slate-700 hover:bg-slate-600 text-white p-3 rounded-lg transition-colors"
-                                                title="Copy Address"
-                                            >
-                                                {copiedAddress ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5" />}
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 flex items-start gap-3">
-                                        <div className="bg-blue-500/20 p-1.5 rounded-full mt-0.5">
-                                            <Check className="w-4 h-4 text-blue-400" />
+                            {/* Right Column: Manual & Browser */}
+                            <div className="space-y-6">
+                                {/* Browser Wallet Card */}
+                                <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center border border-blue-500/20">
+                                            <Monitor className="w-6 h-6 text-blue-400" />
                                         </div>
                                         <div>
-                                            <p className="text-sm text-blue-200 font-semibold mb-1">
-                                                Automated Confirmation
-                                            </p>
-                                            <p className="text-sm text-slate-300">
-                                                Our system automatically detects your payment. Please send the <strong>exact amount</strong> for instant confirmation.
-                                                <br />
-                                                <span className="text-xs text-slate-400 mt-1 block">
-                                                    (Small differences of ±0.001 ERG are accepted to account for wallet rounding)
+                                            <h3 className="text-xl font-bold text-white">Browser Wallet</h3>
+                                            <p className="text-sm text-slate-400">Nautilus / SAFEW</p>
+                                        </div>
+                                    </div>
+
+                                    {!nautilusConnected ? (
+                                        <button
+                                            onClick={connectNautilus}
+                                            disabled={isConnectingWallet}
+                                            className="w-full bg-slate-800 hover:bg-slate-700 text-white p-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-3 border border-white/5"
+                                        >
+                                            {isConnectingWallet ? <Loader2 className="w-5 h-5 animate-spin" /> : <Wallet className="w-5 h-5" />}
+                                            {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus'}
+                                        </button>
+                                    ) : (
+                                        <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 flex justify-between items-center">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                                                <span className="text-sm text-blue-200 font-mono">
+                                                    {userWalletAddress.substring(0, 8)}...{userWalletAddress.substring(userWalletAddress.length - 8)}
                                                 </span>
-                                            </p>
+                                            </div>
+                                            <button onClick={() => setNautilusConnected(false)} className="text-xs text-slate-400 hover:text-white">Disconnect</button>
+                                        </div>
+                                    )}
+                                    {walletError && <p className="mt-3 text-red-400 text-sm">{walletError}</p>}
+                                </div>
+
+                                {/* Manual Transfer Card */}
+                                <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center border border-purple-500/20">
+                                            <Copy className="w-6 h-6 text-purple-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-bold text-white">Manual Transfer</h3>
+                                            <p className="text-sm text-slate-400">Copy & Send</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-5">
+                                        <div className="group">
+                                            <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Amount (Exact)</label>
+                                            <button
+                                                onClick={() => copyToClipboard(ergAmount.toString(), setCopiedAmount)}
+                                                className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
+                                            >
+                                                <span className="text-2xl font-mono font-bold text-white">{ergAmount} <span className="text-sm text-slate-500 font-sans font-normal">ERG</span></span>
+                                                {copiedAmount ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white" />}
+                                            </button>
+                                        </div>
+
+                                        <div className="group">
+                                            <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Recipient Address</label>
+                                            <button
+                                                onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
+                                                className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
+                                            >
+                                                <span className="text-sm font-mono text-slate-300 truncate mr-4">{walletAddress}</span>
+                                                {copiedAddress ? <Check className="w-5 h-5 text-green-400 flex-shrink-0" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white flex-shrink-0" />}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Status Footer */}
-                            <div className="fixed bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-lg border-t border-slate-700 p-4 z-50">
-                                <div className="max-w-4xl mx-auto flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
-                                        <p className="text-slate-300">
-                                            Payment Status: <span className="text-white font-bold">Waiting for payment...</span>
-                                        </p>
+                            {/* Status Bar */}
+                            <div className="lg:col-span-2">
+                                <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+                                    <div className="flex items-center gap-4">
+                                        <div className="relative">
+                                            <div className="w-3 h-3 bg-cyan-500 rounded-full animate-ping absolute inset-0" />
+                                            <div className="w-3 h-3 bg-cyan-500 rounded-full relative" />
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-medium">Awaiting Transaction...</p>
+                                            <p className="text-xs text-slate-400">
+                                                Monitoring blockchain • Tolerance: ±0.001 ERG
+                                            </p>
+                                        </div>
                                     </div>
-                                    <p className="text-xs text-slate-500 hidden md:block">
-                                        Checking blockchain every 10s • ID: {accessCode?.substring(0, 8)}
-                                    </p>
-                                    <div className="hidden md:flex items-center gap-2 bg-slate-800 px-3 py-1 rounded-full border border-cyan-500/30">
-                                        <span className="text-xs text-cyan-400 font-bold">Captain Efficiency:</span>
-                                        <span className="text-xs text-slate-300">"I'm watching the blockchain for your transaction..."</span>
+                                    <div className="text-right hidden md:block">
+                                        <p className="text-xs text-slate-500 font-mono">ID: {accessCode}</p>
                                     </div>
                                 </div>
                             </div>
@@ -380,23 +368,20 @@ const ErgoPaymentPage = () => {
                             key="confirmed"
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="bg-gradient-to-br from-green-900/50 to-emerald-900/50 backdrop-blur-lg border border-green-500/50 rounded-2xl p-12 text-center"
+                            className="max-w-xl mx-auto text-center"
                         >
-                            <motion.div
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ delay: 0.2, type: "spring" }}
-                                className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
-                            >
-                                <CheckCircle2 className="w-12 h-12 text-green-400" />
-                            </motion.div>
-                            <h2 className="text-3xl font-bold text-white mb-4">Payment Confirmed!</h2>
-                            <p className="text-green-300 text-lg mb-8">
-                                Redirecting to account creation...
-                            </p>
-                            <div className="flex items-center justify-center gap-2">
-                                <Loader2 className="w-5 h-5 text-green-400 animate-spin" />
-                                <span className="text-green-400">Loading...</span>
+                            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-xl border border-green-500/20 rounded-3xl p-12">
+                                <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-green-500/30 shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]">
+                                    <CheckCircle2 className="w-12 h-12 text-green-400" />
+                                </div>
+                                <h2 className="text-4xl font-bold text-white mb-4">Payment Verified</h2>
+                                <p className="text-slate-300 text-lg mb-8">
+                                    Your access has been granted. Initializing your workspace...
+                                </p>
+                                <div className="flex items-center justify-center gap-3 text-green-400 bg-green-500/10 py-2 px-4 rounded-full inline-flex">
+                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                    <span className="font-medium text-sm">Redirecting</span>
+                                </div>
                             </div>
                         </motion.div>
                     )}

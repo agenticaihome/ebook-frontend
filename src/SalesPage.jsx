@@ -124,14 +124,19 @@ export default function SalesPage() {
         </section>
 
         {/* COURSE OVERVIEW SECTION */}
-        <section id="course-overview" className="py-24 bg-[#131320] border-y border-slate-800">
-          <div className="max-w-7xl mx-auto px-6">
+        <section id="course-overview" className="py-24 bg-[#0f0f1a] relative">
+          {/* Ambient Background */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-900/10 rounded-full blur-[120px]"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
               <p className="text-slate-400 max-w-2xl mx-auto mb-4">
                 A systematic progression from basic tools to a fully autonomous Household Autopilot.
               </p>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
                 <span className="text-green-400 font-bold text-sm">✓ Part 1 is FREE</span>
                 <span className="text-slate-500 text-xs">• Parts 2-5 unlock with purchase</span>
               </div>
@@ -149,19 +154,19 @@ export default function SalesPage() {
                   to={part.link || '#pricing'}
                   key={index}
                   className={`
-                    relative p-6 rounded-2xl border transition-all group hover:-translate-y-1
+                    relative p-6 rounded-2xl border transition-all group hover:-translate-y-1 backdrop-blur-md
                     ${part.status === 'FREE'
-                      ? 'bg-green-900/20 border-green-500/50 hover:bg-green-900/30 cursor-pointer'
+                      ? 'bg-green-900/10 border-green-500/30 hover:bg-green-900/20 cursor-pointer hover:shadow-lg hover:shadow-green-900/20'
                       : part.status === 'OPEN'
-                        ? 'bg-cyan-900/20 border-cyan-500/50 hover:bg-cyan-900/30 cursor-pointer'
-                        : 'bg-slate-800/50 border-slate-700 hover:border-slate-600 cursor-not-allowed opacity-75'}
+                        ? 'bg-cyan-900/10 border-cyan-500/30 hover:bg-cyan-900/20 cursor-pointer'
+                        : 'bg-slate-800/40 border-slate-700/50 hover:border-slate-600 cursor-not-allowed opacity-75'}
                   `}
                 >
                   <div className="text-xs font-mono text-slate-500 mb-2">PART {part.id}</div>
                   <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
                     {part.icon}
                   </div>
-                  <div className="font-bold text-sm mb-1">{part.title}</div>
+                  <div className="font-bold text-sm mb-1 text-slate-200 group-hover:text-white transition-colors">{part.title}</div>
                   <div className="text-xs text-slate-500">{part.desc}</div>
                   <div className="absolute top-4 right-4">
                     {part.status === 'FREE' && <span className="text-xs font-bold text-green-400 bg-green-500/20 px-2 py-1 rounded">FREE</span>}
@@ -183,11 +188,11 @@ export default function SalesPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Feature 1 */}
-              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition-colors">
-                <div className="bg-cyan-900/30 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-cyan-400">
+              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-700/50 hover:border-cyan-500/50 transition-all hover:bg-slate-800/50">
+                <div className="bg-cyan-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-cyan-400 border border-cyan-500/20">
                   <Activity size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Recovery-Aware Agent</h3>
+                <h3 className="text-xl font-bold mb-4 text-slate-100">Recovery-Aware Agent</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "When your schedule implodes, your AI automatically adjusts your calendar and recovery plan."
                 </p>
@@ -198,11 +203,11 @@ export default function SalesPage() {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-purple-500/50 transition-colors">
-                <div className="bg-purple-900/30 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-purple-400">
+              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-700/50 hover:border-purple-500/50 transition-all hover:bg-slate-800/50">
+                <div className="bg-purple-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-purple-400 border border-purple-500/20">
                   <Database size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Second Brain Agent</h3>
+                <h3 className="text-xl font-bold mb-4 text-slate-100">Second Brain Agent</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "Upload 50 case files → searchable database indexed by diagnosis, treatment, and outcome."
                 </p>
@@ -213,11 +218,11 @@ export default function SalesPage() {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
-                <div className="bg-green-900/30 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400">
+              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-700/50 hover:border-green-500/50 transition-all hover:bg-slate-800/50">
+                <div className="bg-green-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400 border border-green-500/20">
                   <Zap size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Household Autopilot</h3>
+                <h3 className="text-xl font-bold mb-4 text-slate-100">Household Autopilot</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "Not just automation — a strategic brain that coordinates everything toward your goals."
                 </p>
@@ -231,7 +236,7 @@ export default function SalesPage() {
         </section>
 
         {/* TRANSFORMATION SECTION */}
-        <section className="py-24 px-6 bg-[#131320] border-y border-slate-800">
+        <section className="py-24 px-6 bg-[#0f0f1a] border-y border-slate-800/50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">FROM CHAOS TO SYSTEM</h2>
@@ -250,10 +255,10 @@ export default function SalesPage() {
 
         {/* RESULTS SECTION */}
         <section className="py-24 px-6 relative overflow-hidden">
-          <div className="max-w-5xl mx-auto bg-slate-800/50 rounded-3xl p-8 md:p-12 border border-slate-700 backdrop-blur-sm relative">
+          <div className="max-w-5xl mx-auto bg-slate-800/40 rounded-3xl p-8 md:p-12 border border-slate-700/50 backdrop-blur-md relative shadow-2xl">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
                   <Activity className="text-green-400" /> SYSTEM PERFORMANCE REPORT
                 </h2>
                 <ul className="space-y-4">
@@ -268,7 +273,7 @@ export default function SalesPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700">
+                <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700/50">
                   <p className="text-slate-400 italic text-sm">
                     "These are real results from the DDS household. Your results begin when you unlock the system."
                   </p>
@@ -302,19 +307,22 @@ export default function SalesPage() {
         </section>
 
         {/* PRICING SECTION */}
-        <section id="pricing" className="py-24 px-6 bg-[#131320]">
-          <div className="max-w-4xl mx-auto text-center mb-16">
+        <section id="pricing" className="py-24 px-6 bg-[#0f0f1a] relative">
+          {/* Background Glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-[500px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+          <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Access Method</h2>
             <p className="text-slate-400">Cheaper than one month of that meal kit service you forgot to pause.</p>
           </div>
 
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 relative z-10">
             {/* Standard Access */}
-            <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:border-purple-500 transition-all group relative overflow-hidden flex flex-col">
-              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-purple-900/20">
+              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <CreditCard size={120} />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Standard Access</h3>
+              <h3 className="text-2xl font-bold mb-2 text-white">Standard Access</h3>
               <div className="text-4xl font-bold text-white mb-6">$39.99 <span className="text-sm text-slate-400 font-normal">USD</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
                 <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Full access to all 5 parts</span></li>
@@ -331,7 +339,7 @@ export default function SalesPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
+                    className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors backdrop-blur-sm"
                   />
                 </div>
 
@@ -345,7 +353,7 @@ export default function SalesPage() {
                 <button
                   onClick={handleStripePayment}
                   disabled={isStripeLoading}
-                  className="w-full bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 flex items-center justify-center gap-2"
                 >
                   {isStripeLoading ? <Loader2 className="animate-spin" /> : 'Get Instant Access'}
                 </button>
@@ -354,11 +362,11 @@ export default function SalesPage() {
             </div>
 
             {/* Crypto Access */}
-            <div className="bg-slate-800 rounded-2xl p-8 border-2 border-green-500/50 hover:border-green-400 transition-all group relative overflow-hidden flex flex-col">
-              <div className="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-bl-xl">
+            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-green-500/30 hover:border-green-400/50 transition-all group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-green-900/20">
+              <div className="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-4 py-1.5 rounded-bl-2xl shadow-lg">
                 50% OFF
               </div>
-              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Coins size={120} />
               </div>
               <h3 className="text-2xl font-bold mb-2 text-green-400">Crypto Access</h3>
@@ -373,7 +381,7 @@ export default function SalesPage() {
               <div className="mt-auto">
                 <button
                   onClick={handleErgoPayment}
-                  className="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-bold transition-colors shadow-lg shadow-green-900/20"
+                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-green-900/30 hover:shadow-green-900/50"
                 >
                   Pay with ERG
                 </button>
@@ -388,7 +396,7 @@ export default function SalesPage() {
         </section>
 
         {/* FAQ SECTION */}
-        <section className="py-24 px-6 bg-[#0f0f1a] border-t border-slate-800">
+        <section className="py-24 px-6 bg-[#0f0f1a] border-t border-slate-800/50">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-12 text-center">FREQUENTLY ASKED QUESTIONS</h2>
             <div className="space-y-8">
@@ -398,7 +406,7 @@ export default function SalesPage() {
                 { q: "What if I use Android/Windows?", a: "The system is platform-agnostic. We use tools that work on all major operating systems." },
                 { q: "How much time does it take to set up?", a: "You can build your first agent (Morning Agent) in about 30 minutes. The full system is built progressively over 30 days." }
               ].map((faq, i) => (
-                <div key={i} className="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                <div key={i} className="bg-slate-800/30 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50 hover:bg-slate-800/50 transition-colors">
                   <h3 className="font-bold text-lg mb-2 text-slate-200">{faq.q}</h3>
                   <p className="text-slate-400">{faq.a}</p>
                 </div>
@@ -408,7 +416,7 @@ export default function SalesPage() {
         </section>
 
         {/* FOOTER */}
-        <footer className="py-12 text-center border-t border-slate-800">
+        <footer className="py-12 text-center border-t border-slate-800/50 bg-[#0f0f1a]">
           <div className="flex justify-center mb-6">
             <CaptainHero
               size="sm"
