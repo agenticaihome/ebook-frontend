@@ -43,14 +43,26 @@ const usdToNanoErg = (usd, ergPriceUsd) => {
 // Helper: Check recent transactions for payment
 const checkErgoPayment = async (walletAddress, expectedAmount) => {
     try {
+        // Get the timestamp when access code was created
+        const paymentData = localStorage.getItem('ergo_payment');
+        if (!paymentData) return null;
+
+        const { timestamp: createdTimestamp } = JSON.parse(paymentData);
+
         const response = await fetch(`${EXPLORER_API}/addresses/${walletAddress}/transactions?limit=20`);
         const data = await response.json();
 
-        // Look for transaction with matching amount (±5% tolerance)
+        // Look for transaction with matching amount (±5% tolerance) AND created AFTER access code
         const minAmount = expectedAmount * 0.95;
         const maxAmount = expectedAmount * 1.05;
 
         const payment = data.items.find(tx => {
+            // CRITICAL FIX: Only check transactions created AFTER the access code
+            // tx.timestamp is in milliseconds
+            if (tx.timestamp <= createdTimestamp) {
+                return false; // Ignore old transactions
+            }
+
             return tx.outputs.some(output =>
                 output.address === walletAddress &&
                 output.value >= minAmount &&
