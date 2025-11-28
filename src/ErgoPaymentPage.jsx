@@ -6,81 +6,193 @@ import {
     CheckCircle2, Clock, Smartphone, ExternalLink, Loader2
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-import { api } from './services/api';
+
+// Configuration
+const ERGO_WALLET_ADDRESS = '9gxmJ4attdDx1NnZL7tWkN2U9iwZbPWWSEcfcPHbJXc7xsLq6QK';
+const PRICE_USD = 20;
+const EXPLORER_API = 'https://api.ergoplatform.com/api/v1';
+
+// Helper: Generate unique access code
+const generateAccessCode = () => {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = 'ERGO-';
+    for (let i = 0; i < 8; i++) {
+        code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return code;
+};
+
+// Helper: Get ERG price from CoinGecko
+const getErgPrice = async () => {
+    try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=usd');
+        const data = await response.json();
+        return data.ergo.usd;
+    } catch (error) {
+        console.error('Failed to fetch ERG price:', error);
+        return 1.5; // Fallback price
+    }
+};
+
+// Helper: Convert USD to nanoERG
+const usdToNanoErg = (usd, ergPriceUsd) => {
+    const erg = usd / ergPriceUsd;
+    return Math.floor(erg * 1_000_000_000); // ERG to nanoERG
+};
+
+// Helper: Check recent transactions for payment
+const checkErgoPayment = async (walletAddress, expectedAmount) => {
+    try {
+        const response = await fetch(`${EXPLORER_API}/addresses/${walletAddress}/transactions?limit=20`);
+        const data = await response.json();
+
+        // Look for transaction with matching amount (±5% tolerance)
+        const minAmount = expectedAmount * 0.95;
+        const maxAmount = expectedAmount * 1.05;
+
+        const payment = data.items.find(tx => {
+            return tx.outputs.some(output =>
+                output.address === walletAddress &&
+                output.value >= minAmount &&
+                output.value <= maxAmount
+            );
+        });
+
+        return payment ? payment.id : null;
+    } catch (error) {
+        console.error('Failed to check payment:', error);
+        return null;
+    }
+};
 
 const ErgoPaymentPage = () => {
     const navigate = useNavigate();
-    const [step, setStep] = useState(1); // 1: Initiate, 2: Display Info & Auto-Detect
+    const [step, setStep] = useState(1); // 1: Start, 2: Payment Info
     const [isLoading, setIsLoading] = useState(false);
-    const [paymentInfo, setPaymentInfo] = useState(null);
+    const [accessCode, setAccessCode] = useState('');
+    const [ergPrice, setErgPrice] = useState(null);
+    const [ergAmount, setErgAmount] = useState(null);
+    const [nanoErgAmount, setNanoErgAmount] = useState(null);
     const [copiedAddress, setCopiedAddress] = useState(false);
     const [copiedCode, setCopiedCode] = useState(false);
+    const [manualTxId, setManualTxId] = useState('');
+    const [checkingPayment, setCheckingPayment] = useState(false);
+    const [paymentStatus, setPaymentStatus] = useState('WAITING'); // WAITING, CHECKING, CONFIRMED
     const [error, setError] = useState('');
-    const [paymentStatus, setPaymentStatus] = useState('WAITING'); // WAITING, PENDING, PAID
-    const [statusMessage, setStatusMessage] = useState('');
-    const [detectedTxId, setDetectedTxId] = useState('');
 
-    // Auto-polling for payment detection
+    // Initialize payment on mount
     useEffect(() => {
-        if (paymentInfo && paymentStatus !== 'PAID') {
-            const interval = setInterval(() => {
-                checkForPayment();
-            }, 10000); // Poll every 10 seconds
+        initializePayment();
+    }, []);
 
-            // Initial check immediately
-            checkForPayment();
+    // Auto-check for payment every 15 seconds
+    useEffect(() => {
+        if (step === 2 && paymentStatus === 'WAITING') {
+            const interval = setInterval(() => {
+                autoCheckPayment();
+            }, 15000);
 
             return () => clearInterval(interval);
         }
-    }, [paymentInfo, paymentStatus]);
+    }, [step, paymentStatus, nanoErgAmount]);
 
-    const checkForPayment = async () => {
-        if (!paymentInfo?.accessCode) return;
-
-        try {
-            const data = await api.checkRecentErgoPayment(paymentInfo.accessCode);
-
-            if (data.success) {
-                setPaymentStatus(data.status);
-                setStatusMessage(data.message || '');
-
-                if (data.transactionId) {
-                    setDetectedTxId(data.transactionId);
-                }
-
-                // Auto-login when payment is confirmed
-                if (data.status === 'PAID' && data.token) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('ergo_access_code', paymentInfo.accessCode);
-
-                    // Show success briefly before redirecting
-                    setTimeout(() => {
-                        navigate('/dashboard');
-                    }, 2000);
-                }
-            }
-        } catch (err) {
-            console.error('Error checking payment:', err);
-        }
-    };
-
-    const handleInitiate = async () => {
+    const initializePayment = async () => {
         setIsLoading(true);
-        setError('');
         try {
-            const data = await api.initiateErgoPayment();
-            if (data.success) {
-                setPaymentInfo(data);
-                setStep(2);
-                setPaymentStatus('WAITING');
-            } else {
-                setError(data.error || 'Failed to initiate payment');
-            }
+            // Get current ERG price
+            const price = await getErgPrice();
+            const ergNeeded = PRICE_USD / price;
+            const nanoErg = usdToNanoErg(PRICE_USD, price);
+
+            setErgPrice(price);
+            setErgAmount(ergNeeded);
+            setNanoErgAmount(nanoErg);
+
+            // Generate unique access code
+            const code = generateAccessCode();
+            setAccessCode(code);
+
+            // Save to localStorage for persistence
+            localStorage.setItem('ergo_payment', JSON.stringify({
+                accessCode: code,
+                timestamp: Date.now(),
+                expectedAmount: nanoErg,
+                paid: false
+            }));
+
         } catch (err) {
-            setError(err.message || 'Connection failed');
+            setError('Failed to initialize payment. Please refresh the page.');
         } finally {
             setIsLoading(false);
         }
+    };
+
+    const handleStartPayment = () => {
+        setStep(2);
+    };
+
+    const autoCheckPayment = async () => {
+        if (!nanoErgAmount) return;
+
+        const txId = await checkErgoPayment(ERGO_WALLET_ADDRESS, nanoErgAmount);
+        if (txId) {
+            confirmPayment(txId);
+        }
+    };
+
+    const handleManualCheck = async () => {
+        if (!manualTxId.trim()) {
+            setError('Please enter a transaction ID');
+            return;
+        }
+
+        setCheckingPayment(true);
+        setError('');
+
+        try {
+            // For manual TX ID, just verify it exists on blockchain
+            const response = await fetch(`${EXPLORER_API}/transactions/${manualTxId}`);
+
+            if (response.ok) {
+                const tx = await response.json();
+
+                // Verify transaction sent to our wallet with correct amount
+                const validOutput = tx.outputs.find(output =>
+                    output.address === ERGO_WALLET_ADDRESS &&
+                    output.value >= nanoErgAmount * 0.95 &&
+                    output.value <= nanoErgAmount * 1.05
+                );
+
+                if (validOutput) {
+                    confirmPayment(manualTxId);
+                } else {
+                    setError('Transaction does not match expected payment amount and address');
+                }
+            } else {
+                setError('Transaction not found. Please check the TX ID');
+            }
+        } catch (err) {
+            setError('Failed to verify transaction. Please try again.');
+        } finally {
+            setCheckingPayment(false);
+        }
+    };
+
+    const confirmPayment = (txId) => {
+        setPaymentStatus('CONFIRMED');
+
+        // Update localStorage
+        const payment = JSON.parse(localStorage.getItem('ergo_payment'));
+        payment.paid = true;
+        payment.txId = txId;
+        payment.confirmedAt = Date.now();
+        localStorage.setItem('ergo_payment', JSON.stringify(payment));
+        localStorage.setItem('ergo_access_granted', 'true');
+
+        // Redirect to dashboard after 2 seconds
+        setTimeout(() => {
+            navigate('/dashboard');
+        }, 2000);
     };
 
     const copyToClipboard = (text, setCopied) => {
@@ -89,298 +201,250 @@ const ErgoPaymentPage = () => {
         setTimeout(() => setCopied(false), 2000);
     };
 
-    const generateErgoPayUri = () => {
-        if (!paymentInfo) return '';
-        const nanoErg = Math.round(paymentInfo.ergAmount * 1000000000);
-        return `ergopay://payment?address=${paymentInfo.walletAddress}&amount=${nanoErg}&description=Agentic AI System Access`;
-    };
+    // Generate ErgoPay URI
+    const ergoPayUri = `ergopay://payment?address=${ERGO_WALLET_ADDRESS}&amount=${nanoErgAmount}&description=Course%20Access%20${accessCode}`;
 
-    const getStatusIcon = () => {
-        switch (paymentStatus) {
-            case 'WAITING':
-                return <Clock className="animate-pulse" size={24} />;
-            case 'PENDING':
-                return <Loader2 className="animate-spin" size={24} />;
-            case 'PAID':
-                return <CheckCircle2 size={24} />;
-            default:
-                return <Clock size={24} />;
-        }
-    };
-
-    const getStatusColor = () => {
-        switch (paymentStatus) {
-            case 'WAITING':
-                return 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10';
-            case 'PENDING':
-                return 'text-blue-400 border-blue-500/30 bg-blue-500/10';
-            case 'PAID':
-                return 'text-green-400 border-green-500/30 bg-green-500/10';
-            default:
-                return 'text-slate-400 border-slate-700 bg-slate-900';
-        }
-    };
+    if (isLoading) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-4">
+                    <Loader2 className="w-12 h-12 text-cyan-400 animate-spin" />
+                    <p className="text-white text-lg">Initializing payment...</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
-            <div className="bg-slate-800 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden border border-slate-700">
-
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-12 px-4">
+            <div className="max-w-4xl mx-auto">
                 {/* Header */}
-                <div className="p-8 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-700">
-                    <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-orange-900/50">
-                        <Wallet className="text-white" size={40} />
-                    </div>
-                    <h1 className="text-3xl font-bold text-white mb-2">Pay with Ergo</h1>
-                    <p className="text-slate-400">Secure, private, decentralized payment</p>
-                    <div className="mt-3 inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-4 py-2 rounded-full">
-                        <span className="text-green-400 font-semibold text-sm">Tech Literacy Discount: $20</span>
-                        <span className="text-slate-500 line-through text-xs">$40</span>
-                    </div>
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center mb-12"
+                >
+                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Pay with <span className="text-cyan-400">ERG</span>
+                    </h1>
+                    <p className="text-xl text-slate-300">
+                        ${PRICE_USD} USD = {ergAmount?.toFixed(2)} ERG
+                    </p>
+                    <p className="text-sm text-slate-400 mt-2">
+                        Tech Literacy Discount • 50% off vs Card Payment
+                    </p>
+                </motion.div>
 
-                <div className="p-8">
-                    {error && (
-                        <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg mb-6 text-sm text-center">
-                            {error}
-                        </div>
+                <AnimatePresence mode="wait">
+                    {step === 1 && (
+                        <motion.div
+                            key="step1"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8"
+                        >
+                            <div className="text-center">
+                                <div className="w-20 h-20 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <Wallet className="w-10 h-10 text-cyan-400" />
+                                </div>
+                                <h2 className="text-2xl font-bold text-white mb-4">Ready to Pay?</h2>
+                                <p className="text-slate-300 mb-8">
+                                    You'll get instant access after payment confirmation
+                                </p>
+                                <button
+                                    onClick={handleStartPayment}
+                                    className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/50 flex items-center gap-2 mx-auto"
+                                >
+                                    Continue to Payment
+                                    <ArrowRight className="w-5 h-5" />
+                                </button>
+                            </div>
+                        </motion.div>
                     )}
 
-                    {step === 1 ? (
+                    {step === 2 && paymentStatus === 'WAITING' && (
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-center space-y-6"
+                            key="step2"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            className="space-y-6"
                         >
-                            <div className="space-y-4">
-                                <div className="bg-slate-900 p-6 rounded-xl border border-slate-700">
-                                    <div className="flex justify-between items-center mb-3">
-                                        <span className="text-slate-400">Item</span>
-                                        <span className="text-white font-medium">Agentic AI System</span>
+                            {/* Payment Methods */}
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {/* Mobile: ErgoPay Deep Link */}
+                                <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                                            <Smartphone className="w-6 h-6 text-green-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold text-white">Mobile Wallet</h3>
+                                            <p className="text-sm text-slate-400">One-click payment</p>
+                                        </div>
                                     </div>
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-slate-400">Price</span>
-                                        <span className="text-orange-400 font-bold text-2xl">$20.00 USD</span>
-                                    </div>
+                                    <a
+                                        href={ergoPayUri}
+                                        className="block w-full bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl font-bold text-center transition-all"
+                                    >
+                                        Open Wallet App
+                                    </a>
+                                    <p className="text-xs text-slate-400 mt-3 text-center">
+                                        Works with Nautilus, SAFEW, Ergo Wallet
+                                    </p>
                                 </div>
 
-                                <div className="bg-blue-500/10 border border-blue-500/20 p-4 rounded-xl text-left">
-                                    <h3 className="text-blue-400 font-semibold mb-2 flex items-center gap-2">
-                                        <ShieldCheck size={18} />
-                                        Why Ergo?
-                                    </h3>
-                                    <ul className="text-blue-200/80 text-sm space-y-1">
-                                        <li>✓ No personal information required</li>
-                                        <li>✓ Direct peer-to-peer payment</li>
-                                        <li>✓ Lower fees than traditional payment</li>
-                                        <li>✓ Instant global transactions</li>
-                                    </ul>
+                                {/* Desktop: QR Code */}
+                                <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                                            <QRCodeSVG value={ergoPayUri} size={24} fgColor="#a78bfa" bgColor="transparent" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold text-white">Desktop</h3>
+                                            <p className="text-sm text-slate-400">Scan QR code</p>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white p-4 rounded-xl">
+                                        <QRCodeSVG value={ergoPayUri} size={180} className="mx-auto" />
+                                    </div>
+                                    <p className="text-xs text-slate-400 mt-3 text-center">
+                                        Scan with mobile wallet
+                                    </p>
                                 </div>
                             </div>
 
-                            <button
-                                onClick={handleInitiate}
-                                disabled={isLoading}
-                                className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange-900/30 flex items-center justify-center gap-2 disabled:opacity-50"
-                            >
-                                {isLoading ? (
-                                    <>
-                                        <Loader2 className="animate-spin" size={20} />
-                                        Generating...
-                                    </>
-                                ) : (
-                                    <>
-                                        Generate Payment Info
-                                        <ArrowRight size={20} />
-                                    </>
-                                )}
-                            </button>
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="space-y-6"
-                        >
-                            {/* Status Banner */}
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={paymentStatus}
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    className={`border rounded-xl p-4 flex items-center gap-3 ${getStatusColor()}`}
-                                >
-                                    {getStatusIcon()}
-                                    <div className="flex-1">
-                                        <h3 className="font-semibold">
-                                            {paymentStatus === 'WAITING' && 'Waiting for Payment'}
-                                            {paymentStatus === 'PENDING' && 'Payment Detected!'}
-                                            {paymentStatus === 'PAID' && 'Payment Confirmed!'}
-                                        </h3>
-                                        <p className="text-xs opacity-80 mt-0.5">
-                                            {statusMessage || 'Monitoring blockchain for your transaction...'}
-                                        </p>
-                                        {detectedTxId && (
-                                            <a
-                                                href={`https://explorer.ergoplatform.com/en/transactions/${detectedTxId}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-xs underline mt-1 inline-flex items-center gap-1 hover:opacity-80"
-                                            >
-                                                View on Explorer <ExternalLink size={12} />
-                                            </a>
-                                        )}
-                                    </div>
-                                </motion.div>
-                            </AnimatePresence>
+                            {/* Manual Payment Info */}
+                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
+                                <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                    <Wallet className="w-5 h-5 text-cyan-400" />
+                                    Manual Payment Details
+                                </h3>
 
-                            {paymentStatus !== 'PAID' && (
-                                <>
-                                    {/* Access Code Warning */}
-                                    <div className="bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl flex gap-3 items-start">
-                                        <AlertTriangle className="text-yellow-500 shrink-0 mt-0.5" size={20} />
-                                        <div className="space-y-1">
-                                            <h3 className="text-yellow-500 font-semibold text-sm">SAVE THIS CODE!</h3>
-                                            <p className="text-yellow-200/80 text-xs">
-                                                You need this code to access your content. Save it securely!
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/* Access Code Display */}
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-                                            Secret Access Code
-                                        </label>
-                                        <div className="bg-slate-900 border border-orange-500/30 rounded-xl p-4 flex items-center justify-between group relative overflow-hidden">
-                                            <div className="absolute inset-0 bg-orange-500/5 pointer-events-none" />
-                                            <code className="text-orange-400 font-mono text-xl font-bold tracking-wide">
-                                                {paymentInfo.accessCode}
-                                            </code>
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="text-sm text-slate-400 block mb-2">Wallet Address</label>
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                value={ERGO_WALLET_ADDRESS}
+                                                readOnly
+                                                className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white text-sm font-mono"
+                                            />
                                             <button
-                                                onClick={() => copyToClipboard(paymentInfo.accessCode, setCopiedCode)}
-                                                className="p-2 hover:bg-slate-800 rounded-lg transition-colors text-slate-400 hover:text-white"
+                                                onClick={() => copyToClipboard(ERGO_WALLET_ADDRESS, setCopiedAddress)}
+                                                className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg transition-all"
                                             >
-                                                {copiedCode ? <Check size={20} className="text-green-500" /> : <Copy size={20} />}
+                                                {copiedAddress ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-slate-400" />}
                                             </button>
                                         </div>
                                     </div>
 
-                                    {/* Payment Methods Grid */}
-                                    <div className="grid md:grid-cols-2 gap-4">
-                                        {/* QR Code Method */}
-                                        <div className="space-y-3">
-                                            <div className="flex items-center gap-2 text-slate-300">
-                                                <Smartphone size={16} />
-                                                <span className="text-sm font-medium">Scan with Mobile Wallet</span>
-                                            </div>
-                                            <div className="bg-white p-4 rounded-xl">
-                                                <QRCodeSVG
-                                                    value={paymentInfo.walletAddress}
-                                                    size={200}
-                                                    level="H"
-                                                    className="w-full h-auto"
-                                                />
-                                            </div>
-                                            <div className="text-center">
-                                                <span className="text-xl font-bold text-white">
-                                                    {paymentInfo.ergAmount.toFixed(4)} ERG
-                                                </span>
-                                                <p className="text-slate-500 text-xs mt-1">
-                                                    ≈ $20.00 USD
-                                                </p>
-                                            </div>
+                                    <div>
+                                        <label className="text-sm text-slate-400 block mb-2">Amount</label>
+                                        <div className="bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white">
+                                            {ergAmount?.toFixed(4)} ERG ({PRICE_USD} USD)
                                         </div>
+                                    </div>
 
-                                        {/* Manual Method */}
-                                        <div className="space-y-3">
-                                            <div className="flex items-center gap-2 text-slate-300">
-                                                <Wallet size={16} />
-                                                <span className="text-sm font-medium">Desktop Wallet</span>
-                                            </div>
-
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-                                                    Send Amount
-                                                </label>
-                                                <div className="bg-slate-900 border border-slate-700 rounded-xl p-3">
-                                                    <div className="text-2xl font-bold text-white">
-                                                        {paymentInfo.ergAmount.toFixed(4)} ERG
-                                                    </div>
-                                                    <div className="text-slate-500 text-sm">
-                                                        ${paymentInfo.totalUsd.toFixed(2)} USD at ${paymentInfo.ergPriceUsd.toFixed(2)}/ERG
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">
-                                                    To Wallet Address
-                                                </label>
-                                                <div className="bg-slate-900 border border-slate-700 rounded-xl p-3 flex items-center justify-between">
-                                                    <code className="text-slate-300 font-mono text-xs break-all pr-2">
-                                                        {paymentInfo.walletAddress}
-                                                    </code>
-                                                    <button
-                                                        onClick={() => copyToClipboard(paymentInfo.walletAddress, setCopiedAddress)}
-                                                        className="p-2 hover:bg-slate-800 rounded-lg transition-colors text-slate-400 hover:text-white shrink-0"
-                                                    >
-                                                        {copiedAddress ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            {/* ErgoPay Button */}
-                                            <a
-                                                href={generateErgoPayUri()}
-                                                className="w-full bg-purple-600 hover:bg-purple-500 text-white font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
+                                    <div>
+                                        <label className="text-sm text-slate-400 block mb-2">Access Code</label>
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                value={accessCode}
+                                                readOnly
+                                                className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-cyan-400 text-lg font-mono font-bold text-center"
+                                            />
+                                            <button
+                                                onClick={() => copyToClipboard(accessCode, setCopiedCode)}
+                                                className="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg transition-all"
                                             >
-                                                <Smartphone size={18} />
-                                                Pay with ErgoPay
-                                            </a>
+                                                {copiedCode ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-slate-400" />}
+                                            </button>
                                         </div>
+                                        <p className="text-xs text-slate-400 mt-2">Save this code to verify your payment</p>
                                     </div>
+                                </div>
+                            </div>
 
-                                    {/* Instructions */}
-                                    <div className="bg-slate-900/50 border border-slate-700 rounded-xl p-4">
-                                        <h3 className="text-white font-semibold mb-2 text-sm">Payment Instructions:</h3>
-                                        <ol className="text-slate-400 text-xs space-y-1 list-decimal list-inside">
-                                            <li>Save your access code (above)</li>
-                                            <li>Send exactly {paymentInfo.ergAmount.toFixed(4)} ERG to the wallet address</li>
-                                            <li>Wait for automatic confirmation (usually 2-10 minutes)</li>
-                                            <li>You'll be logged in automatically when payment is confirmed</li>
-                                        </ol>
+                            {/* Manual TX ID Verification */}
+                            <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-6">
+                                <h3 className="text-lg font-bold text-white mb-4">Already Paid?</h3>
+                                <p className="text-slate-300 text-sm mb-4">
+                                    Enter your transaction ID to verify payment manually
+                                </p>
+                                <div className="flex gap-2">
+                                    <input
+                                        type="text"
+                                        value={manualTxId}
+                                        onChange={(e) => setManualTxId(e.target.value)}
+                                        placeholder="Enter transaction ID..."
+                                        className="flex-1 bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-2 text-white placeholder-slate-500"
+                                    />
+                                    <button
+                                        onClick={handleManualCheck}
+                                        disabled={checkingPayment}
+                                        className="bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-600 text-white px-6 py-2 rounded-lg font-bold transition-all flex items-center gap-2"
+                                    >
+                                        {checkingPayment ? (
+                                            <>
+                                                <Loader2 className="w-4 h-4 animate-spin" />
+                                                Checking...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <CheckCircle2 className="w-4 h-4" />
+                                                Verify
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                                {error && (
+                                    <div className="mt-3 flex items-center gap-2 text-red-400 text-sm">
+                                        <AlertTriangle className="w-4 h-4" />
+                                        {error}
                                     </div>
-                                </>
-                            )}
+                                )}
+                            </div>
 
-                            {paymentStatus === 'PAID' && (
-                                <motion.div
-                                    initial={{ scale: 0.9, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    className="text-center py-8"
-                                >
-                                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <CheckCircle2 className="text-green-500" size={48} />
-                                    </div>
-                                    <h2 className="text-2xl font-bold text-white mb-2">Payment Successful!</h2>
-                                    <p className="text-slate-400 mb-4">Redirecting to your dashboard...</p>
-                                    <Loader2 className="animate-spin text-orange-500 mx-auto" size={32} />
-                                </motion.div>
-                            )}
+                            {/* Auto-checking status */}
+                            <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 text-center">
+                                <div className="flex items-center justify-center gap-2 text-blue-300">
+                                    <Clock className="w-5 h-5 animate-pulse" />
+                                    <span className="text-sm">Auto-checking for payment every 15 seconds...</span>
+                                </div>
+                            </div>
                         </motion.div>
                     )}
-                </div>
 
-                {/* Footer */}
-                {step === 2 && paymentStatus !== 'PAID' && (
-                    <div className="p-4 bg-slate-900/50 border-t border-slate-700 text-center">
-                        <p className="text-slate-500 text-xs">
-                            Having trouble? You can also claim manually on the{' '}
-                            <a href="/login" className="text-orange-400 hover:underline">login page</a>
-                        </p>
-                    </div>
-                )}
+                    {paymentStatus === 'CONFIRMED' && (
+                        <motion.div
+                            key="confirmed"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="bg-gradient-to-br from-green-900/50 to-emerald-900/50 backdrop-blur-lg border border-green-500/50 rounded-2xl p-12 text-center"
+                        >
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: 0.2, type: "spring" }}
+                                className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
+                            >
+                                <CheckCircle2 className="w-12 h-12 text-green-400" />
+                            </motion.div>
+                            <h2 className="text-3xl font-bold text-white mb-4">Payment Confirmed!</h2>
+                            <p className="text-green-300 text-lg mb-8">
+                                Redirecting to your dashboard...
+                            </p>
+                            <div className="flex items-center justify-center gap-2">
+                                <Loader2 className="w-5 h-5 text-green-400 animate-spin" />
+                                <span className="text-green-400">Loading content...</span>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </div>
     );
