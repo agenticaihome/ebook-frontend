@@ -266,11 +266,13 @@ const ErgoPaymentPage = () => {
         payment.txId = txId;
         payment.confirmedAt = Date.now();
         localStorage.setItem('ergo_payment', JSON.stringify(payment));
-        localStorage.setItem('ergo_access_granted', 'true');
 
-        // Redirect to dashboard after 2 seconds
+        console.log('✅ Payment confirmed! Redirecting to account creation...');
+
+        // Redirect to account creation page after 2 seconds
         setTimeout(() => {
-            navigate('/dashboard');
+            const email = payment.email || '';
+            navigate(`/create-account?payment_id=${payment.accessCode}&email=${email}&type=ergo`);
         }, 2000);
     };
 
