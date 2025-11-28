@@ -334,11 +334,22 @@ const ErgoPaymentPage = () => {
                                         </div>
                                     </div>
 
-                                    <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 flex items-start gap-3">
-                                        <AlertTriangle className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" />
-                                        <p className="text-sm text-yellow-200">
-                                            <strong>CRITICAL:</strong> Send the <u>EXACT</u> amount shown above. If the amount does not match exactly, the system will not auto-unlock.
-                                        </p>
+                                    <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 flex items-start gap-3">
+                                        <div className="bg-blue-500/20 p-1.5 rounded-full mt-0.5">
+                                            <Check className="w-4 h-4 text-blue-400" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm text-blue-200 font-semibold mb-1">
+                                                Automated Confirmation
+                                            </p>
+                                            <p className="text-sm text-slate-300">
+                                                Our system automatically detects your payment. Please send the <strong>exact amount</strong> for instant confirmation.
+                                                <br />
+                                                <span className="text-xs text-slate-400 mt-1 block">
+                                                    (Small differences of ±0.001 ERG are accepted to account for wallet rounding)
+                                                </span>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
