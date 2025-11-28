@@ -43,36 +43,103 @@ const usdToNanoErg = (usd, ergPriceUsd) => {
 // Helper: Check recent transactions for payment
 const checkErgoPayment = async (walletAddress, expectedAmount) => {
     try {
+        console.log('🔍 Starting payment check...');
+
         // Get the timestamp when access code was created
         const paymentData = localStorage.getItem('ergo_payment');
-        if (!paymentData) return null;
+        if (!paymentData) {
+            console.warn('⚠️ No payment data found in localStorage');
+            return null;
+        }
 
         const { timestamp: createdTimestamp } = JSON.parse(paymentData);
+        console.log('✅ Payment session created at:', new Date(createdTimestamp).toLocaleString());
 
-        const response = await fetch(`${EXPLORER_API}/addresses/${walletAddress}/transactions?limit=20`);
+        const url = `${EXPLORER_API}/addresses/${walletAddress}/transactions?limit=20`;
+        console.log('📡 Fetching from:', url);
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            console.error('❌ API returned error:', response.status, response.statusText);
+            return null;
+        }
+
         const data = await response.json();
+        console.log('📦 API Response structure:', Object.keys(data));
+        console.log('📊 Full response:', JSON.stringify(data, null, 2));
+
+        // Handle different API response structures
+        const transactions = data.items || data.transactions || data || [];
+        console.log(`📝 Found ${transactions.length} transactions`);
+
+        if (transactions.length === 0) {
+            console.log('⚠️ No transactions found in response');
+            return null;
+        }
 
         // Look for transaction with matching amount (±5% tolerance) AND created AFTER access code
         const minAmount = expectedAmount * 0.95;
         const maxAmount = expectedAmount * 1.05;
 
-        const payment = data.items.find(tx => {
+        console.log(`💰 Looking for amount between ${minAmount} and ${maxAmount} nanoERG`);
+        console.log(`💰 Expected: ${expectedAmount} nanoERG (${(expectedAmount / 1e9).toFixed(4)} ERG)`);
+
+        const payment = transactions.find((tx, index) => {
+            console.log(`\n--- Checking transaction ${index + 1}/${transactions.length} ---`);
+            console.log('TX ID:', tx.id);
+            console.log('Timestamp:', new Date(tx.timestamp).toLocaleString());
+            console.log('Created after payment session?', tx.timestamp > createdTimestamp);
+
             // CRITICAL FIX: Only check transactions created AFTER the access code
-            // tx.timestamp is in milliseconds
             if (tx.timestamp <= createdTimestamp) {
-                return false; // Ignore old transactions
+                console.log('⏩ Skipping - transaction is too old');
+                return false;
             }
 
-            return tx.outputs.some(output =>
-                output.address === walletAddress &&
-                output.value >= minAmount &&
-                output.value <= maxAmount
-            );
+            if (!tx.outputs || tx.outputs.length === 0) {
+                console.log('⏩ Skipping - no outputs');
+                return false;
+            }
+
+            console.log(`🔍 Checking ${tx.outputs.length} outputs...`);
+
+            const matchingOutput = tx.outputs.find((output, outIndex) => {
+                const addressMatch = output.address === walletAddress;
+                const amountMatch = output.value >= minAmount && output.value <= maxAmount;
+
+                console.log(`  Output ${outIndex + 1}:`, {
+                    address: output.address.substring(0, 20) + '...',
+                    addressMatch,
+                    value: output.value,
+                    valueERG: (output.value / 1e9).toFixed(4),
+                    amountMatch
+                });
+
+                return addressMatch && amountMatch;
+            });
+
+            if (matchingOutput) {
+                console.log('✅ MATCH FOUND! Transaction:', tx.id);
+                return true;
+            }
+
+            return false;
         });
 
-        return payment ? payment.id : null;
+        if (payment) {
+            console.log('🎉 Payment verified! TX ID:', payment.id);
+            return payment.id;
+        } else {
+            console.log('❌ No matching payment found');
+            return null;
+        }
     } catch (error) {
-        console.error('Failed to check payment:', error);
+        console.error('💥 Error in checkErgoPayment:', error);
+        console.error('Error details:', {
+            message: error.message,
+            stack: error.stack
+        });
         return null;
     }
 };
