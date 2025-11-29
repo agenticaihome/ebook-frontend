@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight, BookOpen, Shield, Zap, Home, HelpCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import PrefetchLink from './PrefetchLink';
 
 const WebbookLayout = ({ children }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -66,14 +67,14 @@ const WebbookLayout = ({ children }) => {
                 </div>
 
                 <nav className="flex-1 overflow-y-auto p-4 space-y-2" aria-label="Chapter Navigation">
-                    <Link
+                    <PrefetchLink
                         to="/"
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 ${location.pathname === '/' ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-50'
                             }`}
                     >
                         <Home size={18} />
                         <span className="font-medium">Home</span>
-                    </Link>
+                    </PrefetchLink>
 
                     <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider flex justify-between items-center">
                         <span>Table of Contents</span>
@@ -81,7 +82,7 @@ const WebbookLayout = ({ children }) => {
                     </div>
 
                     {chapters.map((chapter) => (
-                        <Link
+                        <PrefetchLink
                             key={chapter.id}
                             to={chapter.path}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-blue-400 ${location.pathname === chapter.path
@@ -105,25 +106,25 @@ const WebbookLayout = ({ children }) => {
                             <span className={`text-xs font-mono ml-2 ${location.pathname === chapter.path ? 'text-blue-200' : 'text-slate-400'}`}>
                                 {chapter.progress}%
                             </span>
-                        </Link>
+                        </PrefetchLink>
                     ))}
 
                     <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">
                         Quick Jumps
                     </div>
                     <div className="grid grid-cols-2 gap-2 px-2">
-                        <Link to="/part1" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <PrefetchLink to="/part1" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
                             Foundations
-                        </Link>
-                        <Link to="/part5" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        </PrefetchLink>
+                        <PrefetchLink to="/part5" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
                             Life OS
-                        </Link>
-                        <Link to="/part2" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        </PrefetchLink>
+                        <PrefetchLink to="/part2" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
                             Daily Ops
-                        </Link>
-                        <Link to="/part4" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        </PrefetchLink>
+                        <PrefetchLink to="/part4" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
                             Health
-                        </Link>
+                        </PrefetchLink>
                     </div>
                 </nav>
 
@@ -131,7 +132,7 @@ const WebbookLayout = ({ children }) => {
                     Support & Help
                 </div>
                 <nav className="px-4 space-y-2 mb-4" aria-label="Support Navigation">
-                    <Link
+                    <PrefetchLink
                         to="/why-ergo"
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/why-ergo'
                             ? 'bg-green-600 text-white shadow-lg shadow-green-200'
@@ -142,8 +143,8 @@ const WebbookLayout = ({ children }) => {
                             <Zap size={18} />
                         </span>
                         <span className="font-medium text-sm">Why Ergo?</span>
-                    </Link>
-                    <Link
+                    </PrefetchLink>
+                    <PrefetchLink
                         to="/payment-guide"
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/payment-guide'
                             ? 'bg-green-600 text-white shadow-lg shadow-green-200'
@@ -154,8 +155,8 @@ const WebbookLayout = ({ children }) => {
                             <Shield size={18} />
                         </span>
                         <span className="font-medium text-sm">Payment Guide</span>
-                    </Link>
-                    <Link
+                    </PrefetchLink>
+                    <PrefetchLink
                         to="/faq"
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/faq'
                             ? 'bg-green-600 text-white shadow-lg shadow-green-200'
@@ -166,7 +167,7 @@ const WebbookLayout = ({ children }) => {
                             <HelpCircle size={18} />
                         </span>
                         <span className="font-medium text-sm">FAQ & Support</span>
-                    </Link>
+                    </PrefetchLink>
                 </nav>
 
                 <div className="p-4 border-t border-slate-100">

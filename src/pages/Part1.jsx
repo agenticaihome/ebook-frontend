@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import CaptainHero from '../components/CaptainHero';
 import CaptainTip from '../components/CaptainTip';
-import AIExperienceQuiz from '../components/AIExperienceQuiz';
-import MentalLoadCalculator from '../components/MentalLoadCalculator';
-import ToolRecommendationQuiz from '../components/ToolRecommendationQuiz';
-import PrivacyAssessment from '../components/PrivacyAssessment';
-import AgentConstitutionBuilder from '../components/AgentConstitutionBuilder';
-import SocialShare from '../components/tools/SocialShare';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
+
+const AIExperienceQuiz = React.lazy(() => import('../components/AIExperienceQuiz'));
+const MentalLoadCalculator = React.lazy(() => import('../components/MentalLoadCalculator'));
+const ToolRecommendationQuiz = React.lazy(() => import('../components/ToolRecommendationQuiz'));
+const PrivacyAssessment = React.lazy(() => import('../components/PrivacyAssessment'));
+const AgentConstitutionBuilder = React.lazy(() => import('../components/AgentConstitutionBuilder'));
+const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
@@ -186,8 +190,12 @@ const Part1 = () => {
                             </p>
                         </div>
 
-                        <AIExperienceQuiz />
-                        <MentalLoadCalculator />
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading quiz...</div>}>
+                            <AIExperienceQuiz />
+                        </Suspense>
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading calculator...</div>}>
+                            <MentalLoadCalculator />
+                        </Suspense>
 
                         <CaptainTip type="tip" title="Your First Step">
                             You now understand the difference between chatbots and agents. That's the foundation for everything. Next up: we'll look at the actual tools you can use. Onward!
@@ -307,7 +315,9 @@ const Part1 = () => {
                             </div>
                         </div>
 
-                        <ToolRecommendationQuiz />
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading recommendations...</div>}>
+                            <ToolRecommendationQuiz />
+                        </Suspense>
 
                         <CaptainTip type="info" title="Don't Overthink It">
                             The only wrong choice is no choice. Pick something and start. You can always add or change tools later.
@@ -413,8 +423,12 @@ const Part1 = () => {
                             </div>
                         </div>
 
-                        <PrivacyAssessment />
-                        <AgentConstitutionBuilder />
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading assessment...</div>}>
+                            <PrivacyAssessment />
+                        </Suspense>
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading builder...</div>}>
+                            <AgentConstitutionBuilder />
+                        </Suspense>
 
                         <div className="mt-12 p-8 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-2xl border border-cyan-500/50 text-center">
                             <h3 className="text-2xl font-bold text-white mb-4">Part 1 Complete! 🎉</h3>
@@ -451,10 +465,12 @@ const Part1 = () => {
                     </div>
                 </section>
                 {/* Social Share */}
-                <SocialShare
-                    title="I'm diagnosing my 'Time Infection' with Agentic AI. It's time to reclaim my schedule!"
-                    hashtags={["AgenticAI", "TimeManagement", "Productivity"]}
-                />
+                <Suspense fallback={null}>
+                    <SocialShare
+                        title="I'm diagnosing my 'Time Infection' with Agentic AI. It's time to reclaim my schedule!"
+                        hashtags={["AgenticAI", "TimeManagement", "Productivity"]}
+                    />
+                </Suspense>
             </div>
         </WebbookLayout>
     );

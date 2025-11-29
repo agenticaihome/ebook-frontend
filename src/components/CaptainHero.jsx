@@ -8,7 +8,7 @@ const CaptainHero = ({
     className = '',
     pose = 'default', // 'default' | 'thinking' | 'pointing' | 'celebrating' | 'working'
     imageSrc, // Optional override
-    videoSrc // Optional video override
+    loading = "eager" // 'eager' | 'lazy'
 }) => {
     const [name, setName] = useState(localStorage.getItem('user_name') || '');
     const [isEditing, setIsEditing] = useState(false);
@@ -71,6 +71,7 @@ const CaptainHero = ({
                         src={finalImageSrc}
                         alt="Captain Efficiency"
                         className="relative z-10 w-full h-full object-contain"
+                        loading={loading}
                     />
                 )}
             </motion.div>

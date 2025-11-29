@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal, Loader2, AlertCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
-import TimeBackCalculator from './components/landing/TimeBackCalculator';
-import BeforeAfterComparison from './components/landing/BeforeAfterComparison';
 import { api } from './services/api';
+
+const TimeBackCalculator = React.lazy(() => import('./components/landing/TimeBackCalculator'));
+const BeforeAfterComparison = React.lazy(() => import('./components/landing/BeforeAfterComparison'));
+
+import { usePerformanceMode } from './hooks/usePerformanceMode';
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
   const [isStripeLoading, setIsStripeLoading] = useState(false);
   const [stripeError, setStripeError] = useState(null);
   const navigate = useNavigate();
+  const isPerformanceMode = usePerformanceMode();
 
   const handleErgoPayment = () => {
     navigate('/pay-ergo');
@@ -49,10 +53,12 @@ export default function SalesPage() {
         {/* HERO SECTION */}
         <section className="relative pt-24 pb-32 px-6 overflow-hidden">
           {/* Background Glows */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl"></div>
-          </div>
+          {!isPerformanceMode && (
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+              <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl"></div>
+            </div>
+          )}
 
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
             {/* Left: Captain Efficiency */}
@@ -242,14 +248,18 @@ export default function SalesPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">FROM CHAOS TO SYSTEM</h2>
               <p className="text-slate-400">Stop fighting entropy. Start managing it.</p>
             </div>
-            <BeforeAfterComparison />
+            <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading comparison...</div>}>
+              <BeforeAfterComparison />
+            </Suspense>
           </div>
         </section>
 
         {/* CALCULATOR SECTION */}
         <section className="py-24 px-6 bg-[#0f0f1a]">
           <div className="max-w-4xl mx-auto">
-            <TimeBackCalculator />
+            <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading calculator...</div>}>
+              <TimeBackCalculator />
+            </Suspense>
           </div>
         </section>
 
@@ -422,6 +432,7 @@ export default function SalesPage() {
               size="sm"
               message="I'll be waiting on the other side."
               imageSrc="/assets/captain-efficiency-dark.png"
+              loading="lazy"
             />
           </div>
           <p className="text-slate-500 text-sm">

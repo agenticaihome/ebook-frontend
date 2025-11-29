@@ -1,32 +1,14 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
 import { Toaster, toast } from 'react-hot-toast';
+import { routeConfig } from './config/routes';
 
 // Eager load SalesPage
 import SalesPage from './SalesPage';
-
-// Lazy load components
-const Part1 = lazy(() => import('./pages/Part1'));
-const Part2 = lazy(() => import('./pages/Part2'));
-const Part3 = lazy(() => import('./pages/Part3'));
-const Part4 = lazy(() => import('./pages/Part4'));
-const Part5 = lazy(() => import('./pages/Part5'));
-const SuccessPage = lazy(() => import('./pages/SuccessPage'));
-const CreateAccountPage = lazy(() => import('./pages/CreateAccountPage'));
-const EmbeddableInfectionDiagnostic = lazy(() => import('./components/tools/EmbeddableInfectionDiagnostic'));
-const LoginPage = lazy(() => import('./LoginPage'));
-const ErgoPaymentPage = lazy(() => import('./ErgoPaymentPage'));
-const Dashboard = lazy(() => import('./Dashboard'));
-const ProtectedRoute = lazy(() => import('./components/ProtectedRoute'));
-const WhyErgo = lazy(() => import('./WhyErgo'));
-const PaymentGuide = lazy(() => import('./PaymentGuide'));
-const ErgoGuide = lazy(() => import('./ErgoGuide'));
-const FAQ = lazy(() => import('./FAQ'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Loading component
 const Loading = () => (
@@ -80,66 +62,83 @@ const AnimatedRoutes = () => {
   }, [navigate, location]);
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageTransition><SalesPage /></PageTransition>} />
-        <Route path="/part1" element={<PageTransition><Part1 /></PageTransition>} />
-        <Route path="/part2" element={<PageTransition><Part2 /></PageTransition>} />
-        <Route path="/part3" element={<PageTransition><Part3 /></PageTransition>} />
-        <Route path="/part4" element={<PageTransition><Part4 /></PageTransition>} />
-        <Route path="/part5" element={<PageTransition><Part5 /></PageTransition>} />
-        <Route path="/success" element={<PageTransition><SuccessPage /></PageTransition>} />
-        <Route path="/create-account" element={<PageTransition><CreateAccountPage /></PageTransition>} />
-        <Route path="/chaos-quiz-widget" element={<EmbeddableInfectionDiagnostic />} />
-        <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
-        <Route path="/pay-ergo" element={<PageTransition><ErgoPaymentPage /></PageTransition>} />
-        <Route path="/why-ergo" element={<PageTransition><WhyErgo /></PageTransition>} />
-        <Route path="/payment-guide" element={<PageTransition><PaymentGuide /></PageTransition>} />
-        <Route path="/ergo-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
+    <LazyMotion features={domAnimation}>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageTransition><SalesPage /></PageTransition>} />
+          <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
+          <Route path="/part2" element={<PageTransition><routeConfig.part2.Component /></PageTransition>} />
+          <Route path="/part3" element={<PageTransition><routeConfig.part3.Component /></PageTransition>} />
+          <Route path="/part4" element={<PageTransition><routeConfig.part4.Component /></PageTransition>} />
+          <Route path="/part5" element={<PageTransition><routeConfig.part5.Component /></PageTransition>} />
+          <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
+          <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
+          <Route path="/chaos-quiz-widget" element={<routeConfig.infectionDiagnostic.Component />} />
+          <Route path="/login" element={<PageTransition><routeConfig.login.Component /></PageTransition>} />
+          <Route path="/pay-ergo" element={<PageTransition><routeConfig.ergoPayment.Component /></PageTransition>} />
+          <Route path="/why-ergo" element={<PageTransition><routeConfig.whyErgo.Component /></PageTransition>} />
+          <Route path="/payment-guide" element={<PageTransition><routeConfig.paymentGuide.Component /></PageTransition>} />
+          <Route path="/ergo-guide" element={<PageTransition><routeConfig.ergoGuide.Component /></PageTransition>} />
+          <Route path="/faq" element={<PageTransition><routeConfig.faq.Component /></PageTransition>} />
 
-        {/* Legacy Redirects */}
-        <Route path="/how-to-pay" element={<PageTransition><ErgoGuide /></PageTransition>} />
-        <Route path="/how-to-buy-ergo" element={<PageTransition><ErgoGuide /></PageTransition>} />
-        <Route path="/wallet-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
+          {/* Legacy Redirects */}
+          <Route path="/part1" element={<PageTransition><Part1 /></PageTransition>} />
+          <Route path="/part2" element={<PageTransition><Part2 /></PageTransition>} />
+          <Route path="/part3" element={<PageTransition><Part3 /></PageTransition>} />
+          <Route path="/part4" element={<PageTransition><Part4 /></PageTransition>} />
+          <Route path="/part5" element={<PageTransition><Part5 /></PageTransition>} />
+          <Route path="/success" element={<PageTransition><SuccessPage /></PageTransition>} />
+          <Route path="/create-account" element={<PageTransition><CreateAccountPage /></PageTransition>} />
+          <Route path="/chaos-quiz-widget" element={<EmbeddableInfectionDiagnostic />} />
+          <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
+          <Route path="/pay-ergo" element={<PageTransition><ErgoPaymentPage /></PageTransition>} />
+          <Route path="/why-ergo" element={<PageTransition><WhyErgo /></PageTransition>} />
+          <Route path="/payment-guide" element={<PageTransition><PaymentGuide /></PageTransition>} />
+          <Route path="/ergo-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
 
-        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+          {/* Legacy Redirects */}
+          <Route path="/how-to-pay" element={<PageTransition><ErgoGuide /></PageTransition>} />
+          <Route path="/how-to-buy-ergo" element={<PageTransition><ErgoGuide /></PageTransition>} />
+          <Route path="/wallet-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
 
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <PageTransition><Dashboard /></PageTransition>
-            </ProtectedRoute>
-          }
-        />
+          <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </AnimatePresence>
-  );
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <PageTransition><Dashboard /></PageTransition>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </AnimatePresence>
+      );
 };
 
-function App() {
+      function App() {
   return (
-    <Router>
-      <SoundProvider>
-        <ScrollToTop />
-        <Suspense fallback={<Loading />}>
-          <AnimatedRoutes />
-          <MobileBottomNav />
-          <Toaster
-            toastOptions={{
-              style: {
-                background: '#1e293b',
-                color: '#fff',
-                border: '1px solid #334155',
-              },
-            }}
-          />
-        </Suspense>
-      </SoundProvider>
-    </Router>
-  );
+      <Router>
+        <SoundProvider>
+          <ScrollToTop />
+          <Suspense fallback={<Loading />}>
+            <AnimatedRoutes />
+            <MobileBottomNav />
+            <Toaster
+              toastOptions={{
+                style: {
+                  background: '#1e293b',
+                  color: '#fff',
+                  border: '1px solid #334155',
+                },
+              }}
+            />
+          </Suspense>
+        </SoundProvider>
+      </Router>
+      );
 }
 
-export default App;
+      export default App;
