@@ -137,7 +137,7 @@ const CreateAccountPage = () => {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    readOnly={!!urlEmail}
+                                    readOnly={!!urlEmail && !urlEmail.includes('@temp.ergo') && !urlEmail.startsWith('recovered_')}
                                     placeholder="Enter your email"
                                     className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white ${!urlEmail ? 'focus:border-purple-500 focus:outline-none' : 'cursor-not-allowed opacity-75'}`}
                                 />
