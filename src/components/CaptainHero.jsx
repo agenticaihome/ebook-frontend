@@ -8,6 +8,7 @@ const CaptainHero = ({
     className = '',
     pose = 'default', // 'default' | 'thinking' | 'pointing' | 'celebrating' | 'working'
     imageSrc, // Optional override
+    videoSrc, // Optional video override
     loading = "eager" // 'eager' | 'lazy'
 }) => {
     const [name, setName] = useState(localStorage.getItem('user_name') || '');

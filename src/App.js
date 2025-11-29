@@ -82,63 +82,34 @@ const AnimatedRoutes = () => {
           <Route path="/faq" element={<PageTransition><routeConfig.faq.Component /></PageTransition>} />
 
           {/* Legacy Redirects */}
-          <Route path="/part1" element={<PageTransition><Part1 /></PageTransition>} />
-          <Route path="/part2" element={<PageTransition><Part2 /></PageTransition>} />
-          <Route path="/part3" element={<PageTransition><Part3 /></PageTransition>} />
-          <Route path="/part4" element={<PageTransition><Part4 /></PageTransition>} />
-          <Route path="/part5" element={<PageTransition><Part5 /></PageTransition>} />
-          <Route path="/success" element={<PageTransition><SuccessPage /></PageTransition>} />
-          <Route path="/create-account" element={<PageTransition><CreateAccountPage /></PageTransition>} />
-          <Route path="/chaos-quiz-widget" element={<EmbeddableInfectionDiagnostic />} />
-          <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
-          <Route path="/pay-ergo" element={<PageTransition><ErgoPaymentPage /></PageTransition>} />
-          <Route path="/why-ergo" element={<PageTransition><WhyErgo /></PageTransition>} />
-          <Route path="/payment-guide" element={<PageTransition><PaymentGuide /></PageTransition>} />
-          <Route path="/ergo-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
-
-          {/* Legacy Redirects */}
-          <Route path="/how-to-pay" element={<PageTransition><ErgoGuide /></PageTransition>} />
-          <Route path="/how-to-buy-ergo" element={<PageTransition><ErgoGuide /></PageTransition>} />
-          <Route path="/wallet-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
-
-          <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
-
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <PageTransition><Dashboard /></PageTransition>
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
         </Routes>
       </AnimatePresence>
-      );
+    </LazyMotion>
+  );
 };
 
-      function App() {
+function App() {
   return (
-      <Router>
-        <SoundProvider>
-          <ScrollToTop />
-          <Suspense fallback={<Loading />}>
-            <AnimatedRoutes />
-            <MobileBottomNav />
-            <Toaster
-              toastOptions={{
-                style: {
-                  background: '#1e293b',
-                  color: '#fff',
-                  border: '1px solid #334155',
-                },
-              }}
-            />
-          </Suspense>
-        </SoundProvider>
-      </Router>
-      );
+    <Router>
+      <SoundProvider>
+        <ScrollToTop />
+        <Suspense fallback={<Loading />}>
+          <AnimatedRoutes />
+          <MobileBottomNav />
+          <Toaster
+            toastOptions={{
+              style: {
+                background: '#1e293b',
+                color: '#fff',
+                border: '1px solid #334155',
+              },
+            }}
+          />
+        </Suspense>
+      </SoundProvider>
+    </Router>
+  );
 }
 
-      export default App;
+export default App;

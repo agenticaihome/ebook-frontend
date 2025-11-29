@@ -12,9 +12,7 @@ const ToolRecommendationQuiz = React.lazy(() => import('../components/ToolRecomm
 const PrivacyAssessment = React.lazy(() => import('../components/PrivacyAssessment'));
 const AgentConstitutionBuilder = React.lazy(() => import('../components/AgentConstitutionBuilder'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
-import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
+
 
 const Part1 = () => {
     const navigate = useNavigate();

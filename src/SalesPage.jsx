@@ -5,11 +5,10 @@ import { motion } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
 import { api } from './services/api';
+import { usePerformanceMode } from './hooks/usePerformanceMode';
 
 const TimeBackCalculator = React.lazy(() => import('./components/landing/TimeBackCalculator'));
 const BeforeAfterComparison = React.lazy(() => import('./components/landing/BeforeAfterComparison'));
-
-import { usePerformanceMode } from './hooks/usePerformanceMode';
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
