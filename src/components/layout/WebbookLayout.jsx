@@ -56,17 +56,17 @@ const WebbookLayout = ({ children }) => {
             <motion.aside
                 initial={{ width: 280 }}
                 animate={{ width: isSidebarOpen ? 280 : 0 }}
-                className={`fixed md:relative z-40 h-screen bg-white border-r border-slate-200 shadow-xl overflow-hidden flex flex-col`}
+                className={`fixed md:relative z-40 h-screen bg-slate-900 border-r border-slate-700 shadow-xl overflow-hidden flex flex-col`}
                 aria-label="Main Navigation"
             >
-                <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-                    <Link to="/" className="flex items-center gap-2 font-bold text-blue-600" aria-label="Go to Home">
+                <div className="p-6 border-b border-slate-700 flex justify-between items-center">
+                    <Link to="/" className="flex items-center gap-2 font-bold text-cyan-400" aria-label="Go to Home">
                         <Shield size={24} />
                         <span>Agentic AI</span>
                     </Link>
                     <button
                         onClick={() => setIsSidebarOpen(false)}
-                        className="md:hidden text-slate-400 hover:text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg p-1"
+                        className="md:hidden text-slate-400 hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg p-1"
                         aria-label="Close Sidebar"
                     >
                         <X size={24} />
@@ -76,119 +76,119 @@ const WebbookLayout = ({ children }) => {
                 <nav className="flex-1 overflow-y-auto p-4 space-y-2" aria-label="Chapter Navigation">
                     <PrefetchLink
                         to="/"
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 ${location.pathname === '/' ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-50'
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/' ? 'bg-cyan-900/30 text-cyan-400 border border-cyan-500/30' : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
                         <Home size={18} />
                         <span className="font-medium">Home</span>
                     </PrefetchLink>
 
-                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider flex justify-between items-center">
+                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-500 uppercase tracking-wider flex justify-between items-center">
                         <span>Table of Contents</span>
-                        <span className="text-[10px] bg-slate-100 px-2 py-0.5 rounded-full">27% Done</span>
+                        <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full">27% Done</span>
                     </div>
 
                     {chapters.map((chapter) => (
                         <PrefetchLink
                             key={chapter.id}
                             to={chapter.path}
-                            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-blue-400 ${location.pathname === chapter.path
-                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-200'
-                                : 'text-slate-600 hover:bg-slate-50'
+                            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === chapter.path
+                                ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30 border border-cyan-500/50'
+                                : 'text-slate-300 hover:bg-slate-800'
                                 }`}
                             aria-current={location.pathname === chapter.path ? 'page' : undefined}
                         >
-                            <span className={location.pathname === chapter.path ? 'text-blue-200' : 'text-slate-400 group-hover:text-blue-500'}>
+                            <span className={location.pathname === chapter.path ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
                                 {chapter.icon}
                             </span>
                             <div className="flex-1">
                                 <span className="font-medium text-sm block">{chapter.title}</span>
-                                <div className="w-full bg-slate-200/30 h-1 rounded-full mt-1 overflow-hidden">
+                                <div className="w-full bg-slate-700/30 h-1 rounded-full mt-1 overflow-hidden">
                                     <div
-                                        className={`h-full rounded-full ${location.pathname === chapter.path ? 'bg-blue-300' : 'bg-blue-500'}`}
+                                        className={`h-full rounded-full ${location.pathname === chapter.path ? 'bg-cyan-300' : 'bg-cyan-500'}`}
                                         style={{ width: `${chapter.progress}%` }}
                                     />
                                 </div>
                             </div>
-                            <span className={`text-xs font-mono ml-2 ${location.pathname === chapter.path ? 'text-blue-200' : 'text-slate-400'}`}>
+                            <span className={`text-xs font-mono ml-2 ${location.pathname === chapter.path ? 'text-cyan-200' : 'text-slate-500'}`}>
                                 {chapter.progress}%
                             </span>
                         </PrefetchLink>
                     ))}
 
-                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-500 uppercase tracking-wider">
                         Quick Jumps
                     </div>
                     <div className="grid grid-cols-2 gap-2 px-2">
-                        <PrefetchLink to="/part1" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <PrefetchLink to="/part1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Foundations
                         </PrefetchLink>
-                        <PrefetchLink to="/part5" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <PrefetchLink to="/part5" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Life OS
                         </PrefetchLink>
-                        <PrefetchLink to="/part2" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <PrefetchLink to="/part2" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Daily Ops
                         </PrefetchLink>
-                        <PrefetchLink to="/part4" className="p-2 bg-slate-50 hover:bg-blue-50 rounded-lg text-xs font-medium text-slate-600 text-center border border-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <PrefetchLink to="/part4" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Health
                         </PrefetchLink>
                     </div>
                 </nav>
 
-                <div className="px-4 pb-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-4">
+                <div className="px-4 pb-2 text-xs font-bold text-slate-500 uppercase tracking-wider mt-4">
                     Support & Help
                 </div>
                 <nav className="px-4 space-y-2 mb-4" aria-label="Support Navigation">
                     <PrefetchLink
                         to="/why-ergo"
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/why-ergo'
-                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
-                            : 'text-slate-600 hover:bg-slate-50'
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/why-ergo'
+                            ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
+                            : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/why-ergo' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                        <span className={location.pathname === '/why-ergo' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
                             <Zap size={18} />
                         </span>
                         <span className="font-medium text-sm">Why Ergo?</span>
                     </PrefetchLink>
                     <PrefetchLink
                         to="/payment-guide"
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/payment-guide'
-                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
-                            : 'text-slate-600 hover:bg-slate-50'
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/payment-guide'
+                            ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
+                            : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/payment-guide' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                        <span className={location.pathname === '/payment-guide' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
                             <Shield size={18} />
                         </span>
                         <span className="font-medium text-sm">Payment Guide</span>
                     </PrefetchLink>
                     <PrefetchLink
                         to="/faq"
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/faq'
-                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
-                            : 'text-slate-600 hover:bg-slate-50'
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/faq'
+                            ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
+                            : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/faq' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                        <span className={location.pathname === '/faq' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
                             <HelpCircle size={18} />
                         </span>
                         <span className="font-medium text-sm">FAQ & Support</span>
                     </PrefetchLink>
                 </nav>
 
-                <div className="p-4 border-t border-slate-100">
-                    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl border border-blue-100">
+                <div className="p-4 border-t border-slate-700">
+                    <div className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 p-4 rounded-xl border border-cyan-500/30">
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                            <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
                                 CE
                             </div>
                             <div>
-                                <p className="text-xs font-bold text-blue-900">Captain Efficiency</p>
-                                <p className="text-[10px] text-blue-600">AI Assistant Active</p>
+                                <p className="text-xs font-bold text-cyan-400">Captain Efficiency</p>
+                                <p className="text-[10px] text-cyan-300/70">AI Assistant Active</p>
                             </div>
                         </div>
-                        <p className="text-xs text-slate-600 leading-relaxed">
+                        <p className="text-xs text-slate-300 leading-relaxed">
                             "I'm here to help you navigate the agentic future!"
                         </p>
                     </div>
