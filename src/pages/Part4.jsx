@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import PasswordGate from '../components/common/PasswordGate';
+import PurchaseGate from '../components/common/PurchaseGate';
 import CaptainHero from '../components/CaptainHero';
 import CaptainTip from '../components/CaptainTip';
 import SleepCapacityCalculator from '../components/SleepCapacityCalculator';
@@ -32,7 +32,7 @@ const Part4 = () => {
 
     return (
         <WebbookLayout>
-            <PasswordGate partName="Part 4">
+            <PurchaseGate>
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
@@ -285,7 +285,7 @@ const Part4 = () => {
                         hashtags={["AgenticAI", "Biohacking", "HealthTech"]}
                     />
                 </div>
-            </PasswordGate>
+            </PurchaseGate>
         </WebbookLayout>
     );
 };

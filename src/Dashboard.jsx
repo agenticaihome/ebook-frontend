@@ -141,42 +141,68 @@ const Dashboard = () => {
                         <p className="text-slate-400">Ready to pick up where we left off?</p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Ebook Card */}
-                        {purchases?.length > 0 ? (
-                            <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-blue-500/50 transition-all group">
-                                <div className="h-48 bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center">
-                                    <BookOpen className="text-blue-400 group-hover:scale-110 transition-transform duration-300" size={64} />
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold text-white mb-2">Agentic AI at Home</h3>
-                                    <p className="text-slate-400 text-sm mb-6">
-                                        The complete guide to building autonomous AI agents in your local environment.
-                                    </p>
+                    <div className="col-span-full">
+                        <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden">
+                            <div className="p-6 border-b border-slate-700">
+                                <h2 className="text-xl font-bold text-white">Your System Access</h2>
+                                <p className="text-slate-400 text-sm">Manage your access to the Agentic AI at Home guide.</p>
+                            </div>
+
+                            <div className="divide-y divide-slate-700">
+                                {/* Part 1 - Always Free */}
+                                <div className="p-4 flex items-center justify-between hover:bg-slate-700/50 transition-colors">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                                            <CheckCircle2 size={20} />
+                                        </div>
+                                        <div>
+                                            <h3 className="font-bold text-white">Part 1: The Foundation</h3>
+                                            <p className="text-slate-400 text-sm">Free Introduction</p>
+                                        </div>
+                                    </div>
                                     <button
-                                        onClick={handleDownload}
-                                        className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-cyan-900/20 flex items-center justify-center gap-2"
+                                        onClick={() => navigate('/part1')}
+                                        className="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm font-medium transition-colors"
                                     >
-                                        <Download size={18} />
-                                        Access System Materials
+                                        Read Now
                                     </button>
                                 </div>
+
+                                {/* Parts 2-5 - Require Purchase */}
+                                {[2, 3, 4, 5].map((partNum) => {
+                                    const hasAccess = purchases?.length > 0;
+                                    return (
+                                        <div key={partNum} className="p-4 flex items-center justify-between hover:bg-slate-700/50 transition-colors">
+                                            <div className="flex items-center gap-4">
+                                                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${hasAccess ? 'bg-green-500/20 text-green-400' : 'bg-slate-700 text-slate-500'}`}>
+                                                    {hasAccess ? <CheckCircle2 size={20} /> : <Shield size={20} />}
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-bold text-white">Part {partNum}</h3>
+                                                    <p className="text-slate-400 text-sm">{hasAccess ? 'Unlocked' : 'Locked - Purchase Required'}</p>
+                                                </div>
+                                            </div>
+                                            {hasAccess ? (
+                                                <button
+                                                    onClick={() => navigate(`/part${partNum}`)}
+                                                    className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-sm font-medium transition-colors"
+                                                >
+                                                    Read Now
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    onClick={() => navigate('/pay-ergo')}
+                                                    className="px-4 py-2 bg-slate-700 text-slate-400 rounded-lg text-sm font-medium flex items-center gap-2 hover:bg-slate-600 hover:text-white transition-colors"
+                                                >
+                                                    <Shield size={14} />
+                                                    Unlock
+                                                </button>
+                                            )}
+                                        </div>
+                                    );
+                                })}
                             </div>
-                        ) : (
-                            <div className="col-span-full bg-slate-800/50 border border-slate-700 rounded-xl p-12 text-center">
-                                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <BookOpen className="text-slate-500" size={32} />
-                                </div>
-                                <h3 className="text-xl font-bold text-white mb-2">No purchases found</h3>
-                                <p className="text-slate-400 mb-6">You haven't purchased the system yet.</p>
-                                <button
-                                    onClick={() => navigate('/pay-ergo')}
-                                    className="bg-orange-600 hover:bg-orange-500 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
-                                >
-                                    Buy with Ergo
-                                </button>
-                            </div>
-                        )}
+                        </div>
                     </div>
                 </motion.div>
             </main>
