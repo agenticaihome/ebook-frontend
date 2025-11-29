@@ -22,11 +22,9 @@ const LoginPage = lazy(() => import('./LoginPage'));
 const ErgoPaymentPage = lazy(() => import('./ErgoPaymentPage'));
 const Dashboard = lazy(() => import('./Dashboard'));
 const ProtectedRoute = lazy(() => import('./components/ProtectedRoute'));
-const HowToBuyErgo = lazy(() => import('./HowToBuyErgo'));
 const WhyErgo = lazy(() => import('./WhyErgo'));
 const PaymentGuide = lazy(() => import('./PaymentGuide'));
 const ErgoGuide = lazy(() => import('./ErgoGuide'));
-const WalletGuide = lazy(() => import('./WalletGuide'));
 const FAQ = lazy(() => import('./FAQ'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
@@ -94,24 +92,9 @@ const AnimatedRoutes = () => {
         <Route path="/create-account" element={<PageTransition><CreateAccountPage /></PageTransition>} />
         <Route path="/chaos-quiz-widget" element={<EmbeddableInfectionDiagnostic />} />
 
-        {/* Other routes wrapped in PageTransition or not, depending on preference. 
-            Keeping them simple for now but wrapped for consistency if they are main pages. */}
-        <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
-        <Route path="/pay-ergo" element={<PageTransition><ErgoPaymentPage /></PageTransition>} />
-        <Route path="/how-to-buy-ergo" element={<PageTransition><HowToBuyErgo /></PageTransition>} />
-        <Route path="/why-ergo" element={<PageTransition><WhyErgo /></PageTransition>} />
-        <Route path="/payment-guide" element={<PageTransition><PaymentGuide /></PageTransition>} />
-        <Route path="/ergo-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
-        <Route path="/how-to-pay" element={<PageTransition><ErgoGuide /></PageTransition>} /> {/* Legacy redirect */}
-        <Route path="/wallet-guide" element={<PageTransition><WalletGuide /></PageTransition>} />
-        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
-
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <PageTransition><Dashboard /></PageTransition>
-            </ProtectedRoute>
+        <ProtectedRoute>
+          <PageTransition><Dashboard /></PageTransition>
+        </ProtectedRoute>
           }
         />
 
