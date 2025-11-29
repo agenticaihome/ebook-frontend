@@ -20,7 +20,7 @@ const Dashboard = () => {
                 setUser(userData);
 
                 const purchasesData = await api.getPurchases();
-                setPurchases(purchasesData);
+                setPurchases(Array.isArray(purchasesData) ? purchasesData : []);
             } catch (err) {
                 console.error('Failed to fetch data', err);
             } finally {
@@ -143,7 +143,7 @@ const Dashboard = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {/* Ebook Card */}
-                        {purchases.length > 0 ? (
+                        {purchases?.length > 0 ? (
                             <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden hover:border-blue-500/50 transition-all group">
                                 <div className="h-48 bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center">
                                     <BookOpen className="text-blue-400 group-hover:scale-110 transition-transform duration-300" size={64} />
