@@ -56,8 +56,14 @@ const CaptainHero = ({
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 className={`relative flex-shrink-0 ${sizeClasses[size]}`}
+                style={{
+                    filter: 'drop-shadow(0 0 20px rgba(6, 182, 212, 0.4)) drop-shadow(0 0 40px rgba(6, 182, 212, 0.2))'
+                }}
             >
-                <div className="absolute inset-0 bg-cyan-500/40 rounded-full blur-2xl animate-pulse scale-110" />
+                {/* Multi-layer radial glow effect */}
+                <div className="absolute inset-0 bg-gradient-radial from-cyan-400/30 via-cyan-500/20 to-transparent rounded-full blur-2xl scale-125 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-radial from-blue-400/20 via-blue-500/10 to-transparent rounded-full blur-3xl scale-150" />
+
                 {videoSrc ? (
                     <video
                         src={videoSrc}
@@ -65,14 +71,16 @@ const CaptainHero = ({
                         loop
                         muted
                         playsInline
-                        className="relative z-10 w-full h-full object-contain"
+                        className="relative z-10 w-full h-full object-contain mix-blend-normal"
+                        style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))' }}
                     />
                 ) : (
                     <img
                         src={finalImageSrc}
                         alt="Captain Efficiency"
-                        className="relative z-10 w-full h-full object-contain"
+                        className="relative z-10 w-full h-full object-contain mix-blend-normal"
                         loading={loading}
+                        style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))' }}
                     />
                 )}
             </motion.div>
