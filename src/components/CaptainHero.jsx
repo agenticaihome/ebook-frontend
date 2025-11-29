@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useUser } from '../context/UserContext';
 
 const CaptainHero = ({
     message,
@@ -11,12 +12,17 @@ const CaptainHero = ({
     videoSrc, // Optional video override
     loading = "eager" // 'eager' | 'lazy'
 }) => {
-    const [name, setName] = useState(localStorage.getItem('user_name') || '');
+    const { userState, setUserState } = useUser();
     const [isEditing, setIsEditing] = useState(false);
+    const [tempName, setTempName] = useState('');
+
+    useEffect(() => {
+        if (userState?.name) setTempName(userState.name);
+    }, [userState?.name]);
 
     const handleNameSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem('user_name', name);
+        setUserState(prev => ({ ...prev, name: tempName }));
         setIsEditing(false);
     };
 
@@ -43,9 +49,19 @@ const CaptainHero = ({
         center: 'flex-col'
     };
 
+    const getPersonaGreeting = () => {
+        if (!userState?.persona) return "";
+        switch (userState.persona) {
+            case 'professional': return " Ready to optimize your workflow?";
+            case 'parent': return " Ready to reclaim your sanity?";
+            case 'student': return " Ready to hack your study schedule?";
+            default: return "";
+        }
+    };
+
     const personalizedMessage = message ? message.replace(
         "I'm Captain Efficiency.",
-        `I'm Captain Efficiency${name ? `, Agent ${name}` : ''}.`
+        `I'm Captain Efficiency${userState?.name ? `, Agent ${userState.name}` : ''}.${getPersonaGreeting()}`
     ) : "";
 
     return (
@@ -75,8 +91,8 @@ const CaptainHero = ({
                             className="relative z-10 w-full h-full object-contain mix-blend-lighten"
                             style={{
                                 filter: 'drop-shadow(0 0 15px rgba(6, 182, 212, 0.5)) contrast(1.1) brightness(1.1)',
-                                maskImage: 'radial-gradient(circle at center, black 60%, transparent 95%)',
-                                WebkitMaskImage: 'radial-gradient(circle at center, black 60%, transparent 95%)'
+                                maskImage: 'radial-gradient(circle at center, black 50%, transparent 85%)',
+                                WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 85%)'
                             }}
                         />
                         {/* Overlay gradient to further blend edges */}
@@ -112,7 +128,7 @@ const CaptainHero = ({
                         <div className="text-cyan-400 font-bold text-xs uppercase tracking-wider">
                             Captain Efficiency
                         </div>
-                        {!name && !isEditing && (
+                        {!userState?.name && !isEditing && (
                             <button
                                 onClick={() => setIsEditing(true)}
                                 className="text-[10px] text-slate-500 hover:text-cyan-400 underline"
@@ -126,8 +142,8 @@ const CaptainHero = ({
                         <form onSubmit={handleNameSubmit} className="mb-2 flex gap-2">
                             <input
                                 type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                value={tempName}
+                                onChange={(e) => setTempName(e.target.value)}
                                 placeholder="Enter your name"
                                 className="bg-slate-900 border border-slate-600 rounded px-2 py-1 text-sm text-white focus:border-cyan-500 outline-none w-full"
                                 autoFocus

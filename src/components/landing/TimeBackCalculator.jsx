@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import EfficiencyBadge from './EfficiencyBadge';
 import { Clock, Sparkles, Download, Lock } from 'lucide-react';
 import { useSound } from '../../context/SoundContext';
 import {
@@ -100,16 +101,7 @@ export default function TimeBackCalculator() {
                 </div>
             </div>
 
-            <div className="bg-gradient-to-r from-cyan-900/50 to-purple-900/50 rounded-xl p-6 border border-cyan-500/30 text-center mb-6">
-                <div className="text-slate-400 text-sm mb-1">POTENTIAL TIME RECLAIMED</div>
-                <div className="text-4xl font-bold text-white mb-2 flex items-center justify-center gap-2">
-                    <Sparkles className="text-yellow-400 w-6 h-6" />
-                    {savedHours} Hours <span className="text-lg text-slate-400 font-normal">/ week</span>
-                </div>
-                <div className="text-cyan-400 font-mono text-sm">
-                    That's {yearlySaved} hours per year!
-                </div>
-            </div>
+            <EfficiencyBadge savedHours={savedHours} yearlySaved={yearlySaved} />
 
             {/* Referral / Unlock System */}
             <div className="bg-slate-900/80 rounded-xl p-4 border border-slate-700 text-center">

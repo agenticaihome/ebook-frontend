@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Activity, TrendingUp, AlertCircle } from 'lucide-react';
+import { Activity, TrendingUp, AlertCircle, Award, Lock } from 'lucide-react';
+import { useUser } from '../context/UserContext';
 
 const MentalLoadCalculator = () => {
+    const { unlockBadge, userState } = useUser();
     const [inputs, setInputs] = useState({
         emailHours: 2,
         adminHours: 5,
@@ -11,6 +13,7 @@ const MentalLoadCalculator = () => {
         stressLevel: 5
     });
     const [showResults, setShowResults] = useState(false);
+    const [unlockedTip, setUnlockedTip] = useState(null);
 
     const handleInputChange = (field, value) => {
         setInputs({ ...inputs, [field]: value });
@@ -43,6 +46,32 @@ const MentalLoadCalculator = () => {
         const comparison = score > avgScore ? 'above' : score < avgScore ? 'below' : 'at';
 
         return { score, recoverable, areas: areas.slice(0, 3), comparison, avgScore };
+    };
+
+    const handleCalculate = () => {
+        const results = calculateResults();
+        setShowResults(true);
+
+        // Gamification: Unlock Badges & Tips
+        if (results.score >= 8) {
+            unlockBadge('chaos_survivor');
+            setUnlockedTip({
+                title: 'Pro Tip: The "Brain Dump" Protocol',
+                content: 'Your load is critical. Stop trying to remember. Spend 15 mins writing down EVERY open loop. Then, assign 3 to an agent and delete the rest.'
+            });
+        } else if (results.score <= 4) {
+            unlockBadge('zen_master');
+            setUnlockedTip({
+                title: 'Pro Tip: Optimization Mode',
+                content: 'You have good baseline control. Now focus on speed. Use "Text Replacement" for your most common email replies to save another 15 mins/day.'
+            });
+        } else {
+            unlockBadge('efficiency_seeker');
+            setUnlockedTip({
+                title: 'Pro Tip: The 2-Minute Rule',
+                content: 'If a task takes < 2 mins, do it now. If > 2 mins, assign it to an agent (or a list). Never "remember" it.'
+            });
+        }
     };
 
     const results = showResults ? calculateResults() : null;
@@ -141,8 +170,8 @@ const MentalLoadCalculator = () => {
                                     key={freq}
                                     onClick={() => handleInputChange('forgetFrequency', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgetFrequency === freq
-                                            ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -171,7 +200,7 @@ const MentalLoadCalculator = () => {
                     </div>
 
                     <button
-                        onClick={() => setShowResults(true)}
+                        onClick={handleCalculate}
                         className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all mt-4"
                     >
                         Calculate My Mental Load
@@ -196,6 +225,29 @@ const MentalLoadCalculator = () => {
                             </span>
                         </div>
                     </div>
+
+                    {/* Gamification Reward */}
+                    {unlockedTip && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="bg-gradient-to-r from-yellow-900/20 to-orange-900/20 border border-yellow-500/30 p-6 rounded-xl mb-8 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 p-4 opacity-10">
+                                <Award size={80} className="text-yellow-500" />
+                            </div>
+                            <div className="flex items-start gap-4 relative z-10">
+                                <div className="bg-yellow-500/20 p-3 rounded-full">
+                                    <Lock size={24} className="text-yellow-400" />
+                                </div>
+                                <div>
+                                    <div className="text-yellow-400 font-bold text-sm uppercase tracking-wider mb-1">Reward Unlocked</div>
+                                    <h4 className="text-white font-bold text-lg mb-2">{unlockedTip.title}</h4>
+                                    <p className="text-slate-300 text-sm">{unlockedTip.content}</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
                         <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 p-6 rounded-xl border border-cyan-500/30">
