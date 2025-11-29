@@ -6,6 +6,7 @@ import CaptainTip from '../components/CaptainTip';
 import EmailChaosCalculator from '../components/EmailChaosCalculator';
 import CalendarAuditTool from '../components/CalendarAuditTool';
 import AdminDayPlanner from '../components/AdminDayPlanner';
+import DigitalDetoxChallenge from '../components/DigitalDetoxChallenge';
 import SocialShare from '../components/tools/SocialShare';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -127,6 +128,8 @@ const Part3 = () => {
                                 </div>
 
                                 <EmailChaosCalculator />
+
+                                <DigitalDetoxChallenge />
 
                                 <CaptainTip type="pro" title="The 'VIP Only' Notification Rule">
                                     "Turn off ALL email notifications on your phone. Exception: Create a 'VIP' list (spouse, boss, key client). Only THEIR emails buzz your phone. Everything else waits for your designated email time."

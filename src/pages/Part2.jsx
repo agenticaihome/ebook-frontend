@@ -7,6 +7,8 @@ import MorningChaosCalculator from '../components/MorningChaosCalculator';
 import MorningBriefBuilder from '../components/MorningBriefBuilder';
 import FoodChaosCalculator from '../components/FoodChaosCalculator';
 import HouseholdChaosCalculator from '../components/HouseholdChaosCalculator';
+import EssentialFiveChecklist from '../components/EssentialFiveChecklist';
+import PersonalizedMorningBrief from '../components/PersonalizedMorningBrief';
 import SocialShare from '../components/tools/SocialShare';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -153,34 +155,7 @@ const Part2 = () => {
                                     Here's what a great Morning Brief looks like:
                                 </p>
 
-                                <div className="bg-slate-900 p-6 rounded-xl border border-slate-700 font-mono text-sm text-slate-300 my-6">
-                                    <div className="text-cyan-400 mb-4">════════════════════════════════════</div>
-                                    <div className="text-white font-bold mb-2">☀️ MORNING BRIEF — Tuesday, March 18</div>
-                                    <div className="text-cyan-400 mb-4">════════════════════════════════════</div>
-
-                                    <div className="mb-4">
-                                        <div className="text-yellow-400 mb-1">🌤️ WEATHER: 68°F → 74°F, partly cloudy</div>
-                                        <div className="pl-4">Wear: Light layers, no umbrella needed</div>
-                                    </div>
-
-                                    <div className="mb-4">
-                                        <div className="text-purple-400 mb-1">📅 TODAY (4 events):</div>
-                                        <div className="pl-4">• 9:00 AM — Team standup (30 min)</div>
-                                        <div className="pl-4">• 11:30 AM — Client call: Johnson project</div>
-                                        <div className="pl-6 text-cyan-400">→ PREP: Review proposal draft before</div>
-                                        <div className="pl-4">• 2:00 PM — Dentist appointment</div>
-                                        <div className="pl-6 text-cyan-400">→ Leave office by 1:30</div>
-                                    </div>
-
-                                    <div className="mb-4">
-                                        <div className="text-green-400 mb-1">🎯 TODAY'S PRIORITY:</div>
-                                        <div className="pl-4">Finalize Johnson proposal before client call.</div>
-                                        <div className="pl-4">Block 10-11:30 for focus.</div>
-                                    </div>
-
-                                    <div className="text-cyan-400">════════════════════════════════════</div>
-                                    <div className="mt-2 text-slate-500 text-xs">Time to read: 2 minutes | Decisions made for you: 5+</div>
-                                </div>
+                                <PersonalizedMorningBrief />
                             </div>
 
                             <MorningChaosCalculator />
@@ -374,25 +349,9 @@ const Part2 = () => {
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Essential 5 Tracker</h3>
 
-                                <div className="grid md:grid-cols-2 gap-4 my-8">
-                                    {[
-                                        { name: 'HVAC Filter', freq: 'Every 90 days', icon: '🌡️' },
-                                        { name: 'Smoke Detectors', freq: 'Every 6 months', icon: '🔥' },
-                                        { name: 'Car Registration', freq: 'Annually', icon: '🚗' },
-                                        { name: 'Water Heater', freq: 'Annually', icon: '💧' },
-                                        { name: 'Gutters', freq: 'Twice yearly', icon: '🏠' }
-                                    ].map((item, idx) => (
-                                        <div key={idx} className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <span className="text-2xl">{item.icon}</span>
-                                                <div>
-                                                    <div className="text-white font-bold">{item.name}</div>
-                                                    <div className="text-cyan-400 text-sm">{item.freq}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                                <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Essential 5 Tracker</h3>
+
+                                <EssentialFiveChecklist />
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Weekly Household Brief</h3>
 

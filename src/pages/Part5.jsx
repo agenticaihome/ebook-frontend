@@ -8,6 +8,7 @@ import WeeklyReviewTemplateGenerator from '../components/WeeklyReviewTemplateGen
 import SmartHomeReadinessAssessment from '../components/SmartHomeReadinessAssessment';
 import SystemHealthDiagnostic from '../components/SystemHealthDiagnostic';
 import PersonalizedLaunchPlanGenerator from '../components/PersonalizedLaunchPlanGenerator';
+import LifeOSDashboardPreview from '../components/LifeOSDashboardPreview';
 import SocialShare from '../components/tools/SocialShare';
 import { motion } from 'framer-motion';
 import { Layers, Home, Wrench, Flag, ArrowRight, CheckCircle, Zap } from 'lucide-react';
@@ -219,6 +220,8 @@ const Part5 = () => {
                             </div>
 
                             <PersonalizedLaunchPlanGenerator />
+
+                            <LifeOSDashboardPreview />
 
                             <div className="mt-16 p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 text-center">
                                 <h3 className="text-2xl font-bold text-white mb-4">One Final Thought</h3>

@@ -4,7 +4,7 @@ import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
 import CaptainHero from '../components/CaptainHero';
 import CaptainTip from '../components/CaptainTip';
-import SleepCapacityCalculator from '../components/SleepCapacityCalculator';
+import SleepProtocolConfig from '../components/SleepProtocolConfig';
 import MentalLoadAssessment from '../components/MentalLoadAssessment';
 import KnowledgeChaosAssessment from '../components/KnowledgeChaosAssessment';
 import StudySystemGenerator from '../components/StudySystemGenerator';
@@ -127,7 +127,7 @@ const Part4 = () => {
                                     </div>
                                 </div>
 
-                                <SleepCapacityCalculator />
+                                <SleepProtocolConfig />
 
                                 <h3 className="text-2xl font-bold text-green-400 mt-12 mb-4">The 3-Level Protocol</h3>
                                 <div className="space-y-4">

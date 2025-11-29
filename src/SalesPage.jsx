@@ -91,9 +91,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-4xl md:text-7xl font-bold mb-6 leading-tight"
               >
-                Everyone Deserves a <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 block md:inline my-2 md:my-0">Personal Assistant.</span>
-                <span className="block md:inline">Build Yours Today.</span>
+                Everyone Deserves a
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 block mt-2 mb-4">Personal Assistant.</span>
+                <span className="block text-white">Build Yours Today.</span>
               </motion.h1>
 
               <motion.p
