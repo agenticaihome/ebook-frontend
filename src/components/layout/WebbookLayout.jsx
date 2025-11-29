@@ -150,6 +150,18 @@ const WebbookLayout = ({ children }) => {
                             : 'text-slate-600 hover:bg-slate-50'
                             }`}
                     >
+                        <span className={location.pathname === '/payment-guide' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                            <Shield size={18} />
+                        </span>
+                        <span className="font-medium text-sm">Payment Guide</span>
+                    </Link>
+                    <Link
+                        to="/faq"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/faq'
+                            ? 'bg-green-600 text-white shadow-lg shadow-green-200'
+                            : 'text-slate-600 hover:bg-slate-50'
+                            }`}
+                    >
                         <span className={location.pathname === '/faq' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
                             <HelpCircle size={18} />
                         </span>
