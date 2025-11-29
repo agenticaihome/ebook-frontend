@@ -23,7 +23,7 @@ const LoginPage = () => {
         setIsLoading(true);
         setError('');
         try {
-            const data = await api.login(email, password);
+            const data = await api.login(email.trim(), password);
             localStorage.setItem('token', data.token);
             navigate('/dashboard');
         } catch (err) {
