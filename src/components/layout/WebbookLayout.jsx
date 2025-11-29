@@ -46,7 +46,7 @@ const WebbookLayout = ({ children }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-slate-50 flex">
+        <div className="min-h-screen bg-slate-950 flex">
             {/* Skip Link for Accessibility */}
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg z-50 font-bold shadow-lg">
                 Skip to content
@@ -198,18 +198,18 @@ const WebbookLayout = ({ children }) => {
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col min-w-0">
                 {/* Top Bar */}
-                <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-200 h-16 flex items-center px-4 justify-between">
+                <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-700 h-16 flex items-center px-4 justify-between">
                     <div className="flex items-center gap-4">
                         {!isSidebarOpen && (
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="p-2 hover:bg-slate-100 rounded-lg text-slate-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
                                 aria-label="Open Sidebar"
                             >
                                 <Menu size={24} />
                             </button>
                         )}
-                        <h1 className="font-semibold text-slate-800 truncate">
+                        <h1 className="font-semibold text-slate-200 truncate">
                             {chapters.find(c => c.path === location.pathname)?.title || 'Agentic AI at Home'}
                         </h1>
                     </div>
@@ -217,15 +217,15 @@ const WebbookLayout = ({ children }) => {
 
                     <div className="flex items-center gap-4">
                         {isLoggedIn ? (
-                            <Link to="/dashboard" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                            <Link to="/dashboard" className="bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan-500 transition-colors shadow-lg shadow-cyan-900/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900">
                                 Dashboard
                             </Link>
                         ) : (
                             <>
-                                <Link to="/login" className="text-sm font-medium text-slate-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg px-2 py-1">
+                                <Link to="/login" className="text-sm font-medium text-slate-400 hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg px-2 py-1">
                                     Login
                                 </Link>
-                                <Link to="/pay-ergo" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                                <Link to="/pay-ergo" className="bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan-500 transition-colors shadow-lg shadow-cyan-900/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900">
                                     Get the System
                                 </Link>
                             </>
@@ -234,9 +234,9 @@ const WebbookLayout = ({ children }) => {
 
 
                     {/* Progress Bar */}
-                    <div className="absolute bottom-0 left-0 h-1 bg-slate-100 w-full">
+                    <div className="absolute bottom-0 left-0 h-1 bg-slate-800 w-full">
                         <motion.div
-                            className="h-full bg-blue-600"
+                            className="h-full bg-cyan-500"
                             style={{ width: `${scrollProgress * 100}%` }}
                         />
                     </div>
