@@ -274,7 +274,7 @@ export default function FAQ() {
                     <p className="mb-4">Two pricing options:</p>
                     <div className="grid md:grid-cols-2 gap-4 mb-4">
                         <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
-                            <h4 className="font-bold text-white mb-2">STANDARD: $40</h4>
+                            <h4 className="font-bold text-white mb-2">STANDARD: $39.99</h4>
                             <ul className="text-sm text-slate-400 space-y-1">
                                 <li>Pay with Credit/Debit Card</li>
                                 <li>Instant access</li>
@@ -282,7 +282,7 @@ export default function FAQ() {
                             </ul>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded-lg border border-green-500/30">
-                            <h4 className="font-bold text-green-400 mb-2">CRYPTO: $20 (50% OFF)</h4>
+                            <h4 className="font-bold text-green-400 mb-2">CRYPTO: $19.99 (50% OFF)</h4>
                             <ul className="text-sm text-green-200/70 space-y-1">
                                 <li>Pay with Ergo (ERG)</li>
                                 <li>Same instant access</li>
@@ -301,7 +301,7 @@ export default function FAQ() {
             answer: (
                 <>
                     <p className="mb-4">Simple economics + philosophy:</p>
-                    <p className="mb-2"><strong>THE ECONOMICS:</strong> Credit card processing costs ~$1.50+ per transaction. Crypto processing costs ~$0.01. We pass those savings to you.</p>
+                    <p className="mb-2"><strong>THE ECONOMICS:</strong> Credit card processing costs ~$1.50+ per transaction. Crypto processing costs ~$0.001. We pass those savings to you.</p>
                     <p className="mb-2"><strong>THE PHILOSOPHY:</strong></p>
                     <ul className="list-disc pl-5 space-y-1 mb-4">
                         <li>Every card transaction feeds the surveillance economy</li>
@@ -322,13 +322,13 @@ export default function FAQ() {
                     <p className="mb-4">If you've never used crypto, it takes about 15-20 minutes to set up the first time.</p>
                     <p className="mb-4">We have a complete beginner's guide that walks you through:</p>
                     <ol className="list-decimal pl-5 space-y-1 mb-4">
-                        <li>Getting a wallet (free, 5 minutes)</li>
-                        <li>Buying ERG (5-10 minutes)</li>
+                        <li>Getting a wallet (Nautilus for Desktop, Terminus for Mobile)</li>
+                        <li>Buying ERG (Directly via Banxa or on exchanges like CoinEx)</li>
                         <li>Sending payment (2 minutes)</li>
                     </ol>
                     <p className="mb-4">Every single click is documented with screenshots. If you can follow instructions for setting up a new app, you can do this.</p>
                     <p className="mb-4">Is it worth 15-20 minutes to save $20? That's $60+/hour for your time. Plus you'll learn a valuable skill.</p>
-                    <Link to="/how-to-pay" className="text-green-400 hover:underline font-bold">Check out the How to Pay Guide →</Link>
+                    <Link to="/ergo-guide" className="text-green-400 hover:underline font-bold">Check out the Complete Ergo Guide →</Link>
                 </>
             )
         },
@@ -728,14 +728,14 @@ export default function FAQ() {
                             <p className="text-slate-400 mb-8 max-w-xl mx-auto">
                                 If you're on the fence, remember the <strong>30-day refund policy</strong>. It's low risk.
                                 <br />
-                                Is saving 5-10 hours per week worth $40 (or $20)? The math is pretty clear.
+                                Is saving 5-10 hours per week worth $39.99 (or $19.99)? The math is pretty clear.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link
                                     to="/pay-ergo"
                                     className="bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/20"
                                 >
-                                    Get the System ($20 with ERG)
+                                    Get the System ($19.99 with ERG)
                                 </Link>
                                 <a
                                     href="mailto:support@agenticai.home"
