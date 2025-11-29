@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Lock, Mail, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { api } from '../services/api';
 
 const CreateAccountPage = () => {
     const [searchParams] = useSearchParams();
@@ -43,17 +44,7 @@ const CreateAccountPage = () => {
 
         try {
             // Call backend to create account
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/register`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    email,
-                    password,
-                    paymentId
-                })
-            });
-
-            const data = await response.json();
+            const data = await api.register(email, password, paymentId);
 
             if (data.success) {
                 // Save auth token
@@ -73,7 +64,7 @@ const CreateAccountPage = () => {
             }
         } catch (err) {
             console.error('Account creation error:', err);
-            setError('Server error. Please try again.');
+            setError(err.message || 'Server error. Please try again.');
             setLoading(false);
         }
     };

@@ -35,11 +35,11 @@ export const api = {
     return handleResponse(response);
   },
 
-  register: async (email, password) => {
+  register: async (email, password, paymentId) => {
     const response = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',
       headers: getHeaders(),
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, paymentId }),
     });
     return handleResponse(response);
   },
