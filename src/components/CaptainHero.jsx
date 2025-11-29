@@ -23,10 +23,10 @@ const CaptainHero = ({
     // Map poses to image files
     const poseImages = {
         default: '/assets/captain-efficiency-dark-transparent.png',
-        thinking: '/assets/captain-thinking.png',
-        pointing: '/assets/captain-pointing.png',
-        celebrating: '/assets/captain-celebrating.png',
-        working: '/assets/captain-working.png'
+        thinking: '/assets/captain-thinking-transparent.png',
+        pointing: '/assets/captain-pointing-transparent.png',
+        celebrating: '/assets/captain-celebrating-transparent.png',
+        working: '/assets/captain-working-transparent.png'
     };
 
     const finalImageSrc = imageSrc || poseImages[pose] || poseImages.default;
