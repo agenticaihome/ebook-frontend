@@ -240,13 +240,74 @@ export default function HowToPay() {
                     <div className="max-w-3xl mx-auto">
                         <StepHeader number="2" title="Buy ERG" time="5-10 Minutes" />
 
-                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 mb-8">
-                            <h3 className="text-xl font-bold text-white mb-4">Recommended: CoinEx (Easiest)</h3>
+                        {/* Location Notice */}
+                        <div className="bg-blue-900/20 border border-blue-500/30 rounded-xl p-6 mb-8">
+                            <h4 className="font-bold text-blue-400 mb-2 flex items-center gap-2">
+                                <AlertTriangle size={20} />
+                                Important: Different Options by Location
+                            </h4>
+                            <p className="text-slate-300 text-sm">
+                                Due to regulations, buying ERG depends on where you're located. Choose the option that applies to you below.
+                            </p>
+                        </div>
+
+                        {/* US USERS - Banxa */}
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 mb-6">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-2xl">🇺🇸</span>
+                                <h3 className="text-xl font-bold text-white">For US Users: Buy via Banxa (Easiest)</h3>
+                            </div>
                             <p className="text-slate-400 mb-6">
-                                We recommend CoinEx because it doesn't require ID verification for small amounts and accepts credit cards.
+                                If you're in the United States, use Banxa directly through your Nautilus wallet. It's built-in and compliant with US regulations.
                             </p>
 
-                            <div className="space-y-8">
+                            <div className="space-y-6">
+                                <div>
+                                    <h4 className="font-bold text-white mb-2">1. Open Nautilus Wallet</h4>
+                                    <p className="text-slate-400 mb-4">
+                                        Click the Nautilus extension in your browser (the one you installed in Step 1).
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 className="font-bold text-white mb-2">2. Click "Buy"</h4>
+                                    <p className="text-slate-400 mb-4">
+                                        In your wallet, look for the "Buy" button. This will open Banxa integration.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 className="font-bold text-white mb-2">3. Enter Amount and Pay</h4>
+                                    <p className="text-slate-400 mb-4">
+                                        Enter <strong>$25</strong> worth of ERG. Follow Banxa's steps to pay with your card (takes ~5 minutes).
+                                    </p>
+                                    <div className="bg-green-900/20 border border-green-500/30 p-4 rounded-lg">
+                                        <p className="text-green-200 text-sm font-bold">
+                                            ✅ ERG will appear in your Nautilus wallet automatically — no need to withdraw!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* INTERNATIONAL USERS - Exchanges */}
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-2xl">🌍</span>
+                                <h3 className="text-xl font-bold text-white">For International Users: Use an Exchange</h3>
+                            </div>
+                            <p className="text-slate-400 mb-6">
+                                If you're outside the US, you can use CoinEx, KuCoin, or Gate.io. We recommend CoinEx (easiest, no ID for small amounts).
+                            </p>
+
+                            <div className="space-y-6">
+                                <div>
+                                    <h4 className="font-bold text-white mb-2">Recommended: CoinEx</h4>
+                                    <p className="text-slate-400 text-sm mb-3">
+                                        Alternatives: <a href="https://www.kucoin.com" target="_blank" rel="noreferrer" className="text-green-400 hover:underline">KuCoin</a> | <a href="https://www.gate.io" target="_blank" rel="noreferrer" className="text-green-400 hover:underline">Gate.io</a>
+                                    </p>
+                                </div>
+
                                 <div>
                                     <h4 className="font-bold text-white mb-2">1. Create Account</h4>
                                     <p className="text-slate-400 mb-4">Go to CoinEx.com and sign up with your email.</p>
@@ -264,7 +325,7 @@ export default function HowToPay() {
                                 <div>
                                     <h4 className="font-bold text-white mb-2">3. Withdraw to Your Wallet</h4>
                                     <p className="text-slate-400 mb-4">
-                                        Go to "Assets" -&gt; "Withdraw". Select ERG. Paste <strong>YOUR</strong> wallet address (from Step 1).
+                                        Go to "Assets" → "Withdraw". Select ERG. Paste <strong>YOUR</strong> wallet address (from Step 1).
                                     </p>
                                     <div className="bg-yellow-900/20 border border-yellow-500/30 p-4 rounded-lg mb-4">
                                         <p className="text-yellow-200 text-sm font-bold">
