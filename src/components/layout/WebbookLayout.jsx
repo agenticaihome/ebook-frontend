@@ -4,13 +4,17 @@ import { Menu, X, ChevronRight, BookOpen, Shield, Zap, Home, HelpCircle } from '
 import { Link, useLocation } from 'react-router-dom';
 import PrefetchLink from './PrefetchLink';
 
+import PreLaunchBanner from '../common/PreLaunchBanner';
+
 const WebbookLayout = ({ children }) => {
+    // ... existing state ...
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isCaptainOpen, setIsCaptainOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const location = useLocation();
 
+    // ... existing effects ...
     // Check if user is logged in
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -197,6 +201,7 @@ const WebbookLayout = ({ children }) => {
 
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col min-w-0">
+                <PreLaunchBanner />
                 {/* Top Bar */}
                 <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-700 h-16 flex items-center px-4 justify-between">
                     <div className="flex items-center gap-4">
