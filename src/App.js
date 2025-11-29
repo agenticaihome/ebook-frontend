@@ -91,10 +91,25 @@ const AnimatedRoutes = () => {
         <Route path="/success" element={<PageTransition><SuccessPage /></PageTransition>} />
         <Route path="/create-account" element={<PageTransition><CreateAccountPage /></PageTransition>} />
         <Route path="/chaos-quiz-widget" element={<EmbeddableInfectionDiagnostic />} />
+        <Route path="/login" element={<PageTransition><LoginPage /></PageTransition>} />
+        <Route path="/pay-ergo" element={<PageTransition><ErgoPaymentPage /></PageTransition>} />
+        <Route path="/why-ergo" element={<PageTransition><WhyErgo /></PageTransition>} />
+        <Route path="/payment-guide" element={<PageTransition><PaymentGuide /></PageTransition>} />
+        <Route path="/ergo-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
 
-        <ProtectedRoute>
-          <PageTransition><Dashboard /></PageTransition>
-        </ProtectedRoute>
+        {/* Legacy Redirects */}
+        <Route path="/how-to-pay" element={<PageTransition><ErgoGuide /></PageTransition>} />
+        <Route path="/how-to-buy-ergo" element={<PageTransition><ErgoGuide /></PageTransition>} />
+        <Route path="/wallet-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
+
+        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <PageTransition><Dashboard /></PageTransition>
+            </ProtectedRoute>
           }
         />
 
