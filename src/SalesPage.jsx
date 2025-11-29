@@ -66,7 +66,7 @@ export default function SalesPage() {
                 size="lg"
                 className="scale-100 md:scale-110"
                 message="You're running on 4 hours of sleep and 3 deadlines. Let's work with what we've got."
-                videoSrc="/assets/captain-waving-transparent.mp4?v=transparent"
+                videoSrc="/assets/captain-waving-cyan.mp4?v=cyan"
                 imageSrc="/assets/captain-efficiency-dark-transparent.png" // Fallback
               />
             </div>
