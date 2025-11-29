@@ -69,6 +69,15 @@ export const api = {
     return handleResponse(response);
   },
 
+  updateEmail: async (email) => {
+    const response = await fetch(`${API_URL}/user/update-email`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify({ email }),
+    });
+    return handleResponse(response);
+  },
+
   // Ergo
   initiateErgoPayment: async () => {
     const response = await fetch(`${API_URL}/payment/ergo/initiate`, {

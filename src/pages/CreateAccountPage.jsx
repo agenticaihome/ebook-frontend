@@ -137,81 +137,87 @@ const CreateAccountPage = () => {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    readOnly={!!urlEmail && !urlEmail.includes('@temp.ergo') && !urlEmail.startsWith('recovered_')}
+                                    readOnly={true}
                                     placeholder="Enter your email"
-                                    className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white ${!urlEmail ? 'focus:border-purple-500 focus:outline-none' : 'cursor-not-allowed opacity-75'}`}
+                                    className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white cursor-not-allowed opacity-75`}
                                 />
                             </div>
-                        </div>
-
-                        {/* Password */}
-                        <div>
-                            <label className="text-sm text-slate-400 block mb-2">Password</label>
-                            <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                                <input
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="Enter password (min 8 characters)"
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-purple-500 focus:outline-none"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        {/* Confirm Password */}
-                        <div>
-                            <label className="text-sm text-slate-400 block mb-2">Confirm Password</label>
-                            <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                                <input
-                                    type="password"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    placeholder="Re-enter password"
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-purple-500 focus:outline-none"
-                                    required
-                                />
-                            </div>
-                        </div>
-
-                        {/* Error Message */}
-                        {error && (
-                            <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 border border-red-500/30 rounded-lg p-3">
-                                <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                                {error}
-                            </div>
-                        )}
-
-                        {/* Submit Button */}
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white py-3 rounded-lg font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                        >
-                            {loading ? (
-                                <>
-                                    <Loader2 className="w-5 h-5 animate-spin" />
-                                    Creating Account...
-                                </>
-                            ) : (
-                                <>
-                                    <ShieldCheck className="w-5 h-5" />
-                                    Create Account & Access Content
-                                </>
+                            {email.includes('@temp.ergo') && (
+                                <p className="text-xs text-yellow-400 mt-2">
+                                    * This is a temporary ID. You can update your email in the Dashboard after logging in.
+                                </p>
                             )}
-                        </button>
-                    </form>
+                        </div>
                 </div>
 
-                {/* Security Note */}
-                <div className="text-center text-sm text-slate-400">
-                    <p>🔒 Your password is encrypted and secure</p>
-                    <p className="mt-1">You'll be automatically logged in after creation</p>
+                {/* Password */}
+                <div>
+                    <label className="text-sm text-slate-400 block mb-2">Password</label>
+                    <div className="relative">
+                        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Enter password (min 8 characters)"
+                            className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-purple-500 focus:outline-none"
+                            required
+                        />
+                    </div>
                 </div>
-            </motion.div>
+
+                {/* Confirm Password */}
+                <div>
+                    <label className="text-sm text-slate-400 block mb-2">Confirm Password</label>
+                    <div className="relative">
+                        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <input
+                            type="password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            placeholder="Re-enter password"
+                            className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-purple-500 focus:outline-none"
+                            required
+                        />
+                    </div>
+                </div>
+
+                {/* Error Message */}
+                {error && (
+                    <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 border border-red-500/30 rounded-lg p-3">
+                        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                        {error}
+                    </div>
+                )}
+
+                {/* Submit Button */}
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white py-3 rounded-lg font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                    {loading ? (
+                        <>
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                            Creating Account...
+                        </>
+                    ) : (
+                        <>
+                            <ShieldCheck className="w-5 h-5" />
+                            Create Account & Access Content
+                        </>
+                    )}
+                </button>
+            </form>
         </div>
+
+                {/* Security Note */ }
+    <div className="text-center text-sm text-slate-400">
+        <p>🔒 Your password is encrypted and secure</p>
+        <p className="mt-1">You'll be automatically logged in after creation</p>
+    </div>
+            </motion.div >
+        </div >
     );
 };
 

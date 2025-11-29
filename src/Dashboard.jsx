@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { BookOpen, Download, LogOut, User, Shield } from 'lucide-react';
+import { BookOpen, Download, LogOut, User, Shield, Edit2, CheckCircle2, X } from 'lucide-react';
 import { api } from './services/api';
+import { toast } from 'react-hot-toast';
 
 const Dashboard = () => {
     const [user, setUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isEditingEmail, setIsEditingEmail] = useState(false);
+    const [newEmail, setNewEmail] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -40,6 +43,27 @@ const Dashboard = () => {
         window.location.href = '/agenticaihomefiles.zip';
     };
 
+    const handleUpdateEmail = async (e) => {
+        e.preventDefault();
+        if (!newEmail || !newEmail.includes('@')) {
+            toast.error('Invalid email');
+            return;
+        }
+
+        try {
+            const res = await api.updateEmail(newEmail);
+            if (res.success) {
+                toast.success('Email updated!');
+                setUser({ ...user, email: newEmail });
+                setIsEditingEmail(false);
+            } else {
+                toast.error(res.error || 'Failed to update');
+            }
+        } catch (err) {
+            toast.error('Server error');
+        }
+    };
+
     if (isLoading) {
         return (
             <div className="min-h-screen bg-slate-900 flex items-center justify-center">
@@ -60,7 +84,39 @@ const Dashboard = () => {
                     <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2 text-slate-400 text-sm">
                             <User size={16} />
-                            <span>{user?.email || 'User'}</span>
+                            {/* Email Display / Edit */}
+                            {isEditingEmail ? (
+                                <form onSubmit={handleUpdateEmail} className="flex items-center gap-2">
+                                    <input
+                                        type="email"
+                                        value={newEmail}
+                                        onChange={(e) => setNewEmail(e.target.value)}
+                                        className="bg-slate-700 text-white px-2 py-1 rounded text-xs border border-slate-600 focus:border-blue-500 outline-none"
+                                        placeholder="New email"
+                                        autoFocus
+                                    />
+                                    <button type="submit" className="text-green-400 hover:text-green-300">
+                                        <CheckCircle2 size={16} />
+                                    </button>
+                                    <button type="button" onClick={() => setIsEditingEmail(false)} className="text-red-400 hover:text-red-300">
+                                        <X size={16} />
+                                    </button>
+                                </form>
+                            ) : (
+                                <div className="flex items-center gap-2 group">
+                                    <span>{user?.email || 'User'}</span>
+                                    <button
+                                        onClick={() => {
+                                            setNewEmail(user?.email || '');
+                                            setIsEditingEmail(true);
+                                        }}
+                                        className="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-blue-400 transition-opacity"
+                                        title="Update Email"
+                                    >
+                                        <Edit2 size={14} />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                         <button
                             onClick={handleLogout}
