@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
-import CaptainHero from '../components/CaptainHero';
-import CaptainTip from '../components/CaptainTip';
-import SleepProtocolConfig from '../components/SleepProtocolConfig';
-import MentalLoadAssessment from '../components/MentalLoadAssessment';
-import KnowledgeChaosAssessment from '../components/KnowledgeChaosAssessment';
-import StudySystemGenerator from '../components/StudySystemGenerator';
-import SocialShare from '../components/tools/SocialShare';
 import { motion } from 'framer-motion';
 import { Activity, Brain, BookOpen, ArrowRight, Heart, Moon, Database, Coffee } from 'lucide-react';
+
+const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
+const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
+const SleepProtocolConfig = React.lazy(() => import('../components/SleepProtocolConfig'));
+const MentalLoadAssessment = React.lazy(() => import('../components/MentalLoadAssessment'));
+const KnowledgeChaosAssessment = React.lazy(() => import('../components/KnowledgeChaosAssessment'));
+const StudySystemGenerator = React.lazy(() => import('../components/StudySystemGenerator'));
+const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 
 const Part4 = () => {
     const navigate = useNavigate();
@@ -83,11 +84,13 @@ const Part4 = () => {
                     {/* Chapter 10: Health & Recovery */}
                     <section id="chapter-10" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="thinking"
-                                message="Real talk: Most productivity systems assume you got 8 hours of perfect sleep. *laughs in parent of toddlers* You know what happens when you follow a rigid schedule on 4 hours of broken sleep? You fail. Your Recovery-Aware Agent doesn't just track your health — it ADAPTS your entire day based on your actual capacity."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="thinking"
+                                    message="Real talk: Most productivity systems assume you got 8 hours of perfect sleep. *laughs in parent of toddlers* You know what happens when you follow a rigid schedule on 4 hours of broken sleep? You fail. Your Recovery-Aware Agent doesn't just track your health — it ADAPTS your entire day based on your actual capacity."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 10: The Recovery-Aware Agent</h2>
@@ -127,7 +130,9 @@ const Part4 = () => {
                                     </div>
                                 </div>
 
-                                <SleepProtocolConfig />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <SleepProtocolConfig />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-green-400 mt-12 mb-4">The 3-Level Protocol</h3>
                                 <div className="space-y-4">
@@ -154,9 +159,11 @@ const Part4 = () => {
                                     </div>
                                 </div>
 
-                                <CaptainTip type="pro" title="DDS (Dad Deploying Systems)'s Residency Hack">
-                                    "During residency with a newborn, I used 'Red Day' protocols constantly. Instead of studying at 5 AM (when I was a zombie), my agent moved study blocks to lunch when I was awake. I passed boards because I stopped fighting my biology."
-                                </CaptainTip>
+                                <Suspense fallback={null}>
+                                    <CaptainTip type="pro" title="DDS (Dad Deploying Systems)'s Residency Hack">
+                                        "During residency with a newborn, I used 'Red Day' protocols constantly. Instead of studying at 5 AM (when I was a zombie), my agent moved study blocks to lunch when I was awake. I passed boards because I stopped fighting my biology."
+                                    </CaptainTip>
+                                </Suspense>
                             </div>
                         </div>
                     </section>
@@ -164,11 +171,13 @@ const Part4 = () => {
                     {/* Chapter 11: Mental Wellbeing */}
                     <section id="chapter-11" className="py-16 px-6">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="working"
-                                message="I'm a productivity robot, not a therapist. If you're struggling, please talk to a professional. But I CAN help with the 'Mental Load'—the invisible work of tracking everything. Less cognitive chaos = more mental peace."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="working"
+                                    message="I'm a productivity robot, not a therapist. If you're struggling, please talk to a professional. But I CAN help with the 'Mental Load'—the invisible work of tracking everything. Less cognitive chaos = more mental peace."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 11: Mental Health & Wellbeing Support</h2>
@@ -181,7 +190,9 @@ const Part4 = () => {
                                     </p>
                                 </div>
 
-                                <MentalLoadAssessment />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <MentalLoadAssessment />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Wind-Down Routine</h3>
                                 <p className="text-slate-300 mb-4">Protect the transition from "on" to "off".</p>
@@ -196,9 +207,11 @@ const Part4 = () => {
                                     </ul>
                                 </div>
 
-                                <CaptainTip type="tip" title="The Brain Dump">
-                                    Before bed, write down every open loop or worry. Tell your agent: "Remind me of these tomorrow at 9 AM." Your brain can't let go if it thinks it needs to remember.
-                                </CaptainTip>
+                                <Suspense fallback={null}>
+                                    <CaptainTip type="tip" title="The Brain Dump">
+                                        Before bed, write down every open loop or worry. Tell your agent: "Remind me of these tomorrow at 9 AM." Your brain can't let go if it thinks it needs to remember.
+                                    </CaptainTip>
+                                </Suspense>
                             </div>
                         </div>
                     </section>
@@ -206,11 +219,13 @@ const Part4 = () => {
                     {/* Chapter 12: Second Brain */}
                     <section id="chapter-12" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="pointing"
-                                message="Where is that article you read last month? The one with the great insight? Your brain is amazing at creativity but terrible at storage. Let's build a Second Brain that remembers everything for you."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="pointing"
+                                    message="Where is that article you read last month? The one with the great insight? Your brain is amazing at creativity but terrible at storage. Let's build a Second Brain that remembers everything for you."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 12: The Second Brain Agent</h2>
@@ -230,18 +245,24 @@ const Part4 = () => {
                                     </div>
                                 </div>
 
-                                <KnowledgeChaosAssessment />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <KnowledgeChaosAssessment />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Study System (Board Prep Example)</h3>
                                 <p className="text-slate-300 mb-6">
                                     For professionals in training (medical, legal, technical), this is a superpower. Turn PDFs into an active learning engine.
                                 </p>
 
-                                <StudySystemGenerator />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <StudySystemGenerator />
+                                </Suspense>
 
-                                <CaptainTip type="pro" title="Active Recall Agent">
-                                    "Don't just re-read notes. Ask your agent: 'Quiz me on the weak areas from yesterday's reading.' It will generate fresh questions every time. That's how you make knowledge stick."
-                                </CaptainTip>
+                                <Suspense fallback={null}>
+                                    <CaptainTip type="pro" title="Active Recall Agent">
+                                        "Don't just re-read notes. Ask your agent: 'Quiz me on the weak areas from yesterday's reading.' It will generate fresh questions every time. That's how you make knowledge stick."
+                                    </CaptainTip>
+                                </Suspense>
                             </div>
                         </div>
                     </section>
@@ -280,10 +301,12 @@ const Part4 = () => {
                     </section>
 
                     {/* Social Share */}
-                    <SocialShare
-                        title="Using AI to optimize my health and sleep. The data doesn't lie!"
-                        hashtags={["AgenticAI", "Biohacking", "HealthTech"]}
-                    />
+                    <Suspense fallback={null}>
+                        <SocialShare
+                            title="Using AI to optimize my health and sleep. The data doesn't lie!"
+                            hashtags={["AgenticAI", "Biohacking", "HealthTech"]}
+                        />
+                    </Suspense>
                 </div>
             </PurchaseGate>
         </WebbookLayout>

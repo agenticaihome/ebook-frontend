@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
-import CaptainHero from '../components/CaptainHero';
-import CaptainTip from '../components/CaptainTip';
-import GoalHierarchyBuilder from '../components/GoalHierarchyBuilder';
-import WeeklyReviewTemplateGenerator from '../components/WeeklyReviewTemplateGenerator';
-import SmartHomeReadinessAssessment from '../components/SmartHomeReadinessAssessment';
-import SystemHealthDiagnostic from '../components/SystemHealthDiagnostic';
-import PersonalizedLaunchPlanGenerator from '../components/PersonalizedLaunchPlanGenerator';
-import LifeOSDashboardPreview from '../components/LifeOSDashboardPreview';
-import SocialShare from '../components/tools/SocialShare';
 import { motion } from 'framer-motion';
 import { Layers, Home, Wrench, Flag, ArrowRight, CheckCircle, Zap } from 'lucide-react';
+
+const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
+const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
+const GoalHierarchyBuilder = React.lazy(() => import('../components/GoalHierarchyBuilder'));
+const WeeklyReviewTemplateGenerator = React.lazy(() => import('../components/WeeklyReviewTemplateGenerator'));
+const SmartHomeReadinessAssessment = React.lazy(() => import('../components/SmartHomeReadinessAssessment'));
+const SystemHealthDiagnostic = React.lazy(() => import('../components/SystemHealthDiagnostic'));
+const PersonalizedLaunchPlanGenerator = React.lazy(() => import('../components/PersonalizedLaunchPlanGenerator'));
+const LifeOSDashboardPreview = React.lazy(() => import('../components/LifeOSDashboardPreview'));
+const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 
 const Part5 = () => {
     const [activeChapter, setActiveChapter] = useState(13);
@@ -84,11 +85,13 @@ const Part5 = () => {
                     {/* Chapter 13: Life Operating System */}
                     <section id="chapter-13" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="Congratulations. You've built an army of agents. But right now, they're working in silos. What if your Recovery Agent could tell your Calendar Agent to cancel meetings? That's not just automation. That's a Life Operating System."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="Congratulations. You've built an army of agents. But right now, they're working in silos. What if your Recovery Agent could tell your Calendar Agent to cancel meetings? That's not just automation. That's a Life Operating System."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 13: Multi-Agent Systems</h2>
@@ -116,18 +119,24 @@ const Part5 = () => {
                                     Your agents need to know what they are optimizing FOR. Let's define the "Commander's Intent."
                                 </p>
 
-                                <GoalHierarchyBuilder />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <GoalHierarchyBuilder />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Weekly Review Ritual</h3>
                                 <p className="text-slate-300 mb-6">
                                     This is the heartbeat of your system. 30 minutes on Sunday saves 5 hours of chaos during the week.
                                 </p>
 
-                                <WeeklyReviewTemplateGenerator />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <WeeklyReviewTemplateGenerator />
+                                </Suspense>
 
-                                <CaptainTip type="pro" title="The Compound Effect">
-                                    "In Month 1, you'll save 5 hours/week. By Month 6, as agents start coordinating automatically, you'll save 10-12 hours/week. That's an entire extra workday, every single week."
-                                </CaptainTip>
+                                <Suspense fallback={null}>
+                                    <CaptainTip type="pro" title="The Compound Effect">
+                                        "In Month 1, you'll save 5 hours/week. By Month 6, as agents start coordinating automatically, you'll save 10-12 hours/week. That's an entire extra workday, every single week."
+                                    </CaptainTip>
+                                </Suspense>
                             </div>
                         </div>
                     </section>
@@ -140,11 +149,13 @@ const Part5 = () => {
                                 <span className="text-slate-500 font-mono uppercase tracking-widest text-sm">Optional Module</span>
                             </div>
 
-                            <CaptainHero
-                                size="md"
-                                pose="pointing"
-                                message="You don't NEED smart home gear. But if you have it, let's make it actually smart. Most people use Alexa as a glorified egg timer. We're going to make your home ANTICIPATE your needs."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="pointing"
+                                    message="You don't NEED smart home gear. But if you have it, let's make it actually smart. Most people use Alexa as a glorified egg timer. We're going to make your home ANTICIPATE your needs."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 14: Smart Home Integration</h2>
@@ -162,7 +173,9 @@ const Part5 = () => {
                                     </div>
                                 </div>
 
-                                <SmartHomeReadinessAssessment />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <SmartHomeReadinessAssessment />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-white mt-12 mb-4">High-Value Automations</h3>
                                 <div className="space-y-4">
@@ -182,16 +195,20 @@ const Part5 = () => {
                     {/* Chapter 15: Maintenance */}
                     <section id="chapter-15" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="working"
-                                message="Systems entropy is real. Things break. Life changes. Your system needs a mechanic. That mechanic is you, once a month."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="working"
+                                    message="Systems entropy is real. Things break. Life changes. Your system needs a mechanic. That mechanic is you, once a month."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 15: Maintenance & Optimization</h2>
 
-                                <SystemHealthDiagnostic />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <SystemHealthDiagnostic />
+                                </Suspense>
 
                                 <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 my-8">
                                     <h3 className="text-xl font-bold text-white mb-4">The Golden Rule of Maintenance</h3>
@@ -219,9 +236,13 @@ const Part5 = () => {
                                 </p>
                             </div>
 
-                            <PersonalizedLaunchPlanGenerator />
+                            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                <PersonalizedLaunchPlanGenerator />
+                            </Suspense>
 
-                            <LifeOSDashboardPreview />
+                            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                <LifeOSDashboardPreview />
+                            </Suspense>
 
                             <div className="mt-16 p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 text-center">
                                 <h3 className="text-2xl font-bold text-white mb-4">One Final Thought</h3>
@@ -246,10 +267,12 @@ const Part5 = () => {
                     </section>
 
                     {/* Social Share */}
-                    <SocialShare
-                        title="I've built a complete Life OS with Agentic AI. Check out the system!"
-                        hashtags={["AgenticAI", "LifeOS", "Automation"]}
-                    />
+                    <Suspense fallback={null}>
+                        <SocialShare
+                            title="I've built a complete Life OS with Agentic AI. Check out the system!"
+                            hashtags={["AgenticAI", "LifeOS", "Automation"]}
+                        />
+                    </Suspense>
                 </div>
             </PurchaseGate>
         </WebbookLayout>

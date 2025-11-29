@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
-import CaptainHero from '../components/CaptainHero';
-import CaptainTip from '../components/CaptainTip';
-import EmailChaosCalculator from '../components/EmailChaosCalculator';
-import CalendarAuditTool from '../components/CalendarAuditTool';
-import AdminDayPlanner from '../components/AdminDayPlanner';
-import DigitalDetoxChallenge from '../components/DigitalDetoxChallenge';
-import SocialShare from '../components/tools/SocialShare';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Calendar, FileText, ArrowRight, Inbox, Clock, Shield, CheckCircle } from 'lucide-react';
+
+const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
+const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
+const EmailChaosCalculator = React.lazy(() => import('../components/EmailChaosCalculator'));
+const CalendarAuditTool = React.lazy(() => import('../components/CalendarAuditTool'));
+const AdminDayPlanner = React.lazy(() => import('../components/AdminDayPlanner'));
+const DigitalDetoxChallenge = React.lazy(() => import('../components/DigitalDetoxChallenge'));
+const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 
 const Part3 = () => {
     const navigate = useNavigate();
@@ -82,11 +83,13 @@ const Part3 = () => {
                     {/* Chapter 7: Email */}
                     <section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="pointing"
-                                message="Your inbox is a to-do list created by OTHER people. If you don't defend it, you'll spend your life reacting to their demands. But here's the secret: 80% of email is noise. 15% is FYI. Only 5% actually needs YOU. Let's build a Gatekeeper Agent to handle the 95%."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="pointing"
+                                    message="Your inbox is a to-do list created by OTHER people. If you don't defend it, you'll spend your life reacting to their demands. But here's the secret: 80% of email is noise. 15% is FYI. Only 5% actually needs YOU. Let's build a Gatekeeper Agent to handle the 95%."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 7: The Gatekeeper Agent (Email)</h2>
@@ -127,13 +130,19 @@ const Part3 = () => {
                                     </div>
                                 </div>
 
-                                <EmailChaosCalculator />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <EmailChaosCalculator />
+                                </Suspense>
 
-                                <DigitalDetoxChallenge />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <DigitalDetoxChallenge />
+                                </Suspense>
 
-                                <CaptainTip type="pro" title="The 'VIP Only' Notification Rule">
-                                    "Turn off ALL email notifications on your phone. Exception: Create a 'VIP' list (spouse, boss, key client). Only THEIR emails buzz your phone. Everything else waits for your designated email time."
-                                </CaptainTip>
+                                <Suspense fallback={null}>
+                                    <CaptainTip type="pro" title="The 'VIP Only' Notification Rule">
+                                        "Turn off ALL email notifications on your phone. Exception: Create a 'VIP' list (spouse, boss, key client). Only THEIR emails buzz your phone. Everything else waits for your designated email time."
+                                    </CaptainTip>
+                                </Suspense>
                             </div>
                         </div>
                     </section>
@@ -141,11 +150,13 @@ const Part3 = () => {
                     {/* Chapter 8: Calendar */}
                     <section id="chapter-8" className="py-16 px-6">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="working"
-                                message="Show me your calendar, and I'll show you your priorities. If it's full of 'Quick Syncs' and 'Touch Bases', your priority is... other people's comfort. We need to build a Fortress around your Deep Work time."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="working"
+                                    message="Show me your calendar, and I'll show you your priorities. If it's full of 'Quick Syncs' and 'Touch Bases', your priority is... other people's comfort. We need to build a Fortress around your Deep Work time."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 8: The Calendar Defense Agent</h2>
@@ -158,7 +169,9 @@ const Part3 = () => {
                                     </p>
                                 </div>
 
-                                <CalendarAuditTool />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <CalendarAuditTool />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">Ideal Week Architecture</h3>
                                 <p className="text-slate-300 mb-4">Design your week BEFORE other people fill it.</p>
@@ -184,11 +197,13 @@ const Part3 = () => {
                     {/* Chapter 9: Admin */}
                     <section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="Nobody likes paperwork. Not even accountants. (Okay, maybe some accountants). But for the rest of us, forms, bills, and scheduling are soul-sucking. Good news: Robots LOVE paperwork. They don't get bored. They don't make typos. Let's hand it over."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="Nobody likes paperwork. Not even accountants. (Okay, maybe some accountants). But for the rest of us, forms, bills, and scheduling are soul-sucking. Good news: Robots LOVE paperwork. They don't get bored. They don't make typos. Let's hand it over."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 9: The Admin Agent</h2>
@@ -211,11 +226,15 @@ const Part3 = () => {
                                     </div>
                                 </div>
 
-                                <AdminDayPlanner />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <AdminDayPlanner />
+                                </Suspense>
 
-                                <CaptainTip type="warning" title="Security Warning">
-                                    "Never give an AI your actual banking passwords or social security number. Use it to DRAFT emails or ORGANIZE files, but you should be the one to hit 'Submit' on sensitive data."
-                                </CaptainTip>
+                                <Suspense fallback={null}>
+                                    <CaptainTip type="warning" title="Security Warning">
+                                        "Never give an AI your actual banking passwords or social security number. Use it to DRAFT emails or ORGANIZE files, but you should be the one to hit 'Submit' on sensitive data."
+                                    </CaptainTip>
+                                </Suspense>
 
                                 <div className="mt-12 p-8 bg-gradient-to-r from-blue-900/30 to-indigo-900/30 rounded-2xl border border-blue-500/50 text-center">
                                     <h3 className="text-2xl font-bold text-white mb-4">Part 3 Complete! 🚀</h3>
@@ -234,10 +253,12 @@ const Part3 = () => {
                         </div>
                     </section>
                     {/* Social Share */}
-                    <SocialShare
-                        title="I'm building a 'Calendar Defense System' with AI. No more useless meetings!"
-                        hashtags={["AgenticAI", "DeepWork", "Productivity"]}
-                    />
+                    <Suspense fallback={null}>
+                        <SocialShare
+                            title="I'm building a 'Calendar Defense System' with AI. No more useless meetings!"
+                            hashtags={["AgenticAI", "DeepWork", "Productivity"]}
+                        />
+                    </Suspense>
                 </div>
             </PurchaseGate>
         </WebbookLayout>

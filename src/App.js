@@ -10,7 +10,7 @@ import { routeConfig } from './config/routes';
 
 // Eager load SalesPage
 import SalesPage from './SalesPage';
-import Dashboard from './pages/Dashboard';
+
 
 // Lazy load ClaimAccessPage
 const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
@@ -78,7 +78,7 @@ const AnimatedRoutes = () => {
           <Route path="/part5" element={<PageTransition><routeConfig.part5.Component /></PageTransition>} />
           <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
           <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
-          <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
+          <Route path="/dashboard" element={<PageTransition><routeConfig.dashboard.Component /></PageTransition>} />
           <Route path="/chaos-quiz-widget" element={<routeConfig.infectionDiagnostic.Component />} />
           <Route path="/login" element={<PageTransition><routeConfig.login.Component /></PageTransition>} />
           <Route path="/pay-ergo" element={<PageTransition><routeConfig.ergoPayment.Component /></PageTransition>} />

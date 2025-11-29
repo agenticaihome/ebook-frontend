@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
-import CaptainHero from '../components/CaptainHero';
-import CaptainTip from '../components/CaptainTip';
-import MorningChaosCalculator from '../components/MorningChaosCalculator';
-import MorningBriefBuilder from '../components/MorningBriefBuilder';
-import FoodChaosCalculator from '../components/FoodChaosCalculator';
-import HouseholdChaosCalculator from '../components/HouseholdChaosCalculator';
-import EssentialFiveChecklist from '../components/EssentialFiveChecklist';
-import PersonalizedMorningBrief from '../components/PersonalizedMorningBrief';
-import SocialShare from '../components/tools/SocialShare';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Coffee, UtensilsCrossed, Home, ArrowRight, CheckCircle, Clock, DollarSign } from 'lucide-react';
+
+const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
+const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
+const MorningChaosCalculator = React.lazy(() => import('../components/MorningChaosCalculator'));
+const MorningBriefBuilder = React.lazy(() => import('../components/MorningBriefBuilder'));
+const FoodChaosCalculator = React.lazy(() => import('../components/FoodChaosCalculator'));
+const HouseholdChaosCalculator = React.lazy(() => import('../components/HouseholdChaosCalculator'));
+const EssentialFiveChecklist = React.lazy(() => import('../components/EssentialFiveChecklist'));
+const PersonalizedMorningBrief = React.lazy(() => import('../components/PersonalizedMorningBrief'));
+const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 
 const Part2 = () => {
     const navigate = useNavigate();
@@ -84,11 +85,13 @@ const Part2 = () => {
                     {/* Chapter 4: Morning Routines */}
                     <section id="chapter-4" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="Rise and shine! Or... is it more like 'stumble out of bed in a panic'? Here's the thing about mornings: they set the tone for your ENTIRE day. Start chaotic, stay chaotic. But mornings are also PERFECT for your first agent because they're repetitive, low-stakes, and results are immediate. Tonight, you're going to set up ONE simple thing. Tomorrow morning, you'll feel the difference. Let's build your Morning Agent!"
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="Rise and shine! Or... is it more like 'stumble out of bed in a panic'? Here's the thing about mornings: they set the tone for your ENTIRE day. Start chaotic, stay chaotic. But mornings are also PERFECT for your first agent because they're repetitive, low-stakes, and results are immediate. Tonight, you're going to set up ONE simple thing. Tomorrow morning, you'll feel the difference. Let's build your Morning Agent!"
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 4: Morning Routines That Run Themselves</h2>
@@ -155,26 +158,36 @@ const Part2 = () => {
                                     Here's what a great Morning Brief looks like:
                                 </p>
 
-                                <PersonalizedMorningBrief />
+                                <Suspense fallback={<div className="h-48 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <PersonalizedMorningBrief />
+                                </Suspense>
                             </div>
 
-                            <MorningChaosCalculator />
-                            <MorningBriefBuilder />
+                            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                <MorningChaosCalculator />
+                            </Suspense>
+                            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                <MorningBriefBuilder />
+                            </Suspense>
 
-                            <CaptainTip type="tip" title="Start Tonight">
-                                Set up your Morning Brief prompt tonight. Tomorrow morning, just read it instead of checking 6 different apps. One source of truth. Radical simplicity!
-                            </CaptainTip>
+                            <Suspense fallback={null}>
+                                <CaptainTip type="tip" title="Start Tonight">
+                                    Set up your Morning Brief prompt tonight. Tomorrow morning, just read it instead of checking 6 different apps. One source of truth. Radical simplicity!
+                                </CaptainTip>
+                            </Suspense>
                         </div>
                     </section>
 
                     {/* Chapter 5: Kitchen and Grocery */}
                     <section id="chapter-5" className="py-16 px-6">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="thinking"
-                                message="Pop quiz: How many hours per week do you spend on food? Thinking about food. Planning food. Shopping for food. Preparing food. Arguing about food. For most families, it's 10-15 hours. And most of that mental energy is wasted on the SAME questions every week: 'What should we have for dinner?' 'Do we have any chicken?' 'Who's going to the store?' Your Kitchen Agent handles the boring stuff so you can enjoy the eating stuff. Let's end the dinner dilemma!"
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="thinking"
+                                    message="Pop quiz: How many hours per week do you spend on food? Thinking about food. Planning food. Shopping for food. Preparing food. Arguing about food. For most families, it's 10-15 hours. And most of that mental energy is wasted on the SAME questions every week: 'What should we have for dinner?' 'Do we have any chicken?' 'Who's going to the store?' Your Kitchen Agent handles the boring stuff so you can enjoy the eating stuff. Let's end the dinner dilemma!"
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 5: Kitchen and Grocery Automation</h2>
@@ -285,22 +298,28 @@ const Part2 = () => {
                                 </div>
                             </div>
 
-                            <FoodChaosCalculator />
+                            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                <FoodChaosCalculator />
+                            </Suspense>
 
-                            <CaptainTip type="pro" title="The Martinez Family Results">
-                                After 8 weeks with Kitchen Agent: Spending dropped from $460/week to $235/week. That's $900/month saved. Food waste down from 35% to 10%. Time spent on food chaos: from 6 hours to 1 hour per week. The system works!
-                            </CaptainTip>
+                            <Suspense fallback={null}>
+                                <CaptainTip type="pro" title="The Martinez Family Results">
+                                    After 8 weeks with Kitchen Agent: Spending dropped from $460/week to $235/week. That's $900/month saved. Food waste down from 35% to 10%. Time spent on food chaos: from 6 hours to 1 hour per week. The system works!
+                                </CaptainTip>
+                            </Suspense>
                         </div>
                     </section>
 
                     {/* Chapter 6: Household Management */}
                     <section id="chapter-6" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <CaptainHero
-                                size="md"
-                                pose="working"
-                                message="Quick question: When was the last time you changed your HVAC filter? What about your car oil? Checked your smoke detector batteries? I'm not trying to make you feel bad. I'm making a point: household maintenance is BORING, and boring things get forgotten. Until they become EXPENSIVE. The good news? Boring and repetitive is where AI SHINES. Your Household Agent handles the stuff you'd forget anyway — before it becomes a crisis."
-                            />
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="working"
+                                    message="Quick question: When was the last time you changed your HVAC filter? What about your car oil? Checked your smoke detector batteries? I'm not trying to make you feel bad. I'm making a point: household maintenance is BORING, and boring things get forgotten. Until they become EXPENSIVE. The good news? Boring and repetitive is where AI SHINES. Your Household Agent handles the stuff you'd forget anyway — before it becomes a crisis."
+                                />
+                            </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 6: Household Management and Maintenance</h2>
@@ -351,7 +370,9 @@ const Part2 = () => {
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Essential 5 Tracker</h3>
 
-                                <EssentialFiveChecklist />
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <EssentialFiveChecklist />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Weekly Household Brief</h3>
 
@@ -382,11 +403,15 @@ const Part2 = () => {
                                 </div>
                             </div>
 
-                            <HouseholdChaosCalculator />
+                            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                <HouseholdChaosCalculator />
+                            </Suspense>
 
-                            <CaptainTip type="warning" title="The Johnson Family Story">
-                                BEFORE: Forgotten HVAC filter → $2,800 AC repair. Missed car registration → $175 fine. Annual cost of forgetting: ~$3,500+. AFTER (6 months with Household Agent): Zero emergency repairs. Zero late fees. All maintenance on schedule. Annual savings: ~$3,500+ avoided costs.
-                            </CaptainTip>
+                            <Suspense fallback={null}>
+                                <CaptainTip type="warning" title="The Johnson Family Story">
+                                    BEFORE: Forgotten HVAC filter → $2,800 AC repair. Missed car registration → $175 fine. Annual cost of forgetting: ~$3,500+. AFTER (6 months with Household Agent): Zero emergency repairs. Zero late fees. All maintenance on schedule. Annual savings: ~$3,500+ avoided costs.
+                                </CaptainTip>
+                            </Suspense>
                         </div>
                     </section>
 
@@ -424,10 +449,12 @@ const Part2 = () => {
                     </section>
 
                     {/* Social Share */}
-                    <SocialShare
-                        title="Just set up my first AI Agent for daily ops! The future of home management is here."
-                        hashtags={["AgenticAI", "SmartHome", "AI"]}
-                    />
+                    <Suspense fallback={null}>
+                        <SocialShare
+                            title="Just set up my first AI Agent for daily ops! The future of home management is here."
+                            hashtags={["AgenticAI", "SmartHome", "AI"]}
+                        />
+                    </Suspense>
                 </div>
             </PurchaseGate>
         </WebbookLayout>

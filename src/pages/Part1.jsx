@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import CaptainHero from '../components/CaptainHero';
+
 import CaptainTip from '../components/CaptainTip';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -13,6 +13,7 @@ const ToolRecommendationQuiz = React.lazy(() => import('../components/ToolRecomm
 const PrivacyAssessment = React.lazy(() => import('../components/PrivacyAssessment'));
 const AgentConstitutionBuilder = React.lazy(() => import('../components/AgentConstitutionBuilder'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
+const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 
 const Part1 = () => {
     const navigate = useNavigate();
@@ -125,11 +126,13 @@ const Part1 = () => {
                 {/* Chapter 1: What Are AI Agents? */}
                 <section id="chapter-1" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                     <div className="max-w-4xl mx-auto">
-                        <CaptainHero
-                            size="md"
-                            pose="pointing"
-                            message="I'm Captain Efficiency. I'm not here to add to your to-do list. I'm here to delete half of it. You've probably used ChatGPT. Maybe asked Siri to set a timer. That's like having a genius assistant who only works when you stand over their shoulder. Real agents don't wait for instructions. They anticipate. They handle things. They let you finish a coffee while it's still hot. That's what we're building."
-                        />
+                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                            <CaptainHero
+                                size="md"
+                                pose="pointing"
+                                message="I'm Captain Efficiency. I'm not here to add to your to-do list. I'm here to delete half of it. You've probably used ChatGPT. Maybe asked Siri to set a timer. That's like having a genius assistant who only works when you stand over their shoulder. Real agents don't wait for instructions. They anticipate. They handle things. They let you finish a coffee while it's still hot. That's what we're building."
+                            />
+                        </Suspense>
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">
                             <h2 className="text-4xl font-bold text-white mb-6">Chapter 1: What Are AI Agents and Why Should You Care?</h2>
@@ -236,11 +239,13 @@ const Part1 = () => {
                 {/* Chapter 2: The Home AI Stack */}
                 <section id="chapter-2" className="py-16 px-6">
                     <div className="max-w-4xl mx-auto">
-                        <CaptainHero
-                            size="md"
-                            pose="thinking"
-                            message="Okay, so you're sold on agents. Now what? There are approximately one billion AI tools out there. Okay, not a billion. But it FEELS like a billion. ChatGPT. Claude. Gemini. Copilot. Siri. Alexa. Zapier. Make. n8n. STOP. Deep breath. You don't need all of them. You probably need TWO or THREE, tops. Let me help you pick the right ones for YOUR situation — without the tech jargon headache."
-                        />
+                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                            <CaptainHero
+                                size="md"
+                                pose="thinking"
+                                message="Okay, so you're sold on agents. Now what? There are approximately one billion AI tools out there. Okay, not a billion. But it FEELS like a billion. ChatGPT. Claude. Gemini. Copilot. Siri. Alexa. Zapier. Make. n8n. STOP. Deep breath. You don't need all of them. You probably need TWO or THREE, tops. Let me help you pick the right ones for YOUR situation — without the tech jargon headache."
+                            />
+                        </Suspense>
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">
                             <h2 className="text-4xl font-bold text-white mb-6">Chapter 2: The Home AI Stack</h2>
@@ -358,11 +363,13 @@ const Part1 = () => {
                 {/* Chapter 3: Privacy, Security, and Control */}
                 <section id="chapter-3" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                     <div className="max-w-4xl mx-auto">
-                        <CaptainHero
-                            size="md"
-                            pose="working"
-                            message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. You don't have to share everything to get massive value. This chapter is about informed consent — understanding exactly what you're sharing, with whom, and how to protect yourself. Let's make you informed, not paranoid."
-                        />
+                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                            <CaptainHero
+                                size="md"
+                                pose="working"
+                                message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. You don't have to share everything to get massive value. This chapter is about informed consent — understanding exactly what you're sharing, with whom, and how to protect yourself. Let's make you informed, not paranoid."
+                            />
+                        </Suspense>
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">
                             <h2 className="text-4xl font-bold text-white mb-6">Chapter 3: Privacy, Security, and Control</h2>
