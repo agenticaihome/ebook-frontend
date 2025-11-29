@@ -15,6 +15,12 @@ const ClaimAccessPage = () => {
         setError('');
         setLoading(true);
 
+        if (!identifier || identifier.trim().length < 5) {
+            setError('Please enter a valid Transaction ID or Access Code.');
+            setLoading(false);
+            return;
+        }
+
         try {
             const data = await api.claimPayment(identifier);
 

@@ -22,6 +22,19 @@ const LoginPage = () => {
         e.preventDefault();
         setIsLoading(true);
         setError('');
+
+        if (!email || !email.includes('@')) {
+            setError('Please enter a valid email address.');
+            setIsLoading(false);
+            return;
+        }
+
+        if (!password) {
+            setError('Please enter your password.');
+            setIsLoading(false);
+            return;
+        }
+
         try {
             const data = await api.login(email.trim(), password);
             localStorage.setItem('token', data.token);

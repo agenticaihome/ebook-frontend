@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
+import { toast } from 'react-hot-toast';
 
 const ErgoPaymentPage = () => {
     const navigate = useNavigate();
@@ -83,6 +84,23 @@ const ErgoPaymentPage = () => {
             }
         } catch (err) {
             console.error('Auto-check failed', err);
+        }
+    };
+
+    const handleManualCheck = async () => {
+        if (!accessCode) return;
+        const toastId = toast.loading('Checking payment status...');
+        try {
+            const result = await api.checkRecentErgoPayment(accessCode);
+            if (result.success && result.status === 'PAID') {
+                toast.success('Payment received!', { id: toastId });
+                confirmPayment(result.transactionId);
+            } else {
+                toast.error('Payment not yet confirmed. Please wait a moment and try again.', { id: toastId });
+            }
+        } catch (err) {
+            console.error('Manual check failed', err);
+            toast.error('Connection failed. Please try again.', { id: toastId });
         }
     };
 
@@ -345,6 +363,14 @@ const ErgoPaymentPage = () => {
                                                 {copiedAddress ? <Check className="w-5 h-5 text-green-400 flex-shrink-0" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white flex-shrink-0" />}
                                             </button>
                                         </div>
+
+                                        <button
+                                            onClick={handleManualCheck}
+                                            className="w-full mt-4 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 border border-cyan-500/30 hover:border-cyan-500/50 rounded-xl p-3 font-bold transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <CheckCircle2 size={18} />
+                                            I've Sent the Payment
+                                        </button>
                                     </div>
                                 </div>
                             </div>

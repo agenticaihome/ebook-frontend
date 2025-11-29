@@ -1,14 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
     CreditCard, Coins, Check, ArrowRight, Shield, Zap,
-    Lock, Globe, Clock, Sparkles
+    Lock, Globe, Clock, Sparkles, Loader2, AlertCircle
 } from 'lucide-react';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
+import { api } from './services/api';
 
 export default function PaymentGuide() {
+    const [email, setEmail] = useState('');
+    const [isStripeLoading, setIsStripeLoading] = useState(false);
+    const [stripeError, setStripeError] = useState(null);
+
+    const handleStripePayment = async () => {
+        if (!email || !email.includes('@')) {
+            setStripeError("Please enter a valid email address.");
+            return;
+        }
+
+        setIsStripeLoading(true);
+        setStripeError(null);
+
+        try {
+            const result = await api.createStripeCheckout(email);
+            if (result.success && result.checkoutUrl) {
+                window.location.href = result.checkoutUrl;
+            } else {
+                setStripeError("Failed to initialize checkout. Please try again.");
+            }
+        } catch (err) {
+            console.error(err);
+            setStripeError(err.message || "Connection error. Please try again.");
+        } finally {
+            setIsStripeLoading(false);
+        }
+    };
+
     return (
         <WebbookLayout>
             <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-cyan-500/30">
@@ -100,13 +129,32 @@ export default function PaymentGuide() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-3">
-                                    <Link
-                                        to="/#pricing"
-                                        className="block w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 text-center"
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm text-slate-400 mb-2 text-left">Your Email Address</label>
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder="name@example.com"
+                                            className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors backdrop-blur-sm"
+                                        />
+                                    </div>
+
+                                    {stripeError && (
+                                        <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 p-3 rounded-lg">
+                                            <AlertCircle size={16} />
+                                            {stripeError}
+                                        </div>
+                                    )}
+
+                                    <button
+                                        onClick={handleStripePayment}
+                                        disabled={isStripeLoading}
+                                        className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 text-center flex items-center justify-center gap-2"
                                     >
-                                        Get Instant Access
-                                    </Link>
+                                        {isStripeLoading ? <Loader2 className="animate-spin" /> : 'Get Instant Access'}
+                                    </button>
                                     <p className="text-xs text-slate-500 text-center">
                                         30-day money-back guarantee • Secure payment via Stripe
                                     </p>
