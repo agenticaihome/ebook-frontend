@@ -66,7 +66,7 @@ export default function SalesPage() {
                 size="lg"
                 className="scale-100 md:scale-110"
                 message="You're running on 4 hours of sleep and 3 deadlines. Let's work with what we've got."
-                videoSrc="/assets/captain-waving.mp4?v=new"
+                videoSrc="/assets/captain-waving-transparent.mp4?v=transparent"
                 imageSrc="/assets/captain-efficiency-dark-transparent.png" // Fallback
               />
             </div>
@@ -102,9 +102,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                The interactive webbook that teaches anyone how to build a "Household Staff" of autonomous AI agents. No coding required.
+                The interactive webbook that teaches anyone how to build a "Personal Staff" of autonomous AI agents. No coding required.
                 <br /><br />
-                Stop drowning in tasks. Start deploying agents.
+                Stop drowning in admin. Start deploying agents.
               </motion.p>
 
               <motion.div
@@ -141,7 +141,7 @@ export default function SalesPage() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
               <p className="text-slate-400 max-w-2xl mx-auto mb-4">
-                A systematic progression from basic tools to a fully autonomous Household Autopilot.
+                A systematic progression from basic tools to a fully autonomous Life Operating System.
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
                 <span className="text-green-400 font-bold text-sm">✓ Part 1 is FREE</span>
@@ -152,7 +152,7 @@ export default function SalesPage() {
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               {[
                 { id: '01', title: 'FOUNDATIONS', desc: 'AI Stack & Privacy', icon: <Terminal />, status: 'FREE', link: '/part1' },
-                { id: '02', title: 'DAILY OPS', desc: 'Morning, Kitchen, Home', icon: <Zap />, status: 'LOCKED' },
+                { id: '02', title: 'DAILY OPS', desc: 'Morning, Kitchen, Logistics', icon: <Zap />, status: 'LOCKED' },
                 { id: '03', title: 'DIGITAL LIFE', desc: 'Email, Calendar, Finance', icon: <Activity />, status: 'LOCKED' },
                 { id: '04', title: 'HEALTH', desc: 'Recovery & Second Brain', icon: <Shield />, status: 'LOCKED' },
                 { id: '05', title: 'LIFE OS', desc: 'Multi-Agent Systems', icon: <Database />, status: 'LOCKED' }
@@ -229,7 +229,7 @@ export default function SalesPage() {
                 <div className="bg-green-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400 border border-green-500/20">
                   <Zap size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-100">Household Autopilot</h3>
+                <h3 className="text-xl font-bold mb-4 text-slate-100">Life Autopilot</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "Not just automation — a strategic brain that coordinates everything toward your goals."
                 </p>
@@ -286,7 +286,7 @@ export default function SalesPage() {
                 </ul>
                 <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700/50">
                   <p className="text-slate-400 italic text-sm">
-                    "These are real results from the DDS household. Your results begin when you unlock the system."
+                    "These are real results from the DDS system. Your results begin when you unlock the system."
                   </p>
                   <div className="mt-2 text-cyan-400 font-bold text-sm">— Captain Efficiency</div>
                 </div>

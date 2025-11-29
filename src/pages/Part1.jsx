@@ -94,10 +94,10 @@ const Part1 = () => {
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">Let's Start With a Story</h3>
                             <p className="text-slate-300 leading-relaxed">
-                                Sarah is a freelance graphic designer and single mom. Every morning used to start the same way: 30 minutes of digital chaos.
+                                Sarah is a freelance graphic designer juggling multiple clients and a busy personal life. Every morning used to start the same way: 30 minutes of digital chaos.
                             </p>
                             <p className="text-slate-300 leading-relaxed">
-                                Check emails. Respond to clients. Check the school calendar. Did she pay the electricity bill? What's for dinner? Does Jake need his soccer uniform washed?
+                                Check emails. Respond to urgent client requests. Check her personal calendar. Did she pay the electricity bill? What's for dinner? Did she remember to prep for that 2 PM presentation?
                             </p>
                             <p className="text-slate-300 leading-relaxed">
                                 One day, a tech-savvy friend set her up with what he called an "AI agent." Sarah was skeptical — she'd tried ChatGPT and found it helpful but limited.
@@ -118,7 +118,7 @@ const Part1 = () => {
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
-                                        <span>Noticed Jake's soccer game conflicts with a client call and suggested three alternative meeting times</span>
+                                        <span>Noticed a conflict between a client call and a personal appointment, and suggested three alternative meeting times</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
@@ -126,7 +126,7 @@ const Part1 = () => {
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
-                                        <span>Cross-referenced her calendar, fridge contents, and Jake's food preferences to suggest tonight's dinner</span>
+                                        <span>Cross-referenced her calendar and dietary preferences to suggest a quick, healthy dinner</span>
                                     </li>
                                 </ul>
                                 <p className="text-cyan-400 font-bold mt-4">
@@ -157,9 +157,9 @@ const Part1 = () => {
                                         <div><span className="text-cyan-400">You:</span> [Set up once] "Manage my mornings."</div>
                                         <div><span className="text-purple-400">Agent:</span> [Every day, automatically]</div>
                                         <div className="pl-4">→ Checks weather</div>
-                                        <div className="pl-4">→ Notices outdoor soccer practice at 4 PM</div>
+                                        <div className="pl-4">→ Notices outdoor event at 4 PM</div>
                                         <div className="pl-4">→ Sees 80% rain chance at that time</div>
-                                        <div className="pl-4">→ Texts you: "Soccer might be cancelled. I checked — indoor facility available. Want me to message the coach?"</div>
+                                        <div className="pl-4">→ Texts you: "Event might be rained out. I checked — indoor venue available. Want me to message the organizer?"</div>
                                         <div className="text-slate-500 italic pt-2">[END — Agent took action. You made one decision.]</div>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@ const Part1 = () => {
                                     <li>• Decision fatigue is real — quality of decisions degrades throughout the day</li>
                                     <li>• Context switching costs 23 minutes to recover focus</li>
                                     <li>• The average person spends 2.5 hours daily on "life admin"</li>
-                                    <li>• Parents report the mental load of tracking family logistics as a top stressor</li>
+                                    <li>• People report the mental load of tracking life logistics as a top stressor</li>
                                 </ul>
                             </div>
 

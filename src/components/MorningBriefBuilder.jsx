@@ -48,7 +48,7 @@ const MorningBriefBuilder = () => {
 
         if (preferences.needEmail) {
             sections.push('✉️ EMAIL ALERT');
-            sections.push('- Any urgent messages? (from boss, clients, family)');
+            sections.push('- Any urgent messages? (from boss, clients, household)');
             sections.push('- How many total unread? (just the number)');
             sections.push('');
         }
@@ -73,8 +73,8 @@ const MorningBriefBuilder = () => {
         sections.push('');
 
         if (preferences.familyCoordination) {
-            sections.push('👨‍👩‍👧‍👦 FAMILY COORDINATION');
-            sections.push('- Kids\' school: Any special events, items needed?');
+            sections.push('🏠 HOUSEHOLD/FAMILY COORDINATION');
+            sections.push('- Household/Kids: Any special events, items needed?');
             sections.push('- Who handles which task today?');
             sections.push('');
         }
@@ -165,8 +165,8 @@ const MorningBriefBuilder = () => {
                                     key={key}
                                     onClick={() => handleChange(key, !preferences[key])}
                                     className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${preferences[key]
-                                            ? 'border-cyan-500 bg-cyan-900/20'
-                                            : 'border-slate-700 hover:border-slate-600 bg-slate-900/50'
+                                        ? 'border-cyan-500 bg-cyan-900/20'
+                                        : 'border-slate-700 hover:border-slate-600 bg-slate-900/50'
                                         }`}
                                 >
                                     <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${preferences[key] ? 'border-cyan-500 bg-cyan-500' : 'border-slate-600'
@@ -188,15 +188,15 @@ const MorningBriefBuilder = () => {
                             {[
                                 { value: 'time', label: 'Not enough time' },
                                 { value: 'decisions', label: 'Too many decisions' },
-                                { value: 'family', label: 'Family coordination' },
+                                { value: 'family', label: 'Household logistics' },
                                 { value: 'energy', label: 'Low energy' }
                             ].map(({ value, label }) => (
                                 <button
                                     key={value}
                                     onClick={() => handleChange('painPoint', value)}
                                     className={`p-3 rounded-xl border-2 transition-all ${preferences.painPoint === value
-                                            ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {label}
@@ -213,8 +213,8 @@ const MorningBriefBuilder = () => {
                             <button
                                 onClick={() => handleChange('smartHome', !preferences.smartHome)}
                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${preferences.smartHome
-                                        ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                    ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                    : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                     }`}
                             >
                                 I have smart home devices
@@ -222,11 +222,11 @@ const MorningBriefBuilder = () => {
                             <button
                                 onClick={() => handleChange('familyCoordination', !preferences.familyCoordination)}
                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${preferences.familyCoordination
-                                        ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                    ? 'border-cyan-500 bg-cyan-900/20 text-white'
+                                    : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                     }`}
                             >
-                                I need family/kids coordination
+                                I need household/family coordination
                             </button>
                         </div>
                     </div>

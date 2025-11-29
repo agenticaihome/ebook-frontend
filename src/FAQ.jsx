@@ -59,12 +59,12 @@ export default function FAQ() {
                 <>
                     <p className="mb-4">This course is designed for:</p>
                     <ul className="list-none space-y-2 mb-6">
-                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> Busy parents who are drowning in mental load and have no time to waste</li>
-                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> Professionals who want to reclaim hours lost to email, scheduling, and admin</li>
+                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Overwhelmed Professionals</strong> drowning in email and meetings</li>
+                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Entrepreneurs & Solopreneurs</strong> who can't afford a human assistant yet</li>
+                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Students</strong> juggling classes, jobs, and life admin</li>
+                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Busy Parents</strong> managing household logistics and mental load</li>
+                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Retirees</strong> who want to spend time on life, not paperwork</li>
                         <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> Anyone who feels overwhelmed by the logistics of modern life</li>
-                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> People curious about AI but unsure how to use it practically</li>
-                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> Productivity enthusiasts looking for the next level beyond apps and to-do lists</li>
-                        <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> Complete beginners — no tech background required</li>
                     </ul>
                     <p className="mb-4">This course is probably <strong>NOT</strong> for you if:</p>
                     <ul className="list-none space-y-2">
@@ -73,6 +73,25 @@ export default function FAQ() {
                         <li className="flex items-start gap-2"><AlertTriangle className="text-red-400 w-5 h-5 flex-shrink-0" /> You're not willing to spend 30-60 minutes per week maintaining your systems</li>
                         <li className="flex items-start gap-2"><AlertTriangle className="text-red-400 w-5 h-5 flex-shrink-0" /> You expect magic — this takes real implementation effort</li>
                     </ul>
+                </>
+
+            )
+        },
+        {
+            id: 'not-a-parent',
+            category: 'about',
+            question: 'I\'m not a parent. Is this still for me?',
+            answer: (
+                <>
+                    <p className="mb-4 font-bold text-lg">YES. Absolutely.</p>
+                    <p className="mb-4">While the system was originally battle-tested by a busy parent, the core problem is universal: <strong>Life Admin Fatigue.</strong></p>
+                    <p className="mb-2">The systems work for everyone:</p>
+                    <ul className="list-disc pl-5 space-y-1 mb-4">
+                        <li><strong>Students:</strong> Use the "Second Brain" for exams and "Morning Agent" for class schedules.</li>
+                        <li><strong>Entrepreneurs:</strong> Use the "Email Agent" to handle client comms and "Finance Agent" for invoices.</li>
+                        <li><strong>Retirees:</strong> Use the "Health Agent" for appointments and "Travel Agent" for planning trips.</li>
+                    </ul>
+                    <p>Any reference to "family" or "kids" in the templates can be deleted or replaced with "clients," "pets," or "projects" in seconds.</p>
                 </>
             )
         },
@@ -185,7 +204,7 @@ export default function FAQ() {
                     <ol className="list-decimal pl-5 space-y-4 mb-4">
                         <li>
                             <strong>RECOVERY-AWARE SYSTEMS</strong>
-                            <p className="text-sm text-slate-400 mt-1">Most productivity systems assume you're at 100% every day. This course builds systems that ADAPT to your actual energy. Bad night with the kids? Your schedule automatically adjusts. This is the 'when your toddler kept you up' feature that parents desperately need.</p>
+                            <p className="text-sm text-slate-400 mt-1">Most productivity systems assume you're at 100% every day. This course builds systems that ADAPT to your actual energy. Bad night's sleep? Your schedule automatically adjusts. This is the 'life happens' feature that everyone needs.</p>
                         </li>
                         <li>
                             <strong>SECOND BRAIN INTEGRATION</strong>
@@ -528,8 +547,8 @@ export default function FAQ() {
                         <li>Never share school names or locations</li>
                         <li>Never share medical information about minors</li>
                     </ul>
-                    <p className="mb-4"><strong>WHAT'S SAFE:</strong> Generic info ('I have two kids under 5'), scheduling needs ('School pickup at 3pm'), general preferences.</p>
-                    <p>Your AI doesn't need to know your kids' names to help you plan their activities. The course teaches you to get the benefits without the exposure.</p>
+                    <p className="mb-4"><strong>WHAT'S SAFE:</strong> Generic info ('I have two dependents'), scheduling needs ('Pickup at 3pm'), general preferences.</p>
+                    <p>Your AI doesn't need to know names to help you plan activities. The course teaches you to get the benefits without the exposure.</p>
                 </>
             )
         },
@@ -548,7 +567,7 @@ export default function FAQ() {
                         <li>Classifies your day as Green (full capacity), Yellow (moderate), or Red (survival mode)</li>
                         <li>Automatically adjusts recommendations (e.g., Red day = only 3 essential tasks, protect sleep)</li>
                     </ul>
-                    <p>This is the 'when your toddler kept you up' feature. Your schedule adapts to your biology instead of fighting it.</p>
+                    <p>This is the 'life happens' feature. Your schedule adapts to your biology instead of fighting it.</p>
                 </>
             )
         },
