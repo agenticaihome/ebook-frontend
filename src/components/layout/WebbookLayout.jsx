@@ -62,7 +62,7 @@ const WebbookLayout = ({ children }) => {
                 <div className="p-6 border-b border-slate-700 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 font-bold text-cyan-400" aria-label="Go to Home">
                         <Shield size={24} />
-                        <span>Agentic AI</span>
+                        <span>Agentic AI Home</span>
                     </Link>
                     <button
                         onClick={() => setIsSidebarOpen(false)}
@@ -210,7 +210,7 @@ const WebbookLayout = ({ children }) => {
                             </button>
                         )}
                         <h1 className="font-semibold text-slate-200 truncate">
-                            {chapters.find(c => c.path === location.pathname)?.title || 'Agentic AI at Home'}
+                            {chapters.find(c => c.path === location.pathname)?.title || ''}
                         </h1>
                     </div>
 
