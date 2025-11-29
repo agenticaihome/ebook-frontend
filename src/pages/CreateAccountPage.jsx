@@ -14,14 +14,25 @@ const CreateAccountPage = () => {
 
     // Get payment info from URL params
     const paymentId = searchParams.get('payment_id');
-    const email = searchParams.get('email');
+    const urlEmail = searchParams.get('email');
     const paymentType = searchParams.get('type'); // 'stripe' or 'ergo'
+
+    const [email, setEmail] = useState(urlEmail || '');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
     const handleCreateAccount = async (e) => {
         e.preventDefault();
         setError('');
 
         // Validation
+        if (!email || !email.includes('@')) {
+            setError('Please enter a valid email address');
+            return;
+        }
+
         if (password.length < 8) {
             setError('Password must be at least 8 characters');
             return;
@@ -71,7 +82,7 @@ const CreateAccountPage = () => {
         }
     };
 
-    if (!paymentId || !email) {
+    if (!paymentId) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-6">
                 <div className="text-center text-white">
@@ -121,7 +132,7 @@ const CreateAccountPage = () => {
                     </p>
 
                     <form onSubmit={handleCreateAccount} className="space-y-4">
-                        {/* Email (read-only) */}
+                        {/* Email */}
                         <div>
                             <label className="text-sm text-slate-400 block mb-2">Email</label>
                             <div className="relative">
@@ -129,8 +140,10 @@ const CreateAccountPage = () => {
                                 <input
                                     type="email"
                                     value={email}
-                                    readOnly
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    readOnly={!!urlEmail}
+                                    placeholder="Enter your email"
+                                    className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white ${!urlEmail ? 'focus:border-purple-500 focus:outline-none' : 'cursor-not-allowed opacity-75'}`}
                                 />
                             </div>
                         </div>

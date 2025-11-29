@@ -198,6 +198,17 @@ const LoginPage = () => {
                         Need help? <Link to="/faq" className="text-blue-400 hover:underline">Contact Support</Link>
                     </p>
                 </div>
+                <div className="mt-6 text-center pb-6">
+                    <p className="text-slate-400 text-sm">
+                        Paid but no account?{' '}
+                        <button
+                            onClick={() => navigate('/claim-access')}
+                            className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
+                        >
+                            Claim Purchase
+                        </button>
+                    </p>
+                </div>
             </div>
         </div>
     );

@@ -738,7 +738,7 @@ export default function FAQ() {
                                     Get the System ($19.99 with ERG)
                                 </Link>
                                 <a
-                                    href="mailto:support@agenticai.home"
+                                    href="mailto:agenticaiathome@gmail.com"
                                     className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-3 rounded-xl font-bold transition-all border border-slate-600"
                                 >
                                     Email Support

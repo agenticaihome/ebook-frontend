@@ -99,7 +99,7 @@ const ErgoPaymentPage = () => {
 
         // Redirect to account creation page after 2 seconds
         setTimeout(() => {
-            navigate(`/create-account?payment_id=${accessCode}&type=ergo`);
+            navigate(`/create-account?payment_id=${txId}&type=ergo`);
         }, 2000);
     };
 

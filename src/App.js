@@ -10,6 +10,9 @@ import { routeConfig } from './config/routes';
 // Eager load SalesPage
 import SalesPage from './SalesPage';
 
+// Lazy load ClaimAccessPage
+const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
+
 // Loading component
 const Loading = () => (
   <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center">
@@ -80,6 +83,13 @@ const AnimatedRoutes = () => {
           <Route path="/payment-guide" element={<PageTransition><routeConfig.paymentGuide.Component /></PageTransition>} />
           <Route path="/ergo-guide" element={<PageTransition><routeConfig.ergoGuide.Component /></PageTransition>} />
           <Route path="/faq" element={<PageTransition><routeConfig.faq.Component /></PageTransition>} />
+
+          {/* Claim Access Route */}
+          <Route path="/claim-access" element={
+            <Suspense fallback={<Loading />}>
+              <PageTransition><ClaimAccessPage /></PageTransition>
+            </Suspense>
+          } />
 
           {/* Legacy Redirects */}
           <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />

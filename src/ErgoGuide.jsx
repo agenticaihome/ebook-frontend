@@ -451,7 +451,7 @@ export default function HowToPay() {
                                     <ChevronDown className="group-open:rotate-180 transition-transform" />
                                 </summary>
                                 <div className="px-6 pb-6 text-slate-400 text-sm">
-                                    If you sent too little, you'll need to send the remainder. If you sent too much, contact support@agentic.ai and we'll refund the difference.
+                                    If you sent too little, you'll need to send the remainder. If you sent too much, contact agenticaiathome@gmail.com and we'll refund the difference.
                                 </div>
                             </details>
                             <details className="bg-slate-800/30 rounded-xl border border-slate-700 group">
