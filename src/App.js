@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
+import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
 import PageTransition from './components/layout/PageTransition';
@@ -68,36 +68,38 @@ const AnimatedRoutes = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition><SalesPage /></PageTransition>} />
-          <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
-          <Route path="/part2" element={<PageTransition><routeConfig.part2.Component /></PageTransition>} />
-          <Route path="/part3" element={<PageTransition><routeConfig.part3.Component /></PageTransition>} />
-          <Route path="/part4" element={<PageTransition><routeConfig.part4.Component /></PageTransition>} />
-          <Route path="/part5" element={<PageTransition><routeConfig.part5.Component /></PageTransition>} />
-          <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
-          <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
-          <Route path="/dashboard" element={<PageTransition><routeConfig.dashboard.Component /></PageTransition>} />
-          <Route path="/chaos-quiz-widget" element={<routeConfig.infectionDiagnostic.Component />} />
-          <Route path="/login" element={<PageTransition><routeConfig.login.Component /></PageTransition>} />
-          <Route path="/pay-ergo" element={<PageTransition><routeConfig.ergoPayment.Component /></PageTransition>} />
-          <Route path="/why-ergo" element={<PageTransition><routeConfig.whyErgo.Component /></PageTransition>} />
-          <Route path="/payment-guide" element={<PageTransition><routeConfig.paymentGuide.Component /></PageTransition>} />
-          <Route path="/ergo-guide" element={<PageTransition><routeConfig.ergoGuide.Component /></PageTransition>} />
-          <Route path="/faq" element={<PageTransition><routeConfig.faq.Component /></PageTransition>} />
+      <MotionConfig reducedMotion="user">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageTransition><SalesPage /></PageTransition>} />
+            <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
+            <Route path="/part2" element={<PageTransition><routeConfig.part2.Component /></PageTransition>} />
+            <Route path="/part3" element={<PageTransition><routeConfig.part3.Component /></PageTransition>} />
+            <Route path="/part4" element={<PageTransition><routeConfig.part4.Component /></PageTransition>} />
+            <Route path="/part5" element={<PageTransition><routeConfig.part5.Component /></PageTransition>} />
+            <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
+            <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
+            <Route path="/dashboard" element={<PageTransition><routeConfig.dashboard.Component /></PageTransition>} />
+            <Route path="/chaos-quiz-widget" element={<routeConfig.infectionDiagnostic.Component />} />
+            <Route path="/login" element={<PageTransition><routeConfig.login.Component /></PageTransition>} />
+            <Route path="/pay-ergo" element={<PageTransition><routeConfig.ergoPayment.Component /></PageTransition>} />
+            <Route path="/why-ergo" element={<PageTransition><routeConfig.whyErgo.Component /></PageTransition>} />
+            <Route path="/payment-guide" element={<PageTransition><routeConfig.paymentGuide.Component /></PageTransition>} />
+            <Route path="/ergo-guide" element={<PageTransition><routeConfig.ergoGuide.Component /></PageTransition>} />
+            <Route path="/faq" element={<PageTransition><routeConfig.faq.Component /></PageTransition>} />
 
-          {/* Claim Access Route */}
-          <Route path="/claim-access" element={
-            <Suspense fallback={<Loading />}>
-              <PageTransition><ClaimAccessPage /></PageTransition>
-            </Suspense>
-          } />
+            {/* Claim Access Route */}
+            <Route path="/claim-access" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><ClaimAccessPage /></PageTransition>
+              </Suspense>
+            } />
 
-          {/* Legacy Redirects */}
-          <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
-        </Routes>
-      </AnimatePresence>
+            {/* Legacy Redirects */}
+            <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
+          </Routes>
+        </AnimatePresence>
+      </MotionConfig>
     </LazyMotion>
   );
 };

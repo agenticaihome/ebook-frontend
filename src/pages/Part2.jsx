@@ -1,6 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
+import BackgroundEffects from '../components/common/BackgroundEffects';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Coffee, UtensilsCrossed, Home, ArrowRight, CheckCircle, Clock, DollarSign } from 'lucide-react';
@@ -39,10 +40,7 @@ const Part2 = () => {
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                            <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse" />
-                            <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl" />
-                        </div>
+                        <BackgroundEffects blob1Color="bg-purple-900/30" blob2Color="bg-teal-900/20" />
 
                         <div className="max-w-4xl mx-auto relative z-10">
                             <motion.div
@@ -365,8 +363,6 @@ const Part2 = () => {
                                         </div>
                                     </div>
                                 </div>
-
-                                <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Essential 5 Tracker</h3>
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Essential 5 Tracker</h3>
 

@@ -1,6 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
+import BackgroundEffects from '../components/common/BackgroundEffects';
 import { motion } from 'framer-motion';
 import { Layers, Home, Wrench, Flag, ArrowRight, CheckCircle, Zap } from 'lucide-react';
 
@@ -31,17 +32,13 @@ const Part5 = () => {
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
-
     return (
         <WebbookLayout>
             <PurchaseGate>
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                            <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse" />
-                            <div className="absolute bottom-0 left-10 w-64 h-64 bg-cyan-900/20 rounded-full blur-3xl" />
-                        </div>
+                        <BackgroundEffects blob1Color="bg-purple-900/30" blob2Color="bg-cyan-900/20" />
 
                         <div className="max-w-4xl mx-auto relative z-10">
                             <motion.div
@@ -57,33 +54,35 @@ const Part5 = () => {
                                 <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
                                     From individual agents to a unified system. This is where automation becomes transformation.
                                 </p>
-                            </motion.div>
+                            </motion.div >
 
                             {/* Chapter Navigation */}
-                            <div className="grid md:grid-cols-4 gap-4 mb-12">
-                                {chapters.map((chapter) => {
-                                    const Icon = chapter.icon;
-                                    return (
-                                        <button
-                                            key={chapter.id}
-                                            onClick={() => scrollToChapter(chapter.id)}
-                                            className={`p-4 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
-                                                ? 'border-purple-500 bg-purple-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
-                                                }`}
-                                        >
-                                            <Icon className={activeChapter === chapter.id ? 'text-purple-400' : 'text-slate-500'} size={24} />
-                                            <div className="mt-2 text-xs font-mono text-slate-400">Chapter {chapter.id === 16 ? 'End' : chapter.id}</div>
-                                            <div className="font-bold text-white text-sm">{chapter.title}</div>
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    </section>
+                            < div className="grid md:grid-cols-4 gap-4 mb-12" >
+                                {
+                                    chapters.map((chapter) => {
+                                        const Icon = chapter.icon;
+                                        return (
+                                            <button
+                                                key={chapter.id}
+                                                onClick={() => scrollToChapter(chapter.id)}
+                                                className={`p-4 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
+                                                    ? 'border-purple-500 bg-purple-900/20'
+                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                    }`}
+                                            >
+                                                <Icon className={activeChapter === chapter.id ? 'text-purple-400' : 'text-slate-500'} size={24} />
+                                                <div className="mt-2 text-xs font-mono text-slate-400">Chapter {chapter.id === 16 ? 'End' : chapter.id}</div>
+                                                <div className="font-bold text-white text-sm">{chapter.title}</div>
+                                            </button>
+                                        );
+                                    })
+                                }
+                            </div >
+                        </div >
+                    </section >
 
                     {/* Chapter 13: Life Operating System */}
-                    <section id="chapter-13" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    < section id="chapter-13" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -139,10 +138,10 @@ const Part5 = () => {
                                 </Suspense>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Chapter 14: Smart Home (Optional) */}
-                    <section id="chapter-14" className="py-16 px-6">
+                    < section id="chapter-14" className="py-16 px-6" >
                         <div className="max-w-4xl mx-auto">
                             <div className="flex items-center gap-3 mb-6 opacity-70">
                                 <Home className="text-slate-500" />
@@ -190,10 +189,10 @@ const Part5 = () => {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Chapter 15: Maintenance */}
-                    <section id="chapter-15" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    < section id="chapter-15" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -221,10 +220,10 @@ const Part5 = () => {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Conclusion */}
-                    <section id="chapter-16" className="py-16 px-6">
+                    < section id="chapter-16" className="py-16 px-6" >
                         <div className="max-w-4xl mx-auto">
                             <div className="text-center mb-12">
                                 <div className="inline-block p-4 rounded-full bg-green-900/30 text-green-400 mb-6 border border-green-500/30">
@@ -264,18 +263,18 @@ const Part5 = () => {
                                 </button>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Social Share */}
-                    <Suspense fallback={null}>
+                    < Suspense fallback={null} >
                         <SocialShare
                             title="I've built a complete Life OS with Agentic AI. Check out the system!"
                             hashtags={["AgenticAI", "LifeOS", "Automation"]}
                         />
-                    </Suspense>
-                </div>
-            </PurchaseGate>
-        </WebbookLayout>
+                    </Suspense >
+                </div >
+            </PurchaseGate >
+        </WebbookLayout >
     );
 };
 

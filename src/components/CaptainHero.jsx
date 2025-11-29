@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useUser } from '../context/UserContext';
+import useDeviceCapabilities from '../hooks/useDeviceCapabilities';
 
 const CaptainHero = ({
     message,
@@ -15,6 +16,7 @@ const CaptainHero = ({
     const { userState, setUserState } = useUser();
     const [isEditing, setIsEditing] = useState(false);
     const [tempName, setTempName] = useState('');
+    const { isLowEnd, isReducedMotion } = useDeviceCapabilities();
 
     useEffect(() => {
         if (userState?.name) setTempName(userState.name);
@@ -76,9 +78,13 @@ const CaptainHero = ({
                     filter: 'drop-shadow(0 0 20px rgba(6, 182, 212, 0.4)) drop-shadow(0 0 40px rgba(6, 182, 212, 0.2))'
                 }}
             >
-                {/* Multi-layer radial glow effect */}
-                <div className="absolute inset-0 bg-gradient-radial from-cyan-400/50 via-cyan-500/30 to-transparent rounded-full blur-3xl scale-150 animate-pulse" />
-                <div className="absolute inset-0 bg-gradient-radial from-blue-400/30 via-blue-500/20 to-transparent rounded-full blur-3xl scale-[1.8]" />
+                {/* Multi-layer radial glow effect - Disabled on low-end devices */}
+                {!isLowEnd && !isReducedMotion && (
+                    <>
+                        <div className="absolute inset-0 bg-gradient-radial from-cyan-400/50 via-cyan-500/30 to-transparent rounded-full blur-3xl scale-150 animate-pulse" />
+                        <div className="absolute inset-0 bg-gradient-radial from-blue-400/30 via-blue-500/20 to-transparent rounded-full blur-3xl scale-[1.8]" />
+                    </>
+                )}
 
                 {videoSrc ? (
                     <div className="relative w-full h-full">

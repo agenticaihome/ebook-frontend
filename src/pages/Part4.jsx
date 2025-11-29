@@ -2,6 +2,7 @@ import React, { useState, Suspense } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
+import BackgroundEffects from '../components/common/BackgroundEffects';
 import { motion } from 'framer-motion';
 import { Activity, Brain, BookOpen, ArrowRight, Heart, Moon, Database, Coffee } from 'lucide-react';
 
@@ -30,17 +31,13 @@ const Part4 = () => {
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
-
     return (
         <WebbookLayout>
             <PurchaseGate>
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                            <div className="absolute top-20 right-10 w-96 h-96 bg-green-900/30 rounded-full blur-3xl animate-pulse" />
-                            <div className="absolute bottom-0 left-10 w-64 h-64 bg-cyan-900/20 rounded-full blur-3xl" />
-                        </div>
+                        <BackgroundEffects blob1Color="bg-green-900/30" blob2Color="bg-cyan-900/20" />
 
                         <div className="max-w-4xl mx-auto relative z-10">
                             <motion.div
@@ -56,33 +53,35 @@ const Part4 = () => {
                                 <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
                                     Optimize your biology, reduce mental load, and build a Second Brain that never forgets.
                                 </p>
-                            </motion.div>
+                            </motion.div >
 
                             {/* Chapter Navigation */}
-                            <div className="grid md:grid-cols-3 gap-4 mb-12">
-                                {chapters.map((chapter) => {
-                                    const Icon = chapter.icon;
-                                    return (
-                                        <button
-                                            key={chapter.id}
-                                            onClick={() => scrollToChapter(chapter.id)}
-                                            className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
-                                                ? 'border-green-500 bg-green-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
-                                                }`}
-                                        >
-                                            <Icon className={activeChapter === chapter.id ? 'text-green-400' : 'text-slate-500'} size={24} />
-                                            <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
-                                            <div className="font-bold text-white">{chapter.title}</div>
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    </section>
+                            < div className="grid md:grid-cols-3 gap-4 mb-12" >
+                                {
+                                    chapters.map((chapter) => {
+                                        const Icon = chapter.icon;
+                                        return (
+                                            <button
+                                                key={chapter.id}
+                                                onClick={() => scrollToChapter(chapter.id)}
+                                                className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
+                                                    ? 'border-green-500 bg-green-900/20'
+                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                    }`}
+                                            >
+                                                <Icon className={activeChapter === chapter.id ? 'text-green-400' : 'text-slate-500'} size={24} />
+                                                <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
+                                                <div className="font-bold text-white">{chapter.title}</div>
+                                            </button>
+                                        );
+                                    })
+                                }
+                            </div >
+                        </div >
+                    </section >
 
                     {/* Chapter 10: Health & Recovery */}
-                    <section id="chapter-10" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    < section id="chapter-10" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -166,10 +165,10 @@ const Part4 = () => {
                                 </Suspense>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Chapter 11: Mental Wellbeing */}
-                    <section id="chapter-11" className="py-16 px-6">
+                    < section id="chapter-11" className="py-16 px-6" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -214,10 +213,10 @@ const Part4 = () => {
                                 </Suspense>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Chapter 12: Second Brain */}
-                    <section id="chapter-12" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    < section id="chapter-12" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -265,10 +264,10 @@ const Part4 = () => {
                                 </Suspense>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Part 4 Complete */}
-                    <section className="py-16 px-6">
+                    < section className="py-16 px-6" >
                         <div className="max-w-4xl mx-auto">
                             <div className="p-8 bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl border border-green-500/50 text-center">
                                 <h3 className="text-3xl font-bold text-white mb-4">Part 4 Complete! 🚀</h3>
@@ -298,18 +297,18 @@ const Part4 = () => {
                                 </button>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Social Share */}
-                    <Suspense fallback={null}>
+                    < Suspense fallback={null} >
                         <SocialShare
                             title="Using AI to optimize my health and sleep. The data doesn't lie!"
                             hashtags={["AgenticAI", "Biohacking", "HealthTech"]}
                         />
-                    </Suspense>
-                </div>
-            </PurchaseGate>
-        </WebbookLayout>
+                    </Suspense >
+                </div >
+            </PurchaseGate >
+        </WebbookLayout >
     );
 };
 

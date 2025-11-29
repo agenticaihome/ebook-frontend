@@ -1,6 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
+import BackgroundEffects from '../components/common/BackgroundEffects';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Calendar, FileText, ArrowRight, Inbox, Clock, Shield, CheckCircle } from 'lucide-react';
@@ -30,17 +31,13 @@ const Part3 = () => {
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
-
     return (
         <WebbookLayout>
             <PurchaseGate>
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                            <div className="absolute top-20 right-10 w-96 h-96 bg-blue-900/30 rounded-full blur-3xl animate-pulse" />
-                            <div className="absolute bottom-0 left-10 w-64 h-64 bg-indigo-900/20 rounded-full blur-3xl" />
-                        </div>
+                        <BackgroundEffects blob1Color="bg-blue-900/30" blob2Color="bg-indigo-900/20" />
 
                         <div className="max-w-4xl mx-auto relative z-10">
                             <motion.div
@@ -55,33 +52,35 @@ const Part3 = () => {
                                 <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
                                     Reclaim your attention. Build agents to filter noise, protect your time, and handle the paperwork.
                                 </p>
-                            </motion.div>
+                            </motion.div >
 
                             {/* Chapter Navigation */}
-                            <div className="grid md:grid-cols-3 gap-4 mb-12">
-                                {chapters.map((chapter) => {
-                                    const Icon = chapter.icon;
-                                    return (
-                                        <button
-                                            key={chapter.id}
-                                            onClick={() => scrollToChapter(chapter.id)}
-                                            className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
-                                                ? 'border-blue-500 bg-blue-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
-                                                }`}
-                                        >
-                                            <Icon className={activeChapter === chapter.id ? 'text-blue-400' : 'text-slate-500'} size={24} />
-                                            <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
-                                            <div className="font-bold text-white">{chapter.title}</div>
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    </section>
+                            < div className="grid md:grid-cols-3 gap-4 mb-12" >
+                                {
+                                    chapters.map((chapter) => {
+                                        const Icon = chapter.icon;
+                                        return (
+                                            <button
+                                                key={chapter.id}
+                                                onClick={() => scrollToChapter(chapter.id)}
+                                                className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
+                                                    ? 'border-blue-500 bg-blue-900/20'
+                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                    }`}
+                                            >
+                                                <Icon className={activeChapter === chapter.id ? 'text-blue-400' : 'text-slate-500'} size={24} />
+                                                <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
+                                                <div className="font-bold text-white">{chapter.title}</div>
+                                            </button>
+                                        );
+                                    })
+                                }
+                            </div >
+                        </div >
+                    </section >
 
                     {/* Chapter 7: Email */}
-                    <section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    < section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -145,10 +144,10 @@ const Part3 = () => {
                                 </Suspense>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Chapter 8: Calendar */}
-                    <section id="chapter-8" className="py-16 px-6">
+                    < section id="chapter-8" className="py-16 px-6" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -192,10 +191,10 @@ const Part3 = () => {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
 
                     {/* Chapter 9: Admin */}
-                    <section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                    < section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -251,17 +250,17 @@ const Part3 = () => {
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section >
                     {/* Social Share */}
-                    <Suspense fallback={null}>
+                    < Suspense fallback={null} >
                         <SocialShare
                             title="I'm building a 'Calendar Defense System' with AI. No more useless meetings!"
                             hashtags={["AgenticAI", "DeepWork", "Productivity"]}
                         />
-                    </Suspense>
-                </div>
-            </PurchaseGate>
-        </WebbookLayout>
+                    </Suspense >
+                </div >
+            </PurchaseGate >
+        </WebbookLayout >
     );
 };
 
