@@ -61,19 +61,27 @@ const CaptainHero = ({
                 }}
             >
                 {/* Multi-layer radial glow effect */}
-                <div className="absolute inset-0 bg-gradient-radial from-cyan-400/30 via-cyan-500/20 to-transparent rounded-full blur-2xl scale-125 animate-pulse" />
-                <div className="absolute inset-0 bg-gradient-radial from-blue-400/20 via-blue-500/10 to-transparent rounded-full blur-3xl scale-150" />
+                <div className="absolute inset-0 bg-gradient-radial from-cyan-400/50 via-cyan-500/30 to-transparent rounded-full blur-3xl scale-150 animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-radial from-blue-400/30 via-blue-500/20 to-transparent rounded-full blur-3xl scale-[1.8]" />
 
                 {videoSrc ? (
-                    <video
-                        src={videoSrc}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="relative z-10 w-full h-full object-contain mix-blend-normal"
-                        style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))' }}
-                    />
+                    <div className="relative w-full h-full">
+                        <video
+                            src={videoSrc}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="relative z-10 w-full h-full object-contain mix-blend-lighten"
+                            style={{
+                                filter: 'drop-shadow(0 0 15px rgba(6, 182, 212, 0.5)) contrast(1.1) brightness(1.1)',
+                                maskImage: 'radial-gradient(circle at center, black 60%, transparent 95%)',
+                                WebkitMaskImage: 'radial-gradient(circle at center, black 60%, transparent 95%)'
+                            }}
+                        />
+                        {/* Overlay gradient to further blend edges */}
+                        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-cyan-900/20 rounded-full z-20 pointer-events-none" />
+                    </div>
                 ) : (
                     <img
                         src={finalImageSrc}
