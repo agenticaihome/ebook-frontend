@@ -24,7 +24,8 @@ const Dashboard = lazy(() => import('./Dashboard'));
 const ProtectedRoute = lazy(() => import('./components/ProtectedRoute'));
 const HowToBuyErgo = lazy(() => import('./HowToBuyErgo'));
 const WhyErgo = lazy(() => import('./WhyErgo'));
-const HowToPay = lazy(() => import('./HowToPay'));
+const PaymentGuide = lazy(() => import('./PaymentGuide'));
+const ErgoGuide = lazy(() => import('./ErgoGuide'));
 const WalletGuide = lazy(() => import('./WalletGuide'));
 const FAQ = lazy(() => import('./FAQ'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
@@ -99,7 +100,9 @@ const AnimatedRoutes = () => {
         <Route path="/pay-ergo" element={<PageTransition><ErgoPaymentPage /></PageTransition>} />
         <Route path="/how-to-buy-ergo" element={<PageTransition><HowToBuyErgo /></PageTransition>} />
         <Route path="/why-ergo" element={<PageTransition><WhyErgo /></PageTransition>} />
-        <Route path="/how-to-pay" element={<PageTransition><HowToPay /></PageTransition>} />
+        <Route path="/payment-guide" element={<PageTransition><PaymentGuide /></PageTransition>} />
+        <Route path="/ergo-guide" element={<PageTransition><ErgoGuide /></PageTransition>} />
+        <Route path="/how-to-pay" element={<PageTransition><ErgoGuide /></PageTransition>} /> {/* Legacy redirect */}
         <Route path="/wallet-guide" element={<PageTransition><WalletGuide /></PageTransition>} />
         <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
 

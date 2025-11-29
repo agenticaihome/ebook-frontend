@@ -144,16 +144,16 @@ const WebbookLayout = ({ children }) => {
                         <span className="font-medium text-sm">Why Ergo?</span>
                     </Link>
                     <Link
-                        to="/how-to-pay"
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/how-to-pay'
+                        to="/payment-guide"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-green-400 ${location.pathname === '/payment-guide'
                             ? 'bg-green-600 text-white shadow-lg shadow-green-200'
                             : 'text-slate-600 hover:bg-slate-50'
                             }`}
                     >
-                        <span className={location.pathname === '/how-to-pay' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
+                        <span className={location.pathname === '/payment-guide' ? 'text-green-200' : 'text-slate-400 group-hover:text-green-500'}>
                             <Shield size={18} />
                         </span>
-                        <span className="font-medium text-sm">How to Pay Guide</span>
+                        <span className="font-medium text-sm">Payment Guide</span>
                     </Link>
                     <Link
                         to="/how-to-buy-ergo"
