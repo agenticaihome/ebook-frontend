@@ -91,8 +91,8 @@ const CaptainHero = ({
                             className="relative z-10 w-full h-full object-contain mix-blend-lighten"
                             style={{
                                 filter: 'drop-shadow(0 0 15px rgba(6, 182, 212, 0.5)) contrast(1.1) brightness(1.1)',
-                                maskImage: 'radial-gradient(circle at center, black 50%, transparent 85%)',
-                                WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 85%)'
+                                maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
+                                WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)'
                             }}
                         />
                         {/* Overlay gradient to further blend edges */}
