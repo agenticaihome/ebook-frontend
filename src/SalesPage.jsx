@@ -91,7 +91,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
               >
-                Reclaim 10 Hours/Week with <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">AI Agents.</span>
+                Everyone Deserves a <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Personal Assistant.</span> Build Yours Today.
               </motion.h1>
 
               <motion.p
@@ -100,7 +100,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                The interactive webbook that teaches busy professionals how to build a "Household Staff" of autonomous AI agents.
+                The interactive webbook that teaches anyone how to build a "Household Staff" of autonomous AI agents. No coding required.
                 <br /><br />
                 Stop drowning in tasks. Start deploying agents.
               </motion.p>

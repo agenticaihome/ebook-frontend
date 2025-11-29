@@ -18,10 +18,6 @@ const CreateAccountPage = () => {
     const paymentType = searchParams.get('type'); // 'stripe' or 'ergo'
 
     const [email, setEmail] = useState(urlEmail || '');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
 
     const handleCreateAccount = async (e) => {
         e.preventDefault();

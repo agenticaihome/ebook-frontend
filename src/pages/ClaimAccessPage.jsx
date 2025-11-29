@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Search, Loader2, AlertTriangle, ArrowRight, ArrowLeft } from 'lucide-react';
-import { api } from './services/api';
+import { api } from '../services/api';
 
 const ClaimAccessPage = () => {
     const navigate = useNavigate();
