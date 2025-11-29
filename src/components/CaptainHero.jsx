@@ -22,7 +22,7 @@ const CaptainHero = ({
 
     // Map poses to image files
     const poseImages = {
-        default: '/assets/captain-efficiency-dark.png',
+        default: '/assets/captain-efficiency-dark-transparent.png',
         thinking: '/assets/captain-thinking.png',
         pointing: '/assets/captain-pointing.png',
         celebrating: '/assets/captain-celebrating.png',
