@@ -35,43 +35,6 @@ code {
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Import Medical Glassmorphism Design System */
-@import './globals.css';
-
-body {
-  margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.01em;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* Global Focus Styles for Accessibility */
-:focus-visible {
-  outline: 2px solid #22d3ee;
-  /* cyan-400 */
-  outline-offset: 2px;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
 
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
@@ -91,10 +54,13 @@ code {
 
 /* Enhanced glow animation */
 @keyframes captain-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1.2);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.3);
