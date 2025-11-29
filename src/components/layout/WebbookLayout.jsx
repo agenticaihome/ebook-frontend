@@ -8,7 +8,14 @@ const WebbookLayout = ({ children }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isCaptainOpen, setIsCaptainOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const location = useLocation();
+
+    // Check if user is logged in
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, [location]);
 
     // Handle Scroll Progress
     useEffect(() => {
@@ -207,14 +214,24 @@ const WebbookLayout = ({ children }) => {
                         </h1>
                     </div>
 
+
                     <div className="flex items-center gap-4">
-                        <Link to="/login" className="text-sm font-medium text-slate-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg px-2 py-1">
-                            Login
-                        </Link>
-                        <Link to="/pay-ergo" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
-                            Get the System
-                        </Link>
+                        {isLoggedIn ? (
+                            <Link to="/dashboard" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                                Dashboard
+                            </Link>
+                        ) : (
+                            <>
+                                <Link to="/login" className="text-sm font-medium text-slate-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg px-2 py-1">
+                                    Login
+                                </Link>
+                                <Link to="/pay-ergo" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                                    Get the System
+                                </Link>
+                            </>
+                        )}
                     </div>
+
 
                     {/* Progress Bar */}
                     <div className="absolute bottom-0 left-0 h-1 bg-slate-100 w-full">
