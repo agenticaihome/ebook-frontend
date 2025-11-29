@@ -16,13 +16,7 @@ const ClaimAccessPage = () => {
         setLoading(true);
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/payment/claim`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ identifier })
-            });
-
-            const data = await response.json();
+            const data = await api.claimPayment(identifier);
 
             if (data.success) {
                 // Redirect to create account with the found payment details
@@ -32,7 +26,7 @@ const ClaimAccessPage = () => {
             }
         } catch (err) {
             console.error('Claim error:', err);
-            setError('Server error. Please try again.');
+            setError(err.message || 'Server error. Please try again.');
         } finally {
             setLoading(false);
         }

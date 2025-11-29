@@ -130,5 +130,15 @@ export const api = {
       body: JSON.stringify({ sessionId }),
     });
     return handleResponse(response);
+  },
+
+  // Generic Claim (Stripe or Ergo)
+  claimPayment: async (identifier) => {
+    const response = await fetch(`${API_URL}/payment/claim`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify({ identifier }),
+    });
+    return handleResponse(response);
   }
 };
