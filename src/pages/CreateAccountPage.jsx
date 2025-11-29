@@ -3,8 +3,10 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Lock, Mail, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { api } from '../services/api';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const CreateAccountPage = () => {
+    usePageTitle('Create Account');
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
 

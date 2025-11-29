@@ -8,8 +8,10 @@ import {
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import CaptainHero from '../components/CaptainHero';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const Dashboard = () => {
+    usePageTitle('Dashboard');
     const [progress, setProgress] = useState({
         part1: true, // Always unlocked
         part2: false,

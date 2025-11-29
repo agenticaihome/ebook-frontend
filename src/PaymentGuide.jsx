@@ -8,8 +8,10 @@ import {
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
 import { api } from './services/api';
+import { usePageTitle } from './hooks/usePageTitle';
 
 export default function PaymentGuide() {
+    usePageTitle('Payment Options');
     const [email, setEmail] = useState('');
     const [isStripeLoading, setIsStripeLoading] = useState(false);
     const [stripeError, setStripeError] = useState(null);

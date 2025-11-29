@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock, Key, CreditCard, ArrowRight, AlertCircle } from 'lucide-react';
 import { api } from './services/api';
+import { usePageTitle } from './hooks/usePageTitle';
 
 const LoginPage = () => {
+    usePageTitle('Login');
     const [activeTab, setActiveTab] = useState('email');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
