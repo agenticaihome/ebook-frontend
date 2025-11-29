@@ -299,12 +299,14 @@ export default function WhyErgo() {
                             <div className="bg-slate-800 p-6 rounded-xl">
                                 <div className="text-green-400 font-bold mb-2">STEP 1</div>
                                 <h3 className="text-xl font-bold text-white mb-2">Get a Wallet</h3>
-                                <p className="text-slate-400">Nautilus (Browser) or Ergo Mobile Wallet (iOS/Android).</p>
+                                <p className="text-slate-400 mb-2">Nautilus (Browser) or Ergo Mobile Wallet (iOS/Android).</p>
+                                <p className="text-xs text-slate-500 italic">Takes ~5 mins to setup.</p>
                             </div>
                             <div className="bg-slate-800 p-6 rounded-xl">
                                 <div className="text-green-400 font-bold mb-2">STEP 2</div>
                                 <h3 className="text-xl font-bold text-white mb-2">Get ERG</h3>
-                                <p className="text-slate-400">KuCoin, Gate.io, or CoinEx. (Not on Coinbase yet—we're early).</p>
+                                <p className="text-slate-400 mb-2">KuCoin, Gate.io, or CoinEx. (Not on Coinbase yet—we're early).</p>
+                                <p className="text-xs text-slate-500 italic">Takes ~10-15 mins to verify & buy.</p>
                             </div>
                             <div className="bg-slate-800 p-6 rounded-xl">
                                 <div className="text-green-400 font-bold mb-2">STEP 3</div>

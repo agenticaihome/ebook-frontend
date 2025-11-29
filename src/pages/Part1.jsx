@@ -5,6 +5,7 @@ import CaptainTip from '../components/CaptainTip';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
+import { useUser } from '../context/UserContext';
 
 const AIExperienceQuiz = React.lazy(() => import('../components/AIExperienceQuiz'));
 const MentalLoadCalculator = React.lazy(() => import('../components/MentalLoadCalculator'));
@@ -13,10 +14,51 @@ const PrivacyAssessment = React.lazy(() => import('../components/PrivacyAssessme
 const AgentConstitutionBuilder = React.lazy(() => import('../components/AgentConstitutionBuilder'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 
-
 const Part1 = () => {
     const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(1);
+    const { userState } = useUser();
+    const persona = userState?.persona || 'general';
+
+    const getPersonaContent = () => {
+        if (persona === 'professional') {
+            return {
+                role: "Senior Project Manager",
+                chaos: "drowning in Jira tickets, Slack pings, and stakeholder emails",
+                tasks: [
+                    "Sorted emails into 'Urgent Stakeholder', 'Team Updates', and 'FYI'",
+                    "Drafted responses to 3 blockers before she even logged in",
+                    "Flagged a budget discrepancy in the Q4 report",
+                    "Rescheduled a conflicting standup meeting"
+                ]
+            };
+        } else if (persona === 'student') {
+            return {
+                role: "Grad Student",
+                chaos: "juggling thesis research, TA duties, and exam prep",
+                tasks: [
+                    "Summarized 5 new papers relevant to her thesis",
+                    "Drafted email replies to her students' questions",
+                    "Organized her citation library by topic",
+                    "Scheduled study blocks around her most productive hours"
+                ]
+            };
+        } else {
+            // Default / Parent / General
+            return {
+                role: "freelance graphic designer juggling multiple clients and a busy personal life",
+                chaos: "30 minutes of digital chaos",
+                tasks: [
+                    "Sorted her emails into 'urgent client work,' 'invoices to review,' and 'ignorable newsletters'",
+                    "Noticed a conflict between a client call and a personal appointment",
+                    "Seen the electricity bill in her email and scheduled payment",
+                    "Cross-referenced her calendar and dietary preferences to suggest dinner"
+                ]
+            };
+        }
+    };
+
+    const story = getPersonaContent();
 
     const chapters = [
         { id: 1, title: 'What Are AI Agents?', icon: Bot },
@@ -94,10 +136,10 @@ const Part1 = () => {
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">Let's Start With a Story</h3>
                             <p className="text-slate-300 leading-relaxed">
-                                Sarah is a freelance graphic designer juggling multiple clients and a busy personal life. Every morning used to start the same way: 30 minutes of digital chaos.
+                                Sarah is a {story.role}. Every morning used to start the same way: {story.chaos}.
                             </p>
                             <p className="text-slate-300 leading-relaxed">
-                                Check emails. Respond to urgent client requests. Check her personal calendar. Did she pay the electricity bill? What's for dinner? Did she remember to prep for that 2 PM presentation?
+                                Check emails. Respond to urgent requests. Check the calendar. Did she pay the bill? What's for dinner? Did she remember the deadline?
                             </p>
                             <p className="text-slate-300 leading-relaxed">
                                 One day, a tech-savvy friend set her up with what he called an "AI agent." Sarah was skeptical — she'd tried ChatGPT and found it helpful but limited.
@@ -112,22 +154,12 @@ const Part1 = () => {
                             <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 my-6">
                                 <h4 className="text-white font-bold mb-3">The agent has:</h4>
                                 <ul className="space-y-2 text-slate-300">
-                                    <li className="flex items-start gap-2">
-                                        <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
-                                        <span>Sorted her emails into "urgent client work," "invoices to review," and "ignorable newsletters"</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
-                                        <span>Noticed a conflict between a client call and a personal appointment, and suggested three alternative meeting times</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
-                                        <span>Seen the electricity bill in her email, verified it matches last month's amount, and scheduled payment</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
-                                        <span>Cross-referenced her calendar and dietary preferences to suggest a quick, healthy dinner</span>
-                                    </li>
+                                    {story.tasks.map((task, index) => (
+                                        <li key={index} className="flex items-start gap-2">
+                                            <CheckCircle className="text-cyan-400 flex-shrink-0 mt-1" size={18} />
+                                            <span>{task}</span>
+                                        </li>
+                                    ))}
                                 </ul>
                                 <p className="text-cyan-400 font-bold mt-4">
                                     The key difference? Sarah didn't ask it to do any of this. The agent observed, planned, and acted autonomously within boundaries she set.
@@ -462,6 +494,7 @@ const Part1 = () => {
                         </div>
                     </div>
                 </section>
+
                 {/* Social Share */}
                 <Suspense fallback={null}>
                     <SocialShare

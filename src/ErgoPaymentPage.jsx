@@ -247,9 +247,27 @@ const ErgoPaymentPage = () => {
                                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                     </button>
 
-                                    <p className="mt-6 text-sm text-slate-500">
-                                        Secure, decentralized transaction. Instant confirmation.
-                                    </p>
+                                    <div className="mt-8 bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 text-left">
+                                        <div className="flex items-center gap-2 mb-3 text-sm font-bold text-white">
+                                            <Clock size={16} className="text-cyan-400" />
+                                            <span>Time to Complete:</span>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-4 text-xs">
+                                            <div>
+                                                <div className="text-slate-400 mb-1">New to Ergo?</div>
+                                                <div className="text-white font-bold text-sm">~15-20 mins</div>
+                                                <div className="text-slate-500">To setup wallet & buy</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-slate-400 mb-1">Have Ergo?</div>
+                                                <div className="text-white font-bold text-sm">~1-2 mins</div>
+                                                <div className="text-slate-500">To send & confirm</div>
+                                            </div>
+                                        </div>
+                                        <div className="mt-3 pt-2 border-t border-slate-700/50 text-[10px] text-slate-500 italic">
+                                            *Current block time ~2 mins. Soon with sub-blocks, transactions could be confirmed in seconds.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

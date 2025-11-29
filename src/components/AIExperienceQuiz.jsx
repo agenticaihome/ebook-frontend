@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import { useUser } from '../context/UserContext';
 
 const AIExperienceQuiz = () => {
+    const { updatePersona } = useUser();
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState({});
     const [showResults, setShowResults] = useState(false);
@@ -77,6 +79,12 @@ const AIExperienceQuiz = () => {
             setCurrentQuestion(currentQuestion + 1);
         } else {
             setShowResults(true);
+            // Save results to context
+            const results = calculateResults();
+            updatePersona({
+                ...answers,
+                ...results
+            });
         }
     };
 
@@ -178,8 +186,8 @@ const AIExperienceQuiz = () => {
                                             key={option.value}
                                             onClick={() => handleAnswer(questions[currentQuestion].id, option.value)}
                                             className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${isSelected
-                                                    ? 'border-cyan-500 bg-cyan-900/20'
-                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-900/50'
+                                                ? 'border-cyan-500 bg-cyan-900/20'
+                                                : 'border-slate-700 hover:border-slate-600 bg-slate-900/50'
                                                 }`}
                                         >
                                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${isSelected ? 'border-cyan-500 bg-cyan-500' : 'border-slate-600'

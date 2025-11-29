@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
+import { UserProvider } from './context/UserContext';
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
 import { Toaster, toast } from 'react-hot-toast';
@@ -105,20 +106,22 @@ function App() {
   return (
     <Router>
       <SoundProvider>
-        <ScrollToTop />
-        <Suspense fallback={<Loading />}>
-          <AnimatedRoutes />
-          <MobileBottomNav />
-          <Toaster
-            toastOptions={{
-              style: {
-                background: '#1e293b',
-                color: '#fff',
-                border: '1px solid #334155',
-              },
-            }}
-          />
-        </Suspense>
+        <UserProvider>
+          <ScrollToTop />
+          <Suspense fallback={<Loading />}>
+            <AnimatedRoutes />
+            <MobileBottomNav />
+            <Toaster
+              toastOptions={{
+                style: {
+                  background: '#1e293b',
+                  color: '#fff',
+                  border: '1px solid #334155',
+                },
+              }}
+            />
+          </Suspense>
+        </UserProvider>
       </SoundProvider>
     </Router>
   );
