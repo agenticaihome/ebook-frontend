@@ -240,8 +240,8 @@ const ErgoPaymentPage = () => {
                             <div className="space-y-6">
                                 <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
                                     <div className="flex items-center gap-4 mb-6">
-                                        <div className="w-12 h-12 bg-green-500/10 rounded-2xl flex items-center justify-center border border-green-500/20">
-                                            <Smartphone className="w-6 h-6 text-green-400" />
+                                        <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
+                                            <Smartphone className="w-6 h-6 text-cyan-400" />
                                         </div>
                                         <div>
                                             <h3 className="text-xl font-bold text-white">Scan to Pay</h3>
@@ -270,8 +270,8 @@ const ErgoPaymentPage = () => {
                                 {/* Browser Wallet Card */}
                                 <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
                                     <div className="flex items-center gap-4 mb-6">
-                                        <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center border border-blue-500/20">
-                                            <Monitor className="w-6 h-6 text-blue-400" />
+                                        <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
+                                            <Monitor className="w-6 h-6 text-cyan-400" />
                                         </div>
                                         <div>
                                             <h3 className="text-xl font-bold text-white">Browser Wallet</h3>
@@ -289,7 +289,7 @@ const ErgoPaymentPage = () => {
                                             {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus'}
                                         </button>
                                     ) : (
-                                        <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4 flex justify-between items-center">
+                                        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 flex justify-between items-center">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                                                 <span className="text-sm text-blue-200 font-mono">

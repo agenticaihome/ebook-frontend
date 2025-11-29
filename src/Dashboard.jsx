@@ -99,7 +99,7 @@ const Dashboard = () => {
                                     </p>
                                     <button
                                         onClick={handleDownload}
-                                        className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                                        className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-cyan-900/20 flex items-center justify-center gap-2"
                                     >
                                         <Download size={18} />
                                         Access System Materials

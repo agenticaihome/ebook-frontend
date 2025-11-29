@@ -733,7 +733,7 @@ export default function FAQ() {
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Link
                                     to="/pay-ergo"
-                                    className="bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-green-900/20"
+                                    className="bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/20"
                                 >
                                     Get the System ($20 with ERG)
                                 </Link>
