@@ -47,12 +47,9 @@ const CreateAccountPage = () => {
             const data = await api.register(email, password, paymentId);
 
             if (data.success) {
-                // Save auth token
-                localStorage.setItem('auth_token', data.accessToken);
+                // Save auth token (MUST BE 'token' to match API expectations)
+                localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('user_email', email);
-
-                // Mark as having access
-                localStorage.setItem('access_granted', 'true');
 
                 // Redirect to dashboard
                 setTimeout(() => {
