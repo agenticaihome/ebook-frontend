@@ -67,7 +67,7 @@ export default function SalesPage() {
                 className="scale-100 md:scale-110"
                 message="You're running on 4 hours of sleep and 3 deadlines. Let's work with what we've got."
                 videoSrc="/assets/captain-waving.mp4?v=new"
-                imageSrc="/assets/captain-efficiency-dark.png" // Fallback
+                imageSrc="/assets/captain-efficiency-dark-transparent.png" // Fallback
               />
             </div>
 
@@ -432,7 +432,7 @@ export default function SalesPage() {
             <CaptainHero
               size="sm"
               message="I'll be waiting on the other side."
-              imageSrc="/assets/captain-efficiency-dark.png"
+              imageSrc="/assets/captain-efficiency-dark-transparent.png"
               loading="lazy"
             />
           </div>
