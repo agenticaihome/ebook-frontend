@@ -9,7 +9,7 @@ import { routeConfig } from './config/routes';
 
 // Eager load SalesPage
 import SalesPage from './SalesPage';
-import Dashboard from './Dashboard';
+import Dashboard from './pages/Dashboard';
 
 // Lazy load ClaimAccessPage
 const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
