@@ -337,11 +337,15 @@ const ErgoPaymentPage = () => {
                                         </div>
                                         <div>
                                             <h3 className="text-xl font-bold text-white">Manual Transfer</h3>
-                                            <p className="text-sm text-slate-400">Copy & Send</p>
+                                            <p className="text-sm text-slate-400">Copy & Send from any wallet</p>
                                         </div>
                                     </div>
 
                                     <div className="space-y-5">
+                                        <div className="p-4 bg-purple-900/20 border border-purple-500/30 rounded-xl mb-4">
+                                            <p className="text-xs text-purple-300 mb-1">💡 <strong>PRO TIP:</strong></p>
+                                            <p className="text-sm text-slate-300">Send the <strong>EXACT</strong> amount below. The system detects it automatically.</p>
+                                        </div>
                                         <div className="group">
                                             <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Amount (Exact)</label>
                                             <button
@@ -386,12 +390,14 @@ const ErgoPaymentPage = () => {
                                         <div>
                                             <p className="text-white font-medium">Awaiting Transaction...</p>
                                             <p className="text-xs text-slate-400">
-                                                Monitoring blockchain for payment...
+                                                Scanning blockchain for incoming transaction...
                                             </p>
                                         </div>
                                     </div>
                                     <div className="text-right hidden md:block">
-                                        <p className="text-xs text-slate-500 font-mono">ID: {accessCode}</p>
+                                        <div className="inline-block px-2 py-1 bg-slate-800 rounded text-xs font-mono text-slate-500 border border-slate-700">
+                                            Session ID: {accessCode}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

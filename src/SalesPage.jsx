@@ -366,9 +366,18 @@ export default function SalesPage() {
                   disabled={isStripeLoading}
                   className="w-full bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 flex items-center justify-center gap-2"
                 >
-                  {isStripeLoading ? <Loader2 className="animate-spin" /> : 'Get Instant Access'}
+                  {isStripeLoading ? <Loader2 className="animate-spin" /> : (
+                    <>
+                      <Lock size={18} />
+                      <span>Secure Checkout - Instant Access</span>
+                    </>
+                  )}
                 </button>
-                <p className="text-xs text-slate-500">Secure payment via Stripe. 30-day money-back guarantee.</p>
+                <div className="flex items-center justify-center gap-4 mt-4 text-slate-500 text-xs">
+                  <div className="flex items-center gap-1"><Shield size={12} /> 256-bit SSL Secure</div>
+                  <div className="flex items-center gap-1"><CreditCard size={12} /> Stripe Encrypted</div>
+                </div>
+                <p className="text-xs text-slate-500 text-center mt-2">30-day money-back guarantee. No questions asked.</p>
               </div>
             </div>
 
