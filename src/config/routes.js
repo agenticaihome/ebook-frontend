@@ -18,6 +18,7 @@ export const routeConfig = {
     createAccount: createRoute(() => import('../pages/CreateAccountPage')),
     login: createRoute(() => import('../LoginPage')),
     ergoPayment: createRoute(() => import('../ErgoPaymentPage')),
+    unifiedCheckout: createRoute(() => import('../pages/UnifiedCheckout')),
     dashboard: createRoute(() => import('../pages/Dashboard')),
     whyErgo: createRoute(() => import('../WhyErgo')),
     paymentGuide: createRoute(() => import('../PaymentGuide')),

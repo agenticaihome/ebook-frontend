@@ -77,7 +77,7 @@ const WebbookLayout = ({ children }) => {
                     sidebar: "You are now the Architect of your own time. Build wisely.",
                     tip: "Review your agent logs weekly. It's like a staff meeting, but much shorter."
                 };
-            case '/payment-guide':
+            case '/checkout':
                 return {
                     sidebar: "Investing in yourself is the best ROI there is.",
                     tip: "Ergo payments are secure and give you a 50% discount. It's a no-brainer."
@@ -187,13 +187,13 @@ const WebbookLayout = ({ children }) => {
                 </div>
                 <nav className="px-4 space-y-2 mb-4" aria-label="Support Navigation">
                     <PrefetchLink
-                        to="/payment-guide"
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/payment-guide'
+                        to="/checkout"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/checkout'
                             ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
                             : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/payment-guide' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                        <span className={location.pathname === '/checkout' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
                             <Shield size={18} />
                         </span>
                         <span className="font-medium text-sm">Payment Guide</span>
@@ -273,7 +273,7 @@ const WebbookLayout = ({ children }) => {
                                 <Link to="/login" className="text-sm font-medium text-slate-400 hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg px-2 py-1">
                                     Login
                                 </Link>
-                                <Link to="/payment-guide" className="bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan-500 transition-colors shadow-lg shadow-cyan-900/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                                <Link to="/checkout" className="bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-cyan-500 transition-colors shadow-lg shadow-cyan-900/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900">
                                     Get the System
                                 </Link>
                             </>

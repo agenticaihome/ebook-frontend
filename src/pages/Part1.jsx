@@ -511,10 +511,10 @@ const Part1 = () => {
                             </div>
 
                             <button
-                                onClick={() => navigate('/payment-guide')}
+                                onClick={() => navigate('/checkout')}
                                 className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-all"
                             >
-                                Continue to Payment Guide
+                                Continue to Checkout
                                 <ArrowRight size={20} />
                             </button>
                         </div>

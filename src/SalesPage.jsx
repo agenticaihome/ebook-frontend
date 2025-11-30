@@ -18,7 +18,7 @@ export default function SalesPage() {
   const isPerformanceMode = usePerformanceMode();
 
   const handleErgoPayment = () => {
-    navigate('/payment-guide');
+    navigate('/checkout');
   };
 
   const handleStripePayment = async () => {
