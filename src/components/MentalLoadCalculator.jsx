@@ -222,7 +222,7 @@ const MentalLoadCalculator = () => {
                     <div className="text-center mb-8">
                         <div className="mb-4">
                             <div className={`text-6xl font-bold ${getScoreColor(results.score)}`}>
-                                {results.score}/10
+                                {results.score}%
                             </div>
                             <div className="text-slate-400 mt-2">{getScoreLabel(results.score)}</div>
                         </div>

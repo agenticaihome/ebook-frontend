@@ -6,8 +6,9 @@ const EfficiencyBadge = ({ savedHours, yearlySaved }) => {
     const [copied, setCopied] = useState(false);
 
     const getRank = (hours) => {
-        if (hours > 1000) return { title: "Time Lord", color: "text-purple-400", bg: "from-purple-900/50 to-indigo-900/50", border: "border-purple-500" };
-        if (hours > 500) return { title: "Efficiency Expert", color: "text-cyan-400", bg: "from-cyan-900/50 to-blue-900/50", border: "border-cyan-500" };
+        // Lower hours spent = higher efficiency rank (inverted logic)
+        if (hours < 100) return { title: "Time Lord", color: "text-purple-400", bg: "from-purple-900/50 to-indigo-900/50", border: "border-purple-500" };
+        if (hours < 300) return { title: "Efficiency Expert", color: "text-cyan-400", bg: "from-cyan-900/50 to-blue-900/50", border: "border-cyan-500" };
         return { title: "Productivity Seeker", color: "text-green-400", bg: "from-green-900/50 to-emerald-900/50", border: "border-green-500" };
     };
 
