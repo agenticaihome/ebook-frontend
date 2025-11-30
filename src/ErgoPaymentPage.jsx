@@ -200,8 +200,8 @@ const ErgoPaymentPage = () => {
                     className="text-center mb-16"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
-                        <ShieldCheck className="w-4 h-4 text-green-400" />
-                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">Secure Payment Gateway</span>
+                        <img src="/assets/ergo-logo.png" alt="Ergo" className="w-4 h-4 object-contain invert" />
+                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">Powered by Ergo</span>
                     </div>
                     <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 mb-6 tracking-tight">
                         Unlock <span className="text-cyan-400">Full Access</span>
@@ -234,7 +234,8 @@ const ErgoPaymentPage = () => {
                                             <span className="text-5xl font-bold text-white">$19.99</span>
                                             <span className="text-xl text-slate-500 line-through">$39.99</span>
                                         </div>
-                                        <div className="mt-4 inline-block bg-cyan-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20">
+                                        <div className="mt-4 inline-flex items-center gap-2 bg-cyan-500/10 px-4 py-1.5 rounded-full border border-cyan-500/20">
+                                            <img src="/assets/ergo-logo.png" alt="Ergo" className="w-4 h-4 object-contain invert" />
                                             <p className="text-cyan-400 text-sm font-medium">≈ {ergAmount?.toFixed(4)} ERG</p>
                                         </div>
                                     </div>

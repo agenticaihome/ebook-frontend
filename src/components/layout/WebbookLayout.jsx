@@ -163,7 +163,7 @@ const WebbookLayout = ({ children }) => {
                             }`}
                     >
                         <span className={location.pathname === '/why-ergo' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
-                            <Zap size={18} />
+                            <img src="/assets/ergo-logo.png" alt="Ergo" className="w-5 h-5 object-contain invert opacity-70 group-hover:opacity-100 transition-opacity" />
                         </span>
                         <span className="font-medium text-sm">Why Ergo?</span>
                     </PrefetchLink>
