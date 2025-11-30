@@ -11,13 +11,7 @@ const PurchaseGate = ({ children }) => {
     useEffect(() => {
         const checkAccess = async () => {
             try {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                    setHasAccess(false);
-                    setIsLoading(false);
-                    return;
-                }
-
+                // JWT in httpOnly cookie - API call will send it automatically
                 const response = await api.checkAccess();
                 setHasAccess(response.hasAccess);
             } catch (error) {

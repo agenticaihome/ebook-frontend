@@ -43,25 +43,7 @@ const LoginPage = () => {
         if (password.length > 128) {
             setError('Password is too long.');
             setIsLoading(false);
-            return;
-        }
-
-        try {
-            // Don't store password in variable - use directly
-            const data = await api.login(cleanEmail, password);
-            localStorage.setItem('token', data.token);
-
-            // Clear sensitive data
-            setEmail('');
-            setPassword('');
-
-            navigate('/dashboard');
-        } catch (err) {
-            setError(err.message || 'Login failed. Please check your credentials.');
-        } finally {
-            setIsLoading(false);
-        }
-    }, 2000);
+        }, 2000);
 
     const handleErgoClaim = async (e) => {
         e.preventDefault();

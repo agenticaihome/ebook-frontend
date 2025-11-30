@@ -49,8 +49,7 @@ const CreateAccountPage = () => {
             const data = await api.register(email, password, paymentId);
 
             if (data.success) {
-                // Save auth token (MUST BE 'token' to match API expectations)
-                localStorage.setItem('token', data.accessToken);
+                // JWT is now in httpOnly cookie - no localStorage needed
                 localStorage.setItem('user_email', email);
 
                 // Redirect to dashboard
