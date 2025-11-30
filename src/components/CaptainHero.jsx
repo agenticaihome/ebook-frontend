@@ -135,25 +135,39 @@ const CaptainHero = ({
                         <div className="text-cyan-400 font-bold text-xs uppercase tracking-wider">
                             Captain Efficiency
                         </div>
-                        {/* Name setting removed per user request */}
                     </div>
 
-                    {isEditing ? (
-                        <form onSubmit={handleNameSubmit} className="mb-2 flex gap-2">
-                            <input
-                                type="text"
-                                value={tempName}
-                                onChange={(e) => setTempName(e.target.value)}
-                                placeholder="Enter your name"
-                                className="bg-slate-900 border border-slate-600 rounded px-2 py-1 text-sm text-white focus:border-cyan-500 outline-none w-full"
-                                autoFocus
-                            />
-                            <button type="submit" className="text-xs bg-cyan-600 px-2 py-1 rounded text-white hover:bg-cyan-500">Save</button>
-                        </form>
-                    ) : (
-                        <p className="text-slate-200 text-sm md:text-base leading-relaxed">
-                            "{personalizedMessage}"
-                        </p>
+                    <p className="text-slate-200 text-sm md:text-base leading-relaxed">
+                        "{personalizedMessage}"
+                    </p>
+
+                    {(!userState?.name || isEditing) && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            className="mt-3 pt-3 border-t border-white/10"
+                        >
+                            <p className="text-xs text-cyan-300 mb-2 font-medium">
+                                {isEditing ? "Update your alias:" : "To serve you better, what should I call you?"}
+                            </p>
+                            <form onSubmit={handleNameSubmit} className="flex gap-2">
+                                <input
+                                    type="text"
+                                    value={tempName}
+                                    onChange={(e) => setTempName(e.target.value)}
+                                    placeholder="Enter your name"
+                                    className="bg-slate-900/50 border border-slate-600 rounded px-3 py-1.5 text-sm text-white focus:border-cyan-500 outline-none w-full placeholder-slate-500 transition-colors"
+                                    autoFocus={!userState?.name}
+                                />
+                                <button
+                                    type="submit"
+                                    disabled={!tempName.trim()}
+                                    className="text-xs bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed text-white px-3 py-1.5 rounded font-medium transition-colors whitespace-nowrap"
+                                >
+                                    {isEditing ? "Save" : "Confirm"}
+                                </button>
+                            </form>
+                        </motion.div>
                     )}
                 </motion.div>
             )}
