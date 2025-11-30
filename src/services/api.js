@@ -45,7 +45,7 @@ export const api = {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
       headers: getHeaders(),
-      credentials: 'include', // CRITICAL: Send/receive cookies
+      credentials: 'include',
       body: JSON.stringify({ email, password }),
     });
     return handleResponse(response);
@@ -129,24 +129,6 @@ export const api = {
     return handleResponse(response);
   },
 
-  // Access Control
-  verifyAccess: async (password) => {
-    try {
-      const response = await fetch(`${API_URL}/auth/verify-access`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ password }),
-      });
-      return await response.json();
-    } catch (error) {
-      console.error('Auth verification error:', error);
-      return { success: false, error: 'Connection failed' };
-    }
-  },
-
   // Stripe
   createStripeCheckout: async (email) => {
     const response = await fetch(`${API_URL}/payment/stripe/checkout`, {
@@ -168,7 +150,7 @@ export const api = {
     return handleResponse(response);
   },
 
-  // Generic Claim (Stripe or Ergo)
+  // Generic Claim
   claimPayment: async (identifier) => {
     const response = await fetch(`${API_URL}/payment/claim`, {
       method: 'POST',
@@ -177,6 +159,18 @@ export const api = {
       body: JSON.stringify({ identifier }),
     });
     return handleResponse(response);
+  },
+
+  // AI
+  getAiTip: async (context) => {
+    try {
+      const response = await fetch(`${API_URL}/ai/tip?context=${encodeURIComponent(context)}`);
+      if (!response.ok) throw new Error('Failed to fetch tip');
+      return await response.json();
+    } catch (error) {
+      console.error('AI Tip Error:', error);
+      return null;
+    }
   }
 };
 

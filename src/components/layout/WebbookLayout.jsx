@@ -4,6 +4,7 @@ import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import PrefetchLink from './PrefetchLink';
 
+import CaptainTips from '../CaptainTips';
 import PreLaunchBanner from '../common/PreLaunchBanner';
 
 const WebbookLayout = ({ children }) => {
@@ -297,37 +298,7 @@ const WebbookLayout = ({ children }) => {
             </div>
 
             {/* Floating Captain Helper */}
-            <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-4">
-                <AnimatePresence>
-                    {isCaptainOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                            className="bg-white p-6 rounded-2xl shadow-2xl border border-blue-100 w-72 mb-2 relative"
-                        >
-                            <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white transform rotate-45 border-r border-b border-blue-100"></div>
-                            <h3 className="font-bold text-blue-900 mb-2 flex items-center gap-2">
-                                <Zap size={16} className="text-yellow-500" />
-                                Quick Tip
-                            </h3>
-                            <p className="text-sm text-slate-600 leading-relaxed">
-                                {captainMessages.tip}
-                            </p>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setIsCaptainOpen(!isCaptainOpen)}
-                    className="w-14 h-14 bg-blue-600 rounded-full shadow-xl flex items-center justify-center text-white border-4 border-white ring-4 ring-blue-100"
-                    aria-label="Toggle Captain Efficiency Assistant"
-                >
-                    <span className="font-bold text-xl">CE</span>
-                </motion.button>
-            </div>
+            <CaptainTips />
         </div>
     );
 };

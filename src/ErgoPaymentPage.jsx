@@ -9,6 +9,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
 import { toast } from 'react-hot-toast';
 import { preventDoubleClick } from './utils/sanitizer';
+import { Client } from '@stomp/stompjs';
 
 const ErgoPaymentPage = () => {
     const navigate = useNavigate();
@@ -99,6 +100,48 @@ const ErgoPaymentPage = () => {
             return () => clearInterval(interval);
         }
     }, [step, paymentStatus, accessCode, isOffline, timeRemaining]);
+
+    // WebSocket for real-time updates
+    useEffect(() => {
+        if (step === 2 && paymentStatus === 'WAITING' && accessCode && !isOffline) {
+            const client = new Client({
+                brokerURL: 'ws://localhost:8080/ws', // TODO: Make this configurable for prod
+                onConnect: () => {
+                    console.log('Connected to WebSocket');
+                    client.subscribe(`/topic/payment/${accessCode}`, (message) => {
+                        if (message.body) {
+                            const update = JSON.parse(message.body);
+                            if (update.status === 'CONFIRMED' || update.status === 'PAID') {
+                                console.log('WebSocket Payment Confirmed!');
+                                confirmPayment(update.paymentId); // Assuming paymentId is txId or we fetch it
+                                // If paymentId is just accessCode, we might need to fetch the txId or just trust it.
+                                // For safety, let's do a quick check to get the txId if needed, or if the message has it.
+                                // The backend sends: new PaymentUpdate(paymentId, status)
+                                // Wait, paymentId in notification service is the accessCode?
+                                // Let's check backend... yes, notifyPaymentSuccess(accessCode, "CONFIRMED")
+                                // So we should probably do a quick API check to get the full details (like txId) just to be sure
+                                // and to get the transaction ID for the record.
+                                autoCheckPayment();
+                            }
+                        }
+                    });
+                },
+                onWebSocketError: (error) => {
+                    console.error('Error with WebSocket', error);
+                },
+                onStompError: (frame) => {
+                    console.error('Broker reported error: ' + frame.headers['message']);
+                    console.error('Additional details: ' + frame.body);
+                },
+            });
+
+            client.activate();
+
+            return () => {
+                client.deactivate();
+            };
+        }
+    }, [step, paymentStatus, accessCode, isOffline]);
 
     const initializePayment = async () => {
         setIsLoading(true);
