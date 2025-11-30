@@ -236,32 +236,71 @@ export default function WhyErgo() {
 
                 {/* SECTION 6: THE ECOSYSTEM */}
                 <section className="py-24 px-6">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="text-3xl font-bold text-white mb-12 text-center">Not Vaporware. Real Apps.</h2>
-                        <div className="grid md:grid-cols-3 gap-6 text-center">
-                            <div className="p-6 bg-slate-800/30 rounded-xl">
-                                <h3 className="font-bold text-white mb-2">Spectrum DEX</h3>
-                                <p className="text-sm text-slate-400">Decentralized Exchange</p>
+                    <div className="max-w-6xl mx-auto">
+                        <h2 className="text-3xl font-bold text-white mb-4 text-center">The Ecosystem</h2>
+                        <p className="text-slate-400 text-center mb-16 max-w-2xl mx-auto">
+                            Ergo isn't just a currency; it's a platform for decentralized applications that respect your privacy and autonomy.
+                        </p>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {/* Category 1: DeFi */}
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-green-400 border-b border-green-500/30 pb-2 mb-4">DeFi & Finance</h3>
+
+                                <a href="https://spectrum.fi" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-green-400 transition-colors">Spectrum Finance</div>
+                                    <div className="text-sm text-slate-400">The #1 Decentralized Exchange (DEX). Swap assets without a middleman.</div>
+                                </a>
+
+                                <a href="https://mew.fi" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-green-400 transition-colors">MewFinance</div>
+                                    <div className="text-sm text-slate-400">Lending, borrowing, and stablecoins. Banking without the bank.</div>
+                                </a>
+
+                                <a href="https://sigmafi.org" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-green-400 transition-colors">SigmaFi</div>
+                                    <div className="text-sm text-slate-400">Peer-to-peer bonds and loans. Trustless financial agreements.</div>
+                                </a>
                             </div>
-                            <div className="p-6 bg-slate-800/30 rounded-xl">
-                                <h3 className="font-bold text-white mb-2">SigmaFi</h3>
-                                <p className="text-sm text-slate-400">P2P Lending</p>
+
+                            {/* Category 2: Infrastructure */}
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-cyan-400 border-b border-cyan-500/30 pb-2 mb-4">Infrastructure</h3>
+
+                                <a href="https://rosen.tech" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Rosen Bridge</div>
+                                    <div className="text-sm text-slate-400">Trustless cross-chain bridge connecting Ergo to Bitcoin, Ethereum, and Cardano.</div>
+                                </a>
+
+                                <a href="https://ergomixer.org" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Ergo Mixer</div>
+                                    <div className="text-sm text-slate-400">Non-custodial privacy. Protect your financial history.</div>
+                                </a>
+
+                                <a href="https://nautilus.wallet" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Nautilus Wallet</div>
+                                    <div className="text-sm text-slate-400">The privacy-first wallet that puts you in control.</div>
+                                </a>
                             </div>
-                            <div className="p-6 bg-slate-800/30 rounded-xl">
-                                <h3 className="font-bold text-white mb-2">Ergo Mixer</h3>
-                                <p className="text-sm text-slate-400">Non-custodial Privacy</p>
-                            </div>
-                            <div className="p-6 bg-slate-800/30 rounded-xl">
-                                <h3 className="font-bold text-white mb-2">Rosen Bridge</h3>
-                                <p className="text-sm text-slate-400">Trustless Cross-Chain</p>
-                            </div>
-                            <div className="p-6 bg-slate-800/30 rounded-xl">
-                                <h3 className="font-bold text-white mb-2">SkyHarbor</h3>
-                                <p className="text-sm text-slate-400">NFT Marketplace</p>
-                            </div>
-                            <div className="p-6 bg-slate-800/30 rounded-xl border border-green-500/30">
-                                <h3 className="font-bold text-green-400 mb-2">Agentic AI</h3>
-                                <p className="text-sm text-slate-400">This Course!</p>
+
+                            {/* Category 3: Gaming & NFT */}
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-purple-400 border-b border-purple-500/30 pb-2 mb-4">Gaming & Culture</h3>
+
+                                <a href="https://cyberverse.gg" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-purple-400 transition-colors">CyberVerse</div>
+                                    <div className="text-sm text-slate-400">Open-world RPG powered by blockchain assets. Play to own.</div>
+                                </a>
+
+                                <a href="https://skyharbor.io" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-purple-400 transition-colors">SkyHarbor</div>
+                                    <div className="text-sm text-slate-400">The premier NFT marketplace for digital art and collectibles.</div>
+                                </a>
+
+                                <a href="https://sigmaverse.io" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-purple-400 transition-colors">SigmaValley</div>
+                                    <div className="text-sm text-slate-400">The metaverse headquarters for the Ergo community.</div>
+                                </a>
                             </div>
                         </div>
                     </div>

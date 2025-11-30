@@ -386,7 +386,7 @@ const Part1 = () => {
                             <CaptainHero
                                 size="md"
                                 pose="working"
-                                message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. You don't need all of them. You probably need TWO or THREE, tops. Let me help you pick the right ones for YOUR situation — without the tech jargon headache."
+                                message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. We're not going to open the floodgates. We're going to build a fortress with a very specific, guarded drawbridge. You stay safe, but you still get the superpowers."
                             />
                         </Suspense>
 
