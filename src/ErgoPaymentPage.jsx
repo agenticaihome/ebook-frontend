@@ -519,29 +519,64 @@ const ErgoPaymentPage = () => {
                                     </div>
 
                                     <div className="space-y-5">
-                                        <div className="p-4 bg-purple-900/20 border border-purple-500/30 rounded-xl mb-4">
-                                            <p className="text-xs text-purple-300 mb-1">💡 <strong>PRO TIP:</strong></p>
-                                            <p className="text-sm text-slate-300">Send the <strong>EXACT</strong> amount below. The system detects it automatically.</p>
-                                        </div>
-                                        <div className="group">
-                                            <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Amount (Exact)</label>
-                                            <button
-                                                onClick={() => copyToClipboard(ergAmount.toString(), setCopiedAmount)}
-                                                className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
-                                            >
-                                                <span className="text-2xl font-mono font-bold text-white">{ergAmount} <span className="text-sm text-slate-500 font-sans font-normal">ERG</span></span>
-                                                {copiedAmount ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white" />}
-                                            </button>
+                                        {/* Big Prominent Amount Box */}
+                                        <div className="relative group">
+                                            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
+                                            <div className="relative bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-2 border-purple-500/50 rounded-2xl p-6">
+                                                <div className="text-center mb-4">
+                                                    <p className="text-xs text-purple-300 uppercase tracking-widest mb-2 font-bold">⚡ EXACT AMOUNT TO SEND ⚡</p>
+                                                    <p className="text-[10px] text-slate-400">Copy this exact amount - DO NOT round or change it</p>
+                                                </div>
+
+                                                <button
+                                                    onClick={() => copyToClipboard(ergAmount?.toFixed(8) || '0', setCopiedAmount)}
+                                                    className="w-full bg-black/40 hover:bg-black/60 border-2 border-purple-400/50 hover:border-purple-400 rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                                >
+                                                    <div className="flex items-center justify-between mb-2">
+                                                        <span className="text-xs text-purple-300 font-semibold">CLICK TO COPY</span>
+                                                        {copiedAmount ? (
+                                                            <div className="flex items-center gap-2 text-green-400">
+                                                                <Check className="w-5 h-5" />
+                                                                <span className="text-sm font-bold">Copied!</span>
+                                                            </div>
+                                                        ) : (
+                                                            <Copy className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
+                                                        )}
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <span className="text-4xl md:text-5xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300">
+                                                            {ergAmount?.toFixed(8) || '0.00000000'}
+                                                        </span>
+                                                        <div className="text-xl text-purple-300/80 font-bold mt-2">ERG</div>
+                                                    </div>
+                                                    <div className="mt-3 text-xs text-slate-400">
+                                                        ≈ $19.99 USD {ergPrice && <span className="text-slate-500">(@ ${ergPrice?.toFixed(2)}/ERG)</span>}
+                                                    </div>
+                                                </button>
+
+                                                <div className="mt-4 flex items-start gap-2 text-xs text-amber-300/90 bg-amber-900/20 border border-amber-500/20 rounded-lg p-3">
+                                                    <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                                                    <p><strong>Important:</strong> Send this EXACT amount. Rounding will cause your payment to fail.</p>
+                                                </div>
+                                            </div>
                                         </div>
 
+                                        {/* Wallet Address */}
                                         <div className="group">
-                                            <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Recipient Address</label>
+                                            <label className="text-xs text-slate-400 uppercase tracking-wider mb-2 block font-semibold">Send to this address:</label>
                                             <button
                                                 onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
-                                                className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
+                                                className="w-full bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600/50 hover:border-slate-500 rounded-xl p-4 flex items-center justify-between transition-all hover:scale-[1.01]"
                                             >
-                                                <span className="text-sm font-mono text-slate-300 truncate mr-4">{walletAddress}</span>
-                                                {copiedAddress ? <Check className="w-5 h-5 text-green-400 flex-shrink-0" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white flex-shrink-0" />}
+                                                <span className="text-sm font-mono text-slate-200 truncate mr-4">{walletAddress}</span>
+                                                {copiedAddress ? (
+                                                    <div className="flex items-center gap-2 text-green-400 flex-shrink-0">
+                                                        <Check className="w-4 h-4" />
+                                                        <span className="text-xs">Copied</span>
+                                                    </div>
+                                                ) : (
+                                                    <Copy className="w-4 h-4 text-slate-400 group-hover:text-slate-200 flex-shrink-0" />
+                                                )}
                                             </button>
                                         </div>
 
