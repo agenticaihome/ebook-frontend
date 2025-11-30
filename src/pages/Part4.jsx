@@ -301,7 +301,8 @@ const Part4 = () => {
 
                     {/* Social Share */}
                     < Suspense fallback={null} >
-                        <h3 className="text-2xl font-bold text-green-400 mt-12 mb-4">The Sleep Debt Compound Effect</h3>
+                        <SocialShare
+                                <h3 className="text-2xl font-bold text-green-400 mt-12 mb-4">The Sleep Debt Compound Effect</h3>
                         <div className="grid md:grid-cols-2 gap-6 my-8">
                             <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
                                 <h4 className="text-white font-bold mb-3">Ignoring Biology</h4>
@@ -359,7 +360,7 @@ const Part4 = () => {
                         </Suspense>
                 </div>
             </div>
-        </section>
+        </section >
 
                     {/* Chapter 11: Mental Wellbeing */ }
     < section id="chapter-11" className="py-16 px-6" >
@@ -501,7 +502,7 @@ const Part4 = () => {
         />
     </Suspense >
                 </div >
-            </PurchaseGate >
+            </PasswordGate > >
         </WebbookLayout >
     );
 };

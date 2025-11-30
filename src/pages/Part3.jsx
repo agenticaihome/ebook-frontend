@@ -253,8 +253,8 @@ const Part3 = () => {
                     </section >
                     {/* Social Share */}
                     < Suspense fallback={null} >
-                        const Icon = chapter.icon;
-                        return (
+                        <SocialShare
+                            return (
                         <button
                             key={chapter.id}
                             onClick={() => scrollToChapter(chapter.id)}
@@ -268,14 +268,14 @@ const Part3 = () => {
                             <div className="font-bold text-white">{chapter.title}</div>
                         </button>
                         );
-                    })
-                }
-                </div>
-            </div>
-        </section>
+                                    })
+                                }
+                </div >
+            </div >
+        </section >
 
                     {/* Chapter 7: Email */ }
-    <section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+    < section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
         <div className="max-w-4xl mx-auto">
             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                 <CaptainHero
@@ -339,10 +339,10 @@ const Part3 = () => {
                 </Suspense>
             </div>
         </div>
-    </section>
+    </section >
 
     {/* Chapter 8: Calendar */ }
-    <section id="chapter-8" className="py-16 px-6">
+    < section id="chapter-8" className="py-16 px-6" >
         <div className="max-w-4xl mx-auto">
             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                 <CaptainHero
@@ -386,10 +386,10 @@ const Part3 = () => {
                 </div>
             </div>
         </div>
-    </section>
+    </section >
 
     {/* Chapter 9: Admin */ }
-    <section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+    < section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
         <div className="max-w-4xl mx-auto">
             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                 <CaptainHero
@@ -445,14 +445,14 @@ const Part3 = () => {
                 </div>
             </div>
         </div>
-    </section>
+    </section >
     {/* Social Share */ }
-    <Suspense fallback={null}>
+    < Suspense fallback={null} >
         <SocialShare
             title="I'm building a 'Calendar Defense System' with AI. No more useless meetings!"
             hashtags={["AgenticAI", "DeepWork", "Productivity"]}
         />
-    </Suspense>
+    </Suspense >
                 </div >
             </PasswordGate >
         </WebbookLayout >
