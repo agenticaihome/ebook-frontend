@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Wallet, Copy, Check, AlertTriangle, ArrowRight, ArrowLeft,
-    CheckCircle2, Clock, Smartphone, Loader2, Monitor, ExternalLink, ShieldCheck
+    CheckCircle2, Clock, Smartphone, Loader2, Monitor, ExternalLink, ShieldCheck,
+    HelpCircle, BookOpen, X
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
@@ -24,6 +25,7 @@ const ErgoPaymentPage = () => {
     const [copiedAmount, setCopiedAmount] = useState(false);
     const [paymentStatus, setPaymentStatus] = useState('WAITING'); // WAITING, CHECKING, CONFIRMED
     const [error, setError] = useState('');
+    const [showHelper, setShowHelper] = useState(false);
     const [nautilusConnected, setNautilusConnected] = useState(false);
     const [userWalletAddress, setUserWalletAddress] = useState('');
     const [isOffline, setIsOffline] = useState(!navigator.onLine);
@@ -81,6 +83,10 @@ const ErgoPaymentPage = () => {
                     if (prev <= 0) {
                         setError('Payment window expired. Please generate a new payment.');
                         return 0;
+                    }
+                    // Show helper at 10 minutes remaining (20 minutes elapsed)
+                    if (prev === 10 * 60) {
+                        setShowHelper(true);
                     }
                     return prev - 1;
                 });
@@ -572,6 +578,50 @@ const ErgoPaymentPage = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Gentle Helper Card (appears after 20 min) */}
+                            {showHelper && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="lg:col-span-2 mt-4"
+                                >
+                                    <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6">
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <HelpCircle className="w-5 h-5 text-blue-400" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-white font-bold mb-2">Taking longer than expected?</h3>
+                                                <p className="text-slate-300 text-sm mb-4">
+                                                    No worries! Blockchain transactions can sometimes take a bit longer. Here are some options:
+                                                </p>
+                                                <div className="flex flex-col sm:flex-row gap-3">
+                                                    <a
+                                                        href="/why-ergo"
+                                                        className="flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-lg text-blue-300 text-sm font-medium transition-colors"
+                                                    >
+                                                        <BookOpen size={16} />
+                                                        Troubleshooting Guide
+                                                    </a>
+                                                    <a
+                                                        href="/unified-checkout"
+                                                        className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-slate-300 text-sm font-medium transition-colors"
+                                                    >
+                                                        Or try Stripe checkout
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <button
+                                                onClick={() => setShowHelper(false)}
+                                                className="text-slate-500 hover:text-white transition-colors"
+                                            >
+                                                <X size={20} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
                         </motion.div>
                     )}
 

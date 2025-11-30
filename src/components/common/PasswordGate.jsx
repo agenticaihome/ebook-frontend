@@ -1,105 +1,112 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
-import CaptainHero from '../CaptainHero';
-import { api } from '../../services/api';
+import { motion } from 'framer-motion';
+import { Lock, AlertCircle } from 'lucide-react';
 
-const PasswordGate = ({ children, partName = "This Section" }) => {
+const PasswordGate = ({ children, partNumber }) => {
     const [password, setPassword] = useState('');
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isUnlocked, setIsUnlocked] = useState(() => {
+        // Check sessionStorage
+        return sessionStorage.getItem('beta_access') === 'true';
+    });
     const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [isShaking, setIsShaking] = useState(false);
 
-    useEffect(() => {
-        const auth = sessionStorage.getItem(`auth_${partName}`);
-        if (auth === 'true') {
-            setIsAuthenticated(true);
-        }
-    }, [partName]);
+    const BETA_PASSWORD = 'family1!';
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setIsLoading(true);
-        setError('');
 
-        try {
-            const response = await api.verifyAccess(password);
-
-            if (response.success) {
-                setIsAuthenticated(true);
-                sessionStorage.setItem(`auth_${partName}`, 'true');
-            } else {
-                setError(response.error || 'Incorrect password');
-            }
-        } catch (err) {
-            console.error("Auth error:", err);
-            setError('Authentication failed. Please try again.');
-        } finally {
-            setIsLoading(false);
+        if (password === BETA_PASSWORD) {
+            setIsUnlocked(true);
+            sessionStorage.setItem('beta_access', 'true');
+            setError('');
+        } else {
+            setError('Incorrect password');
+            setIsShaking(true);
+            setTimeout(() => setIsShaking(false), 500);
+            setPassword('');
         }
     };
 
-    if (isAuthenticated) {
+    if (isUnlocked) {
         return <>{children}</>;
     }
 
     return (
-        <div className="min-h-screen bg-[#0f0f1a] text-white flex items-center justify-center px-6">
-            <div className="max-w-md w-full">
-                <div className="text-center mb-8">
-                    <div className="flex justify-center mb-6">
-                        <CaptainHero
-                            size="md"
-                            message="I need to verify your clearance level before we can proceed to operations."
-                        />
-                    </div>
-                    <h1 className="text-3xl font-bold mb-4">Level 2 Clearance Required</h1>
-                    <p className="text-slate-300 mb-6">
-                        The "Morning Agent" protocols are locked.
-                        <br />
-                        Upgrade to full access to deploy your household staff.
-                    </p>
-
-                    <div className="flex flex-col gap-4 justify-center items-center mb-8">
-                        <a
-                            href="/#pricing"
-                            className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white font-bold px-8 py-3 rounded-xl shadow-lg shadow-green-900/20 transition-all transform hover:scale-105"
-                        >
-                            Get Full Access
-                        </a>
-                        <div className="text-sm text-slate-500">
-                            Already have a password? Enter it below.
-                        </div>
-                    </div>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter password"
-                            disabled={isLoading}
-                            className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors disabled:opacity-50"
-                        />
-                    </div>
-
-                    {error && (
-                        <div className="text-red-400 text-sm text-center bg-red-900/20 py-2 rounded-lg border border-red-500/20">
-                            {error}
-                        </div>
-                    )}
-
-                    <button
-                        type="submit"
-                        disabled={isLoading}
-                        className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        {isLoading ? 'Verifying...' : 'Unlock Access'}
-                        {!isLoading && <ArrowRight size={18} />}
-                    </button>
-                </form>
+        <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center p-4">
+            {/* Background */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px]" />
             </div>
+
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{
+                    opacity: 1,
+                    scale: 1,
+                    x: isShaking ? [0, -10, 10, -10, 10, 0] : 0
+                }}
+                transition={{ duration: 0.3 }}
+                className="relative z-10 w-full max-w-md"
+            >
+                <div className="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+                    <div className="text-center mb-8">
+                        <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4 ring-1 ring-cyan-500/30">
+                            <Lock className="w-8 h-8 text-cyan-400" />
+                        </div>
+                        <h2 className="text-2xl font-bold text-white mb-2">Beta Access</h2>
+                        <p className="text-slate-400 text-sm">
+                            Part {partNumber} is currently in beta testing
+                        </p>
+                        <p className="text-slate-500 text-xs mt-1">
+                            Family testing • Public release: December 4th
+                        </p>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
+                                Enter Beta Password
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    setError('');
+                                }}
+                                className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                                placeholder="••••••••"
+                                autoFocus
+                            />
+                        </div>
+
+                        {error && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 border border-red-500/30 rounded-lg p-3"
+                            >
+                                <AlertCircle size={16} />
+                                {error}
+                            </motion.div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/20 hover:shadow-cyan-900/40"
+                        >
+                            Unlock Content
+                        </button>
+                    </form>
+
+                    <p className="text-center text-slate-500 text-xs mt-6">
+                        Don't have access? Public release: <span className="text-cyan-400 font-medium">December 4th</span>
+                    </p>
+                </div>
+            </motion.div>
         </div>
     );
 };
