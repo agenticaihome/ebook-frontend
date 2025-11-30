@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "canvas-confetti": "^1.9.4",
+        "dompurify": "^3.3.0",
         "framer-motion": "^12.23.24",
         "html2canvas": "^1.4.1",
         "lucide-react": "^0.554.0",

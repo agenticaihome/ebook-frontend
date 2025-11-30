@@ -8,6 +8,7 @@ import {
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
 import { toast } from 'react-hot-toast';
+import { preventDoubleClick } from './utils/sanitizer';
 
 const ErgoPaymentPage = () => {
     const navigate = useNavigate();
@@ -24,22 +25,80 @@ const ErgoPaymentPage = () => {
     const [error, setError] = useState('');
     const [nautilusConnected, setNautilusConnected] = useState(false);
     const [userWalletAddress, setUserWalletAddress] = useState('');
+    const [isOffline, setIsOffline] = useState(!navigator.onLine);
+    const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
+    const [isProcessing, setIsProcessing] = useState(false);
 
-    // Initialize payment on mount
+    // Initialize payment on mount  
     useEffect(() => {
+        // Check for existing payment in session
+        const savedPayment = sessionStorage.getItem('ergo_payment_state');
+        if (savedPayment) {
+            try {
+                const state = JSON.parse(savedPayment);
+                const age = Date.now() - state.timestamp;
+
+                // If less than 30 min old, restore it
+                if (age < 30 * 60 * 1000) {
+                    setAccessCode(state.accessCode);
+                    setWalletAddress(state.walletAddress);
+                    setErgAmount(state.ergAmount);
+                    setErgPrice(state.ergPriceUsd);
+                    setErgoPayUrl(state.ergoPayUrl);
+                    setStep(state.step || 1);
+                    setTimeRemaining(Math.floor((30 * 60 * 1000 - age) / 1000));
+                    return; // Don't initialize new payment
+                }
+            } catch (e) {
+                console.error('Failed to restore payment state', e);
+            }
+        }
+
         initializePayment();
     }, []);
 
-    // Poll for payment status
+
+    // Offline detection
+    useEffect(() => {
+        const handleOnline = () => setIsOffline(false);
+        const handleOffline = () => setIsOffline(true);
+
+        window.addEventListener('online', handleOnline);
+        window.addEventListener('offline', handleOffline);
+
+        return () => {
+            window.removeEventListener('online', handleOnline);
+            window.removeEventListener('offline', handleOffline);
+        };
+    }, []);
+
+    // Payment expiration countdown
     useEffect(() => {
         if (step === 2 && paymentStatus === 'WAITING') {
+            const timer = setInterval(() => {
+                setTimeRemaining((prev) => {
+                    if (prev <= 0) {
+                        setError('Payment window expired. Please generate a new payment.');
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+
+            return () => clearInterval(timer);
+        }
+    }, [step, paymentStatus]);
+
+    // Poll for payment status
+    useEffect(() => {
+        if (step === 2 && paymentStatus === 'WAITING' && !isOffline && timeRemaining > 0) {
             const interval = setInterval(() => {
                 autoCheckPayment();
             }, 10000); // Check every 10 seconds
 
             return () => clearInterval(interval);
         }
-    }, [step, paymentStatus, accessCode]);
+    }, [step, paymentStatus, accessCode, isOffline, timeRemaining]);
 
     const initializePayment = async () => {
         setIsLoading(true);
@@ -53,10 +112,15 @@ const ErgoPaymentPage = () => {
                 setErgPrice(result.ergPriceUsd);
                 setErgoPayUrl(result.ergoPayUrl);
 
-                // Save to localStorage for persistence/recovery
-                localStorage.setItem('ergo_payment', JSON.stringify({
+                // Save to sessionStorage for persistence/recovery
+                sessionStorage.setItem('ergo_payment_state', JSON.stringify({
                     accessCode: result.accessCode,
+                    walletAddress: result.walletAddress,
+                    ergAmount: result.ergAmount,
+                    ergPriceUsd: result.ergPriceUsd,
+                    ergoPayUrl: result.ergoPayUrl,
                     timestamp: Date.now(),
+                    step: 1,
                     paid: false
                 }));
             } else {
@@ -70,9 +134,17 @@ const ErgoPaymentPage = () => {
         }
     };
 
-    const handleStartPayment = () => {
+
+    const handleStartPayment = preventDoubleClick(() => {
+        if (isProcessing || timeRemaining <= 0) return;
+
+        // Update session storage
+        const state = JSON.parse(sessionStorage.getItem('ergo_payment_state') || '{}');
+        state.step = 2;
+        sessionStorage.setItem('ergo_payment_state', JSON.stringify(state));
+
         setStep(2);
-    };
+    }, 2000);
 
     const autoCheckPayment = async () => {
         if (!accessCode) return;
@@ -121,9 +193,36 @@ const ErgoPaymentPage = () => {
         }, 2000);
     };
 
-    const copyToClipboard = (text, setCopiedState) => {
-        navigator.clipboard.writeText(text);
-        setCopiedState(true);
+    const copyToClipboard = async (text, setCopiedState) => {
+        try {
+            // Try modern clipboard API first
+            await navigator.clipboard.writeText(text);
+            setCopiedState(true);
+        } catch (err) {
+            // Fallback for older browsers/iOS Safari
+            try {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                textArea.style.top = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                if (successful) {
+                    setCopiedState(true);
+                } else {
+                    toast.error('Failed to copy. Please copy manually.');
+                }
+            } catch (fallbackErr) {
+                toast.error('Copy not supported. Please copy manually.');
+            }
+        }
+
         setTimeout(() => setCopiedState(false), 2000);
     };
 
@@ -191,6 +290,16 @@ const ErgoPaymentPage = () => {
                     <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                     <span>Back to Home</span>
                 </button>
+
+                {/* Offline Warning */}
+                {isOffline && (
+                    <div className="fixed top-0 left-0 w-full bg-red-600 text-white p-4 text-center z-50 shadow-lg">
+                        <div className="flex items-center justify-center gap-2">
+                            <AlertTriangle className="w-5 h-5" />
+                            <span className="font-semibold">You're offline. Payment verification requires internet connection.</span>
+                        </div>
+                    </div>
+                )}
 
                 {/* Header */}
                 <motion.div

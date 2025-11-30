@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, Lock, Key, CreditCard, ArrowRight, AlertCircle } from 'lucide-react';
 import { api } from './services/api';
 import { usePageTitle } from './hooks/usePageTitle';
+import { validateEmail, sanitizeInput, preventDoubleClick } from './utils/sanitizer';
 
 const LoginPage = () => {
     usePageTitle('Login');
@@ -20,33 +21,47 @@ const LoginPage = () => {
     const [txId, setTxId] = useState('');
     const [accessCode, setAccessCode] = useState('');
 
-    const handleEmailLogin = async (e) => {
+    const handleEmailLogin = preventDoubleClick(async (e) => {
         e.preventDefault();
         setIsLoading(true);
         setError('');
 
-        if (!email || !email.includes('@')) {
+        // Validate and sanitize email
+        const cleanEmail = validateEmail(email);
+        if (!cleanEmail) {
             setError('Please enter a valid email address.');
             setIsLoading(false);
             return;
         }
 
-        if (!password) {
+        if (!password || password.length < 1) {
             setError('Please enter your password.');
             setIsLoading(false);
             return;
         }
 
+        if (password.length > 128) {
+            setError('Password is too long.');
+            setIsLoading(false);
+            return;
+        }
+
         try {
-            const data = await api.login(email.trim(), password);
+            // Don't store password in variable - use directly
+            const data = await api.login(cleanEmail, password);
             localStorage.setItem('token', data.token);
+
+            // Clear sensitive data
+            setEmail('');
+            setPassword('');
+
             navigate('/dashboard');
         } catch (err) {
-            setError(err.message || 'Login failed');
+            setError(err.message || 'Login failed. Please check your credentials.');
         } finally {
             setIsLoading(false);
         }
-    };
+    }, 2000);
 
     const handleErgoClaim = async (e) => {
         e.preventDefault();
@@ -98,10 +113,17 @@ const LoginPage = () => {
                                 <input
                                     type="email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        if (value.length <= 255) {
+                                            setEmail(value);
+                                        }
+                                    }}
+                                    maxLength={255}
                                     className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                                     placeholder="you@example.com"
                                     required
+                                    autoComplete="email"
                                 />
                             </div>
                         </div>
@@ -112,10 +134,17 @@ const LoginPage = () => {
                                 <input
                                     type="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        if (value.length <= 128) {
+                                            setPassword(value);
+                                        }
+                                    }}
+                                    maxLength={128}
                                     className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                                     placeholder="••••••••"
                                     required
+                                    autoComplete="current-password"
                                 />
                             </div>
                         </div>
