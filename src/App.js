@@ -106,7 +106,7 @@ const AnimatedRoutes = () => {
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <SoundProvider>
         <UserProvider>
           <ScrollToTop />
