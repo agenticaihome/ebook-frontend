@@ -268,8 +268,8 @@ const Part3 = () => {
                             <div className="font-bold text-white">{chapter.title}</div>
                         </button>
                         );
-                                    })
-                                }
+                    })
+                }
                 </div>
             </div>
         </section>

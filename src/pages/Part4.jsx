@@ -359,7 +359,7 @@ const Part4 = () => {
                         </Suspense>
                 </div>
             </div>
-        </section >
+        </section>
 
                     {/* Chapter 11: Mental Wellbeing */ }
     < section id="chapter-11" className="py-16 px-6" >

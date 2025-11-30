@@ -266,15 +266,15 @@ const Part5 = () => {
                     </section >
 
                     {/* Social Share */}
-                    < Suspense fallback={null} >
-                        <div className="font-bold text-white text-sm">{chapter.title}</div>
-                    </button>
-                    );
-                                    })
-                                }
-                </div >
-            </div >
-        </section >
+                    <Suspense fallback={null}>
+                        <SocialShare
+                            title="Part 5: Life Operating System"
+                            hashtags={["AgenticAI", "LifeOS", "Productivity"]}
+                        />
+                    </Suspense>
+                </div>
+            </div>
+        </section>
 
                     {/* Chapter 13: Life Operating System */ }
     < section id="chapter-13" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
