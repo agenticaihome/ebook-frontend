@@ -403,11 +403,11 @@ const ErgoPaymentPage = () => {
                                             <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-4 max-w-md mx-auto">
                                                 <div className="flex items-center justify-center gap-2 mb-2">
                                                     <img src="/assets/ergo-logo.png" alt="Ergo" className="w-5 h-5 object-contain invert" />
-                                                    <p className="text-cyan-400 text-2xl font-bold font-mono">{ergAmount?.toFixed(8)} ERG</p>
+                                                    <p className="text-cyan-400 text-2xl font-bold font-mono">{ergAmount?.toFixed(4)} ERG</p>
                                                 </div>
                                                 {ergPrice && (
                                                     <p className="text-slate-400 text-xs text-center">
-                                                        $19.99 ÷ ${ergPrice.toFixed(4)}/ERG = {ergAmount?.toFixed(8)} ERG
+                                                        $19.99 ÷ ${ergPrice.toFixed(4)}/ERG = {ergAmount?.toFixed(4)} ERG
                                                     </p>
                                                 )}
                                                 <p className="text-cyan-300/80 text-xs text-center mt-1 font-semibold">
@@ -459,44 +459,7 @@ const ErgoPaymentPage = () => {
                             exit={{ opacity: 0, y: -20 }}
                             className="space-y-8"
                         >
-                            {/* Payment Summary Box - Always Visible */}
-                            <div className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 border-2 border-cyan-500/40 rounded-2xl p-6 shadow-xl">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                                    <h3 className="text-xl font-bold text-white">Payment Details</h3>
-                                    <span className="text-xs text-green-400 font-semibold bg-green-500/10 px-2 py-1 rounded-full border border-green-500/20">LIVE</span>
-                                </div>
 
-                                <div className="grid md:grid-cols-3 gap-4">
-                                    {/* Amount */}
-                                    <div className="bg-slate-900/50 rounded-xl p-4 border border-cyan-500/20">
-                                        <div className="text-xs text-slate-400 uppercase tracking-wider mb-1">Amount to Send</div>
-                                        <div className="flex items-baseline gap-2">
-                                            <img src="/assets/ergo-logo.png" alt="Ergo" className="w-4 h-4 object-contain invert" />
-                                            <span className="text-2xl font-bold font-mono text-cyan-400">{ergAmount?.toFixed(8)}</span>
-                                            <span className="text-cyan-400/80 text-sm">ERG</span>
-                                        </div>
-                                        <div className="text-xs text-slate-500 mt-1">≈ $19.99 USD</div>
-                                    </div>
-
-                                    {/* Wallet Address */}
-                                    <div className="bg-slate-900/50 rounded-xl p-4 border border-cyan-500/20 md:col-span-2">
-                                        <div className="text-xs text-slate-400 uppercase tracking-wider mb-1">Send To Address</div>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-sm font-mono text-cyan-400 truncate">{walletAddress}</span>
-                                            <button
-                                                onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
-                                                className="flex-shrink-0 text-cyan-400 hover:text-cyan-300 transition-colors"
-                                            >
-                                                {copiedAddress ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                                            </button>
-                                        </div>
-                                        <div className="text-xs text-slate-500 mt-1">
-                                            Current Rate: ${ergPrice?.toFixed(4)}/ERG
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                 {/* Left Column: QR & Mobile */}
@@ -588,7 +551,7 @@ const ErgoPaymentPage = () => {
                                                     </div>
 
                                                     <button
-                                                        onClick={() => copyToClipboard(ergAmount?.toFixed(8) || '0', setCopiedAmount)}
+                                                        onClick={() => copyToClipboard(ergAmount?.toFixed(4) || '0', setCopiedAmount)}
                                                         className="w-full bg-black/40 hover:bg-black/60 border-2 border-purple-400/50 hover:border-purple-400 rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-[0.98]"
                                                     >
                                                         <div className="flex items-center justify-between mb-2">
@@ -604,7 +567,7 @@ const ErgoPaymentPage = () => {
                                                         </div>
                                                         <div className="text-center">
                                                             <span className="text-4xl md:text-5xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300">
-                                                                {ergAmount?.toFixed(8) || '0.00000000'}
+                                                                {ergAmount?.toFixed(4) || '0.0000'}
                                                             </span>
                                                             <div className="text-xl text-purple-300/80 font-bold mt-2">ERG</div>
                                                         </div>
