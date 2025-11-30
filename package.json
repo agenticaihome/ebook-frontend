@@ -1,7 +1,7 @@
 {
     "name": "agenticai-frontend",
     "version": "0.1.1",
-    "homepage": "https://agenticaihome.github.io/ebook-frontend",
+    "homepage": "https://agenticaihome.com",
     "private": true,
     "dependencies": {
         "canvas-confetti": "^1.9.4",
