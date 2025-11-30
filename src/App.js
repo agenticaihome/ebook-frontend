@@ -100,32 +100,19 @@ const AnimatedRoutes = () => {
           </Routes>
         </AnimatePresence>
       </MotionConfig>
-    </LazyMotion>
-  );
-};
-
-function App() {
-  return (
-    <Router>
-      <SoundProvider>
-        <UserProvider>
-          <ScrollToTop />
-          <Suspense fallback={<Loading />}>
-            <AnimatedRoutes />
-            <MobileBottomNav />
-            <Toaster
-              toastOptions={{
-                style: {
-                  background: '#1e293b',
-                  color: '#fff',
-                  border: '1px solid #334155',
-                },
-              }}
-            />
-          </Suspense>
-        </UserProvider>
-      </SoundProvider>
-    </Router>
+      <Toaster
+        toastOptions={{
+          style: {
+            background: '#1e293b',
+            color: '#fff',
+            border: '1px solid #334155',
+          },
+        }}
+      />
+    </Suspense>
+        </UserProvider >
+      </SoundProvider >
+    </Router >
   );
 }
 
