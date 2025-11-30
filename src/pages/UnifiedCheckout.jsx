@@ -10,7 +10,7 @@ import CaptainHero from '../components/CaptainHero';
 import { api } from '../services/api';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { toast } from 'react-hot-toast';
-import QRCode from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 
 export default function UnifiedCheckout() {
     usePageTitle('Checkout - Get Instant Access');
@@ -211,8 +211,8 @@ export default function UnifiedCheckout() {
                             <button
                                 onClick={() => setActiveTab('stripe')}
                                 className={`flex-1 py-3 rounded-lg font-semibold transition-all ${activeTab === 'stripe'
-                                        ? 'bg-purple-600 text-white'
-                                        : 'bg-transparent text-slate-400 hover:text-white'
+                                    ? 'bg-purple-600 text-white'
+                                    : 'bg-transparent text-slate-400 hover:text-white'
                                     }`}
                             >
                                 <CreditCard className="inline mr-2" size={20} />
@@ -221,8 +221,8 @@ export default function UnifiedCheckout() {
                             <button
                                 onClick={() => setActiveTab('ergo')}
                                 className={`flex-1 py-3 rounded-lg font-semibold transition-all relative ${activeTab === 'ergo'
-                                        ? 'bg-green-600 text-white'
-                                        : 'bg-transparent text-slate-400 hover:text-white'
+                                    ? 'bg-green-600 text-white'
+                                    : 'bg-transparent text-slate-400 hover:text-white'
                                     }`}
                             >
                                 <Coins className="inline mr-2" size={20} />
@@ -334,7 +334,7 @@ export default function UnifiedCheckout() {
                                     {(ergoPayment.status === 'showing' || ergoPayment.status === 'polling') && (
                                         <div className="bg-white p-6 rounded-xl">
                                             <div className="flex justify-center mb-4">
-                                                <QRCode value={ergoPayment.qrData || ''} size={200} />
+                                                <QRCodeSVG value={ergoPayment.qrData || ''} size={200} />
                                             </div>
                                             <p className="text-center text-slate-800 text-sm mb-2">
                                                 Scan with Ergo wallet to pay <strong>{ergoPayment.amountErg} ERG</strong>
