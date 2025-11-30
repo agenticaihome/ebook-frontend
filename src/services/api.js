@@ -106,6 +106,24 @@ export const api = {
   },
 
   // Ergo
+  getErgoPrice: async () => {
+    const response = await fetch(`${API_URL}/payment/ergo/price`, {
+      method: 'GET',
+      headers: getHeaders(),
+      credentials: 'include',
+    });
+    return handleResponse(response);
+  },
+
+  getErgoQuote: async (amountUsd) => {
+    const response = await fetch(`${API_URL}/payment/ergo/quote?amountUsd=${amountUsd}`, {
+      method: 'GET',
+      headers: getHeaders(),
+      credentials: 'include',
+    });
+    return handleResponse(response);
+  },
+
   initiateErgoPayment: async () => {
     const response = await fetch(`${API_URL}/payment/ergo/initiate`, {
       method: 'POST',

@@ -33,6 +33,27 @@ export default function UnifiedCheckout() {
         status: 'idle' // idle | showing | polling | paid
     });
     const [ergoError, setErgoError] = useState(null);
+    const [ergQuote, setErgQuote] = useState(null);
+
+    // Fetch ERG quote when tab is active
+    useEffect(() => {
+        if (activeTab === 'ergo') {
+            const fetchQuote = async () => {
+                try {
+                    const result = await api.getErgoQuote(19.99);
+                    if (result.success) {
+                        setErgQuote(result.ergAmount);
+                    }
+                } catch (err) {
+                    console.error('Failed to fetch ERG quote:', err);
+                }
+            };
+            fetchQuote();
+            // Refresh every 60s
+            const interval = setInterval(fetchQuote, 60000);
+            return () => clearInterval(interval);
+        }
+    }, [activeTab]);
 
     // Auto-poll for Ergo payment
     useEffect(() => {
@@ -291,9 +312,15 @@ export default function UnifiedCheckout() {
                                     exit={{ opacity: 0, x: -20 }}
                                     className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-green-500/30"
                                 >
+
+
+                                    // ... existing code ...
+
                                     <div className="text-center mb-6">
                                         <div className="text-5xl font-bold mb-2 text-green-400">
-                                            $19.99 <span className="text-lg text-slate-400 font-normal">in ERG</span>
+                                            $19.99 <span className="text-lg text-slate-400 font-normal">
+                                                {ergQuote ? `(≈ ${ergQuote} ERG)` : 'in ERG'}
+                                            </span>
                                         </div>
                                         <p className="text-slate-400">50% tech literacy discount applied</p>
                                     </div>
