@@ -1,3 +1,15 @@
+// Determine environment based on hostname
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+const API_URL = process.env.REACT_APP_API_URL || (isLocal
+  ? 'http://localhost:8080/api'
+  : 'https://ebook-backend-production-8f68.up.railway.app/api');
+
+console.log('Frontend configured with API_URL:', API_URL);
+
+/**
+ * Get CSRF token from cookie
+ * Backend sets this automatically when CSRF is enabled
  */
 const getCsrfToken = () => {
   const token = document.cookie
@@ -167,4 +179,3 @@ export const api = {
     }
   }
 };
-
