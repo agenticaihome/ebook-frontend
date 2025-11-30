@@ -100,19 +100,32 @@ const AnimatedRoutes = () => {
           </Routes>
         </AnimatePresence>
       </MotionConfig>
-      <Toaster
-        toastOptions={{
-          style: {
-            background: '#1e293b',
-            color: '#fff',
-            border: '1px solid #334155',
-          },
-        }}
-      />
-    </Suspense>
-        </UserProvider >
-      </SoundProvider >
-    </Router >
+    </LazyMotion>
+  );
+};
+
+function App() {
+  return (
+    <Router basename={process.env.PUBLIC_URL}>
+      <SoundProvider>
+        <UserProvider>
+          <ScrollToTop />
+          <Suspense fallback={<Loading />}>
+            <AnimatedRoutes />
+            <MobileBottomNav />
+            <Toaster
+              toastOptions={{
+                style: {
+                  background: '#1e293b',
+                  color: '#fff',
+                  border: '1px solid #334155',
+                },
+              }}
+            />
+          </Suspense>
+        </UserProvider>
+      </SoundProvider>
+    </Router>
   );
 }
 
