@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import PurchaseGate from '../components/common/PurchaseGate';
+import PasswordGate from '../components/common/PasswordGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 import { motion } from 'framer-motion';
 import { Layers, Home, Wrench, Flag, ArrowRight } from 'lucide-react';
@@ -34,7 +34,7 @@ const Part5 = () => {
     };
     return (
         <WebbookLayout>
-            <PurchaseGate>
+            <PasswordGate partNumber={5}>
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
