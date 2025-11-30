@@ -135,14 +135,7 @@ const CaptainHero = ({
                         <div className="text-cyan-400 font-bold text-xs uppercase tracking-wider">
                             Captain Efficiency
                         </div>
-                        {!userState?.name && !isEditing && (
-                            <button
-                                onClick={() => setIsEditing(true)}
-                                className="text-[10px] text-slate-500 hover:text-cyan-400 underline"
-                            >
-                                (Set Name)
-                            </button>
-                        )}
+                        {/* Name setting removed per user request */}
                     </div>
 
                     {isEditing ? (
