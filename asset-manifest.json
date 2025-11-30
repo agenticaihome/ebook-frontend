@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ebook-frontend/static/css/main.d5903d59.css",
-    "main.js": "/ebook-frontend/static/js/main.8811088b.js",
+    "main.js": "/ebook-frontend/static/js/main.63527041.js",
     "static/js/37.05da1c02.chunk.js": "/ebook-frontend/static/js/37.05da1c02.chunk.js",
     "static/js/882.6444d51f.chunk.js": "/ebook-frontend/static/js/882.6444d51f.chunk.js",
     "static/js/921.d033fb11.chunk.js": "/ebook-frontend/static/js/921.d033fb11.chunk.js",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.d5903d59.css",
-    "static/js/main.8811088b.js"
+    "static/js/main.63527041.js"
   ]
 }
