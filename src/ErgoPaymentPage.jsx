@@ -41,8 +41,8 @@ const ErgoPaymentPage = () => {
                 const state = JSON.parse(savedPayment);
                 const age = Date.now() - state.timestamp;
 
-                // If less than 30 min old, restore it
-                if (age < 30 * 60 * 1000) {
+                // If less than 30 min old AND has valid data, restore it
+                if (age < 30 * 60 * 1000 && state.ergAmount > 0 && state.ergPriceUsd > 0) {
                     setAccessCode(state.accessCode);
                     setWalletAddress(state.walletAddress);
                     setErgAmount(state.ergAmount);
