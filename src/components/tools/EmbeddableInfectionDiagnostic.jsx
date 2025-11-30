@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Share2, Code } from 'lucide-react';
+import { ArrowRight, Code } from 'lucide-react';
 
 const EmbeddableInfectionDiagnostic = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);

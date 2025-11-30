@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ClipboardList, CheckSquare, Clock, Calendar } from 'lucide-react';
+import { ClipboardList, CheckSquare, Clock } from 'lucide-react';
 
 const WeeklyReviewTemplateGenerator = () => {
     const [agents, setAgents] = useState({
@@ -71,8 +71,8 @@ const WeeklyReviewTemplateGenerator = () => {
                                 key={key}
                                 onClick={() => toggleAgent(key)}
                                 className={`p-3 rounded-xl border transition-all text-sm font-medium capitalize ${value
-                                        ? 'bg-cyan-900/50 border-cyan-500 text-white'
-                                        : 'bg-slate-900/50 border-slate-700 text-slate-400 hover:border-slate-500'
+                                    ? 'bg-cyan-900/50 border-cyan-500 text-white'
+                                    : 'bg-slate-900/50 border-slate-700 text-slate-400 hover:border-slate-500'
                                     }`}
                             >
                                 {key.replace(/([A-Z])/g, ' $1').trim()}

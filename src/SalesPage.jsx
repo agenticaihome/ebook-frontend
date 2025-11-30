@@ -54,8 +54,9 @@ export default function SalesPage() {
           {/* Background Glows */}
           {!isPerformanceMode && (
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-              <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl"></div>
+              <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse mix-blend-screen"></div>
+              <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl mix-blend-screen"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
             </div>
           )}
 
@@ -67,7 +68,6 @@ export default function SalesPage() {
                 className="scale-100 md:scale-110"
                 message="You're running on 4 hours of sleep and 3 deadlines. Let's work with what we've got."
                 videoSrc="/assets/captain-waving-cyan.mp4?v=cyan"
-                imageSrc="/assets/captain-efficiency-dark-transparent.png" // Fallback
               />
             </div>
 
@@ -329,7 +329,7 @@ export default function SalesPage() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 relative z-10">
             {/* Standard Access */}
-            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-purple-900/20">
+            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-purple-900/20 hover:-translate-y-2">
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <CreditCard size={120} />
               </div>
@@ -382,7 +382,7 @@ export default function SalesPage() {
             </div>
 
             {/* Crypto Access */}
-            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-green-500/30 hover:border-green-400/50 transition-all group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-green-900/20">
+            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-green-500/30 hover:border-green-400/50 transition-all duration-300 group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-green-900/20 hover:-translate-y-2">
               <div className="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-4 py-1.5 rounded-bl-2xl shadow-lg">
                 50% OFF
               </div>
@@ -441,7 +441,6 @@ export default function SalesPage() {
             <CaptainHero
               size="sm"
               message="I'll be waiting on the other side."
-              imageSrc="/assets/captain-efficiency-dark-transparent.png"
               loading="lazy"
             />
           </div>

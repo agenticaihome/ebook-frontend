@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, BookOpen, Shield, Zap, Home, HelpCircle } from 'lucide-react';
+import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import PrefetchLink from './PrefetchLink';
 
@@ -60,7 +60,7 @@ const WebbookLayout = ({ children }) => {
             <motion.aside
                 initial={{ width: 280 }}
                 animate={{ width: isSidebarOpen ? 280 : 0 }}
-                className={`fixed md:relative z-40 h-screen bg-slate-900 border-r border-slate-700 shadow-xl overflow-hidden flex flex-col`}
+                className={`fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 shadow-2xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out`}
                 aria-label="Main Navigation"
             >
                 <div className="p-6 border-b border-slate-700 flex justify-between items-center">
@@ -144,18 +144,6 @@ const WebbookLayout = ({ children }) => {
                 </div>
                 <nav className="px-4 space-y-2 mb-4" aria-label="Support Navigation">
                     <PrefetchLink
-                        to="/why-ergo"
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/why-ergo'
-                            ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
-                            : 'text-slate-300 hover:bg-slate-800'
-                            }`}
-                    >
-                        <span className={location.pathname === '/why-ergo' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
-                            <Zap size={18} />
-                        </span>
-                        <span className="font-medium text-sm">Why Ergo?</span>
-                    </PrefetchLink>
-                    <PrefetchLink
                         to="/payment-guide"
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/payment-guide'
                             ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
@@ -166,6 +154,18 @@ const WebbookLayout = ({ children }) => {
                             <Shield size={18} />
                         </span>
                         <span className="font-medium text-sm">Payment Guide</span>
+                    </PrefetchLink>
+                    <PrefetchLink
+                        to="/why-ergo"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/why-ergo'
+                            ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
+                            : 'text-slate-300 hover:bg-slate-800'
+                            }`}
+                    >
+                        <span className={location.pathname === '/why-ergo' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                            <Zap size={18} />
+                        </span>
+                        <span className="font-medium text-sm">Why Ergo?</span>
                     </PrefetchLink>
                     <PrefetchLink
                         to="/faq"
@@ -203,7 +203,7 @@ const WebbookLayout = ({ children }) => {
             <div className="flex-1 flex flex-col min-w-0">
                 <PreLaunchBanner />
                 {/* Top Bar */}
-                <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-md border-b border-slate-700 h-16 flex items-center px-4 justify-between">
+                <header className="sticky top-0 z-30 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700/50 h-16 flex items-center px-4 justify-between transition-all duration-300">
                     <div className="flex items-center gap-4">
                         {!isSidebarOpen && (
                             <button
@@ -280,6 +280,7 @@ const WebbookLayout = ({ children }) => {
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsCaptainOpen(!isCaptainOpen)}
                     className="w-14 h-14 bg-blue-600 rounded-full shadow-xl flex items-center justify-center text-white border-4 border-white ring-4 ring-blue-100"
+                    aria-label="Toggle Captain Efficiency Assistant"
                 >
                     <span className="font-bold text-xl">CE</span>
                 </motion.button>

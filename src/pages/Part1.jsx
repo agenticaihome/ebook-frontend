@@ -3,7 +3,7 @@ import WebbookLayout from '../components/layout/WebbookLayout';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 
 import CaptainTip from '../components/CaptainTip';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
 import { useUser } from '../context/UserContext';
@@ -122,7 +122,14 @@ const Part1 = () => {
                 </section>
 
                 {/* Chapter 1: What Are AI Agents? */}
-                <section id="chapter-1" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                <motion.section
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    id="chapter-1"
+                    className="py-16 px-6 bg-[#131320] border-y border-slate-800"
+                >
                     <div className="max-w-4xl mx-auto">
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -232,10 +239,17 @@ const Part1 = () => {
                             You now understand the difference between chatbots and agents. That's the foundation for everything. Next up: we'll look at the actual tools you can use. Onward!
                         </CaptainTip>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Chapter 2: The Home AI Stack */}
-                <section id="chapter-2" className="py-16 px-6">
+                <motion.section
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    id="chapter-2"
+                    className="py-16 px-6"
+                >
                     <div className="max-w-4xl mx-auto">
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -356,16 +370,23 @@ const Part1 = () => {
                             The only wrong choice is no choice. Pick something and start. You can always add or change tools later.
                         </CaptainTip>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Chapter 3: Privacy, Security, and Control */}
-                <section id="chapter-3" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
+                <motion.section
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6 }}
+                    id="chapter-3"
+                    className="py-16 px-6 bg-[#131320] border-y border-slate-800"
+                >
                     <div className="max-w-4xl mx-auto">
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
                                 size="md"
                                 pose="working"
-                                message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. You don't have to share everything to get massive value. This chapter is about informed consent — understanding exactly what you're sharing, with whom, and how to protect yourself. Let's make you informed, not paranoid."
+                                message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. You don't need all of them. You probably need TWO or THREE, tops. Let me help you pick the right ones for YOUR situation — without the tech jargon headache."
                             />
                         </Suspense>
 
@@ -498,7 +519,7 @@ const Part1 = () => {
                             </button>
                         </div>
                     </div>
-                </section>
+                </motion.section>
 
                 {/* Social Share */}
                 <Suspense fallback={null}>
@@ -507,8 +528,8 @@ const Part1 = () => {
                         hashtags={["AgenticAI", "TimeManagement", "Productivity"]}
                     />
                 </Suspense>
-            </div>
-        </WebbookLayout>
+            </div >
+        </WebbookLayout >
     );
 };
 

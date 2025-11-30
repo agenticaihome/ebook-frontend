@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Activity, TrendingUp, AlertCircle, Award, Lock } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 
 const MentalLoadCalculator = () => {
-    const { unlockBadge, userState } = useUser();
+    const { unlockBadge } = useUser();
     const [inputs, setInputs] = useState({
         emailHours: 2,
         adminHours: 5,
@@ -31,6 +31,10 @@ const MentalLoadCalculator = () => {
         score += stressLevel * 0.1;
         score = Math.min(Math.round(score), 10);
 
+        // Efficiency Score (0-100%) - Inverted from Load
+        // Lower load = Higher Efficiency
+        const efficiencyScore = Math.max(0, 100 - (score * 10));
+
         // Hours recoverable
         const recoverable = Math.round(emailHours * 0.5 + adminHours * 0.6);
 
@@ -42,10 +46,10 @@ const MentalLoadCalculator = () => {
         if (stressLevel >= 7) areas.push({ name: 'Decision Fatigue', impact: 'High', agent: 'Calendar Agent' });
 
         // Comparison
-        const avgScore = 6.5;
-        const comparison = score > avgScore ? 'above' : score < avgScore ? 'below' : 'at';
+        const avgScore = 65; // Average efficiency
+        const comparison = efficiencyScore > avgScore ? 'above' : efficiencyScore < avgScore ? 'below' : 'at';
 
-        return { score, recoverable, areas: areas.slice(0, 3), comparison, avgScore };
+        return { score: efficiencyScore, rawLoad: score, recoverable, areas: areas.slice(0, 3), comparison, avgScore };
     };
 
     const handleCalculate = () => {
@@ -53,23 +57,23 @@ const MentalLoadCalculator = () => {
         setShowResults(true);
 
         // Gamification: Unlock Badges & Tips
-        if (results.score >= 8) {
-            unlockBadge('chaos_survivor');
+        if (results.score >= 90) {
+            unlockBadge('time_lord');
             setUnlockedTip({
-                title: 'Pro Tip: The "Brain Dump" Protocol',
-                content: 'Your load is critical. Stop trying to remember. Spend 15 mins writing down EVERY open loop. Then, assign 3 to an agent and delete the rest.'
+                title: '🏆 Rank: TIME LORD',
+                content: 'You have mastered your time. You spend almost zero time on admin. You are ready for Level 2: Creative Automation.'
             });
-        } else if (results.score <= 4) {
-            unlockBadge('zen_master');
+        } else if (results.score >= 60) {
+            unlockBadge('efficiency_seeker');
             setUnlockedTip({
-                title: 'Pro Tip: Optimization Mode',
+                title: 'Rank: Efficiency Seeker',
                 content: 'You have good baseline control. Now focus on speed. Use "Text Replacement" for your most common email replies to save another 15 mins/day.'
             });
         } else {
-            unlockBadge('efficiency_seeker');
+            unlockBadge('chaos_survivor');
             setUnlockedTip({
-                title: 'Pro Tip: The 2-Minute Rule',
-                content: 'If a task takes < 2 mins, do it now. If > 2 mins, assign it to an agent (or a list). Never "remember" it.'
+                title: 'Rank: Chaos Survivor',
+                content: 'Your load is critical. Stop trying to remember. Spend 15 mins writing down EVERY open loop. Then, assign 3 to an agent and delete the rest.'
             });
         }
     };
@@ -77,15 +81,15 @@ const MentalLoadCalculator = () => {
     const results = showResults ? calculateResults() : null;
 
     const getScoreColor = (score) => {
-        if (score <= 3) return 'text-green-400';
-        if (score <= 6) return 'text-yellow-400';
+        if (score >= 80) return 'text-green-400';
+        if (score >= 50) return 'text-yellow-400';
         return 'text-red-400';
     };
 
     const getScoreLabel = (score) => {
-        if (score <= 3) return 'Manageable';
-        if (score <= 6) return 'Moderate Load';
-        if (score <= 8) return 'High Load';
+        if (score >= 90) return 'Time Lord Status';
+        if (score >= 70) return 'Highly Efficient';
+        if (score >= 50) return 'Moderate Load';
         return 'Critical Overload';
     };
 
@@ -103,10 +107,11 @@ const MentalLoadCalculator = () => {
                     className="space-y-6"
                 >
                     <div>
-                        <label className="block text-white font-medium mb-3">
+                        <label htmlFor="emailHours" className="block text-white font-medium mb-3">
                             Hours spent on email daily
                         </label>
                         <input
+                            id="emailHours"
                             type="range"
                             min="0"
                             max="8"
@@ -123,10 +128,11 @@ const MentalLoadCalculator = () => {
                     </div>
 
                     <div>
-                        <label className="block text-white font-medium mb-3">
+                        <label htmlFor="adminHours" className="block text-white font-medium mb-3">
                             Hours spent on "life admin" weekly
                         </label>
                         <input
+                            id="adminHours"
                             type="range"
                             min="0"
                             max="20"
@@ -142,10 +148,11 @@ const MentalLoadCalculator = () => {
                     </div>
 
                     <div>
-                        <label className="block text-white font-medium mb-3">
+                        <label htmlFor="recurringTasks" className="block text-white font-medium mb-3">
                             Number of recurring tasks you track mentally
                         </label>
                         <input
+                            id="recurringTasks"
                             type="range"
                             min="0"
                             max="50"
@@ -181,10 +188,11 @@ const MentalLoadCalculator = () => {
                     </div>
 
                     <div>
-                        <label className="block text-white font-medium mb-3">
+                        <label htmlFor="stressLevel" className="block text-white font-medium mb-3">
                             Stress level around managing daily life (1-10)
                         </label>
                         <input
+                            id="stressLevel"
                             type="range"
                             min="1"
                             max="10"

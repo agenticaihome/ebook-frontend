@@ -1,5 +1,5 @@
 import React from 'react';
-import { Monitor, Smartphone, CreditCard, QrCode, Globe, Shield, CheckCircle } from 'lucide-react';
+import { Monitor, QrCode, Globe, CheckCircle } from 'lucide-react';
 
 const SchematicPlaceholder = ({ type = 'browser', label, subLabel }) => {
     // Render different wireframes based on type

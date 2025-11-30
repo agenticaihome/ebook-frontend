@@ -1,5 +1,4 @@
 import React from 'react';
-import { Check, X, Minus } from 'lucide-react';
 
 export default function DecentralizationTable() {
     const data = [

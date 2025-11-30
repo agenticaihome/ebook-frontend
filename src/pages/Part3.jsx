@@ -2,9 +2,9 @@ import React, { useState, Suspense } from 'react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, Calendar, FileText, ArrowRight, Inbox, Clock, Shield, CheckCircle } from 'lucide-react';
+import { Mail, Calendar, FileText, ArrowRight, Clock, CheckCircle } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 const CaptainTip = React.lazy(() => import('../components/CaptainTip'));

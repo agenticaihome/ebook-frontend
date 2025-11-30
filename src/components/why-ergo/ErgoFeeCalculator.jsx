@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
-import { CreditCard, Coins, ArrowRight } from 'lucide-react';
+import { CreditCard, Coins } from 'lucide-react';
 
 export default function ErgoFeeCalculator() {
-    const [coursePrice, setCoursePrice] = useState(40);
+    const [coursePrice] = useState(40);
 
     // Constants
     const STRIPE_FIXED = 0.30;
     const STRIPE_PERCENT = 0.029;
-    const PAYPAL_FIXED = 0.49;
-    const PAYPAL_PERCENT = 0.029;
+
     const ERGO_FEE = 0.01; // Approx network fee
 
     const stripeFee = (coursePrice * STRIPE_PERCENT) + STRIPE_FIXED;
-    const paypalFee = (coursePrice * PAYPAL_PERCENT) + PAYPAL_FIXED;
 
-    // Savings calculation (what I save as a merchant)
-    const merchantSavings = stripeFee - ERGO_FEE;
 
     // Discount calculation (what I pass to user)
     const discountAmount = coursePrice * 0.50;

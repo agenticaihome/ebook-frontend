@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Calendar, TrendingUp, CheckCircle } from 'lucide-react';
+import { BookOpen, Calendar, CheckCircle } from 'lucide-react';
 
 const StudySystemGenerator = () => {
     const [step, setStep] = useState(0);

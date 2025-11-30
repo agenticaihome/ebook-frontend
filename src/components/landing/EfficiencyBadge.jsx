@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Award, Share2, Check, Copy } from 'lucide-react';
+import { Award, Share2, Check } from 'lucide-react';
 
 const EfficiencyBadge = ({ savedHours, yearlySaved }) => {
     const [copied, setCopied] = useState(false);

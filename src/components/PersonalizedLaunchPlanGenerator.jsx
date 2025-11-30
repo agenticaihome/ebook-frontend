@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, Clock, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
+import { Rocket, Calendar, CheckCircle } from 'lucide-react';
 
 const PersonalizedLaunchPlanGenerator = () => {
     const [step, setStep] = useState(0);

@@ -3,7 +3,7 @@ import WebbookLayout from '../components/layout/WebbookLayout';
 import PurchaseGate from '../components/common/PurchaseGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 import { motion } from 'framer-motion';
-import { Layers, Home, Wrench, Flag, ArrowRight, CheckCircle, Zap } from 'lucide-react';
+import { Layers, Home, Wrench, Flag, ArrowRight } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 const CaptainTip = React.lazy(() => import('../components/CaptainTip'));

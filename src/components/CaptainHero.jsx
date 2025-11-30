@@ -90,6 +90,7 @@ const CaptainHero = ({
                     <div className="relative w-full h-full">
                         <video
                             src={videoSrc}
+                            poster={finalImageSrc}
                             autoPlay
                             loop
                             muted
@@ -167,4 +168,4 @@ const CaptainHero = ({
     );
 };
 
-export default CaptainHero;
+export default React.memo(CaptainHero);

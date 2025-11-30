@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import {
     LayoutDashboard, CheckCircle, Circle, ArrowRight,
     Zap, Coffee, UtensilsCrossed, Home, Activity, Shield, Database,
-    Wrench, Calculator
+    Calculator
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import CaptainHero from '../components/CaptainHero';

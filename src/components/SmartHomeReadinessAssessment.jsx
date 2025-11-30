@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Smartphone, Wifi, Lock, Zap } from 'lucide-react';
+import { Home, Lock, Zap } from 'lucide-react';
 
 const SmartHomeReadinessAssessment = () => {
     const [step, setStep] = useState(0);

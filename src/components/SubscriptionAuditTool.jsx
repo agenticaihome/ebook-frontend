@@ -10,7 +10,7 @@ const SubscriptionAuditTool = () => {
         { id: 4, name: 'Amazon Prime', cost: 139.00, frequency: 'yearly', status: 'keep' }
     ]);
     const [newSub, setNewSub] = useState({ name: '', cost: '', frequency: 'monthly' });
-    const [showResults, setShowResults] = useState(false);
+
 
     const addSubscription = () => {
         if (newSub.name && newSub.cost) {
