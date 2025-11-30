@@ -49,6 +49,49 @@ const WebbookLayout = ({ children }) => {
         { id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5', icon: <Zap size={18} />, progress: 0 },
     ];
 
+    // Dynamic Captain Messages based on route
+    const getCaptainMessages = (path) => {
+        switch (path) {
+            case '/part1':
+                return {
+                    sidebar: "Privacy isn't about hiding. It's about control. Let's secure your perimeter.",
+                    tip: "Start with 'Observer Mode'. Let the AI watch your workflow for a week before you let it take action."
+                };
+            case '/part2':
+                return {
+                    sidebar: "A chaotic home drains your mental battery. Let's automate the mundane.",
+                    tip: "The 'Grocery Agent' alone can save you ~2 hours a week. That's 100+ hours a year!"
+                };
+            case '/part3':
+                return {
+                    sidebar: "Deep work requires deep focus. Delegate the shallow work to your digital staff.",
+                    tip: "Email triage is the #1 time-saver for most professionals. Train your agent to draft responses."
+                };
+            case '/part4':
+                return {
+                    sidebar: "Your health is your wealth. Don't let admin tasks get in the way of self-care.",
+                    tip: "Use an agent to cross-reference your sleep data with your calendar. You'll see patterns instantly."
+                };
+            case '/part5':
+                return {
+                    sidebar: "You are now the Architect of your own time. Build wisely.",
+                    tip: "Review your agent logs weekly. It's like a staff meeting, but much shorter."
+                };
+            case '/payment-guide':
+                return {
+                    sidebar: "Investing in yourself is the best ROI there is.",
+                    tip: "Ergo payments are secure and give you a 50% discount. It's a no-brainer."
+                };
+            default:
+                return {
+                    sidebar: "I'm here to help you navigate the agentic future!",
+                    tip: "Did you know? You can automate your grocery list using a simple text-based agent. Check out Chapter 2!"
+                };
+        }
+    };
+
+    const captainMessages = getCaptainMessages(location.pathname);
+
     return (
         <div className="min-h-screen bg-slate-950 flex">
             {/* Skip Link for Accessibility */}
@@ -193,7 +236,7 @@ const WebbookLayout = ({ children }) => {
                             </div>
                         </div>
                         <p className="text-xs text-slate-300 leading-relaxed">
-                            "I'm here to help you navigate the agentic future!"
+                            "{captainMessages.sidebar}"
                         </p>
                     </div>
                 </div>
@@ -269,7 +312,7 @@ const WebbookLayout = ({ children }) => {
                                 Quick Tip
                             </h3>
                             <p className="text-sm text-slate-600 leading-relaxed">
-                                Did you know? You can automate your grocery list using a simple text-based agent. Check out Chapter 2!
+                                {captainMessages.tip}
                             </p>
                         </motion.div>
                     )}
