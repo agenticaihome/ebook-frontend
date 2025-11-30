@@ -15,7 +15,6 @@ const pathToKey = {
     '/why-ergo': 'whyErgo',
     '/payment-guide': 'paymentGuide',
     '/ergo-guide': 'ergoGuide',
-    '/faq': 'faq',
 };
 
 const PrefetchLink = ({ to, children, ...props }) => {
