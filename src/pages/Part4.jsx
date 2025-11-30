@@ -1,7 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import PasswordGate from '../components/common/PasswordGate';
+import PurchaseGate from '../components/common/PurchaseGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 import { motion } from 'framer-motion';
 import { Activity, BookOpen, ArrowRight, Heart } from 'lucide-react';
@@ -33,7 +33,7 @@ const Part4 = () => {
     };
     return (
         <WebbookLayout>
-            <PasswordGate partNumber={4}>
+            <PurchaseGate>
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
@@ -302,207 +302,12 @@ const Part4 = () => {
                     {/* Social Share */}
                     < Suspense fallback={null} >
                         <SocialShare
-                                <h3 className="text-2xl font-bold text-green-400 mt-12 mb-4">The Sleep Debt Compound Effect</h3>
-                        <div className="grid md:grid-cols-2 gap-6 my-8">
-                            <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
-                                <h4 className="text-white font-bold mb-3">Ignoring Biology</h4>
-                                <ul className="space-y-2 text-sm text-slate-300">
-                                    <li>• Force deep work on 4h sleep</li>
-                                    <li>• Produce garbage work</li>
-                                    <li>• Crash harder tomorrow</li>
-                                    <li>• Burnout cycle begins</li>
-                                </ul>
-                            </div>
-                            <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
-                                <h4 className="text-white font-bold mb-3">Recovery-Aware</h4>
-                                <ul className="space-y-2 text-sm text-slate-300">
-                                    <li>• Detect low recovery</li>
-                                    <li>• Adjust schedule automatically</li>
-                                    <li>• Move hard tasks to afternoon</li>
-                                    <li>• Protect recovery tonight</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                            <SleepProtocolConfig />
-                        </Suspense>
-
-                        <h3 className="text-2xl font-bold text-green-400 mt-12 mb-4">The 3-Level Protocol</h3>
-                        <div className="space-y-4">
-                            <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
-                                <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold flex-shrink-0">G</div>
-                                <div>
-                                    <h4 className="text-white font-bold">Green Day (Full Capacity)</h4>
-                                    <p className="text-sm text-slate-400">Front-load hardest tasks. High intensity workout. Push projects forward.</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
-                                <div className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold flex-shrink-0">Y</div>
-                                <div>
-                                    <h4 className="text-white font-bold">Yellow Day (Moderate)</h4>
-                                    <p className="text-sm text-slate-400">Standard load. 1 deep work block max. Protect sleep tonight.</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
-                                <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold flex-shrink-0">R</div>
-                                <div>
-                                    <h4 className="text-white font-bold">Red Day (Survival)</h4>
-                                    <p className="text-sm text-slate-400">3 essential tasks only. No intense decisions. Active recovery focus.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <Suspense fallback={null}>
-                            <CaptainTip type="pro" title="DDS (Dad Deploying Systems)'s Residency Hack">
-                                "During residency with a newborn, I used 'Red Day' protocols constantly. Instead of studying at 5 AM (when I was a zombie), my agent moved study blocks to lunch when I was awake. I passed boards because I stopped fighting my biology."
-                            </CaptainTip>
-                        </Suspense>
-                </div>
-            </div>
-        </section >
-
-                    {/* Chapter 11: Mental Wellbeing */ }
-    < section id="chapter-11" className="py-16 px-6" >
-        <div className="max-w-4xl mx-auto">
-            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                <CaptainHero
-                    size="md"
-                    pose="working"
-                    message="I'm a productivity robot, not a therapist. If you're struggling, please talk to a professional. But I CAN help with the 'Mental Load'—the invisible work of tracking everything. Less cognitive chaos = more mental peace."
-                />
-            </Suspense>
-
-            <div className="mt-12 prose prose-invert prose-lg max-w-none">
-                <h2 className="text-4xl font-bold text-white mb-6">Chapter 11: Mental Health & Wellbeing Support</h2>
-
-                <div className="bg-blue-900/20 p-6 rounded-xl border border-blue-500/30 my-8">
-                    <h3 className="text-xl font-bold text-blue-400 mb-3">The Invisible Burden</h3>
-                    <p className="text-white mb-4">"Did I pay that bill? What's for dinner? Did I sign the permission slip?"</p>
-                    <p className="text-slate-300 text-sm">
-                        The stress of tracking everything makes you worse at tracking everything. Your Wellbeing Agent's job is to offload this burden so your brain can actually relax.
-                    </p>
-                </div>
-
-                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                    <MentalLoadAssessment />
-                </Suspense>
-
-                <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Wind-Down Routine</h3>
-                <p className="text-slate-300 mb-4">Protect the transition from "on" to "off".</p>
-
-                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 font-mono text-sm text-slate-300">
-                    <div className="text-purple-400 mb-2">9:00 PM SEQUENCE:</div>
-                    <ul className="list-disc pl-4 space-y-2 mb-4">
-                        <li>Devices dim / Night mode activates</li>
-                        <li><strong>Quick Capture:</strong> Dump worries into system</li>
-                        <li><strong>Tomorrow Preview:</strong> Check first meeting only</li>
-                        <li><strong>Disconnect:</strong> Phone goes to charger (away from bed)</li>
-                    </ul>
-                </div>
-
-                <Suspense fallback={null}>
-                    <CaptainTip type="tip" title="The Brain Dump">
-                        Before bed, write down every open loop or worry. Tell your agent: "Remind me of these tomorrow at 9 AM." Your brain can't let go if it thinks it needs to remember.
-                    </CaptainTip>
-                </Suspense>
-            </div>
-        </div>
-    </section >
-
-    {/* Chapter 12: Second Brain */ }
-    < section id="chapter-12" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
-        <div className="max-w-4xl mx-auto">
-            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                <CaptainHero
-                    size="md"
-                    pose="pointing"
-                    message="Where is that article you read last month? The one with the great insight? Your brain is amazing at creativity but terrible at storage. Let's build a Second Brain that remembers everything for you."
-                />
-            </Suspense>
-
-            <div className="mt-12 prose prose-invert prose-lg max-w-none">
-                <h2 className="text-4xl font-bold text-white mb-6">Chapter 12: The Second Brain Agent</h2>
-
-                <div className="grid md:grid-cols-2 gap-6 my-8">
-                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                        <h4 className="text-cyan-400 font-bold mb-3">Capture</h4>
-                        <p className="text-sm text-slate-300">
-                            Save articles, notes, and ideas instantly. No organizing yet—just get it into the "Knowledge Inbox".
-                        </p>
-                    </div>
-                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                        <h4 className="text-green-400 font-bold mb-3">Retrieve</h4>
-                        <p className="text-sm text-slate-300">
-                            "What did I read about X?" Your agent searches every document and summarizes the answer.
-                        </p>
-                    </div>
-                </div>
-
-                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                    <KnowledgeChaosAssessment />
-                </Suspense>
-
-                <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Study System (Board Prep Example)</h3>
-                <p className="text-slate-300 mb-6">
-                    For professionals in training (medical, legal, technical), this is a superpower. Turn PDFs into an active learning engine.
-                </p>
-
-                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                    <StudySystemGenerator />
-                </Suspense>
-
-                <Suspense fallback={null}>
-                    <CaptainTip type="pro" title="Active Recall Agent">
-                        "Don't just re-read notes. Ask your agent: 'Quiz me on the weak areas from yesterday's reading.' It will generate fresh questions every time. That's how you make knowledge stick."
-                    </CaptainTip>
-                </Suspense>
-            </div>
-        </div>
-    </section >
-
-    {/* Part 4 Complete */ }
-    < section className="py-16 px-6" >
-        <div className="max-w-4xl mx-auto">
-            <div className="p-8 bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl border border-green-500/50 text-center">
-                <h3 className="text-3xl font-bold text-white mb-4">Part 4 Complete! 🚀</h3>
-                <p className="text-slate-300 mb-6">
-                    You've optimized your biology, cleared your mind, and supercharged your learning.
-                </p>
-                <div className="grid md:grid-cols-3 gap-4 mb-8">
-                    <div className="bg-slate-900/50 p-4 rounded-xl">
-                        <div className="text-green-400 font-bold text-2xl">Recovery</div>
-                        <div className="text-slate-400 text-sm">Aware & Adaptive</div>
-                    </div>
-                    <div className="bg-slate-900/50 p-4 rounded-xl">
-                        <div className="text-blue-400 font-bold text-2xl">Mental Load</div>
-                        <div className="text-slate-400 text-sm">Offloaded</div>
-                    </div>
-                    <div className="bg-slate-900/50 p-4 rounded-xl">
-                        <div className="text-cyan-400 font-bold text-2xl">Knowledge</div>
-                        <div className="text-slate-400 text-sm">Indexed & Active</div>
-                    </div>
-                </div>
-                <button
-                    onClick={() => navigate('/part5')}
-                    className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
-                >
-                    Continue to Part 5: The Life OS
-                    <ArrowRight size={20} />
-                </button>
-            </div>
-        </div>
-    </section >
-
-    {/* Social Share */ }
-    < Suspense fallback={null} >
-        <SocialShare
-            title="Using AI to optimize my health and sleep. The data doesn't lie!"
-            hashtags={["AgenticAI", "Biohacking", "HealthTech"]}
-        />
-    </Suspense >
+                            title="Using AI to optimize my health and sleep. The data doesn't lie!"
+                            hashtags={["AgenticAI", "Biohacking", "HealthTech"]}
+                        />
+                    </Suspense >
                 </div >
-            </PasswordGate > >
+            </PurchaseGate >
         </WebbookLayout >
     );
 };
