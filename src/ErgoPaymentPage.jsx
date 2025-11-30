@@ -32,9 +32,6 @@ const ErgoPaymentPage = () => {
     const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
     const [isProcessing, setIsProcessing] = useState(false);
 
-    // Detect mobile device
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
     // Initialize payment on mount  
     useEffect(() => {
         // Check for existing payment in session
@@ -439,6 +436,44 @@ const ErgoPaymentPage = () => {
                         <motion.div
                             key="step2"
                             initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                        >
+                            {/* Left Column: QR & Mobile */}
+                            <div className="space-y-6">
+                                <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
+                                            <Smartphone className="w-6 h-6 text-cyan-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-bold text-white">Scan to Pay</h3>
+                                            <p className="text-sm text-slate-400">Use Ergo Wallet App</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white p-6 rounded-2xl shadow-inner mx-auto max-w-[280px]">
+                                        <QRCodeSVG value={ergoPayUrl} size={232} className="w-full h-auto" />
+                                    </div>
+
+                                    <div className="mt-8 text-center">
+                                        <a
+                                            href={ergoPayUrl}
+                                            className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-medium transition-colors border-b border-green-400/30 hover:border-green-400 pb-0.5"
+                                        >
+                                            <ExternalLink className="w-4 h-4" />
+                                            Open directly in Wallet App
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Column: Manual & Browser */}
+                            <div className="space-y-6">
+                                {/* Browser Wallet Card */}
+                                <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                    <div className="flex items-center gap-4 mb-6">
                                         <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
                                             <Monitor className="w-6 h-6 text-cyan-400" />
                                         </div>
@@ -448,177 +483,173 @@ const ErgoPaymentPage = () => {
                                         </div>
                                     </div>
 
-            {!nautilusConnected ? (
-                <button
-                    onClick={connectNautilus}
-                    disabled={isConnectingWallet}
-                    className="w-full bg-slate-800 hover:bg-slate-700 text-white p-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-3 border border-white/5"
-                >
-                    {isConnectingWallet ? <Loader2 className="w-5 h-5 animate-spin" /> : <Wallet className="w-5 h-5" />}
-                    {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus'}
-                </button>
-            ) : (
-                <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                        <span className="text-sm text-blue-200 font-mono">
-                            {userWalletAddress.substring(0, 8)}...{userWalletAddress.substring(userWalletAddress.length - 8)}
-                        </span>
-                    </div>
-                    <button onClick={() => setNautilusConnected(false)} className="text-xs text-slate-400 hover:text-white">Disconnect</button>
-                </div>
-            )}
-            {walletError && <p className="mt-3 text-red-400 text-sm">{walletError}</p>}
-        </div>
+                                    {!nautilusConnected ? (
+                                        <button
+                                            onClick={connectNautilus}
+                                            disabled={isConnectingWallet}
+                                            className="w-full bg-slate-800 hover:bg-slate-700 text-white p-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-3 border border-white/5"
+                                        >
+                                            {isConnectingWallet ? <Loader2 className="w-5 h-5 animate-spin" /> : <Wallet className="w-5 h-5" />}
+                                            {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus'}
+                                        </button>
+                                    ) : (
+                                        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 flex justify-between items-center">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                                                <span className="text-sm text-blue-200 font-mono">
+                                                    {userWalletAddress.substring(0, 8)}...{userWalletAddress.substring(userWalletAddress.length - 8)}
+                                                </span>
+                                            </div>
+                                            <button onClick={() => setNautilusConnected(false)} className="text-xs text-slate-400 hover:text-white">Disconnect</button>
+                                        </div>
+                                    )}
+                                    {walletError && <p className="mt-3 text-red-400 text-sm">{walletError}</p>}
+                                </div>
 
-                                {/* Manual Transfer Card */ }
-    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-        <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center border border-purple-500/20">
-                <Copy className="w-6 h-6 text-purple-400" />
-            </div>
-            <div>
-                <h3 className="text-xl font-bold text-white">Manual Transfer</h3>
-                <p className="text-sm text-slate-400">Copy & Send from any wallet</p>
-            </div>
-        </div>
+                                {/* Manual Transfer Card */}
+                                <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <div className="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center border border-purple-500/20">
+                                            <Copy className="w-6 h-6 text-purple-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-bold text-white">Manual Transfer</h3>
+                                            <p className="text-sm text-slate-400">Copy & Send from any wallet</p>
+                                        </div>
+                                    </div>
 
-        <div className="space-y-5">
-            <div className="p-4 bg-purple-900/20 border border-purple-500/30 rounded-xl mb-4">
-                <p className="text-xs text-purple-300 mb-1">💡 <strong>PRO TIP:</strong></p>
-                <p className="text-sm text-slate-300">Send the <strong>EXACT</strong> amount below. The system detects it automatically.</p>
-            </div>
-            <div className="group">
-                <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Amount (Exact)</label>
-                <button
-                    onClick={() => copyToClipboard(ergAmount.toString(), setCopiedAmount)}
-                    className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
-                >
-                    <span className="text-2xl font-mono font-bold text-white">{ergAmount} <span className="text-sm text-slate-500 font-sans font-normal">ERG</span></span>
-                    {copiedAmount ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white" />}
-                </button>
-            </div>
+                                    <div className="space-y-5">
+                                        <div className="p-4 bg-purple-900/20 border border-purple-500/30 rounded-xl mb-4">
+                                            <p className="text-xs text-purple-300 mb-1">💡 <strong>PRO TIP:</strong></p>
+                                            <p className="text-sm text-slate-300">Send the <strong>EXACT</strong> amount below. The system detects it automatically.</p>
+                                        </div>
+                                        <div className="group">
+                                            <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Amount (Exact)</label>
+                                            <button
+                                                onClick={() => copyToClipboard(ergAmount.toString(), setCopiedAmount)}
+                                                className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
+                                            >
+                                                <span className="text-2xl font-mono font-bold text-white">{ergAmount} <span className="text-sm text-slate-500 font-sans font-normal">ERG</span></span>
+                                                {copiedAmount ? <Check className="w-5 h-5 text-green-400" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white" />}
+                                            </button>
+                                        </div>
 
-            <div className="group">
-                <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Recipient Address</label>
-                <button
-                    onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
-                    className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
-                >
-                    <span className="text-sm font-mono text-slate-300 truncate mr-4">{walletAddress}</span>
-                    {copiedAddress ? <Check className="w-5 h-5 text-green-400 flex-shrink-0" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white flex-shrink-0" />}
-                </button>
-            </div>
+                                        <div className="group">
+                                            <label className="text-xs text-slate-500 uppercase tracking-wider mb-1.5 block">Recipient Address</label>
+                                            <button
+                                                onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
+                                                className="w-full bg-black/20 hover:bg-black/40 border border-white/5 hover:border-white/10 rounded-xl p-4 flex items-center justify-between transition-all group-hover:scale-[1.01]"
+                                            >
+                                                <span className="text-sm font-mono text-slate-300 truncate mr-4">{walletAddress}</span>
+                                                {copiedAddress ? <Check className="w-5 h-5 text-green-400 flex-shrink-0" /> : <Copy className="w-5 h-5 text-slate-500 group-hover:text-white flex-shrink-0" />}
+                                            </button>
+                                        </div>
 
-            <button
-                onClick={handleManualCheck}
-                className="w-full mt-4 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 border border-cyan-500/30 hover:border-cyan-500/50 rounded-xl p-3 font-bold transition-all flex items-center justify-center gap-2"
-            >
-                <CheckCircle2 size={18} />
-                I've Sent the Payment
-            </button>
-        </div>
-    </div>
-                            </div >
+                                        <button
+                                            onClick={handleManualCheck}
+                                            className="w-full mt-4 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 border border-cyan-500/30 hover:border-cyan-500/50 rounded-xl p-3 font-bold transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <CheckCircle2 size={18} />
+                                            I've Sent the Payment
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
-    {/* Status Bar */ }
-    < div className = "lg:col-span-2" >
-        <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-                <div className="relative">
-                    <div className="w-3 h-3 bg-cyan-500 rounded-full animate-ping absolute inset-0" />
-                    <div className="w-3 h-3 bg-cyan-500 rounded-full relative" />
-                </div>
-                <div>
-                    <p className="text-white font-medium">Awaiting Transaction...</p>
-                    <p className="text-xs text-slate-400">
-                        Scanning blockchain for incoming transaction...
-                    </p>
-                </div>
-            </div>
-            <div className="text-right hidden md:block">
-                <div className="inline-block px-2 py-1 bg-slate-800 rounded text-xs font-mono text-slate-500 border border-slate-700">
-                    Session ID: {accessCode}
-                </div>
-            </div>
-        </div>
-                            </div >
+                            {/* Status Bar */}
+                            <div className="lg:col-span-2">
+                                <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+                                    <div className="flex items-center gap-4">
+                                        <div className="relative">
+                                            <div className="w-3 h-3 bg-cyan-500 rounded-full animate-ping absolute inset-0" />
+                                            <div className="w-3 h-3 bg-cyan-500 rounded-full relative" />
+                                        </div>
+                                        <div>
+                                            <p className="text-white font-medium">Awaiting Transaction...</p>
+                                            <p className="text-xs text-slate-400">
+                                                Scanning blockchain for incoming transaction...
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="text-right hidden md:block">
+                                        <div className="inline-block px-2 py-1 bg-slate-800 rounded text-xs font-mono text-slate-500 border border-slate-700">
+                                            Session ID: {accessCode}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    {/* Gentle Helper Card (appears after 20 min) */ }
-{
-    showHelper && (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="lg:col-span-2 mt-4"
-        >
-            <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6">
-                <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <HelpCircle className="w-5 h-5 text-blue-400" />
-                    </div>
-                    <div className="flex-1">
-                        <h3 className="text-white font-bold mb-2">Taking longer than expected?</h3>
-                        <p className="text-slate-300 text-sm mb-4">
-                            No worries! Blockchain transactions can sometimes take a bit longer. Here are some options:
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                            <a
-                                href="/why-ergo"
-                                className="flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-lg text-blue-300 text-sm font-medium transition-colors"
-                            >
-                                <BookOpen size={16} />
-                                Troubleshooting Guide
-                            </a>
-                            <a
-                                href="/unified-checkout"
-                                className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-slate-300 text-sm font-medium transition-colors"
-                            >
-                                Or try Stripe checkout
-                            </a>
-                        </div>
-                    </div>
-                    <button
-                        onClick={() => setShowHelper(false)}
-                        className="text-slate-500 hover:text-white transition-colors"
-                    >
-                        <X size={20} />
-                    </button>
-                </div>
-            </div>
-        </motion.div>
-    )
-}
-                        </motion.div >
+                            {/* Gentle Helper Card (appears after 20 min) */}
+                            {showHelper && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="lg:col-span-2 mt-4"
+                                >
+                                    <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6">
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                                <HelpCircle className="w-5 h-5 text-blue-400" />
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-white font-bold mb-2">Taking longer than expected?</h3>
+                                                <p className="text-slate-300 text-sm mb-4">
+                                                    No worries! Blockchain transactions can sometimes take a bit longer. Here are some options:
+                                                </p>
+                                                <div className="flex flex-col sm:flex-row gap-3">
+                                                    <a
+                                                        href="/why-ergo"
+                                                        className="flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-lg text-blue-300 text-sm font-medium transition-colors"
+                                                    >
+                                                        <BookOpen size={16} />
+                                                        Troubleshooting Guide
+                                                    </a>
+                                                    <a
+                                                        href="/unified-checkout"
+                                                        className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-slate-300 text-sm font-medium transition-colors"
+                                                    >
+                                                        Or try Stripe checkout
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <button
+                                                onClick={() => setShowHelper(false)}
+                                                className="text-slate-500 hover:text-white transition-colors"
+                                            >
+                                                <X size={20} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </motion.div>
                     )}
 
-{
-    paymentStatus === 'CONFIRMED' && (
-        <motion.div
-            key="confirmed"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="max-w-xl mx-auto text-center"
-        >
-            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-xl border border-green-500/20 rounded-3xl p-12">
-                <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-green-500/30 shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]">
-                    <CheckCircle2 className="w-12 h-12 text-green-400" />
-                </div>
-                <h2 className="text-4xl font-bold text-white mb-4">Payment Verified</h2>
-                <p className="text-slate-300 text-lg mb-8">
-                    Your access has been granted. Initializing your workspace...
-                </p>
-                <div className="flex items-center justify-center gap-3 text-green-400 bg-green-500/10 py-2 px-4 rounded-full inline-flex">
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span className="font-medium text-sm">Redirecting</span>
-                </div>
+                    {paymentStatus === 'CONFIRMED' && (
+                        <motion.div
+                            key="confirmed"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="max-w-xl mx-auto text-center"
+                        >
+                            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-xl border border-green-500/20 rounded-3xl p-12">
+                                <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-green-500/30 shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]">
+                                    <CheckCircle2 className="w-12 h-12 text-green-400" />
+                                </div>
+                                <h2 className="text-4xl font-bold text-white mb-4">Payment Verified</h2>
+                                <p className="text-slate-300 text-lg mb-8">
+                                    Your access has been granted. Initializing your workspace...
+                                </p>
+                                <div className="flex items-center justify-center gap-3 text-green-400 bg-green-500/10 py-2 px-4 rounded-full inline-flex">
+                                    <Loader2 className="w-4 h-4 animate-spin" />
+                                    <span className="font-medium text-sm">Redirecting</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-        </motion.div>
-    )
-}
-                </AnimatePresence >
-            </div >
-        </div >
+        </div>
     );
 };
 
