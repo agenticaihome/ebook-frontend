@@ -267,8 +267,8 @@ const Part5 = () => {
 
                     {/* Social Share */}
                     < Suspense fallback={null} >
-                        <SocialShare
-                                            </button>
+                        <div className="font-bold text-white text-sm">{chapter.title}</div>
+                    </button>
                     );
                                     })
                                 }
@@ -439,7 +439,7 @@ const Part5 = () => {
             </Suspense>
 
             <div className="mt-16 p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 text-center">
-                <h3 className="2xl font-bold text-white mb-4">One Final Thought</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">One Final Thought</h3>
                 <p className="text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
                     "This isn't about the technology. It's about getting your LIFE back. The hours you save are for your kids, your partner, your health, your dreams. <br /><br />
                     AI agents aren't the point. A life well-lived is the point. <br /><br />
@@ -468,7 +468,7 @@ const Part5 = () => {
         />
     </Suspense >
                 </div >
-            </PasswordGate > >
+            </PasswordGate >
         </WebbookLayout >
     );
 };
