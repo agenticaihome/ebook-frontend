@@ -1,14 +1,3 @@
-// Use environment variable, or hardcoded production URL if in production mode, otherwise localhost
-const isProduction = process.env.NODE_ENV === 'production';
-const API_URL = process.env.REACT_APP_API_URL || (isProduction
-  ? 'https://ebook-backend-production-8f68.up.railway.app/api'
-  : 'http://localhost:8080/api');
-
-console.log('Frontend configured with API_URL:', API_URL);
-
-/**
- * Get CSRF token from cookie
- * Backend sets this automatically when CSRF is enabled
  */
 const getCsrfToken = () => {
   const token = document.cookie
