@@ -57,11 +57,32 @@ const Part2 = () => {
                             >
                                 <div className="text-sm font-bold text-cyan-400 uppercase tracking-wider mb-4">Part 2</div>
                                 <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                                    Daily Operations: <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Morning, Kitchen, Household</span>
+                                    The Daily Liberation
                                 </h1>
-                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                                    Build your first agents to automate mornings, meals, and home maintenance. Start saving time and money today.
+                                <p className="text-2xl text-slate-400 italic mb-6">
+                                    (The 3 Agents That Bought Sarah 12 Hours/Week Back)
                                 </p>
+                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
+                                    Remember that task you killed in Part 1? That was step one. Now we're going to free up HOURS every week with three core agents.
+                                </p>
+
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/40 max-w-2xl mx-auto">
+                                    <h3 className="text-white font-bold mb-4">By the end of Part 2, you'll have built:</h3>
+                                    <div className="space-y-2 text-sm text-slate-300">
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-green-400">✓</span>
+                                            <span><strong className="text-white">Morning Agent</strong> — Save 30 min/day</span>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-green-400">✓</span>
+                                            <span><strong className="text-white">Kitchen Agent</strong> — Save $150-250/month + 3-4 hours/week</span>
+                                        </div>
+                                        <div className="flex items-start gap-2">
+                                            <span className="text-green-400">✓</span>
+                                            <span><strong className="text-white">Household Agent</strong> — Prevent $3,500/year in forgotten costs</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </motion.div>
 
                             {/* Chapter Navigation */}
@@ -100,6 +121,28 @@ const Part2 = () => {
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 4: Morning Routines That Run Themselves</h2>
+
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The Morning That Changed Everything</h3>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Marcus set 3 alarms. Hit snooze on all 3.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Woke up to his 7-year-old standing by the bed: "Dad, we're late again."
+                                    </p>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        6:52 AM. School starts at 7:15. 15-minute drive.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        No clean uniforms. No breakfast prep. No idea if there's traffic.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        He showed up to drop-off at 7:31 AM. The guilt look from the teacher. The disappointed face from his kid. Third time this month.
+                                    </p>
+                                    <p className="text-cyan-400 italic text-sm">
+                                        "I'm a successful professional. Why can't I get mornings right?"
+                                    </p>
+                                </div>
 
                                 {/* Quick Win Box */}
                                 <Suspense fallback={<div />}>
@@ -251,6 +294,31 @@ Keep it under 3 minutes to read.`}
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 5: Kitchen and Grocery Automation</h2>
 
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The $47 Tuesday Night</h3>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        5:30 PM. Lisa stared at the empty fridge.
+                                    </p>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        "What's for dinner?" her husband asked.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        She had NO idea. Chicken went bad yesterday. Grocery run was "tomorrow." Kids were melting down. She pulled out her phone.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Uber Eats: $47 for mediocre Chinese food.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        This was the THIRD time this week. She did the math in her head:<br />
+                                        Monday: $52 (pizza)<br />
+                                        Tuesday: $47 (Chinese)<br />
+                                        Thursday: probably another $50
+                                    </p>
+                                    <p className="text-cyan-400 italic text-sm">
+                                        "We're spending $600/month on not having a plan."
+                                    </p>
+                                </div>
+
                                 {/* Quick Win Box */}
                                 <Suspense fallback={<div />}>
                                     <CopyPrompt
@@ -389,6 +457,31 @@ For each meal, list the ingredients I'd need to buy.`}
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 6: Household Management and Maintenance</h2>
 
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The Saturday That Cost $2,800</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        "Why is it so hot in here?"
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        James checked the thermostat. 78°F. AC was running full blast.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        When was the last time he changed the HVAC filter?
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        He couldn't remember. 3 months? 6 months? Maybe... longer?
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Called the repair guy. Diagnosis: "Dirty filter burned out the compressor."
+                                    </p>
+                                    <p className="text-red-400 font-bold text-lg mb-3">
+                                        Repair cost: $2,800.
+                                    </p>
+                                    <p className="text-cyan-400 italic text-sm">
+                                        "$2,800 for forgetting a $15 filter change. How many other things am I forgetting?"
+                                    </p>
+                                </div>
+
                                 {/* Quick Win Box */}
                                 <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 my-8">
                                     <h3 className="text-xl font-bold text-cyan-400 mb-3">📌 Can't Read Everything? Do This Tonight (15 Minutes)</h3>
@@ -481,32 +574,85 @@ For each meal, list the ingredients I'd need to buy.`}
                     {/* Part 2 Complete */}
                     <section className="py-16 px-6">
                         <div className="max-w-4xl mx-auto">
-                            <div className="p-8 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-2xl border border-cyan-500/50 text-center">
-                                <h3 className="text-3xl font-bold text-white mb-4">Part 2 Complete! 🎉</h3>
-                                <p className="text-slate-300 mb-6">
-                                    You now have agents for your mornings, kitchen, and household. You're saving hours every week and hundreds of dollars every month. Ready for Part 3?
-                                </p>
-                                <div className="grid md:grid-cols-3 gap-4 mb-8">
-                                    <div className="bg-slate-900/50 p-4 rounded-xl">
-                                        <div className="text-cyan-400 font-bold text-2xl">30 min</div>
-                                        <div className="text-slate-400 text-sm">saved daily</div>
-                                    </div>
-                                    <div className="bg-slate-900/50 p-4 rounded-xl">
-                                        <div className="text-green-400 font-bold text-2xl">$300+</div>
-                                        <div className="text-slate-400 text-sm">saved monthly</div>
-                                    </div>
-                                    <div className="bg-slate-900/50 p-4 rounded-xl">
-                                        <div className="text-purple-400 font-bold text-2xl">3 Agents</div>
-                                        <div className="text-slate-400 text-sm">working for you</div>
+                            <div className="p-8 bg-gradient-to-r from-green-900/30 via-cyan-900/30 to-purple-900/30 rounded-2xl border-2 border-cyan-500/50">
+                                <h3 className="text-3xl font-bold text-white mb-6 text-center">🎉 Part 2 Complete: You Just Bought 12 Hours/Week Back</h3>
+
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-green-500/30 mb-6">
+                                    <h4 className="text-green-400 font-bold mb-4">✅ What You've Built:</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <div className="flex items-start gap-3">
+                                            <span className="text-green-400">✓</span>
+                                            <div>
+                                                <strong className="text-white">Morning Agent</strong> — Wake up to clarity instead of chaos
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <span className="text-green-400">✓</span>
+                                            <div>
+                                                <strong className="text-white">Kitchen Agent</strong> — $150-250/month saved, zero "what's for dinner" stress
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <span className="text-green-400">✓</span>
+                                            <div>
+                                                <strong className="text-white">Household Agent</strong> — $3,500/year in prevented emergencies
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <button
-                                    onClick={() => navigate('/part3')}
-                                    className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
-                                >
-                                    Continue to Part 3: Digital Life Automation
-                                    <ArrowRight size={20} />
-                                </button>
+
+                                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div className="bg-red-900/20 p-4 rounded-xl border border-red-500/30">
+                                        <div className="text-red-400 font-bold mb-2">BEFORE Part 2:</div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>Mornings: 30-45 min chaos sprint</div>
+                                            <div>Meals: $320/week on food panic</div>
+                                            <div>Home: Forgetting tax costing thousands</div>
+                                        </div>
+                                    </div>
+                                    <div className="bg-green-900/20 p-4 rounded-xl border border-green-500/30">
+                                        <div className="text-green-400 font-bold mb-2">AFTER Part 2:</div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>Mornings: Single 3-minute brief</div>
+                                            <div>Meals: Planned, budgeted, executed</div>
+                                            <div>Home: Proactive maintenance, zero surprises</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 text-center mb-6">
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <div className="text-cyan-400 font-bold text-3xl mb-1">~12 hours/week</div>
+                                            <div className="text-slate-400 text-sm">Total Time Reclaimed</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-green-400 font-bold text-3xl mb-1">$400-500/month</div>
+                                            <div className="text-slate-400 text-sm">Total Money Saved</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 p-6 rounded-xl border border-yellow-500/40 mb-6">
+                                    <h4 className="text-yellow-400 font-bold mb-3">🚀 What's Next in Part 3:</h4>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        <strong className="text-cyan-400">Email & Communication Automation</strong> — Inbox zero, meeting scheduling, the "Gatekeeper Agent"
+                                    </p>
+                                    <p className="text-white font-bold text-center">
+                                        You've automated your PHYSICAL daily operations.<br />
+                                        Now let's automate your DIGITAL life.
+                                    </p>
+                                </div>
+
+                                <div className="text-center">
+                                    <button
+                                        onClick={() => navigate('/part3')}
+                                        className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/30"
+                                    >
+                                        Continue to Part 3: Digital Life Automation
+                                        <ArrowRight size={20} />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </section>
