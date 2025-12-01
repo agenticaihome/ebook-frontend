@@ -506,7 +506,7 @@ const Part1 = () => {
                                     In Part 2, we stop talking theory and start building. You'll copy-paste the exact prompts to automate your morning briefing, meal planning, and household chores.
                                 </p>
                                 <button
-                                    onClick={() => navigate('/ergo-guide')}
+                                    onClick={() => navigate('/payment-guide')}
                                     className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-green-900/30"
                                 >
                                     View Payment Options

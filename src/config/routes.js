@@ -23,7 +23,7 @@ export const routeConfig = {
     paymentGuide: createRoute(() => import('../PaymentGuide')),
     ergoGuide: createRoute(() => import('../ErgoGuide')),
     faq: createRoute(() => import('../FAQ')),
-    unifiedCheckout: createRoute(() => import('../pages/UnifiedCheckout')),
+
     notFound: createRoute(() => import('../pages/NotFoundPage')),
     // Tools
     infectionDiagnostic: createRoute(() => import('../components/tools/EmbeddableInfectionDiagnostic')),

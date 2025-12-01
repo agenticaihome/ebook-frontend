@@ -83,7 +83,7 @@ const AnimatedRoutes = () => {
             <Route path="/chaos-quiz-widget" element={<routeConfig.infectionDiagnostic.Component />} />
             <Route path="/login" element={<PageTransition><routeConfig.login.Component /></PageTransition>} />
             <Route path="/pay-ergo" element={<PageTransition><routeConfig.ergoPayment.Component /></PageTransition>} />
-            <Route path="/checkout" element={<PageTransition><routeConfig.unifiedCheckout.Component /></PageTransition>} />
+
             <Route path="/why-ergo" element={<PageTransition><routeConfig.whyErgo.Component /></PageTransition>} />
             <Route path="/payment-guide" element={<PageTransition><routeConfig.paymentGuide.Component /></PageTransition>} />
             <Route path="/ergo-guide" element={<PageTransition><routeConfig.ergoGuide.Component /></PageTransition>} />

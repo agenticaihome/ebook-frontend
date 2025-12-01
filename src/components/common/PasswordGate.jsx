@@ -60,7 +60,7 @@ const PasswordGate = ({ children, partNumber }) => {
                             Part {partNumber} is currently in beta testing
                         </p>
                         <p className="text-slate-500 text-xs mt-1">
-                            Family testing • Public release: December 4th
+                            Family members only • Coming soon for everyone
                         </p>
                     </div>
 
@@ -103,11 +103,11 @@ const PasswordGate = ({ children, partNumber }) => {
                     </form>
 
                     <p className="text-center text-slate-500 text-xs mt-6">
-                        Don't have access? Public release: <span className="text-cyan-400 font-medium">December 4th</span>
+                        Don't have access? Public release: <span className="text-cyan-400 font-medium">Coming Soon</span>
                     </p>
                 </div>
-            </motion.div>
-        </div>
+            </motion.div >
+        </div >
     );
 };
 

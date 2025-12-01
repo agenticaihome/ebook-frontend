@@ -6,21 +6,24 @@ import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
 import { api } from './services/api';
 import { usePerformanceMode } from './hooks/usePerformanceMode';
-
 const TimeBackCalculator = React.lazy(() => import('./components/landing/TimeBackCalculator'));
 const BeforeAfterComparison = React.lazy(() => import('./components/landing/BeforeAfterComparison'));
 const TryThisNow = React.lazy(() => import('./components/common/TryThisNow'));
 const SneakPeek = React.lazy(() => import('./components/landing/SneakPeek'));
+const ProductWalkthrough = React.lazy(() => import('./components/landing/ProductWalkthrough'));
+const CryptoExplainerModal = React.lazy(() => import('./components/landing/CryptoExplainerModal'));
+const RecentPurchases = React.lazy(() => import('./components/landing/RecentPurchases'));
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
   const [isStripeLoading, setIsStripeLoading] = useState(false);
   const [stripeError, setStripeError] = useState(null);
+  const [showCryptoModal, setShowCryptoModal] = useState(false);
   const navigate = useNavigate();
   const isPerformanceMode = usePerformanceMode();
 
   const handleErgoPayment = () => {
-    navigate('/checkout');
+    navigate('/payment-guide');
   };
 
   const handleStripePayment = async () => {
@@ -395,6 +398,11 @@ export default function SalesPage() {
           </div>
         </section>
 
+        {/* PRODUCT WALKTHROUGH */}
+        <Suspense fallback={<div className="h-96 animate-pulse bg-slate-800/50" />}>
+          <ProductWalkthrough />
+        </Suspense>
+
         {/* PRICING SECTION */}
         <section id="pricing" className="py-24 px-6 bg-[#0f0f1a] relative">
           {/* Background Glows */}
@@ -496,9 +504,12 @@ export default function SalesPage() {
                   Pay with ERG
                 </button>
                 <div className="mt-4 text-center">
-                  <Link to="/why-ergo" className="text-sm text-green-400 hover:text-green-300 underline decoration-dotted">
+                  <button
+                    onClick={() => setShowCryptoModal(true)}
+                    className="text-sm text-green-400 hover:text-green-300 underline decoration-dotted bg-transparent border-none cursor-pointer"
+                  >
                     Why pay with Ergo?
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
@@ -540,6 +551,11 @@ export default function SalesPage() {
         </footer>
 
       </div>
+
+      <Suspense fallback={null}>
+        <CryptoExplainerModal isOpen={showCryptoModal} onClose={() => setShowCryptoModal(false)} />
+        <RecentPurchases />
+      </Suspense>
     </WebbookLayout>
   );
 }

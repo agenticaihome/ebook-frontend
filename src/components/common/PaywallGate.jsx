@@ -45,7 +45,7 @@ const PaywallGate = () => {
 
                     <div className="grid md:grid-cols-2 gap-4 mb-8">
                         <Link
-                            to="/pay-ergo"
+                            to="/payment-guide"
                             className="group relative p-4 rounded-xl border-2 border-slate-100 hover:border-green-500 transition-all bg-white hover:bg-green-50 text-left"
                         >
                             <div className="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg rounded-tr-lg">
@@ -63,8 +63,8 @@ const PaywallGate = () => {
                             <div className="text-2xl font-bold text-green-600">$20</div>
                         </Link>
 
-                        <button
-                            onClick={() => window.location.href = '/#pricing'} // Redirect to pricing section or stripe
+                        <Link
+                            to="/payment-guide"
                             className="group p-4 rounded-xl border-2 border-slate-100 hover:border-purple-500 transition-all bg-white hover:bg-purple-50 text-left"
                         >
                             <div className="flex items-center gap-3 mb-2">
@@ -77,7 +77,7 @@ const PaywallGate = () => {
                                 </div>
                             </div>
                             <div className="text-2xl font-bold text-purple-600">$40</div>
-                        </button>
+                        </Link>
                     </div>
 
                     <p className="text-xs text-slate-400">
