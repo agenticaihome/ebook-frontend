@@ -26,9 +26,9 @@ export default function WhyErgo() {
                             Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Ergo?</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            The most undervalued, technically superior blockchain in existence.
+                            Smart Money for the Agentic Age: Efficient Peer-to-Peer Finance.
                             <br />
-                            <span className="text-green-400 font-bold">And why I give you 50% off for using it.</span>
+                            <span className="text-green-400 font-bold">Cut out the middlemen to save 50%.</span>
                         </p>
                     </div>
                 </section>
