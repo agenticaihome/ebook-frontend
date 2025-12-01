@@ -62,10 +62,12 @@ export default function HowToPay() {
                         <div className="text-center">
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                 Complete Ergo Payment Guide
-                                <span className="block text-2xl md:text-3xl text-green-400 mt-2 font-normal">Step-by-Step for Total Beginners</span>
+                                <span className="block text-2xl md:text-3xl text-green-400 mt-2 font-normal">
+                                    Smart Money for the Agentic Age: Efficient Peer-to-Peer Finance
+                                </span>
                             </h1>
-                            <p className="text-xl text-green-400 font-bold mb-8">
-                                Save 50% on your purchase — we'll walk you through every click.
+                            <p className="text-xl text-slate-300 font-medium mb-8 max-w-2xl mx-auto">
+                                Cut out the middlemen to <span className="text-green-400 font-bold">save 50%</span>. We'll walk you through every click.
                             </p>
 
                             {/* REASSURANCE BOX */}
@@ -407,36 +409,6 @@ export default function HowToPay() {
                         <StepHeader number="3" title="Send Payment" time="2 Minutes" />
 
                         <div className="space-y-8">
-                            <div>
-                                <h4 className="font-bold text-white mb-2">1. Get the Payment Details</h4>
-                                <p className="text-slate-400 mb-4">
-                                    On our checkout page, you'll see the <strong>Exact ERG Amount</strong> and our <strong>Wallet Address</strong>.
-                                </p>
-                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-sm mx-auto">
-                                    <img
-                                        src="/images/guide/guide-wallet-qr.jpg"
-                                        alt="Wallet QR Code"
-                                        className="w-full h-auto"
-                                    />
-                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Scan to Send Payment</p>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 className="font-bold text-white mb-2">2. Send from Your Wallet</h4>
-                                <p className="text-slate-400 mb-4">
-                                    Open Nautilus (or your mobile app). Click "Send". Paste our address and the EXACT amount.
-                                </p>
-                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-sm mx-auto">
-                                    <img
-                                        src="/images/guide/guide-mobile-send.png"
-                                        alt="Mobile Wallet Send Screen"
-                                        className="w-full h-auto"
-                                    />
-                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Enter Address & Amount</p>
-                                </div>
-                            </div>
-
                             <div>
                                 <h4 className="font-bold text-white mb-2">3. Confirm</h4>
                                 <p className="text-slate-400 mb-4">
