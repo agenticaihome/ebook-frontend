@@ -281,36 +281,57 @@ const Part1 = () => {
                         </Suspense>
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">
-                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 2: The Home AI Stack</h2>
+                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 2: Your AI Team</h2>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">The Only Framework You Need</h3>
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">Meet Your New Staff</h3>
                             <p className="text-slate-300 leading-relaxed">
-                                Every AI tool falls into one of three categories:
+                                Stop thinking about "software stacks." Think about building a team. You need 4 roles filled:
                             </p>
 
                             <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 my-8">
-                                <h4 className="text-center text-white font-bold mb-6">Think of it like a Human Team:</h4>
-                                <div className="grid md:grid-cols-3 gap-4 text-center">
-                                    <div className="bg-green-900/20 border border-green-500/30 p-4 rounded-lg">
-                                        <div className="text-2xl mb-2">🧠</div>
-                                        <div className="text-green-400 font-bold mb-1">THE BRAIN</div>
-                                        <div className="text-slate-400 text-xs font-bold mb-2">(Foundation AI)</div>
-                                        <div className="text-slate-500 text-xs">Thinking, planning, drafting.</div>
-                                        <div className="text-slate-600 text-[10px] mt-2">Claude, ChatGPT</div>
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    {/* THE BRAIN */}
+                                    <div className="bg-green-900/20 border border-green-500/30 p-5 rounded-xl flex items-start gap-4">
+                                        <div className="text-3xl bg-slate-900/50 p-2 rounded-lg">🧠</div>
+                                        <div>
+                                            <div className="text-green-400 font-bold text-lg">THE BRAIN</div>
+                                            <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Manager</div>
+                                            <div className="text-slate-300 text-sm">Thinking, planning, drafting emails, making decisions.</div>
+                                            <div className="text-slate-500 text-xs mt-2">Tools: Claude, ChatGPT</div>
+                                        </div>
                                     </div>
-                                    <div className="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-lg">
-                                        <div className="text-2xl mb-2">✋</div>
-                                        <div className="text-cyan-400 font-bold mb-1">THE HANDS</div>
-                                        <div className="text-slate-400 text-xs font-bold mb-2">(Specialized Tools)</div>
-                                        <div className="text-slate-500 text-xs">Doing specific jobs perfectly.</div>
-                                        <div className="text-slate-600 text-[10px] mt-2">Calendar, Email, Finance</div>
+
+                                    {/* THE MEMORY */}
+                                    <div className="bg-orange-900/20 border border-orange-500/30 p-5 rounded-xl flex items-start gap-4">
+                                        <div className="text-3xl bg-slate-900/50 p-2 rounded-lg">📚</div>
+                                        <div>
+                                            <div className="text-orange-400 font-bold text-lg">THE MEMORY</div>
+                                            <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Librarian</div>
+                                            <div className="text-slate-300 text-sm">Remembering your preferences, files, and past conversations.</div>
+                                            <div className="text-slate-500 text-xs mt-2">Tools: Notion, Obsidian, Google Drive</div>
+                                        </div>
                                     </div>
-                                    <div className="bg-purple-900/20 border border-purple-500/30 p-4 rounded-lg">
-                                        <div className="text-2xl mb-2">⚡</div>
-                                        <div className="text-purple-400 font-bold mb-1">THE NERVES</div>
-                                        <div className="text-slate-400 text-xs font-bold mb-2">(Orchestration)</div>
-                                        <div className="text-slate-500 text-xs">Connecting brain to hands.</div>
-                                        <div className="text-slate-600 text-[10px] mt-2">Zapier, Make</div>
+
+                                    {/* THE HANDS */}
+                                    <div className="bg-cyan-900/20 border border-cyan-500/30 p-5 rounded-xl flex items-start gap-4">
+                                        <div className="text-3xl bg-slate-900/50 p-2 rounded-lg">✋</div>
+                                        <div>
+                                            <div className="text-cyan-400 font-bold text-lg">THE HANDS</div>
+                                            <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Specialists</div>
+                                            <div className="text-slate-300 text-sm">Doing the actual work (sending invites, paying bills).</div>
+                                            <div className="text-slate-500 text-xs mt-2">Tools: Calendar, Gmail, YNAB</div>
+                                        </div>
+                                    </div>
+
+                                    {/* THE NERVES */}
+                                    <div className="bg-purple-900/20 border border-purple-500/30 p-5 rounded-xl flex items-start gap-4">
+                                        <div className="text-3xl bg-slate-900/50 p-2 rounded-lg">⚡</div>
+                                        <div>
+                                            <div className="text-purple-400 font-bold text-lg">THE NERVES</div>
+                                            <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Messenger</div>
+                                            <div className="text-slate-300 text-sm">Connecting the Brain to the Hands automatically.</div>
+                                            <div className="text-slate-500 text-xs mt-2">Tools: Zapier, Make</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -439,7 +460,7 @@ const Part1 = () => {
                                 </p>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Privacy Tiers Framework</h3>
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Mission 1: Know Your Risk Profile</h3>
                             <p className="text-slate-300 leading-relaxed mb-6">
                                 Not all data is equal. Use this tool to find your comfort zone:
                             </p>
@@ -450,7 +471,7 @@ const Part1 = () => {
                                 </Suspense>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Trust Timeline</h3>
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Mission 2: Build Trust Gradually</h3>
                             <p className="text-slate-300 leading-relaxed mb-6">
                                 Don't give full access immediately. Build trust gradually:
                             </p>
@@ -487,6 +508,11 @@ const Part1 = () => {
                             </div>
                         </div>
 
+
+                        <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Mission 3: Write Your Laws</h3>
+                        <p className="text-slate-300 leading-relaxed mb-6">
+                            Every agent needs a constitution. Define yours now:
+                        </p>
 
                         <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading builder...</div>}>
                             <AgentConstitutionBuilder />
