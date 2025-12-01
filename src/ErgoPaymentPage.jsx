@@ -50,14 +50,11 @@ const ErgoPaymentPage = () => {
                     setErgoPayUrl(state.ergoPayUrl);
                     setStep(state.step || 1);
                     setTimeRemaining(Math.floor((30 * 60 * 1000 - age) / 1000));
-                    return; // Don't initialize new payment
                 }
             } catch (e) {
                 console.error('Failed to restore payment state', e);
             }
         }
-
-        initializePayment();
     }, []);
 
 
@@ -149,9 +146,34 @@ const ErgoPaymentPage = () => {
         }
     }, [step, paymentStatus, accessCode, isOffline]);
 
-    const initializePayment = async () => {
-        setIsLoading(true);
+    const initializeQuote = async () => {
         try {
+            const result = await api.getErgoQuote(19.99);
+            if (result.success) {
+                setErgAmount(result.ergAmount);
+                setErgPrice(result.ergPriceUsd);
+            }
+        } catch (err) {
+            console.error('Failed to fetch quote', err);
+        }
+    };
+
+    // Poll for price updates while in Step 1
+    useEffect(() => {
+        if (step === 1) {
+            initializeQuote();
+            const interval = setInterval(initializeQuote, 60000); // Update every 60s
+            return () => clearInterval(interval);
+        }
+    }, [step]);
+
+    const handleStartPayment = async () => {
+        if (isProcessing || timeRemaining <= 0) return;
+        setIsProcessing(true);
+        setIsLoading(true);
+
+        try {
+            // Get fresh payment intent from backend
             const result = await api.initiateErgoPayment();
 
             if (result.success) {
@@ -161,7 +183,7 @@ const ErgoPaymentPage = () => {
                 setErgPrice(result.ergPriceUsd);
                 setErgoPayUrl(result.ergoPayUrl);
 
-                // Save to sessionStorage for persistence/recovery
+                // Save to sessionStorage
                 sessionStorage.setItem('ergo_payment_state', JSON.stringify({
                     accessCode: result.accessCode,
                     walletAddress: result.walletAddress,
@@ -169,31 +191,24 @@ const ErgoPaymentPage = () => {
                     ergPriceUsd: result.ergPriceUsd,
                     ergoPayUrl: result.ergoPayUrl,
                     timestamp: Date.now(),
-                    step: 1,
+                    step: 2,
                     paid: false
                 }));
+
+                setStep(2);
             } else {
                 setError('Failed to initialize payment: ' + result.error);
+                toast.error(result.error || 'Payment initialization failed');
             }
         } catch (err) {
             console.error(err);
-            setError('Failed to connect to payment server. Please try again.');
+            setError('Connection error. Please try again.');
+            toast.error('Connection error. Please try again.');
         } finally {
             setIsLoading(false);
+            setIsProcessing(false);
         }
     };
-
-
-    const handleStartPayment = preventDoubleClick(() => {
-        if (isProcessing || timeRemaining <= 0) return;
-
-        // Update session storage
-        const state = JSON.parse(sessionStorage.getItem('ergo_payment_state') || '{}');
-        state.step = 2;
-        sessionStorage.setItem('ergo_payment_state', JSON.stringify(state));
-
-        setStep(2);
-    }, 2000);
 
     const autoCheckPayment = async () => {
         if (!accessCode) return;
