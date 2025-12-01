@@ -487,50 +487,13 @@ const Part1 = () => {
                         </Suspense>
 
                         <div className="mt-12 p-8 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-2xl border border-cyan-500/50 text-center">
-                            <h3 className="text-2xl font-bold text-white mb-4">Part 1 Complete! 🎉</h3>
-                            <p className="text-slate-300 mb-6">
-                                You now understand what AI agents are, which tools to use, and how to protect your privacy. You're ready to build your first agent!
-                            </p>
-
-                            {/* Upsell CTA */}
-                            <div className="bg-slate-900/80 p-6 rounded-xl border border-yellow-500/30 mb-8 max-w-2xl mx-auto">
-                                <div className="text-yellow-400 font-bold mb-2 uppercase tracking-wider text-sm">Next Step: Implementation</div>
-                                <h4 className="text-xl font-bold text-white mb-3">Ready to Deploy Your "Morning Agent"?</h4>
-                                <p className="text-slate-400 text-sm mb-4">
-                                    In Part 2, we stop talking theory and start building. You'll copy-paste the exact prompts to automate your morning briefing, meal planning, and household chores.
-                                </p>
-                                <a
-                                    href="/#pricing"
-                                    className="inline-block w-full md:w-auto bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg transition-colors mb-2"
-                                >
-                                    Unlock Full System ($39.99)
-                                </a>
-                                <div className="text-xs text-slate-500 mt-2">
-                                    Includes all 5 parts + 30-day money-back guarantee
-                                </div>
-                            </div>
-
-                            <button
-                                onClick={() => navigate('/checkout')}
-                                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-bold transition-all"
-                            >
-                                Continue to Checkout
-                                <ArrowRight size={20} />
-                            </button>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* Social Share */}
-                <Suspense fallback={null}>
-                    <SocialShare
-                        title="I'm diagnosing my 'Time Infection' with Agentic AI. It's time to reclaim my schedule!"
-                        hashtags={["AgenticAI", "TimeManagement", "Productivity"]}
+                            title="I'm diagnosing my 'Time Infection' with Agentic AI. It's time to reclaim my schedule!"
+                            hashtags={["AgenticAI", "TimeManagement", "Productivity"]}
                     />
-                </Suspense>
-            </div >
-        </WebbookLayout >
-    );
+                        </Suspense>
+                    </div >
+                </WebbookLayout >
+                );
 };
 
-export default Part1;
+                export default Part1;
