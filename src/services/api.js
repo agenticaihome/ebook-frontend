@@ -154,7 +154,7 @@ export const api = {
   },
 
   checkErgoPayment: async (requestId) => {
-    const response = await fetch(`${API_URL}/payment/ergo/check`, {
+    const response = await fetch(`${API_URL}/payment/ergo/check-recent`, {
       method: 'POST',
       headers: getHeaders(),
       credentials: 'include',

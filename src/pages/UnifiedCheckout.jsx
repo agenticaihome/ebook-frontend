@@ -111,13 +111,13 @@ export default function UnifiedCheckout() {
         setErgoPayment(prev => ({ ...prev, status: 'showing' }));
 
         try {
-            const result = await api.initiateErgoPayment(email);
+            const result = await api.initiateErgoPayment();
             if (result.success) {
                 setErgoPayment({
                     qrData: result.ergoPayUrl,
                     walletAddress: result.walletAddress,
-                    requestId: result.requestId,
-                    amountErg: result.amountErg,
+                    requestId: result.accessCode, // Backend returns accessCode
+                    amountErg: result.ergAmount, // Backend returns ergAmount
                     status: 'polling'
                 });
             } else {
