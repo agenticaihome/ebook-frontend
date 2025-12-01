@@ -337,7 +337,13 @@ export default function HowToPay() {
                                 <div>
                                     <h4 className="font-bold text-white mb-2">1. Create Account</h4>
                                     <p className="text-slate-400 mb-4">Go to CoinEx.com and sign up with your email.</p>
-                                    <SchematicPlaceholder type="browser" label="CoinEx Exchange" subLabel="Sign Up Page" />
+                                    <div className="rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+                                        <img
+                                            src="/images/guide/guide-coinex-signup.png"
+                                            alt="CoinEx Sign Up Page"
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div>
@@ -345,7 +351,24 @@ export default function HowToPay() {
                                     <p className="text-slate-400 mb-4">
                                         Click "Buy Crypto", select <strong>ERG</strong>, and enter <strong>$25</strong>. Pay with your card.
                                     </p>
-                                    <SchematicPlaceholder type="card" label="Buy Crypto" subLabel="Select ERG + Credit Card" />
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                                            <img
+                                                src="/images/guide/guide-search-erg.jpg"
+                                                alt="Search for ERG"
+                                                className="w-full h-auto"
+                                            />
+                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Search for "ERG"</p>
+                                        </div>
+                                        <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                                            <img
+                                                src="/images/guide/guide-buy-erg.png"
+                                                alt="Buy ERG Interface"
+                                                className="w-full h-auto"
+                                            />
+                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Select Amount & Buy</p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div>
@@ -358,7 +381,20 @@ export default function HowToPay() {
                                             ⚠️ Triple-check the address! If you send to the wrong place, it's gone.
                                         </p>
                                     </div>
-                                    <SchematicPlaceholder type="browser" label="Withdraw Funds" subLabel="Paste YOUR Wallet Address" />
+                                    <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg mb-4">
+                                        <img
+                                            src="/images/guide/guide-market-info.png"
+                                            alt="CoinEx Market Info"
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
+                                    <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                                        <img
+                                            src="/images/guide/guide-withdraw.png"
+                                            alt="Withdraw Funds Interface"
+                                            className="w-full h-auto"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -376,7 +412,14 @@ export default function HowToPay() {
                                 <p className="text-slate-400 mb-4">
                                     On our checkout page, you'll see the <strong>Exact ERG Amount</strong> and our <strong>Wallet Address</strong>.
                                 </p>
-                                <SchematicPlaceholder type="qr" label="Checkout Page" subLabel="Scan QR or Copy Address" />
+                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-sm mx-auto">
+                                    <img
+                                        src="/images/guide/guide-wallet-qr.jpg"
+                                        alt="Wallet QR Code"
+                                        className="w-full h-auto"
+                                    />
+                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Scan to Send Payment</p>
+                                </div>
                             </div>
 
                             <div>
@@ -384,7 +427,14 @@ export default function HowToPay() {
                                 <p className="text-slate-400 mb-4">
                                     Open Nautilus (or your mobile app). Click "Send". Paste our address and the EXACT amount.
                                 </p>
-                                <SchematicPlaceholder type="mobile" label="Send Transaction" subLabel="Paste Address + Exact Amount" />
+                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-sm mx-auto">
+                                    <img
+                                        src="/images/guide/guide-mobile-send.png"
+                                        alt="Mobile Wallet Send Screen"
+                                        className="w-full h-auto"
+                                    />
+                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Enter Address & Amount</p>
+                                </div>
                             </div>
 
                             <div>
