@@ -140,28 +140,43 @@ const Part1 = () => {
                             <CaptainHero
                                 size="md"
                                 pose="pointing"
-                                message="I'm Captain Efficiency. I'm not here to add to your to-do list. I'm here to delete half of it. You've probably used ChatGPT. Maybe asked Siri to set a timer. That's like having a genius assistant who only works when you stand over their shoulder. Real agents don't wait for instructions. They anticipate. They handle things. They let you finish a coffee while it's still hot. That's what we're building."
+                                message="I'm Captain Efficiency. My job isn't to add to your to-do list. It's to delete half of it. You've used ChatGPT. Maybe asked Siri to set a timer. That's like hiring a genius assistant who only works when you stand over their shoulder, dictating every move. Real agents don't wait for instructions. They anticipate. They monitor. They handle things. They let you finish a coffee while it's still hot. We're not here to 'boost productivity.' We're here to reclaim your attention from the tyranny of micro-decisions. That's what we're building."
                             />
                         </Suspense>
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">
-                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 1: What Are AI Agents and Why Should You Care?</h2>
+                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 1: The Everything-Manager</h2>
+                            <p className="text-xl text-slate-400 italic mb-8">(And Why Your Current Tools Are Just Expensive Notepads)</p>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">Let's Start With a Story</h3>
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">The Morning Sarah Broke</h3>
                             <p className="text-slate-300 leading-relaxed">
-                                Sarah is a {story.role}. Every morning used to start the same way: {story.chaos}.
+                                Sarah didn't remember falling asleep. She remembered opening her laptop at 11:47 PM to "just check one thing," and then her alarm was screaming.
                             </p>
                             <p className="text-slate-300 leading-relaxed">
-                                Check emails. Respond to urgent requests. Check the calendar. Did she pay the bill? What's for dinner? Did she remember the deadline?
+                                5:47 AM. She had a client presentation in 48 minutes.
                             </p>
                             <p className="text-slate-300 leading-relaxed">
-                                One day, a tech-savvy friend set her up with what he called an "AI agent." Sarah was skeptical — she'd tried ChatGPT and found it helpful but limited.
+                                Wait—no. The calendar said <em>tomorrow</em>. She'd set the wrong day. <em>Again</em>.
                             </p>
                             <p className="text-slate-300 leading-relaxed">
-                                This was different.
+                                While brewing coffee with shaking hands, her phone buzzed. Manager on Slack. <em>"Did you see the budget email?"</em> She hadn't. She clicked over to Gmail—47 unread, the important one buried somewhere between a Target receipt and a LinkedIn endorsement.
                             </p>
                             <p className="text-slate-300 leading-relaxed">
-                                Now, her mornings look like this: She wakes up to a single notification summarizing what needs her attention, what's already handled, and what decisions need her input.
+                                In the scramble to find the email, she forgot she'd started the coffee maker. No filter. Grounds everywhere.
+                            </p>
+                            <p className="text-slate-300 leading-relaxed">
+                                By 6:32 AM, Sarah was sitting in her car, presentation half-ready, wondering how other people made this look easy.
+                            </p>
+                            <p className="text-slate-300 leading-relaxed italic">
+                                "There has to be a better way," she thought. "Or I'm going to lose my mind."
+                            </p>
+
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">What Changed</h3>
+                            <p className="text-slate-300 leading-relaxed">
+                                Sarah's mornings now start at 6:15 AM. Not because she's lazy. Because she doesn't need the 30-minute panic sprint anymore.
+                            </p>
+                            <p className="text-slate-300 leading-relaxed mb-4">
+                                Here's what happens <strong>before she even wakes up</strong>:
                             </p>
 
                             <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 my-6">
@@ -175,7 +190,10 @@ const Part1 = () => {
                                     ))}
                                 </ul>
                                 <p className="text-cyan-400 font-bold mt-4">
-                                    The key difference? Sarah didn't ask it to do any of this. The agent observed, planned, and acted autonomously within boundaries she set.
+                                    The key difference? Sarah didn't <em>ask</em> it to do any of this. The agent <strong>observed</strong> her patterns, <strong>planned</strong> based on her rules, and <strong>acted</strong> within the boundaries she set.
+                                </p>
+                                <p className="text-white font-bold text-lg  mt-4">
+                                    She goes from managing 100 things to approving 5.
                                 </p>
                             </div>
 
@@ -203,14 +221,27 @@ const Part1 = () => {
                                 />
                             </Suspense>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Chatbot vs. Agent: The Critical Distinction</h3>
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Chatbot vs. Agent: The Line That Changes Everything</h3>
                             <p className="text-slate-300 leading-relaxed mb-4">
-                                This is the most important concept in this entire course:
+                                Let me be direct: <strong>This is the most important concept in this entire book.</strong>
+                            </p>
+                            <p className="text-slate-300 leading-relaxed mb-6">
+                                If you understand this distinction, the next 14 chapters will feel like a toolkit. If you don't, they'll feel like random "tips."
                             </p>
 
                             <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
                                 <AgentLoopVisual />
                             </Suspense>
+
+                            <div className="my-8 p-6 bg-slate-900/50 rounded-xl border border-cyan-500/30">
+                                <h4 className="text-white font-bold mb-3">Think of it this way:</h4>
+                                <p className="text-slate-300 text-sm mb-2">
+                                    <strong className="text-cyan-400">A chatbot</strong> is a brilliant coworker who needs constant supervision.
+                                </p>
+                                <p className="text-slate-300 text-sm">
+                                    <strong className="text-cyan-400">An agent</strong> is a team member who knows your playbook and runs it without you.
+                                </p>
+                            </div>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Mental Load Problem</h3>
                             <p className="text-slate-300 leading-relaxed">
@@ -227,12 +258,37 @@ const Part1 = () => {
                                 </ul>
                             </div>
 
-                            <p className="text-slate-300 leading-relaxed">
-                                Agents reduce mental load by remembering everything, noticing things you'd miss, deciding routine matters, acting on your behalf, and reporting only what needs your attention.
+                            <p className="text-slate-300 leading-relaxed mb-4">
+                                Agents reduce mental load by:
                             </p>
-                            <p className="text-cyan-400 font-bold text-xl my-6">
-                                You go from managing 100 things to approving 5 things.
-                            </p>
+                            <ul className="list-none space-y-2 my-6 text-slate-300">
+                                <li className="flex items-start gap-2">
+                                    <span className="text-cyan-400 font-bold">①</span>
+                                    <span><strong>Remembering</strong> everything (not just on a calendar, but in context)</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-cyan-400 font-bold">②</span>
+                                    <span><strong>Noticing</strong> things you'd miss (conflicts, patterns, anomalies)</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-cyan-400 font-bold">③</span>
+                                    <span><strong>Deciding</strong> routine matters based on rules you define once</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-cyan-400 font-bold">④</span>
+                                    <span><strong>Acting</strong> on your behalf (within permissions you control)</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-cyan-400 font-bold">⑤</span>
+                                    <span><strong>Reporting</strong> only what truly needs your attention</span>
+                                </li>
+                            </ul>
+                            <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 my-8 text-center">
+                                <p className="text-white font-bold text-2xl mb-2">
+                                    You go from managing 100 things to approving 5.
+                                </p>
+                                <p className="text-slate-400 text-sm">That's the transformation.</p>
+                            </div>
                         </div>
 
                         <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading quiz...</div>}>
@@ -256,8 +312,29 @@ const Part1 = () => {
                             />
                         </Suspense>
 
-                        <CaptainTip type="tip" title="Your First Step">
-                            You now understand the difference between chatbots and agents. That's the foundation for everything. Next up: we'll look at the actual tools you can use. Onward!
+                        <div className="my-12 p-8 bg-gradient-to-br from-yellow-900/30 to-orange-900/20 rounded-2xl border-2 border-yellow-500/50">
+                            <h3 className="text-2xl font-bold text-white mb-4">⚡ Your First Real Test</h3>
+                            <p className="text-slate-300 mb-4">
+                                Before you move to Chapter 2, I want you to do something:
+                            </p>
+                            <p className="text-white font-bold mb-4">
+                                Write down ONE task you're most tired of remembering.
+                            </p>
+                            <p className="text-slate-300 text-sm mb-4">
+                                The thing that slips through the cracks. The recurring "I forgot to..." moment. The mental Post-It note that's been stuck to your brain for months.
+                            </p>
+                            <p className="text-slate-300 text-sm mb-6">
+                                Screenshot it. Tweet it with #AgenticAI. Text it to a friend. Make it real.
+                            </p>
+                            <div className="bg-slate-900/80 p-4 rounded-lg border border-yellow-500/30">
+                                <p className="text-cyan-400 font-bold text-center">
+                                    Because in Chapter 2? We're going to delete it from your brain permanently.
+                                </p>
+                            </div>
+                        </div>
+
+                        <CaptainTip type="tip" title="Chapter 1 Complete">
+                            You named your task. Now let's kill it. Chapter 2 is where we build the team that makes it happen.
                         </CaptainTip>
                     </div>
                 </motion.section>
@@ -281,11 +358,28 @@ const Part1 = () => {
                         </Suspense>
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">
-                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 2: Your AI Team</h2>
+                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 2: Building Your AI Team</h2>
+                            <p className="text-xl text-slate-400 italic mb-8">(The 4 Roles That Delete That Task You Named)</p>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">Meet Your New Staff</h3>
-                            <p className="text-slate-300 leading-relaxed">
-                                Stop thinking about "software stacks." Think about building a team. You need 4 roles filled:
+                            <div className="bg-gradient-to-r from-yellow-900/20 to-orange-900/10 p-6 rounded-xl border border-yellow-500/30 mb-8">
+                                <h3 className="text-white font-bold mb-3">Remember Your Task from Chapter 1?</h3>
+                                <p className="text-slate-300 text-sm mb-2">
+                                    That one recurring thing you're tired of remembering? The thing slipping through the cracks?
+                                </p>
+                                <p className="text-cyan-400 font-bold text-sm">
+                                    Good. By the end of this chapter, you'll know exactly which role on your AI team handles it.
+                                </p>
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">The 4-Role Framework</h3>
+                            <p className="text-slate-300 leading-relaxed mb-4">
+                                Okay. You named the task. Now let's build the team that deletes it from your brain forever.
+                            </p>
+                            <p className="text-white font-bold mb-4">
+                                But here's the thing: You don't need 47 apps. You don't need a computer science degree. You don't even need to spend money yet.
+                            </p>
+                            <p className="text-slate-300 leading-relaxed mb-6">
+                                You need <strong>4 roles filled</strong>. That's it.
                             </p>
 
                             <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 my-8">
@@ -336,7 +430,33 @@ const Part1 = () => {
                                 </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Level 1: Foundation AI (Pick ONE to Start)</h3>
+                            <div className="my-8 p-6 bg-slate-900/80 rounded-xl border border-cyan-500/30">
+                                <h4 className="text-white font-bold mb-4">🎯 Task-to-Team Mapping</h4>
+                                <p className="text-slate-300 text-sm mb-4">Remember your recurring task? Here's which role handles it:</p>
+                                <div className="space-y-3 text-sm">
+                                    <div className="flex items-start gap-3">
+                                        <span className="text-green-400 font-bold min-w-[80px]">BRAIN →</span>
+                                        <span className="text-slate-300">Morning briefings, email summaries, decision recommendations, draft responses</span>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <span className="text-orange-400 font-bold min-w-[80px]">MEMORY →</span>
+                                        <span className="text-slate-300">Recipes, past conversations, your preferences, family birthdays, gift ideas</span>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <span className="text-cyan-400 font-bold min-w-[80px]">HANDS →</span>
+                                        <span className="text-slate-300">Scheduling meetings, paying bills, sending invites, booking appointments</span>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <span className="text-purple-400 font-bold min-w-[80px]">NERVES →</span>
+                                        <span className="text-slate-300">"When this happens, do that" automations (later chapters)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Your First Hire: The Brain</h3>
+                            <p className="text-slate-300 leading-relaxed mb-6">
+                                This is your foundation. Pick <strong>ONE</strong> to start. You can always switch later.
+                            </p>
 
                             <div className="grid md:grid-cols-2 gap-6 my-8">
                                 <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 p-6 rounded-xl border border-cyan-500/30">
@@ -376,9 +496,27 @@ const Part1 = () => {
                                 </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Minimum Viable Stack</h3>
-                            <p className="text-slate-300 leading-relaxed">
-                                If you want the simplest possible setup that still works:
+                            <div className="my-8 p-6 bg-cyan-900/30 rounded-xl border border-cyan-500/50">
+                                <h4 className="text-white font-bold mb-3">🤔 Which One Should I Pick?</h4>
+                                <div className="space-y-3 text-sm text-slate-300">
+                                    <div>
+                                        <strong className="text-cyan-400">If in doubt →</strong> Claude. Best balance of capability and privacy.
+                                    </div>
+                                    <div>
+                                        <strong className="text-cyan-400">If you use Google everything →</strong> Gemini. Deepest Google Workspace integration.
+                                    </div>
+                                    <div>
+                                        <strong className="text-cyan-400">If you use Microsoft 365 →</strong> Copilot. Already in your workflow.
+                                    </div>
+                                    <div>
+                                        <strong className="text-cyan-400">If you want max plugins →</strong> ChatGPT. Largest ecosystem.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Complete Minimum Viable Stack</h3>
+                            <p className="text-slate-300 leading-relaxed mb-4">
+                                This is all you need for Chapters 3-12 of this book. Start here:
                             </p>
 
                             <div className="bg-gradient-to-r from-green-900/20 to-cyan-900/20 p-6 rounded-xl border border-green-500/30 my-6">
@@ -405,8 +543,8 @@ const Part1 = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <p className="text-cyan-400 font-bold mt-4 text-center">
-                                    This is all you need for Parts 2-4 of this course.
+                                <p className="text-cyan-400 font-bold mt-6 text-center">
+                                    This is your starting lineup. Everything else is optional until Chapter 13.
                                 </p>
                             </div>
                         </div>
