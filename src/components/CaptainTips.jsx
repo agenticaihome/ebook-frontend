@@ -1,7 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Lightbulb } from 'lucide-react';
-import { api } from '../services/api';
+
+// Captain E's Productivity Tips - 20 unique insights
+const CAPTAIN_TIPS = [
+    "Automating your grocery list can save you 2 hours a week. That's 100+ hours a year!",
+    "Use AI to draft your emails. It reduces mental load by 40%.",
+    "A 5-minute daily planning session with AI prevents 2 hours of chaos.",
+    "Batch your low-energy tasks for the afternoon slump. Your future self will thank you.",
+    "Set up a morning automation routine. The first win of the day compounds.",
+    "Your calendar is a to-do list. If it's not scheduled, it's not happening.",
+    "Automate expense tracking: 10 minutes monthly beats 2 hours quarterly.",
+    "Use voice memos for quick captures. Transcribe later with AI. Your brain isn't a storage device.",
+    "Build a 'Second Brain' for recurring decisions. Document once, reference forever.",
+    "Red days = survival mode. Yellow days = essentials only. Green days = attack mode. Know your state.",
+    "Template your recurring emails. Why rewrite the same explanation 50 times a year?",
+    "Block 'No Meeting' days. Deep work requires uninterrupted time, not fragmented hours.",
+    "Automate your bill payments. Decision fatigue is real - eliminate the trivial choices.",
+    "Use AI to summarize long documents. Read the 500-word summary, not the 50-page report.",
+    "Meal prep on Sunday. Deciding what to eat 21 times a week is exhausting.",
+    "Set up auto-replies for common questions. Your time is too valuable for repetitive responses.",
+    "Track your energy levels, not just your time. Optimize for when you're naturally productive.",
+    "Create a shutdown ritual. Your brain needs a clear 'work is done' signal.",
+    "Automate your morning: coffee timer, lights, music. Remove 15 decisions before 8am.",
+    "Use AI agents for research. Let them filter 100 articles down to the 5 that matter."
+];
 
 const CaptainTips = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -11,29 +34,12 @@ const CaptainTips = () => {
         console.log('✅ CaptainTips mounted - will show tip in 5 seconds');
 
         // Show tip after 5 seconds
-        const timer = setTimeout(async () => {
-            console.log('⏰ Fetching Captain tip from API...');
-            try {
-                // Get context from current page
-                const context = window.location.pathname.includes('part')
-                    ? 'productivity and AI automation'
-                    : 'general productivity';
-
-                const result = await api.getAiTip(context);
-
-                if (result && result.tip) {
-                    setTip(result.tip);
-                } else {
-                    // Fallback tip
-                    setTip("Captain's Insight: Automating your grocery list can save you 2 hours a week!");
-                }
-                setIsVisible(true);
-            } catch (error) {
-                console.error('Failed to fetch tip:', error);
-                // Fallback tip if API fails
-                setTip("Captain's Insight: Use AI to draft your emails. It reduces mental load by 40%.");
-                setIsVisible(true);
-            }
+        const timer = setTimeout(() => {
+            // Pick a random tip
+            const randomTip = CAPTAIN_TIPS[Math.floor(Math.random() * CAPTAIN_TIPS.length)];
+            setTip(`Captain's Insight: ${randomTip}`);
+            setIsVisible(true);
+            console.log('⏰ Showing Captain tip!');
         }, 5000);
 
         return () => clearTimeout(timer);
