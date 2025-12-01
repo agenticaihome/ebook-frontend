@@ -153,6 +153,16 @@ export const api = {
     return handleResponse(response);
   },
 
+  checkErgoPayment: async (requestId) => {
+    const response = await fetch(`${API_URL}/payment/ergo/check`, {
+      method: 'POST',
+      headers: getHeaders(),
+      credentials: 'include',
+      body: JSON.stringify({ accessCode: requestId }),
+    });
+    return handleResponse(response);
+  },
+
   // Stripe
   createStripeCheckout: async (email) => {
     const response = await fetch(`${API_URL}/payment/stripe/checkout`, {
