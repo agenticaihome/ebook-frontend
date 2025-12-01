@@ -22,6 +22,17 @@ export default function WhyErgo() {
                         <Link to="/" className="inline-flex items-center text-green-400 hover:text-green-300 mb-8 transition-colors">
                             <ArrowLeft size={16} className="mr-2" /> Back to Course
                         </Link>
+
+                        <div className="flex justify-center mb-6">
+                            <div className="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 shadow-[0_0_30px_rgba(34,197,94,0.2)] backdrop-blur-sm">
+                                <img
+                                    src="/assets/ergo-logo.png"
+                                    alt="Ergo Logo"
+                                    className="w-12 h-12 object-contain invert opacity-90"
+                                />
+                            </div>
+                        </div>
+
                         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
                             Smart Money for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Agentic Age</span>
                         </h1>
