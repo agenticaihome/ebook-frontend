@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Lightbulb } from 'lucide-react';
+import { api } from '../services/api';
 
 const CaptainTips = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -10,11 +11,29 @@ const CaptainTips = () => {
         console.log('✅ CaptainTips mounted - will show tip in 5 seconds');
 
         // Show tip after 5 seconds
-        const timer = setTimeout(() => {
-            console.log('⏰ Showing Captain tip!');
-            // MOCK: Hardcoded tip for demo (will be from API later)
-            setTip("Captain's Insight: Automating your grocery list can save you 2 hours a week. That's 100+ hours a year!");
-            setIsVisible(true);
+        const timer = setTimeout(async () => {
+            console.log('⏰ Fetching Captain tip from API...');
+            try {
+                // Get context from current page
+                const context = window.location.pathname.includes('part')
+                    ? 'productivity and AI automation'
+                    : 'general productivity';
+
+                const result = await api.getAiTip(context);
+
+                if (result && result.tip) {
+                    setTip(result.tip);
+                } else {
+                    // Fallback tip
+                    setTip("Captain's Insight: Automating your grocery list can save you 2 hours a week!");
+                }
+                setIsVisible(true);
+            } catch (error) {
+                console.error('Failed to fetch tip:', error);
+                // Fallback tip if API fails
+                setTip("Captain's Insight: Use AI to draft your emails. It reduces mental load by 40%.");
+                setIsVisible(true);
+            }
         }, 5000);
 
         return () => clearTimeout(timer);
