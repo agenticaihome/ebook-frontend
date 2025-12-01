@@ -23,10 +23,10 @@ export default function WhyErgo() {
                             <ArrowLeft size={16} className="mr-2" /> Back to Course
                         </Link>
                         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                            Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Ergo?</span>
+                            Smart Money for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Agentic Age</span>
                         </h1>
                         <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            Smart Money for the Agentic Age: Efficient Peer-to-Peer Finance.
+                            Efficient Peer-to-Peer Finance.
                             <br />
                             <span className="text-green-400 font-bold">Cut out the middlemen to save 50%.</span>
                         </p>

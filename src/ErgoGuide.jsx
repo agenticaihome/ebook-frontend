@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     Wallet, CreditCard, Send, CheckCircle, HelpCircle,
     Smartphone, Monitor, AlertTriangle, ChevronDown, ChevronUp,
-    Copy, ExternalLink, ArrowRight, ShieldCheck
+    Copy, ExternalLink, ArrowRight, ShieldCheck, Check
 } from 'lucide-react';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
@@ -13,6 +13,7 @@ import SchematicPlaceholder from './components/SchematicPlaceholder';
 export default function HowToPay() {
     const [device, setDevice] = useState('desktop'); // desktop, ios, android
     const [exchange, setExchange] = useState('coinex'); // coinex, kucoin, gate
+    const [copied, setCopied] = useState(false);
 
     const DeviceButton = ({ type, icon: Icon, label }) => (
         <button
@@ -405,15 +406,51 @@ export default function HowToPay() {
                             <div>
                                 <h4 className="font-bold text-white mb-2">1. Get the Payment Details</h4>
                                 <p className="text-slate-400 mb-4">
-                                    On our checkout page, you'll see the <strong>Exact ERG Amount</strong> and our <strong>Wallet Address</strong>.
+                                    Send <strong>$19.99 USD</strong> worth of ERG to the address below.
                                 </p>
+
+                                <div className="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 max-w-md mx-auto">
+                                    <div className="mb-6">
+                                        <label className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-2 block">Send Exactly</label>
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-3xl font-bold text-white">$19.99 USD</span>
+                                            <span className="text-slate-500 text-sm font-medium">(in ERG)</span>
+                                        </div>
+                                        <p className="text-xs text-slate-500 mt-2 bg-slate-800/50 p-2 rounded border border-slate-700/50">
+                                            💡 <strong>Tip:</strong> In Terminus, you can just type "19.99" and select USD. It will calculate the ERG for you!
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <label className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-2 block">To This Address</label>
+                                        <button
+                                            onClick={() => {
+                                                navigator.clipboard.writeText("9gxmJ4attdDx1NnZL7tWkN2U9iwZbPWWSEcfcPHbJXc7xsLq6QK");
+                                                setCopied(true);
+                                                setTimeout(() => setCopied(false), 2000);
+                                            }}
+                                            className="w-full bg-black/30 hover:bg-black/50 border border-slate-600 hover:border-slate-500 rounded-lg p-3 flex items-center justify-between group transition-all"
+                                        >
+                                            <span className="font-mono text-xs md:text-sm text-slate-300 truncate mr-2">9gxmJ4attdDx1NnZL7tWkN2U9iwZbPWWSEcfcPHbJXc7xsLq6QK</span>
+                                            {copied ? (
+                                                <div className="flex items-center gap-1 text-green-400">
+                                                    <Check size={16} />
+                                                    <span className="text-xs font-bold">Copied</span>
+                                                </div>
+                                            ) : (
+                                                <Copy size={16} className="text-slate-400 group-hover:text-white transition-colors" />
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-[280px] mx-auto">
                                     <img
                                         src="/images/guide/guide-wallet-qr.jpg"
                                         alt="Wallet QR Code"
                                         className="w-full h-auto"
                                     />
-                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Scan this QR code</p>
+                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Scan to Auto-Fill Address</p>
                                 </div>
                             </div>
 
@@ -439,7 +476,7 @@ export default function HowToPay() {
                                 <p className="text-slate-400 mb-4">
                                     Enter your spending password and slide/click to confirm.
                                     <br />
-                                    <span className="text-green-400 font-bold">That's it!</span> You don't need to do anything else. Our system watches the blockchain and will email you automatically.
+                                    <span className="text-green-400 font-bold">Important:</span> Copy your <strong>Transaction ID</strong> (Tx ID) from the wallet. You can use this to claim your purchase if you close the page.
                                 </p>
                             </div>
                         </div>
@@ -454,7 +491,7 @@ export default function HowToPay() {
                         </div>
                         <h2 className="text-3xl font-bold text-white mb-4">Step 4: You're Done!</h2>
                         <p className="text-slate-400 max-w-xl mx-auto mb-8">
-                            Our system detects the payment automatically in about 2 minutes. You'll get instant access to the course and a confirmation email.
+                            Our system detects the payment automatically. If you aren't redirected, you can <strong>claim your purchase</strong> using your Transaction ID.
                         </p>
                         <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 max-w-lg mx-auto">
                             <h4 className="font-bold text-white mb-2">Congratulations!</h4>
