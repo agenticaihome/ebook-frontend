@@ -54,7 +54,7 @@ const PurchaseGate = ({ children }) => {
 
                 <div className="space-y-4">
                     <button
-                        onClick={() => navigate('/pay-ergo')}
+                        onClick={() => navigate('/ergo-guide')}
                         className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-orange-900/20 flex items-center justify-center gap-2"
                     >
                         <ShieldCheck size={20} />
