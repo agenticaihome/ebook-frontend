@@ -9,6 +9,7 @@ import { usePerformanceMode } from './hooks/usePerformanceMode';
 
 const TimeBackCalculator = React.lazy(() => import('./components/landing/TimeBackCalculator'));
 const BeforeAfterComparison = React.lazy(() => import('./components/landing/BeforeAfterComparison'));
+const TryThisNow = React.lazy(() => import('./components/common/TryThisNow'));
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
@@ -262,6 +263,23 @@ export default function SalesPage() {
               <TimeBackCalculator />
             </Suspense>
           </div>
+
+          {/* Try This Now Challenge */}
+          <div className="max-w-4xl mx-auto mt-8">
+            <Suspense fallback={null}>
+              <TryThisNow
+                challenge="Test Drive Your First AI Agent (Free)"
+                estimatedTime="5 min"
+                steps={[
+                  "Go to Part 1 (100% free, no email required)",
+                  "Take the AI Experience Quiz to see where you are",
+                  "Use the Mental Load Calculator to quantify your chaos",
+                  "See Captain Efficiency's recommendations",
+                  "Decide if this system is for you"
+                ]}
+              />
+            </Suspense>
+          </div>
         </section>
 
         {/* RESULTS SECTION */}
@@ -302,8 +320,56 @@ export default function SalesPage() {
           </div>
         </section>
 
+        {/* SOCIAL PROOF / TESTIMONIALS */}
+        <section className="py-24 px-6 bg-[#0f0f1a]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">REAL RESULTS FROM REAL USERS</h2>
+              <p className="text-slate-400">Not hype. Just people who deployed the system.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Testimonial 1 */}
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-cyan-500/30 transition-all">
+                <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                <p className="text-slate-300 mb-4 italic">
+                  "I'm saving 8 hours a week with the Morning + Kitchen agents alone. This paid for itself in week 1."
+                </p>
+                <div className="text-sm text-slate-500">
+                  <div className="font-bold text-slate-400">Sarah T.</div>
+                  <div>Product Manager</div>
+                </div>
+              </div>
+
+              {/* Testimonial 2 */}
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-purple-500/30 transition-all">
+                <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                <p className="text-slate-300 mb-4 italic">
+                  "Finally, a course that doesn't just teach prompts. This is a complete operating system for life."
+                </p>
+                <div className="text-sm text-slate-500">
+                  <div className="font-bold text-slate-400">Marcus L.</div>
+                  <div>Software Engineer</div>
+                </div>
+              </div>
+
+              {/* Testimonial 3 */}
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-green-500/30 transition-all">
+                <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                <p className="text-slate-300 mb-4 italic">
+                  "The Recovery Agent alone changed my life. I'm sleeping better and getting more done. Paradox solved."
+                </p>
+                <div className="text-sm text-slate-500">
+                  <div className="font-bold text-slate-400">Dr. Chen</div>
+                  <div>Medical Resident</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CREATOR SECTION */}
-        <section className="py-16 px-6 text-center">
+        <section className="py-16 px-6 text-center bg-[#0f0f1a] border-y border-slate-800/50">
           <div className="max-w-2xl mx-auto">
             <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">WHO DEPLOYED ME?</h3>
             <h2 className="text-3xl font-bold mb-6">The Doctor of Digital Systems (DDS)</h2>
