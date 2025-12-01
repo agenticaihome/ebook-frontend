@@ -86,123 +86,388 @@ const Part3 = () => {
                     {/* Chapter 7: Email */}
                     <section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                                <CaptainHero
-                                    size="md"
-                                    pose="pointing"
-                                    message="Your inbox is a to-do list created by OTHER people. If you don't defend it, you'll spend your life reacting to their demands. But here's the secret: 80% of email is noise. 15% is FYI. Only 5% actually needs YOU. Let's build a Gatekeeper Agent to handle the 95%."
-                                />
-                            </Suspense>
-
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 7: The Gatekeeper Agent (Email)</h2>
 
-                                {/* Quick Win Box */}
-                                <div className="bg-gradient-to-r from-blue-900/30 to-indigo-900/30 p-6 rounded-xl border border-blue-500/50 my-8">
-                                    <h3 className="text-xl font-bold text-blue-400 mb-3">📌 Quick Win: The 'Triage' Prompt</h3>
-                                    <p className="text-white mb-4">Paste unread emails into your AI and ask:</p>
-                                    <div className="bg-slate-900/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
-                                        "Scan these emails. List ONLY the ones that require a reply from me today. For each, draft a 1-sentence response. Ignore newsletters, receipts, and FYIs."
-                                    </div>
-                                    <p className="text-blue-400 font-bold">Clear 50 emails in 2 minutes.</p>
-                                </div>
-
-                                <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Inbox Zero Myth</h3>
-                                <p className="text-slate-300 mb-4">
-                                    Inbox Zero is a waste of time if you're just moving emails around. The goal is <strong>Inbox Irrelevant</strong>.
-                                </p>
-
-                                <Suspense fallback={<div className="h-48 animate-pulse bg-slate-800/50 rounded-xl my-8" />}>
-                                    <WorkflowVisual
-                                        title="The Gatekeeper Workflow"
-                                        inputs={[
-                                            { label: "Incoming Emails", icon: "mail" },
-                                            { label: "Triage Rules", icon: "list" },
-                                            { label: "Calendar", icon: "calendar" }
-                                        ]}
-                                        agentName="Gatekeeper Agent"
-                                        outputs={[
-                                            { label: "Draft Replies", icon: "file" },
-                                            { label: "Calendar Events", icon: "calendar" },
-                                            { label: "Archive/Delete", icon: "check" }
-                                        ]}
-                                    />
-                                </Suspense>
-
-                                <Suspense fallback={<div className="h-24 animate-pulse bg-yellow-900/20 rounded-xl my-8" />}>
-                                    <TroubleshootingAccordion
-                                        title="Gatekeeper Agent Troubleshooting"
-                                        issues={[
-                                            {
-                                                problem: "I missed an important email.",
-                                                solution: "Add a 'VIP List' rule. Tell the agent: 'ALWAYS flag emails from [spouse@email.com] or [boss@email.com]'. You can also ask it to 'List all emails from [Domain] separately'."
-                                            },
-                                            {
-                                                problem: "It's drafting robot-sounding replies.",
-                                                solution: "Give it 3 examples of your actual emails. Say: 'Mimic this tone: [paste examples]'. Tell it to be 'brief, casual, and lower-case'."
-                                            },
-                                            {
-                                                problem: "It's flagging everything as urgent.",
-                                                solution: "Refine your definition of urgent. Tell it: 'Urgent means it requires a reply TODAY or I lose money/trust. Everything else is not urgent'."
-                                            }
-                                        ]}
-                                    />
-                                </Suspense>
-
-                                <div className="grid md:grid-cols-2 gap-6 my-8">
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                        <h4 className="text-white font-bold mb-3">Manual Processing</h4>
-                                        <ul className="space-y-2 text-sm text-slate-300">
-                                            <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Read every subject line</li>
-                                            <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Open spam/newsletters</li>
-                                            <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Archive manually</li>
-                                            <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Reply to everything</li>
-                                        </ul>
-                                    </div>
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                        <h4 className="text-blue-400 font-bold mb-3">Agent Processing</h4>
-                                        <ul className="space-y-2 text-sm text-slate-300">
-                                            <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Filters noise automatically</li>
-                                            <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Summarizes long threads</li>
-                                            <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Drafts replies for review</li>
-                                            <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Highlights urgent items</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                                    <EmailChaosCalculator />
-                                </Suspense>
-
-                                <div className="my-8 border-l-4 border-red-500 pl-6 py-2">
-                                    <h4 className="text-xl font-bold text-red-400 mb-2">☢️ The Nuclear Option: Email Bankruptcy</h4>
-                                    <p className="text-slate-300 mb-4">
-                                        If you have 5,000+ unread emails, you are already bankrupt. Stop paying interest on debt you'll never clear. Declare it.
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The 472 Unread Emails</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Alex Chen, marketing manager, Chicago
                                     </p>
-                                    <Suspense fallback={<div />}>
-                                        <CopyPrompt
-                                            title="The Bankruptcy Protocol"
-                                            prompt={`I am declaring email bankruptcy.
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Monday morning, 7:42 AM. Alex opens Gmail.
+                                    </p>
+                                    <p className="text-red-400 font-bold text-lg mb-3">
+                                        472 unread emails.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        She stares at the number. When did this happen?
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Last checked Friday at 5 PM. That was 87 hours ago.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        472 ÷ 87 = 5.4 emails per hour. Even while sleeping.
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">She starts scrolling:</p>
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• Newsletter (archive)</div>
+                                            <div>• Receipt (archive)</div>
+                                            <div>• "Quick question" from vendor (ugh, reply)</div>
+                                            <div>• Team update (read... maybe later)</div>
+                                            <div>• Another newsletter (unsubscribe)</div>
+                                            <div className="text-red-400">• Boss: "Thoughts on Q4?" (URGENT)</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        8:15 AM. She's cleared 23 emails.
+                                    </p>
+                                    <p className="text-red-400 font-bold mb-3">
+                                        449 to go.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Meeting in 15 minutes. She hasn't even looked at the actual work yet.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Anxiety rising. Chest tight.
+                                    </p>
+                                    <p className="text-cyan-400 italic text-sm">
+                                        "I'm drowning in other people's priorities."
+                                    </p>
+                                    <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
+                                        <div>By Wednesday: 511 unread</div>
+                                        <div>By Friday: 628</div>
+                                    </div>
+                                </div>
+
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="pointing"
+                                        message="You just read about Alex. 472 unread emails. Monday morning. Drowning. Here's what happened: Her inbox became a to-do list created by OTHER people. Every email is someone else saying 'Think about this.' 'Do this.' 'Respond to me.' But here's the secret Alex didn't know: 80% of email is noise. 15% is FYI. Only 5% actually needs YOU. What if you could build a Gatekeeper Agent to handle the 95%? Alex is about to find out."
+                                    />
+                                </Suspense>
+
+                                <div className="mt-12 prose prose-invert prose-lg max-w-none">
+
+                                    {/* Quick Win Box */}
+                                    <div className="bg-gradient-to-r from-blue-900/30 to-indigo-900/30 p-6 rounded-xl border border-blue-500/50 my-8">
+                                        <h3 className="text-xl font-bold text-blue-400 mb-3">📌 Quick Win: The 'Triage' Prompt</h3>
+                                        <p className="text-white mb-4">Paste unread emails into your AI and ask:</p>
+                                        <div className="bg-slate-900/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
+                                            "Scan these emails. List ONLY the ones that require a reply from me today. For each, draft a 1-sentence response. Ignore newsletters, receipts, and FYIs."
+                                        </div>
+                                        <p className="text-blue-400 font-bold">Clear 50 emails in 2 minutes.</p>
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Science of Email Stress</h3>
+
+                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                        <p className="text-white font-bold text-sm mb-3">UC Irvine Research (Gloria Mark, 2012):</p>
+                                        <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                                            <li>• Average worker checks email <strong className="text-red-400">74 times per day</strong></li>
+                                            <li>• Each email check triggers <strong className="text-red-400">cortisol spike</strong> (stress hormone)</li>
+                                            <li>• Takes <strong className="text-red-400">23 minutes</strong> to fully refocus after email interruption</li>
+                                        </ul>
+
+                                        <div className="bg-red-900/20 p-4 rounded mb-4">
+                                            <p className="text-white font-bold text-sm mb-2">The Compound Effect:</p>
+                                            <p className="text-slate-300 text-sm">74 interruptions × 23 min = <span className="text-red-400 font-bold">1,702 minutes of lost focus per day</span></p>
+                                            <p className="text-slate-400 text-xs mt-2">That's 28 hours. In an 8-hour workday. How? Interruptions OVERLAP. You never fully recover.</p>
+                                        </div>
+
+                                        <p className="text-white font-bold text-sm mb-2">McKinsey 2012:</p>
+                                        <ul className="space-y-1 text-xs text-slate-300">
+                                            <li>• Employees spend <strong>28% of workday</strong> on email</li>
+                                            <li>• Only <strong>15% of emails</strong> require immediate action</li>
+                                            <li>• <strong>56% of email time</strong> wasted on low-value sorting</li>
+                                        </ul>
+
+                                        <div className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/40">
+                                            <p className="text-cyan-400 font-bold text-sm mb-2">Gatekeeper Agent breaks the cycle:</p>
+                                            <ul className="space-y-1 text-xs text-slate-300">
+                                                <li>• Pre-filters 95% BEFORE you see it</li>
+                                                <li>• You check once or twice per day (your schedule)</li>
+                                                <li>• Only see the 5% that actually needs you</li>
+                                                <li>• Cortisol spikes: 74x → 2x per day</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Inbox Zero Myth</h3>
+                                    <p className="text-slate-300 mb-4">
+                                        Inbox Zero worked in 2005 when you got 12 emails/day. In 2024, you get 100+/day. Inbox Zero = Sisyphean torture. The new goal: <strong>Inbox Irrelevant</strong>.
+                                    </p>
+
+                                    <Suspense fallback={<div className="h-48 animate-pulse bg-slate-800/50 rounded-xl my-8" />}>
+                                        <WorkflowVisual
+                                            title="The Gatekeeper Workflow"
+                                            inputs={[
+                                                { label: "Incoming Emails", icon: "mail" },
+                                                { label: "Triage Rules", icon: "list" },
+                                                { label: "Calendar", icon: "calendar" }
+                                            ]}
+                                            agentName="Gatekeeper Agent"
+                                            outputs={[
+                                                { label: "Draft Replies", icon: "file" },
+                                                { label: "Calendar Events", icon: "calendar" },
+                                                { label: "Archive/Delete", icon: "check" }
+                                            ]}
+                                        />
+                                    </Suspense>
+
+                                    <Suspense fallback={<div className="h-24 animate-pulse bg-yellow-900/20 rounded-xl my-8" />}>
+                                        <TroubleshootingAccordion
+                                            title="Gatekeeper Agent Troubleshooting"
+                                            issues={[
+                                                {
+                                                    problem: "I missed an important email.",
+                                                    solution: "Add a 'VIP List' rule. Tell the agent: 'ALWAYS flag emails from [spouse@email.com] or [boss@email.com]'. You can also ask it to 'List all emails from [Domain] separately'."
+                                                },
+                                                {
+                                                    problem: "It's drafting robot-sounding replies.",
+                                                    solution: "Give it 3 examples of your actual emails. Say: 'Mimic this tone: [paste examples]'. Tell it to be 'brief, casual, and lower-case'."
+                                                },
+                                                {
+                                                    problem: "It's flagging everything as urgent.",
+                                                    solution: "Refine your definition of urgent. Tell it: 'Urgent means it requires a reply TODAY or I lose money/trust. Everything else is not urgent'."
+                                                }
+                                            ]}
+                                        />
+                                    </Suspense>
+
+                                    <div className="grid md:grid-cols-2 gap-6 my-8">
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                            <h4 className="text-white font-bold mb-3">Manual Processing</h4>
+                                            <ul className="space-y-2 text-sm text-slate-300">
+                                                <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Read every subject line</li>
+                                                <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Open spam/newsletters</li>
+                                                <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Archive manually</li>
+                                                <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Reply to everything</li>
+                                            </ul>
+                                        </div>
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                            <h4 className="text-blue-400 font-bold mb-3">Agent Processing</h4>
+                                            <ul className="space-y-2 text-sm text-slate-300">
+                                                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Filters noise automatically</li>
+                                                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Summarizes long threads</li>
+                                                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Drafts replies for review</li>
+                                                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Highlights urgent items</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                        <EmailChaosCalculator />
+                                    </Suspense>
+
+                                    <div className="my-8 border-l-4 border-red-500 pl-6 py-2">
+                                        <h4 className="text-xl font-bold text-red-400 mb-2">☢️ The Nuclear Option: Email Bankruptcy</h4>
+                                        <p className="text-slate-300 mb-4">
+                                            If you have 5,000+ unread emails, you are already bankrupt. Stop paying interest on debt you'll never clear. Declare it.
+                                        </p>
+                                        <Suspense fallback={<div />}>
+                                            <CopyPrompt
+                                                title="The Bankruptcy Protocol"
+                                                prompt={`I am declaring email bankruptcy.
 1. Archive ALL emails older than 30 days.
 2. Draft a 'Fresh Start' email to my VIP list (spouse, boss, key clients):
 "I'm resetting my inbox to zero today. If you sent me something critical in the last month that I haven't replied to, please re-send it. Starting fresh."`}
-                                            whatItDoes="Gives you a clean slate instantly. It's scary but liberating. Most 'urgent' emails from 3 weeks ago are already irrelevant."
-                                            variables={[]}
-                                        />
+                                                whatItDoes="Gives you a clean slate instantly. It's scary but liberating. Most 'urgent' emails from 3 weeks ago are already irrelevant."
+                                                variables={[]}
+                                            />
+                                        </Suspense>
+                                    </div>
+
+                                    <div className="my-8 p-6 bg-purple-900/30 rounded-xl border border-purple-500/40">
+                                        <h4 className="text-purple-400 font-bold mb-3">Not Bankruptcy-Level? The "Quick Reset" Protocol</h4>
+                                        <p className="text-white text-sm mb-3">Email count: 50-200 unread</p>
+
+                                        <div className="space-y-3 text-sm">
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-cyan-400 font-bold mb-2">STEP 1: The 2-Week Cutoff</p>
+                                                <p className="text-slate-300 text-xs">Ask agent: "Archive all emails older than 2 weeks. For the rest, create 3 lists: URGENT (needs reply this week), FYI (worth reading, no action), JUNK (newsletters/receipts/spam)"</p>
+                                            </div>
+
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-cyan-400 font-bold mb-2">STEP 2: Process the Lists</p>
+                                                <div className="text-xs text-slate-300 space-y-1">
+                                                    <div>• URGENT list: Handle today (likely 5-10 emails)</div>
+                                                    <div>• FYI list: Read on Friday afternoon (optional)</div>
+                                                    <div>• JUNK list: Archive, unsubscribe from patterns</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <p className="text-green-400 font-bold text-sm mt-4">Total time: 20 minutes. Monthly maintenance: Archive 30+ days every Friday.</p>
+                                    </div>
+
+                                    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                        <h4 className="text-green-400 font-bold mb-3">📖 Alex, 2 Months Later</h4>
+                                        <div className="space-y-3 text-sm text-slate-300">
+                                            <p>Monday morning, 7:30 AM.</p>
+                                            <p>Alex opens her "Email Triage" conversation with ChatGPT.</p>
+                                            <p>Pastes her 47 unread weekend emails. <span className="text-green-400">(Down from 472!)</span></p>
+                                            <p className="text-white">AI responds in 6 seconds:</p>
+
+                                            <div className="bg-slate-900/50 p-4 rounded font-mono text-xs space-y-2">
+                                                <div className="text-red-400">URGENT (needs reply today):</div>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>1. Boss Q4 question → DRAFT: "Happy to discuss. Proposing Thursday 2 PM call?"</div>
+                                                    <div>2. Client billing issue → DRAFT: "Forwarding to accounting, will update by EOD."</div>
+                                                </div>
+                                                <div className="text-cyan-400 mt-2">FYI (no action needed):</div>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• 3 team updates (AI summary: "Project on track")</div>
+                                                    <div>• 2 vendor updates (AI summary: "Routine maintenance")</div>
+                                                </div>
+                                                <div className="text-slate-500 mt-2">ARCHIVE: 42 newsletters, receipts, spam</div>
+                                            </div>
+
+                                            <p className="text-white italic">Total time: 4 minutes to review, edit drafts, send.</p>
+                                            <p>8:00 AM: Inbox clear. Work begins.</p>
+
+                                            <div className="mt-4 pt-3 border-t border-green-500/30">
+                                                <p className="text-white font-bold text-sm mb-2">2-MONTH RESULTS:</p>
+                                                <div className="space-y-1 text-xs text-slate-300">
+                                                    <div>• Email checks: 74x/day → 2x/day (morning + 3 PM)</div>
+                                                    <div>• Avg inbox: 628 → 12</div>
+                                                    <div>• Stress: "Constantly" → "Tuesday mornings only"</div>
+                                                    <div>• Time on email: 28% of day (2.2 hrs) → 8% (40 min)</div>
+                                                </div>
+                                                <p className="text-green-400 font-bold mt-2">Reclaimed: 90 min/day = 7.5 hours/week = 390 hours/year</p>
+                                                <p className="text-white italic text-sm mt-3">"I used to work FOR my inbox. Now my inbox works for me."</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                        <h4 className="text-yellow-400 font-bold mb-3">💬 Common Objections (And The Truth)</h4>
+
+                                        <div className="space-y-4 text-sm">
+                                            <div>
+                                                <p className="text-white font-bold mb-2">"But I like Inbox Zero. This sounds chaotic."</p>
+                                                <p className="text-slate-300 text-xs mb-2">Inbox Zero worked in 2005 (12 emails/day). In 2024 (100+/day), it's torture.</p>
+                                                <p className="text-cyan-400 text-xs">New goal: <strong>Inbox Irrelevant</strong>. You've triaged the 5% that matters. The other 95% can sit there forever.</p>
+                                            </div>
+
+                                            <div>
+                                                <p className="text-white font-bold mb-2">"What if I miss something important?"</p>
+                                                <p className="text-green-400 text-xs mb-1">VIP Bypass Rule:</p>
+                                                <p className="text-slate-300 text-xs">Tell agent: "ALWAYS flag emails from [boss@company.com] and [spouse@email.com]"</p>
+                                                <p className="text-slate-400 text-xs mt-1">(Alex has 4 VIPs. Zero missed messages in 2 months.)</p>
+                                            </div>
+
+                                            <div>
+                                                <p className="text-white font-bold mb-2">"My boss expects immediate replies."</p>
+                                                <p className="text-slate-300 text-xs mb-1">Research shows: "Immediate" to your boss = within 4 hours. "Immediate" to you = 4 minutes.</p>
+                                                <p className="text-cyan-400 text-xs">You CAN check email twice/day (9 AM, 3 PM) and still hit all real deadlines. Test it next week.</p>
+                                            </div>
+
+                                            <div>
+                                                <p className="text-white font-bold mb-2">"I have 200 emails, not 5,000. Is bankruptcy overkill?"</p>
+                                                <p className="text-green-400 text-xs">Yes. Try the "Quick Reset" protocol above instead. Clean slate in 20 minutes. No drama.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Robinson Family: Shared Inbox Nightmare → Peace</h3>
+                                    <p className="text-slate-300 text-sm mb-4">
+                                        Sarah & Tom Robinson, married 12 years, 2 kids, Boston
+                                    </p>
+
+                                    <div className="grid md:grid-cols-2 gap-6 mb-8">
+                                        <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+                                            <h4 className="text-red-400 font-bold mb-3">THE PROBLEM</h4>
+                                            <div className="space-y-2 text-xs text-slate-300">
+                                                <div><strong>Shared email:</strong> therobinsons2012@gmail.com</div>
+                                                <div className="pt-2"><strong>Used for:</strong></div>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• Kids' school updates (daily)</div>
+                                                    <div>• Medical appointments</div>
+                                                    <div>• Bills & receipts</div>
+                                                    <div>• Tom's side gig clients</div>
+                                                    <div>• Sarah's volunteer committee</div>
+                                                </div>
+                                                <div className="pt-2 text-red-400"><strong>472 unread by June</strong></div>
+                                                <div className="pt-2"><strong>Chaos cost (Year 1):</strong></div>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• Missed appointments: $180 fees</div>
+                                                    <div>• Late bill penalties: $95</div>
+                                                    <div>• Duplicate orders: $67</div>
+                                                    <div>• Marriage counseling: $400</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
+                                            <h4 className="text-green-400 font-bold mb-3">6-MONTH RESULTS</h4>
+                                            <div className="space-y-2 text-xs text-slate-300">
+                                                <div><strong>Monday routine:</strong> Sarah 5 min</div>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• Paste weekend emails to Agent</div>
+                                                    <div>• Agent sorts: Sarah actions, Tom actions, Calendar, Receipts, Archive</div>
+                                                </div>
+                                                <div className="pt-2"><strong>Results:</strong></div>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• Inbox: 472 → Under 20 (always)</div>
+                                                    <div>• Missed items: 0</div>
+                                                    <div>• Email arguments: 6x/week → 0</div>
+                                                    <div>• Time saved: 6 hours/week family time</div>
+                                                </div>
+                                                <div className="pt-2 text-green-400"><strong>Annual value: 312 hours = Family movie nights back</strong></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 mb-6 text-center">
+                                        <p className="text-white italic text-sm">"We're not fighting about who saw what email anymore. I actually look forward to planning now. It's organized." — Tom Robinson</p>
+                                    </div>
+
+                                    <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                        <DigitalDetoxChallenge />
                                     </Suspense>
+
+                                    <Suspense fallback={null}>
+                                        <CaptainTip type="pro" title="The 'VIP Only' Notification Rule">
+                                            "Turn off ALL email notifications on your phone. Exception: Create a 'VIP' list (spouse, boss, key client). Only THEIR emails buzz your phone. Everything else waits for your designated email time."
+                                        </CaptainTip>
+                                    </Suspense>
+
+                                    <div className="mt-12 p-6 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-xl border border-cyan-500/50">
+                                        <h4 className="text-cyan-400 font-bold mb-3">🚀 What's Next?</h4>
+                                        <p className="text-slate-300 text-sm mb-3">
+                                            You've reclaimed:
+                                        </p>
+                                        <div className="space-y-1 text-sm text-slate-300 mb-4">
+                                            <div>• <strong className="text-white">Part 2:</strong> Mornings (30 min/day) + Food ($900/month) + Home ($6K/year)</div>
+                                            <div>• <strong className="text-white">Chapter 7:</strong> Email (90 min/day = 7.5 hours/week)</div>
+                                        </div>
+                                        <div className="bg-slate-900/80 p-4 rounded-xl border border-cyan-500/30 mb-4">
+                                            <p className="text-cyan-400 font-bold text-lg">Running total: ~22.5 hours/week reclaimed</p>
+                                        </div>
+                                        <p className="text-white font-bold text-sm mb-2">
+                                            But here's the problem:
+                                        </p>
+                                        <p className="text-red-400 font-bold mb-3">
+                                            You're winning back time from email... only to lose it to MEETINGS.
+                                        </p>
+                                        <div className="bg-red-900/20 p-3 rounded text-xs text-slate-300 space-y-1">
+                                            <div>• 37 meetings this week (Rachel's story - next)</div>
+                                            <div>• The "Swiss Cheese Calendar"</div>
+                                            <div>• The "Quick Sync" epidemic</div>
+                                            <div>• The "Can we jump on a call?" tax</div>
+                                        </div>
+                                        <p className="text-orange-400 font-bold mt-4">
+                                            Chapter 8: The Calendar Defense Agent
+                                        </p>
+                                        <p className="text-slate-400 text-xs mt-2">
+                                            How to protect your Deep Work time like a fortress.
+                                        </p>
+                                    </div>
                                 </div>
-
-                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                                    <DigitalDetoxChallenge />
-                                </Suspense>
-
-                                <Suspense fallback={null}>
-                                    <CaptainTip type="pro" title="The 'VIP Only' Notification Rule">
-                                        "Turn off ALL email notifications on your phone. Exception: Create a 'VIP' list (spouse, boss, key client). Only THEIR emails buzz your phone. Everything else waits for your designated email time."
-                                    </CaptainTip>
-                                </Suspense>
                             </div>
-                        </div>
                     </section>
 
                     {/* Chapter 8: Calendar */}
