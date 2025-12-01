@@ -383,13 +383,6 @@ export default function HowToPay() {
                                             ⚠️ Triple-check the address! If you send to the wrong place, it's gone.
                                         </p>
                                     </div>
-                                    <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg mb-4">
-                                        <img
-                                            src="/images/guide/guide-market-info.png"
-                                            alt="CoinEx Market Info"
-                                            className="w-full h-auto"
-                                        />
-                                    </div>
                                     <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg">
                                         <img
                                             src="/images/guide/guide-withdraw.png"
@@ -410,9 +403,43 @@ export default function HowToPay() {
 
                         <div className="space-y-8">
                             <div>
-                                <h4 className="font-bold text-white mb-2">3. Confirm</h4>
+                                <h4 className="font-bold text-white mb-2">1. Get the Payment Details</h4>
                                 <p className="text-slate-400 mb-4">
-                                    Enter your spending password and click confirm. Done!
+                                    On our checkout page, you'll see the <strong>Exact ERG Amount</strong> and our <strong>Wallet Address</strong>.
+                                </p>
+                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-[280px] mx-auto">
+                                    <img
+                                        src="/images/guide/guide-wallet-qr.jpg"
+                                        alt="Wallet QR Code"
+                                        className="w-full h-auto"
+                                    />
+                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Scan this QR code</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 className="font-bold text-white mb-2">2. Send from Your Wallet (Terminus / Mobile)</h4>
+                                <p className="text-slate-400 mb-4">
+                                    Open your <strong>Terminus</strong> or Ergo Wallet app. Tap <strong>"Send"</strong>.
+                                    <br />
+                                    Scan the QR code above OR paste the address. Enter the <strong>EXACT</strong> amount.
+                                </p>
+                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-[280px] mx-auto">
+                                    <img
+                                        src="/images/guide/guide-mobile-send.jpg"
+                                        alt="Terminus Wallet Send Screen"
+                                        className="w-full h-auto"
+                                    />
+                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Terminus Wallet: Confirm Address & Amount</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 className="font-bold text-white mb-2">3. Confirm & Relax</h4>
+                                <p className="text-slate-400 mb-4">
+                                    Enter your spending password and slide/click to confirm.
+                                    <br />
+                                    <span className="text-green-400 font-bold">That's it!</span> You don't need to do anything else. Our system watches the blockchain and will email you automatically.
                                 </p>
                             </div>
                         </div>
