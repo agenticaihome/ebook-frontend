@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Maximize2 } from 'lucide-react';
+import dashboardPreview from '../../assets/dashboard-preview.jpg';
 
 const ProductWalkthrough = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -19,7 +20,10 @@ const ProductWalkthrough = () => {
                     {/* Placeholder for actual video */}
                     {!isPlaying ? (
                         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
-                            <div className="absolute inset-0 bg-[url('/assets/dashboard-preview.jpg')] bg-cover bg-center opacity-50" />
+                            <div
+                                className="absolute inset-0 bg-cover bg-center opacity-50"
+                                style={{ backgroundImage: `url(${dashboardPreview})` }}
+                            />
 
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
