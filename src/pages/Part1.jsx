@@ -18,6 +18,7 @@ const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 const TryThisNow = React.lazy(() => import('../components/common/TryThisNow'));
 const BeforeAfterComparison = React.lazy(() => import('../components/common/BeforeAfterComparison'));
 const ProgressBar = React.lazy(() => import('../components/common/ProgressBar'));
+const AgentLoopVisual = React.lazy(() => import('../components/common/AgentLoopVisual'));
 
 const Part1 = () => {
     const navigate = useNavigate();
@@ -207,31 +208,9 @@ const Part1 = () => {
                                 This is the most important concept in this entire course:
                             </p>
 
-                            <div className="grid md:grid-cols-2 gap-6 my-8">
-                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                    <h4 className="text-white font-bold mb-3">CHATBOT (What you've probably used)</h4>
-                                    <div className="space-y-2 text-sm text-slate-300 font-mono">
-                                        <div><span className="text-cyan-400">You:</span> "What's the weather tomorrow?"</div>
-                                        <div><span className="text-purple-400">AI:</span> "Tomorrow will be 72°F and sunny."</div>
-                                        <div><span className="text-cyan-400">You:</span> "Should I bring an umbrella?"</div>
-                                        <div><span className="text-purple-400">AI:</span> "No, there's only a 5% chance of rain."</div>
-                                        <div className="text-slate-500 italic pt-2">[END — You have information. You decide what to do with it.]</div>
-                                    </div>
-                                </div>
-
-                                <div className="bg-gradient-to-br from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50">
-                                    <h4 className="text-white font-bold mb-3">AGENT (What this course teaches)</h4>
-                                    <div className="space-y-2 text-sm text-slate-300 font-mono">
-                                        <div><span className="text-cyan-400">You:</span> [Set up once] "Manage my mornings."</div>
-                                        <div><span className="text-purple-400">Agent:</span> [Every day, automatically]</div>
-                                        <div className="pl-4">→ Checks weather</div>
-                                        <div className="pl-4">→ Notices outdoor event at 4 PM</div>
-                                        <div className="pl-4">→ Sees 80% rain chance at that time</div>
-                                        <div className="pl-4">→ Texts you: "Event might be rained out. I checked — indoor venue available. Want me to message the organizer?"</div>
-                                        <div className="text-slate-500 italic pt-2">[END — Agent took action. You made one decision.]</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                <AgentLoopVisual />
+                            </Suspense>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Mental Load Problem</h3>
                             <p className="text-slate-300 leading-relaxed">
@@ -310,21 +289,28 @@ const Part1 = () => {
                             </p>
 
                             <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 my-8">
-                                <div className="text-center font-mono text-sm">
-                                    <div className="bg-purple-900/30 border border-purple-500/50 p-4 rounded-lg mb-2">
-                                        <div className="text-purple-400 font-bold mb-1">ORCHESTRATION</div>
-                                        <div className="text-slate-400 text-xs">Connects everything (Advanced)</div>
-                                        <div className="text-slate-500 text-xs mt-1">Zapier, Make, n8n, custom code</div>
+                                <h4 className="text-center text-white font-bold mb-6">Think of it like a Human Team:</h4>
+                                <div className="grid md:grid-cols-3 gap-4 text-center">
+                                    <div className="bg-green-900/20 border border-green-500/30 p-4 rounded-lg">
+                                        <div className="text-2xl mb-2">🧠</div>
+                                        <div className="text-green-400 font-bold mb-1">THE BRAIN</div>
+                                        <div className="text-slate-400 text-xs font-bold mb-2">(Foundation AI)</div>
+                                        <div className="text-slate-500 text-xs">Thinking, planning, drafting.</div>
+                                        <div className="text-slate-600 text-[10px] mt-2">Claude, ChatGPT</div>
                                     </div>
-                                    <div className="bg-cyan-900/30 border border-cyan-500/50 p-4 rounded-lg mb-2">
-                                        <div className="text-cyan-400 font-bold mb-1">SPECIALIZED AGENTS</div>
-                                        <div className="text-slate-400 text-xs">Does specific jobs (Intermediate)</div>
-                                        <div className="text-slate-500 text-xs mt-1">Email tools, calendar tools, finance apps</div>
+                                    <div className="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-lg">
+                                        <div className="text-2xl mb-2">✋</div>
+                                        <div className="text-cyan-400 font-bold mb-1">THE HANDS</div>
+                                        <div className="text-slate-400 text-xs font-bold mb-2">(Specialized Tools)</div>
+                                        <div className="text-slate-500 text-xs">Doing specific jobs perfectly.</div>
+                                        <div className="text-slate-600 text-[10px] mt-2">Calendar, Email, Finance</div>
                                     </div>
-                                    <div className="bg-green-900/30 border border-green-500/50 p-4 rounded-lg">
-                                        <div className="text-green-400 font-bold mb-1">FOUNDATION AI</div>
-                                        <div className="text-slate-400 text-xs">The "brain" (Start here)</div>
-                                        <div className="text-slate-500 text-xs mt-1">ChatGPT, Claude, Gemini</div>
+                                    <div className="bg-purple-900/20 border border-purple-500/30 p-4 rounded-lg">
+                                        <div className="text-2xl mb-2">⚡</div>
+                                        <div className="text-purple-400 font-bold mb-1">THE NERVES</div>
+                                        <div className="text-slate-400 text-xs font-bold mb-2">(Orchestration)</div>
+                                        <div className="text-slate-500 text-xs">Connecting brain to hands.</div>
+                                        <div className="text-slate-600 text-[10px] mt-2">Zapier, Make</div>
                                     </div>
                                 </div>
                             </div>
@@ -455,33 +441,13 @@ const Part1 = () => {
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Privacy Tiers Framework</h3>
                             <p className="text-slate-300 leading-relaxed mb-6">
-                                Not all data is equal. Here's how to think about it:
+                                Not all data is equal. Use this tool to find your comfort zone:
                             </p>
 
-                            <div className="space-y-4 my-8">
-                                <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
-                                    <h4 className="text-green-400 font-bold mb-2">TIER 1: FREELY SHAREABLE</h4>
-                                    <p className="text-slate-300 text-sm mb-2">General preferences, public information, non-sensitive content</p>
-                                    <p className="text-slate-400 text-xs">→ Share freely with any AI</p>
-                                </div>
-
-                                <div className="bg-cyan-900/20 p-6 rounded-xl border border-cyan-500/30">
-                                    <h4 className="text-cyan-400 font-bold mb-2">TIER 2: SHARE WITH TRUSTED PROVIDERS</h4>
-                                    <p className="text-slate-300 text-sm mb-2">Calendar events, email (non-sensitive), household information</p>
-                                    <p className="text-slate-400 text-xs">→ Share with established AI providers with good privacy policies</p>
-                                </div>
-
-                                <div className="bg-yellow-900/20 p-6 rounded-xl border border-yellow-500/30">
-                                    <h4 className="text-yellow-400 font-bold mb-2">TIER 3: SHARE CAREFULLY</h4>
-                                    <p className="text-slate-300 text-sm mb-2">Financial details, health information, location data, work-sensitive info</p>
-                                    <p className="text-slate-400 text-xs">→ Share only with strong privacy controls, review policies first</p>
-                                </div>
-
-                                <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
-                                    <h4 className="text-red-400 font-bold mb-2">TIER 4: RARELY OR NEVER SHARE</h4>
-                                    <p className="text-slate-300 text-sm mb-2">Passwords, SSN/ID numbers, detailed medical records, legal matters</p>
-                                    <p className="text-slate-400 text-xs">→ Don't put this in AI systems</p>
-                                </div>
+                            <div className="my-8">
+                                <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading assessment...</div>}>
+                                    <PrivacyAssessment />
+                                </Suspense>
                             </div>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Trust Timeline</h3>
@@ -521,9 +487,7 @@ const Part1 = () => {
                             </div>
                         </div>
 
-                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading assessment...</div>}>
-                            <PrivacyAssessment />
-                        </Suspense>
+
                         <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading builder...</div>}>
                             <AgentConstitutionBuilder />
                         </Suspense>
