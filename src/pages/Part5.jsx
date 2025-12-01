@@ -17,6 +17,7 @@ const PersonalizedLaunchPlanGenerator = React.lazy(() => import('../components/P
 const LifeOSDashboardPreview = React.lazy(() => import('../components/LifeOSDashboardPreview'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
+const YearOneRoadmap = React.lazy(() => import('../components/common/YearOneRoadmap'));
 
 const Part5 = () => {
     const [activeChapter, setActiveChapter] = useState(13);
@@ -130,6 +131,14 @@ const Part5 = () => {
                                             { label: "Agent Instructions", icon: "bot" }
                                         ]}
                                     />
+                                </Suspense>
+
+                                <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The 12-Month Roadmap</h3>
+                                <p className="text-slate-300 mb-4">
+                                    Don't try to build this all in a weekend. Here is the path to full autonomy.
+                                </p>
+                                <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                                    <YearOneRoadmap />
                                 </Suspense>
 
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">Building Your Goal Hierarchy</h3>

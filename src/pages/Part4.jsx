@@ -16,6 +16,7 @@ const KnowledgeChaosAssessment = React.lazy(() => import('../components/Knowledg
 const StudySystemGenerator = React.lazy(() => import('../components/StudySystemGenerator'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
+const CopyPrompt = React.lazy(() => import('../components/common/CopyPrompt'));
 
 const Part4 = () => {
     const navigate = useNavigate();
@@ -260,6 +261,30 @@ const Part4 = () => {
                                 <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
                                     <StudySystemGenerator />
                                 </Suspense>
+
+                                <div className="my-8 border-l-4 border-cyan-500 pl-6 py-2">
+                                    <h4 className="text-xl font-bold text-cyan-400 mb-2">🎓 Student Edition: The 'Exam Cram' Protocol</h4>
+                                    <p className="text-slate-300 mb-4">
+                                        Cramming is bad. Strategic rapid learning is good. Use this prompt 3 days before any major test.
+                                    </p>
+                                    <Suspense fallback={<div />}>
+                                        <CopyPrompt
+                                            title="The Exam Cram Agent"
+                                            prompt={`I have an exam on [TOPIC] in 3 days. Here are my raw notes:
+[PASTE NOTES]
+
+Act as my tutor.
+1. Create a 3-day study schedule (hour by hour).
+2. Identify the 3 most complex concepts and explain them like I'm 5.
+3. Generate 20 "Active Recall" questions that test deep understanding, not just definitions.`}
+                                            whatItDoes="Turns a pile of messy notes into a structured, high-intensity study plan. It forces you to focus on weak points rather than passively re-reading."
+                                            variables={[
+                                                { name: "[TOPIC]", description: "e.g., 'Organic Chemistry' or 'Macroeconomics'" },
+                                                { name: "[PASTE NOTES]", description: "Paste your entire semester's notes here" }
+                                            ]}
+                                        />
+                                    </Suspense>
+                                </div>
 
                                 <Suspense fallback={null}>
                                     <CaptainTip type="pro" title="Active Recall Agent">

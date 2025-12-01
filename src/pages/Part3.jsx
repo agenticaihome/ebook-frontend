@@ -16,6 +16,8 @@ const AdminDayPlanner = React.lazy(() => import('../components/AdminDayPlanner')
 const DigitalDetoxChallenge = React.lazy(() => import('../components/DigitalDetoxChallenge'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
+const TroubleshootingAccordion = React.lazy(() => import('../components/common/TroubleshootingAccordion'));
+const CopyPrompt = React.lazy(() => import('../components/common/CopyPrompt'));
 
 const Part3 = () => {
     const navigate = useNavigate();
@@ -127,6 +129,26 @@ const Part3 = () => {
                                     />
                                 </Suspense>
 
+                                <Suspense fallback={<div className="h-24 animate-pulse bg-yellow-900/20 rounded-xl my-8" />}>
+                                    <TroubleshootingAccordion
+                                        title="Gatekeeper Agent Troubleshooting"
+                                        issues={[
+                                            {
+                                                problem: "I missed an important email.",
+                                                solution: "Add a 'VIP List' rule. Tell the agent: 'ALWAYS flag emails from [spouse@email.com] or [boss@email.com]'. You can also ask it to 'List all emails from [Domain] separately'."
+                                            },
+                                            {
+                                                problem: "It's drafting robot-sounding replies.",
+                                                solution: "Give it 3 examples of your actual emails. Say: 'Mimic this tone: [paste examples]'. Tell it to be 'brief, casual, and lower-case'."
+                                            },
+                                            {
+                                                problem: "It's flagging everything as urgent.",
+                                                solution: "Refine your definition of urgent. Tell it: 'Urgent means it requires a reply TODAY or I lose money/trust. Everything else is not urgent'."
+                                            }
+                                        ]}
+                                    />
+                                </Suspense>
+
                                 <div className="grid md:grid-cols-2 gap-6 my-8">
                                     <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
                                         <h4 className="text-white font-bold mb-3">Manual Processing</h4>
@@ -151,6 +173,24 @@ const Part3 = () => {
                                 <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
                                     <EmailChaosCalculator />
                                 </Suspense>
+
+                                <div className="my-8 border-l-4 border-red-500 pl-6 py-2">
+                                    <h4 className="text-xl font-bold text-red-400 mb-2">☢️ The Nuclear Option: Email Bankruptcy</h4>
+                                    <p className="text-slate-300 mb-4">
+                                        If you have 5,000+ unread emails, you are already bankrupt. Stop paying interest on debt you'll never clear. Declare it.
+                                    </p>
+                                    <Suspense fallback={<div />}>
+                                        <CopyPrompt
+                                            title="The Bankruptcy Protocol"
+                                            prompt={`I am declaring email bankruptcy.
+1. Archive ALL emails older than 30 days.
+2. Draft a 'Fresh Start' email to my VIP list (spouse, boss, key clients):
+"I'm resetting my inbox to zero today. If you sent me something critical in the last month that I haven't replied to, please re-send it. Starting fresh."`}
+                                            whatItDoes="Gives you a clean slate instantly. It's scary but liberating. Most 'urgent' emails from 3 weeks ago are already irrelevant."
+                                            variables={[]}
+                                        />
+                                    </Suspense>
+                                </div>
 
                                 <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
                                     <DigitalDetoxChallenge />

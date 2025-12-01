@@ -20,6 +20,7 @@ const EssentialFiveChecklist = React.lazy(() => import('../components/EssentialF
 const PersonalizedMorningBrief = React.lazy(() => import('../components/PersonalizedMorningBrief'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
+const TroubleshootingAccordion = React.lazy(() => import('../components/common/TroubleshootingAccordion'));
 
 const Part2 = () => {
     const navigate = useNavigate();
@@ -129,6 +130,26 @@ Keep it under 3 minutes to read.`}
                                         agentName="Morning Agent"
                                         outputs={[
                                             { label: "3-Minute Brief", icon: "file" }
+                                        ]}
+                                    />
+                                </Suspense>
+
+                                <Suspense fallback={<div className="h-24 animate-pulse bg-yellow-900/20 rounded-xl my-8" />}>
+                                    <TroubleshootingAccordion
+                                        title="Morning Agent Troubleshooting"
+                                        issues={[
+                                            {
+                                                problem: "My agent hallucinated the weather.",
+                                                solution: "Check if you pasted the API key correctly. If it persists, switch to a simpler 'copy-paste' weather prompt where you paste the forecast manually."
+                                            },
+                                            {
+                                                problem: "The brief is too generic.",
+                                                solution: "Add your specific goals to the 'Context' section of the prompt. The more specific details you give (e.g., 'I am training for a marathon'), the better the advice."
+                                            },
+                                            {
+                                                problem: "It's too long to read.",
+                                                solution: "Add a constraint: 'Strictly under 150 words' or 'Bullet points only'. AI tends to be verbose unless constrained."
+                                            }
                                         ]}
                                     />
                                 </Suspense>
