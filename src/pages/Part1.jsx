@@ -15,6 +15,9 @@ const PrivacyAssessment = React.lazy(() => import('../components/PrivacyAssessme
 const AgentConstitutionBuilder = React.lazy(() => import('../components/AgentConstitutionBuilder'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
+const TryThisNow = React.lazy(() => import('../components/common/TryThisNow'));
+const BeforeAfterComparison = React.lazy(() => import('../components/common/BeforeAfterComparison'));
+const ProgressBar = React.lazy(() => import('../components/common/ProgressBar'));
 
 const Part1 = () => {
     const navigate = useNavigate();
@@ -78,6 +81,7 @@ const Part1 = () => {
 
     return (
         <WebbookLayout>
+            <ProgressBar current={activeChapter} total={3} label="Part 1: Foundations - Understanding AI Agents" />
             <div className="min-h-screen bg-[#0f0f1a] text-white">
                 {/* Hero Section */}
                 <section className="relative pt-24 pb-16 px-6 overflow-hidden">
@@ -174,6 +178,30 @@ const Part1 = () => {
                                 </p>
                             </div>
 
+                            <Suspense fallback={null}>
+                                <BeforeAfterComparison
+                                    before={[
+                                        "Check 6 different apps for morning info",
+                                        "30 minutes of digital chaos",
+                                        "Start day reactive and stressed",
+                                        "Forget important tasks",
+                                        "Manually track everything"
+                                    ]}
+                                    after={[
+                                        "Read 1 notification with everything",
+                                        "5 minutes to get oriented",
+                                        "Start day proactive and calm",
+                                        "Never miss critical items",
+                                        "Agent handles tracking automatically"
+                                    ]}
+                                    metric={{
+                                        before: "30 min",
+                                        after: "5 min",
+                                        label: "morning routine"
+                                    }}
+                                />
+                            </Suspense>
+
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Chatbot vs. Agent: The Critical Distinction</h3>
                             <p className="text-slate-300 leading-relaxed mb-4">
                                 This is the most important concept in this entire course:
@@ -233,6 +261,20 @@ const Part1 = () => {
                         </Suspense>
                         <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading calculator...</div>}>
                             <MentalLoadCalculator />
+                        </Suspense>
+
+                        <Suspense fallback={null}>
+                            <TryThisNow
+                                challenge="Have a Conversation with an AI Agent"
+                                estimatedTime="10 min"
+                                steps={[
+                                    "Open ChatGPT, Claude, or your preferred AI tool",
+                                    "Tell it: 'I want you to act as my morning briefing agent. Ask me about my preferences.'",
+                                    "Answer its questions (wake time, what info you need, etc.)",
+                                    "Ask it: 'Show me what tomorrow's brief would look like'",
+                                    "Save this conversation as 'Morning Agent' to refine it over time"
+                                ]}
+                            />
                         </Suspense>
 
                         <CaptainTip type="tip" title="Your First Step">

@@ -8,6 +8,10 @@ import { Coffee, UtensilsCrossed, Home, ArrowRight, CheckCircle, Clock, DollarSi
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
+const CopyPrompt = React.lazy(() => import('../components/common/CopyPrompt'));
+const TryThisNow = React.lazy(() => import('../components/common/TryThisNow'));
+const BeforeAfterComparison = React.lazy(() => import('../components/common/BeforeAfterComparison'));
+const ProgressBar = React.lazy(() => import('../components/common/ProgressBar'));
 const MorningChaosCalculator = React.lazy(() => import('../components/MorningChaosCalculator'));
 const MorningBriefBuilder = React.lazy(() => import('../components/MorningBriefBuilder'));
 const FoodChaosCalculator = React.lazy(() => import('../components/FoodChaosCalculator'));
@@ -37,6 +41,7 @@ const Part2 = () => {
     return (
         <WebbookLayout>
             <PasswordGate partNumber={2}>
+                <ProgressBar current={activeChapter - 3} total={3} label="Part 2: Daily Operations" />
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
                     {/* Hero Section */}
                     <section className="relative pt-24 pb-16 px-6 overflow-hidden">
@@ -95,18 +100,22 @@ const Part2 = () => {
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 4: Morning Routines That Run Themselves</h2>
 
                                 {/* Quick Win Box */}
-                                <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 my-8">
-                                    <h3 className="text-xl font-bold text-cyan-400 mb-3">📌 Can't Read Everything? Do This Tonight (10 Minutes)</h3>
-                                    <p className="text-white mb-4">Tell your AI (Claude, ChatGPT, etc.):</p>
-                                    <div className="bg-slate-900/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
-                                        "Every morning at [your wake time], I want a brief with:<br />
-                                        1. Weather today (high/low, what to wear)<br />
-                                        2. My calendar overview<br />
-                                        3. One priority to focus on today<br /><br />
-                                        Keep it under 3 minutes to read."
-                                    </div>
-                                    <p className="text-cyan-400 font-bold">Save as a custom instruction or prompt. Run it tomorrow morning. THAT'S IT. You've started.</p>
-                                </div>
+                                <Suspense fallback={<div />}>
+                                    <CopyPrompt
+                                        title="Morning Brief Prompt"
+                                        prompt={`Every morning at [YOUR WAKE TIME], I want a brief with:
+1. Weather today (high/low, what to wear)
+2. My calendar overview
+3. One priority to focus on today
+
+Keep it under 3 minutes to read.`}
+                                        whatItDoes="Creates a personalized morning briefing that summarizes weather, schedule, and priorities in under 3 minutes of reading. This becomes your single source of truth each morning instead of checking multiple apps."
+                                        howToCustomize="Add sections that matter to you: news headlines, stock prices, family birthdays, workout suggestions, etc. Remove sections you don't need. Adjust the time estimate based on your reading speed."
+                                        variables={[
+                                            { name: "[YOUR WAKE TIME]", description: "e.g., '7:00 AM' or '6:30 AM' - when you want the brief ready" }
+                                        ]}
+                                    />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Why Start With Mornings?</h3>
                                 <p className="text-slate-300 leading-relaxed">
@@ -169,6 +178,21 @@ const Part2 = () => {
                             </Suspense>
 
                             <Suspense fallback={null}>
+                                <TryThisNow
+                                    challenge="Build Your First Morning Agent Tonight"
+                                    estimatedTime="15 min"
+                                    steps={[
+                                        "Copy the Morning Brief Prompt from above",
+                                        "Paste it into ChatGPT or Claude",
+                                        "Replace [YOUR WAKE TIME] with your actual wake time",
+                                        "Add or remove sections based on what you need",
+                                        "Save it as 'Morning Agent' and run it tomorrow",
+                                        "Adjust based on what was helpful or missing"
+                                    ]}
+                                />
+                            </Suspense>
+
+                            <Suspense fallback={null}>
                                 <CaptainTip type="tip" title="Start Tonight">
                                     Set up your Morning Brief prompt tonight. Tomorrow morning, just read it instead of checking 6 different apps. One source of truth. Radical simplicity!
                                 </CaptainTip>
@@ -191,20 +215,26 @@ const Part2 = () => {
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 5: Kitchen and Grocery Automation</h2>
 
                                 {/* Quick Win Box */}
-                                <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 my-8">
-                                    <h3 className="text-xl font-bold text-cyan-400 mb-3">📌 Can't Read Everything? Do This Tonight (15 Minutes)</h3>
-                                    <p className="text-white mb-4">Tell your AI:</p>
-                                    <div className="bg-slate-900/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
-                                        "Based on these preferences, create a dinner plan for the next 5 weeknights:<br />
-                                        - Adults: 2, Kids: [X]<br />
-                                        - Dietary restrictions: [any]<br />
-                                        - Cuisines we like: [Italian, Mexican, etc.]<br />
-                                        - Max cooking time: 30 minutes on weeknights<br />
-                                        - Budget: ~$20 per meal<br /><br />
-                                        For each meal, list the ingredients I'd need to buy."
-                                    </div>
-                                    <p className="text-cyan-400 font-bold">Screenshot the result. Shop once. Eat for a week.</p>
-                                </div>
+                                <Suspense fallback={<div />}>
+                                    <CopyPrompt
+                                        title="Weekly Meal Planning Prompt"
+                                        prompt={`Based on these preferences, create a dinner plan for the next 5 weeknights:
+- Adults: [NUMBER], Kids: [NUMBER]
+- Dietary restrictions: [LIST ANY RESTRICTIONS]
+- Cuisines we like: [Italian, Mexican, Asian, etc.]
+- Max cooking time: 30 minutes on weeknights
+- Budget: ~$20 per meal
+
+For each meal, list the ingredients I'd need to buy.`}
+                                        whatItDoes="Generates a complete 5-day dinner plan customized to your family's needs, preferences, and schedule. Includes shopping list so you can buy everything in one trip."
+                                        howToCustomize="Adjust the number of meals (3-7 days), change budget per meal, add specific dietary needs (keto, vegetarian, gluten-free), specify favorite proteins or recipes, adjust cooking time based on your schedule."
+                                        variables={[
+                                            { name: "[NUMBER]", description: "How many adults and kids in your household" },
+                                            { name: "[LIST ANY RESTRICTIONS]", description: "allergies, preferences, diet type - e.g., 'dairy-free, no shellfish'" },
+                                            { name: "[Italian, Mexican, etc.]", description: "Your favorite cuisines to get variety in the plan" }
+                                        ]}
+                                    />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Food Problem</h3>
 
