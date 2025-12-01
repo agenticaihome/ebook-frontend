@@ -10,6 +10,7 @@ import { usePerformanceMode } from './hooks/usePerformanceMode';
 const TimeBackCalculator = React.lazy(() => import('./components/landing/TimeBackCalculator'));
 const BeforeAfterComparison = React.lazy(() => import('./components/landing/BeforeAfterComparison'));
 const TryThisNow = React.lazy(() => import('./components/common/TryThisNow'));
+const SneakPeek = React.lazy(() => import('./components/landing/SneakPeek'));
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
@@ -383,6 +384,17 @@ export default function SalesPage() {
           </div>
         </section>
 
+        {/* SNEAK PEEK SECTION */}
+        <section className="py-16 px-6 bg-[#0f0f1a]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">WHAT YOU'RE ACTUALLY BUYING</h2>
+            <p className="text-slate-400">This isn't just theory. You get the raw code to run your life.</p>
+            <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl mt-8" />}>
+              <SneakPeek />
+            </Suspense>
+          </div>
+        </section>
+
         {/* PRICING SECTION */}
         <section id="pricing" className="py-24 px-6 bg-[#0f0f1a] relative">
           {/* Background Glows */}
@@ -390,7 +402,19 @@ export default function SalesPage() {
 
           <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Access Method</h2>
-            <p className="text-slate-400">Cheaper than one month of that meal kit service you forgot to pause.</p>
+            <p className="text-slate-400 mb-8">Cheaper than one month of that meal kit service you forgot to pause.</p>
+
+            {/* Value Anchor */}
+            <div className="inline-flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-700 mb-8">
+              <div className="text-right border-r border-slate-600 pr-4">
+                <div className="text-xs text-slate-500 uppercase font-bold">Human Assistant</div>
+                <div className="text-red-400 font-mono line-through">$30/hour</div>
+              </div>
+              <div className="text-left pl-2">
+                <div className="text-xs text-slate-500 uppercase font-bold">AI Agent System</div>
+                <div className="text-green-400 font-mono font-bold">$39 (One-time)</div>
+              </div>
+            </div>
           </div>
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 relative z-10">
