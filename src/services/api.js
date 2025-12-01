@@ -1,11 +1,20 @@
-// Determine environment based on hostname
-const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+// Determine API URL based on current hostname (runtime check)
+// This ensures production always uses Railway, local dev uses localhost
+const getApiUrl = () => {
+  const hostname = window.location.hostname;
+  const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
 
-const API_URL = process.env.REACT_APP_API_URL || (isLocal
-  ? 'http://localhost:8080/api'
-  : 'https://ebook-backend-production-8f68.up.railway.app/api');
+  if (isLocal) {
+    return 'http://localhost:8080/api';
+  }
+
+  return 'https://ebook-backend-production-8f68.up.railway.app/api';
+};
+
+const API_URL = getApiUrl();
 
 console.log('Frontend configured with API_URL:', API_URL);
+console.log('Current hostname:', window.location.hostname);
 
 /**
  * Get CSRF token from cookie
