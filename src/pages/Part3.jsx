@@ -15,6 +15,7 @@ const CalendarAuditTool = React.lazy(() => import('../components/CalendarAuditTo
 const AdminDayPlanner = React.lazy(() => import('../components/AdminDayPlanner'));
 const DigitalDetoxChallenge = React.lazy(() => import('../components/DigitalDetoxChallenge'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
+const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
 
 const Part3 = () => {
     const navigate = useNavigate();
@@ -55,35 +56,33 @@ const Part3 = () => {
                                 <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
                                     Reclaim your attention. Build agents to filter noise, protect your time, and handle the paperwork.
                                 </p>
-                            </motion.div >
+                            </motion.div>
 
                             {/* Chapter Navigation */}
-                            < div className="grid md:grid-cols-3 gap-4 mb-12" >
-                                {
-                                    chapters.map((chapter) => {
-                                        const Icon = chapter.icon;
-                                        return (
-                                            <button
-                                                key={chapter.id}
-                                                onClick={() => scrollToChapter(chapter.id)}
-                                                className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
-                                                    ? 'border-blue-500 bg-blue-900/20'
-                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
-                                                    }`}
-                                            >
-                                                <Icon className={activeChapter === chapter.id ? 'text-blue-400' : 'text-slate-500'} size={24} />
-                                                <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
-                                                <div className="font-bold text-white">{chapter.title}</div>
-                                            </button>
-                                        );
-                                    })
-                                }
-                            </div >
-                        </div >
-                    </section >
+                            <div className="grid md:grid-cols-3 gap-4 mb-12">
+                                {chapters.map((chapter) => {
+                                    const Icon = chapter.icon;
+                                    return (
+                                        <button
+                                            key={chapter.id}
+                                            onClick={() => scrollToChapter(chapter.id)}
+                                            className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
+                                                ? 'border-blue-500 bg-blue-900/20'
+                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                }`}
+                                        >
+                                            <Icon className={activeChapter === chapter.id ? 'text-blue-400' : 'text-slate-500'} size={24} />
+                                            <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
+                                            <div className="font-bold text-white">{chapter.title}</div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </section>
 
                     {/* Chapter 7: Email */}
-                    < section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
+                    <section id="chapter-7" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -110,6 +109,23 @@ const Part3 = () => {
                                 <p className="text-slate-300 mb-4">
                                     Inbox Zero is a waste of time if you're just moving emails around. The goal is <strong>Inbox Irrelevant</strong>.
                                 </p>
+
+                                <Suspense fallback={<div className="h-48 animate-pulse bg-slate-800/50 rounded-xl my-8" />}>
+                                    <WorkflowVisual
+                                        title="The Gatekeeper Workflow"
+                                        inputs={[
+                                            { label: "Incoming Emails", icon: "mail" },
+                                            { label: "Triage Rules", icon: "list" },
+                                            { label: "Calendar", icon: "calendar" }
+                                        ]}
+                                        agentName="Gatekeeper Agent"
+                                        outputs={[
+                                            { label: "Draft Replies", icon: "file" },
+                                            { label: "Calendar Events", icon: "calendar" },
+                                            { label: "Archive/Delete", icon: "check" }
+                                        ]}
+                                    />
+                                </Suspense>
 
                                 <div className="grid md:grid-cols-2 gap-6 my-8">
                                     <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
@@ -147,10 +163,10 @@ const Part3 = () => {
                                 </Suspense>
                             </div>
                         </div>
-                    </section >
+                    </section>
 
                     {/* Chapter 8: Calendar */}
-                    < section id="chapter-8" className="py-16 px-6" >
+                    <section id="chapter-8" className="py-16 px-6">
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -194,10 +210,10 @@ const Part3 = () => {
                                 </div>
                             </div>
                         </div>
-                    </section >
+                    </section>
 
                     {/* Chapter 9: Admin */}
-                    < section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800" >
+                    <section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
@@ -253,17 +269,17 @@ const Part3 = () => {
                                 </div>
                             </div>
                         </div>
-                    </section >
+                    </section>
                     {/* Social Share */}
-                    < Suspense fallback={null} >
+                    <Suspense fallback={null}>
                         <SocialShare
                             title="I'm building a 'Calendar Defense System' with AI. No more useless meetings!"
                             hashtags={["AgenticAI", "DeepWork", "Productivity"]}
                         />
-                    </Suspense >
-                </div >
-            </PasswordGate >
-        </WebbookLayout >
+                    </Suspense>
+                </div>
+            </PasswordGate>
+        </WebbookLayout>
     );
 };
 

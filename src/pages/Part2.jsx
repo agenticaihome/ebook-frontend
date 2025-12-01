@@ -19,6 +19,7 @@ const HouseholdChaosCalculator = React.lazy(() => import('../components/Househol
 const EssentialFiveChecklist = React.lazy(() => import('../components/EssentialFiveChecklist'));
 const PersonalizedMorningBrief = React.lazy(() => import('../components/PersonalizedMorningBrief'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
+const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
 
 const Part2 = () => {
     const navigate = useNavigate();
@@ -113,6 +114,21 @@ Keep it under 3 minutes to read.`}
                                         howToCustomize="Add sections that matter to you: news headlines, stock prices, family birthdays, workout suggestions, etc. Remove sections you don't need. Adjust the time estimate based on your reading speed."
                                         variables={[
                                             { name: "[YOUR WAKE TIME]", description: "e.g., '7:00 AM' or '6:30 AM' - when you want the brief ready" }
+                                        ]}
+                                    />
+                                </Suspense>
+
+                                <Suspense fallback={<div className="h-48 animate-pulse bg-slate-800/50 rounded-xl my-8" />}>
+                                    <WorkflowVisual
+                                        title="How The Morning Agent Works"
+                                        inputs={[
+                                            { label: "Weather API", icon: "cloud" },
+                                            { label: "Calendar", icon: "calendar" },
+                                            { label: "Priorities", icon: "list" }
+                                        ]}
+                                        agentName="Morning Agent"
+                                        outputs={[
+                                            { label: "3-Minute Brief", icon: "file" }
                                         ]}
                                     />
                                 </Suspense>

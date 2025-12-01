@@ -16,6 +16,7 @@ const SystemHealthDiagnostic = React.lazy(() => import('../components/SystemHeal
 const PersonalizedLaunchPlanGenerator = React.lazy(() => import('../components/PersonalizedLaunchPlanGenerator'));
 const LifeOSDashboardPreview = React.lazy(() => import('../components/LifeOSDashboardPreview'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
+const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
 
 const Part5 = () => {
     const [activeChapter, setActiveChapter] = useState(13);
@@ -115,6 +116,21 @@ const Part5 = () => {
                                         </li>
                                     </ul>
                                 </div>
+
+                                <Suspense fallback={<div className="h-48 animate-pulse bg-slate-800/50 rounded-xl my-8" />}>
+                                    <WorkflowVisual
+                                        title="System Architecture"
+                                        inputs={[
+                                            { label: "Quarterly Goals", icon: "flag" },
+                                            { label: "Weekly Review", icon: "calendar" }
+                                        ]}
+                                        agentName="Life OS (Orchestrator)"
+                                        outputs={[
+                                            { label: "Daily Actions", icon: "list" },
+                                            { label: "Agent Instructions", icon: "bot" }
+                                        ]}
+                                    />
+                                </Suspense>
 
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">Building Your Goal Hierarchy</h3>
                                 <p className="text-slate-300 mb-6">

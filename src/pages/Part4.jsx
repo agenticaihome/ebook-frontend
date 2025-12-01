@@ -15,6 +15,7 @@ const MentalLoadAssessment = React.lazy(() => import('../components/MentalLoadAs
 const KnowledgeChaosAssessment = React.lazy(() => import('../components/KnowledgeChaosAssessment'));
 const StudySystemGenerator = React.lazy(() => import('../components/StudySystemGenerator'));
 const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
+const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
 
 const Part4 = () => {
     const navigate = useNavigate();
