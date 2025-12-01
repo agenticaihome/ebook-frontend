@@ -115,7 +115,7 @@ const Part2 = () => {
                                 <CaptainHero
                                     size="md"
                                     pose="celebrating"
-                                    message="Rise and shine! Or... is it more like 'stumble out of bed in a panic'? Here's the thing about mornings: they set the tone for your ENTIRE day. Start chaotic, stay chaotic. But mornings are also PERFECT for your first agent because they're repetitive, low-stakes, and results are immediate. Tonight, you're going to set up ONE simple thing. Tomorrow morning, you'll feel the difference. Let's build your Morning Agent!"
+                                    message="You just read about Marcus. Late to school drop-off. Third time this month. The guilt from the teacher. The disappointed kid. Here's the truth: Mornings aren't MORALLY hard. They're STRUCTURALLY hard. You're making 100+ micro-decisions in peak-cortisol mode. Your brain is fried before work starts. But mornings are also the PERFECT place to start because: 1) The pattern is identical every day. 2) Results are immediate (tomorrow morning). 3) Low stakes (if it fails, just check your apps like normal). Tonight, you're setting up ONE automated brief. Tomorrow, you wake up to clarity instead of chaos. Let's build your Morning Agent."
                                 />
                             </Suspense>
 
@@ -162,6 +162,22 @@ Keep it under 3 minutes to read.`}
                                     />
                                 </Suspense>
 
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">💬 "But I'm not a morning person..."</h4>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Neither is Marcus. That's exactly why this works.
+                                    </p>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Morning Agent doesn't make you a "morning person." It makes mornings require LESS of you.
+                                    </p>
+                                    <p className="text-slate-300 text-sm">
+                                        Less decisions = Less energy needed = Easier mornings
+                                    </p>
+                                    <p className="text-cyan-400 text-sm mt-3">
+                                        You're not changing your personality. You're removing friction.
+                                    </p>
+                                </div>
+
                                 <Suspense fallback={<div className="h-48 animate-pulse bg-slate-800/50 rounded-xl my-8" />}>
                                     <WorkflowVisual
                                         title="How The Morning Agent Works"
@@ -197,14 +213,53 @@ Keep it under 3 minutes to read.`}
                                     />
                                 </Suspense>
 
-                                <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Why Start With Mornings?</h3>
-                                <p className="text-slate-300 leading-relaxed">
-                                    The average person makes 35,000 decisions per day. Hundreds happen before 9 AM.
+                                <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Science: Why Mornings Matter</h3>
+
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        <strong className="text-white">Research from Stanford (2016):</strong> Peak cortisol (stress hormone) is 6-9 AM.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-4">
+                                        Every decision you make during peak cortisol uses <strong className="text-red-400">2x the mental energy</strong>.
+                                    </p>
+
+                                    <div className="bg-red-900/20 p-4 rounded-lg border border-red-500/30 mb-4">
+                                        <div className="text-white font-bold text-sm mb-2">The Decision Fatigue Cascade:</div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>Checking your phone → Cortisol spike → Decision cascade:</div>
+                                            <div className="pl-4">• Which email to read first? (Decision 1)</div>
+                                            <div className="pl-4">• Respond now or later? (Decision 2)</div>
+                                            <div className="pl-4">• What's the weather? (Decision 3)</div>
+                                            <div className="pl-4">• What to wear based on weather? (Decision 4)</div>
+                                            <div className="pl-4">• Is there traffic? (Decision 5)</div>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-red-400 font-bold text-sm mb-3">
+                                        By 7:30 AM, you've burned 50+ micro-decisions.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-4">
+                                        By 9:00 AM, you're mentally exhausted before work even starts.
+                                    </p>
+
+                                    <div className="bg-cyan-900/30 p-4 rounded-lg border border-cyan-500/40">
+                                        <div className="text-cyan-400 font-bold text-sm mb-2">The Morning Agent Insight:</div>
+                                        <p className="text-white text-sm mb-2">
+                                            Automate the first 50 decisions → Preserve peak cortisol energy for actual work.
+                                        </p>
+                                        <p className="text-green-400 font-bold text-sm">
+                                            ROI: 20 minutes/day = 121 hours/year = 3 full work weeks reclaimed.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p className="text-slate-300 leading-relaxed mb-4">
+                                    This isn't about productivity hacks. It's about preserving your decision-making capacity for things that actually matter.
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-6 my-8">
                                     <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
-                                        <h4 className="text-white font-bold mb-3">A Typical Chaotic Morning</h4>
+                                        <h4 className="text-white font-bold mb-3">Remember Marcus's Pattern?</h4>
                                         <div className="space-y-2 text-sm text-slate-300 font-mono">
                                             <div>6:30 — Alarm. Snooze.</div>
                                             <div>6:39 — Alarm. Snooze.</div>
@@ -213,7 +268,7 @@ Keep it under 3 minutes to read.`}
                                             <div>7:20 — What to wear? Check weather.</div>
                                             <div>7:30 — What's for breakfast?</div>
                                             <div>7:55 — Where are my keys?</div>
-                                            <div>8:45 — Arrive stressed. Day starts behind.</div>
+                                            <div className="text-red-400">8:45 — Arrive stressed. Day starts behind.</div>
                                         </div>
                                     </div>
 
@@ -240,6 +295,85 @@ Keep it under 3 minutes to read.`}
                                     </div>
                                 </div>
 
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 Marcus, 3 Months Later</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p>
+                                            6:30 AM. Marcus's phone buzzes once.
+                                        </p>
+                                        <p className="text-white">
+                                            He reads the brief while his coffee brews:
+                                        </p>
+                                        <div className="bg-slate-900/50 p-3 rounded font-mono text-xs space-y-1">
+                                            <div>• Weather: 52°F, grab a jacket</div>
+                                            <div>• Calendar: 3 meetings, first at 10 AM</div>
+                                            <div>• Priority today: Finish Q3 report draft</div>
+                                            <div>• Kid's lunchbox: Already packed (yesterday)</div>
+                                            <div>• Traffic: 17 minutes via I-95</div>
+                                        </div>
+                                        <p className="text-cyan-400">
+                                            Total reading time: 2 minutes 14 seconds.
+                                        </p>
+                                        <p>
+                                            He's out the door by 7:05 AM. Arrives at school at 7:12 AM.
+                                        </p>
+                                        <p className="text-white italic">
+                                            His kid: "We're early!"<br />
+                                            Marcus: "We sure are, buddy."
+                                        </p>
+                                        <p className="text-green-400 font-bold">
+                                            Third month in a row, zero late arrivals.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Morning Agent Variations</h3>
+                                <p className="text-slate-300 leading-relaxed mb-6">
+                                    One size doesn't fit all. Here's how different people customize their Morning Agent:
+                                </p>
+
+                                <div className="grid md:grid-cols-2 gap-4 my-8">
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                        <div className="text-lg mb-2">🏃 <strong className="text-cyan-400">Athletic Edition</strong></div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Weather + UV index</div>
+                                            <div>• Workout recommendation (based on recovery)</div>
+                                            <div>• Hydration reminder</div>
+                                            <div>• Nutrition target for the day</div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                        <div className="text-lg mb-2">👔 <strong className="text-purple-400">Executive Edition</strong></div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Pre-meeting brief for each calendar item</div>
+                                            <div>• Industry news (3 headlines max)</div>
+                                            <div>• Stock/market snapshot</div>
+                                            <div>• Priority ranking algorithm</div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                        <div className="text-lg mb-2">👨‍👩‍👧 <strong className="text-green-400">Parent Edition</strong></div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Kid's schedule + lunch reminders</div>
+                                            <div>• School events today</div>
+                                            <div>• After-school pickup logistics</div>
+                                            <div>• Dinner suggestion based on calendar</div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                        <div className="text-lg mb-2">📚 <strong className="text-orange-400">Student Edition</strong></div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Assignment deadlines (sorted by urgency)</div>
+                                            <div>• Class schedule + room numbers</div>
+                                            <div>• Study block recommendations</div>
+                                            <div>• Campus events you care about</div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Morning Brief Template</h3>
                                 <p className="text-slate-300 leading-relaxed mb-4">
                                     Here's what a great Morning Brief looks like:
@@ -255,6 +389,73 @@ Keep it under 3 minutes to read.`}
                             </Suspense>
                             <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
                                 <MorningBriefBuilder />
+                            </Suspense>
+
+                            <Suspense fallback={null}>
+                                <div className="my-12 p-8 bg-gradient-to-br from-orange-900/30 to-yellow-900/20 rounded-2xl border-2 border-orange-500/50">
+                                    <h3 className="text-2xl font-bold text-white mb-4">⚡ Tonight's 15-Minute Mission (Do This Before Bed)</h3>
+                                    <p className="text-slate-300 mb-6">
+                                        Don't wait. Your tomorrow-morning-self will thank you.
+                                    </p>
+
+                                    <div className="space-y-4">
+                                        <div className="flex items-start gap-3">
+                                            <div className="bg-orange-500/20 text-orange-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">1</div>
+                                            <div>
+                                                <div className="text-white font-bold text-sm">Copy the Morning Brief Prompt above</div>
+                                                <div className="text-slate-400 text-xs">2 minutes</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3">
+                                            <div className="bg-orange-500/20 text-orange-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">2</div>
+                                            <div>
+                                                <div className="text-white font-bold text-sm">Open ChatGPT or Claude, paste it</div>
+                                                <div className="text-slate-400 text-xs">3 minutes</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3">
+                                            <div className="bg-orange-500/20 text-orange-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">3</div>
+                                            <div>
+                                                <div className="text-white font-bold text-sm">Answer its questions about your preferences</div>
+                                                <div className="text-slate-400 text-xs">5 minutes</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3">
+                                            <div className="bg-orange-500/20 text-orange-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">4</div>
+                                            <div>
+                                                <div className="text-white font-bold text-sm">Ask it: "Show me what tomorrow's brief would look like"</div>
+                                                <div className="text-slate-400 text-xs">3 minutes</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-3">
+                                            <div className="bg-orange-500/20 text-orange-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">5</div>
+                                            <div>
+                                                <div className="text-white font-bold text-sm">Set a phone reminder for 6:30 AM: "Check Morning Agent"</div>
+                                                <div className="text-slate-400 text-xs">2 minutes</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-6 bg-slate-900/80 p-4 rounded-xl border border-yellow-500/30">
+                                        <div className="text-cyan-400 font-bold text-sm mb-2">TOMORROW:</div>
+                                        <p className="text-slate-300 text-sm">
+                                            Wake up → Open the conversation → Read the brief (3 min) → Start your day
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-4 p-4 bg-green-900/20 rounded-lg border border-green-500/30">
+                                        <div className="text-white font-bold text-sm mb-2">What to expect:</div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• First brief: 70% helpful</div>
+                                            <div>• After 1 week of tweaks: 95% helpful</div>
+                                            <div>• After 1 month: You'll wonder how you survived without it</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </Suspense>
 
                             <Suspense fallback={null}>
@@ -277,6 +478,19 @@ Keep it under 3 minutes to read.`}
                                     Set up your Morning Brief prompt tonight. Tomorrow morning, just read it instead of checking 6 different apps. One source of truth. Radical simplicity!
                                 </CaptainTip>
                             </Suspense>
+
+                            <div className="mt-12 p-6 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-xl border border-cyan-500/50">
+                                <h4 className="text-cyan-400 font-bold mb-3">🚀 What's Next?</h4>
+                                <p className="text-slate-300 text-sm mb-3">
+                                    You just reclaimed your mornings (30 min/day saved).
+                                </p>
+                                <p className="text-white font-bold text-sm">
+                                    Now let's tackle the next time-sink: <strong className="text-orange-400">Food chaos</strong>.
+                                </p>
+                                <p className="text-slate-400 text-xs mt-2">
+                                    Chapter 5: The Kitchen Agent — How to never ask "What's for dinner?" again + Save $150-250/month on food panic
+                                </p>
+                            </div>
                         </div>
                     </section>
 
