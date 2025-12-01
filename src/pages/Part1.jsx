@@ -553,6 +553,84 @@ const Part1 = () => {
                             <ToolRecommendationQuiz />
                         </Suspense>
 
+                        <div className="my-12 p-8 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20 rounded-2xl border-2 border-red-500/50">
+                            <h3 className="text-3xl font-bold text-white mb-4">⚡ Your Task, Killed (Right Now)</h3>
+                            <p className="text-slate-300 mb-6">
+                                Remember that task you wrote down in Chapter 1? The one you're tired of remembering? Let's delete it from your brain in the next 20 minutes.
+                            </p>
+
+                            <div className="bg-slate-900/80 p-6 rounded-xl border border-yellow-500/30 mb-6">
+                                <h4 className="text-cyan-400 font-bold mb-4">The 20-Minute Task Killer Protocol</h4>
+
+                                <div className="space-y-4 text-sm text-slate-300">
+                                    <div className="flex items-start gap-3">
+                                        <div className="bg-red-500/20 text-red-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">1</div>
+                                        <div>
+                                            <strong className="text-white">Open your chosen Brain</strong> (Claude, ChatGPT, Gemini, or Copilot)
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <div className="bg-orange-500/20 text-orange-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">2</div>
+                                        <div>
+                                            <strong className="text-white">Tell it your recurring task:</strong>
+                                            <div className="mt-2 bg-slate-800/50 p-3 rounded font-mono text-xs">
+                                                "I have a recurring task I always forget: [YOUR TASK]. I want you to act as my agent for this. Ask me questions about when, how, and what info you need to handle this for me."
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <div className="bg-yellow-500/20 text-yellow-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">3</div>
+                                        <div>
+                                            <strong className="text-white">Answer its questions honestly</strong>
+                                            <p className="text-xs text-slate-400 mt-1">When does this happen? What do you need to remember? What's the outcome you want?</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <div className="bg-green-500/20 text-green-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">4</div>
+                                        <div>
+                                            <strong className="text-white">Ask it to create a monitoring system:</strong>
+                                            <div className="mt-2 bg-slate-800/50 p-3 rounded font-mono text-xs">
+                                                "Based on what I told you, create a daily/weekly check-in format where you remind me and help me track this. Save this as 'Agent: [Task Name]'."
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <div className="bg-cyan-500/20 text-cyan-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">5</div>
+                                        <div>
+                                            <strong className="text-white">Set a daily reminder</strong> to check this agent conversation
+                                            <p className="text-xs text-slate-400 mt-1">Phone reminder, calendar alert, whatever you actually check</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 p-6 rounded-xl border border-green-500/40">
+                                <h4 className="text-white font-bold mb-3">🎯 Examples of Task Killed</h4>
+                                <div className="space-y-3 text-sm text-slate-300">
+                                    <div>
+                                        <strong className="text-green-400">"Water plants every week"</strong> → Agent sends weekly reminder with which plants, checks in on Sunday
+                                    </div>
+                                    <div>
+                                        <strong className="text-green-400">"Remember family birthdays"</strong> → Agent creates gift suggestion list 2 weeks before each birthday
+                                    </div>
+                                    <div>
+                                        <strong className="text-green-400">"Check if I paid the electricity bill"</strong> → Agent reminds 3 days before due date, confirms when done
+                                    </div>
+                                    <div>
+                                        <strong className="text-green-400">"Meal planning on Sundays"</strong> → Agent suggests recipes based on what you have, dietary needs, creates grocery list
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p className="text-cyan-400 font-bold text-center mt-6">
+                                Do this NOW. Not later. Right now. That task? Consider it deleted. ✅
+                            </p>
+                        </div>
+
                         <CaptainTip type="info" title="Don't Overthink It">
                             The only wrong choice is no choice. Pick something and start. You can always add or change tools later.
                         </CaptainTip>
