@@ -263,6 +263,58 @@ const ToolRecommendationQuiz = () => {
                             </div>
                         </div>
 
+                        {/* 7-Day Quick Start Plan */}
+                        <div className="mt-6 p-6 bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-xl border border-purple-500/30">
+                            <h4 className="text-white font-bold text-lg mb-4">📅 Your 7-Day Quick Start Plan</h4>
+                            <div className="space-y-3">
+                                <div className="flex gap-3">
+                                    <div className="bg-purple-500/20 text-purple-400 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                                        1
+                                    </div>
+                                    <div className="text-sm">
+                                        <div className="text-white font-medium">Sign up for {results.foundationAI.name}</div>
+                                        <div className="text-slate-400">Get your account set up and explore the interface</div>
+                                    </div>
+                                </div>
+                                <div className="flex gap-3">
+                                    <div className="bg-purple-500/20 text-purple-400 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                                        2
+                                    </div>
+                                    <div className="text-sm">
+                                        <div className="text-white font-medium">Build your first Morning Brief</div>
+                                        <div className="text-slate-400">Use the prompt from Part 2, Chapter 4</div>
+                                    </div>
+                                </div>
+                                <div className="flex gap-3">
+                                    <div className="bg-purple-500/20 text-purple-400 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                                        3
+                                    </div>
+                                    <div className="text-sm">
+                                        <div className="text-white font-medium">Test & refine your morning agent</div>
+                                        <div className="text-slate-400">Run it for 3 days, adjust what's missing</div>
+                                    </div>
+                                </div>
+                                {results.specializedTools.length > 0 && (
+                                    <div className="flex gap-3">
+                                        <div className="bg-purple-500/20 text-purple-400 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                                            4-7
+                                        </div>
+                                        <div className="text-sm">
+                                            <div className="text-white font-medium">Add specialized tools one at a time</div>
+                                            <div className="text-slate-400">Start with {results.specializedTools[0].name}, master it, then add more</div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Value Reminder */}
+                        <div className="mt-6 p-4 bg-green-900/20 rounded-xl border border-green-500/30">
+                            <div className="text-sm text-slate-300">
+                                💡 <strong className="text-green-400">Value Check:</strong> If these tools save you just <strong>2 hours per week</strong>, that's 100+ hours per year. What's your hourly rate worth?
+                            </div>
+                        </div>
+
                         <button
                             onClick={() => setShowResults(false)}
                             className="mt-6 w-full text-cyan-400 hover:text-cyan-300 font-medium"
