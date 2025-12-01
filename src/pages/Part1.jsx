@@ -634,6 +634,16 @@ const Part1 = () => {
                         <CaptainTip type="info" title="Don't Overthink It">
                             The only wrong choice is no choice. Pick something and start. You can always add or change tools later.
                         </CaptainTip>
+
+                        <div className="my-12 p-6 bg-gradient-to-r from-yellow-900/20 to-red-900/20 rounded-xl border border-yellow-500/30">
+                            <h3 className="text-white font-bold mb-3">⚠️ But Wait—What About Privacy?</h3>
+                            <p className="text-slate-300 text-sm mb-3">
+                                You just set up an agent that reads your tasks. Maybe your emails. Your calendar. That's... a lot of access.
+                            </p>
+                            <p className="text-cyan-400 font-bold text-sm">
+                                Before you go further, Chapter 3 shows you how to stay safe while getting all the benefits. Don't skip it.
+                            </p>
+                        </div>
                     </div>
                 </motion.section>
 
@@ -651,29 +661,75 @@ const Part1 = () => {
                             <CaptainHero
                                 size="md"
                                 pose="working"
-                                message="Okay, real talk time. I'm about to ask you to give AI access to your email, calendar, finances, and home. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies get hacked. Privacy policies change. But here's the thing: you can get 80% of the benefits with smart boundaries. We're not going to open the floodgates. We're going to build a fortress with a very specific, guarded drawbridge. You stay safe, but you still get the superpowers."
+                                message="Okay, real talk time. You just gave an AI agent access to your tasks. Maybe your calendar. Maybe more. That's... a lot of trust. And you SHOULD be cautious. Data breaches happen. Companies sell data. Privacy policies change overnight. But here's the thing: you can get 80% of the benefits with smart boundaries. We're not going to open the floodgates. We're going to build a fortress with a very specific, guarded drawbridge. You stay in control. You stay safe. But you still get the superpowers. This is non-negotiable."
                             />
                         </Suspense>
 
                         <div className="mt-12 prose prose-invert prose-lg max-w-none">
-                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 3: Privacy, Security, and Control</h2>
+                            <h2 className="text-4xl font-bold text-white mb-6">Chapter 3: Building Trust (Without Getting Burned)</h2>
+                            <p className="text-xl text-slate-400 italic mb-8">(How to Stay in Control When You're Sharing Everything)</p>
 
-                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">The Trust Equation</h3>
-                            <p className="text-slate-300 leading-relaxed">
-                                Using AI agents requires sharing data. There's no way around this.
-                            </p>
-                            <p className="text-slate-300 leading-relaxed">
-                                <strong>The question isn't:</strong> "Should I share anything?"<br />
-                                <strong>The question is:</strong> "What's the right trade-off for ME?"
-                            </p>
-
-                            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 my-8 text-center">
-                                <div className="text-2xl font-mono text-white mb-4">
-                                    Trust = <span className="text-cyan-400">(Convenience + Time Saved)</span> / <span className="text-red-400">(Data Shared + Risk Exposure)</span>
-                                </div>
-                                <p className="text-slate-400 text-sm">
-                                    You want to MAXIMIZE the top (benefits) while MINIMIZING the bottom (costs)
+                            <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                <h3 className="text-red-400 font-bold mb-3">⚠️ The Privacy Question Everyone's Thinking</h3>
+                                <p className="text-slate-300 text-sm mb-3">
+                                    <em>"Wait. I just gave an AI access to my calendar, my emails, my recurring tasks. What if it gets hacked? What if the company sells my data? What if I lose control?"</em>
                                 </p>
+                                <p className="text-white font-bold text-sm">
+                                    These are the RIGHT questions. Let's answer them.
+                                </p>
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">The Real Privacy Risk (It's Not What You Think)</h3>
+                            <p className="text-slate-300 leading-relaxed mb-4">
+                                Here's what most people fear: <em>"The AI company will read all my private stuff."</em>
+                            </p>
+                            <p className="text-slate-300 leading-relaxed mb-6">
+                                Here's the actual risk: <strong>You already gave your data to 47 companies with worse security than Claude or ChatGPT.</strong>
+                            </p>
+
+                            <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-8">
+                                <h4 className="text-white font-bold mb-4">Companies That Already Have Your Data:</h4>
+                                <div className="grid md:grid-cols-2 gap-3 text-sm text-slate-300">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-red-400">📧</span> Gmail (reads every email to show you ads)
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-red-400">📱</span> Your phone carrier (knows where you are 24/7)
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-red-400">💳</span> Your bank app (every transaction, categorized)
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-red-400">🛒</span> Amazon (purchase history, browsing, wishlists)
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-red-400">🗓️</span> Google Calendar (every meeting, where, with who)
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-red-400">🏥</span> Your health app (steps, sleep, heart rate)
+                                    </div>
+                                </div>
+                                <p className="text-yellow-400 font-bold text-sm mt-4">
+                                    The question isn't "Should I share data?" You already are. The question is: "Who gets access, and do I get value back?"
+                                </p>
+                            </div>
+
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Trust Equation (Reframed)</h3>
+                            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 my-8">
+                                <div className="text-xl font-mono text-white mb-4 text-center">
+                                    Smart Privacy = <span className="text-cyan-400">(Max Value)</span> + <span className="text-green-400">(Clear Boundaries)</span> + <span className="text-purple-400">(Regular Audits)</span>
+                                </div>
+                                <div className="space-y-3 text-sm text-slate-300 mt-6">
+                                    <div>
+                                        <strong className="text-cyan-400">Max Value:</strong> Only share data that gives you tangible time back
+                                    </div>
+                                    <div>
+                                        <strong className="text-green-400">Clear Boundaries:</strong> Define what AI can/can't do (you'll do this in Mission 3)
+                                    </div>
+                                    <div>
+                                        <strong className="text-purple-400">Regular Audits:</strong> Review what's being tracked monthly
+                                    </div>
+                                </div>
                             </div>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Mission 1: Know Your Risk Profile</h3>
@@ -724,15 +780,35 @@ const Part1 = () => {
                             </div>
                         </div>
 
-
-                        <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Mission 3: Write Your Laws</h3>
-                        <p className="text-slate-300 leading-relaxed mb-6">
-                            Every agent needs a constitution. Define yours now:
+                        <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Mission 3: Write Your Laws (The Agent Constitution)</h3>
+                        <p className="text-slate-300 leading-relaxed mb-4">
+                            This is the most important thing you'll do in this chapter. Your Agent Constitution defines:
                         </p>
+                        <ul className="list-none space-y-2 mb-6 text-slate-300">
+                            <li className="flex items-start gap-2">
+                                <span className="text-green-400">✓</span> What your agents are <strong>always</strong> allowed to do
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-yellow-400">?</span> What they <strong>must ask</strong> before doing
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-red-400">✗</span> What they are <strong>never</strong> allowed to do
+                            </li>
+                        </ul>
 
                         <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading builder...</div>}>
                             <AgentConstitutionBuilder />
                         </Suspense>
+
+                        <div className="my-8 p-6 bg-cyan-900/30 rounded-xl border border-cyan-500/50">
+                            <h4 className="text-white font-bold mb-3">💡 Pro Tip: Start Restrictive</h4>
+                            <p className="text-slate-300 text-sm mb-3">
+                                It's easier to <strong>add</strong> permissions later than to take them away. Start with "Must Ask First" for most things.
+                            </p>
+                            <p className="text-slate-400 text-xs">
+                                After a month, you'll know what's safe to move to "Always Allowed."
+                            </p>
+                        </div>
 
                         <div className="mt-12 p-8 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-2xl border border-cyan-500/50 text-center">
                             <h3 className="text-2xl font-bold text-white mb-4">Part 1 Complete! 🎉</h3>
