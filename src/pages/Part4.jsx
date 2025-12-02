@@ -168,6 +168,52 @@ const Part4 = () => {
                                     </div>
                                 </div>
 
+                                <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Science of Sleep Debt</h3>
+
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                    <p className="text-white font-bold text-sm mb-3">Matthew Walker (Why We Sleep, UC Berkeley, 2017):</p>
+                                    <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                                        <li>• After 1 night of 4 hours: <strong className="text-red-400">-40% cognitive performance</strong> on complex tasks</li>
+                                        <li>• After 10 days of 6 hours/night: Cognitive equivalent of <strong className="text-red-400">24 hours awake</strong></li>
+                                        <li>• <strong className="text-red-400">Sleep debt is CUMULATIVE</strong> — can't "catch up" on weekends</li>
+                                        <li>• Impact on decision-making, emotional regulation, immune function</li>
+                                    </ul>
+
+                                    <div className="bg-red-900/20 p-4 rounded mb-4">
+                                        <p className="text-white font-bold text-sm mb-2">The Math of Sarah's Week:</p>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>7-day sleep total: 36.5 hours (average 5.2 hrs/night)</div>
+                                            <div>Recommended: 56 hours (8 hrs/night)</div>
+                                            <div className="pt-2 border-t border-red-500/30 mt-2">
+                                                <strong>Sleep debt: 19.5 hours in ONE WEEK</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-red-900/20 p-4 rounded mb-4">
+                                        <p className="text-white font-bold text-sm mb-2">Cognitive Impact:</p>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Monday (after 4hr night): Operating at <span className="text-red-400 font-bold">-40% capacity</span></div>
+                                            <div>• By Friday: Equivalent to being awake for <span className="text-red-400 font-bold">18+ hours</span> (legally drunk-level impairment)</div>
+                                        </div>
+                                        <p className="text-red-400 text-xs mt-3">Sarah's $12K mistake: Not a "careless error." Predictable outcome of compounded sleep deprivation.</p>
+                                    </div>
+
+                                    <div className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/40">
+                                        <p className="text-slate-400 text-xs mb-2">Traditional productivity response: "Work harder. Focus more."</p>
+                                        <p className="text-red-400 text-sm mb-3"><strong>Biological reality: YOU CAN'T FOCUS WHEN YOUR BRAIN IS OFFLINE.</strong></p>
+                                        <p className="text-green-400 font-bold text-sm mb-2">Recovery-Aware approach:</p>
+                                        <ul className="space-y-1 text-xs text-slate-300">
+                                            <li>• Monday 9 AM presentation? DETECTED: 4hr sleep last night</li>
+                                            <li>• Agent suggests: "Move presentation to Thursday 2 PM (after 3 nights of recovery)"</li>
+                                            <li>• Result: Sarah presents at 80% capacity instead of 40%</li>
+                                            <li>• Outcome: No mistakes, confident delivery, project approved</li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-cyan-400 text-sm mt-4 italic">The compound effect works BOTH WAYS: Sleep debt compounds into burnout. Sleep recovery compounds into sustainable performance.</p>
+                                </div>
+
                                 {/* Quick Win Box */}
                                 <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 p-6 rounded-xl border border-green-500/50 my-8">
                                     <h3 className="text-xl font-bold text-green-400 mb-3">📌 Quick Win: The Morning Check-In</h3>
@@ -178,6 +224,46 @@ const Part4 = () => {
                                         3. Any disruptions?<br /><br />
                                         If sleep &lt; 6h: Suggest 'Survival Mode' (3 essential tasks only).<br />
                                         If sleep &gt; 7h + good quality: Front-load hard work."
+                                    </div>
+
+                                    <div className="bg-slate-900/80 p-4 rounded-xl border border-cyan-500/30 my-4">
+                                        <p className="text-cyan-400 font-bold text-sm mb-3">What Agent Does Next (Example):</p>
+                                        <div className="space-y-3 text-xs text-slate-300">
+                                            <div>
+                                                <p className="text-white font-bold mb-1">STEP 1: You answer (30 seconds):</p>
+                                                <p className="font-mono">"Sleep: 4 hours, 23 minutes<br />Quality: 4/10 (woke up 3x)<br />Disruptions: Neighbor's dog, stress about presentation"</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-white font-bold mb-1">STEP 2: Agent analyzes (instant):</p>
+                                                <ul className="space-y-1">
+                                                    <li>• Sleep &lt; 6h → <span className="text-red-400 font-bold">RED DAY PROTOCOL</span></li>
+                                                    <li>• Quality &lt; 5/10 → Cognitive impairment likely</li>
+                                                    <li>• Disruptions noted → Stress management needed</li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <p className="text-white font-bold mb-2">STEP 3: Agent adapts your calendar (you approve):</p>
+                                                <div className="bg-red-900/20 p-3 rounded mb-2">
+                                                    <p className="text-red-400 font-bold mb-1">ORIGINAL Monday:</p>
+                                                    <div className="space-y-1 text-xs">
+                                                        <div>• 9:00 AM: Strategy presentation (high cognitive load)</div>
+                                                        <div>• 2:00 PM: Client pitch (high cognitive load)</div>
+                                                        <div>• 4:00 PM: Budget review (detail work)</div>
+                                                    </div>
+                                                </div>
+                                                <div className="bg-green-900/20 p-3 rounded">
+                                                    <p className="text-green-400 font-bold mb-1">ADAPTED Monday (Red Day):</p>
+                                                    <div className="space-y-1 text-xs">
+                                                        <div>• 9:00 AM: MOVED → "Presentation rescheduled to Thursday 2 PM"</div>
+                                                        <div>• 10:30 AM: KEPT → Team 1-on-1s (moderate load, manageable)</div>
+                                                        <div>• 12:00 PM: ADDED → 30-min walk outside (stress management)</div>
+                                                        <div>• 2:00 PM: MOVED → "Client pitch moved to Tuesday 10 AM"</div>
+                                                        <div>• 4:00 PM: CANCELLED → "Budget review deferred"</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-cyan-400 text-xs mt-3">Time reclaimed: 5 hours of high-cognitive tasks → recovery time. Result: Sarah sleeps 7.5 hours Monday night, presents confidently Thursday.</p>
                                     </div>
                                 </div>
 
