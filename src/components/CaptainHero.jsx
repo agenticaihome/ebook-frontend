@@ -71,7 +71,8 @@ const CaptainHero = ({
             {/* Character Image or Video */}
             <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 className={`relative flex-shrink-0 ${sizeClasses[size]}`}
                 style={{

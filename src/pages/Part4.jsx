@@ -168,6 +168,15 @@ const Part4 = () => {
                                     </div>
                                 </div>
 
+                                <div className="my-12 flex justify-center">
+                                    <CaptainHero
+                                        pose="thinking"
+                                        size="md"
+                                        message="I can automate your calendar, but I can't automate your sleep. This is the one battery you have to charge manually."
+                                        position="center"
+                                    />
+                                </div>
+
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Science of Sleep Debt</h3>
 
                                 <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">

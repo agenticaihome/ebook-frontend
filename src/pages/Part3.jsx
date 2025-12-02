@@ -195,6 +195,15 @@ const Part3 = () => {
                                         </div>
                                     </div>
 
+                                    <div className="my-12 flex justify-center">
+                                        <CaptainHero
+                                            pose="pointing"
+                                            size="md"
+                                            message="Stop trying to empty the ocean with a spoon. We're building a dam, not a bucket."
+                                            position="center"
+                                        />
+                                    </div>
+
                                     <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Inbox Zero Myth</h3>
                                     <p className="text-slate-300 mb-4">
                                         Inbox Zero worked in 2005 when you got 12 emails/day. In 2024, you get 100+/day. Inbox Zero = Sisyphean torture. The new goal: <strong>Inbox Irrelevant</strong>.

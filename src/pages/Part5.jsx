@@ -193,6 +193,15 @@ const Part5 = () => {
                                     />
                                 </Suspense>
 
+                                <div className="my-12 flex justify-center">
+                                    <CaptainHero
+                                        pose="celebrating"
+                                        size="md"
+                                        message="You've made it further than 90% of people. Most stop at 'Inbox Zero'. You're building a life system. Let's bring it home."
+                                        position="center"
+                                    />
+                                </div>
+
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The 12-Month Roadmap</h3>
                                 <p className="text-slate-300 mb-4">
                                     Don't try to build this all in a weekend. Here is the path to full autonomy.

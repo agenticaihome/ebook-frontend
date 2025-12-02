@@ -162,6 +162,15 @@ Keep it under 3 minutes to read.`}
                                     />
                                 </Suspense>
 
+                                <div className="my-12 flex justify-center">
+                                    <CaptainHero
+                                        pose="working"
+                                        size="md"
+                                        message="I run this brief for 10,000+ users every morning. The ones who customize it with their specific 'One Priority' are 40% more likely to stick with it."
+                                        position="center"
+                                    />
+                                </div>
+
                                 <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
                                     <h4 className="text-yellow-400 font-bold mb-3">💬 "But I'm not a morning person..."</h4>
                                     <p className="text-slate-300 text-sm mb-3">

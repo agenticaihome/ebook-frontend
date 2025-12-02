@@ -171,6 +171,15 @@ const Part1 = () => {
                                 "There has to be a better way," she thought. "Or I'm going to lose my mind."
                             </p>
 
+                            <div className="my-12 flex justify-center">
+                                <CaptainHero
+                                    pose="thinking"
+                                    size="md"
+                                    message="We've all been Sarah. The problem isn't you. It's that you're trying to be the CEO and the Intern at the same time."
+                                    position="center"
+                                />
+                            </div>
+
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">What Changed</h3>
                             <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 Sarah's mornings now start at 6:15 AM. Not because she's lazy. Because she doesn't need the 30-minute panic sprint anymore.
