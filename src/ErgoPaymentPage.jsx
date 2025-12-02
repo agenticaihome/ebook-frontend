@@ -146,7 +146,22 @@ const ErgoPaymentPage = () => {
         }
     }, [step, paymentStatus, accessCode, isOffline]);
 
-    const initializeQuote = async () => {
+    const fetchLivePrice = async () => {
+        try {
+            // Try CoinGecko first for real-time data
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=usd');
+            const data = await response.json();
+            if (data.ergo?.usd) {
+                const price = data.ergo.usd;
+                setErgPrice(price);
+                setErgAmount(19.99 / price);
+                return;
+            }
+        } catch (err) {
+            console.warn('CoinGecko fetch failed, falling back to backend', err);
+        }
+
+        // Fallback to backend if CoinGecko fails
         try {
             const result = await api.getErgoQuote(19.99);
             if (result.success) {
@@ -161,8 +176,8 @@ const ErgoPaymentPage = () => {
     // Poll for price updates while in Step 1
     useEffect(() => {
         if (step === 1) {
-            initializeQuote();
-            const interval = setInterval(initializeQuote, 60000); // Update every 60s
+            fetchLivePrice();
+            const interval = setInterval(fetchLivePrice, 30000); // Update every 30s
             return () => clearInterval(interval);
         }
     }, [step]);
