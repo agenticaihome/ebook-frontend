@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle, Lock } from 'lucide-react';
+import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle, Lock, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import PrefetchLink from './PrefetchLink';
@@ -65,12 +65,58 @@ const WebbookLayout = ({ children }) => {
     }, [location]);
 
     const chapters = [
-        { id: 'part1', title: 'Part 1: Diagnosis', path: '/part1', icon: <BookOpen size={18} />, progress: 0 },
-        { id: 'part2', title: 'Part 2: Getting Started', path: '/part2', icon: <Zap size={18} />, progress: 0, locked: true },
-        { id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3', icon: <Shield size={18} />, progress: 0, locked: true },
-        { id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4', icon: <BookOpen size={18} />, progress: 0, locked: true },
-        { id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5', icon: <Zap size={18} />, progress: 0, locked: true },
+        {
+            id: 'part1', title: 'Part 1: Diagnosis', path: '/part1', icon: <BookOpen size={18} />, progress: 0,
+            subChapters: [
+                { title: 'The Cost of Chaos', id: 'chaos' },
+                { title: 'The Agentic Shift', id: 'shift' }
+            ]
+        },
+        {
+            id: 'part2', title: 'Part 2: Getting Started', path: '/part2', icon: <Zap size={18} />, progress: 0, locked: true,
+            subChapters: [
+                { title: 'The Morning Agent', id: 'morning' },
+                { title: 'Grocery Automation', id: 'grocery' }
+            ]
+        },
+        {
+            id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3', icon: <Shield size={18} />, progress: 0, locked: true,
+            subChapters: [
+                { title: 'Email Triage', id: 'email' },
+                { title: 'Deep Work Defense', id: 'deepwork' }
+            ]
+        },
+        {
+            id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4', icon: <BookOpen size={18} />, progress: 0, locked: true,
+            subChapters: [
+                { title: 'Sleep Debt', id: 'sleep' },
+                { title: 'Recovery Metrics', id: 'recovery' }
+            ]
+        },
+        {
+            id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5', icon: <Zap size={18} />, progress: 0, locked: true,
+            subChapters: [
+                { title: 'Multi-Agent Systems', id: 'multi' },
+                { title: 'The 12-Month Roadmap', id: 'roadmap' }
+            ]
+        },
     ];
+
+    // Accordion State
+    const [expandedChapter, setExpandedChapter] = useState(null);
+
+    useEffect(() => {
+        // Auto-expand active chapter
+        const activeChapter = chapters.find(c => c.path === location.pathname);
+        if (activeChapter) {
+            setExpandedChapter(activeChapter.id);
+        }
+    }, [location.pathname]);
+
+    const toggleChapter = (e, chapterId) => {
+        e.preventDefault(); // Prevent navigation if clicking the toggle area
+        setExpandedChapter(prev => prev === chapterId ? null : chapterId);
+    };
 
     // Dynamic Captain Messages based on route
     const getCaptainMessages = (path) => {
@@ -158,33 +204,65 @@ const WebbookLayout = ({ children }) => {
                         <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full text-slate-300">27% Done</span>
                     </div>
 
-                    {chapters.map((chapter) => (
-                        <PrefetchLink
-                            key={chapter.id}
-                            to={chapter.path}
-                            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === chapter.path
-                                ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30 border border-cyan-500/50'
-                                : 'text-slate-300 hover:bg-slate-800'
-                                }`}
-                            aria-current={location.pathname === chapter.path ? 'page' : undefined}
-                        >
-                            <span className={location.pathname === chapter.path ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
-                                {chapter.icon}
-                            </span>
-                            <div className="flex-1">
-                                <span className="font-medium text-sm block">{chapter.title}</span>
-                                <div className="w-full bg-slate-700/30 h-1 rounded-full mt-1 overflow-hidden">
-                                    <div
-                                        className={`h-full rounded-full ${location.pathname === chapter.path ? 'bg-cyan-300' : 'bg-cyan-500'}`}
-                                        style={{ width: `${chapter.progress}%` }}
-                                    />
+                    {chapters.map((chapter) => {
+                        const isExpanded = expandedChapter === chapter.id;
+                        const isActive = location.pathname === chapter.path;
+
+                        return (
+                            <div key={chapter.id} className="flex flex-col">
+                                <div className={`flex items-center gap-2 px-4 py-3 rounded-xl transition-all group focus-within:ring-2 focus-within:ring-cyan-400 ${isActive
+                                    ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30 border border-cyan-500/50'
+                                    : 'text-slate-300 hover:bg-slate-800'
+                                    }`}>
+                                    <Link
+                                        to={chapter.path}
+                                        className="flex-1 flex items-center gap-3 focus:outline-none"
+                                    >
+                                        <span className={isActive ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                                            {chapter.icon}
+                                        </span>
+                                        <div className="flex-1">
+                                            <span className="font-medium text-sm block">{chapter.title}</span>
+                                            <div className="w-full bg-slate-700/30 h-1 rounded-full mt-1 overflow-hidden">
+                                                <div
+                                                    className={`h-full rounded-full ${isActive ? 'bg-cyan-300' : 'bg-cyan-500'}`}
+                                                    style={{ width: `${chapter.progress}%` }}
+                                                />
+                                            </div>
+                                        </div>
+                                    </Link>
+
+                                    <button
+                                        onClick={(e) => toggleChapter(e, chapter.id)}
+                                        className={`p-1 rounded hover:bg-white/10 transition-colors ${isActive ? 'text-cyan-200' : 'text-slate-500'}`}
+                                    >
+                                        {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                                    </button>
                                 </div>
+
+                                <AnimatePresence>
+                                    {isExpanded && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="pl-12 pr-4 py-2 space-y-2 border-l border-slate-800 ml-6">
+                                                {chapter.subChapters?.map((sub) => (
+                                                    <div key={sub.id} className="flex items-center gap-2 text-xs text-slate-400 py-1">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-slate-700" />
+                                                        <span>{sub.title}</span>
+                                                        {chapter.locked && <Lock size={10} className="ml-auto text-slate-600" />}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
-                            <span className={`text-xs font-mono ml-2 ${location.pathname === chapter.path ? 'text-cyan-200' : 'text-slate-500'}`}>
-                                {chapter.locked ? <Lock size={12} className="text-slate-600" /> : `${chapter.progress}%`}
-                            </span>
-                        </PrefetchLink>
-                    ))}
+                        );
+                    })}
 
                     <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">
                         Quick Jumps
