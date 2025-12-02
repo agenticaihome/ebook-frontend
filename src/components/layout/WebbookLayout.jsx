@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle } from 'lucide-react';
+import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle, Lock } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import PrefetchLink from './PrefetchLink';
 
 import CaptainTips from '../CaptainTips';
@@ -35,6 +36,27 @@ const WebbookLayout = ({ children }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Progress Persistence Toast
+    const [hasSaved, setHasSaved] = useState(false);
+
+    useEffect(() => {
+        setHasSaved(false); // Reset on route change
+    }, [location.pathname]);
+
+    useEffect(() => {
+        if (scrollProgress > 0.95 && !hasSaved && location.pathname.includes('part')) {
+            toast.success("Progress Saved", {
+                icon: '💾',
+                style: {
+                    background: '#0f172a',
+                    color: '#22d3ee',
+                    border: '1px solid #0891b2'
+                }
+            });
+            setHasSaved(true);
+        }
+    }, [scrollProgress, hasSaved, location.pathname]);
+
     // Mobile: Auto-close sidebar on route change
     useEffect(() => {
         if (window.innerWidth < 768) {
@@ -43,11 +65,11 @@ const WebbookLayout = ({ children }) => {
     }, [location]);
 
     const chapters = [
-        { id: 'part1', title: 'Part 1: Diagnosis', path: '/part1', icon: <BookOpen size={18} />, progress: 100 },
-        { id: 'part2', title: 'Part 2: Getting Started', path: '/part2', icon: <Zap size={18} />, progress: 35 },
-        { id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3', icon: <Shield size={18} />, progress: 0 },
-        { id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4', icon: <BookOpen size={18} />, progress: 0 },
-        { id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5', icon: <Zap size={18} />, progress: 0 },
+        { id: 'part1', title: 'Part 1: Diagnosis', path: '/part1', icon: <BookOpen size={18} />, progress: 0 },
+        { id: 'part2', title: 'Part 2: Getting Started', path: '/part2', icon: <Zap size={18} />, progress: 0, locked: true },
+        { id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3', icon: <Shield size={18} />, progress: 0, locked: true },
+        { id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4', icon: <BookOpen size={18} />, progress: 0, locked: true },
+        { id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5', icon: <Zap size={18} />, progress: 0, locked: true },
     ];
 
     // Dynamic Captain Messages based on route
@@ -159,7 +181,7 @@ const WebbookLayout = ({ children }) => {
                                 </div>
                             </div>
                             <span className={`text-xs font-mono ml-2 ${location.pathname === chapter.path ? 'text-cyan-200' : 'text-slate-500'}`}>
-                                {chapter.progress}%
+                                {chapter.locked ? <Lock size={12} className="text-slate-600" /> : `${chapter.progress}%`}
                             </span>
                         </PrefetchLink>
                     ))}
