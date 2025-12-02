@@ -184,7 +184,7 @@ const CaptainClickChallenge = () => {
             {/* Game Area */}
             <div
                 ref={containerRef}
-                className="relative h-[340px] bg-[#0f0f1a] overflow-hidden cursor-crosshair"
+                className={`relative h-[340px] bg-[#0f0f1a] overflow-hidden cursor-crosshair transition-transform ${screenShake ? 'animate-shake' : ''}`}
             >
                 {/* Background Grid */}
                 <div className="absolute inset-0 opacity-10"

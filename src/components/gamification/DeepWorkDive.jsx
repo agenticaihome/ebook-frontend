@@ -47,10 +47,15 @@ const DeepWorkDive = () => {
         setObstacles([]);
         setCombo(0);
 
+        let currentVelocity = 0;
+
         // Game loop - physics
         gameLoopRef.current = setInterval(() => {
+            // Apply gravity
+            currentVelocity = currentVelocity + GRAVITY;
+
             setCaptainY(prev => {
-                const newY = prev + velocity;
+                const newY = prev + currentVelocity;
                 if (newY < 0 || newY > 100) {
                     endGame();
                     return prev;
@@ -58,7 +63,7 @@ const DeepWorkDive = () => {
                 return newY;
             });
 
-            setVelocity(prev => prev + GRAVITY);
+            setVelocity(currentVelocity);
 
             // Check flow zone
             setCaptainY(y => {
@@ -109,6 +114,34 @@ const DeepWorkDive = () => {
     const jump = () => {
         if (gameState !== 'playing') return;
         setVelocity(JUMP_FORCE);
+
+        // Update the velocity in the game loop closure
+        if (gameLoopRef.current) {
+            clearInterval(gameLoopRef.current);
+
+            let currentVelocity = JUMP_FORCE;
+
+            gameLoopRef.current = setInterval(() => {
+                currentVelocity = currentVelocity + GRAVITY;
+
+                setCaptainY(prev => {
+                    const newY = prev + currentVelocity;
+                    if (newY < 0 || newY > 100) {
+                        endGame();
+                        return prev;
+                    }
+                    return newY;
+                });
+
+                setVelocity(currentVelocity);
+
+                setCaptainY(y => {
+                    const inZone = y >= FLOW_ZONE_TOP && y <= FLOW_ZONE_BOTTOM;
+                    setInFlowZone(inZone);
+                    return y;
+                });
+            }, 50);
+        }
     };
 
     const endGame = () => {
