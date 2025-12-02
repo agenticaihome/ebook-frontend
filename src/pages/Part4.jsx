@@ -99,6 +99,75 @@ const Part4 = () => {
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 10: The Recovery-Aware Agent</h2>
 
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The Chronic Fatigue Spiral</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Sarah Chen, marketing director, Denver
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Monday morning, 6:47 AM. Sarah wakes to her alarm. Body feels like concrete.
+                                    </p>
+                                    <p className="text-red-400 font-bold text-lg mb-3">
+                                        4 hours, 23 minutes of sleep last night.
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>Sunday: 5 hours, 12 minutes</div>
+                                            <div>Saturday: 4 hours, 58 minutes</div>
+                                            <div>Friday: 6 hours, 02 minutes</div>
+                                            <div className="text-red-400 font-bold pt-1">7-day average: 5.2 hours/night</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        The fog is thick. Coffee isn't cutting through. Brain won't boot up.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        But the calendar doesn't care about sleep:
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• 9:00 AM: Q4 strategy presentation to VP (she stayed up till 2 AM prepping)</div>
+                                            <div>• 10:30 AM: Three 1-on-1s back-to-back</div>
+                                            <div>• 2:00 PM: Client pitch (high stakes)</div>
+                                            <div>• 4:00 PM: Budget review (detail work)</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        9:15 AM: She's 15 minutes into the presentation. Slide 2 has three typos she didn't catch.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        VP asks: "What were the Q4 numbers again?"
+                                    </p>
+                                    <p className="text-red-400 font-bold mb-3">
+                                        Her brain... blanks. Complete white noise.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        She fumbles through her notes. "I'll... need to get back to you on that."
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        The presentation gets rescheduled. Professional embarrassment.
+                                    </p>
+                                    <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
+                                        <p className="text-white font-bold mb-2">The Breaking Point (Week 6):</p>
+                                        <div className="space-y-1">
+                                            <div>• Missed her daughter's recital (fell asleep at 7 PM, alarm didn't wake her)</div>
+                                            <div>• Made a <span className="text-red-400 font-bold">$12,000 budgeting error</span> (decimal place mistake - exhaustion-induced)</div>
+                                            <div>• Doctor visit: "You're showing signs of chronic stress. Cortisol is through the roof."</div>
+                                        </div>
+                                        <p className="text-red-400 mt-3">Doctor: "You need to sleep." Sarah: "I KNOW. But I have deadlines."</p>
+                                        <p className="text-cyan-400 mt-2 italic">Doctor: "Then you need to adapt your deadlines to match your capacity."</p>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
+                                        <p className="text-white font-bold mb-2">Annual cost:</p>
+                                        <div className="space-y-1">
+                                            <div>Sleep debt: 450 hours/year below optimal</div>
+                                            <div>Cognitive performance: -30% on complex tasks</div>
+                                            <div>Mistakes/rework: ~8 hours/week fixing exhaustion-induced errors</div>
+                                            <div>Health: Cortisol dysregulation, immune suppression</div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {/* Quick Win Box */}
                                 <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 p-6 rounded-xl border border-green-500/50 my-8">
                                     <h3 className="text-xl font-bold text-green-400 mb-3">📌 Quick Win: The Morning Check-In</h3>
