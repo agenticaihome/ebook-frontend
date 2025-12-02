@@ -650,6 +650,166 @@ const Part4 = () => {
                                         Before bed, write down every open loop or worry. Tell your agent: "Remind me of these tomorrow at 9 AM." Your brain can't let go if it thinks it needs to remember.
                                     </CaptainTip>
                                 </Suspense>
+
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 Jennifer, 2 Months Later</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p>Tuesday, 10:47 PM. Jennifer's brain starts: "Did I—"</p>
+                                        <p className="text-white italic">She stops herself. "Agent has it."</p>
+                                        <p className="text-slate-300">Opens phone. Agent recap:</p>
+
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <p className="text-green-400 font-bold text-sm mb-2">✅ TODAY COMPLETED:</p>
+                                            <div className="space-y-1 text-xs">
+                                                <div>• HOA fee paid (auto-reminder 9 AM)</div>
+                                                <div>• Car registration renewed (agent sent DMV link Monday)</div>
+                                                <div>• Dentist reschedule confirmed (agent drafted apology email)</div>
+                                                <div>• Groceries ordered (agent maintains shared family list)</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <p className="text-blue-400 font-bold text-sm mb-2">📅 UPCOMING (Agent will remind):</p>
+                                            <div className="space-y-1 text-xs">
+                                                <div>• Mom birthday gift arrives Friday (ordered Monday, agent suggested 3 options)</div>
+                                                <div>• Permission slip signed (agent reminded last night)</div>
+                                            </div>
+                                        </div>
+
+                                        <p className="text-white font-bold">Brain: <span className="text-cyan-400 italic">*silence*</span></p>
+                                        <p>Jennifer: Closes phone. <strong className="text-green-400">Asleep by 11:08 PM.</strong></p>
+
+                                        <div className="mt-4 pt-3 border-t border-green-500/30">
+                                            <p className="text-white font-bold text-sm mb-2">2-MONTH RESULTS:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>• 3 AM wake-ups: <span className="text-red-400">4-5 nights/week</span> → <span className="text-green-400 font-bold">0-1/week</span></div>
+                                                <div>• Missed commitments: <span className="text-red-400">12-15/year</span> → <span className="text-green-400 font-bold">1 (unavoidable conflict)</span></div>
+                                                <div>• Late fees/apology gifts: <span className="text-red-400">$400/year</span> → <span className="text-green-400 font-bold">$0</span></div>
+                                                <div>• Chronic anxiety: <span className="text-red-400">Constant</span> → <span className="text-green-400 font-bold">Rare</span> ("Agent has it" mantra works)</div>
+                                                <div>• Cognitive bandwidth freed: <span className="text-green-400 font-bold">~30% → ~5%</span> (3 items today vs 30)</div>
+                                            </div>
+                                            <p className="text-white italic text-sm mt-3">"I used to think being a 'good mom/partner/employee' meant REMEMBERING everything. Now I know it means building a SYSTEM that remembers FOR me. My brain is for creativity, not tracking trash day." — Jennifer Martinez</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">💬 Common Objections (And The Truth)</h4>
+
+                                    <div className="space-y-4 text-sm">
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"I already use a to-do list. How is this different?"</p>
+                                            <p className="text-slate-300 text-xs mb-1">To-do lists are PASSIVE. They don't REMIND you.</p>
+                                            <p className="text-cyan-400 text-xs">Agent system: Context-aware timing. Agent knows WHEN you need to act, not just WHAT to do. Jennifer got reminded "HOA due tomorrow" at the right moment, not buried in a list.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"My partner should just help more. Why do I need AI?"</p>
+                                            <p className="text-slate-300 text-xs mb-1">You're right. AND you still need a system.</p>
+                                            <p className="text-cyan-400 text-xs">This isn't about replacing your partner. It's about replacing the INVISIBLE PROJECT MANAGER role that one person (usually women) defaults to. Agent divides reminders equally. Nobody is "in charge" of remembering.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"Isn't offloading to AI just avoiding responsibility?"</p>
+                                            <p className="text-cyan-400 text-xs">No. It's SYSTEMATIZING responsibility. Jennifer's freed mental bandwidth now goes to: Strategic work projects (promotion earned Month 3), daughter's emotional needs (noticed anxiety, got her therapy), HER OWN mental health. She's more responsible NOW than when drowning in trivial tracking.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"What if agent forgets something?"</p>
+                                            <p className="text-slate-300 text-xs mb-1">Agents don't "forget." They execute exactly what you program.</p>
+                                            <p className="text-green-400 text-xs">Jennifer's 2-month track record: 0 items missed by agent. 1 item Jennifer forgot to tell agent initially (caught in weekly review). Human error: Forgetting to capture. Agent error: Never happened.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">Couples Mental Load Balancing: Taylor & Jordan Chen</h3>
+                                <p className="text-slate-300 text-sm mb-4">
+                                    Taylor (marketing director) & Jordan (software engineer), 2 kids (6 & 9), Boston
+                                </p>
+
+                                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                                    <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+                                        <h4 className="text-red-400 font-bold mb-3">THE PROBLEM (Year 1)</h4>
+                                        <div className="space-y-2 text-xs text-slate-300">
+                                            <div>• Both work full-time (40+ hrs/week)</div>
+                                            <div>• Taylor handled <strong className="text-red-400">80% of household mental load</strong></div>
+                                            <div>• Jordan: "I help! Just tell me what to do!"</div>
+                                            <div>• Taylor: "That's still ME remembering + delegating = MORE mental load!"</div>
+                                            <div className="pt-2 text-red-400"><strong>Tipping point:</strong> Taylor missed her own work deadline (distracted by kid dentist scheduling)</div>
+                                            <div className="pt-2"><strong>Friday night argument (typical):</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>Jordan: "Why didn't you tell me Emma needed new cleats?"</div>
+                                                <div>Taylor: "WHY DO I HAVE TO TELL YOU? YOU'RE HER PARENT TOO!"</div>
+                                                <div className="text-red-400 italic">Taylor cries (mental load overflow)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
+                                        <h4 className="text-green-400 font-bold mb-3">THE SOLUTION (6 Months)</h4>
+                                        <div className="space-y-2 text-xs text-slate-300">
+                                            <div><strong>Fair Play + Agent System:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div><strong className="text-green-400">Divide domains (not tasks):</strong></div>
+                                                <div>• Taylor owns: Kids' school/activities, family social calendar</div>
+                                                <div>• Jordan owns: Kids' health/medical, household admin (bills/insurance)</div>
+                                                <div>• SHARED: Grocery/meal planning (alternate weeks)</div>
+                                            </div>
+                                            <div className="pt-2"><strong className="text-green-400">Agent assigns reminders:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• Monday AM (Jordan's phone): "Pediatrician checkup for Emma in 2 weeks - schedule today"</div>
+                                                <div>• Tuesday AM (Taylor's phone): "School volunteer signup closes Friday"</div>
+                                            </div>
+                                            <div className="pt-2 text-green-400"><strong>6-Month Results:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• Mental load: <span className="text-green-400 font-bold">80/20 → 50/50</span></div>
+                                                <div>• Friday night arguments: 3-4x/month → 0</div>
+                                                <div>• Taylor: Promotion Month 5 (bandwidth freed)</div>
+                                                <div>• Jordan: "I got this" (owns his domains)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-purple-900/30 to-cyan-900/30 p-6 rounded-xl border border-purple-500/50 mb-6 text-center">
+                                    <p className="text-white italic text-sm">"I used to resent Jordan. Now I realize the SYSTEM was broken. Fair Play gave us the framework. Agent made it executable. I'm not his project manager anymore. We're CO-MANAGERS with separate domains." — Taylor Chen</p>
+                                </div>
+
+                                <div className="mt-12 p-6 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-xl border border-purple-500/50">
+                                    <h4 className="text-purple-400 font-bold mb-3">🚀 What's Next?</h4>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        You've reclaimed:
+                                    </p>
+                                    <div className="space-y-1 text-sm text-slate-300 mb-4">
+                                        <div>• <strong className="text-white">Part 2:</strong> Mornings (30 min/day) + Food ($900/month) + Home ($6K/year)</div>
+                                        <div>• <strong className="text-white">Chapter 7:</strong> Email (90 min/day = 7.5 hours/week)</div>
+                                        <div>• <strong className="text-white">Chapter 8:</strong> Calendar (90 min/day = 9.5 hours/week)</div>
+                                        <div>• <strong className="text-white">Chapter 9:</strong> Admin (90 min/week = 5.9 work weeks/year)</div>
+                                        <div>• <strong className="text-white">Chapter 10:</strong> Recovery (11.4 hours/week from sleep efficiency + error elimination)</div>
+                                        <div>• <strong className="text-white">Chapter 11:</strong> Mental Load (8.2 hours/week from 3 AM spirals eliminated + cognitive bandwidth)</div>
+                                    </div>
+                                    <div className="bg-slate-900/80 p-4 rounded-xl border border-purple-500/30 mb-4">
+                                        <p className="text-purple-400 font-bold text-lg">Running total: ~56 hours/week reclaimed</p>
+                                        <p className="text-slate-400 text-xs mt-1">(That's more than a full-time job + overtime.)</p>
+                                    </div>
+                                    <p className="text-white font-bold text-sm mb-2">
+                                        But here's the next problem:
+                                    </p>
+                                    <p className="text-red-400 font-bold mb-3">
+                                        You've cleared mental space... and you're STILL forgetting important insights.
+                                    </p>
+                                    <div className="bg-red-900/20 p-3 rounded text-xs text-slate-300 space-y-1">
+                                        <div>• "Where's that article I read about X?" (Can't find it.)</div>
+                                        <div>• "What was that great idea from the podcast?" (Lost.)</div>
+                                        <div>• "I learned this before. Why am I relearning?" (No retention system.)</div>
+                                    </div>
+                                    <p className="text-orange-400 font-bold mt-4">
+                                        Chapter 12: The Second Brain Agent
+                                    </p>
+                                    <p className="text-slate-400 text-xs mt-2">
+                                        How to capture every insight instantly, retrieve it when needed, and connect ideas you didn't know were related.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </section >
