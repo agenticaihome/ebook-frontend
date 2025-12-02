@@ -92,7 +92,7 @@ const Part4 = () => {
                                 <CaptainHero
                                     size="md"
                                     pose="thinking"
-                                    message="Real talk: Most productivity systems assume you got 8 hours of perfect sleep. *laughs in parent of toddlers* You know what happens when you follow a rigid schedule on 4 hours of broken sleep? You fail. Your Recovery-Aware Agent doesn't just track your health — it ADAPTS your entire day based on your actual capacity."
+                                    message="You just read about Sarah. 5.2 hours average sleep. 4-hour night before a high-stakes presentation. Her brain blanked. $12K mistake. Missed her daughter's recital. Here's what happened: She kept 'powering through' despite running on fumes. Traditional productivity says: discipline, grit, push harder. Biology says: YOU CAN'T FOCUS WHEN YOUR BRAIN IS OFFLINE. Recovery-Aware doesn't just track health—it ADAPTS your entire day based on ACTUAL capacity. Sarah's about to learn how."
                                 />
                             </Suspense>
 
