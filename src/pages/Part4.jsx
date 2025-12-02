@@ -318,6 +318,161 @@ const Part4 = () => {
                                     </div>
                                 </div>
 
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 Sarah, 3 Months Later</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p>Monday morning, 6:50 AM. Sarah wakes naturally.</p>
+                                        <p className="text-green-400 font-bold">7 hours, 24 minutes of sleep. Quality: 8/10.</p>
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>30-day average: <span className="text-green-400 font-bold">7.4 hours/night</span></div>
+                                                <div>Best week: 8.1 hours/night</div>
+                                                <div>Worst week: 6.8 hours/night (still functional)</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-slate-900/80 p-4 rounded-xl border border-green-500/30 my-4">
+                                            <p className="text-white font-bold text-sm mb-2">What Changed:</p>
+                                            <div className="space-y-2 text-xs">
+                                                <p><strong className="text-green-400">1. Morning Check-In (30 sec/day):</strong> Agent adapts schedule based on sleep data</p>
+                                                <p><strong className="text-green-400">2. Protected 10 PM bedtime:</strong> Calendar blocks "Wind Down" 9:30-10 PM (non-negotiable)</p>
+                                                <p><strong className="text-green-400">3. Calendar adaptation:</strong> High-stakes work only on Green days (7+ hrs sleep)</p>
+                                                <p><strong className="text-green-400">4. Recovery tracking:</strong> Agent monitors trends, suggests adjustments</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-green-500/30">
+                                            <p className="text-white font-bold text-sm mb-2">3-MONTH RESULTS:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>• Time reclaimed: <span className="text-green-400 font-bold">11.4 hours/week</span> (from better sleep efficiency + no rework from errors)</div>
+                                                <div>• Mistakes: $12K error → <span className="text-green-400 font-bold">$0 errors in 90 days</span></div>
+                                                <div>• Performance reviews: "Most improved quarter" — VP</div>
+                                                <div>• Health: Cortisol normalized, immune function restored</div>
+                                                <div>• Family: Attended <span className="text-green-400 font-bold">every recital/event</span> in 3 months</div>
+                                            </div>
+                                            <p className="text-white italic text-sm mt-3">"I'm not 'powering through' anymore. I'm performing at capacity that matches my recovery. Turns out, that's way more productive." — Sarah Chen</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">💬 Common Objections (And The Truth)</h4>
+
+                                    <div className="space-y-4 text-sm">
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"I don't have TIME to track my sleep."</p>
+                                            <p className="text-slate-300 text-xs mb-1">Morning check-in: 30 seconds. Wearable tracking: automatic (Oura, Whoop, Apple Watch).</p>
+                                            <p className="text-green-400 text-xs">ROI: Sarah's 30 sec/day check-in prevented a $12K mistake. That's $400/second.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"What if I can't CONTROL my sleep? (Shift workers, parents, insomnia)"</p>
+                                            <p className="text-slate-300 text-xs mb-1">Recovery-Aware isn't about perfect sleep. It's about ADAPTING to reality.</p>
+                                            <div className="text-xs text-slate-300 space-y-1 mt-2">
+                                                <p className="text-cyan-400">Examples:</p>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• Night shift nurse: Agent schedules critical tasks after 3+ recovery days</div>
+                                                    <div>• New parent: Red Day protocol 80% of time, Green Day work batched strategically</div>
+                                                    <div>• Insomnia patient: Agent tracks patterns, suggests "good enough" task scheduling</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"Isn't this just GIVING UP on productivity?"</p>
+                                            <p className="text-cyan-400 text-xs">Opposite. Sarah's output INCREASED 40% in 3 months. Why? Zero time wasted on mistake correction. Strategic work done at peak capacity instead of zombie mode.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"My boss won't let me reschedule meetings based on sleep."</p>
+                                            <p className="text-slate-300 text-xs mb-1">Test: Try it once. "I need to move this to Thursday for optimal prep." (Don't mention sleep.)</p>
+                                            <p className="text-green-400 text-xs">Reality: Bosses care about PERFORMANCE. Delivering high-quality work on Thursday beats a disaster on Monday. Sarah's VP noticed the difference immediately.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">Case Study: Marcus Rivera, ICU RN (Night Shift)</h3>
+                                <p className="text-slate-300 text-sm mb-4">
+                                    Marcus Rivera, registered nurse, ICU night shift (7 PM - 7 AM), Phoenix
+                                </p>
+
+                                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                                    <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+                                        <h4 className="text-red-400 font-bold mb-3">THE PROBLEM (Year 1)</h4>
+                                        <div className="space-y-2 text-xs text-slate-300">
+                                            <div><strong>Rotating nights:</strong> 3 nights on, 2 days off (circadian chaos)</div>
+                                            <div><strong>Sleep:</strong> 4-6 hrs/day during recovery (fragmented)</div>
+                                            <div><strong>Critical errors:</strong> 2 near-misses with medication dosing</div>
+                                            <div className="pt-2 text-red-400"><strong>Danger zone:</strong> Night 3 of rotation = cognitive impairment</div>
+                                            <div className="pt-2"><strong>Problem:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• ICU work requires 100% attention (lives on the line)</div>
+                                                <div>• Traditional approach: "Just focus harder"</div>
+                                                <div>• Reality: Can't focus when brain is offline</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
+                                        <h4 className="text-green-400 font-bold mb-3">THE ADAPTATION (6 Months)</h4>
+                                        <div className="space-y-2 text-xs text-slate-300">
+                                            <div><strong>Recovery-Aware Protocol:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div><strong className="text-red-400">RED shifts</strong> (Night 3, &lt;5hrs recovery): Pair with senior RN, avoid solo critical decisions</div>
+                                                <div><strong className="text-yellow-400">YELLOW shifts</strong> (Night 2, 5-6hrs recovery): Standard protocols, double-check meds</div>
+                                                <div><strong className="text-green-400">GREEN shifts</strong> (Night 1, 7+hrs recovery): Full capacity, train new nurses</div>
+                                            </div>
+                                            <div className="pt-2 text-green-400"><strong>6-Month Results:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• Medication errors: 2 near-misses → <span className="text-green-400 font-bold">0 errors in 6 months</span></div>
+                                                <div>• Supervisor noticed: "Marcus, you're sharper on nights now?"</div>
+                                                <div>• Strategy: Self-awareness of capacity = better decisions</div>
+                                                <div>• Patient outcomes: No incidents on his watch</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-purple-900/30 to-cyan-900/30 p-6 rounded-xl border border-purple-500/50 mb-6 text-center">
+                                    <p className="text-white italic text-sm">"I can't control my sleep schedule. But I CAN control what tasks I take on when I'm running on 4 hours. That awareness saves lives." — Marcus Rivera, ICU RN</p>
+                                </div>
+
+                                <div className="mt-12 p-6 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-xl border border-purple-500/50">
+                                    <h4 className="text-purple-400 font-bold mb-3">🚀 What's Next?</h4>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        You've reclaimed:
+                                    </p>
+                                    <div className="space-y-1 text-sm text-slate-300 mb-4">
+                                        <div>• <strong className="text-white">Part 2:</strong> Mornings (30 min/day) + Food ($900/month) + Home ($6K/year)</div>
+                                        <div>• <strong className="text-white">Chapter 7:</strong> Email (90 min/day = 7.5 hours/week)</div>
+                                        <div>• <strong className="text-white">Chapter 8:</strong> Calendar (90 min/day = 9.5 hours/week)</div>
+                                        <div>• <strong className="text-white">Chapter 9:</strong> Admin (90 min/week = 5.9 work weeks/year)</div>
+                                        <div>• <strong className="text-white">Chapter 10:</strong> Recovery (11.4 hours/week from sleep efficiency + error elimination)</div>
+                                    </div>
+                                    <div className="bg-slate-900/80 p-4 rounded-xl border border-purple-500/30 mb-4">
+                                        <p className="text-purple-400 font-bold text-lg">Running total: ~48 hours/week reclaimed</p>
+                                        <p className="text-slate-400 text-xs mt-1">(That's more than a full-time job worth of time back.)</p>
+                                    </div>
+                                    <p className="text-white font-bold text-sm mb-2">
+                                        But here's the invisible thief:
+                                    </p>
+                                    <p className="text-red-400 font-bold mb-3">
+                                        You have all this reclaimed time... and it's EATEN by MENTAL LOAD.
+                                    </p>
+                                    <div className="bg-red-900/20 p-3 rounded text-xs text-slate-300 space-y-1">
+                                        <div>• The 6,200 thoughts/day bouncing in your head</div>
+                                        <div>• The "Did I remember to..." 3 AM panic</div>
+                                        <div>• The invisible labor of remembering EVERYTHING</div>
+                                        <div>• The cognitive tax of 30 open browser tabs in your brain</div>
+                                    </div>
+                                    <p className="text-orange-400 font-bold mt-4">
+                                        Chapter 11: Mental Wellbeing & Load Reduction
+                                    </p>
+                                    <p className="text-slate-400 text-xs mt-2">
+                                        How to close the 30 cognitive tabs you're running and reclaim your mental bandwidth.
+                                    </p>
+                                </div>
+
                                 <Suspense fallback={null}>
                                     <CaptainTip type="pro" title="DDS (Dad Deploying Systems)'s Residency Hack">
                                         "During residency with a newborn, I used 'Red Day' protocols constantly. Instead of studying at 5 AM (when I was a zombie), my agent moved study blocks to lunch when I was awake. I passed boards because I stopped fighting my biology."
