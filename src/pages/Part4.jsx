@@ -821,12 +821,63 @@ const Part4 = () => {
                                 <CaptainHero
                                     size="md"
                                     pose="pointing"
-                                    message="Where is that article you read last month? The one with the great insight? Your brain is amazing at creativity but terrible at storage. Let's build a Second Brain that remembers everything for you."
+                                    message="You just read about Alex. 90 minutes searching for an insight he ALREADY learned. $3,200 in courses (remembers 5%). Re-Googling 'React hooks' for the 6th time this year. Here's what happened: Your brain is AMAZING at making connections, terrible at long-term storage. Alex isn't forgetting to learn. He's learning without a RETRIEVAL SYSTEM. Second Brain Agent's job: Capture EVERYTHING instantly. Retrieve it when needed. Connect ideas you didn't know were related. Your creativity without the amnesia."
                                 />
                             </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 12: The Second Brain Agent</h2>
+
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The Relearning Loop</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Alex Rodriguez, product manager, San Francisco
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Monday morning. Slack message from CEO: "What's our strategy for AI integration?"
+                                    </p>
+                                    <p className="text-red-400 font-bold text-lg mb-3">
+                                        Alex KNOWS he read something brilliant about this. Where was it?
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">The search begins:</p>
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• Checks Notion: 47 pages. "AI" mentioned 23 times. Nothing useful.</div>
+                                            <div>• Opens Evernote: 128 notes. Half are duplicates. Can't find it.</div>
+                                            <div>• Browser bookmarks: 312 saved articles. "Read later" from 2021.</div>
+                                            <div>• Kindle highlights: 8 books on AI. Which one had that insight?</div>
+                                            <div>• Podcast app: Listened to 40 episodes. Can't remember which.</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        90 minutes later: Gives up. Googles "AI integration strategy" and starts from scratch.
+                                    </p>
+                                    <p className="text-red-400 font-bold mb-3">
+                                        He's relearning something he ALREADY learned. Again.
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">This month alone:</p>
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• Re-Googled "React hooks best practices" (6th time this year)</div>
+                                            <div>• Re-watched YouTube tutorial on Figma shortcuts (3rd time — still forgets)</div>
+                                            <div>• Re-bought book on pricing strategy (already owns it, never found it)</div>
+                                            <div>• Asked coworker question he KNOWS he researched before (embarrassing)</div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
+                                        <p className="text-white font-bold mb-2">Annual "knowledge leakage" cost:</p>
+                                        <div className="space-y-1">
+                                            <div>Online courses purchased: <span className="text-red-400 font-bold">$3,200</span> (completed 30%, remember 5%)</div>
+                                            <div>Time spent relearning: <span className="text-red-400 font-bold">~6 hours/week</span> (312 hours/year)</div>
+                                            <div>Books bought/highlighted: <span className="text-red-400">23 books</span> (can't retrieve insights when needed)</div>
+                                            <div>Meetings notes taken: <span className="text-red-400">~200 pages/year</span> (never revisited)</div>
+                                            <div className="text-red-400 font-bold pt-2">Mental burden: "I know I learned this. WHERE IS IT?"</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-cyan-400 text-sm mt-4 italic">
+                                        The problem isn't learning. It's RETAINING and RETRIEVING what he already learned.
+                                    </p>
+                                </div>
 
                                 <div className="grid md:grid-cols-2 gap-6 my-8">
                                     <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
