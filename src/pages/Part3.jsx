@@ -819,33 +819,339 @@ const Part3 = () => {
                     {/* Chapter 9: Admin */}
                     <section id="chapter-9" className="py-16 px-6 bg-[#131320] border-y border-slate-800">
                         <div className="max-w-4xl mx-auto">
-                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                                <CaptainHero
-                                    size="md"
-                                    pose="celebrating"
-                                    message="Nobody likes paperwork. Not even accountants. (Okay, maybe some accountants). But for the rest of us, forms, bills, and scheduling are soul-sucking. Good news: Robots LOVE paperwork. They don't get bored. They don't make typos. Let's hand it over."
-                                />
-                            </Suspense>
-
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 9: The Admin Agent</h2>
 
-                                <div className="grid md:grid-cols-2 gap-6 my-8">
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                        <h4 className="text-indigo-400 font-bold mb-3">The "Admin Day" Strategy</h4>
-                                        <p className="text-sm text-slate-300">
-                                            Instead of doing admin bits every day, batch them all into one "Power Hour" or half-day per week.
-                                        </p>
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The Forgotten Renewal</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Mike Torres, software engineer, Austin
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Tuesday afternoon, 3:47 PM. Email notification.
+                                    </p>
+                                    <p className="text-red-400 font-bold text-lg mb-3">
+                                        "FINAL NOTICE: Car insurance expires in 3 days. Policy will cancel."
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Wait. What?
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Mike opens email. Original notice sent 45 days ago. Read, marked "deal with later," buried under 247 other emails.
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">Panic spread through task backlog:</p>
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• DMV registration renewal (overdue 2 weeks, $75 late fee pending)</div>
+                                            <div>• Dentist appointment (forgot to schedule, now 9-month wait)</div>
+                                            <div>• HOA violation notice (trash bins visible from street, $50 fine)</div>
+                                            <div>• Health insurance form (sitting on desk, 2 months, needs signature)</div>
+                                            <div>• Dad's birthday card (last week, still not mailed)</div>
+                                        </div>
                                     </div>
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
-                                        <h4 className="text-indigo-400 font-bold mb-3">What to Outsource</h4>
-                                        <ul className="space-y-1 text-sm text-slate-300">
-                                            <li>• Scheduling appointments</li>
-                                            <li>• Filling out forms</li>
-                                            <li>• Paying bills</li>
-                                            <li>• Organizing files</li>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        All "quick 5-minute tasks." None done.
+                                    </p>
+                                    <div className="bg-red-900/20 p-4 rounded my-3">
+                                        <p className="text-white font-bold text-sm mb-2">Mike calculates:</p>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Insurance lapse: $200 penalty to reinstate</div>
+                                            <div>• DMV late fee: $75</div>
+                                            <div>• HOA fine: $50</div>
+                                            <div>• Dentist delay: 9-month toothache wait</div>
+                                            <div>• Dad guilt: Immeasurable</div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
+                                        <p className="text-white font-bold mb-2">Annual "admin tax":</p>
+                                        <div className="space-y-1">
+                                            <div>• 6 hours/week scrambling (bills, forms, scheduling)</div>
+                                            <div>• $800/year in late fees, penalties, rushed shipping</div>
+                                            <div>• Endless low-level anxiety ("Did I forget something?")</div>
+                                        </div>
+                                        <p className="text-red-400 mt-3">Thursday 11 PM: Finally renewed insurance. Mental note: "I need to get organized."</p>
+                                        <p className="text-slate-500 text-xs mt-2">(Narrator: He will not get organized. This will happen again next quarter.)</p>
+                                    </div>
+                                </div>
+
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="You just read about Mike. Insurance lapsed. DMV overdue. Dentist wait now 9 months. Here's what happened: Admin tasks are BORING. Your brain hates boring. So it procrastinates. Every 'quick 5-minute task' gets delayed until it becomes a $75 late fee. But here's the secret: Robots don't get bored. They LOVE filling out forms. They don't procrastinate. They don't forget. Let's hand over the soul-sucking tasks to something that doesn't have a soul. Mike's about to learn the Sunday Power Hour."
+                                    />
+                                </Suspense>
+
+                                <div className="mt-12 prose prose-invert prose-lg max-w-none">
+
+                                    <h3 className="text-2xl font-bold text-indigo-400 mt-12 mb-4">The Science of Admin Avoidance</h3>
+
+                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                        <p className="text-white font-bold text-sm mb-3">Roy Baumeister (Decision Fatigue, 2011):</p>
+                                        <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                                            <li>• Every decision depletes mental energy</li>
+                                            <li>• Low-value decisions (schedule appointment, pay bill) feel <strong className="text-red-400">WORSE</strong> than high-value</li>
+                                            <li>• Why? <strong className="text-red-400">Effort feels disproportionate to importance</strong></li>
+                                            <li>• Brain rebels: "This is boring, do later"</li>
                                         </ul>
+
+                                        <div className="bg-indigo-900/20 p-4 rounded mb-4">
+                                            <p className="text-white font-bold text-sm mb-2">The Admin Procrastination Loop:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>1. See admin task (renew insurance)</div>
+                                                <div>2. Brain calculates: 5 min effort, low immediate reward</div>
+                                                <div>3. Decision: "Later"</div>
+                                                <div>4. Repeat 40x over 45 days</div>
+                                                <div>5. Task becomes URGENT (3-day deadline)</div>
+                                                <div>6. Now requires 30 min + penalty fees</div>
+                                                <div>7. Stress spikes, handle frantically</div>
+                                            </div>
+                                            <p className="text-red-400 text-xs mt-3">Ironically, procrastinating INCREASES total effort.</p>
+                                        </div>
+
+                                        <div className="bg-red-900/20 p-4 rounded mb-4">
+                                            <p className="text-white font-bold text-sm mb-2">Mike's Admin Chaos Math:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>Weekly admin tasks: 12 (avg)</div>
+                                                <div className="pl-3 space-y-1 mt-1">
+                                                    <div>• Bills to pay: 3</div>
+                                                    <div>• Appointments to schedule: 2</div>
+                                                    <div>• Forms to fill: 2</div>
+                                                    <div>• Emails to file: 3</div>
+                                                    <div>• Renewals to handle: 2</div>
+                                                </div>
+                                                <div className="pt-2">If each takes 5 min: 12 × 5 = 60 min/week</div>
+                                                <div className="pt-2 border-t border-red-500/30 mt-2">
+                                                    <strong>But scattered across 7 days:</strong>
+                                                </div>
+                                                <div>• Context switching cost: 23 min per task (Gloria Mark)</div>
+                                                <div>• 12 tasks × 23 min = <span className="text-red-400 font-bold">276 minutes = 4.6 hours</span></div>
+                                                <div className="text-red-400 font-bold pt-2">Actual time cost: 4.6 hours/week for 1 hour of work.</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-4 p-4 bg-indigo-900/30 rounded border border-indigo-500/40">
+                                            <p className="text-indigo-400 font-bold text-sm mb-2">Sunday Power Hour breaks the cycle:</p>
+                                            <ul className="space-y-1 text-xs text-slate-300">
+                                                <li>• Batch all 12 tasks into 90-min block</li>
+                                                <li>• AI pre-sorts: PAY NOW / SCHEDULE / FILE / DELETE</li>
+                                                <li>• Context switches: 12x → 1x</li>
+                                                <li>• Time cost: 4.6 hrs → 1.5 hrs (saved 3.1 hrs/week)</li>
+                                            </ul>
+                                        </div>
                                     </div>
+
+                                    <div className="bg-gradient-to-r from-indigo-900/30 to-purple-900/30 p-6 rounded-xl border border-indigo-500/50 my-8">
+                                        <h3 className="text-xl font-bold text-indigo-400 mb-3">📌 Quick Win: The Weekly Admin Triage Prompt</h3>
+                                        <p className="text-white mb-4">Every Sunday 10 AM, paste this week's admin tasks into your AI:</p>
+                                        <div className="bg-slate-900/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
+                                            "Here's my admin inbox for this week:<br />
+                                            [Paste bills, appointment reminders, forms, renewals, etc.]<br /><br />
+                                            Triage these into 4 categories:<br /><br />
+                                            1. PAY NOW (bills due this week)<br />
+                                            &nbsp;&nbsp;&nbsp;- Draft payment confirmation emails<br />
+                                            &nbsp;&nbsp;&nbsp;- List due dates<br /><br />
+                                            2. SCHEDULE (appointments, calls)<br />
+                                            &nbsp;&nbsp;&nbsp;- Suggest 3 time slots for each<br />
+                                            &nbsp;&nbsp;&nbsp;- Draft booking emails/texts<br /><br />
+                                            3. FILE (receipts, confirmations, documents)<br />
+                                            &nbsp;&nbsp;&nbsp;- Suggest folder names<br />
+                                            &nbsp;&nbsp;&nbsp;- Create file naming convention<br /><br />
+                                            4. DELETE (spam, expired offers)<br />
+                                            &nbsp;&nbsp;&nbsp;- List to archive<br /><br />
+                                            Then create my 90-min Sunday Admin Routine:<br />
+                                            - 10:00-10:30: Process PAY NOW (with your drafted emails)<br />
+                                            - 10:30-11:00: Process SCHEDULE (book appointments)<br />
+                                            - 11:00-11:30: Process FILE + review next week's calendar<br /><br />
+                                            Show me what I can automate vs what needs my signature/click."
+                                        </div>
+                                        <div className="space-y-2 text-sm text-slate-300">
+                                            <p className="text-white font-bold">What you'll discover:</p>
+                                            <ul className="space-y-1 text-xs">
+                                                <li>• 60-70% can be drafted by AI (you just click Send)</li>
+                                                <li>• 20% can be fully automated (recurring bills)</li>
+                                                <li>• 10% needs your manual action (signatures)</li>
+                                            </ul>
+                                            <p className="text-indigo-400 font-bold mt-3">Time reclaimed: 3-4 hours/week</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid md:grid-cols-2 gap-6 my-8">
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                            <h4 className="text-indigo-400 font-bold mb-3">The "Admin Day" Strategy</h4>
+                                            <p className="text-sm text-slate-300">
+                                                Instead of doing admin bits every day, batch them all into one "Power Hour" or half-day per week.
+                                            </p>
+                                        </div>
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                            <h4 className="text-indigo-400 font-bold mb-3">What to Outsource</h4>
+                                            <ul className="space-y-1 text-sm text-slate-300">
+                                                <li>• Scheduling appointments</li>
+                                                <li>• Filling out forms</li>
+                                                <li>• Paying bills</li>
+                                                <li>• Organizing files</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div className="bg-gradient-to-r from-green-900/30 to-indigo-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 Mike, 2 Months Later</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p>Sunday morning, 10:00 AM. Coffee brewing. Mike opens "Sunday Admin" conversation with ChatGPT.</p>
+                                        <p className="text-white">Pastes this week's tasks:</p>
+
+                                        <div className="bg-slate-900/50 p-4 rounded font-mono text-xs space-y-1">
+                                            <div>• 3 bills (electric, internet, credit card)</div>
+                                            <div>• 2 appointment reminders (oil change, annual physical)</div>
+                                            <div>• 1 insurance renewal (the dreaded one)</div>
+                                            <div>• 1 HOA email (pool maintenance schedule)</div>
+                                            <div>• 4 receipts to file</div>
+                                        </div>
+
+                                        <p className="text-white italic">AI responds in 8 seconds:</p>
+
+                                        <div className="bg-slate-900/50 p-4 rounded font-mono text-xs space-y-2">
+                                            <div className="text-red-400">PAY NOW:</div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>1. Electric ($127, due Wed) → DRAFT: "Autopay confirmed"</div>
+                                                <div>2. Internet ($89, due Thu) → DRAFT: "Payment submitted"</div>
+                                                <div>3. Credit card ($1,847, due Fri) → DRAFT: "Paid in full"</div>
+                                            </div>
+                                            <div className="text-cyan-400 mt-2">SCHEDULE:</div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>1. Oil change → SUGGESTION: "Tuesday 2 PM at Jiffy Lube"</div>
+                                                <div>2. Annual physical → SUGGESTION: "Jan 12, 9 AM with Dr. Chen"</div>
+                                            </div>
+                                            <div className="text-green-400 mt-2">FILE:</div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• Insurance renewal → "Insurance_Auto_2024_Renewal.pdf"</div>
+                                                <div>• HOA email → "HOA_Pool_Schedule_Nov2024.pdf"</div>
+                                            </div>
+                                            <div className="text-slate-500 mt-2">DELETE: 3 promotional emails, 1 expired offer</div>
+                                        </div>
+
+                                        <p className="text-white italic">Total time: 11:27 AM. 87 minutes. Admin complete for the week.</p>
+
+                                        <div className="mt-4 pt-3 border-t border-green-500/30">
+                                            <p className="text-white font-bold text-sm mb-2">2-MONTH RESULTS:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>• Admin time: 6 hrs/week (scattered) → 1.5 hrs/week (batched Sunday)</div>
+                                                <div>• Late fees/penalties: $800/year → $0</div>
+                                                <div>• Forgotten tasks: 3-4/month → 0</div>
+                                                <div>• "Did I forget something?" anxiety: Daily → Never</div>
+                                                <div>• Insurance lapses: 0 (renewal in calendar with 30-day advance)</div>
+                                            </div>
+                                            <p className="text-green-400 font-bold mt-2">Annual value: 234 hours reclaimed (4.5 hrs/week × 52) + $800 saved = 5.9 work weeks</p>
+                                            <p className="text-white italic text-sm mt-3">"I used to dread Sundays because of the admin backlog. Now I knock it out in 90 minutes and have the rest of the day free."</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">💬 Common Objections (And The Truth)</h4>
+
+                                    <div className="space-y-4 text-sm">
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"I can't trust AI with my bills. What if it pays the wrong amount?"</p>
+                                            <p className="text-slate-300 text-xs mb-2">You're not handing over your bank account.</p>
+                                            <p className="text-cyan-400 text-xs"><strong>What AI does:</strong> Drafts payment confirmation ("Paid $127 to [company]"). <strong>What YOU do:</strong> Review, click Send (or pay manually). Mike reviews every AI-drafted payment. Takes 30 seconds. Zero errors in 2 months.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"What if it makes a mistake? Schedules wrong appointment?"</p>
+                                            <p className="text-green-400 text-xs mb-1">AI suggests times. YOU book.</p>
+                                            <p className="text-slate-300 text-xs">Example: AI says "Book Tuesday 2 PM oil change at Jiffy Lube." You: Click link, confirm, done. Mike has caught 2 AI mistakes (wrong date format, wrong doctor name). Fixed in 10 seconds. Still faster than manual.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"I only have 15 min/week of admin. Is this overkill?"</p>
+                                            <p className="text-slate-300 text-xs mb-1">Lucky you. Most people have 3-6 hours/week.</p>
+                                            <p className="text-cyan-400 text-xs">But even 15 min scattered = wasted context switches. Try: Batch your 15 min into Sunday 10 AM slot for 1 month. Track if you feel more organized.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"What about sensitive data? Insurance numbers, SSN?"</p>
+                                            <div className="text-xs text-slate-300 space-y-1">
+                                                <p className="text-red-400">Never give AI your:</p>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• Banking passwords</div>
+                                                    <div>• Social Security Number</div>
+                                                    <div>• Credit card CVVs</div>
+                                                </div>
+                                                <p className="text-green-400 mt-2">AI helps with:</p>
+                                                <div className="pl-3 space-y-1">
+                                                    <div>• Drafting emails ("Please renew policy #ABC123")</div>
+                                                    <div>• Organizing files ("Save as Insurance_2024_Renewal.pdf")</div>
+                                                    <div>• Reminding you ("Insurance due in 10 days")</div>
+                                                </div>
+                                                <p className="text-white mt-2">YOU handle the final submit/payment.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 className="text-2xl font-bold text-indigo-400 mt-12 mb-4">Family Admin Batching: The Chen Family</h3>
+                                <p className="text-slate-300 text-sm mb-4">
+                                    Linda & Kevin Chen, 2 kids (8 & 11), Seattle
+                                </p>
+
+                                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                                    <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+                                        <h4 className="text-red-400 font-bold mb-3">THE PROBLEM (Year 1)</h4>
+                                        <div className="space-y-2 text-xs text-slate-300">
+                                            <div>• 4 people = 4× admin chaos</div>
+                                            <div>• Kids' school forms (monthly, last-minute)</div>
+                                            <div>• Medical appointments (4 people × 2/year = scramble)</div>
+                                            <div>• Bills scattered (who paid what?)</div>
+                                            <div>• Car maintenance (2 vehicles)</div>
+                                            <div>• "Honey, did you...?" arguments (daily)</div>
+                                            <div className="pt-2 text-red-400"><strong>Tipping Point:</strong></div>
+                                            <div className="pl-3">Missed daughter's sports registration (wrong form, lost $150 deposit)</div>
+                                            <div className="pt-2"><strong>Year 1 Chaos Cost:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• Late fees/missed deadlines: $420</div>
+                                                <div>• Rushed shipping: $85</div>
+                                                <div>• Reschedule fees: $120</div>
+                                                <div>• Arguments: Priceless</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
+                                        <h4 className="text-green-400 font-bold mb-3">FAMILY ADMIN HOUR (6 Months)</h4>
+                                        <div className="space-y-2 text-xs text-slate-300">
+                                            <div><strong>Sunday 9 AM routine:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>1. Both paste week's tasks to shared ChatGPT</div>
+                                                <div>2. AI sorts: Kevin tasks, Linda tasks, Shared calendar</div>
+                                            </div>
+                                            <div className="pt-2"><strong>Division:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• KEVIN: Car stuff, utilities, repairs</div>
+                                                <div>• LINDA: Kids' school, medical, activities</div>
+                                                <div>• SHARED: Family calendar updates</div>
+                                            </div>
+                                            <div className="pt-2"><strong>Execution:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• 9:00-9:30: Kevin handles list</div>
+                                                <div>• 9:00-9:30: Linda handles list</div>
+                                                <div>• 9:30-10:00: Together review calendar</div>
+                                            </div>
+                                            <div className="pt-2 text-green-400"><strong>6-Month Results:</strong></div>
+                                            <div className="pl-3 space-y-1">
+                                                <div>• Admin: 8 hrs/week → 2 hrs/week</div>
+                                                <div>• Late fees: $420/year → $0</div>
+                                                <div>• Missed deadlines: 4/year → 0</div>
+                                                <div>• Arguments: 6x/week → 0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-indigo-900/30 to-cyan-900/30 p-6 rounded-xl border border-indigo-500/50 mb-6 text-center">
+                                    <p className="text-white italic text-sm">"We used to fight about admin every week. Now Sunday morning is our 'get shit done' hour, and the rest of the week is free." — Linda Chen</p>
                                 </div>
 
                                 <Suspense fallback={<div className="h-64 animate-pulse bg-slate-800/50 rounded-xl" />}>
@@ -858,14 +1164,57 @@ const Part3 = () => {
                                     </CaptainTip>
                                 </Suspense>
 
-                                <div className="mt-12 p-8 bg-gradient-to-r from-blue-900/30 to-indigo-900/30 rounded-2xl border border-blue-500/50 text-center">
-                                    <h3 className="text-2xl font-bold text-white mb-4">Part 3 Complete! 🚀</h3>
-                                    <p className="text-slate-300 mb-6">
-                                        You've now automated your digital life. Your email, calendar, and admin tasks are under control. Next up: The Physical World.
-                                    </p>
+                                <div className="mt-12 p-8 bg-gradient-to-r from-blue-900/30 via-indigo-900/30 to-purple-900/30 rounded-2xl border-2 border-blue-500/50 text-center">
+                                    <h3 className="text-3xl font-bold text-white mb-6">🚀 Part 3 Complete! Digital Life Automated</h3>
+
+                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-cyan-500/30 mb-6">
+                                        <h4 className="text-cyan-400 font-bold mb-4">You've Reclaimed:</h4>
+                                        <div className="space-y-2 text-sm text-slate-300 mb-4">
+                                            <div>• <strong className="text-white">Chapter 7 (Email):</strong> 7.5 hours/week</div>
+                                            <div>• <strong className="text-white">Chapter 8 (Calendar):</strong> 9.5 hours/week</div>
+                                            <div>• <strong className="text-white">Chapter 9 (Admin):</strong> 4.5 hours/week</div>
+                                        </div>
+                                        <div className="p-4 bg-cyan-900/30 rounded border border-cyan-500/40">
+                                            <p className="text-cyan-400 font-bold text-xl">Part 3 Total: ~21.5 hours/week reclaimed from digital chaos</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 mb-6">
+                                        <p className="text-white font-bold text-lg mb-2">Running Total (Part 2 + Part 3):</p>
+                                        <p className="text-green-400 font-bold text-3xl">~36.5 hours/week</p>
+                                        <p className="text-slate-300 text-sm mt-2">That's nearly <strong className="text-white">A FULL WORK WEEK</strong> per week.</p>
+                                    </div>
+
+                                    <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30 mb-6">
+                                        <p className="text-white font-bold mb-3">But here's the problem:</p>
+                                        <p className="text-red-400 font-bold text-lg mb-3">You have more time now... and your BODY is falling apart.</p>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Skipped workouts (no time... wait, you have time now)</div>
+                                            <div>• Meal prep chaos (eating whatever's fast)</div>
+                                            <div>• Sleep schedule wrecked (emails at midnight)</div>
+                                            <div>• Doctor appointments delayed (6 months overdue)</div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 p-6 rounded-xl border border-purple-500/50">
+                                        <p className="text-purple-400 font-bold text-2xl mb-3">Part 4: The Physical World</p>
+                                        <p className="text-white mb-4">Your digital life is automated. Your home is automated. Your calendar is clear.</p>
+                                        <p className="text-orange-400 font-bold text-lg mb-4">Now let's fix your health.</p>
+                                        <div className="text-left space-y-2 text-sm text-slate-300 mb-4">
+                                            <div><strong className="text-white">Chapter 10: Health & Recovery Agent</strong></div>
+                                            <div className="pl-3 space-y-1 text-xs">
+                                                <div>• Workout consistency without willpower</div>
+                                                <div>• Meal prep on autopilot</div>
+                                                <div>• Sleep tracking & optimization</div>
+                                                <div>• Medical appointment automation</div>
+                                            </div>
+                                        </div>
+                                        <p className="text-cyan-400 italic text-sm">The final frontier: Your body works FOR you, not against you.</p>
+                                    </div>
+
                                     <button
                                         onClick={() => navigate('/part4')}
-                                        className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
+                                        className="mt-6 inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
                                     >
                                         Continue to Part 4: Physical World Agents
                                         <ArrowRight size={20} />
