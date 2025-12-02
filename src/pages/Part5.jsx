@@ -358,6 +358,49 @@ const Part5 = () => {
                                         <p className="text-sm text-slate-400">At 9 PM: Lights shift warm (2700K), dim to 40%. Screens dim. Brain gets the signal.</p>
                                     </div>
                                 </div>
+
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 David's Smart Home Evolution (Optional)</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p className="text-slate-400 italic">If you don't have smart home devices, skip this. If you do...</p>
+
+                                        <div className="grid md:grid-cols-2 gap-4 my-4">
+                                            <div className="bg-red-900/20 p-4 rounded-xl border border-red-500/30">
+                                                <p className="text-red-400 font-bold text-sm mb-2">BEFORE (Dumb Smart Home):</p>
+                                                <div className="space-y-1 text-xs text-slate-400">
+                                                    <div>• 6 AM: Alarm blares. Fumbles for phone in dark.</div>
+                                                    <div>• Says "Alexa, turn on lights" (50% of time, wrong room lights)</div>
+                                                    <div>• Manually starts coffee. Waits 5 min.</div>
+                                                    <div>• 9 PM: Forgets to dim lights. Scrolls phone in bright room until 11 PM.</div>
+                                                    <div>• Has $800 in smart devices. Uses 10% of capability.</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-green-900/20 p-4 rounded-xl border border-green-500/30">
+                                                <p className="text-green-400 font-bold text-sm mb-2">AFTER (Intelligent Home):</p>
+                                                <div className="space-y-1 text-xs text-slate-400">
+                                                    <div>• 5:45 AM: Lights fade up slowly (15 min before alarm)</div>
+                                                    <div>• 6 AM: Coffee brewing detected. Alexa reads calendar.</div>
+                                                    <div>• Thermostat already warmed bedroom to 68°F.</div>
+                                                    <div>• 9 PM: Lights auto-shift warm (2700K), dim to 40%.</div>
+                                                    <div>• Sleep Agent detected &lt; 6 hrs? Morning routine delays 1 hour automatically.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <p className="text-white font-bold text-sm mb-2">6-MONTH RESULTS:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>• Morning wake time: <span className="text-red-400">Jarring alarm</span> → <span className="text-green-400 font-bold">Natural light fade (feels like sunrise)</span></div>
+                                                <div>• Coffee wait: <span className="text-red-400">5 min manual</span> → <span className="text-green-400 font-bold">Ready when he enters kitchen</span></div>
+                                                <div>• Sleep onset: <span className="text-red-400">45 min (bright lights + screens)</span> → <span className="text-green-400 font-bold">20 min (circadian cues work)</span></div>
+                                                <div>• Smart home ROI: <span className="text-red-400">10% utilized</span> → <span className="text-green-400 font-bold">85% (coordinated with Life OS)</span></div>
+                                            </div>
+                                        </div>
+
+                                        <p className="text-cyan-400 text-xs italic">Key insight: Smart home gear is worthless UNTIL it talks to your Life OS. Then it's magic.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section >
@@ -388,6 +431,89 @@ const Part5 = () => {
                                     <p className="text-sm text-slate-400">
                                         If you have to manually do a task twice, write it down. If an agent gives you bad advice, write it down. Once a month, fix the top 3 friction points. That's how you get to 99% reliability.
                                     </p>
+                                </div>
+
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 my-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The Slow Decay</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Carlos Rivera, engineer, built perfect system, 6 months later...
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">What broke (slowly):</p>
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• Month 2: Email agent stopped catching vendor spam (filter drifted)</div>
+                                            <div>• Month 3: Calendar agent double-booked 2 meetings (sync bug)</div>
+                                            <div>• Month 4: Kitchen agent suggested recipes for ingredients he didn't have (database stale)</div>
+                                            <div>• Month 5: Sleep agent recommended 6 AM wake-up despite 4 hrs sleep (override rule broke)</div>
+                                            <div>• Month 6: Second Brain agent couldn't find article he KNEW he saved (tagging system degraded)</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-red-400 font-bold">
+                                        He BUILT the perfect system. Then stopped maintaining it. Entropy won.
+                                    </p>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 Carlos's Maintenance Protocol</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p className="text-white font-bold">The turnaround (Month 7):</p>
+
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <p className="text-cyan-400 font-bold text-sm mb-2">MONTHLY MAINTENANCE (Last Sunday, 60 min):</p>
+                                            <div className="space-y-2 text-xs">
+                                                <div>
+                                                    <strong>1. Friction Log Review (20 min):</strong>
+                                                    <div className="pl-3 space-y-1 mt-1 text-slate-400">
+                                                        <div>• "What annoyed me this month?" (writes list)</div>
+                                                        <div>• Example: "Email agent missed 3 vendor emails → they filled inbox"</div>
+                                                        <div>• Fix: Update spam filter rules (10 min)</div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <strong>2. Agent Health Check (15 min):</strong>
+                                                    <div className="pl-3 space-y-1 mt-1 text-slate-400">
+                                                        <div>• Run diagnostic: "Show all errors logs from past month"</div>
+                                                        <div>• Calendar sync bug found → Reconnect Google Calendar API</div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <strong>3. Database Refresh (15 min):</strong>
+                                                    <div className="pl-3 space-y-1 mt-1 text-slate-400">
+                                                        <div>• Kitchen Agent: Update pantry inventory (scan receipts)</div>
+                                                        <div>• Second Brain Agent: Re-tag 10 recent captures (improve retrieval)</div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <strong>4. Priority Tuning (10 min):</strong>
+                                                    <div className="pl-3 space-y-1 mt-1 text-slate-400">
+                                                        <div>• Sleep Agent override rule: "NEVER wake before 7 AM if sleep &lt; 6 hrs"</div>
+                                                        <div>• Test: Orchestrator simulates scenarios</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-green-500/30">
+                                            <p className="text-white font-bold text-sm mb-2">6-MONTH MAINTENANCE RESULTS:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>• System reliability: <span className="text-red-400">72% (Month 6)</span> → <span className="text-green-400 font-bold">96% (Month 12)</span></div>
+                                                <div>• Agent errors: <span className="text-red-400">8-10/month</span> → <span className="text-green-400 font-bold">1-2/month</span></div>
+                                                <div>• Time spent firefighting: <span className="text-red-400">3 hrs/month</span> → <span className="text-green-400 font-bold">60 min/month (scheduled)</span></div>
+                                                <div>• User trust: <span className="text-red-400">"Can't rely on it"</span> → <span className="text-green-400 font-bold">"More reliable than ME"</span></div>
+                                            </div>
+                                            <p className="text-white italic text-sm mt-3">"60 minutes of maintenance saves 3 hours of crisis management. Best ROI in my entire system." — Carlos Rivera</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">⚠️ The Maintenance Truth</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p className="text-white font-bold">Most people build perfect systems. Then never touch them again.</p>
+                                        <p className="text-red-400">6 months later: System is 70% effective. They blame AI. It's not AI. It's ENTROPY.</p>
+                                        <p className="text-green-400 font-bold">Carlos's rule: "60 min/month = 99% reliability. 0 min/month = 70% reliability and declining."</p>
+                                        <p className="text-cyan-400 text-xs italic">Your system is alive. It needs care. Budget for it.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
