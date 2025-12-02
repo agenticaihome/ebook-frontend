@@ -12,6 +12,7 @@ const CaptainClickChallenge = () => {
     const [powerUps, setPowerUps] = useState([]);
     const [activePowerUp, setActivePowerUp] = useState(null);
     const [moveSpeed, setMoveSpeed] = useState(1500);
+    const [screenShake, setScreenShake] = useState(false);
 
     const containerRef = useRef(null);
     const timerRef = useRef(null);
@@ -62,6 +63,10 @@ const CaptainClickChallenge = () => {
             text: `+${points}`
         });
         setTimeout(() => setClickEffect(null), 300);
+
+        // Screen shake
+        setScreenShake(true);
+        setTimeout(() => setScreenShake(false), 100);
 
         moveCaptain();
     };
