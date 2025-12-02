@@ -496,6 +496,83 @@ const Part4 = () => {
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 11: Mental Health & Wellbeing Support</h2>
 
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The 3 AM Spiral</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Jennifer Martinez, operations manager, Chicago
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        3:12 AM. Jennifer bolts awake. Heart racing.
+                                    </p>
+                                    <p className="text-red-400 font-bold text-lg mb-3">
+                                        "Did I pay the electricity bill?"
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        She grabs her phone. Opens banking app. Checks. Yes, paid.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        But now she's awake. And the thoughts start flooding:
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• "Did I remember to send that work email?"</div>
+                                            <div>• "Is tomorrow trash day?"</div>
+                                            <div>• "What's for dinner tomorrow?"</div>
+                                            <div>• "Did I schedule the dentist appointment?"</div>
+                                            <div>• "Is the car registration due this month?"</div>
+                                            <div>• "Did I sign my daughter's field trip form?"</div>
+                                            <div>• "Do we have milk?"</div>
+                                            <div>• "When was the last time I changed the air filter?"</div>
+                                            <div>• "Is my mom's birthday this week or next week?"</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        4:08 AM. Still awake. Brain won't turn off.
+                                    </p>
+                                    <p className="text-red-400 font-bold mb-3">
+                                        It's like having 30 browser tabs open in her head. All the time.
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">This week alone:</p>
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• Monday: Forgot daughter's lunch (she had to eat school pizza)</div>
+                                            <div>• Tuesday: Missed credit card payment (first time ever → $35 late fee)</div>
+                                            <div>• Wednesday: Forgot to follow up with client (VP asked: "What happened?")</div>
+                                            <div>• Thursday: Double-booked herself (dentist AND work meeting at 2 PM)</div>
+                                            <div>• Friday: Realized she never RSVPd to her sister's birthday party</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Her husband asks: "Why don't you just write it down?"
+                                    </p>
+                                    <p className="text-red-400 italic text-sm mb-3">
+                                        She HAS lists. 4 different to-do apps. Sticky notes everywhere. A planner. Nothing works.
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Because the problem isn't remembering WHAT to do. It's the CONSTANT MENTAL LOAD of:
+                                    </p>
+                                    <div className="bg-red-900/20 p-3 rounded text-xs text-slate-300 space-y-1">
+                                        <div>• Tracking deadlines across 15 different systems</div>
+                                        <div>• Remembering who needs what, when</div>
+                                        <div>• Mental triaging: "Is this urgent? Can it wait? Who's depending on this?"</div>
+                                        <div>• The invisible labor of being the "household project manager"</div>
+                                        <div>• The 3 AM anxiety spiral of "Did I forget something critical?"</div>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
+                                        <p className="text-white font-bold mb-2">Annual cost:</p>
+                                        <div className="space-y-1">
+                                            <div>Late fees (credit card, utilities, subscriptions): <span className="text-red-400 font-bold">~$400/year</span></div>
+                                            <div>Missed opportunities: Client follow-ups, networking events, kids' activities</div>
+                                            <div>Sleep quality: 2-3 nights/week of 3 AM spirals (cognitive impairment)</div>
+                                            <div>Relationship strain: "Why can't you just keep track?" arguments</div>
+                                            <div className="text-red-400 font-bold pt-2">Mental health: Chronic low-level anxiety ("I'm forgetting something important")</div>
+                                        </div>
+                                    </div>
+                                    <p className="text-cyan-400 text-sm mt-4 italic">
+                                        The worst part? She's not disorganized. She's OVER-organized. 30 systems. Zero peace of mind.
+                                    </p>
+                                </div>
+
                                 <div className="bg-blue-900/20 p-6 rounded-xl border border-blue-500/30 my-8">
                                     <h3 className="text-xl font-bold text-blue-400 mb-3">The Invisible Burden</h3>
                                     <p className="text-white mb-4">"Did I pay that bill? What's for dinner? Did I sign the permission slip?"</p>
