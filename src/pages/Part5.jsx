@@ -359,6 +359,128 @@ const Part5 = () => {
                                     </div>
                                 </div>
 
+                                <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">🛒 What to Actually Buy</h3>
+                                <p className="text-slate-300 mb-6">
+                                    You don't need everything. Start with Tier 1. Add Tier 2 if you want more integration. Tier 3 is for enthusiasts.
+                                </p>
+
+                                <div className="space-y-6">
+                                    <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
+                                        <h4 className="text-green-400 font-bold mb-3">🥉 Tier 1: Starter Pack ($200-400)</h4>
+                                        <p className="text-slate-400 text-sm mb-4 italic">High ROI, minimal setup. Start here.</p>
+                                        <div className="space-y-3 text-sm">
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Voice Assistant Hub (~$50-100)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>Amazon Echo Dot (5th Gen)</strong> - $50 (best value, works with most devices)</div>
+                                                    <div>• <strong>Google Nest Mini</strong> - $50 (better voice recognition, Google ecosystem)</div>
+                                                    <div>• <strong>Why:</strong> Central control hub for all other devices + voice commands</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Smart Lights (2-pack) (~$40-80)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>Philips Hue White Ambiance (2-pack)</strong> - $80 (premium, requires hub ~$60)</div>
+                                                    <div>• <strong>LIFX (2-pack)</strong> - $70 (no hub needed, WiFi direct)</div>
+                                                    <div>• <strong>Wyze Bulbs (2-pack)</strong> - $20 (budget option, basic features)</div>
+                                                    <div>• <strong>Why:</strong> Bedroom + office. Morning fade-up, evening dim-down automation</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Smart Plug (2-pack) (~$25-40)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>TP-Link Kasa Smart Plugs (2-pack)</strong> - $25 (reliable, app control)</div>
+                                                    <div>• <strong>Amazon Smart Plug</strong> - $25 (seamless Alexa integration)</div>
+                                                    <div>• <strong>Why:</strong> Coffee maker auto-start, lamp scheduling, "dumb" devices → "smart"</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-green-400 text-xs mt-4 italic">Total: ~$200-300. ROI: Morning/evening automation = 10-15 min/day saved + better sleep quality.</p>
+                                    </div>
+
+                                    <div className="bg-blue-900/20 p-6 rounded-xl border border-blue-500/30">
+                                        <h4 className="text-blue-400 font-bold mb-3">🥈 Tier 2: Standard Setup ($600-1000)</h4>
+                                        <p className="text-slate-400 text-sm mb-4 italic">Adds climate control + security. Noticeable life quality improvement.</p>
+                                        <div className="space-y-3 text-sm">
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Smart Thermostat (~$130-250)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>Google Nest Learning Thermostat</strong> - $250 (learns patterns, premium)</div>
+                                                    <div>• <strong>Ecobee SmartThermostat</strong> - $220 (room sensors, better accuracy)</div>
+                                                    <div>• <strong>Amazon Smart Thermostat</strong> - $80 (budget, basic scheduling)</div>
+                                                    <div>• <strong>Why:</strong> Pre-warm bedroom before wake, auto-adjust based on sleep quality</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Robot Vacuum (~$200-400)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>Roborock Q5+</strong> - $400 (auto-empty, mapping, great value)</div>
+                                                    <div>• <strong>iRobot Roomba j7+</strong> - $600 (obstacle avoidance, pet-friendly)</div>
+                                                    <div>• <strong>Eufy RoboVac 11S</strong> - $230 (budget, quiet, no mapping)</div>
+                                                    <div>• <strong>Why:</strong> Schedule daily 10 AM clean while at work. Agent integration possible.</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Smart Lock (~$150-280)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>August Wi-Fi Smart Lock</strong> - $280 (retrofit existing deadbolt)</div>
+                                                    <div>• <strong>Yale Assure Lock 2</strong> - $180 (keypad + app, very reliable)</div>
+                                                    <div>• <strong>Why:</strong> Auto-lock when you leave, unlock when you arrive, guest codes</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-blue-400 text-xs mt-4 italic">Total: ~$600-1000. ROI: Climate comfort + 2-3 hrs/week cleaning saved + security peace of mind.</p>
+                                    </div>
+
+                                    <div className="bg-purple-900/20 p-6 rounded-xl border border-purple-500/30">
+                                        <h4 className="text-purple-400 font-bold mb-3">🥇 Tier 3: Enthusiast Setup ($1500+)</h4>
+                                        <p className="text-slate-400 text-sm mb-4 italic">Full integration. Your home becomes sentient. Optional but impressive.</p>
+                                        <div className="space-y-3 text-sm">
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Smart Hub (Advanced Automation) (~$100-300)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>Home Assistant (Raspberry Pi setup)</strong> - $100 (open-source, unlimited customization)</div>
+                                                    <div>• <strong>Samsung SmartThings Hub</strong> - $70 (consumer-friendly, good ecosystem)</div>
+                                                    <div>• <strong>Hubitat Elevation</strong> - $145 (local control, no cloud dependency)</div>
+                                                    <div>• <strong>Why:</strong> Complex automations (if X happens, trigger Y + Z across 5 devices)</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Smart Blinds/Shades (~$300-800 per window)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>IKEA FYRTUR</strong> - $150 (budget, blackout)</div>
+                                                    <div>• <strong>Lutron Serena</strong> - $400+ (premium, quiet, battery-powered)</div>
+                                                    <div>• <strong>Why:</strong> Auto-open at sunrise, close at sunset, coordinate with lights</div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-slate-900/50 p-3 rounded">
+                                                <p className="text-white font-bold mb-1">Advanced Sensors (~$200-400)</p>
+                                                <div className="pl-3 space-y-1 text-xs text-slate-300">
+                                                    <div>• <strong>Aqara motion sensors (4-pack)</strong> - $80 (room occupancy detection)</div>
+                                                    <div>• <strong>Ecobee room sensors (2-pack)</strong> - $80 (temperature + occupancy)</div>
+                                                    <div>• <strong>Why:</strong> Lights auto-on when you enter, auto-off when you leave (no manual switching)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-purple-400 text-xs mt-4 italic">Total: ~$1500+. ROI: "Wow factor" + 5% extra efficiency. Only if you enjoy tinkering.</p>
+                                    </div>
+                                </div>
+
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">⚠️ What NOT to Buy (Yet)</h4>
+                                    <div className="space-y-2 text-sm text-slate-300">
+                                        <div>• <strong className="text-red-400">Smart appliances (fridge, oven):</strong> Expensive, low ROI. Your $3K smart fridge does what a $20 magnetic notepad does.</div>
+                                        <div>• <strong className="text-red-400">Cheap no-name brands:</strong> TP-Link, Wyze, Eufy are "budget" but RELIABLE. Random Amazon brands break in 6 months.</div>
+                                        <div>• <strong className="text-red-400">Proprietary ecosystems:</strong> Avoid devices that ONLY work with one brand. Look for "Works with Alexa/Google/HomeKit."</div>
+                                    </div>
+                                </div>
+
                                 <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
                                     <h4 className="text-green-400 font-bold mb-3">📖 David's Smart Home Evolution (Optional)</h4>
                                     <div className="space-y-3 text-sm text-slate-300">
