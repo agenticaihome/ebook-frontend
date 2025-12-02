@@ -37,19 +37,6 @@ const DeepWorkDive = ({ onBack }) => {
     const scoreRef = useRef(0);
     const obstaclesRef = useRef([]);
     const lastSpawnRef = useRef(0);
-    const gameStartTimeRef = useRef(0);
-
-    // ===================
-    // EASY MODE PHYSICS - Floaty, forgiving, addictive
-    // ===================
-    const FIXED_TIMESTEP = 1000 / 60;
-    const GRAVITY = 0.22;               // ↓ Slower fall (was 0.33) – 50% more hang time
-    const JUMP_VELOCITY = -7.0;         // ↑ Bigger hops (was -5.8) – reach anywhere
-    const TERMINAL_VELOCITY = 6.5;      // ↓ Slower max drop (was 9.0) – easier recoveries
-    const RISE_DAMPING = 0.94;          // ↑ Super floaty up (was 0.88) – glide like a pro
-
-    const BASE_SPEED = 2.8;             // ↓ Slower obstacles (was 3.8) – tons of reaction time
-    const SPEED_INCREASE = 0.0004;      // ↓ Barely ramps up (was 0.0008) – stays chill forever
     const SPAWN_INTERVAL = 1700;        // ↑ Way more space between distractions (was 1450)
 
     // ===================

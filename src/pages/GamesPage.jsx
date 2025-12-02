@@ -40,7 +40,7 @@ const GamesPage = () => {
         fetchScores();
     }, [activeGame]); // Reload when returning from a game
 
-    const games = [
+    const games = React.useMemo(() => [
         {
             id: 'triage',
             title: 'Inbox Defense',
@@ -85,7 +85,7 @@ const GamesPage = () => {
             playtime: '~1 min',
             objective: 'Survive 30 distractions for viral bragging rights'
         }
-    ];
+    ], []);
 
     const openLeaderboard = (e, game) => {
         e.stopPropagation();

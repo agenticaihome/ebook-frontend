@@ -29,11 +29,19 @@ const WebbookLayout = ({ children }) => {
 
     // Handle Scroll Progress
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            const totalScroll = document.documentElement.scrollTop;
-            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scroll = `${totalScroll / windowHeight}`;
-            setScrollProgress(Number(scroll));
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const totalScroll = document.documentElement.scrollTop;
+                    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scroll = totalScroll / windowHeight;
+                    setScrollProgress(Number(scroll));
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
