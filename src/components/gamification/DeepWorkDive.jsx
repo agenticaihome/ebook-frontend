@@ -52,7 +52,7 @@ const DeepWorkDive = () => {
         // Game loop - physics
         gameLoopRef.current = setInterval(() => {
             // Apply gravity
-            currentVelocity = currentVelocity + GRAVITY;
+            currentVelocity += GRAVITY;
 
             setCaptainY(prev => {
                 const newY = prev + currentVelocity;
@@ -113,16 +113,16 @@ const DeepWorkDive = () => {
 
     const jump = () => {
         if (gameState !== 'playing') return;
-        setVelocity(JUMP_FORCE);
 
-        // Update the velocity in the game loop closure
+        // Restart game loop with jump velocity
         if (gameLoopRef.current) {
             clearInterval(gameLoopRef.current);
 
             let currentVelocity = JUMP_FORCE;
+            setVelocity(JUMP_FORCE);
 
             gameLoopRef.current = setInterval(() => {
-                currentVelocity = currentVelocity + GRAVITY;
+                currentVelocity += GRAVITY;
 
                 setCaptainY(prev => {
                     const newY = prev + currentVelocity;
