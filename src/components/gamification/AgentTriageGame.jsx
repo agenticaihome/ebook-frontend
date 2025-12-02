@@ -8,19 +8,24 @@ const AgentTriageGame = () => {
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(30);
     const [emails, setEmails] = useState([]);
+    const [emailsTriaged, setEmailsTriaged] = useState(0);
+    const [combo, setCombo] = useState(0);
     const [captainMessage, setCaptainMessage] = useState("Ready to train your Triage Agent?");
+    const [particles, setParticles] = useState([]);
 
     const gameLoopRef = useRef(null);
     const timerRef = useRef(null);
 
-    // Email Types
+    // Email Types (Improved clarity)
     const emailTypes = [
-        { type: 'urgent', subject: 'URGENT: Server Down', action: 'delegate', color: 'text-red-400' },
-        { type: 'spam', subject: 'Win a free iPhone!', action: 'delete', color: 'text-slate-400' },
-        { type: 'newsletter', subject: 'Weekly Digest', action: 'delete', color: 'text-blue-300' },
-        { type: 'work', subject: 'Q4 Report Draft', action: 'delegate', color: 'text-white' },
-        { type: 'meeting', subject: 'Sync?', action: 'delegate', color: 'text-purple-300' },
-        { type: 'receipt', subject: 'Your Order #1234', action: 'delete', color: 'text-green-300' },
+        { type: 'urgent', subject: '🔥 Client needs this TODAY', action: 'delegate', color: 'text-red-400' },
+        { type: 'spam', subject: '🎁 You won a free cruise!', action: 'delete', color: 'text-slate-400' },
+        { type: 'newsletter', subject: '📧 Weekly Marketing Digest', action: 'delete', color: 'text-blue-300' },
+        { type: 'work', subject: '📊 Q4 Report needs review', action: 'delegate', color: 'text-cyan-300' },
+        { type: 'meeting', subject: '📅 Quick sync today?', action: 'delegate', color: 'text-purple-300' },
+        { type: 'receipt', subject: '🧾 Order confirmation #1234', action: 'delete', color: 'text-green-300' },
+        { type: 'boss', subject: '⚡ From: Your Boss', action: 'delegate', color: 'text-yellow-400' },
+        { type: 'junk', subject: '💊 Cheap meds online', action: 'delete', color: 'text-slate-500' },
     ];
 
     const startGame = () => {
@@ -28,6 +33,8 @@ const AgentTriageGame = () => {
         setScore(0);
         setTimeLeft(30);
         setEmails([]);
+        setEmailsTriaged(0);
+        setCombo(0);
         setCaptainMessage("Incoming! Sort them fast!");
 
         // Spawn first email immediately
@@ -44,10 +51,29 @@ const AgentTriageGame = () => {
             });
         }, 1000);
 
-        // Start Spawner
+        // Start Spawner with difficulty scaling
+        let spawnInterval = 1800; // Phase 1: Easy
         gameLoopRef.current = setInterval(() => {
             spawnEmail();
-        }, 1200); // New email every 1.2s
+        }, spawnInterval);
+
+        // Phase 2: Increase difficulty at 10s
+        setTimeout(() => {
+            if (gameLoopRef.current) {
+                clearInterval(gameLoopRef.current);
+                gameLoopRef.current = setInterval(() => spawnEmail(), 1200);
+                setCaptainMessage("Speed increasing!");
+            }
+        }, 10000);
+
+        // Phase 3: Max difficulty at 20s
+        setTimeout(() => {
+            if (gameLoopRef.current) {
+                clearInterval(gameLoopRef.current);
+                gameLoopRef.current = setInterval(() => spawnEmail(), 800);
+                setCaptainMessage("Maximum chaos!");
+            }
+        }, 20000);
     };
 
     const spawnEmail = () => {
@@ -73,22 +99,42 @@ const AgentTriageGame = () => {
         const email = emails.find(e => e.id === id);
         if (!email) return;
 
-        // Check if action was correct
-        // Delegate = Keep/Action (Work, Urgent, Meeting)
-        // Delete = Archive/Trash (Spam, Newsletter, Receipt)
         const isCorrect = (action === 'delegate' && email.action === 'delegate') ||
             (action === 'delete' && email.action === 'delete');
 
         if (isCorrect) {
-            setScore(prev => prev + 10);
+            // Correct action
+            const newTriaged = emailsTriaged + 1;
+            const newCombo = combo + 1;
+            setEmailsTriaged(newTriaged);
+            setCombo(newCombo);
             setEmails(prev => prev.filter(e => e.id !== id));
-            if (score + 10 >= 150) {
+
+            // Combo bonuses
+            let points = 10;
+            if (newCombo >= 5) {
+                points += 15;
+                setCaptainMessage("🔥 ON FIRE! +15 bonus!");
+            } else if (newCombo >= 3) {
+                points += 5;
+                setCaptainMessage("Great! +5 combo!");
+            }
+            setScore(prev => prev + points);
+
+            // Add particle effect
+            setParticles(prev => [...prev, { id: Date.now(), x: Math.random() * 100, y: Math.random() * 100, text: `+${points}` }]);
+            setTimeout(() => setParticles(prev => prev.slice(1)), 500);
+
+            // Win condition: 20 emails triaged
+            if (newTriaged >= 20) {
                 endGame(true);
             }
         } else {
+            // Wrong action
+            setCombo(0);
             setScore(prev => Math.max(0, prev - 5));
-            setCaptainMessage("Oops! Wrong action!");
-            setTimeout(() => setCaptainMessage("Keep going!"), 800);
+            setCaptainMessage("❌ Wrong! Combo reset.");
+            setTimeout(() => setCaptainMessage("Keep going!"), 1000);
         }
     };
 
@@ -96,6 +142,12 @@ const AgentTriageGame = () => {
         clearInterval(gameLoopRef.current);
         clearInterval(timerRef.current);
         setGameState(win ? 'won' : 'lost');
+
+        // Save high score
+        const currentHigh = parseInt(localStorage.getItem('highscore_triage') || '0');
+        if (emailsTriaged > currentHigh) {
+            localStorage.setItem('highscore_triage', emailsTriaged.toString());
+        }
 
         if (win) {
             setCaptainMessage("Outstanding! You're a Triage Master!");
@@ -117,13 +169,16 @@ const AgentTriageGame = () => {
     }, []);
 
     return (
-        <div className="w-full max-w-2xl mx-auto bg-slate-900/80 border border-cyan-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px]">
+        <div className="w-full max-w-2xl mx-auto bg-slate-900/80 border border-cyan-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px] backdrop-blur-sm">
             {/* Header / HUD */}
-            <div className="bg-slate-800/90 p-4 flex justify-between items-center border-b border-slate-700 z-20 relative">
+            <div className="bg-slate-800/90 p-4 flex justify-between items-center border-b border-slate-700 z-20 relative backdrop-blur-xl">
                 <div className="flex items-center gap-4">
-                    <div className="text-cyan-400 font-bold font-mono text-xl">SCORE: {score}</div>
+                    <div className="text-cyan-400 font-bold font-mono text-xl">TRIAGED: {emailsTriaged}/20</div>
                     <div className={`font-bold font-mono text-xl ${timeLeft < 10 ? 'text-red-500 animate-pulse' : 'text-slate-300'}`}>
                         TIME: {timeLeft}s
+                    </div>
+                    <div className="text-orange-400 font-bold font-mono text-sm">
+                        {combo > 0 && `🔥 ${combo}x`}
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -133,7 +188,7 @@ const AgentTriageGame = () => {
             </div>
 
             {/* Game Area */}
-            <div className="relative h-[340px] bg-[#0f172a] overflow-hidden">
+            <div className="relative h-[340px] bg-[#0f0f1a] overflow-hidden">
                 {/* Background Grid */}
                 <div className="absolute inset-0 opacity-10"
                     style={{ backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', backgroundSize: '20px 20px' }}
@@ -144,10 +199,9 @@ const AgentTriageGame = () => {
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-30 backdrop-blur-sm text-center p-6">
                         <h3 className="text-3xl font-bold text-white mb-2">Inbox Defense</h3>
                         <p className="text-slate-300 mb-6 max-w-md">
-                            Emails are flooding in! <br />
-                            <span className="text-green-400">DELEGATE</span> important work.<br />
-                            <span className="text-red-400">DELETE</span> spam & noise.<br />
-                            Don't let the inbox overflow (5 max)!
+                            <span className="text-green-400 font-bold">DELEGATE</span> = Work, boss, urgent items<br />
+                            <span className="text-red-400 font-bold">DELETE</span> = Spam, newsletters, receipts<br />
+                            <strong className="text-cyan-400">Goal: Triage 20 emails correctly!</strong>
                         </p>
                         <button
                             onClick={startGame}
@@ -162,9 +216,10 @@ const AgentTriageGame = () => {
                 {(gameState === 'won' || gameState === 'lost') && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-30 backdrop-blur-md text-center p-6">
                         <h3 className={`text-4xl font-bold mb-2 ${gameState === 'won' ? 'text-green-400' : 'text-red-400'}`}>
-                            {gameState === 'won' ? 'MISSION ACCOMPLISHED' : 'INBOX OVERFLOW'}
+                            {gameState === 'won' ? 'TRIAGE MASTER! 🎯' : 'INBOX OVERFLOW'}
                         </h3>
-                        <p className="text-white text-xl mb-6 font-mono">Final Score: {score}</p>
+                        <p className="text-white text-xl mb-4 font-mono">Emails Triaged: {emailsTriaged}/20</p>
+                        <p className="text-slate-400 text-sm mb-6">Score: {score} | Max Combo: {combo}</p>
                         <button
                             onClick={startGame}
                             className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-all"
@@ -207,6 +262,17 @@ const AgentTriageGame = () => {
                         </motion.div>
                     ))}
                 </AnimatePresence>
+
+                {/* Particle Effects */}
+                {particles.map(particle => (
+                    <div
+                        key={particle.id}
+                        className="absolute text-green-400 font-bold text-xl animate-ping pointer-events-none z-30"
+                        style={{ left: `${particle.x}%`, top: `${particle.y}%` }}
+                    >
+                        {particle.text}
+                    </div>
+                ))}
 
                 {/* Danger Zone Indicator */}
                 {emails.length >= 4 && (
