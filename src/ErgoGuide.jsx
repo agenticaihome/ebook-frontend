@@ -553,6 +553,28 @@ export default function HowToPay() {
                     </div>
                 </section>
 
+                {/* Claim Access Section */}
+                <section className="mb-16">
+                    <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div>
+                                <h2 className="text-2xl font-bold text-white mb-2">Already Paid? Claim Your Access</h2>
+                                <p className="text-slate-400 max-w-lg">
+                                    If you've completed your payment but closed the window or didn't get redirected, you can claim your account access using your transaction ID.
+                                </p>
+                            </div>
+                            <button
+                                onClick={() => navigate('/claim-access')}
+                                className="px-8 py-4 bg-white text-slate-900 rounded-xl font-bold hover:bg-slate-100 transition-colors shadow-lg shadow-white/10 whitespace-nowrap"
+                            >
+                                Claim Access
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
             </div >
         </WebbookLayout >
     );

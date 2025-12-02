@@ -9,7 +9,7 @@ const BadgeNotification = ({ badge, onClose }) => {
             // Trigger confetti explosion
             const count = 200;
             const defaults = {
-                origin: { y: 0.7 }
+                origin: { y: 0.9, x: 0.5 }  // Bottom center of viewport
             };
 
             function fire(particleRatio, opts) {
@@ -42,7 +42,7 @@ const BadgeNotification = ({ badge, onClose }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                className="fixed inset-0 z-50 flex items-end justify-center pb-8 bg-black/80 backdrop-blur-sm p-4"
             >
                 <motion.div
                     initial={{ scale: 0.5, y: 50 }}

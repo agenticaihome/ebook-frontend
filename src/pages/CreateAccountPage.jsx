@@ -126,9 +126,9 @@ const CreateAccountPage = () => {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    readOnly={true}
+                                    readOnly={paymentType === 'stripe'}
                                     placeholder="Enter your email"
-                                    className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white cursor-not-allowed opacity-75`}
+                                    className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white ${paymentType === 'stripe' ? 'cursor-not-allowed opacity-75' : ''}`}
                                 />
                             </div>
                             {email.includes('@temp.ergo') && (

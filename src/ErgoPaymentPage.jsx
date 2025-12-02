@@ -266,9 +266,12 @@ const ErgoPaymentPage = () => {
 
         console.log('✅ Payment confirmed! Redirecting to account creation...');
 
+        // Generate temporary email for ERG payments  
+        const tempEmail = `${txId.substring(0, 12)}@temp.ergo`;
+
         // Redirect to account creation page after 2 seconds
         setTimeout(() => {
-            navigate(`/create-account?payment_id=${txId}&type=ergo`);
+            navigate(`/create-account?payment_id=${txId}&type=ergo&email=${encodeURIComponent(tempEmail)}`);
         }, 2000);
     };
 
