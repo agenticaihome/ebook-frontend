@@ -1,10 +1,9 @@
 import React, { useState, Suspense } from 'react';
-import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal, Loader2, AlertCircle } from 'lucide-react';
+import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
-import { api } from './services/api';
 import { usePerformanceMode } from './hooks/usePerformanceMode';
 const TimeBackCalculator = React.lazy(() => import('./components/landing/TimeBackCalculator'));
 const BeforeAfterComparison = React.lazy(() => import('./components/landing/BeforeAfterComparison'));
@@ -15,39 +14,12 @@ const CryptoExplainerModal = React.lazy(() => import('./components/landing/Crypt
 const RecentPurchases = React.lazy(() => import('./components/landing/RecentPurchases'));
 
 export default function SalesPage() {
-  const [email, setEmail] = useState('');
-  const [isStripeLoading, setIsStripeLoading] = useState(false);
-  const [stripeError, setStripeError] = useState(null);
   const [showCryptoModal, setShowCryptoModal] = useState(false);
   const navigate = useNavigate();
   const isPerformanceMode = usePerformanceMode();
 
-  const handleErgoPayment = () => {
+  const handlePaymentClick = () => {
     navigate('/payment-guide');
-  };
-
-  const handleStripePayment = async () => {
-    if (!email || !email.includes('@')) {
-      setStripeError("Please enter a valid email address.");
-      return;
-    }
-
-    setIsStripeLoading(true);
-    setStripeError(null);
-
-    try {
-      const result = await api.createStripeCheckout(email);
-      if (result.success && result.checkoutUrl) {
-        window.location.href = result.checkoutUrl;
-      } else {
-        setStripeError("Failed to initialize checkout. Please try again.");
-      }
-    } catch (err) {
-      console.error(err);
-      setStripeError(err.message || "Connection error. Please try again.");
-    } finally {
-      setIsStripeLoading(false);
-    }
   };
 
   return (
@@ -441,35 +413,12 @@ export default function SalesPage() {
               </ul>
 
               <div className="space-y-4">
-                <div>
-                  <label className="block text-sm text-slate-400 mb-2 text-left">Your Email Address</label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors backdrop-blur-sm"
-                  />
-                </div>
-
-                {stripeError && (
-                  <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 p-3 rounded-lg">
-                    <AlertCircle size={16} />
-                    {stripeError}
-                  </div>
-                )}
-
                 <button
-                  onClick={handleStripePayment}
-                  disabled={isStripeLoading}
-                  className="w-full bg-purple-600 hover:bg-purple-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 flex items-center justify-center gap-2"
+                  onClick={handlePaymentClick}
+                  className="w-full bg-purple-600 hover:bg-purple-500 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 flex items-center justify-center gap-2"
                 >
-                  {isStripeLoading ? <Loader2 className="animate-spin" /> : (
-                    <>
-                      <Lock size={18} />
-                      <span>Secure Checkout - Instant Access</span>
-                    </>
-                  )}
+                  <Lock size={18} />
+                  <span>Choose Payment Method</span>
                 </button>
                 <div className="flex items-center justify-center gap-4 mt-4 text-slate-500 text-xs">
                   <div className="flex items-center gap-1"><Shield size={12} /> 256-bit SSL Secure</div>
@@ -498,10 +447,10 @@ export default function SalesPage() {
               </ul>
               <div className="mt-auto">
                 <button
-                  onClick={handleErgoPayment}
+                  onClick={handlePaymentClick}
                   className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-green-900/30 hover:shadow-green-900/50"
                 >
-                  Pay with ERG
+                  Choose Payment Method
                 </button>
                 <div className="mt-4 text-center">
                   <button
