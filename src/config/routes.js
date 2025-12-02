@@ -23,7 +23,6 @@ export const routeConfig = {
     paymentGuide: createRoute(() => import('../PaymentGuide')),
     ergoGuide: createRoute(() => import('../ErgoGuide')),
     faq: createRoute(() => import('../FAQ')),
-    quickStart: createRoute(() => import('../pages/QuickStart')),
 
     notFound: createRoute(() => import('../pages/NotFoundPage')),
     // Tools
