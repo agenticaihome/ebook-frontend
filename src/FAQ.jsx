@@ -749,19 +749,16 @@ export default function FAQ() {
                                 <br />
                                 Is saving 5-10 hours per week worth $39.99 (or $19.99)? The math is pretty clear.
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <div className="flex flex-col items-center gap-4">
                                 <Link
                                     to="/payment-guide"
                                     className="bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/20"
                                 >
                                     Get the System ($19.99 with ERG)
                                 </Link>
-                                <a
-                                    href="mailto:support@agenticaihome.com"
-                                    className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-3 rounded-xl font-bold transition-all border border-slate-600"
-                                >
-                                    Email Support
-                                </a>
+                                <p className="text-slate-400 text-sm">
+                                    Questions? Email us at <a href="mailto:support@agenticaihome.com" className="text-cyan-400 hover:underline">support@agenticaihome.com</a>
+                                </p>
                             </div>
                         </div>
                     </div>
