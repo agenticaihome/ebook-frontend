@@ -815,6 +815,7 @@ const Part3 = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </section>
 
                     {/* Chapter 9: Admin */}
