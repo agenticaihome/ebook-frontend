@@ -42,8 +42,8 @@ const DeepWorkDive = ({ onBack }) => {
     // TUNED PHYSICS - Gentle float, frequent taps
     // ===================
     const FIXED_TIMESTEP = 1000 / 60; // 60 physics updates per second
-    const GRAVITY = 0.35;             // Gentle gravity - not too punishing
-    const JUMP_VELOCITY = -5.5;       // Small hop - tap frequently to float
+    const GRAVITY = 0.;             // Gentle gravity - not too punishing
+    const JUMP_VELOCITY = -8;       // Small hop - tap frequently to float
     const TERMINAL_VELOCITY = 7;      // Slower max fall speed
     const BASE_SPEED = 3.2;           // Slightly slower obstacles
     const SPEED_INCREASE = 0.006;     // Gentler speed increase
