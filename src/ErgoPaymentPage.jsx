@@ -440,6 +440,15 @@ const ErgoPaymentPage = () => {
                                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                     </button>
 
+                                    <div className="mt-4 text-center">
+                                        <button
+                                            onClick={() => navigate('/payment-guide')}
+                                            className="text-sm text-slate-400 hover:text-white underline decoration-slate-600 hover:decoration-white transition-all"
+                                        >
+                                            Don't have crypto? Pay with Card ($39.99)
+                                        </button>
+                                    </div>
+
                                     <div className="mt-8 bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 text-left">
                                         <div className="flex items-center gap-2 mb-3 text-sm font-bold text-white">
                                             <Clock size={16} className="text-cyan-400" />
@@ -628,6 +637,17 @@ const ErgoPaymentPage = () => {
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div className="mt-8 text-center">
+                                <p className="text-slate-400 text-sm mb-2">Having trouble?</p>
+                                <button
+                                    onClick={() => navigate('/payment-guide')}
+                                    className="text-sm text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center justify-center gap-2 mx-auto"
+                                >
+                                    Switch to Credit Card Payment ($39.99)
+                                    <ArrowRight className="w-4 h-4" />
+                                </button>
                             </div>
 
                             {/* Status Bar */}

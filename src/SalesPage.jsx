@@ -122,7 +122,7 @@ export default function SalesPage() {
                   to="/part1"
                   className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-900/50 flex items-center justify-center gap-2"
                 >
-                  <Zap size={20} /> Read Part 1 for Free
+                  <Zap size={20} /> Start Part 1 (Free • 15 min)
                 </Link>
                 <button
                   onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
