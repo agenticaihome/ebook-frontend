@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle, Lock, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle, Lock, ChevronDown, ChevronRight, Gamepad2 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import PrefetchLink from './PrefetchLink';
@@ -174,6 +174,11 @@ const WebbookLayout = ({ children }) => {
                     sidebar: "Investing in yourself is the best ROI there is.",
                     tip: "Ergo payments are secure and give you a 50% discount. It's a no-brainer."
                 };
+            case '/games':
+                return {
+                    sidebar: "Welcome to the Training Center. Sharpen your agentic skills here.",
+                    tip: "Gamification helps reinforce the concepts. Try the 'Inbox Defense' to practice rapid triage."
+                };
             default:
                 return {
                     sidebar: "I'm here to help you navigate the agentic future!",
@@ -334,6 +339,20 @@ const WebbookLayout = ({ children }) => {
                         </span>
                         <span className="font-medium text-sm">Why Ergo?</span>
                     </PrefetchLink>
+
+                    <PrefetchLink
+                        to="/games"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/games'
+                            ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
+                            : 'text-slate-300 hover:bg-slate-800'
+                            }`}
+                    >
+                        <span className={location.pathname === '/games' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                            <Gamepad2 size={18} />
+                        </span>
+                        <span className="font-medium text-sm">Games Hub</span>
+                    </PrefetchLink>
+
                     <PrefetchLink
                         to="/faq"
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/faq'
