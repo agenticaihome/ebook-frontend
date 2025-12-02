@@ -588,14 +588,61 @@ const Part4 = () => {
                                 <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Wind-Down Routine</h3>
                                 <p className="text-slate-300 mb-4">Protect the transition from "on" to "off".</p>
 
-                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 font-mono text-sm text-slate-300">
-                                    <div className="text-purple-400 mb-2">9:00 PM SEQUENCE:</div>
-                                    <ul className="list-disc pl-4 space-y-2 mb-4">
-                                        <li>Devices dim / Night mode activates</li>
-                                        <li><strong>Quick Capture:</strong> Dump worries into system</li>
-                                        <li><strong>Tomorrow Preview:</strong> Check first meeting only</li>
-                                        <li><strong>Disconnect:</strong> Phone goes to charger (away from bed)</li>
-                                    </ul>
+                                <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-6 rounded-xl border border-blue-500/50 my-8">
+                                    <h3 className="text-xl font-bold text-blue-400 mb-3">📌 Quick Win: The 9 PM Worry Dump</h3>
+                                    <p className="text-white mb-4">Tell your AI:</p>
+                                    <div className="bg-slate-900/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
+                                        "Here's everything I'm worried about forgetting:<br />
+                                        [brain dump - no formatting needed]<br /><br />
+                                        Triage this into:<br />
+                                        1. DO TOMORROW (specific action item)<br />
+                                        2. SCHEDULED (date/time reminder)<br />
+                                        3. TRACKED (you monitor, ping me when needed)<br />
+                                        4. NOT MY PROBLEM (delete)"
+                                    </div>
+
+                                    <div className="bg-slate-900/80 p-4 rounded-xl border border-cyan-500/30 my-4">
+                                        <p className="text-cyan-400 font-bold text-sm mb-3">Jennifer's 9 PM Worry Dump (Example):</p>
+                                        <div className="space-y-3 text-xs text-slate-300">
+                                            <div>
+                                                <p className="text-white font-bold mb-1">Jennifer types (90 seconds):</p>
+                                                <p className="font-mono bg-slate-900/50 p-2 rounded">"electricity bill, dentist appointment for Emma, follow up with Sarah from Tuesday meeting, mom's birthday present, car registration, permission slip for field trip, grocery list milk eggs bread, that expense report, did I email the client back?"</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-white font-bold mb-2">Agent triages (instant):</p>
+                                                <div className="space-y-2">
+                                                    <div className="bg-green-900/20 p-2 rounded">
+                                                        <p className="text-green-400 font-bold mb-1">DO TOMORROW:</p>
+                                                        <ul className="space-y-1 text-xs pl-3">
+                                                            <li>• 9 AM: Sign field trip permission slip (on kitchen counter)</li>
+                                                            <li>• 2 PM: Submit expense report (deadline Friday)</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div className="bg-blue-900/20 p-2 rounded">
+                                                        <p className="text-blue-400 font-bold mb-1">SCHEDULED:</p>
+                                                        <ul className="space-y-1 text-xs pl-3">
+                                                            <li>• Dentist: I'll send 3 appointment options for Emma (Thu/Fri next week)</li>
+                                                            <li>• Mom's birthday: Reminder set for 10 days before (order gift)</li>
+                                                            <li>• Follow-up Sarah: Reminder tomorrow 10 AM</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div className="bg-purple-900/20 p-2 rounded">
+                                                        <p className="text-purple-400 font-bold mb-1">TRACKED (I'm watching):</p>
+                                                        <ul className="space-y-1 text-xs pl-3">
+                                                            <li>• Electricity bill: Paid auto-pay 12/5 ($142 - normal)</li>
+                                                            <li>• Car registration: Due 12/28 - I'll remind you 12/20</li>
+                                                            <li>• Client email: Sent Tuesday 3:47 PM (awaiting response)</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div className="bg-slate-800 p-2 rounded">
+                                                        <p className="text-slate-400 font-bold mb-1">NOT YOUR PROBLEM:</p>
+                                                        <p className="text-xs">Grocery list → Added to shared shopping list (partner can grab)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-cyan-400 text-xs mt-3">Result: 9 "open tabs" in Jennifer's head → CLOSED. Brain can sleep. No 3 AM spiral.</p>
+                                    </div>
                                 </div>
 
                                 <Suspense fallback={null}>
