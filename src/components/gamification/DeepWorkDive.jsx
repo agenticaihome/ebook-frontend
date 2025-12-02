@@ -175,14 +175,59 @@ const DeepWorkDive = () => {
         };
     }, []);
 
-    const shareScore = () => {
-        const text = `I survived ${score} distractions in Deep Work! Can you beat it? 🎯`;
-        if (navigator.share) {
-            navigator.share({ text, url: window.location.href });
-        } else {
-            navigator.clipboard.writeText(text);
-            alert('Score copied to clipboard!');
-        }
+    const getShareText = () => {
+        const messages = [
+            {
+                score: 0 - 10,
+                text: `I lasted ${score} seconds battling productivity distractions 😅\n\nTurns out staying focused is harder than I thought. Deep Work Dive is brutally accurate.\n\nThink you can beat my score?`
+            },
+            {
+                score: 11 - 20,
+                text: `Just survived ${score} distractions in Deep Work Dive! 🎯\n\nThis game perfectly captures the struggle of modern knowledge work. Every notification, every Slack ping... relatable anxiety at its finest.\n\nCan you do better?`
+            },
+            {
+                score: 21 - 35,
+                text: `${score} distractions dodged in Deep Work Dive! 🔥\n\nI'm learning that focus is a skill you have to practice. This game makes it click.\n\nReady to test your concentration?`
+            },
+            {
+                score: 36,
+                text: `I just scored ${score} in Deep Work Dive! 💪\n\nThis isn't just a game - it's a masterclass in what kills productivity. The creator built an entire system for living an "agentic life" where AI handles the noise while you focus on what matters.\n\nGame on:`
+            }
+        ];
+
+        let selectedMessage = messages[0];
+        if (score > 35) selectedMessage = messages[3];
+        else if (score > 20) selectedMessage = messages[2];
+        else if (score > 10) selectedMessage = messages[1];
+
+        return selectedMessage.text;
+    };
+
+    const shareToTwitter = () => {
+        const text = getShareText();
+        const url = 'https://agenticaihome.com'; // Main site URL
+        const hashtags = 'DeepWork,Productivity,AI,Focus';
+        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${hashtags}`;
+        window.open(twitterUrl, '_blank', 'width=550,height=420');
+    };
+
+    const shareToLinkedIn = () => {
+        const url = 'https://agenticaihome.com';
+        const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        window.open(linkedInUrl, '_blank', 'width=550,height=520');
+    };
+
+    const shareToFacebook = () => {
+        const url = 'https://agenticaihome.com';
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        window.open(facebookUrl, '_blank', 'width=550,height=420');
+    };
+
+    const copyToClipboard = () => {
+        const text = `${getShareText()}\n\nhttps://agenticaihome.com`;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('✅ Score copied to clipboard!');
+        });
     };
 
     return (
@@ -220,126 +265,98 @@ const DeepWorkDive = () => {
                 {/* Flow Zone Indicator */}
                 <div
                     className="absolute left-0 right-0 bg-cyan-500/10 border-y border-cyan-500/30 pointer-events-none z-10"
-                    style={{ top: `${FLOW_ZONE_TOP}%`, height: `${FLOW_ZONE_BOTTOM - FLOW_ZONE_TOP}%` }}
+                                <p className="text-slate-300 mb-6 max-w-md leading-relaxed">
+                    <span className="text-cyan-400 font-bold">TAP to surge upward</span><br />
+                    Navigate through distractions<br />
+                    Stay in the <span className="text-green-400">FLOW ZONE</span> for bonus points<br />
+                    <strong className="text-orange-400">Can you survive 30 distractions?</strong>
+                </p>
+            </>
+                        )}
+
+            <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={startGame}
+                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all"
+            >
+                {gameState === 'idle' ? <><Play size={20} /> START DIVING</> : <><RotateCcw size={20} /> Try Again</>}
+            </motion.button>
+        </div>
+    )
+}
+
+{/* Captain Efficiency */ }
+{
+    gameState === 'playing' && (
+        <motion.div
+            className="absolute w-12 h-12 bg-cyan-500 rounded-full shadow-lg shadow-cyan-500/50 flex items-center justify-center z-20 pointer-events-none border-2 border-white"
+            style={{
+                left: '20%',
+                top: `${captainY}%`,
+                transform: 'translateY(-50%)'
+            }}
+            animate={{
+                rotate: velocity * 3,
+            }}
+        >
+            <Zap className="text-white" size={24} />
+        </motion.div>
+    )
+}
+
+{/* Obstacles */ }
+<AnimatePresence>
+    {obstacles.map((obs) => {
+        const gapTopPx = (obs.gapY - (obs.gapSize / 2) / 4);
+        const gapBottomPx = (obs.gapY + (obs.gapSize / 2) / 4);
+
+        return (
+            <div key={obs.id} className="absolute top-0 bottom-0 w-16 z-15" style={{ left: `${obs.x}%` }}>
+                {/* Top obstacle */}
+                <div
+                    className={`absolute left-0 right-0 ${obs.color} border-4 border-white/20 shadow-lg`}
+                    style={{
+                        top: 0,
+                        height: `${gapTopPx}%`,
+                        display: 'flex',
+                        alignItems: 'flex-end',
+                        justifyContent: 'center',
+                        paddingBottom: '8px'
+                    }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent animate-pulse" />
+                    <span className="text-2xl">{obs.label}</span>
                 </div>
 
-                {/* Start/Death Screen */}
-                {gameState !== 'playing' && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 z-30 backdrop-blur-sm text-center p-6">
-                        {gameState === 'dead' && (
-                            <motion.div
-                                initial={{ scale: 0.8, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                className="mb-8"
-                            >
-                                <Trophy className="w-20 h-20 text-cyan-400 mx-auto mb-4" />
-                                <h2 className="text-4xl font-bold text-white mb-2">
-                                    {score > bestScore ? '🎯 NEW RECORD!' : 'DISTRACTED!'}
-                                </h2>
-                                <p className="text-3xl text-cyan-400 font-mono mb-2">{score} distractions survived</p>
-                                <p className="text-sm text-slate-400 mb-4">Best: {bestScore}</p>
-
-                                <button
-                                    onClick={shareScore}
-                                    className="mb-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-sm flex items-center gap-2 mx-auto transition-all"
-                                >
-                                    <Share2 size={16} /> Share Score
-                                </button>
-                            </motion.div>
-                        )}
-
-                        {gameState === 'idle' && (
-                            <>
-                                <h3 className="text-4xl font-bold text-white mb-2">Deep Work Dive</h3>
-                                <p className="text-slate-300 mb-6 max-w-md leading-relaxed">
-                                    <span className="text-cyan-400 font-bold">TAP to surge upward</span><br />
-                                    Navigate through distractions<br />
-                                    Stay in the <span className="text-green-400">FLOW ZONE</span> for bonus points<br />
-                                    <strong className="text-orange-400">Can you survive 30 distractions?</strong>
-                                </p>
-                            </>
-                        )}
-
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={startGame}
-                            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all"
-                        >
-                            {gameState === 'idle' ? <><Play size={20} /> START DIVING</> : <><RotateCcw size={20} /> Try Again</>}
-                        </motion.button>
-                    </div>
-                )}
-
-                {/* Captain Efficiency */}
-                {gameState === 'playing' && (
-                    <motion.div
-                        className="absolute w-12 h-12 bg-cyan-500 rounded-full shadow-lg shadow-cyan-500/50 flex items-center justify-center z-20 pointer-events-none border-2 border-white"
-                        style={{
-                            left: '20%',
-                            top: `${captainY}%`,
-                            transform: 'translateY(-50%)'
-                        }}
-                        animate={{
-                            rotate: velocity * 3,
-                        }}
-                    >
-                        <Zap className="text-white" size={24} />
-                    </motion.div>
-                )}
-
-                {/* Obstacles */}
-                <AnimatePresence>
-                    {obstacles.map((obs) => {
-                        const gapTopPx = (obs.gapY - (obs.gapSize / 2) / 4);
-                        const gapBottomPx = (obs.gapY + (obs.gapSize / 2) / 4);
-
-                        return (
-                            <div key={obs.id} className="absolute top-0 bottom-0 w-16 z-15" style={{ left: `${obs.x}%` }}>
-                                {/* Top obstacle */}
-                                <div
-                                    className={`absolute left-0 right-0 ${obs.color} border-4 border-white/20 shadow-lg`}
-                                    style={{
-                                        top: 0,
-                                        height: `${gapTopPx}%`,
-                                        display: 'flex',
-                                        alignItems: 'flex-end',
-                                        justifyContent: 'center',
-                                        paddingBottom: '8px'
-                                    }}
-                                >
-                                    <span className="text-2xl">{obs.label}</span>
-                                </div>
-
-                                {/* Bottom obstacle */}
-                                <div
-                                    className={`absolute left-0 right-0 ${obs.color} border-4 border-white/20 shadow-lg`}
-                                    style={{
-                                        bottom: 0,
-                                        height: `${100 - gapBottomPx}%`,
-                                        display: 'flex',
-                                        alignItems: 'flex-start',
-                                        justifyContent: 'center',
-                                        paddingTop: '8px'
-                                    }}
-                                >
-                                    <span className="text-2xl">{obs.label}</span>
-                                </div>
-                            </div>
-                        );
-                    })}
-                </AnimatePresence>
-
-                {/* Instructions (only when idle) */}
-                {gameState === 'idle' && (
-                    <div className="absolute bottom-4 left-0 right-0 text-center text-slate-400 text-sm z-20 pointer-events-none">
-                        Click anywhere to start diving 👇
-                    </div>
-                )}
+                {/* Bottom obstacle */}
+                <div
+                    className={`absolute left-0 right-0 ${obs.color} border-4 border-white/20 shadow-lg`}
+                    style={{
+                        bottom: 0,
+                        height: `${100 - gapBottomPx}%`,
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        justifyContent: 'center',
+                        paddingTop: '8px'
+                    }}
+                >
+                    <span className="text-2xl">{obs.label}</span>
+                </div>
             </div>
+        );
+    })}
+</AnimatePresence>
+
+{/* Instructions (only when idle) */ }
+{
+    gameState === 'idle' && (
+        <div className="absolute bottom-4 left-0 right-0 text-center text-slate-400 text-sm z-20 pointer-events-none">
+            Click anywhere to start diving 👇
         </div>
+    )
+}
+            </div >
+        </div >
     );
 };
 
