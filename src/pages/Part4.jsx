@@ -931,6 +931,188 @@ Act as my tutor.
                                     </Suspense>
                                 </div>
 
+                                <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Science of Knowledge Retention</h3>
+
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                    <p className="text-white font-bold text-sm mb-3">Hermann Ebbinghaus (1885) - The Forgetting Curve:</p>
+                                    <ul className="space-y-2 text-sm text-slate-300 mb-4">
+                                        <li>• <strong className="text-red-400">24 hours:</strong> Forget 50% of new information</li>
+                                        <li>• <strong className="text-red-400">7 days:</strong> Forget 90% without reinforcement</li>
+                                        <li>• <strong className="text-red-400">30 days:</strong> Essentially back to zero</li>
+                                        <li>• <strong className="text-green-400">Solution:</strong> Active recall + spaced repetition = 80% retention long-term</li>
+                                    </ul>
+
+                                    <div className="bg-red-900/20 p-4 rounded mb-4">
+                                        <p className="text-white font-bold text-sm mb-2">Alex's Knowledge Leakage (WHY it happens):</p>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• Reads article → Highlights → Never revisits = <span className="text-red-400 font-bold">90% forgotten in 7 days</span></div>
+                                            <div>• Takes course → Completes 30% → Moves to next = <span className="text-red-400 font-bold">95% retention loss</span></div>
+                                            <div>• Saves bookmark → "Read later" pile grows → <span className="text-red-400 font-bold">Never retrieved</span></div>
+                                            <div>• Result: <span className="text-red-400 font-bold">Learning without retention = perpetual relearning</span></div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/40">
+                                        <p className="text-slate-400 text-xs mb-2">Traditional solution: "Take better notes."</p>
+                                        <p className="text-red-400 text-sm mb-3"><strong>Problem: Notes without RETRIEVAL = digital graveyard.</strong></p>
+                                        <p className="text-green-400 font-bold text-sm mb-2">Second Brain Agent approach:</p>
+                                        <ul className="space-y-1 text-xs text-slate-300">
+                                            <li>• Agent captures EVERYTHING (articles, videos, podcasts, meetings)</li>
+                                            <li>• Agent SUMMARIZES key insights (not just storing links)</li>
+                                            <li>• Agent connects RELATED ideas ("You learned this about X, here's Y connection")</li>
+                                            <li>• Agent RESURFACES insights when relevant ("CEO asked about AI? Here's what you learned 3 months ago")</li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-cyan-400 text-sm mt-4 italic">The goal isn't to remember everything. It's to RETRIEVE anything.</p>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-6 rounded-xl border border-blue-500/50 my-8">
+                                    <h3 className="text-xl font-bold text-blue-400 mb-3">📌 Quick Win: The Instant Capture Workflow</h3>
+                                    <p className="text-white mb-4">Train your agent to capture insights instantly:</p>
+                                    <div className="bg-slate-900/50 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4">
+                                        "When I share an article/video/podcast link:<br />
+                                        1. Read/watch/listen to it<br />
+                                        2. Extract 3 KEY insights (not summaries, INSIGHTS)<br />
+                                        3. Tag by topic + context (when might I need this?)<br />
+                                        4. Suggest 2 connections to past learnings<br />
+                                        5. Store in searchable knowledge base"
+                                    </div>
+
+                                    <div className="bg-slate-900/80 p-4 rounded-xl border border-cyan-500/30 my-4">
+                                        <p className="text-cyan-400 font-bold text-sm mb-3">Alex's Instant Capture (Example):</p>
+                                        <div className="space-y-3 text-xs text-slate-300">
+                                            <div>
+                                                <p className="text-white font-bold mb-1">Alex pastes article link (10 seconds):</p>
+                                                <p className="font-mono bg-slate-900/50 p-2 rounded">"https://example.com/ai-integration-strategy"</p>
+                                            </div>
+                                            <div>
+                                                <p className="text-white font-bold mb-2">Agent processes (30 seconds):</p>
+                                                <div className="bg-green-900/20 p-2 rounded">
+                                                    <p className="text-green-400 font-bold mb-1">3 KEY INSIGHTS:</p>
+                                                    <ul className="space-y-1 text-xs pl-3">
+                                                        <li>1. AI works best as "copilot" not replacement (augment humans)</li>
+                                                        <li>2. Start with HIGH-VOLUME, LOW-STAKES tasks (customer support triage)</li>
+                                                        <li>3. Measure adoption by TIME SAVED, not features shipped</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="bg-blue-900/20 p-2 rounded mt-2">
+                                                    <p className="text-blue-400 font-bold mb-1">CONNECTIONS:</p>
+                                                    <ul className="space-y-1 text-xs pl-3">
+                                                        <li>• Related to: "Jobs to be Done" framework (you studied 2 months ago)</li>
+                                                        <li>• Similar to: Atlassian's AI rollout case study (saved last year)</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="bg-purple-900/20 p-2 rounded mt-2">
+                                                    <p className="text-purple-400 font-bold mb-1">TAGS:</p>
+                                                    <p className="text-xs">#AI #ProductStrategy #Implementation #Q4-Planning</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p className="text-cyan-400 text-xs mt-3">Result: When CEO asks "AI integration strategy?" → Agent instantly retrieves this + related insights. No 90-minute search.</p>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 Alex, 4 Months Later</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p>Slack message from CEO: "What's our strategy for AI integration?"</p>
+                                        <p className="text-white italic">Alex: "Agent, retrieve AI integration insights."</p>
+                                        <p className="text-slate-300">Agent (5 seconds later):</p>
+
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <p className="text-green-400 font-bold text-sm mb-2">RETRIEVED (3 sources):</p>
+                                            <div className="space-y-2 text-xs">
+                                                <div>1. <strong>Article</strong> (captured 3 months ago): "AI as copilot, start with high-volume low-stakes"</div>
+                                                <div>2. <strong>Podcast</strong> (captured 6 weeks ago): Atlassian case study (saved 40% support time)</div>
+                                                <div>3. <strong>Meeting notes</strong> (captured last week): CTO mentioned customer support backlog</div>
+                                            </div>
+                                            <p className="text-cyan-400 font-bold mt-2 text-sm">SYNTHESIS:</p>
+                                            <p className="text-xs">"Recommend: AI customer support triage. Pilot with 100 tickets/week. Measure time-to-resolution reduction. Similar to Atlassian approach."</p>
+                                        </div>
+
+                                        <p className="text-white font-bold">Alex copies synthesis. Sends to CEO. <span className="text-green-400">3 minutes total.</span></p>
+                                        <p className="text-slate-400 text-xs italic">(vs 90 minutes searching + relearning)</p>
+
+                                        <div className="mt-4 pt-3 border-t border-green-500/30">
+                                            <p className="text-white font-bold text-sm mb-2">4-MONTH RESULTS:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>• Time spent relearning: <span className="text-red-400">6 hrs/week</span> → <span className="text-green-400 font-bold">30 min/week</span></div>
+                                                <div>• Knowledge retrieval speed: <span className="text-red-400">90 min search</span> → <span className="text-green-400 font-bold">5 sec agent query</span></div>
+                                                <div>• Course completion: <span className="text-red-400">30%</span> → <span className="text-green-400 font-bold">85%</span> (agent quizzes him weekly)</div>
+                                                <div>• Retained insights: <span className="text-red-400">5%</span> → <span className="text-green-400 font-bold">75%</span> (agent resurfaces connections)</div>
+                                                <div>• Duplicate purchases: <span className="text-red-400">$3,200/year</span> → <span className="text-green-400 font-bold">$0</span> (agent checks library first)</div>
+                                            </div>
+                                            <p className="text-white italic text-sm mt-3">"I'm not smarter. I just have INSTANT ACCESS to everything I've ever learned. That's a superpower." — Alex Rodriguez</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">💬 Common Objections (And The Truth)</h4>
+
+                                    <div className="space-y-4 text-sm">
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"I already use Notion/Evernote/Obsidian. How is this different?"</p>
+                                            <p className="text-slate-300 text-xs mb-1">Those are STORAGE tools. Agent is RETRIEVAL + CONNECTION tool.</p>
+                                            <p className="text-cyan-400 text-xs">Your Notion has 47 pages. Agent SEARCHES + SYNTHESIZES + CONNECTS ideas across all 47. You don't dig through folders. Agent brings insights TO you when needed.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"Won't this make me lazy? I should just REMEMBER things."</p>
+                                            <p className="text-cyan-400 text-xs">Ebbinghaus proved you WILL forget 90% in 7 days. That's biology, not laziness. Alex isn't lazy—he's STRATEGIC. His brain is for THINKING, not STORING. Agent handles storage.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"This sounds overwhelming. I don't have time to capture everything."</p>
+                                            <p className="text-slate-300 text-xs mb-1">Alex's capture time: 10 sec to paste link. Agent does the rest.</p>
+                                            <p className="text-green-400 text-xs">ROI: 10 sec/article × 5 articles/week = 50 sec/week invested. 6 hrs/week relearning ELIMINATED. That's 720:1 ROI.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"What if I capture the WRONG things?"</p>
+                                            <p className="text-cyan-400 text-xs">Alex's rule: "If I spent 5+ minutes reading it, capture it." Agent filters signal from noise over time (resurfaces what's ACTUALLY useful, archives what's not).</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-12 p-6 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-xl border border-purple-500/50">
+                                    <h4 className="text-purple-400 font-bold mb-3">🚀 Part 4 Complete!</h4>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        You've reclaimed:
+                                    </p>
+                                    <div className="space-y-1 text-sm text-slate-300 mb-4">
+                                        <div>• <strong className="text-white">Part 2:</strong> Mornings (30 min/day) + Food ($900/month) + Home ($6K/year)</div>
+                                        <div>• <strong className="text-white">Chapter 7:</strong> Email (90 min/day = 7.5 hours/week)</div>
+                                        <div>• <strong className="text-white">Chapter 8:</strong> Calendar (90 min/day = 9.5 hours/week)</div>
+                                        <div>• <strong className="text-white">Chapter 9:</strong> Admin (90 min/week = 5.9 work weeks/year)</div>
+                                        <div>• <strong className="text-white">Chapter 10:</strong> Recovery (11.4 hours/week from sleep efficiency)</div>
+                                        <div>• <strong className="text-white">Chapter 11:</strong> Mental Load (8.2 hours/week from 3 AM spirals eliminated)</div>
+                                        <div>• <strong className="text-white">Chapter 12:</strong> Knowledge Retention (5.5 hours/week from relearning eliminated)</div>
+                                    </div>
+                                    <div className="bg-slate-900/80 p-4 rounded-xl border border-purple-500/30 mb-4">
+                                        <p className="text-purple-400 font-bold text-lg">Part 4 Total: ~61 hours/week reclaimed</p>
+                                        <p className="text-slate-400 text-xs mt-1">(Plus $3,200/year in duplicate courses avoided)</p>
+                                    </div>
+                                    <p className="text-white font-bold text-sm mb-2">
+                                        You've optimized: Biology (sleep), Mind (mental load), Knowledge (retention).
+                                    </p>
+                                    <p className="text-red-400 font-bold mb-3">
+                                        What's left? THE BIG PICTURE.
+                                    </p>
+                                    <div className="bg-red-900/20 p-3 rounded text-xs text-slate-300 space-y-1">
+                                        <div>• All these micro-optimizations... but what's the STRATEGY?</div>
+                                        <div>• You're efficient... but are you working on the RIGHT things?</div>
+                                        <div>• You've saved 61 hours/week... but WHAT FOR?</div>
+                                    </div>
+                                    <p className="text-orange-400 font-bold mt-4">
+                                        Part 5: The Life OS
+                                    </p>
+                                    <p className="text-slate-400 text-xs mt-2">
+                                        How to tie it all together into a coherent system that aligns daily actions with long-term goals. The meta-layer above all agents.
+                                    </p>
+                                </div>
+
                                 <Suspense fallback={null}>
                                     <CaptainTip type="pro" title="Active Recall Agent">
                                         "Don't just re-read notes. Ask your agent: 'Quiz me on the weak areas from yesterday's reading.' It will generate fresh questions every time. That's how you make knowledge stick."
