@@ -131,9 +131,9 @@ const WebbookLayout = ({ children }) => {
                         <span className="font-medium">Home</span>
                     </PrefetchLink>
 
-                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-500 uppercase tracking-wider flex justify-between items-center">
+                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider flex justify-between items-center">
                         <span>Table of Contents</span>
-                        <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full">27% Done</span>
+                        <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full text-slate-300">27% Done</span>
                     </div>
 
                     {chapters.map((chapter) => (
@@ -164,7 +164,7 @@ const WebbookLayout = ({ children }) => {
                         </PrefetchLink>
                     ))}
 
-                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                    <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider">
                         Quick Jumps
                     </div>
                     <div className="grid grid-cols-2 gap-2 px-2">
@@ -183,7 +183,7 @@ const WebbookLayout = ({ children }) => {
                     </div>
                 </nav>
 
-                <div className="px-4 pb-2 text-xs font-bold text-slate-500 uppercase tracking-wider mt-4">
+                <div className="px-4 pb-2 text-xs font-bold text-slate-400 uppercase tracking-wider mt-4">
                     Support & Help
                 </div>
                 <nav className="px-4 space-y-2 mb-4" aria-label="Support Navigation">

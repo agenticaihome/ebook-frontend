@@ -124,22 +124,22 @@ const Part2 = () => {
 
                                 <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
                                     <h3 className="text-red-400 font-bold mb-3">The Morning That Changed Everything</h3>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         Marcus set 3 alarms. Hit snooze on all 3.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         Woke up to his 7-year-old standing by the bed: "Dad, we're late again."
                                     </p>
-                                    <p className="text-white font-bold text-sm mb-3">
+                                    <p className="text-white font-bold text-sm leading-loose md:leading-relaxed mb-4">
                                         6:52 AM. School starts at 7:15. 15-minute drive.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         No clean uniforms. No breakfast prep. No idea if there's traffic.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         He showed up to drop-off at 7:31 AM. The guilt look from the teacher. The disappointed face from his kid. Third time this month.
                                     </p>
-                                    <p className="text-cyan-400 italic text-sm">
+                                    <p className="text-cyan-400 italic text-sm leading-loose md:leading-relaxed">
                                         "I'm a successful professional. Why can't I get mornings right?"
                                     </p>
                                 </div>
