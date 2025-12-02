@@ -66,6 +66,16 @@ export const api = {
     return handleResponse(response);
   },
 
+  changePassword: async (currentPassword, newPassword) => {
+    const response = await fetch(`${API_URL}/auth/change-password`, {
+      method: 'POST',
+      headers: getHeaders(),
+      credentials: 'include',
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+    return handleResponse(response);
+  },
+
   register: async (email, password, paymentId) => {
     const response = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',

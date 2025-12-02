@@ -9,6 +9,7 @@ import {
 import WebbookLayout from '../components/layout/WebbookLayout';
 import CaptainHero from '../components/CaptainHero';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { api } from '../services/api';
 
 const Dashboard = () => {
     usePageTitle('Dashboard');
@@ -172,12 +173,93 @@ const Dashboard = () => {
                                     </p>
                                 </div>
                             </div>
+
+                            {/* System Configuration (Password Change) */}
+                            <div className="mt-8">
+                                <h2 className="text-xl font-bold mb-6 text-slate-200">System Configuration</h2>
+                                <ChangePasswordForm />
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
         </WebbookLayout>
+    );
+};
+
+const ChangePasswordForm = () => {
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [status, setStatus] = useState('IDLE'); // IDLE, LOADING, SUCCESS, ERROR
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('LOADING');
+        setMessage('');
+
+        try {
+            const data = await api.changePassword(currentPassword, newPassword);
+
+            if (data.success) {
+                setStatus('SUCCESS');
+                setMessage('Password updated successfully.');
+                setCurrentPassword('');
+                setNewPassword('');
+            } else {
+                setStatus('ERROR');
+                setMessage(data.error || 'Failed to update password.');
+            }
+        } catch (err) {
+            setStatus('ERROR');
+            setMessage(err.message || 'Network error. Please try again.');
+        }
+    };
+
+    return (
+        <div className="p-6 bg-slate-800/30 border border-slate-700 rounded-xl">
+            <h3 className="font-bold text-slate-200 mb-4 flex items-center gap-2">
+                <Shield size={16} className="text-cyan-400" /> Security Settings
+            </h3>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                    <label className="block text-xs text-slate-400 mb-1">Current Password</label>
+                    <input
+                        type="password"
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
+                        required
+                    />
+                </div>
+                <div>
+                    <label className="block text-xs text-slate-400 mb-1">New Password</label>
+                    <input
+                        type="password"
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
+                        required
+                    />
+                </div>
+
+                {message && (
+                    <div className={`text-xs p-2 rounded ${status === 'SUCCESS' ? 'bg-green-900/20 text-green-400' : 'bg-red-900/20 text-red-400'}`}>
+                        {message}
+                    </div>
+                )}
+
+                <button
+                    type="submit"
+                    disabled={status === 'LOADING'}
+                    className="w-full bg-slate-700 hover:bg-slate-600 text-white text-sm font-bold py-2 rounded-lg transition-colors disabled:opacity-50"
+                >
+                    {status === 'LOADING' ? 'Updating...' : 'Update Password'}
+                </button>
+            </form>
+        </div>
     );
 };
 
