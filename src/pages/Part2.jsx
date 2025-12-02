@@ -1102,208 +1102,207 @@ For each meal, list the ingredients I'd need to buy.`}
                                 <HouseholdChaosCalculator />
                             </Suspense>
 
-                        </Suspense>
 
-                        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
-                            <h4 className="text-green-400 font-bold mb-3">📖 James, 6 Months Later</h4>
-                            <div className="space-y-3 text-sm text-slate-300">
-                                <p>It's Saturday morning. James is drinking coffee when his phone buzzes.</p>
-                                <p className="text-cyan-400">"Household Agent: HVAC filter change due this week. You ordered 6-pack on Amazon last time (2 left in garage)."</p>
-                                <p>He walks to the garage. Finds the filters. Changes it. <strong className="text-white">8 minutes total.</strong></p>
-                                <div className="bg-slate-900/50 p-3 rounded font-mono text-xs space-y-1">
-                                    <div>Cost: $0 (already owned)</div>
-                                    <div>Stress: 0/10</div>
-                                    <div className="text-green-400">AC Health: Optimal</div>
-                                </div>
-                                <p>He texts: "Filter changed ✓"</p>
-                                <p className="text-cyan-400">Agent responds: "Logged. Next due: June 15. Reminder set."</p>
-                                <div className="mt-4 pt-3 border-t border-green-500/30">
-                                    <p className="text-white font-bold text-sm mb-2">6-MONTH AVOIDED COSTS:</p>
-                                    <div className="space-y-1 text-xs text-slate-300">
-                                        <div>• AC repairs: $0 (vs. potential $2,800)</div>
-                                        <div>• Car registration fine: $0 (reminder 30 days early)</div>
-                                        <div>• Water heater: Flushed on schedule ($0 emergency call)</div>
-                                        <div>• Smoke detectors: Batteries changed (kids safe)</div>
-                                        <div>• Gutters: Cleaned twice (zero water damage)</div>
+                            <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                <h4 className="text-green-400 font-bold mb-3">📖 James, 6 Months Later</h4>
+                                <div className="space-y-3 text-sm text-slate-300">
+                                    <p>It's Saturday morning. James is drinking coffee when his phone buzzes.</p>
+                                    <p className="text-cyan-400">"Household Agent: HVAC filter change due this week. You ordered 6-pack on Amazon last time (2 left in garage)."</p>
+                                    <p>He walks to the garage. Finds the filters. Changes it. <strong className="text-white">8 minutes total.</strong></p>
+                                    <div className="bg-slate-900/50 p-3 rounded font-mono text-xs space-y-1">
+                                        <div>Cost: $0 (already owned)</div>
+                                        <div>Stress: 0/10</div>
+                                        <div className="text-green-400">AC Health: Optimal</div>
                                     </div>
-                                    <p className="text-green-400 font-bold mt-2">Total Avoided: $3,200+ in preventable emergencies</p>
-                                    <p className="text-cyan-400 text-xs">Annual run-rate: $6,400+ avoided costs</p>
-                                    <p className="text-white italic text-sm mt-3">"I'm not spending less. I'm just not getting punished for forgetting anymore."</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Johnson Family: Reactive to Proactive</h3>
-                        <p className="text-slate-300 text-sm mb-4">
-                            Tom Johnson, homeowner, 2 kids, Seattle, WA
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-6 mb-8">
-                            <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
-                                <h4 className="text-red-400 font-bold mb-3">YEAR 1 (Before): The Forgetting Tax</h4>
-                                <div className="space-y-2 text-xs text-slate-300">
-                                    <div>• Jan: Forgot HVAC filter → July AC breakdown → <strong>$2,800</strong></div>
-                                    <div>• Mar: Car registration lapsed → <strong>$175 fine</strong> + $50 late renewal</div>
-                                    <div>• Jun: Water heater ignored → Emergency replacement <strong>$1,850</strong></div>
-                                    <div>• Sep: Gutters clogged → Basement leak → <strong>$1,200</strong> water damage</div>
-                                    <div className="pt-2 border-t border-red-500/30">
-                                        <strong>ANNUAL COST: $6,075</strong>
+                                    <p>He texts: "Filter changed ✓"</p>
+                                    <p className="text-cyan-400">Agent responds: "Logged. Next due: June 15. Reminder set."</p>
+                                    <div className="mt-4 pt-3 border-t border-green-500/30">
+                                        <p className="text-white font-bold text-sm mb-2">6-MONTH AVOIDED COSTS:</p>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>• AC repairs: $0 (vs. potential $2,800)</div>
+                                            <div>• Car registration fine: $0 (reminder 30 days early)</div>
+                                            <div>• Water heater: Flushed on schedule ($0 emergency call)</div>
+                                            <div>• Smoke detectors: Batteries changed (kids safe)</div>
+                                            <div>• Gutters: Cleaned twice (zero water damage)</div>
+                                        </div>
+                                        <p className="text-green-400 font-bold mt-2">Total Avoided: $3,200+ in preventable emergencies</p>
+                                        <p className="text-cyan-400 text-xs">Annual run-rate: $6,400+ avoided costs</p>
+                                        <p className="text-white italic text-sm mt-3">"I'm not spending less. I'm just not getting punished for forgetting anymore."</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
-                                <h4 className="text-green-400 font-bold mb-3">YEAR 2 (With Agent): Zero Surprises</h4>
-                                <div className="space-y-2 text-xs text-slate-300">
-                                    <div><strong>Weekly Sunday Brief includes:</strong></div>
-                                    <div className="pl-3">• This week: Nothing due</div>
-                                    <div className="pl-3">• Next 30 days: Car reg Mar 28, Smoke detectors Apr 1</div>
-                                    <div className="pl-3">• Completed: HVAC filter (Feb 15)</div>
-                                    <div className="pt-2"><strong>Tom's routine:</strong></div>
-                                    <div className="pl-3">Sunday 7 PM: "What's due?"</div>
-                                    <div className="pl-3">Total time: 15-20 min/week</div>
-                                    <div className="pt-2 border-t border-green-500/30">
-                                        <strong>AVOIDED COSTS: $6,000+</strong>
+                            <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Johnson Family: Reactive to Proactive</h3>
+                            <p className="text-slate-300 text-sm mb-4">
+                                Tom Johnson, homeowner, 2 kids, Seattle, WA
+                            </p>
+
+                            <div className="grid md:grid-cols-2 gap-6 mb-8">
+                                <div className="bg-red-900/20 p-6 rounded-xl border border-red-500/30">
+                                    <h4 className="text-red-400 font-bold mb-3">YEAR 1 (Before): The Forgetting Tax</h4>
+                                    <div className="space-y-2 text-xs text-slate-300">
+                                        <div>• Jan: Forgot HVAC filter → July AC breakdown → <strong>$2,800</strong></div>
+                                        <div>• Mar: Car registration lapsed → <strong>$175 fine</strong> + $50 late renewal</div>
+                                        <div>• Jun: Water heater ignored → Emergency replacement <strong>$1,850</strong></div>
+                                        <div>• Sep: Gutters clogged → Basement leak → <strong>$1,200</strong> water damage</div>
+                                        <div className="pt-2 border-t border-red-500/30">
+                                            <strong>ANNUAL COST: $6,075</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30">
+                                    <h4 className="text-green-400 font-bold mb-3">YEAR 2 (With Agent): Zero Surprises</h4>
+                                    <div className="space-y-2 text-xs text-slate-300">
+                                        <div><strong>Weekly Sunday Brief includes:</strong></div>
+                                        <div className="pl-3">• This week: Nothing due</div>
+                                        <div className="pl-3">• Next 30 days: Car reg Mar 28, Smoke detectors Apr 1</div>
+                                        <div className="pl-3">• Completed: HVAC filter (Feb 15)</div>
+                                        <div className="pt-2"><strong>Tom's routine:</strong></div>
+                                        <div className="pl-3">Sunday 7 PM: "What's due?"</div>
+                                        <div className="pl-3">Total time: 15-20 min/week</div>
+                                        <div className="pt-2 border-t border-green-500/30">
+                                            <strong>AVOIDED COSTS: $6,000+</strong>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 mb-6 text-center">
-                            <p className="text-white font-bold text-sm mb-2">THE REAL MATH:</p>
-                            <div className="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <div className="text-red-400 font-bold text-2xl">$6,075/year</div>
-                                    <div className="text-slate-400 text-xs">Reactive (fixing what breaks)</div>
+                            <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 mb-6 text-center">
+                                <p className="text-white font-bold text-sm mb-2">THE REAL MATH:</p>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <div className="text-red-400 font-bold text-2xl">$6,075/year</div>
+                                        <div className="text-slate-400 text-xs">Reactive (fixing what breaks)</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-green-400 font-bold text-2xl">$200/year</div>
+                                        <div className="text-slate-400 text-xs">Proactive (preventive maintenance)</div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div className="text-green-400 font-bold text-2xl">$200/year</div>
-                                    <div className="text-slate-400 text-xs">Proactive (preventive maintenance)</div>
-                                </div>
+                                <p className="text-slate-300 italic text-sm mt-4">"Before, I was spending thousands to fix things I broke by forgetting. Now I spend $200/year on preventive maintenance. $200 vs $6,000. That's the real math." — Tom Johnson</p>
                             </div>
-                            <p className="text-slate-300 italic text-sm mt-4">"Before, I was spending thousands to fix things I broke by forgetting. Now I spend $200/year on preventive maintenance. $200 vs $6,000. That's the real math." — Tom Johnson</p>
-                        </div>
 
-                        <div className="mt-12 p-6 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-xl border border-cyan-500/50">
-                            <h4 className="text-cyan-400 font-bold mb-3">🚀 What's Next?</h4>
-                            <p className="text-slate-300 text-sm mb-3">
-                                You've reclaimed:
-                            </p>
-                            <div className="space-y-1 text-sm text-slate-300 mb-4">
-                                <div>• <strong className="text-white">Mornings:</strong> 30 min/day (Chapter 4)</div>
-                                <div>• <strong className="text-white">Food:</strong> 3-4 hours/week + $900/month (Chapter 5)</div>
-                                <div>• <strong className="text-white">Home:</strong> $3,500+/year in prevented emergencies (Chapter 6)</div>
+                            <div className="mt-12 p-6 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-xl border border-cyan-500/50">
+                                <h4 className="text-cyan-400 font-bold mb-3">🚀 What's Next?</h4>
+                                <p className="text-slate-300 text-sm mb-3">
+                                    You've reclaimed:
+                                </p>
+                                <div className="space-y-1 text-sm text-slate-300 mb-4">
+                                    <div>• <strong className="text-white">Mornings:</strong> 30 min/day (Chapter 4)</div>
+                                    <div>• <strong className="text-white">Food:</strong> 3-4 hours/week + $900/month (Chapter 5)</div>
+                                    <div>• <strong className="text-white">Home:</strong> $3,500+/year in prevented emergencies (Chapter 6)</div>
+                                </div>
+                                <div className="bg-slate-900/80 p-4 rounded-xl border border-cyan-500/30 mb-4">
+                                    <p className="text-cyan-400 font-bold text-lg">Total reclaimed: ~15 hours/week + $1,500+/month</p>
+                                </div>
+                                <p className="text-white font-bold text-sm mb-2">
+                                    Your PHYSICAL daily life is automated.
+                                </p>
+                                <p className="text-orange-400 font-bold">
+                                    Now let's tackle your DIGITAL life:
+                                </p>
+                                <p className="text-slate-400 text-xs mt-2">
+                                    Part 3: Email & Communication Automation — Inbox Zero without guilt, Meeting scheduling on autopilot, The "Gatekeeper Agent" that protects your time
+                                </p>
                             </div>
-                            <div className="bg-slate-900/80 p-4 rounded-xl border border-cyan-500/30 mb-4">
-                                <p className="text-cyan-400 font-bold text-lg">Total reclaimed: ~15 hours/week + $1,500+/month</p>
-                            </div>
-                            <p className="text-white font-bold text-sm mb-2">
-                                Your PHYSICAL daily life is automated.
-                            </p>
-                            <p className="text-orange-400 font-bold">
-                                Now let's tackle your DIGITAL life:
-                            </p>
-                            <p className="text-slate-400 text-xs mt-2">
-                                Part 3: Email & Communication Automation — Inbox Zero without guilt, Meeting scheduling on autopilot, The "Gatekeeper Agent" that protects your time
-                            </p>
                         </div>
+                    </section>
+
+                    {/* Part 2 Complete */}
+                    <section className="py-16 px-6">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="p-8 bg-gradient-to-r from-green-900/30 via-cyan-900/30 to-purple-900/30 rounded-2xl border-2 border-cyan-500/50">
+                                <h3 className="text-3xl font-bold text-white mb-6 text-center">🎉 Part 2 Complete: You Just Bought 12 Hours/Week Back</h3>
+
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-green-500/30 mb-6">
+                                    <h4 className="text-green-400 font-bold mb-4">✅ What You've Built:</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <div className="flex items-start gap-3">
+                                            <span className="text-green-400">✓</span>
+                                            <div>
+                                                <strong className="text-white">Morning Agent</strong> — Wake up to clarity instead of chaos
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <span className="text-green-400">✓</span>
+                                            <div>
+                                                <strong className="text-white">Kitchen Agent</strong> — $150-250/month saved, zero "what's for dinner" stress
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-3">
+                                            <span className="text-green-400">✓</span>
+                                            <div>
+                                                <strong className="text-white">Household Agent</strong> — $3,500/year in prevented emergencies
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div className="bg-red-900/20 p-4 rounded-xl border border-red-500/30">
+                                        <div className="text-red-400 font-bold mb-2">BEFORE Part 2:</div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>Mornings: 30-45 min chaos sprint</div>
+                                            <div>Meals: $320/week on food panic</div>
+                                            <div>Home: Forgetting tax costing thousands</div>
+                                        </div>
+                                    </div>
+                                    <div className="bg-green-900/20 p-4 rounded-xl border border-green-500/30">
+                                        <div className="text-green-400 font-bold mb-2">AFTER Part 2:</div>
+                                        <div className="space-y-1 text-xs text-slate-300">
+                                            <div>Mornings: Single 3-minute brief</div>
+                                            <div>Meals: Planned, budgeted, executed</div>
+                                            <div>Home: Proactive maintenance, zero surprises</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 text-center mb-6">
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <div className="text-cyan-400 font-bold text-3xl mb-1">~12 hours/week</div>
+                                            <div className="text-slate-400 text-sm">Total Time Reclaimed</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-green-400 font-bold text-3xl mb-1">$400-500/month</div>
+                                            <div className="text-slate-400 text-sm">Total Money Saved</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 p-6 rounded-xl border border-yellow-500/40 mb-6">
+                                    <h4 className="text-yellow-400 font-bold mb-3">🚀 What's Next in Part 3:</h4>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        <strong className="text-cyan-400">Email & Communication Automation</strong> — Inbox zero, meeting scheduling, the "Gatekeeper Agent"
+                                    </p>
+                                    <p className="text-white font-bold text-center">
+                                        You've automated your PHYSICAL daily operations.<br />
+                                        Now let's automate your DIGITAL life.
+                                    </p>
+                                </div>
+
+                                <div className="text-center">
+                                    <button
+                                        onClick={() => navigate('/part3')}
+                                        className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/30"
+                                    >
+                                        Continue to Part 3: Digital Life Automation
+                                        <ArrowRight size={20} />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Social Share */}
+                    <Suspense fallback={null}>
+                        <SocialShare
+                            title="Just set up my first AI Agent for daily ops! The future of home management is here."
+                            hashtags={["AgenticAI", "SmartHome", "AI"]}
+                        />
+                    </Suspense>
                 </div>
-            </section>
-
-            {/* Part 2 Complete */}
-            <section className="py-16 px-6">
-                <div className="max-w-4xl mx-auto">
-                    <div className="p-8 bg-gradient-to-r from-green-900/30 via-cyan-900/30 to-purple-900/30 rounded-2xl border-2 border-cyan-500/50">
-                        <h3 className="text-3xl font-bold text-white mb-6 text-center">🎉 Part 2 Complete: You Just Bought 12 Hours/Week Back</h3>
-
-                        <div className="bg-slate-900/80 p-6 rounded-xl border border-green-500/30 mb-6">
-                            <h4 className="text-green-400 font-bold mb-4">✅ What You've Built:</h4>
-                            <div className="space-y-3 text-sm text-slate-300">
-                                <div className="flex items-start gap-3">
-                                    <span className="text-green-400">✓</span>
-                                    <div>
-                                        <strong className="text-white">Morning Agent</strong> — Wake up to clarity instead of chaos
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <span className="text-green-400">✓</span>
-                                    <div>
-                                        <strong className="text-white">Kitchen Agent</strong> — $150-250/month saved, zero "what's for dinner" stress
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <span className="text-green-400">✓</span>
-                                    <div>
-                                        <strong className="text-white">Household Agent</strong> — $3,500/year in prevented emergencies
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-6 mb-6">
-                            <div className="bg-red-900/20 p-4 rounded-xl border border-red-500/30">
-                                <div className="text-red-400 font-bold mb-2">BEFORE Part 2:</div>
-                                <div className="space-y-1 text-xs text-slate-300">
-                                    <div>Mornings: 30-45 min chaos sprint</div>
-                                    <div>Meals: $320/week on food panic</div>
-                                    <div>Home: Forgetting tax costing thousands</div>
-                                </div>
-                            </div>
-                            <div className="bg-green-900/20 p-4 rounded-xl border border-green-500/30">
-                                <div className="text-green-400 font-bold mb-2">AFTER Part 2:</div>
-                                <div className="space-y-1 text-xs text-slate-300">
-                                    <div>Mornings: Single 3-minute brief</div>
-                                    <div>Meals: Planned, budgeted, executed</div>
-                                    <div>Home: Proactive maintenance, zero surprises</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-gradient-to-r from-cyan-900/30 to-purple-900/30 p-6 rounded-xl border border-cyan-500/50 text-center mb-6">
-                            <div className="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <div className="text-cyan-400 font-bold text-3xl mb-1">~12 hours/week</div>
-                                    <div className="text-slate-400 text-sm">Total Time Reclaimed</div>
-                                </div>
-                                <div>
-                                    <div className="text-green-400 font-bold text-3xl mb-1">$400-500/month</div>
-                                    <div className="text-slate-400 text-sm">Total Money Saved</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 p-6 rounded-xl border border-yellow-500/40 mb-6">
-                            <h4 className="text-yellow-400 font-bold mb-3">🚀 What's Next in Part 3:</h4>
-                            <p className="text-slate-300 text-sm mb-3">
-                                <strong className="text-cyan-400">Email & Communication Automation</strong> — Inbox zero, meeting scheduling, the "Gatekeeper Agent"
-                            </p>
-                            <p className="text-white font-bold text-center">
-                                You've automated your PHYSICAL daily operations.<br />
-                                Now let's automate your DIGITAL life.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <button
-                                onClick={() => navigate('/part3')}
-                                className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/30"
-                            >
-                                Continue to Part 3: Digital Life Automation
-                                <ArrowRight size={20} />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Social Share */}
-            <Suspense fallback={null}>
-                <SocialShare
-                    title="Just set up my first AI Agent for daily ops! The future of home management is here."
-                    hashtags={["AgenticAI", "SmartHome", "AI"]}
-                />
-            </Suspense>
-        </div>
             </PasswordGate >
         </WebbookLayout >
     );
