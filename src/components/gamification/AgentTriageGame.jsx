@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform, PanInfo } from 'framer-motion';
-import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Zap, Clock, Target, Flame, Keyboard, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Clock, Flame, Keyboard, ChevronLeft, ChevronRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 
-// Swipeable Email Card Component - THE KEY TO MOBILE ADDICTION
+// Swipeable Email Card Component
 const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) => {
     const x = useMotionValue(0);
     const background = useTransform(
@@ -24,11 +24,9 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
     const handleDragEnd = (event, info) => {
         const threshold = 80;
         if (info.offset.x > threshold) {
-            // Swipe right = Delegate
             triggerHaptic();
             onAction(email.id, 'delegate');
         } else if (info.offset.x < -threshold) {
-            // Swipe left = Delete
             triggerHaptic();
             onAction(email.id, 'delete');
         }
@@ -42,6 +40,11 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
 
     const timeElapsed = Date.now() - email.spawnTime;
     const urgency = email.isCritical ? Math.min(1, timeElapsed / email.timeToLive) : 0;
+
+    // Compute dynamic box shadow
+    const dynamicBoxShadow = email.isCritical
+        ? `0 0 ${15 + urgency * 25}px rgba(239, 68, 68, ${0.4 + urgency * 0.4})`
+        : '0 4px 15px rgba(0,0,0,0.3)';
 
     return (
         <motion.div
@@ -65,23 +68,18 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
                 </motion.div>
             </motion.div>
 
-            {/* Draggable Card */}
+            {/* Draggable Card - FIXED: Combined x transform with boxShadow */}
             <motion.div
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.7}
                 onDragEnd={handleDragEnd}
-                style={{ x }}
+                style={{ x, boxShadow: dynamicBoxShadow }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => onSelect(index)}
-                className={`relative bg-gradient-to-r ${email.color} border-2 ${email.borderColor} rounded-xl p-3 sm:p-4 shadow-lg cursor-grab active:cursor-grabbing transition-all touch-pan-y
+                className={`relative bg-gradient-to-r ${email.color} border-2 ${email.borderColor} rounded-xl p-3 sm:p-4 shadow-lg cursor-grab active:cursor-grabbing transition-colors touch-pan-y
                     ${isSelected ? 'ring-2 ring-cyan-400 ring-offset-2 ring-offset-slate-900 scale-[1.01]' : ''}
-                    ${email.isCritical ? 'animate-[criticalPulse_1s_ease-in-out_infinite]' : ''}`}
-                style={{
-                    boxShadow: email.isCritical
-                        ? `0 0 ${15 + urgency * 25}px rgba(239, 68, 68, ${0.4 + urgency * 0.4})`
-                        : '0 4px 15px rgba(0,0,0,0.3)'
-                }}
+                    ${email.isCritical ? 'critical-pulse' : ''}`}
             >
                 {/* Critical Timer Bar */}
                 {email.isCritical && (
@@ -114,20 +112,20 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
                     </div>
                 </div>
 
-                {/* Action Buttons - Large Touch Targets */}
+                {/* Action Buttons */}
                 <div className="flex gap-2 mt-3">
                     <button
                         onClick={(e) => { e.stopPropagation(); triggerHaptic(); onAction(email.id, 'delegate'); }}
                         className="flex-1 bg-green-600/90 hover:bg-green-500 active:bg-green-400 text-white text-sm sm:text-base font-bold py-3 sm:py-3.5 rounded-xl flex justify-center items-center gap-2 transition-all active:scale-95 shadow-lg shadow-green-900/30"
                     >
-                        <Check size={18} className="sm:w-5 sm:h-5" />
+                        <Check size={18} />
                         <span>DELEGATE</span>
                     </button>
                     <button
                         onClick={(e) => { e.stopPropagation(); triggerHaptic(); onAction(email.id, 'delete'); }}
                         className="flex-1 bg-red-600/90 hover:bg-red-500 active:bg-red-400 text-white text-sm sm:text-base font-bold py-3 sm:py-3.5 rounded-xl flex justify-center items-center gap-2 transition-all active:scale-95 shadow-lg shadow-red-900/30"
                     >
-                        <Trash2 size={18} className="sm:w-5 sm:h-5" />
+                        <Trash2 size={18} />
                         <span>DELETE</span>
                     </button>
                 </div>
@@ -152,10 +150,9 @@ const AgentTriageGame = ({ onBack }) => {
     const [emailsTriaged, setEmailsTriaged] = useState(0);
     const [selectedEmailIndex, setSelectedEmailIndex] = useState(0);
 
-    // Combo & Streak - DOPAMINE MECHANICS
+    // Combo & Streak
     const [combo, setCombo] = useState(0);
     const [maxCombo, setMaxCombo] = useState(0);
-    const [lastActionTime, setLastActionTime] = useState(null);
 
     // Waves & Difficulty
     const [wave, setWave] = useState(1);
@@ -164,8 +161,12 @@ const AgentTriageGame = ({ onBack }) => {
     // Stats
     const [stats, setStats] = useState({ correct: 0, wrong: 0, fastActions: 0, criticalSaved: 0 });
     const [personalBest, setPersonalBest] = useState(() => {
-        const saved = localStorage.getItem('triageBest');
-        return saved ? JSON.parse(saved) : { score: 0, triaged: 0 };
+        try {
+            const saved = localStorage.getItem('triageBest');
+            return saved ? JSON.parse(saved) : { score: 0, triaged: 0 };
+        } catch {
+            return { score: 0, triaged: 0 };
+        }
     });
 
     // UI State
@@ -183,10 +184,16 @@ const AgentTriageGame = ({ onBack }) => {
     const audioContext = useRef(null);
     const gameAreaRef = useRef(null);
     const emailContainerRef = useRef(null);
+    const scoreRef = useRef(score);
+    const emailsTriagedRef = useRef(emailsTriaged);
 
-    // Email Templates - Balanced for clear categorization
+    // Keep refs in sync for use in callbacks
+    useEffect(() => { scoreRef.current = score; }, [score]);
+    useEffect(() => { emailsTriagedRef.current = emailsTriaged; }, [emailsTriaged]);
+
+    // Email Templates
     const emailTypes = useMemo(() => [
-        // DELEGATE emails (work-related, important) - GREEN ACTIONS
+        // DELEGATE emails (work-related)
         { type: 'urgent', subject: '🔥 Client deadline TODAY', action: 'delegate', color: 'from-red-500/30 to-red-900/30', borderColor: 'border-red-500/60', icon: '🔥', priority: 'critical' },
         { type: 'boss', subject: '⚡ Meeting request from CEO', action: 'delegate', color: 'from-amber-500/30 to-amber-900/30', borderColor: 'border-amber-500/60', icon: '⚡', priority: 'high' },
         { type: 'work', subject: '📊 Q4 Report needs approval', action: 'delegate', color: 'from-cyan-500/25 to-cyan-900/25', borderColor: 'border-cyan-500/50', icon: '📊', priority: 'normal' },
@@ -195,7 +202,7 @@ const AgentTriageGame = ({ onBack }) => {
         { type: 'project', subject: '🎯 Sprint blocker identified', action: 'delegate', color: 'from-orange-500/25 to-orange-900/25', borderColor: 'border-orange-500/50', icon: '🎯', priority: 'high' },
         { type: 'support', subject: '🆘 Customer needs help ASAP', action: 'delegate', color: 'from-rose-500/25 to-rose-900/25', borderColor: 'border-rose-500/50', icon: '🆘', priority: 'high' },
 
-        // DELETE emails (spam, newsletters, junk) - RED ACTIONS
+        // DELETE emails (spam, junk)
         { type: 'spam', subject: '🎁 You won $1,000,000!!!', action: 'delete', color: 'from-slate-500/25 to-slate-800/25', borderColor: 'border-slate-500/40', icon: '🎁', priority: 'normal' },
         { type: 'newsletter', subject: '📧 Weekly Marketing Digest', action: 'delete', color: 'from-blue-500/20 to-blue-900/20', borderColor: 'border-blue-500/40', icon: '📧', priority: 'normal' },
         { type: 'receipt', subject: '🧾 Your Amazon receipt', action: 'delete', color: 'from-green-500/20 to-green-900/20', borderColor: 'border-green-500/40', icon: '🧾', priority: 'normal' },
@@ -205,7 +212,7 @@ const AgentTriageGame = ({ onBack }) => {
         { type: 'crypto', subject: '🪙 10X your Bitcoin NOW', action: 'delete', color: 'from-yellow-500/20 to-yellow-900/20', borderColor: 'border-yellow-500/40', icon: '🪙', priority: 'normal' },
     ], []);
 
-    // Sound Effects - Satisfying feedback loop
+    // Sound Effects
     const playSound = useCallback((type) => {
         if (!soundEnabled) return;
 
@@ -231,7 +238,7 @@ const AgentTriageGame = ({ onBack }) => {
                     oscillator.frequency.setValueAtTime(659.25, ctx.currentTime + 0.08);
                     oscillator.frequency.setValueAtTime(783.99, ctx.currentTime + 0.16);
                     gainNode.gain.setValueAtTime(0.12, ctx.currentTime);
-                    gainNode.gain.exponentialDecayTo?.(0.01, ctx.currentTime + 0.25) || gainNode.gain.setValueAtTime(0.01, ctx.currentTime + 0.25);
+                    gainNode.gain.setValueAtTime(0.01, ctx.currentTime + 0.25);
                     oscillator.start(ctx.currentTime);
                     oscillator.stop(ctx.currentTime + 0.25);
                     break;
@@ -290,8 +297,8 @@ const AgentTriageGame = ({ onBack }) => {
         }
     }, [soundEnabled]);
 
-    // Captain Messages - Personality & Encouragement
-    const captainMessages = {
+    // Captain Messages
+    const captainMessages = useMemo(() => ({
         start: [
             { text: "Let's clear this inbox! 💪", mood: 'excited' },
             { text: "Work emails → Delegate, Junk → Delete!", mood: 'helpful' }
@@ -317,7 +324,7 @@ const AgentTriageGame = ({ onBack }) => {
         almostWin: [{ text: "Almost there! Push through! 🎯", mood: 'excited' }],
         win: [{ text: "🎉 INBOX ZERO! You're a legend!", mood: 'victory' }],
         lose: [{ text: "Inbox overflow! Train harder! 💪", mood: 'sad' }]
-    };
+    }), []);
 
     const updateCaptain = useCallback((eventType) => {
         const messages = captainMessages[eventType];
@@ -325,34 +332,97 @@ const AgentTriageGame = ({ onBack }) => {
             const msg = messages[Math.floor(Math.random() * messages.length)];
             setCaptainMessage(msg);
         }
-    }, []);
+    }, [captainMessages]);
 
-    // Spawn Email - Controlled spawning
-    const spawnEmail = useCallback(() => {
-        if (emails.length >= 5) return; // Max 5 visible - prevents overflow
+    // End Game function (defined early to avoid circular deps)
+    const endGame = useCallback((win) => {
+        clearInterval(gameLoopRef.current);
+        clearInterval(timerRef.current);
+        gameLoopRef.current = null;
+        timerRef.current = null;
+        setGameState(win ? 'won' : 'lost');
 
-        const template = emailTypes[Math.floor(Math.random() * emailTypes.length)];
-        const isCritical = wave === 3 ? Math.random() < 0.25 : wave === 2 ? Math.random() < 0.15 : Math.random() < 0.08;
+        const finalScore = scoreRef.current;
+        const finalTriaged = emailsTriagedRef.current;
 
-        const newEmail = {
-            id: Date.now() + Math.random(),
-            ...template,
-            spawnTime: Date.now(),
-            isCritical: isCritical || template.priority === 'critical',
-            timeToLive: isCritical ? 5000 : 10000
-        };
+        setPersonalBest(prev => {
+            if (finalScore > prev.score || finalTriaged > prev.triaged) {
+                const newBest = {
+                    score: Math.max(finalScore, prev.score),
+                    triaged: Math.max(finalTriaged, prev.triaged)
+                };
+                try {
+                    localStorage.setItem('triageBest', JSON.stringify(newBest));
+                } catch (e) {
+                    console.warn('Could not save to localStorage:', e);
+                }
+                return newBest;
+            }
+            return prev;
+        });
 
-        setEmails(prev => [...prev, newEmail]);
-        playSound(isCritical ? 'critical' : 'spawn');
+        // Submit score
+        api.submitScore?.('triage', finalScore)?.catch(err => {
+            console.error('Failed to submit score:', err);
+        });
 
-        if (isCritical) {
-            updateCaptain('critical');
-            if (navigator.vibrate) navigator.vibrate([50, 30, 50]);
+        if (win) {
+            updateCaptain('win');
+            if (navigator.vibrate) navigator.vibrate([50, 50, 50, 50, 100]);
+            confetti({
+                particleCount: 200,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#06b6d4', '#22c55e', '#eab308', '#a855f7']
+            });
+        } else {
+            updateCaptain('lose');
+            if (navigator.vibrate) navigator.vibrate(200);
         }
-    }, [wave, playSound, updateCaptain, emails.length, emailTypes]);
+    }, [updateCaptain]);
+
+    // Spawn Email
+    const spawnEmail = useCallback((currentWave) => {
+        setEmails(prev => {
+            if (prev.length >= 5) return prev; // Max 5 visible
+
+            const template = emailTypes[Math.floor(Math.random() * emailTypes.length)];
+            const isCritical = currentWave === 3 ? Math.random() < 0.25 : currentWave === 2 ? Math.random() < 0.15 : Math.random() < 0.08;
+
+            const newEmail = {
+                id: Date.now() + Math.random(),
+                ...template,
+                spawnTime: Date.now(),
+                isCritical: isCritical || template.priority === 'critical',
+                timeToLive: isCritical ? 5000 : 10000
+            };
+
+            if (isCritical) {
+                updateCaptain('critical');
+                if (navigator.vibrate) navigator.vibrate([50, 30, 50]);
+                playSound('critical');
+            } else {
+                playSound('spawn');
+            }
+
+            return [...prev, newEmail];
+        });
+    }, [emailTypes, playSound, updateCaptain]);
+
+    // Start spawner helper
+    const startSpawner = useCallback((interval, currentWave) => {
+        if (gameLoopRef.current) clearInterval(gameLoopRef.current);
+        gameLoopRef.current = setInterval(() => {
+            spawnEmail(currentWave);
+        }, interval);
+    }, [spawnEmail]);
 
     // Start Game
     const startGame = useCallback(() => {
+        // Clear any existing intervals
+        if (gameLoopRef.current) clearInterval(gameLoopRef.current);
+        if (timerRef.current) clearInterval(timerRef.current);
+
         setGameState('playing');
         setScore(0);
         setTimeLeft(45);
@@ -363,7 +433,8 @@ const AgentTriageGame = ({ onBack }) => {
         setWave(1);
         setStats({ correct: 0, wrong: 0, fastActions: 0, criticalSaved: 0 });
         setSelectedEmailIndex(0);
-        setLastActionTime(null);
+        setComboPopup(null);
+        setParticles([]);
         updateCaptain('start');
 
         // Unlock audio context on mobile
@@ -382,20 +453,13 @@ const AgentTriageGame = ({ onBack }) => {
             });
         }, 1000);
 
-        // Initial spawns - stagger for effect
-        setTimeout(() => spawnEmail(), 300);
-        setTimeout(() => spawnEmail(), 800);
+        // Initial spawns
+        setTimeout(() => spawnEmail(1), 300);
+        setTimeout(() => spawnEmail(1), 800);
 
         // Start spawner
-        startSpawner(2200);
-    }, [updateCaptain]);
-
-    const startSpawner = useCallback((interval) => {
-        if (gameLoopRef.current) clearInterval(gameLoopRef.current);
-        gameLoopRef.current = setInterval(() => {
-            spawnEmail();
-        }, interval);
-    }, [spawnEmail]);
+        startSpawner(2200, 1);
+    }, [updateCaptain, endGame, spawnEmail, startSpawner]);
 
     // Wave Management
     useEffect(() => {
@@ -406,16 +470,14 @@ const AgentTriageGame = ({ onBack }) => {
             setWaveAnnouncement('WAVE 2');
             updateCaptain('wave2');
             playSound('wave');
-            if (gameLoopRef.current) clearInterval(gameLoopRef.current);
-            startSpawner(1600);
+            startSpawner(1600, 2);
             setTimeout(() => setWaveAnnouncement(null), 2000);
         } else if (timeLeft === 15 && wave === 2) {
             setWave(3);
             setWaveAnnouncement('FINAL WAVE');
             updateCaptain('wave3');
             playSound('wave');
-            if (gameLoopRef.current) clearInterval(gameLoopRef.current);
-            startSpawner(1100);
+            startSpawner(1100, 3);
             setTimeout(() => setWaveAnnouncement(null), 2000);
         }
     }, [timeLeft, wave, gameState, updateCaptain, playSound, startSpawner]);
@@ -451,124 +513,139 @@ const AgentTriageGame = ({ onBack }) => {
         return () => clearInterval(checkExpired);
     }, [gameState, playSound]);
 
-    // Handle Action - THE CORE ADDICTION LOOP
+    // Handle Action
     const handleAction = useCallback((id, action) => {
         if (gameState !== 'playing') return;
 
-        const email = emails.find(e => e.id === id);
-        if (!email) return;
+        setEmails(prevEmails => {
+            const email = prevEmails.find(e => e.id === id);
+            if (!email) return prevEmails;
 
-        const isCorrect = email.action === action;
-        const responseTime = Date.now() - email.spawnTime;
-        const isFast = responseTime < 1200;
-        const isLightning = responseTime < 600;
+            const isCorrect = email.action === action;
+            const responseTime = Date.now() - email.spawnTime;
+            const isFast = responseTime < 1200;
+            const isLightning = responseTime < 600;
 
-        if (isCorrect) {
-            let points = 10;
-            const newCombo = combo + 1;
-            let bonusText = '';
+            if (isCorrect) {
+                let points = 10;
+                let bonusText = '';
 
-            // Speed bonuses - REWARD QUICK REFLEXES
-            if (isLightning) {
-                points += 10;
-                bonusText = '⚡ LIGHTNING!';
-                setStats(prev => ({ ...prev, fastActions: prev.fastActions + 1 }));
-            } else if (isFast) {
-                points += 5;
-                bonusText = '💨 Fast!';
-                setStats(prev => ({ ...prev, fastActions: prev.fastActions + 1 }));
-            }
+                // Speed bonuses
+                if (isLightning) {
+                    points += 10;
+                    bonusText = '⚡ LIGHTNING!';
+                    setStats(prev => ({ ...prev, fastActions: prev.fastActions + 1 }));
+                } else if (isFast) {
+                    points += 5;
+                    bonusText = '💨 Fast!';
+                    setStats(prev => ({ ...prev, fastActions: prev.fastActions + 1 }));
+                }
 
-            // Critical email bonus
-            if (email.isCritical) {
-                points += 15;
-                bonusText = '🔥 CRITICAL SAVED!';
-                setStats(prev => ({ ...prev, criticalSaved: prev.criticalSaved + 1 }));
-            }
+                // Critical email bonus
+                if (email.isCritical) {
+                    points += 15;
+                    bonusText = '🔥 CRITICAL SAVED!';
+                    setStats(prev => ({ ...prev, criticalSaved: prev.criticalSaved + 1 }));
+                }
 
-            // Combo system - VARIABLE REWARDS FOR ADDICTION
-            if (newCombo >= 10) {
-                points += 25;
-                setComboPopup({ text: '🏆 10x LEGENDARY!', color: 'text-yellow-400' });
-                updateCaptain('combo10');
-                playSound('combo');
-                if (navigator.vibrate) navigator.vibrate([30, 20, 30, 20, 30]);
-            } else if (newCombo >= 7) {
-                points += 18;
-                setComboPopup({ text: '💎 7x CHAIN!', color: 'text-purple-400' });
-                updateCaptain('combo7');
-                playSound('combo');
-            } else if (newCombo >= 5) {
-                points += 15;
-                setComboPopup({ text: '⚡ 5x STREAK!', color: 'text-cyan-400' });
-                updateCaptain('combo5');
-                playSound('combo');
-            } else if (newCombo >= 3) {
-                points += 5;
-                setComboPopup({ text: '🔥 3x COMBO!', color: 'text-orange-400' });
-                updateCaptain('combo3');
+                // Update combo
+                setCombo(prevCombo => {
+                    const newCombo = prevCombo + 1;
+
+                    // Combo bonuses
+                    if (newCombo >= 10) {
+                        points += 25;
+                        setComboPopup({ text: '🏆 10x LEGENDARY!', color: 'text-yellow-400' });
+                        updateCaptain('combo10');
+                        playSound('combo');
+                        if (navigator.vibrate) navigator.vibrate([30, 20, 30, 20, 30]);
+                    } else if (newCombo >= 7) {
+                        points += 18;
+                        setComboPopup({ text: '💎 7x CHAIN!', color: 'text-purple-400' });
+                        updateCaptain('combo7');
+                        playSound('combo');
+                    } else if (newCombo >= 5) {
+                        points += 15;
+                        setComboPopup({ text: '⚡ 5x STREAK!', color: 'text-cyan-400' });
+                        updateCaptain('combo5');
+                        playSound('combo');
+                    } else if (newCombo >= 3) {
+                        points += 5;
+                        setComboPopup({ text: '🔥 3x COMBO!', color: 'text-orange-400' });
+                        updateCaptain('combo3');
+                    } else {
+                        updateCaptain('correct');
+                    }
+
+                    if (newCombo >= 3) {
+                        setTimeout(() => setComboPopup(null), 800);
+                    }
+
+                    setMaxCombo(prev => Math.max(prev, newCombo));
+                    return newCombo;
+                });
+
+                // Update score and stats
+                setScore(prev => prev + points);
+                setEmailsTriaged(prev => {
+                    const newCount = prev + 1;
+                    if (newCount >= 20) {
+                        setTimeout(() => endGame(true), 100);
+                    }
+                    return newCount;
+                });
+                setStats(prev => ({ ...prev, correct: prev.correct + 1 }));
+
+                // Visual feedback
+                setFlashColor('green');
+                setTimeout(() => setFlashColor(null), 120);
+                playSound('correct');
+
+                // Floating points particle
+                setParticles(prev => [...prev, {
+                    id: Date.now(),
+                    text: `+${points}`,
+                    subtext: bonusText,
+                    color: points >= 25 ? 'text-yellow-400' : points >= 15 ? 'text-cyan-400' : 'text-green-400'
+                }]);
+                setTimeout(() => setParticles(prev => prev.slice(1)), 800);
+
+                // Remove email
+                return prevEmails.filter(e => e.id !== id);
             } else {
-                updateCaptain('correct');
+                // Wrong action
+                setCombo(0);
+                setScore(prev => Math.max(0, prev - 8));
+                setStats(prev => ({ ...prev, wrong: prev.wrong + 1 }));
+                updateCaptain('wrong');
+
+                setFlashColor('red');
+                setShake(true);
+                setTimeout(() => {
+                    setFlashColor(null);
+                    setShake(false);
+                }, 300);
+                playSound('wrong');
+                if (navigator.vibrate) navigator.vibrate(80);
+
+                return prevEmails; // Keep email on wrong action
             }
-
-            // Clear combo popup
-            if (newCombo >= 3) {
-                setTimeout(() => setComboPopup(null), 800);
-            }
-
-            // Update state
-            setScore(prev => prev + points);
-            setCombo(newCombo);
-            setMaxCombo(prev => Math.max(prev, newCombo));
-            setEmailsTriaged(prev => prev + 1);
-            setStats(prev => ({ ...prev, correct: prev.correct + 1 }));
-            setLastActionTime(Date.now());
-
-            // Visual feedback
-            setFlashColor('green');
-            setTimeout(() => setFlashColor(null), 120);
-            playSound('correct');
-
-            // Floating points particle
-            setParticles(prev => [...prev, {
-                id: Date.now(),
-                text: `+${points}`,
-                subtext: bonusText,
-                color: points >= 25 ? 'text-yellow-400' : points >= 15 ? 'text-cyan-400' : 'text-green-400'
-            }]);
-            setTimeout(() => setParticles(prev => prev.slice(1)), 800);
-
-            // Remove email
-            setEmails(prev => prev.filter(e => e.id !== id));
-
-            // Check win
-            if (emailsTriaged + 1 >= 20) {
-                endGame(true);
-            }
-        } else {
-            // Wrong action - LOSS AVERSION
-            setCombo(0);
-            setScore(prev => Math.max(0, prev - 8));
-            setStats(prev => ({ ...prev, wrong: prev.wrong + 1 }));
-            updateCaptain('wrong');
-
-            setFlashColor('red');
-            setShake(true);
-            setTimeout(() => {
-                setFlashColor(null);
-                setShake(false);
-            }, 300);
-            playSound('wrong');
-            if (navigator.vibrate) navigator.vibrate(80);
-        }
-    }, [gameState, emails, combo, playSound, updateCaptain, emailsTriaged]);
+        });
+    }, [gameState, playSound, updateCaptain, endGame]);
 
     // Keyboard Controls
     useEffect(() => {
-        if (gameState !== 'playing') return;
-
         const handleKeyDown = (e) => {
             const key = e.key.toLowerCase();
+
+            // Quick start with spacebar
+            if (key === ' ' && gameState === 'start') {
+                e.preventDefault();
+                startGame();
+                return;
+            }
+
+            if (gameState !== 'playing') return;
 
             // Navigation
             if (key === 'arrowup' || key === 'w') {
@@ -593,12 +670,6 @@ const AgentTriageGame = ({ onBack }) => {
                     handleAction(selectedEmail.id, 'delete');
                 }
             }
-
-            // Quick start
-            if (key === ' ' && gameState === 'start') {
-                e.preventDefault();
-                startGame();
-            }
         };
 
         window.addEventListener('keydown', handleKeyDown);
@@ -614,48 +685,11 @@ const AgentTriageGame = ({ onBack }) => {
         }
     }, [emails.length, selectedEmailIndex]);
 
-    // End Game
-    const endGame = useCallback(async (win) => {
-        clearInterval(gameLoopRef.current);
-        clearInterval(timerRef.current);
-        setGameState(win ? 'won' : 'lost');
-
-        const finalScore = score;
-        if (finalScore > personalBest.score || emailsTriaged > personalBest.triaged) {
-            const newBest = {
-                score: Math.max(finalScore, personalBest.score),
-                triaged: Math.max(emailsTriaged, personalBest.triaged)
-            };
-            setPersonalBest(newBest);
-            localStorage.setItem('triageBest', JSON.stringify(newBest));
-        }
-
-        try {
-            await api.submitScore('triage', finalScore);
-        } catch (err) {
-            console.error('Failed to submit score:', err);
-        }
-
-        if (win) {
-            updateCaptain('win');
-            if (navigator.vibrate) navigator.vibrate([50, 50, 50, 50, 100]);
-            confetti({
-                particleCount: 200,
-                spread: 100,
-                origin: { y: 0.6 },
-                colors: ['#06b6d4', '#22c55e', '#eab308', '#a855f7']
-            });
-        } else {
-            updateCaptain('lose');
-            if (navigator.vibrate) navigator.vibrate(200);
-        }
-    }, [score, emailsTriaged, personalBest, updateCaptain]);
-
     // Cleanup
     useEffect(() => {
         return () => {
-            clearInterval(gameLoopRef.current);
-            clearInterval(timerRef.current);
+            if (gameLoopRef.current) clearInterval(gameLoopRef.current);
+            if (timerRef.current) clearInterval(timerRef.current);
         };
     }, []);
 
@@ -671,9 +705,9 @@ const AgentTriageGame = ({ onBack }) => {
         neutral: 'bg-cyan-600',
         happy: 'bg-green-500',
         helpful: 'bg-blue-500',
-        excited: 'bg-yellow-500 animate-pulse',
+        excited: 'bg-yellow-500',
         concerned: 'bg-orange-500',
-        urgent: 'bg-red-500 animate-pulse',
+        urgent: 'bg-red-500',
         victory: 'bg-gradient-to-r from-yellow-400 via-green-400 to-cyan-400',
         sad: 'bg-slate-500'
     };
@@ -685,13 +719,34 @@ const AgentTriageGame = ({ onBack }) => {
         <div
             ref={gameAreaRef}
             className={`w-full max-w-lg mx-auto bg-slate-900/95 border border-cyan-500/30 rounded-2xl overflow-hidden shadow-2xl relative backdrop-blur-sm transition-all
-                ${shake ? 'animate-[shake_0.3s_ease-in-out]' : ''}`}
+                ${shake ? 'shake-animation' : ''}`}
             style={{
                 boxShadow: flashColor === 'green' ? '0 0 50px rgba(34, 197, 94, 0.5)' :
                     flashColor === 'red' ? '0 0 50px rgba(239, 68, 68, 0.5)' :
                         '0 25px 50px -12px rgba(0, 0, 0, 0.6)'
             }}
         >
+            {/* CSS Animations - FIXED: Regular style tag instead of jsx */}
+            <style>{`
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    20% { transform: translateX(-6px); }
+                    40% { transform: translateX(6px); }
+                    60% { transform: translateX(-4px); }
+                    80% { transform: translateX(4px); }
+                }
+                .shake-animation {
+                    animation: shake 0.3s ease-in-out;
+                }
+                @keyframes criticalPulse {
+                    0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+                    50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.7); }
+                }
+                .critical-pulse {
+                    animation: criticalPulse 1s ease-in-out infinite;
+                }
+            `}</style>
+
             {/* Header HUD */}
             <div className="bg-slate-800/95 p-3 sm:p-4 border-b border-slate-700 backdrop-blur-xl">
                 {/* Top Row - Score & Time */}
@@ -772,7 +827,7 @@ const AgentTriageGame = ({ onBack }) => {
                     <motion.div
                         animate={{ scale: captainMessage.mood === 'excited' || captainMessage.mood === 'victory' ? [1, 1.1, 1] : 1 }}
                         transition={{ repeat: captainMessage.mood === 'excited' ? Infinity : 0, duration: 0.5 }}
-                        className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transition-all ${moodColors[captainMessage.mood]}`}
+                        className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transition-all ${moodColors[captainMessage.mood]} ${captainMessage.mood === 'urgent' || captainMessage.mood === 'excited' ? 'animate-pulse' : ''}`}
                     >
                         CE
                     </motion.div>
@@ -811,7 +866,7 @@ const AgentTriageGame = ({ onBack }) => {
                 )}
             </AnimatePresence>
 
-            {/* Game Area - SCROLLABLE EMAIL LIST */}
+            {/* Game Area */}
             <div className="relative min-h-[400px] sm:min-h-[450px] max-h-[60vh] bg-gradient-to-b from-[#0a0a14] to-[#0f0f1a] overflow-hidden">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 opacity-[0.02]"
@@ -929,7 +984,7 @@ const AgentTriageGame = ({ onBack }) => {
 
                             <div className="text-5xl sm:text-6xl font-black text-white mb-2 font-mono">{score}</div>
 
-                            {score > personalBest.score - (gameState === 'won' ? score : 0) && score > 0 && (
+                            {score > 0 && score >= personalBest.score && (
                                 <motion.div
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
@@ -981,7 +1036,7 @@ const AgentTriageGame = ({ onBack }) => {
                     </div>
                 )}
 
-                {/* EMAIL LIST - THE MAIN GAME AREA */}
+                {/* EMAIL LIST */}
                 {gameState === 'playing' && (
                     <div
                         ref={emailContainerRef}
@@ -1049,21 +1104,6 @@ const AgentTriageGame = ({ onBack }) => {
                     </motion.div>
                 )}
             </div>
-
-            {/* Custom Animations */}
-            <style jsx>{`
-                @keyframes shake {
-                    0%, 100% { transform: translateX(0); }
-                    20% { transform: translateX(-6px); }
-                    40% { transform: translateX(6px); }
-                    60% { transform: translateX(-4px); }
-                    80% { transform: translateX(4px); }
-                }
-                @keyframes criticalPulse {
-                    0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-                    50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.7); }
-                }
-            `}</style>
         </div>
     );
 };
