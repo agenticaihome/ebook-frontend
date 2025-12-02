@@ -40,17 +40,17 @@ const DeepWorkDive = ({ onBack }) => {
     const gameStartTimeRef = useRef(0);
 
     // ===================
-    // TUNED PHYSICS - Premium Flappy feel
+    // EASY MODE PHYSICS - Floaty, forgiving, addictive
     // ===================
-    const FIXED_TIMESTEP = 1000 / 60; // 60 physics updates per second
-    const GRAVITY = 0.33;             // Snappier gravity
-    const JUMP_VELOCITY = -5.8;       // Stronger, short-lived jump
-    const TERMINAL_VELOCITY = 9.0;    // Faster max fall
-    const RISE_DAMPING = 0.88;        // Floaty rising
+    const FIXED_TIMESTEP = 1000 / 60;
+    const GRAVITY = 0.22;               // ↓ Slower fall (was 0.33) – 50% more hang time
+    const JUMP_VELOCITY = -7.0;         // ↑ Bigger hops (was -5.8) – reach anywhere
+    const TERMINAL_VELOCITY = 6.5;      // ↓ Slower max drop (was 9.0) – easier recoveries
+    const RISE_DAMPING = 0.94;          // ↑ Super floaty up (was 0.88) – glide like a pro
 
-    const BASE_SPEED = 3.8;           // Balanced speed
-    const SPEED_INCREASE = 0.0008;    // Very gradual ramp
-    const SPAWN_INTERVAL = 1450;      // Tighter but fair spacing
+    const BASE_SPEED = 2.8;             // ↓ Slower obstacles (was 3.8) – tons of reaction time
+    const SPEED_INCREASE = 0.0004;      // ↓ Barely ramps up (was 0.0008) – stays chill forever
+    const SPAWN_INTERVAL = 1700;        // ↑ Way more space between distractions (was 1450)
 
     // ===================
     // GAME DIMENSIONS (percentage-based for responsiveness)
@@ -58,8 +58,8 @@ const DeepWorkDive = ({ onBack }) => {
     const CAPTAIN_X = 22;             // Captain horizontal position (%)
     const CAPTAIN_SIZE = 11;          // Captain size as % of container width
     const OBSTACLE_WIDTH = 15;        // Obstacle width (%)
-    const GAP_SIZE = 28;              // Gap between pipes (% of height) - comfortable
-    const HITBOX_SHRINK = 1.5;        // Forgiving hitbox
+    const GAP_SIZE = 35;              // ↑ Massive gaps (was 28) – auto-win most
+    const HITBOX_SHRINK = 2.5;        // ↑ Super forgiving (was 1.5) – barely collide
 
     // Distraction types
     const distractionTypes = [
@@ -121,7 +121,7 @@ const DeepWorkDive = ({ onBack }) => {
     // ===================
     const spawnObstacle = useCallback(() => {
         const progress = scoreRef.current * 0.1;
-        const gapCenter = 50 + Math.sin(progress) * 22; // Breathing motion for hypnotic feel
+        const gapCenter = 50 + Math.sin(progress) * 12;  // ↓ Less swingy (was *22) – stays 38-62%
         const type = distractionTypes[Math.floor(Math.random() * distractionTypes.length)];
 
         const newObstacle = {
