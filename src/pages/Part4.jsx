@@ -80,45 +80,45 @@ const Part4 = () => {
                                             </button>
                                         );
                                     })
-                                }
-                            </div>
-                        </div>
-                    </section>
-
-
-                    <div className="bg-red-900/20 p-4 rounded mb-4">
-                        <p className="text-white font-bold text-sm mb-2">The Math of Sarah's Week:</p>
-                        <div className="space-y-1 text-xs text-slate-300">
-                            <div>7-day sleep total: 36.5 hours (average 5.2 hrs/night)</div>
-                            <div>Recommended: 56 hours (8 hrs/night)</div>
-                            <div className="pt-2 border-t border-red-500/30 mt-2">
-                                <strong>Sleep debt: 19.5 hours in ONE WEEK</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="bg-red-900/20 p-4 rounded mb-4">
-                        <p className="text-white font-bold text-sm mb-2">Cognitive Impact:</p>
-                        <div className="space-y-1 text-xs text-slate-300">
-                            <div>• Monday (after 4hr night): Operating at <span className="text-red-400 font-bold">-40% capacity</span></div>
-                            <div>• By Friday: Equivalent to being awake for <span className="text-red-400 font-bold">18+ hours</span> (legally drunk-level impairment)</div>
-                        </div>
-                        <p className="text-red-400 text-xs mt-3">Sarah's $12K mistake: Not a "careless error." Predictable outcome of compounded sleep deprivation.</p>
-                    </div>
-
-                    <div className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/40">
-                        <p className="text-slate-400 text-xs mb-2">Traditional productivity response: "Work harder. Focus more."</p>
-                        <p className="text-red-400 text-sm mb-3"><strong>Biological reality: YOU CAN'T FOCUS WHEN YOUR BRAIN IS OFFLINE.</strong></p>
-                        <p className="text-green-400 font-bold text-sm mb-2">Recovery-Aware approach:</p>
-                        <ul className="space-y-1 text-xs text-slate-300">
-                            <li>• Monday 9 AM presentation? DETECTED: 4hr sleep last night</li>
-                            <li>• Agent suggests: "Move presentation to Thursday 2 PM (after 3 nights of recovery)"</li>
-                            <li>• Result: Sarah presents at 80% capacity instead of 40%</li>
-                            <li>• Outcome: No mistakes, confident delivery, project approved</li>
+                                    < li >• After 1 night of 4 hours: <strong className="text-red-400">-40% cognitive performance</strong> on complex tasks</li>
+                            <li>• After 10 days of 6 hours/night: Cognitive equivalent of <strong className="text-red-400">24 hours awake</strong></li>
+                            <li>• <strong className="text-red-400">Sleep debt is CUMULATIVE</strong> — can't "catch up" on weekends</li>
+                            <li>• Impact on decision-making, emotional regulation, immune function</li>
                         </ul>
-                    </div>
 
-                    <p className="text-cyan-400 text-sm mt-4 italic">The compound effect works BOTH WAYS: Sleep debt compounds into burnout. Sleep recovery compounds into sustainable performance.</p>
+                        <div className="bg-red-900/20 p-4 rounded mb-4">
+                            <p className="text-white font-bold text-sm mb-2">The Math of Sarah's Week:</p>
+                            <div className="space-y-1 text-xs text-slate-300">
+                                <div>7-day sleep total: 36.5 hours (average 5.2 hrs/night)</div>
+                                <div>Recommended: 56 hours (8 hrs/night)</div>
+                                <div className="pt-2 border-t border-red-500/30 mt-2">
+                                    <strong>Sleep debt: 19.5 hours in ONE WEEK</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-red-900/20 p-4 rounded mb-4">
+                            <p className="text-white font-bold text-sm mb-2">Cognitive Impact:</p>
+                            <div className="space-y-1 text-xs text-slate-300">
+                                <div>• Monday (after 4hr night): Operating at <span className="text-red-400 font-bold">-40% capacity</span></div>
+                                <div>• By Friday: Equivalent to being awake for <span className="text-red-400 font-bold">18+ hours</span> (legally drunk-level impairment)</div>
+                            </div>
+                            <p className="text-red-400 text-xs mt-3">Sarah's $12K mistake: Not a "careless error." Predictable outcome of compounded sleep deprivation.</p>
+                        </div>
+
+                        <div className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/40">
+                            <p className="text-slate-400 text-xs mb-2">Traditional productivity response: "Work harder. Focus more."</p>
+                            <p className="text-red-400 text-sm mb-3"><strong>Biological reality: YOU CAN'T FOCUS WHEN YOUR BRAIN IS OFFLINE.</strong></p>
+                            <p className="text-green-400 font-bold text-sm mb-2">Recovery-Aware approach:</p>
+                            <ul className="space-y-1 text-xs text-slate-300">
+                                <li>• Monday 9 AM presentation? DETECTED: 4hr sleep last night</li>
+                                <li>• Agent suggests: "Move presentation to Thursday 2 PM (after 3 nights of recovery)"</li>
+                                <li>• Result: Sarah presents at 80% capacity instead of 40%</li>
+                                <li>• Outcome: No mistakes, confident delivery, project approved</li>
+                            </ul>
+                        </div>
+
+                        <p className="text-cyan-400 text-sm mt-4 italic">The compound effect works BOTH WAYS: Sleep debt compounds into burnout. Sleep recovery compounds into sustainable performance.</p>
                 </div>
 
                 {/* Quick Win Box */}
