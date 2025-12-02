@@ -149,30 +149,30 @@ const Part1 = () => {
                             <p className="text-xl text-slate-400 italic mb-8">(And Why Your Current Tools Are Just Expensive Notepads)</p>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-8 mb-4">The Morning Sarah Broke</h3>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 Sarah didn't remember falling asleep. She remembered opening her laptop at 11:47 PM to "just check one thing," and then her alarm was screaming.
                             </p>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 5:47 AM. She had a client presentation in 48 minutes.
                             </p>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 Wait—no. The calendar said <em>tomorrow</em>. She'd set the wrong day. <em>Again</em>.
                             </p>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 While brewing coffee with shaking hands, her phone buzzed. Manager on Slack. <em>"Did you see the budget email?"</em> She hadn't. She clicked over to Gmail—47 unread, the important one buried somewhere between a Target receipt and a LinkedIn endorsement.
                             </p>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 In the scramble to find the email, she forgot she'd started the coffee maker. No filter. Grounds everywhere.
                             </p>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 By 6:32 AM, Sarah was sitting in her car, presentation half-ready, wondering how other people made this look easy.
                             </p>
-                            <p className="text-slate-300 leading-relaxed italic">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed italic mb-8">
                                 "There has to be a better way," she thought. "Or I'm going to lose my mind."
                             </p>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">What Changed</h3>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 Sarah's mornings now start at 6:15 AM. Not because she's lazy. Because she doesn't need the 30-minute panic sprint anymore.
                             </p>
                             <p className="text-slate-300 leading-relaxed mb-4">
@@ -222,10 +222,10 @@ const Part1 = () => {
                             </Suspense>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Chatbot vs. Agent: The Line That Changes Everything</h3>
-                            <p className="text-slate-300 leading-relaxed mb-4">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 Let me be direct: <strong>This is the most important concept in this entire book.</strong>
                             </p>
-                            <p className="text-slate-300 leading-relaxed mb-6">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-8">
                                 If you understand this distinction, the next 14 chapters will feel like a toolkit. If you don't, they'll feel like random "tips."
                             </p>
 
@@ -244,7 +244,7 @@ const Part1 = () => {
                             </div>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Mental Load Problem</h3>
-                            <p className="text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-loose md:leading-relaxed mb-6">
                                 Modern life requires managing an overwhelming amount of information. This "mental load" is exhausting. Not because individual tasks are hard, but because <strong>tracking everything is cognitively draining</strong>.
                             </p>
 
