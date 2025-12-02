@@ -667,57 +667,59 @@ const Part5 = () => {
 
                                 <div className="flex flex-col md:flex-row gap-6 items-start mb-6">
                                     <div className="flex-1">
-                                        <h4 className="text-cyan-400 font-bold text-xl mb-3">DDS (Daily Dose of Systems)</h4>
-                                        <p className="text-slate-300 text-sm mb-4 leading-relaxed">
-                                            I'm not a productivity guru. I'm a <strong className="text-white">systems engineer</strong> who got tired of watching brilliant people drown in busywork.
-                                        </p>
-                                        <p className="text-slate-300 text-sm mb-4 leading-relaxed">
-                                            For 8+ years, I've built automation systems for Fortune 500 companies—the kind that save millions of dollars by eliminating wasteful processes. Then I realized: <span className="text-red-400 font-bold">The same principles that streamline billion-dollar operations can fix YOUR overloaded life.</span>
+                                        <h4 className="text-cyan-400 font-bold text-xl mb-3">DDS — Doctor of Digital Systems</h4>
+                                        <p className="text-slate-400 text-sm italic mb-4">
+                                            (Also: "Dad Deploying Systems")
                                         </p>
 
                                         <div className="bg-slate-900/50 p-4 rounded-xl border border-cyan-500/30 my-4">
-                                            <p className="text-white font-bold text-sm mb-2">The Turning Point (2021):</p>
-                                            <p className="text-slate-400 text-xs leading-relaxed mb-3">
-                                                I watched a colleague—brilliant engineer, loving parent—miss her daughter's recital because she forgot to set a reminder. She cried in the parking lot. "I remember every Jira ticket. Why can't I remember the things that MATTER?"
-                                            </p>
-                                            <p className="text-cyan-400 text-xs italic">
-                                                That's when I knew: If Fortune 500s can automate complex workflows, we can automate YOUR mental load.
-                                            </p>
+                                            <p className="text-white font-bold text-sm mb-2">The Reality:</p>
+                                            <ul className="space-y-1 text-xs text-slate-300">
+                                                <li>• <strong className="text-cyan-400">Endodontic resident</strong> (dental specialist in training)</li>
+                                                <li>• <strong className="text-cyan-400">50+ hour clinical weeks</strong> (root canals, emergencies)</li>
+                                                <li>• <strong className="text-cyan-400">Father of two children</strong> under three years old</li>
+                                                <li>• <strong className="text-cyan-400">Army veteran</strong> (502nd Dental Company, Fort Hood)</li>
+                                            </ul>
                                         </div>
 
-                                        <p className="text-slate-300 text-sm mb-3 leading-relaxed">
-                                            This book is the system I wish existed when I was drowning in 200+ unread emails, missing bill payments, and relearning React hooks for the 6th time. It's <strong className="text-white">battle-tested, real-world automation</strong>—not theory, not fluff, not generic "be more productive" advice.
+                                        <p className="text-white font-bold mb-3 text-sm">
+                                            "I didn't build this system for fun. I built it to survive."
+                                        </p>
+
+                                        <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+                                            This isn't a productivity guru with unlimited time. This is an <strong className="text-white">endodontic resident working 50+ hours</strong>, coming home to two toddlers under three, needing to be both a <strong className="text-white">high-performing doctor</strong> and a <strong className="text-white">present dad</strong> without burning out. Residency + toddlers + sanity required systems that work <strong className="text-white">under extreme constraints</strong>.
                                         </p>
 
                                         <div className="space-y-2 text-sm text-slate-300">
                                             <div className="flex items-start gap-2">
                                                 <span className="text-cyan-400">✓</span>
-                                                <span><strong className="text-white">No coding required</strong> (seriously—if you can copy/paste, you can build this)</span>
+                                                <span><strong className="text-white">No coding required</strong> (I'm a dentist, not a software engineer)</span>
                                             </div>
                                             <div className="flex items-start gap-2">
                                                 <span className="text-cyan-400">✓</span>
-                                                <span><strong className="text-white">$0-20/month</strong> for 70% of capability (premium tools optional)</span>
+                                                <span><strong className="text-white">$0-20/month</strong> to start (residency salary isn't huge)</span>
                                             </div>
                                             <div className="flex items-start gap-2">
                                                 <span className="text-cyan-400">✓</span>
-                                                <span><strong className="text-white">30-day implementation</strong> (tested with 200+ beta readers)</span>
+                                                <span><strong className="text-white">Built during chaos</strong> (if it works for me, it'll work for you)</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="bg-green-900/20 p-6 rounded-xl border border-green-500/30 mb-6">
-                                    <p className="text-white font-bold mb-3">Why Trust This System?</p>
+                                    <p className="text-white font-bold mb-3">Personal Results (8 Months In):</p>
                                     <div className="space-y-2 text-sm text-slate-300">
-                                        <div>• <strong className="text-green-400">200+ beta testers</strong> completed the 30-day challenge (avg. 8-12 hrs/week reclaimed)</div>
-                                        <div>• <strong className="text-green-400">Zero fluff</strong> - Every chapter has a crisis story, transformation proof, and skeptic objections addressed</div>
-                                        <div>• <strong className="text-green-400">Living document</strong> - Updated quarterly as AI tools evolve (your purchase = lifetime access)</div>
-                                        <div>• <strong className="text-green-400">Built by engineers, for humans</strong> - Not a tech bro manifesto. Real people, real problems, real solutions.</div>
+                                        <div>• <strong className="text-green-400">7-8 hours saved weekly</strong> (documented, not guessed)</div>
+                                        <div>• <strong className="text-green-400">Daily emails requiring attention:</strong> <span className="text-red-400">44</span> → <span className="text-green-400 font-bold">2-3</span></div>
+                                        <div>• <strong className="text-green-400">Missed family moments:</strong> <span className="text-red-400">Weekly</span> → <span className="text-green-400 font-bold">Zero (system reminds me)</span></div>
+                                        <div>• <strong className="text-green-400">3 AM anxiety wake-ups:</strong> <span className="text-red-400">3-4x/week</span> → <span className="text-green-400 font-bold">Rare (agents handle it)</span></div>
+                                        <div>• <strong className="text-green-400">Mental clarity:</strong> Can be present with my kids instead of mentally reviewing tomorrow's patient schedule</div>
                                     </div>
                                 </div>
 
                                 <p className="text-slate-300 text-sm text-center italic">
-                                    "I don't want you to work harder. I want you to stop working on things that don't matter. That's efficiency." — DDS
+                                    "I needed a way to be a high-performing doctor and a present human being without burning out. Prompts weren't enough. I needed agents." — DDS
                                 </p>
                             </div>
 
