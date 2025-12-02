@@ -266,7 +266,7 @@ const Part5 = () => {
                                     <div className="space-y-4 text-sm">
                                         <div>
                                             <p className="text-white font-bold mb-2">"This sounds way too complex. Can't I just keep individual agents?"</p>
-                                            <p className="text-cyan-400 text-xs">Maya tried that for 2 months. Result: Agent civil war. Orchestrator ISN'T more complex—it's a CONFLICT RESOLVER. You set priority hierarchy once (Health > Family > Work). Orchestrator applies it automatically.</p>
+                                            <p className="text-cyan-400 text-xs">Maya tried that for 2 months. Result: Agent civil war. Orchestrator ISN'T more complex—it's a CONFLICT RESOLVER. You set priority hierarchy once (Health &gt; Family &gt; Work). Orchestrator applies it automatically.</p>
                                         </div>
 
                                         <div>
