@@ -7,6 +7,8 @@ import PrefetchLink from './PrefetchLink';
 
 import CaptainTips from '../CaptainTips';
 import PreLaunchBanner from '../common/PreLaunchBanner';
+import { useUser } from '../../context/UserContext';
+import BadgeNotification from '../gamification/BadgeNotification';
 
 const WebbookLayout = ({ children }) => {
     // ... existing state ...
@@ -14,6 +16,8 @@ const WebbookLayout = ({ children }) => {
     const [isCaptainOpen, setIsCaptainOpen] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [newBadge, setNewBadge] = useState(null);
+    const { unlockBadge } = useUser();
     const location = useLocation();
 
     // ... existing effects ...
@@ -43,8 +47,18 @@ const WebbookLayout = ({ children }) => {
         setHasSaved(false); // Reset on route change
     }, [location.pathname]);
 
+    // Badge Definitions
+    const badges = {
+        '/part1': { id: 'part1_complete', title: 'Privacy Architect', description: 'You have secured your digital perimeter. The foundation is laid.' },
+        '/part2': { id: 'part2_complete', title: 'Automation Rookie', description: 'Your first agents are deployed. The morning chaos is tamed.' },
+        '/part3': { id: 'part3_complete', title: 'Deep Work Defender', description: 'You have reclaimed your focus from the distraction economy.' },
+        '/part4': { id: 'part4_complete', title: 'Bio-Hacker', description: 'Health and productivity are now synced. You are optimizing the machine.' },
+        '/part5': { id: 'part5_complete', title: 'System Architect', description: 'You have built a fully autonomous life system. Welcome to the future.' }
+    };
+
     useEffect(() => {
         if (scrollProgress > 0.95 && !hasSaved && location.pathname.includes('part')) {
+            // 1. Save Progress Toast
             toast.success("Progress Saved", {
                 icon: '💾',
                 style: {
@@ -54,8 +68,17 @@ const WebbookLayout = ({ children }) => {
                 }
             });
             setHasSaved(true);
+
+            // 2. Check for Badge Unlock
+            const badge = badges[location.pathname];
+            if (badge) {
+                const isNew = unlockBadge(badge.id);
+                if (isNew) {
+                    setNewBadge(badge);
+                }
+            }
         }
-    }, [scrollProgress, hasSaved, location.pathname]);
+    }, [scrollProgress, hasSaved, location.pathname, unlockBadge]);
 
     // Mobile: Auto-close sidebar on route change
     useEffect(() => {
@@ -399,6 +422,9 @@ const WebbookLayout = ({ children }) => {
 
             {/* Floating Captain Helper */}
             <CaptainTips />
+
+            {/* Gamification Badge Modal */}
+            <BadgeNotification badge={newBadge} onClose={() => setNewBadge(null)} />
         </div>
     );
 };
