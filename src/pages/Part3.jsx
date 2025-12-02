@@ -18,6 +18,8 @@ const SocialShare = React.lazy(() => import('../components/tools/SocialShare'));
 const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVisual'));
 const TroubleshootingAccordion = React.lazy(() => import('../components/common/TroubleshootingAccordion'));
 const CopyPrompt = React.lazy(() => import('../components/common/CopyPrompt'));
+const AgentTriageGame = React.lazy(() => import('../components/gamification/AgentTriageGame'));
+const CalendarDefenseGame = React.lazy(() => import('../components/gamification/CalendarDefenseGame'));
 
 const Part3 = () => {
     const navigate = useNavigate();
@@ -150,6 +152,19 @@ const Part3 = () => {
                                 </Suspense>
 
                                 <div className="mt-12 prose prose-invert prose-lg max-w-none">
+
+                                    {/* Gamification: Inbox Defense */}
+                                    <div className="my-12">
+                                        <h3 className="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 mb-6">
+                                            🎮 Training Simulation: Inbox Defense
+                                        </h3>
+                                        <Suspense fallback={<div className="h-96 animate-pulse bg-slate-800/50 rounded-2xl" />}>
+                                            <AgentTriageGame />
+                                        </Suspense>
+                                        <p className="text-center text-slate-400 text-sm mt-4">
+                                            Prove you can filter the noise. Delegate the work, delete the spam.
+                                        </p>
+                                    </div>
 
                                     {/* Quick Win Box */}
                                     <div className="bg-gradient-to-r from-blue-900/30 to-indigo-900/30 p-6 rounded-xl border border-blue-500/50 my-8">
@@ -485,6 +500,19 @@ const Part3 = () => {
                         <div className="max-w-4xl mx-auto">
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 8: The Calendar Defense Agent</h2>
+
+                                {/* Gamification: Calendar Defense */}
+                                <div className="my-12">
+                                    <h3 className="text-2xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-6">
+                                        🛡️ Training Simulation: Calendar Defense
+                                    </h3>
+                                    <Suspense fallback={<div className="h-96 animate-pulse bg-slate-800/50 rounded-2xl" />}>
+                                        <CalendarDefenseGame />
+                                    </Suspense>
+                                    <p className="text-center text-slate-400 text-sm mt-4">
+                                        Protect your Deep Work blocks. Decline the noise.
+                                    </p>
+                                </div>
 
                                 <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
                                     <h3 className="text-red-400 font-bold mb-3">The 37-Meeting Week</h3>
@@ -1241,9 +1269,9 @@ const Part3 = () => {
                             hashtags={["AgenticAI", "DeepWork", "Productivity"]}
                         />
                     </Suspense>
-                </div>
-            </PasswordGate>
-        </WebbookLayout>
+                </div >
+            </PasswordGate >
+        </WebbookLayout >
     );
 };
 

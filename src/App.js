@@ -14,6 +14,7 @@ import SalesPage from './SalesPage';
 
 // Lazy load ClaimAccessPage
 const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
+const GameLandingPage = lazy(() => import('./pages/GameLandingPage'));
 
 // Loading component
 const Loading = () => (
@@ -93,6 +94,13 @@ const AnimatedRoutes = () => {
             <Route path="/claim-access" element={
               <Suspense fallback={<Loading />}>
                 <PageTransition><ClaimAccessPage /></PageTransition>
+              </Suspense>
+            } />
+
+            {/* Game Landing Page */}
+            <Route path="/challenge" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><GameLandingPage /></PageTransition>
               </Suspense>
             } />
 
