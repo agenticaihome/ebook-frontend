@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, RotateCcw, Trophy, Share2, ArrowLeft, Zap } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -33,20 +33,24 @@ const DeepWorkDive = ({ onBack }) => {
     const gameStateRef = useRef('idle');
     const velocityRef = useRef(0);
     const captainYRef = useRef(50);
+    const captainRotationRef = useRef(0);
     const scoreRef = useRef(0);
     const obstaclesRef = useRef([]);
     const lastSpawnRef = useRef(0);
     const gameStartTimeRef = useRef(0);
 
     // ===================
-    // TUNED PHYSICS - Gentle float, frequent taps
+    // TUNED PHYSICS - Premium Flappy feel
     // ===================
     const FIXED_TIMESTEP = 1000 / 60; // 60 physics updates per second
-    const GRAVITY = 0.175;             // Gentle gravity - not too punishing
-    const JUMP_VELOCITY = -4;       // Small hop - tap frequently to float
-    const TERMINAL_VELOCITY = 7;      // Slower max fall speed
-    const BASE_SPEED = 3.2;           // Slightly slower obstacles
-    const SPEED_INCREASE = 0.006;     // Gentler speed increase
+    const GRAVITY = 0.33;             // Snappier gravity
+    const JUMP_VELOCITY = -5.8;       // Stronger, short-lived jump
+    const TERMINAL_VELOCITY = 9.0;    // Faster max fall
+    const RISE_DAMPING = 0.88;        // Floaty rising
+
+    const BASE_SPEED = 3.8;           // Balanced speed
+    const SPEED_INCREASE = 0.0008;    // Very gradual ramp
+    const SPAWN_INTERVAL = 1450;      // Tighter but fair spacing
 
     // ===================
     // GAME DIMENSIONS (percentage-based for responsiveness)
@@ -54,9 +58,8 @@ const DeepWorkDive = ({ onBack }) => {
     const CAPTAIN_X = 22;             // Captain horizontal position (%)
     const CAPTAIN_SIZE = 11;          // Captain size as % of container width
     const OBSTACLE_WIDTH = 15;        // Obstacle width (%)
-    const GAP_SIZE = 28;              // Gap between pipes (% of height) - comfortable for gentle taps
-    const SPAWN_INTERVAL = 1700;      // Slightly more time between obstacles
-    const HITBOX_SHRINK = 1.5;        // Shrink hitbox by this % on each side (forgiving)
+    const GAP_SIZE = 28;              // Gap between pipes (% of height) - comfortable
+    const HITBOX_SHRINK = 1.5;        // Forgiving hitbox
 
     // Distraction types
     const distractionTypes = [
@@ -117,8 +120,8 @@ const DeepWorkDive = ({ onBack }) => {
     // SPAWN OBSTACLE
     // ===================
     const spawnObstacle = useCallback(() => {
-        // Gap center varies between 25-75% of screen height
-        const gapCenter = 25 + Math.random() * 50;
+        const progress = scoreRef.current * 0.1;
+        const gapCenter = 50 + Math.sin(progress) * 22; // Breathing motion for hypnotic feel
         const type = distractionTypes[Math.floor(Math.random() * distractionTypes.length)];
 
         const newObstacle = {
@@ -196,16 +199,17 @@ const DeepWorkDive = ({ onBack }) => {
             // Apply gravity
             velocityRef.current += GRAVITY;
 
-            // Cap both falling AND rising speed
-            if (velocityRef.current > TERMINAL_VELOCITY) {
-                velocityRef.current = TERMINAL_VELOCITY;
-            }
-            if (velocityRef.current < -TERMINAL_VELOCITY) {
-                velocityRef.current = -TERMINAL_VELOCITY; // Prevent shooting up too fast
+            // Separate rise/fall feel
+            if (velocityRef.current < 0) {
+                // Rising → light & floaty
+                velocityRef.current *= RISE_DAMPING;
+            } else {
+                // Falling → heavier, more momentum
+                velocityRef.current = Math.min(velocityRef.current, TERMINAL_VELOCITY);
             }
 
-            // Update position (smoother multiplier)
-            captainYRef.current += velocityRef.current * 0.5;
+            // Update position
+            captainYRef.current += velocityRef.current;
 
             // Calculate current speed (increases with score)
             const currentSpeed = BASE_SPEED * (1 + scoreRef.current * SPEED_INCREASE);
@@ -231,7 +235,16 @@ const DeepWorkDive = ({ onBack }) => {
                     triggerPassedEffect();
                     triggerFlash('green');
 
-                    // Milestone celebrations
+                    // Confetti every score for addictive feel
+                    confetti({
+                        particleCount: 30,
+                        spread: 50,
+                        origin: { x: 0.2, y: 0.45 },
+                        colors: ['#00ff88', '#00ffff', '#ff00ff'],
+                        scalar: 1.3,
+                    });
+
+                    // Milestone celebrations (bigger)
                     if ([5, 10, 20, 30, 50].includes(scoreRef.current)) {
                         confetti({
                             particleCount: 40 + scoreRef.current,
@@ -254,8 +267,14 @@ const DeepWorkDive = ({ onBack }) => {
 
         // Update visual state (can be at any framerate)
         setCaptainY(captainYRef.current);
-        // Gentler rotation - less dramatic tilting
-        setCaptainRotation(Math.min(Math.max(velocityRef.current * 3, -20), 45));
+
+        // Smooth rotation calculation
+        const targetRotation = velocityRef.current > 0
+            ? Math.min(velocityRef.current * 8, 90)
+            : velocityRef.current * 4;
+        captainRotationRef.current += (targetRotation - captainRotationRef.current) * 0.2;
+        setCaptainRotation(captainRotationRef.current);
+
         setObstacles([...obstaclesRef.current]);
 
         // Continue loop
@@ -298,6 +317,7 @@ const DeepWorkDive = ({ onBack }) => {
         setCaptainY(50);
 
         velocityRef.current = JUMP_VELOCITY; // Initial jump
+        captainRotationRef.current = 0;
         setCaptainRotation(0);
 
         obstaclesRef.current = [];
@@ -352,7 +372,7 @@ const DeepWorkDive = ({ onBack }) => {
                 localStorage.setItem('deepwork_best', finalScore.toString());
             } catch { }
 
-            // Big celebration
+            // Big celebration - fire twice
             setTimeout(() => {
                 confetti({
                     particleCount: 150,
@@ -361,6 +381,14 @@ const DeepWorkDive = ({ onBack }) => {
                     colors: ['#fbbf24', '#f59e0b', '#06b6d4', '#a855f7']
                 });
             }, 200);
+            setTimeout(() => {
+                confetti({
+                    particleCount: 150,
+                    spread: 100,
+                    origin: { y: 0.6 },
+                    colors: ['#fbbf24', '#f59e0b', '#06b6d4', '#a855f7']
+                });
+            }, 600);
         }
 
         // Submit score
@@ -370,12 +398,23 @@ const DeepWorkDive = ({ onBack }) => {
     }, [bestScore]);
 
     // ===================
-    // INPUT HANDLING
+    // INPUT HANDLING (Global for zero-latency)
     // ===================
-    const handleInteraction = useCallback((e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        jump();
+    useEffect(() => {
+        const handleInteraction = (e) => {
+            if (e.touches || e.type === 'mousedown') {
+                e.preventDefault();
+                jump();
+            }
+        };
+
+        window.addEventListener('touchstart', handleInteraction, { passive: false });
+        window.addEventListener('mousedown', handleInteraction);
+
+        return () => {
+            window.removeEventListener('touchstart', handleInteraction);
+            window.removeEventListener('mousedown', handleInteraction);
+        };
     }, [jump]);
 
     // Keyboard support
@@ -416,6 +455,69 @@ const DeepWorkDive = ({ onBack }) => {
     };
 
     const milestone = getMilestone(score);
+
+    // Memoized obstacles for perf
+    const renderedObstacles = useMemo(() => obstacles.map((obs) => {
+        const gapTop = obs.gapCenter - (obs.gapSize / 2);
+        const gapBottom = obs.gapCenter + (obs.gapSize / 2);
+
+        return (
+            <div
+                key={obs.id}
+                className="absolute top-0 bottom-0 z-10"
+                style={{
+                    left: `${obs.x}%`,
+                    width: `${OBSTACLE_WIDTH}%`
+                }}
+            >
+                {/* Top pipe */}
+                <div
+                    className={`absolute left-0 right-0 bg-gradient-to-b ${obs.color} shadow-2xl`}
+                    style={{
+                        top: 0,
+                        height: `${gapTop}%`,
+                        borderBottomLeftRadius: '8px',
+                        borderBottomRightRadius: '8px',
+                    }}
+                >
+                    {/* Pipe cap */}
+                    <div
+                        className={`absolute bottom-0 left-[-8%] right-[-8%] h-[12%] min-h-[20px] bg-gradient-to-b ${obs.color} rounded-lg shadow-lg`}
+                        style={{ borderWidth: '2px', borderColor: 'rgba(255,255,255,0.25)' }}
+                    >
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-lg sm:text-xl">{obs.emoji}</span>
+                        </div>
+                    </div>
+                    {/* Highlight */}
+                    <div className="absolute inset-y-0 left-0 w-[20%] bg-white/10 rounded-bl-lg" />
+                </div>
+
+                {/* Bottom pipe */}
+                <div
+                    className={`absolute left-0 right-0 bg-gradient-to-t ${obs.color} shadow-2xl`}
+                    style={{
+                        bottom: 0,
+                        height: `${100 - gapBottom}%`,
+                        borderTopLeftRadius: '8px',
+                        borderTopRightRadius: '8px',
+                    }}
+                >
+                    {/* Pipe cap */}
+                    <div
+                        className={`absolute top-0 left-[-8%] right-[-8%] h-[12%] min-h-[20px] bg-gradient-to-t ${obs.color} rounded-lg shadow-lg`}
+                        style={{ borderWidth: '2px', borderColor: 'rgba(255,255,255,0.25)' }}
+                    >
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-lg sm:text-xl">{obs.emoji}</span>
+                        </div>
+                    </div>
+                    {/* Highlight */}
+                    <div className="absolute inset-y-0 left-0 w-[20%] bg-white/10 rounded-tl-lg" />
+                </div>
+            </div>
+        );
+    }), [obstacles]);
 
     return (
         <div
@@ -465,14 +567,15 @@ const DeepWorkDive = ({ onBack }) => {
             {/* Game Area */}
             <div
                 ref={gameAreaRef}
-                onClick={handleInteraction}
-                onTouchStart={handleInteraction}
                 className="relative w-full aspect-[4/5] sm:aspect-[3/4] max-h-[70vh] overflow-hidden cursor-pointer"
                 style={{
                     background: 'linear-gradient(180deg, #0c1929 0%, #1a3a52 40%, #0f2744 80%, #0a1628 100%)',
                     minHeight: '400px'
                 }}
             >
+                {/* Subtle scanline overlay for retro-premium feel */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: 'repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.05) 1px, rgba(0,0,0,0.05) 2px)' }} />
+
                 {/* Flash overlay */}
                 <AnimatePresence>
                     {flashColor && (
@@ -548,7 +651,8 @@ const DeepWorkDive = ({ onBack }) => {
                             top: `${captainY}%`,
                             transform: `translate(-50%, -50%) rotate(${captainRotation}deg)`,
                             width: `${CAPTAIN_SIZE}%`,
-                            aspectRatio: '1'
+                            aspectRatio: '1',
+                            willChange: 'transform'
                         }}
                     >
                         {/* Glow effect */}
@@ -575,74 +679,23 @@ const DeepWorkDive = ({ onBack }) => {
                         </div>
 
                         {/* Trail effect when jumping */}
-                        {velocityRef.current < -3 && gameState === 'playing' && (
-                            <div className="absolute top-[90%] left-1/2 -translate-x-1/2 w-[30%] h-[80%] bg-gradient-to-b from-cyan-400/60 to-transparent rounded-full blur-sm" />
+                        {velocityRef.current < -4 && gameState === 'playing' && (
+                            <>
+                                <div className="absolute top-[90%] left-1/2 -translate-x-1/2 w-[30%] h-[80%] bg-gradient-to-b from-cyan-400/60 to-transparent rounded-full blur-sm" />
+                                <motion.div
+                                    initial={{ opacity: 0.6, scale: 0 }}
+                                    animate={{ opacity: 0, scale: 1.5, y: -40 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="absolute w-8 h-16 bg-gradient-to-t from-cyan-400/80 to-transparent rounded-full blur-md -z-10"
+                                    style={{ left: '50%', top: '80%', transform: 'translateX(-50%)' }}
+                                />
+                            </>
                         )}
                     </div>
                 )}
 
-                {/* Obstacles (Pipes) */}
-                {obstacles.map((obs) => {
-                    const gapTop = obs.gapCenter - (obs.gapSize / 2);
-                    const gapBottom = obs.gapCenter + (obs.gapSize / 2);
-
-                    return (
-                        <div
-                            key={obs.id}
-                            className="absolute top-0 bottom-0 z-10"
-                            style={{
-                                left: `${obs.x}%`,
-                                width: `${OBSTACLE_WIDTH}%`
-                            }}
-                        >
-                            {/* Top pipe */}
-                            <div
-                                className={`absolute left-0 right-0 bg-gradient-to-b ${obs.color} shadow-2xl`}
-                                style={{
-                                    top: 0,
-                                    height: `${gapTop}%`,
-                                    borderBottomLeftRadius: '8px',
-                                    borderBottomRightRadius: '8px',
-                                }}
-                            >
-                                {/* Pipe cap */}
-                                <div
-                                    className={`absolute bottom-0 left-[-8%] right-[-8%] h-[12%] min-h-[20px] bg-gradient-to-b ${obs.color} rounded-lg shadow-lg`}
-                                    style={{ borderWidth: '2px', borderColor: 'rgba(255,255,255,0.25)' }}
-                                >
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="text-lg sm:text-xl">{obs.emoji}</span>
-                                    </div>
-                                </div>
-                                {/* Highlight */}
-                                <div className="absolute inset-y-0 left-0 w-[20%] bg-white/10 rounded-bl-lg" />
-                            </div>
-
-                            {/* Bottom pipe */}
-                            <div
-                                className={`absolute left-0 right-0 bg-gradient-to-t ${obs.color} shadow-2xl`}
-                                style={{
-                                    bottom: 0,
-                                    height: `${100 - gapBottom}%`,
-                                    borderTopLeftRadius: '8px',
-                                    borderTopRightRadius: '8px',
-                                }}
-                            >
-                                {/* Pipe cap */}
-                                <div
-                                    className={`absolute top-0 left-[-8%] right-[-8%] h-[12%] min-h-[20px] bg-gradient-to-t ${obs.color} rounded-lg shadow-lg`}
-                                    style={{ borderWidth: '2px', borderColor: 'rgba(255,255,255,0.25)' }}
-                                >
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="text-lg sm:text-xl">{obs.emoji}</span>
-                                    </div>
-                                </div>
-                                {/* Highlight */}
-                                <div className="absolute inset-y-0 left-0 w-[20%] bg-white/10 rounded-tl-lg" />
-                            </div>
-                        </div>
-                    );
-                })}
+                {/* Obstacles (Pipes) - Memoized */}
+                {renderedObstacles}
 
                 {/* Ground line */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-t from-red-500/50 to-transparent" />
@@ -664,7 +717,7 @@ const DeepWorkDive = ({ onBack }) => {
                                 transition={{ delay: 0.1 }}
                                 className="text-center w-full max-w-xs"
                             >
-                                {/* Animated Captain */}
+                                {/* Animated Captain - Enhanced floating bob */}
                                 <div className="animate-bob mb-4">
                                     <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-xl shadow-cyan-500/40 border-4 border-white">
                                         <Zap className="text-white w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2} />
