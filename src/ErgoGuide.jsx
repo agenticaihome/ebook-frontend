@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Wallet, CreditCard, Send, CheckCircle, HelpCircle,
@@ -11,6 +11,7 @@ import CaptainHero from './components/CaptainHero';
 import SchematicPlaceholder from './components/SchematicPlaceholder';
 
 export default function HowToPay() {
+    const navigate = useNavigate();
     const [device, setDevice] = useState('desktop'); // desktop, ios, android
     const [exchange, setExchange] = useState('coinex'); // coinex, kucoin, gate
     const [copied, setCopied] = useState(false);
