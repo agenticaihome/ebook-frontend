@@ -15,6 +15,7 @@ import SalesPage from './SalesPage';
 // Lazy load ClaimAccessPage
 const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
 const GameLandingPage = lazy(() => import('./pages/GameLandingPage'));
+const GamesPage = lazy(() => import('./pages/GamesPage'));
 
 // Loading component
 const Loading = () => (
@@ -86,7 +87,6 @@ const AnimatedRoutes = () => {
             <Route path="/pay-ergo" element={<PageTransition><routeConfig.ergoPayment.Component /></PageTransition>} />
 
             <Route path="/why-ergo" element={<PageTransition><routeConfig.whyErgo.Component /></PageTransition>} />
-            <Route path="/payment-guide" element={<PageTransition><routeConfig.paymentGuide.Component /></PageTransition>} />
             <Route path="/ergo-guide" element={<PageTransition><routeConfig.ergoGuide.Component /></PageTransition>} />
             <Route path="/faq" element={<PageTransition><routeConfig.faq.Component /></PageTransition>} />
 
@@ -101,6 +101,13 @@ const AnimatedRoutes = () => {
             <Route path="/challenge" element={
               <Suspense fallback={<Loading />}>
                 <PageTransition><GameLandingPage /></PageTransition>
+              </Suspense>
+            } />
+
+            {/* Games Hub */}
+            <Route path="/games" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><GamesPage /></PageTransition>
               </Suspense>
             } />
 

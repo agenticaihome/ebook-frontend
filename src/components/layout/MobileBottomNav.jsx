@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Wrench, Volume2, VolumeX, Calculator, Activity, LayoutDashboard } from 'lucide-react';
+import { Home, BookOpen, Wrench, Volume2, VolumeX, Calculator, Activity, LayoutDashboard, Gamepad2 } from 'lucide-react';
 import { useSound } from '../../context/SoundContext';
 
 const MobileBottomNav = () => {
@@ -32,6 +32,13 @@ const MobileBottomNav = () => {
                             <Activity className="text-purple-400" />
                             <span className="text-xs font-bold text-slate-300">Diagnostic</span>
                         </Link>
+                        <button
+                            onClick={toggleSound}
+                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors col-span-2"
+                        >
+                            {isSoundEnabled ? <Volume2 className="text-purple-400" /> : <VolumeX className="text-slate-400" />}
+                            <span className="text-xs font-bold text-slate-300">Sound: {isSoundEnabled ? 'On' : 'Off'}</span>
+                        </button>
                     </div>
                 </div>
             )}
@@ -58,6 +65,11 @@ const MobileBottomNav = () => {
                         <span className="text-[10px] font-bold">Read</span>
                     </Link>
 
+                    <Link to="/games" className={`flex flex-col items-center gap-1 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                        <Gamepad2 size={24} />
+                        <span className="text-[10px] font-bold">Games</span>
+                    </Link>
+
                     <button
                         onClick={() => setShowTools(!showTools)}
                         className={`flex flex-col items-center gap-1 ${showTools ? 'text-cyan-400' : 'text-slate-500'}`}
@@ -65,18 +77,8 @@ const MobileBottomNav = () => {
                         <Wrench size={24} />
                         <span className="text-[10px] font-bold">Tools</span>
                     </button>
-
-                    <button
-                        onClick={toggleSound}
-                        className={`flex flex-col items-center gap-1 ${isSoundEnabled ? 'text-purple-400' : 'text-slate-500'}`}
-                    >
-                        {isSoundEnabled ? <Volume2 size={24} /> : <VolumeX size={24} />}
-                        <span className="text-[10px] font-bold">Sound</span>
-                    </button>
                 </div>
             </div>
         </>
     );
-};
-
-export default MobileBottomNav;
+}; export default MobileBottomNav;
