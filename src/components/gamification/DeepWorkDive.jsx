@@ -98,128 +98,6 @@ const DeepWorkDive = ({ onBack }) => {
             setObstacles(prev => [...prev, newObstacle]);
         };
 
-        // Initial spawn
-        spawnObstacle();
-
-        // Spawn loop
-        obstacleSpawnRef.current = setInterval(spawnObstacle, spawnDelay);
-
-        // Score timer (survival points)
-        scoreTimerRef.current = setInterval(() => {
-            setScore(prev => prev + 1);
-        }, 1000);
-    };
-
-    const jump = (e) => {
-        if (e) e.stopPropagation();
-        if (gameState !== 'playing') return;
-
-        // Reset velocity for consistent jump height
-        // But we need to update the ref/variable inside the interval closure?
-        // Actually, the interval uses 'currentVelocity' local variable which is initialized once.
-        // We need to update that local variable? No, we can't access it.
-        // We need to use a ref for velocity or update state and have the interval read it.
-        // The current implementation has a bug: 'currentVelocity' in the interval is closure-bound.
-        // The 'jump' function updates state 'setVelocity', but the interval doesn't see it?
-        // Wait, the interval has 'currentVelocity' variable.
-        // The 'jump' function needs to affect the physics loop.
-        // Let's fix this by using a ref for velocity.
-    };
-
-    // FIX: The original code had a closure issue with velocity.
-    // Let's rewrite the game loop to use refs for physics state.
-    const velocityRef = useRef(0);
-
-    // We need to replace the whole startGame and jump logic to be correct.
-    // But for this edit, I will just update the constants and the obstacle speed line.
-    // The previous code was:
-    // const jump = (e) => { ... setVelocity(JUMP_FORCE); ... }
-    // And the interval: currentVelocity += GRAVITY;
-    // This implies 'currentVelocity' is local.
-    // I need to see the original code again to be sure how 'jump' interacts.
-    // Ah, I see 'currentVelocity' is local to startGame. 'jump' cannot affect it!
-    // This explains why controls might feel unresponsive or "too much" (if it only worked via state re-renders restarting the loop? No).
-    // Actually, looking at lines 140-150 in previous view_file:
-    // It seems 'jump' was NOT shown in the snippet.
-    // I will assume the user wants me to fix the constants first.
-    // I will update the constants and the obstacle speed.
-
-    // Wait, I can't see 'jump' implementation in the previous view_file output (it ended at line 100 and started at 180).
-    // I will just update the constants and the obstacle speed line (192).
-
-    // I will use a smaller chunk to just update constants and the obstacle speed line.
-
-    // Chunk 1: Constants
-    // Chunk 2: Obstacle Speed
-
-    // I'll use multi_replace.
-
-
-    // Load best score
-    useEffect(() => {
-        const fetchBest = async () => {
-            try {
-                const response = await api.getMyBestScore('deepwork');
-                setBestScore(response.score || 0);
-            } catch (e) {
-                const saved = localStorage.getItem('highscore_deepwork');
-                if (saved) setBestScore(parseInt(saved));
-            }
-        };
-        fetchBest();
-    }, []);
-
-    const startGame = () => {
-        setGameState('playing');
-        setScore(0);
-        setCaptainY(50);
-        setVelocity(0);
-        setObstacles([]);
-        setCombo(0);
-
-        let currentVelocity = 0;
-
-        // Game loop - physics
-        gameLoopRef.current = setInterval(() => {
-            currentVelocity += GRAVITY;
-
-            setCaptainY(prev => {
-                const newY = prev + currentVelocity;
-                if (newY < 0 || newY > 100) {
-                    endGame();
-                    return prev;
-                }
-                return newY;
-            });
-
-            setVelocity(currentVelocity);
-
-            // Check flow zone
-            setCaptainY(y => {
-                const inZone = y >= FLOW_ZONE_TOP && y <= FLOW_ZONE_BOTTOM;
-                setInFlowZone(inZone);
-                return y;
-            });
-        }, 40); // 25fps physics
-
-        // Obstacle spawner
-        let spawnDelay = 2000;
-        const spawnObstacle = () => {
-            const gapY = Math.random() * 40 + 30; // Gap center between 30-70%
-            const template = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
-
-            const newObstacle = {
-                id: Date.now(),
-                x: 100,
-                gapY,
-                gapSize: GAP_SIZE,
-                ...template,
-                scored: false
-            };
-
-            setObstacles(prev => [...prev, newObstacle]);
-        };
-
         spawnObstacle(); // First obstacle
         obstacleSpawnRef.current = setInterval(() => {
             spawnObstacle();
@@ -240,19 +118,15 @@ const DeepWorkDive = ({ onBack }) => {
         }, 1000);
     };
 
-    const jump = () => {
+    const jump = (e) => {
+        if (e) e.stopPropagation();
         if (gameState !== 'playing') return;
 
         // Reset velocity for consistent jump height
         let currentVelocity = JUMP_FORCE;
         setVelocity(JUMP_FORCE);
 
-        // We need to update the velocity in the loop, but since we are using closure variable 'currentVelocity' inside the interval,
-        // we need to restart the interval or use a ref for velocity.
-        // Actually, the interval uses its own local 'currentVelocity'.
-        // To fix this properly without restarting interval:
-        // We'll just restart the interval to reset the closure variable.
-
+        // Restart interval to reset closure variable
         clearInterval(gameLoopRef.current);
 
         gameLoopRef.current = setInterval(() => {
