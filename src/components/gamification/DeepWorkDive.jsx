@@ -39,14 +39,14 @@ const DeepWorkDive = ({ onBack }) => {
     const gameStartTimeRef = useRef(0);
 
     // ===================
-    // TUNED PHYSICS - Feels like Flappy Bird
+    // TUNED PHYSICS - Gentle float, frequent taps
     // ===================
     const FIXED_TIMESTEP = 1000 / 60; // 60 physics updates per second
-    const GRAVITY = 0.5;              // Gravity per physics tick
-    const JUMP_VELOCITY = -8.5;       // Immediate upward velocity on tap
-    const TERMINAL_VELOCITY = 10;     // Max fall speed
-    const BASE_SPEED = 3.5;           // Base obstacle movement speed
-    const SPEED_INCREASE = 0.008;     // Speed increase per point
+    const GRAVITY = 0.35;             // Gentle gravity - not too punishing
+    const JUMP_VELOCITY = -5.5;       // Small hop - tap frequently to float
+    const TERMINAL_VELOCITY = 7;      // Slower max fall speed
+    const BASE_SPEED = 3.2;           // Slightly slower obstacles
+    const SPEED_INCREASE = 0.006;     // Gentler speed increase
 
     // ===================
     // GAME DIMENSIONS (percentage-based for responsiveness)
@@ -54,8 +54,8 @@ const DeepWorkDive = ({ onBack }) => {
     const CAPTAIN_X = 22;             // Captain horizontal position (%)
     const CAPTAIN_SIZE = 11;          // Captain size as % of container width
     const OBSTACLE_WIDTH = 15;        // Obstacle width (%)
-    const GAP_SIZE = 26;              // Gap between pipes (% of height) - TIGHT but fair
-    const SPAWN_INTERVAL = 1600;      // Ms between obstacles
+    const GAP_SIZE = 28;              // Gap between pipes (% of height) - comfortable for gentle taps
+    const SPAWN_INTERVAL = 1700;      // Slightly more time between obstacles
     const HITBOX_SHRINK = 1.5;        // Shrink hitbox by this % on each side (forgiving)
 
     // Distraction types
@@ -195,12 +195,17 @@ const DeepWorkDive = ({ onBack }) => {
         while (accumulatorRef.current >= FIXED_TIMESTEP) {
             // Apply gravity
             velocityRef.current += GRAVITY;
+
+            // Cap both falling AND rising speed
             if (velocityRef.current > TERMINAL_VELOCITY) {
                 velocityRef.current = TERMINAL_VELOCITY;
             }
+            if (velocityRef.current < -TERMINAL_VELOCITY) {
+                velocityRef.current = -TERMINAL_VELOCITY; // Prevent shooting up too fast
+            }
 
-            // Update position
-            captainYRef.current += velocityRef.current * 0.6;
+            // Update position (smoother multiplier)
+            captainYRef.current += velocityRef.current * 0.5;
 
             // Calculate current speed (increases with score)
             const currentSpeed = BASE_SPEED * (1 + scoreRef.current * SPEED_INCREASE);
@@ -249,7 +254,8 @@ const DeepWorkDive = ({ onBack }) => {
 
         // Update visual state (can be at any framerate)
         setCaptainY(captainYRef.current);
-        setCaptainRotation(Math.min(Math.max(velocityRef.current * 5, -25), 70));
+        // Gentler rotation - less dramatic tilting
+        setCaptainRotation(Math.min(Math.max(velocityRef.current * 3, -20), 45));
         setObstacles([...obstaclesRef.current]);
 
         // Continue loop
