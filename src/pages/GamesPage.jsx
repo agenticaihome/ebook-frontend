@@ -7,6 +7,7 @@ import WebbookLayout from '../components/layout/WebbookLayout';
 const AgentTriageGame = React.lazy(() => import('../components/gamification/AgentTriageGame'));
 const CalendarDefenseGame = React.lazy(() => import('../components/gamification/CalendarDefenseGame'));
 const CaptainClickChallenge = React.lazy(() => import('../components/gamification/CaptainClickChallenge'));
+const DeepWorkDive = React.lazy(() => import('../components/gamification/DeepWorkDive'));
 
 const GamesPage = () => {
     const [activeGame, setActiveGame] = useState(null); // 'triage', 'calendar', 'clicker'
@@ -17,7 +18,8 @@ const GamesPage = () => {
         const scores = {
             triage: localStorage.getItem('highscore_triage') || 0,
             calendar: localStorage.getItem('highscore_calendar') || 0,
-            clicker: localStorage.getItem('highscore_clicker') || 0
+            clicker: localStorage.getItem('highscore_clicker') || 0,
+            deepwork: localStorage.getItem('highscore_deepwork') || 0
         };
         setHighScores(scores);
     }, [activeGame]); // Reload when returning from a game
@@ -55,6 +57,17 @@ const GamesPage = () => {
             difficulty: 'Beginner',
             playtime: '~30 sec',
             objective: 'Score 40+ clicks for Legendary status'
+        },
+        {
+            id: 'deepwork',
+            title: 'Deep Work Dive',
+            description: '🔥 VIRAL GAME! Flappy Bird meets productivity. Tap to surge, dodge distractions. Can you survive 30?',
+            icon: Zap,
+            color: 'from-blue-500 to-cyan-400',
+            component: DeepWorkDive,
+            difficulty: 'Hard',
+            playtime: '~1 min',
+            objective: 'Survive 30 distractions for viral bragging rights'
         }
     ];
 
@@ -91,6 +104,9 @@ const GamesPage = () => {
                                 </h1>
                                 <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-2">
                                     Sharpen your agentic skills. Practice rapid triage, calendar defense, and efficiency optimization.
+                                </p>
+                                <p className="text-sm text-cyan-400 font-bold mb-1 animate-pulse">
+                                    🔥 NEW: Deep Work Dive - The viral game everyone's talking about!
                                 </p>
                                 <p className="text-sm text-slate-500">
                                     Your high scores are saved locally. Come back daily to improve.
