@@ -100,13 +100,13 @@ const Part3 = () => {
                                     <p className="text-red-400 font-bold text-lg mb-3">
                                         472 unread emails.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         She stares at the number. When did this happen?
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         Last checked Friday at 5 PM. That was 87 hours ago.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         472 ÷ 87 = 5.4 emails per hour. Even while sleeping.
                                     </p>
                                     <div className="bg-slate-900/50 p-4 rounded my-3">
@@ -120,19 +120,19 @@ const Part3 = () => {
                                             <div className="text-red-400">• Boss: "Thoughts on Q4?" (URGENT)</div>
                                         </div>
                                     </div>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         8:15 AM. She's cleared 23 emails.
                                     </p>
                                     <p className="text-red-400 font-bold mb-3">
                                         449 to go.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         Meeting in 15 minutes. She hasn't even looked at the actual work yet.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         Anxiety rising. Chest tight.
                                     </p>
-                                    <p className="text-cyan-400 italic text-sm">
+                                    <p className="text-cyan-400 italic text-sm leading-loose md:leading-relaxed">
                                         "I'm drowning in other people's priorities."
                                     </p>
                                     <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">

@@ -105,7 +105,7 @@ const Part5 = () => {
                                     <p className="text-white font-bold text-sm mb-3">
                                         Maya Patel, founder, remote startup, Los Angeles
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         Maya followed the entire book. Built ALL the agents. Email sorted. Calendar defended. Morning routine optimized.
                                     </p>
                                     <p className="text-red-400 font-bold text-lg mb-3">

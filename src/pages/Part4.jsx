@@ -104,7 +104,7 @@ const Part4 = () => {
                                     <p className="text-white font-bold text-sm mb-3">
                                         Sarah Chen, marketing director, Denver
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         Monday morning, 6:47 AM. Sarah wakes to her alarm. Body feels like concrete.
                                     </p>
                                     <p className="text-red-400 font-bold text-lg mb-3">
@@ -118,10 +118,10 @@ const Part4 = () => {
                                             <div className="text-red-400 font-bold pt-1">7-day average: 5.2 hours/night</div>
                                         </div>
                                     </div>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         The fog is thick. Coffee isn't cutting through. Brain won't boot up.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         But the calendar doesn't care about sleep:
                                     </p>
                                     <div className="bg-slate-900/50 p-4 rounded my-3">
@@ -132,19 +132,19 @@ const Part4 = () => {
                                             <div>• 4:00 PM: Budget review (detail work)</div>
                                         </div>
                                     </div>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         9:15 AM: She's 15 minutes into the presentation. Slide 2 has three typos she didn't catch.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         VP asks: "What were the Q4 numbers again?"
                                     </p>
                                     <p className="text-red-400 font-bold mb-3">
                                         Her brain... blanks. Complete white noise.
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         She fumbles through her notes. "I'll... need to get back to you on that."
                                     </p>
-                                    <p className="text-slate-300 text-sm mb-3">
+                                    <p className="text-slate-300 text-sm leading-loose md:leading-relaxed mb-4">
                                         The presentation gets rescheduled. Professional embarrassment.
                                     </p>
                                     <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
