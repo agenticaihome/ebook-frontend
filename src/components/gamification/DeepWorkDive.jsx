@@ -19,7 +19,7 @@ const DeepWorkDive = () => {
 
     // Game constants
     const GRAVITY = 0.6;
-    const JUMP_FORCE = -12;
+    const JUMP_FORCE = -8; // Reduced from -12 to prevent flying off screen
     const FLOW_ZONE_TOP = 35;
     const FLOW_ZONE_BOTTOM = 65;
     const CAPTAIN_SIZE = 60;
