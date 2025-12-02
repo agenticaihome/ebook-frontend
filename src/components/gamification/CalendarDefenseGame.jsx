@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, XCircle, CheckCircle, Shield, Clock, Play, RotateCcw } from 'lucide-react';
+import { Calendar, XCircle, CheckCircle, Shield, Clock, Play, RotateCcw, ArrowLeft, Trophy } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { api } from '../../services/api';
 
-const CalendarDefenseGame = () => {
+const CalendarDefenseGame = ({ onBack }) => {
     const [gameState, setGameState] = useState('start'); // start, playing, won, lost
     const [score, setScore] = useState(0);
     const [deepWorkHours, setDeepWorkHours] = useState(8); // Start with 8 hours of potential deep work
@@ -11,6 +12,7 @@ const CalendarDefenseGame = () => {
     const [captainMessage, setCaptainMessage] = useState("Protect your Deep Work blocks!");
     const [wave, setWave] = useState(1);
     const [timer, setTimer] = useState(0);
+    const [shake, setShake] = useState(false);
 
     const gameLoopRef = useRef(null);
     const spawnerRef = useRef(null);
@@ -60,41 +62,37 @@ const CalendarDefenseGame = () => {
 
             // Win condition: Survive 60 seconds with 3+ hours
             if (gameTime >= 60) {
-                clearInterval(gameLoopRef.current);
-                clearInterval(spawnerRef.current);
-                if (deepWorkHours >= 3) {
-                    endGame(true);
-                } else {
-                    endGame(false);
-                }
+                endGame(true);
             }
         }, 50);
 
         // Spawner with wave system
-        let spawnInterval = 2000; // Wave 1
-        spawnerRef.current = setInterval(() => {
-            spawnEnemy();
-        }, spawnInterval);
+        startSpawner(2000);
 
         // Wave 2 at 20s
         setTimeout(() => {
-            if (spawnerRef.current) {
-                clearInterval(spawnerRef.current);
+            if (gameState === 'playing') {
                 setWave(2);
                 setCaptainMessage("Wave 2! Speed increasing!");
-                spawnerRef.current = setInterval(() => spawnEnemy(), 1500);
+                startSpawner(1500);
             }
         }, 20000);
 
         // Wave 3 at 40s
         setTimeout(() => {
-            if (spawnerRef.current) {
-                clearInterval(spawnerRef.current);
+            if (gameState === 'playing') {
                 setWave(3);
                 setCaptainMessage("Final wave! Boss incoming!");
-                spawnerRef.current = setInterval(() => spawnEnemy(), 1000);
+                startSpawner(1000);
             }
         }, 40000);
+    };
+
+    const startSpawner = (interval) => {
+        if (spawnerRef.current) clearInterval(spawnerRef.current);
+        spawnerRef.current = setInterval(() => {
+            spawnEnemy();
+        }, interval);
     };
 
     const spawnEnemy = () => {
@@ -125,6 +123,8 @@ const CalendarDefenseGame = () => {
             return newHours;
         });
         setCaptainMessage(`-${totalDamage.toFixed(1)} hours lost!`);
+        setShake(true);
+        setTimeout(() => setShake(false), 500);
         setTimeout(() => setCaptainMessage("Focus! Decline them!"), 1000);
     };
 
@@ -142,15 +142,18 @@ const CalendarDefenseGame = () => {
         setScore(prev => prev + enemy.points);
     };
 
-    const endGame = (win) => {
+    const endGame = async (win) => {
         clearInterval(gameLoopRef.current);
         clearInterval(spawnerRef.current);
         setGameState(win ? 'won' : 'lost');
 
-        // Save high score (based on time survived)
-        const currentHigh = parseInt(localStorage.getItem('highscore_calendar') || '0');
-        if (timer > currentHigh) {
-            localStorage.setItem('highscore_calendar', timer.toString());
+        // Submit score to backend (score is time survived * 10 + points?)
+        // Actually, let's use the 'score' state which accumulates points from zapping enemies
+        try {
+            await api.submitScore('calendar', score);
+            console.log('Score submitted:', score);
+        } catch (err) {
+            console.error('Failed to submit score:', err);
         }
 
         if (win) {
@@ -174,7 +177,7 @@ const CalendarDefenseGame = () => {
     }, []);
 
     return (
-        <div className="w-full max-w-2xl mx-auto bg-slate-900/80 border border-purple-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px] backdrop-blur-sm">
+        <div className={`w-full max-w-2xl mx-auto bg-slate-900/80 border border-purple-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px] backdrop-blur-sm ${shake ? 'animate-shake' : ''}`}>
             {/* HUD */}
             <div className="bg-slate-800/90 p-4 flex justify-between items-center border-b border-slate-700 z-20 relative backdrop-blur-xl">
                 <div className="flex items-center gap-6">
@@ -186,6 +189,7 @@ const CalendarDefenseGame = () => {
                         </span>
                     </div>
                     <div className="text-slate-400 font-mono text-sm">Wave {wave}/3</div>
+                    <div className="text-yellow-400 font-mono font-bold">Score: {score}</div>
                 </div>
                 <div className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs">CE</div>
@@ -229,14 +233,23 @@ const CalendarDefenseGame = () => {
                         <h3 className={`text-4xl font-bold mb-2 ${gameState === 'won' ? 'text-green-400' : 'text-red-400'}`}>
                             {gameState === 'won' ? 'CALENDAR SECURE 🛡️' : 'BURNOUT REACHED'}
                         </h3>
-                        <p className="text-white text-xl mb-4 font-mono">Time Survived: {timer}s</p>
+                        <p className="text-white text-xl mb-4 font-mono">Final Score: {score}</p>
                         <p className="text-slate-400 text-sm mb-6">Deep Work Remaining: {deepWorkHours.toFixed(1)}h</p>
-                        <button
-                            onClick={startGame}
-                            className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-all"
-                        >
-                            <RotateCcw size={20} /> Try Again
-                        </button>
+
+                        <div className="flex gap-4">
+                            <button
+                                onClick={onBack}
+                                className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-all"
+                            >
+                                <ArrowLeft size={20} /> Hub
+                            </button>
+                            <button
+                                onClick={startGame}
+                                className="flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/50"
+                            >
+                                <RotateCcw size={20} /> Try Again
+                            </button>
+                        </div>
                     </div>
                 )}
 

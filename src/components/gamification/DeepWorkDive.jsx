@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Mail, Calendar, MessageSquare, Smartphone, Play, RotateCcw, Trophy, Share2 } from 'lucide-react';
+import { Zap, Mail, Calendar, MessageSquare, Smartphone, Play, RotateCcw, Trophy, Share2, ArrowLeft } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { api } from '../../services/api';
 
-const DeepWorkDive = () => {
+const DeepWorkDive = ({ onBack }) => {
     const [gameState, setGameState] = useState('idle'); // idle, playing, dead
     const [score, setScore] = useState(0);
     const [bestScore, setBestScore] = useState(0);
@@ -18,11 +19,10 @@ const DeepWorkDive = () => {
     const scoreTimerRef = useRef(null);
 
     // Game constants
-    const GRAVITY = 0.6;
-    const JUMP_FORCE = -8; // Reduced from -12 to prevent flying off screen
+    const GRAVITY = 0.5; // Slightly floatier
+    const JUMP_FORCE = -7; // Adjusted for new gravity
     const FLOW_ZONE_TOP = 35;
     const FLOW_ZONE_BOTTOM = 65;
-    const CAPTAIN_SIZE = 60;
     const GAP_SIZE = 180;
 
     // Obstacle types
@@ -35,8 +35,16 @@ const DeepWorkDive = () => {
 
     // Load best score
     useEffect(() => {
-        const saved = localStorage.getItem('highscore_deepwork');
-        if (saved) setBestScore(parseInt(saved));
+        const fetchBest = async () => {
+            try {
+                const response = await api.getMyBestScore('deepwork');
+                setBestScore(response.score || 0);
+            } catch (e) {
+                const saved = localStorage.getItem('highscore_deepwork');
+                if (saved) setBestScore(parseInt(saved));
+            }
+        };
+        fetchBest();
     }, []);
 
     const startGame = () => {
@@ -70,7 +78,7 @@ const DeepWorkDive = () => {
                 setInFlowZone(inZone);
                 return y;
             });
-        }, 50);
+        }, 40); // 25fps physics
 
         // Obstacle spawner
         let spawnDelay = 2000;
@@ -113,42 +121,55 @@ const DeepWorkDive = () => {
     const jump = () => {
         if (gameState !== 'playing') return;
 
-        if (gameLoopRef.current) {
-            clearInterval(gameLoopRef.current);
+        // Reset velocity for consistent jump height
+        let currentVelocity = JUMP_FORCE;
+        setVelocity(JUMP_FORCE);
 
-            let currentVelocity = JUMP_FORCE;
-            setVelocity(JUMP_FORCE);
+        // We need to update the velocity in the loop, but since we are using closure variable 'currentVelocity' inside the interval,
+        // we need to restart the interval or use a ref for velocity.
+        // Actually, the interval uses its own local 'currentVelocity'.
+        // To fix this properly without restarting interval:
+        // We'll just restart the interval to reset the closure variable.
 
-            gameLoopRef.current = setInterval(() => {
-                currentVelocity += GRAVITY;
+        clearInterval(gameLoopRef.current);
 
-                setCaptainY(prev => {
-                    const newY = prev + currentVelocity;
-                    if (newY < 0 || newY > 100) {
-                        endGame();
-                        return prev;
-                    }
-                    return newY;
-                });
+        gameLoopRef.current = setInterval(() => {
+            currentVelocity += GRAVITY;
 
-                setVelocity(currentVelocity);
+            setCaptainY(prev => {
+                const newY = prev + currentVelocity;
+                if (newY < 0 || newY > 100) {
+                    endGame();
+                    return prev;
+                }
+                return newY;
+            });
 
-                setCaptainY(y => {
-                    const inZone = y >= FLOW_ZONE_TOP && y <= FLOW_ZONE_BOTTOM;
-                    setInFlowZone(inZone);
-                    return y;
-                });
-            }, 50);
-        }
+            setVelocity(currentVelocity);
+
+            setCaptainY(y => {
+                const inZone = y >= FLOW_ZONE_TOP && y <= FLOW_ZONE_BOTTOM;
+                setInFlowZone(inZone);
+                return y;
+            });
+        }, 40);
     };
 
-    const endGame = () => {
+    const endGame = async () => {
         clearInterval(gameLoopRef.current);
         clearInterval(obstacleSpawnRef.current);
         clearInterval(scoreTimerRef.current);
         setGameState('dead');
 
-        // Save high score
+        // Submit score to backend
+        try {
+            await api.submitScore('deepwork', score);
+            console.log('Score submitted:', score);
+        } catch (err) {
+            console.error('Failed to submit score:', err);
+        }
+
+        // Save high score locally as fallback/immediate update
         if (score > bestScore) {
             setBestScore(score);
             localStorage.setItem('highscore_deepwork', score.toString());
@@ -168,14 +189,19 @@ const DeepWorkDive = () => {
         const moveInterval = setInterval(() => {
             setObstacles(prev => {
                 const updated = prev.map(obs => {
-                    const newX = obs.x - 3;
+                    const newX = obs.x - 2.5; // Slightly slower for better control
 
                     // Collision detection
                     if (newX < 30 && newX > 10) {
-                        const captainTop = captainY - 8;
-                        const captainBottom = captainY + 8;
-                        const gapTop = obs.gapY - (obs.gapSize / 2) / (window.innerHeight * 0.0034);
-                        const gapBottom = obs.gapY + (obs.gapSize / 2) / (window.innerHeight * 0.0034);
+                        const captainTop = captainY - 6; // Hitbox adjustment
+                        const captainBottom = captainY + 6;
+                        // Convert gap percentage to screen percentage roughly
+                        // gapY is center. gapSize is pixels.
+                        // We need to convert gapSize to percentage height.
+                        // Assuming 400px height.
+                        const gapHeightPercent = (obs.gapSize / 400) * 100;
+                        const gapTop = obs.gapY - (gapHeightPercent / 2);
+                        const gapBottom = obs.gapY + (gapHeightPercent / 2);
 
                         if (captainTop < gapTop || captainBottom > gapBottom) {
                             endGame();
@@ -193,7 +219,7 @@ const DeepWorkDive = () => {
 
                 return updated.filter(obs => obs.x > -10);
             });
-        }, 50);
+        }, 40);
 
         return () => clearInterval(moveInterval);
     }, [gameState, captainY]);
@@ -248,6 +274,11 @@ const DeepWorkDive = () => {
                 className="relative h-[400px] bg-gradient-to-b from-blue-950 via-blue-900 to-blue-950 overflow-hidden cursor-pointer select-none"
                 onClick={gameState === 'playing' ? jump : null}
             >
+                {/* Parallax Stars/Particles */}
+                <div className="absolute inset-0 opacity-30"
+                    style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '30px 30px' }}
+                />
+
                 {/* Flow Zone Indicator */}
                 <div
                     className="absolute left-0 right-0 bg-cyan-500/10 border-y border-cyan-500/30 pointer-events-none z-10"
@@ -272,9 +303,24 @@ const DeepWorkDive = () => {
                                 <p className="text-3xl text-cyan-400 font-mono mb-2">{score} distractions survived</p>
                                 <p className="text-sm text-slate-400 mb-4">Best: {bestScore}</p>
 
+                                <div className="flex justify-center gap-4 mb-4">
+                                    <button
+                                        onClick={onBack}
+                                        className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-all"
+                                    >
+                                        <ArrowLeft size={20} /> Hub
+                                    </button>
+                                    <button
+                                        onClick={startGame}
+                                        className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all"
+                                    >
+                                        <RotateCcw size={20} /> Try Again
+                                    </button>
+                                </div>
+
                                 <button
                                     onClick={shareScore}
-                                    className="mb-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-bold text-sm flex items-center gap-2 mx-auto transition-all"
+                                    className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg font-bold text-sm flex items-center gap-2 mx-auto transition-all"
                                 >
                                     <Share2 size={16} /> Share Score
                                 </button>
@@ -290,17 +336,14 @@ const DeepWorkDive = () => {
                                     Stay in the <span className="text-green-400">FLOW ZONE</span> for bonus points<br />
                                     <strong className="text-orange-400">Can you survive 30 distractions?</strong>
                                 </p>
+                                <button
+                                    onClick={startGame}
+                                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all"
+                                >
+                                    <Play size={20} /> START DIVING
+                                </button>
                             </>
                         )}
-
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={startGame}
-                            className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-900/50 transition-all"
-                        >
-                            {gameState === 'idle' ? <><Play size={20} /> START DIVING</> : <><RotateCcw size={20} /> Try Again</>}
-                        </motion.button>
                     </div>
                 )}
 

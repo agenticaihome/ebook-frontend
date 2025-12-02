@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Check, Trash2, AlertCircle, Play, RotateCcw } from 'lucide-react';
+import { Mail, Check, Trash2, AlertCircle, Play, RotateCcw, ArrowLeft, Trophy } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { api } from '../../services/api';
 
-const AgentTriageGame = () => {
+const AgentTriageGame = ({ onBack }) => {
     const [gameState, setGameState] = useState('start'); // start, playing, won, lost
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(30);
@@ -12,11 +13,13 @@ const AgentTriageGame = () => {
     const [combo, setCombo] = useState(0);
     const [captainMessage, setCaptainMessage] = useState("Ready to train your Triage Agent?");
     const [particles, setParticles] = useState([]);
+    const [wave, setWave] = useState(1);
+    const [shake, setShake] = useState(false);
 
     const gameLoopRef = useRef(null);
     const timerRef = useRef(null);
 
-    // Email Types (Improved clarity)
+    // Email Types
     const emailTypes = [
         { type: 'urgent', subject: '🔥 Client needs this TODAY', action: 'delegate', color: 'text-red-400' },
         { type: 'spam', subject: '🎁 You won a free cruise!', action: 'delete', color: 'text-slate-400' },
@@ -35,6 +38,7 @@ const AgentTriageGame = () => {
         setEmails([]);
         setEmailsTriaged(0);
         setCombo(0);
+        setWave(1);
         setCaptainMessage("Incoming! Sort them fast!");
 
         // Spawn first email immediately
@@ -51,30 +55,31 @@ const AgentTriageGame = () => {
             });
         }, 1000);
 
-        // Start Spawner with difficulty scaling
-        let spawnInterval = 1800; // Phase 1: Easy
+        // Start Spawner
+        startSpawner(1800);
+    };
+
+    const startSpawner = (interval) => {
+        if (gameLoopRef.current) clearInterval(gameLoopRef.current);
         gameLoopRef.current = setInterval(() => {
             spawnEmail();
-        }, spawnInterval);
-
-        // Phase 2: Increase difficulty at 10s
-        setTimeout(() => {
-            if (gameLoopRef.current) {
-                clearInterval(gameLoopRef.current);
-                gameLoopRef.current = setInterval(() => spawnEmail(), 1200);
-                setCaptainMessage("Speed increasing!");
-            }
-        }, 10000);
-
-        // Phase 3: Max difficulty at 20s
-        setTimeout(() => {
-            if (gameLoopRef.current) {
-                clearInterval(gameLoopRef.current);
-                gameLoopRef.current = setInterval(() => spawnEmail(), 800);
-                setCaptainMessage("Maximum chaos!");
-            }
-        }, 20000);
+        }, interval);
     };
+
+    // Wave Management
+    useEffect(() => {
+        if (gameState !== 'playing') return;
+
+        if (timeLeft === 20) {
+            setWave(2);
+            setCaptainMessage("⚠️ WAVE 2: SPEED UP!");
+            startSpawner(1200);
+        } else if (timeLeft === 10) {
+            setWave(3);
+            setCaptainMessage("🚨 WAVE 3: MAXIMUM CHAOS!");
+            startSpawner(800);
+        }
+    }, [timeLeft, gameState]);
 
     const spawnEmail = () => {
         const template = emailTypes[Math.floor(Math.random() * emailTypes.length)];
@@ -134,19 +139,23 @@ const AgentTriageGame = () => {
             setCombo(0);
             setScore(prev => Math.max(0, prev - 5));
             setCaptainMessage("❌ Wrong! Combo reset.");
+            setShake(true);
+            setTimeout(() => setShake(false), 500);
             setTimeout(() => setCaptainMessage("Keep going!"), 1000);
         }
     };
 
-    const endGame = (win) => {
+    const endGame = async (win) => {
         clearInterval(gameLoopRef.current);
         clearInterval(timerRef.current);
         setGameState(win ? 'won' : 'lost');
 
-        // Save high score
-        const currentHigh = parseInt(localStorage.getItem('highscore_triage') || '0');
-        if (emailsTriaged > currentHigh) {
-            localStorage.setItem('highscore_triage', emailsTriaged.toString());
+        // Submit score to backend
+        try {
+            await api.submitScore('triage', score);
+            console.log('Score submitted:', score);
+        } catch (err) {
+            console.error('Failed to submit score:', err);
         }
 
         if (win) {
@@ -169,7 +178,8 @@ const AgentTriageGame = () => {
     }, []);
 
     return (
-        <div className="w-full max-w-2xl mx-auto bg-slate-900/80 border border-cyan-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px] backdrop-blur-sm">
+        <div className={`w-full max-w-2xl mx-auto bg-slate-900/80 border border-cyan-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px] backdrop-blur-sm ${shake ? 'animate-shake' : ''}`}>
+
             {/* Header / HUD */}
             <div className="bg-slate-800/90 p-4 flex justify-between items-center border-b border-slate-700 z-20 relative backdrop-blur-xl">
                 <div className="flex items-center gap-4">
@@ -193,6 +203,22 @@ const AgentTriageGame = () => {
                 <div className="absolute inset-0 opacity-10"
                     style={{ backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)', backgroundSize: '20px 20px' }}
                 />
+
+                {/* Wave Indicator */}
+                <AnimatePresence>
+                    {gameState === 'playing' && (
+                        <motion.div
+                            key={wave}
+                            initial={{ opacity: 0, scale: 2 }}
+                            animate={{ opacity: 0, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 2 }}
+                            className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+                        >
+                            <h1 className="text-9xl font-bold text-white/5">WAVE {wave}</h1>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Start Screen */}
                 {gameState === 'start' && (
@@ -219,13 +245,22 @@ const AgentTriageGame = () => {
                             {gameState === 'won' ? 'TRIAGE MASTER! 🎯' : 'INBOX OVERFLOW'}
                         </h3>
                         <p className="text-white text-xl mb-4 font-mono">Emails Triaged: {emailsTriaged}/20</p>
-                        <p className="text-slate-400 text-sm mb-6">Score: {score} | Max Combo: {combo}</p>
-                        <button
-                            onClick={startGame}
-                            className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-all"
-                        >
-                            <RotateCcw size={20} /> Try Again
-                        </button>
+                        <p className="text-slate-400 text-sm mb-6">Final Score: {score} | Max Combo: {combo}</p>
+
+                        <div className="flex gap-4">
+                            <button
+                                onClick={onBack}
+                                className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-all"
+                            >
+                                <ArrowLeft size={20} /> Hub
+                            </button>
+                            <button
+                                onClick={startGame}
+                                className="flex items-center gap-2 bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/50"
+                            >
+                                <RotateCcw size={20} /> Play Again
+                            </button>
+                        </div>
                     </div>
                 )}
 

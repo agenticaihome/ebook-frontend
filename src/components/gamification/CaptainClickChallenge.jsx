@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Target, Clock, Trophy, Play, RotateCcw } from 'lucide-react';
+import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { api } from '../../services/api';
 
-const CaptainClickChallenge = () => {
+const CaptainClickChallenge = ({ onBack }) => {
     const [gameState, setGameState] = useState('idle'); // idle, playing, finished
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(30);
@@ -13,6 +14,8 @@ const CaptainClickChallenge = () => {
     const [activePowerUp, setActivePowerUp] = useState(null);
     const [moveSpeed, setMoveSpeed] = useState(1500);
     const [screenShake, setScreenShake] = useState(false);
+    const [combo, setCombo] = useState(0);
+    const [frenzyMode, setFrenzyMode] = useState(false);
 
     const containerRef = useRef(null);
     const timerRef = useRef(null);
@@ -49,11 +52,15 @@ const CaptainClickChallenge = () => {
         if (gameState !== 'playing') return;
 
         let points = 1;
-        if (activePowerUp === 'double' || activePowerUp === 'speed') {
+        if (activePowerUp === 'double' || activePowerUp === 'speed' || frenzyMode) {
             points = 2;
+        }
+        if (frenzyMode && activePowerUp) {
+            points = 4; // Super multiplier!
         }
 
         setScore(prev => prev + points);
+        setCombo(prev => prev + 1);
 
         // Click effect
         setClickEffect({
@@ -98,6 +105,8 @@ const CaptainClickChallenge = () => {
         setPowerUps([]);
         setActivePowerUp(null);
         setMoveSpeed(1500);
+        setCombo(0);
+        setFrenzyMode(false);
         moveCaptain();
 
         // Timer
@@ -123,14 +132,16 @@ const CaptainClickChallenge = () => {
         }, 25000);
     };
 
-    const endGame = () => {
+    const endGame = async () => {
         clearInterval(timerRef.current);
         setGameState('finished');
 
-        // Save high score
-        const currentHigh = parseInt(localStorage.getItem('highscore_clicker') || '0');
-        if (score > currentHigh) {
-            localStorage.setItem('highscore_clicker', score.toString());
+        // Submit score to backend
+        try {
+            await api.submitScore('clicker', score);
+            console.log('Score submitted:', score);
+        } catch (err) {
+            console.error('Failed to submit score:', err);
         }
 
         if (score >= 40) {
@@ -142,6 +153,22 @@ const CaptainClickChallenge = () => {
             });
         }
     };
+
+    // Combo / Frenzy Logic
+    useEffect(() => {
+        if (combo >= 5) {
+            setFrenzyMode(true);
+        } else {
+            setFrenzyMode(false);
+        }
+
+        // Reset combo if no click for 2s
+        const comboTimer = setTimeout(() => {
+            setCombo(0);
+        }, 2000);
+
+        return () => clearTimeout(comboTimer);
+    }, [combo]);
 
     useEffect(() => {
         return () => {
@@ -161,7 +188,7 @@ const CaptainClickChallenge = () => {
     const scoreTier = getScoreTier(score);
 
     return (
-        <div className="w-full max-w-2xl mx-auto bg-slate-900/80 border border-orange-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px] backdrop-blur-sm">
+        <div className={`w-full max-w-2xl mx-auto bg-slate-900/80 border border-orange-500/30 rounded-2xl overflow-hidden shadow-2xl relative min-h-[400px] backdrop-blur-sm ${frenzyMode ? 'border-yellow-400 shadow-yellow-500/50' : ''}`}>
             {/* HUD */}
             <div className="bg-slate-800/90 p-4 flex justify-between items-center border-b border-slate-700 z-20 relative backdrop-blur-xl">
                 <div className="flex items-center gap-6">
@@ -169,7 +196,12 @@ const CaptainClickChallenge = () => {
                     <div className={`font-bold font-mono text-xl ${timeLeft < 10 ? 'text-red-500 animate-pulse' : 'text-slate-300'}`}>
                         TIME: {timeLeft}s
                     </div>
-                    {activePowerUp && (
+                    {frenzyMode && (
+                        <div className="text-yellow-400 font-black animate-pulse tracking-widest">
+                            🔥 FRENZY MODE! (x2)
+                        </div>
+                    )}
+                    {activePowerUp && !frenzyMode && (
                         <div className="text-sm text-yellow-400 font-bold animate-pulse">
                             {powerUpTypes.find(p => p.id === activePowerUp)?.label}
                         </div>
@@ -194,7 +226,7 @@ const CaptainClickChallenge = () => {
                 {/* Start Overlay */}
                 {gameState !== 'playing' && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-30 backdrop-blur-sm text-center p-6">
-                        {gameState === 'finished' && (
+                        {gameState === 'finished' ? (
                             <motion.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
@@ -205,34 +237,43 @@ const CaptainClickChallenge = () => {
                                     {scoreTier.label}
                                 </h2>
                                 <p className="text-2xl text-white font-mono mb-2">{score} clicks</p>
-                                <p className="text-sm text-slate-400">
+                                <p className="text-sm text-slate-400 mb-6">
                                     {score >= 40 && '🏆 Legendary status achieved!'}
                                     {score >= 30 && score < 40 && 'So close to legendary!'}
                                     {score >= 20 && score < 30 && 'Keep practicing!'}
                                     {score < 20 && 'Try again for a better score'}
                                 </p>
+                                <div className="flex justify-center gap-4">
+                                    <button
+                                        onClick={onBack}
+                                        className="flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-all"
+                                    >
+                                        <ArrowLeft size={20} /> Hub
+                                    </button>
+                                    <button
+                                        onClick={startGame}
+                                        className="flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-orange-900/50 transition-all"
+                                    >
+                                        <RotateCcw size={20} /> Try Again
+                                    </button>
+                                </div>
                             </motion.div>
-                        )}
-
-                        {gameState === 'idle' && (
+                        ) : (
                             <>
                                 <h3 className="text-3xl font-bold text-white mb-2">Captain Click Challenge</h3>
                                 <p className="text-slate-300 mb-6 max-w-md">
                                     Click Captain Efficiency as fast as you can!<br />
-                                    <span className="text-yellow-400">Collect power-ups for bonuses</span><br />
+                                    <span className="text-yellow-400">Chain clicks for FRENZY MODE</span><br />
                                     <strong className="text-cyan-400">Goal: 40+ clicks for Legendary!</strong>
                                 </p>
+                                <button
+                                    onClick={startGame}
+                                    className="flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-orange-900/50 transition-all"
+                                >
+                                    <Play size={20} /> START CHALLENGE
+                                </button>
                             </>
                         )}
-
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={startGame}
-                            className="flex items-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-orange-900/50 transition-all"
-                        >
-                            {gameState === 'idle' ? <><Play size={20} /> START CHALLENGE</> : <><RotateCcw size={20} /> Try Again</>}
-                        </motion.button>
                     </div>
                 )}
 
@@ -247,12 +288,12 @@ const CaptainClickChallenge = () => {
                             animate={{
                                 left: `${captainPos.x}%`,
                                 top: `${captainPos.y}%`,
-                                scale: 1,
-                                rotate: [0, 3, -3, 0]
+                                scale: frenzyMode ? 1.3 : 1,
+                                rotate: frenzyMode ? [0, 10, -10, 0] : [0, 3, -3, 0]
                             }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             whileHover={{ scale: 1.1 }}
-                            className="absolute w-24 md:w-28 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] cursor-pointer z-10 select-none"
+                            className={`absolute w-24 md:w-28 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] cursor-pointer z-10 select-none ${frenzyMode ? 'brightness-150' : ''}`}
                             style={{ transform: 'translate(-50%, -50%)', pointerEvents: gameState === 'playing' ? 'auto' : 'none' }}
                             onClick={handleCaptainClick}
                             draggable="false"

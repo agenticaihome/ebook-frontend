@@ -204,6 +204,35 @@ export const api = {
     return handleResponse(response);
   },
 
+  // Leaderboard
+  submitScore: async (gameId, score) => {
+    const response = await fetch(`${API_URL}/leaderboard/submit`, {
+      method: 'POST',
+      headers: getHeaders(),
+      credentials: 'include',
+      body: JSON.stringify({ gameId, score }),
+    });
+    return handleResponse(response);
+  },
+
+  getLeaderboard: async (gameId) => {
+    const response = await fetch(`${API_URL}/leaderboard/global/${gameId}`, {
+      method: 'GET',
+      headers: getHeaders(),
+      credentials: 'include',
+    });
+    return handleResponse(response);
+  },
+
+  getMyBestScore: async (gameId) => {
+    const response = await fetch(`${API_URL}/leaderboard/personal/${gameId}`, {
+      method: 'GET',
+      headers: getHeaders(),
+      credentials: 'include',
+    });
+    return handleResponse(response);
+  },
+
   // AI
   getAiTip: async (context) => {
     try {

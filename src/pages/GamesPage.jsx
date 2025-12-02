@@ -1,7 +1,9 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock } from 'lucide-react';
+import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock, BarChart2 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
+import LeaderboardModal from '../components/gamification/LeaderboardModal';
+import { api } from '../services/api';
 
 // Lazy load games
 const AgentTriageGame = React.lazy(() => import('../components/gamification/AgentTriageGame'));
@@ -10,18 +12,32 @@ const CaptainClickChallenge = React.lazy(() => import('../components/gamificatio
 const DeepWorkDive = React.lazy(() => import('../components/gamification/DeepWorkDive'));
 
 const GamesPage = () => {
-    const [activeGame, setActiveGame] = useState(null); // 'triage', 'calendar', 'clicker'
+    const [activeGame, setActiveGame] = useState(null); // 'triage', 'calendar', 'clicker', 'deepwork'
     const [highScores, setHighScores] = useState({});
+    const [leaderboardOpen, setLeaderboardOpen] = useState(false);
+    const [selectedLeaderboardGame, setSelectedLeaderboardGame] = useState(null);
 
-    // Load high scores from localStorage
+    // Load high scores from backend
     useEffect(() => {
-        const scores = {
-            triage: localStorage.getItem('highscore_triage') || 0,
-            calendar: localStorage.getItem('highscore_calendar') || 0,
-            clicker: localStorage.getItem('highscore_clicker') || 0,
-            deepwork: localStorage.getItem('highscore_deepwork') || 0
+        const fetchScores = async () => {
+            const games = ['triage', 'calendar', 'clicker', 'deepwork'];
+            const scores = {};
+
+            for (const gameId of games) {
+                try {
+                    // Try backend first
+                    const response = await api.getMyBestScore(gameId);
+                    scores[gameId] = response.score || 0;
+                } catch (e) {
+                    // Fallback to localStorage if backend fails or offline
+                    console.warn(`Failed to fetch score for ${gameId}, falling back to local storage`);
+                    scores[gameId] = parseInt(localStorage.getItem(`highscore_${gameId}`) || '0');
+                }
+            }
+            setHighScores(scores);
         };
-        setHighScores(scores);
+
+        fetchScores();
     }, [activeGame]); // Reload when returning from a game
 
     const games = [
@@ -71,24 +87,32 @@ const GamesPage = () => {
         }
     ];
 
+    const openLeaderboard = (e, game) => {
+        e.stopPropagation();
+        setSelectedLeaderboardGame(game);
+        setLeaderboardOpen(true);
+    };
+
     return (
         <WebbookLayout>
             <div className="min-h-screen bg-[#0f0f1a] text-white p-6 pb-24">
-                <div className="max-w-4xl mx-auto mt-8">
+                <div className="max-w-6xl mx-auto mt-8">
 
                     {/* Header */}
                     <div className="text-center mb-12">
                         {activeGame ? (
-                            <div className="flex items-center gap-4 mb-8">
+                            <div className="flex items-center justify-between mb-8">
                                 <button
                                     onClick={() => setActiveGame(null)}
-                                    className="p-2 bg-slate-800/50 border border-slate-700 rounded-xl hover:bg-slate-700 hover:border-cyan-500/50 transition-all"
+                                    className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-xl hover:bg-slate-700 hover:border-cyan-500/50 transition-all text-slate-300 hover:text-white"
                                 >
-                                    <ArrowLeft size={24} />
+                                    <ArrowLeft size={20} />
+                                    <span>Back to Hub</span>
                                 </button>
                                 <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
                                     {games.find(g => g.id === activeGame)?.title}
                                 </h1>
+                                <div className="w-[120px]"></div> {/* Spacer for centering */}
                             </div>
                         ) : (
                             <>
@@ -102,15 +126,21 @@ const GamesPage = () => {
                                         Agent Training Center
                                     </span>
                                 </h1>
-                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-2">
+                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
                                     Sharpen your agentic skills. Practice rapid triage, calendar defense, and efficiency optimization.
                                 </p>
-                                <p className="text-sm text-cyan-400 font-bold mb-1 animate-pulse">
-                                    🔥 NEW: Deep Work Dive - The viral game everyone's talking about!
-                                </p>
-                                <p className="text-sm text-slate-500">
-                                    Your high scores are saved locally. Come back daily to improve.
-                                </p>
+
+                                {/* Global Stats / Ticker could go here */}
+                                <div className="flex justify-center gap-8 text-sm text-slate-500 mb-12">
+                                    <div className="flex items-center gap-2">
+                                        <Trophy size={16} className="text-yellow-500" />
+                                        <span>Compete for Global Rank</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <BarChart2 size={16} className="text-cyan-500" />
+                                        <span>Track Your Progress</span>
+                                    </div>
+                                </div>
                             </>
                         )}
                     </div>
@@ -132,7 +162,7 @@ const GamesPage = () => {
                                 }>
                                     {(() => {
                                         const GameComponent = games.find(g => g.id === activeGame)?.component;
-                                        return GameComponent ? <GameComponent /> : null;
+                                        return GameComponent ? <GameComponent onBack={() => setActiveGame(null)} /> : null;
                                     })()}
                                 </Suspense>
                             </motion.div>
@@ -142,68 +172,81 @@ const GamesPage = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                className="grid md:grid-cols-2 gap-6"
+                                className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto"
                             >
                                 {games.map((game) => (
-                                    <motion.button
+                                    <motion.div
                                         key={game.id}
-                                        onClick={() => setActiveGame(game.id)}
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="text-left group relative overflow-hidden bg-slate-800/50 border border-slate-700 hover:border-cyan-500/50 rounded-2xl p-6 transition-all shadow-lg hover:shadow-cyan-500/10 backdrop-blur-sm"
+                                        whileHover={{ y: -5 }}
+                                        className="group relative bg-slate-800/40 border border-slate-700 hover:border-cyan-500/50 rounded-3xl overflow-hidden transition-all shadow-lg hover:shadow-cyan-500/10 backdrop-blur-sm flex flex-col"
                                     >
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${game.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${game.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
-                                        <div className="relative z-10">
-                                            {/* Header with Icon and Trophy */}
-                                            <div className="flex items-start justify-between mb-4">
-                                                <div className={`p-3 rounded-xl bg-gradient-to-br ${game.color} shadow-lg`}>
-                                                    <game.icon size={24} className="text-white" />
+                                        {/* Card Content */}
+                                        <div className="p-8 flex-1 flex flex-col relative z-10">
+                                            {/* Top Row */}
+                                            <div className="flex justify-between items-start mb-6">
+                                                <div className={`p-4 rounded-2xl bg-gradient-to-br ${game.color} shadow-lg shadow-black/20`}>
+                                                    <game.icon size={32} className="text-white" />
                                                 </div>
-                                                <div className="flex flex-col items-end gap-1">
-                                                    <Trophy size={16} className="text-slate-600 group-hover:text-yellow-400 transition-colors" />
-                                                    <span className="text-xs text-slate-600 group-hover:text-yellow-400 font-mono">
-                                                        {highScores[game.id] > 0 ? `Best: ${highScores[game.id]}` : 'Best: --'}
-                                                    </span>
+                                                <div className="flex flex-col items-end">
+                                                    <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personal Best</div>
+                                                    <div className="font-mono text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                                        {highScores[game.id] > 0 ? highScores[game.id].toLocaleString() : '--'}
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            {/* Title */}
-                                            <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                                            {/* Title & Desc */}
+                                            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                                                 {game.title}
                                             </h3>
-
-                                            {/* Description */}
-                                            <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                                            <p className="text-slate-400 leading-relaxed mb-6 flex-1">
                                                 {game.description}
                                             </p>
 
-                                            {/* Metadata Badges */}
-                                            <div className="flex flex-wrap gap-2 mb-4">
-                                                <span className="text-xs px-2 py-1 rounded-full bg-slate-700/50 text-slate-300 border border-slate-600">
+                                            {/* Tags */}
+                                            <div className="flex flex-wrap gap-2 mb-8">
+                                                <span className="px-3 py-1 rounded-full bg-slate-900/50 border border-slate-700 text-xs text-slate-300 font-medium">
                                                     {game.difficulty}
                                                 </span>
-                                                <span className="text-xs px-2 py-1 rounded-full bg-slate-700/50 text-slate-300 border border-slate-600 flex items-center gap-1">
-                                                    <Clock size={10} />
+                                                <span className="px-3 py-1 rounded-full bg-slate-900/50 border border-slate-700 text-xs text-slate-300 font-medium flex items-center gap-1">
+                                                    <Clock size={12} />
                                                     {game.playtime}
                                                 </span>
                                             </div>
 
-                                            {/* Objective */}
-                                            <div className="text-xs text-slate-500 mb-4">
-                                                <strong className="text-slate-400">Goal:</strong> {game.objective}
-                                            </div>
-
-                                            {/* CTA */}
-                                            <div className="flex items-center text-cyan-400 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                                                START TRAINING <ArrowLeft className="rotate-180 ml-2" size={16} />
+                                            {/* Actions */}
+                                            <div className="grid grid-cols-2 gap-3 mt-auto">
+                                                <button
+                                                    onClick={(e) => openLeaderboard(e, game)}
+                                                    className="px-4 py-3 rounded-xl bg-slate-900/50 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2"
+                                                >
+                                                    <Trophy size={16} className="text-yellow-500" />
+                                                    Leaderboard
+                                                </button>
+                                                <button
+                                                    onClick={() => setActiveGame(game.id)}
+                                                    className={`px-4 py-3 rounded-xl bg-gradient-to-r ${game.color} text-white font-bold text-sm shadow-lg shadow-cyan-900/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2`}
+                                                >
+                                                    Play Now
+                                                    <ArrowLeft className="rotate-180" size={16} />
+                                                </button>
                                             </div>
                                         </div>
-                                    </motion.button>
+                                    </motion.div>
                                 ))}
                             </motion.div>
                         )}
                     </AnimatePresence>
+
+                    {/* Leaderboard Modal */}
+                    <LeaderboardModal
+                        isOpen={leaderboardOpen}
+                        onClose={() => setLeaderboardOpen(false)}
+                        gameId={selectedLeaderboardGame?.id}
+                        gameTitle={selectedLeaderboardGame?.title}
+                    />
 
                 </div>
             </div>
