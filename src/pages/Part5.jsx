@@ -219,6 +219,89 @@ const Part5 = () => {
                                     <WeeklyReviewTemplateGenerator />
                                 </Suspense>
 
+                                <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 p-6 rounded-xl border border-green-500/50 my-8">
+                                    <h4 className="text-green-400 font-bold mb-3">📖 Maya, 3 Months Later</h4>
+                                    <div className="space-y-3 text-sm text-slate-300">
+                                        <p>Tuesday morning. Sleep Agent detects 5 hours.  <span className="text-white italic">Orchestrator overrides Morning Agent:</span></p>
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <p className="text-green-400 font-bold text-sm mb-2">ORCHESTRATOR DECISION:</p>
+                                            <div className="space-y-1 text-xs">
+                                                <div>1. <strong>Calendar Agent:</strong> Reschedule CEO call to 10 AM (Maya emails: "Light sleep night, pushing 90 min")</div>
+                                                <div>2. <strong>Sleep Agent:</strong> "Sleep until 8 AM" (recovery priority)</div>
+                                                <div>3. <strong>Morning Agent:</strong> "SHORT routine" (20 min: shower, coffee, CEO prep)</div>
+                                                <div className="text-green-400 font-bold pt-2">Result: Woke 8 AM rested. CEO call 10 AM = well-prepared. Day productive.</div>
+                                            </div>
+                                        </div>
+
+                                        <p className="text-white font-bold">Sunday coordination:</p>
+                                        <div className="bg-slate-900/50 p-4 rounded my-3">
+                                            <p className="text-cyan-400 font-bold text-sm mb-2">WEEKLY ORCHESTRATOR PLAN:</p>
+                                            <div className="space-y-1 text-xs">
+                                                <div>• 10 AM-12 PM: Meal prep (Kitchen Agent)</div>
+                                                <div>• 12-1 PM: Lunch</div>
+                                                <div>• 1-3 PM: Kids' soccer (Family Agent blocks calendar)</div>
+                                                <div>• 3:30-4 PM: Admin tasks (bills, renewals - Admin Agent queued list)</div>
+                                                <div>• 9 PM: COMBINED wind-down (Mental Load worry dump → Second Brain capture → Sleep routine)</div>
+                                                <div className="text-green-400 font-bold pt-2">All agents see ONE unified schedule. Zero conflicts.</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-4 pt-3 border-t border-green-500/30">
+                                            <p className="text-white font-bold text-sm mb-2">3-MONTH RESULTS:</p>
+                                            <div className="space-y-1 text-xs text-slate-300">
+                                                <div>• Agent conflicts: <span className="text-red-400">Daily</span> → <span className="text-green-400 font-bold">Zero (orchestrator resolves)</span></div>
+                                                <div>• System override rate: <span className="text-green-400 font-bold">8 times/month</span> (Sleep Agent wins 6x, Calendar 2x)</div>
+                                                <div>• Takeout spending: <span className="text-red-400">$180/week</span> → <span className="text-green-400 font-bold">$40/week</span> (meal prep protected)</div>
+                                                <div>• Sleep quality: <span className="text-green-400 font-bold">7.2 hrs avg</span> (recovery prioritized over rigid routines)</div>
+                                                <div>• Weekly plan execution: <span className="text-green-400 font-bold">92%</span> (agents coordinate, not compete)</div>
+                                            </div>
+                                            <p className="text-white italic text-sm mt-3">"I don't manage 12 agents anymore. I manage ONE system. It handles the conflicts. I just approve the plan every Sunday." — Maya Patel</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="my-8 p-6 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
+                                    <h4 className="text-yellow-400 font-bold mb-3">💬 Common Objections (And The Truth)</h4>
+
+                                    <div className="space-y-4 text-sm">
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"This sounds way too complex. Can't I just keep individual agents?"</p>
+                                            <p className="text-cyan-400 text-xs">Maya tried that for 2 months. Result: Agent civil war. Orchestrator ISN'T more complex—it's a CONFLICT RESOLVER. You set priority hierarchy once (Health > Family > Work). Orchestrator applies it automatically.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"What if the orchestrator makes the WRONG decision?"</p>
+                                            <p className="text-slate-300 text-xs mb-1">Maya's safety net: Weekly review shows all orchestrator overrides.</p>
+                                            <p className="text-green-400 text-xs">In 3 months: 24 overrides total. 22 correct (she agreed). 2 incorrect (she adjusted priority rules). System learns.</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-white font-bold mb-2">"Do I need coding skills to build this?"</p>
+                                            <p className="text-cyan-400 text-xs">No. Modern no-code tools (Make.com, Zapier Premium, custom GPTs) handle orchestration. Maya's setup: Sunday "Weekly Planning" GPT that queries all agents, resolves conflicts, outputs ONE unified schedule. Zero code.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-12 p-6 bg-gradient-to-r from-purple-900/30 to-indigo-900/30 rounded-xl border border-purple-500/50">
+                                    <h4 className="text-purple-400 font-bold mb-3">📊 Cumulative Impact: Parts 1-5</h4>
+                                    <div className="space-y-2 text-sm text-slate-300 mb-4">
+                                        <div>• <strong className="text-white">Part 2:</strong> Home systems (30 min/day + $900/month + $6K/year)</div>
+                                        <div>• <strong className="text-white">Part 3:</strong> Work systems (Email 7.5 hrs/week + Calendar 9.5 hrs/week + Admin 5.9 work weeks/year)</div>
+                                        <div>• <strong className="text-white">Part 4:</strong> Life systems (Recovery 11.4 hrs/week + Mental Load 8.2 hrs/week + Knowledge 5.5 hrs/week)</div>
+                                        <div>• <strong className="text-white">Part 5:</strong> System coordination (eliminates 3-5 hrs/week of agent conflicts + missed opportunities)</div>
+                                    </div>
+                                    <div className="bg-slate-900/80 p-4 rounded-xl border border-purple-500/30 mb-4">
+                                        <p className="text-purple-400 font-bold text-lg">TOTAL: ~66 hours/week reclaimed + ~$1,800/month saved</p>
+                                        <p className="text-slate-400 text-xs mt-1">(That's 1.6 FULL-TIME JOBS worth of time back in your life)</p>
+                                    </div>
+                                    <p className="text-white font-bold text-sm mb-2">
+                                        The agents have done their job. Now: What will you DO with 66 hours/week?
+                                    </p>
+                                    <p className="text-cyan-400 text-sm italic">
+                                        That's 3,432 hours/year. Use it wisely.
+                                    </p>
+                                </div>
+
                                 <Suspense fallback={null}>
                                     <CaptainTip type="pro" title="The Compound Effect">
                                         "In Month 1, you'll save 5 hours/week. By Month 6, as agents start coordinating automatically, you'll save 10-12 hours/week. That's an entire extra workday, every single week."
