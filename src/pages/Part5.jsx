@@ -93,12 +93,72 @@ const Part5 = () => {
                                 <CaptainHero
                                     size="md"
                                     pose="celebrating"
-                                    message="Congratulations. You've built an army of agents. But right now, they're working in silos. What if your Recovery Agent could tell your Calendar Agent to cancel meetings? That's not just automation. That's a Life Operating System."
+                                    message="You just read about Maya. Built 12 agents. Her Morning Agent said 6 AM. Sleep Agent said 8 AM. Calendar had CEO call 7:30 AM. Zero coordination = triple chaos. Here's what happened: Agents optimizing individual domains WITHOUT talking to each other = civil war. Recovery Agent can't tell Calendar Agent to reschedule. Mental Load Agent doesn't know Second Brain Agent's 9 PM session. Life Operating System's job: Make agents COORDINATE. Priority hierarchy. Conflict resolution. One unified plan."
                                 />
                             </Suspense>
 
                             <div className="mt-12 prose prose-invert prose-lg max-w-none">
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 13: Multi-Agent Systems</h2>
+
+                                <div className="bg-red-900/30 p-6 rounded-xl border border-red-500/40 mb-8">
+                                    <h3 className="text-red-400 font-bold mb-3">The Agent Civil War</h3>
+                                    <p className="text-white font-bold text-sm mb-3">
+                                        Maya Patel, founder, remote startup, Los Angeles
+                                    </p>
+                                    <p className="text-slate-300 text-sm mb-3">
+                                        Maya followed the entire book. Built ALL the agents. Email sorted. Calendar defended. Morning routine optimized.
+                                    </p>
+                                    <p className="text-red-400 font-bold text-lg mb-3">
+                                        Tuesday morning: Her agents are fighting each other.
+                                    </p>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">The conflicts:</p>
+                                        <div className="space-y-1 text-xs text-slate-400">
+                                            <div>• <strong>Morning Agent:</strong> "Wake up 6 AM for 90-min routine"</div>
+                                            <div>• <strong>Sleep Agent:</strong> "You only slept 5 hours. Stay in bed until 8 AM"</div>
+                                            <div>• <strong>Calendar Agent:</strong> "First meeting 7:30 AM (can't move, CEO call)"</div>
+                                            <div className="text-red-400 font-bold pt-2">Result: She woke up at 6 AM groggy, skipped routine, joined CEO call unprepared</div>
+                                        </div>
+                                    </div>
+                                    <div className="bg-slate-900/50 p-4 rounded my-3">
+                                        <p className="text-white text-sm mb-2">More chaos this week:</p>
+                                        <div className="space-y-2 text-xs text-slate-400">
+                                            <div>
+                                                <strong>Monday:</strong>
+                                                <div className="pl-3 space-y-1 mt-1">
+                                                    <div>• Kitchen Agent: "Meal prep takes 2 hours Sunday"</div>
+                                                    <div>• Admin Agent: "Sunday 2 PM = bill payment time"</div>
+                                                    <div>• Family Agent: "Sunday afternoon = kids' soccer games"</div>
+                                                    <div className="text-red-400">Outcome: Skipped meal prep, ordered takeout all week ($180)</div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <strong>Wednesday:</strong>
+                                                <div className="pl-3 space-y-1 mt-1">
+                                                    <div>• Mental Load Agent: "9 PM worry dump = offload tasks"</div>
+                                                    <div>• Second Brain Agent: "9 PM = knowledge capture session"</div>
+                                                    <div>• Sleep Agent: "Start wind-down 9 PM (lights dim, screens off)"</div>
+                                                    <div className="text-red-400">Outcome: Tried to do all 3, finished at 10:30 PM, slept poorly</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 pt-3 border-t border-red-500/30 text-xs text-slate-400">
+                                        <p className="text-white font-bold mb-2">The problem:</p>
+                                        <div className="space-y-1">
+                                            <div>Each agent is OPTIMIZING ITS OWN DOMAIN</div>
+                                            <div>• Morning Agent doesn't know about Sleep Agent's recommendation</div>
+                                            <div>• Kitchen Agent doesn't see Admin Agent's schedule</div>
+                                            <div>• Mental Load Agent doesn't coordinate with Sleep Agent</div>
+                                            <div className="text-red-400 font-bold pt-2">
+                                                She built 12 optimized silos. Not a SYSTEM.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p className="text-cyan-400 text-sm mt-4 italic">
+                                        Individual agents = productivity. Coordinated agents = TRANSFORMATION.
+                                    </p>
+                                </div>
 
                                 <div className="bg-gradient-to-r from-purple-900/30 to-indigo-900/30 p-6 rounded-xl border border-purple-500/50 my-8">
                                     <h3 className="text-xl font-bold text-purple-400 mb-3">The Architecture</h3>
