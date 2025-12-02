@@ -81,6 +81,27 @@ const Dashboard = () => {
                         />
                     </div>
 
+                    {/* QUICK START BANNER */}
+                    <div className="mb-12 p-8 bg-gradient-to-r from-green-900/30 via-emerald-900/30 to-green-900/30 rounded-2xl border-2 border-green-500/50">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div>
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Zap className="text-yellow-400" size={24} />
+                                    <h2 className="text-2xl font-bold text-white">New Here?</h2>
+                                </div>
+                                <p className="text-slate-300 mb-2">Launch your first agent in 20 minutes</p>
+                                <p className="text-slate-500 text-sm">Copy/paste prompts → See results tomorrow</p>
+                            </div>
+                            <Link
+                                to="/quick-start"
+                                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-green-500/50"
+                            >
+                                Quick Start Guide
+                                <ArrowRight size={20} />
+                            </Link>
+                        </div>
+                    </div>
+
                     {/* Progress Overview */}
                     <section className="mb-12">
                         <h2 className="text-xl font-bold mb-6 text-slate-200">System Implementation Progress</h2>

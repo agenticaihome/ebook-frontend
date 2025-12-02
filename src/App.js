@@ -96,6 +96,9 @@ const AnimatedRoutes = () => {
               </Suspense>
             } />
 
+            {/* Quick Start Guide */}
+            <Route path="/quick-start" element={<PageTransition><routeConfig.quickStart.Component /></PageTransition>} />
+
             {/* Legacy Redirects */}
             <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
           </Routes>
