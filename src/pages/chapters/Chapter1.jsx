@@ -41,7 +41,7 @@ const ChapterProgress = ({ current, total }) => (
 
 // Author credibility - builds trust fast
 const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-slate-800/50 rounded-lg px-4 py-3 mb-6 border border-slate-700/50">
+    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
             DDS
         </div>
@@ -61,7 +61,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
             ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
-            : 'bg-slate-800/50 text-slate-400 border border-slate-700 hover:border-slate-600'
+            : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
@@ -103,7 +103,7 @@ const StoryHook = ({ hook, fullStory }) => {
     if (speedRun) return null;
 
     return (
-        <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 mb-8">
+        <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
             <div className="prose prose-invert max-w-none">
                 <p className="text-slate-300 text-lg leading-relaxed mb-0">{hook}</p>
             </div>
@@ -145,7 +145,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     };
 
     return (
-        <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 mb-8 overflow-hidden">
+        <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
@@ -187,7 +187,7 @@ const DeepDive = ({ title, children }) => {
     if (speedRun) return null;
 
     return (
-        <div className="bg-purple-900/20 rounded-xl border border-purple-500/30 mb-6 overflow-hidden">
+        <div className="bg-purple-900/20 rounded-xl border border-purple-500/40 backdrop-blur-sm mb-6 overflow-hidden">
             <button
                 onClick={() => setExpanded(!expanded)}
                 className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-900/30 transition-colors"
@@ -272,7 +272,7 @@ const BeforeAfter = ({ before, after, metric }) => {
                 </div>
             </div>
             {metric && (
-                <div className="bg-slate-800/50 rounded-xl p-4 flex items-center justify-center gap-4">
+                <div className="bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-xl p-4 flex items-center justify-center gap-4 backdrop-blur-sm">
                     <span className="text-red-400 line-through text-xl">{metric.before}</span>
                     <ArrowRight className="text-slate-500" size={20} />
                     <span className="text-green-400 font-bold text-2xl">{metric.after}</span>
@@ -361,7 +361,7 @@ const QuickWin = ({ title, prompt, setupTime }) => {
     };
 
     return (
-        <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/20 rounded-2xl p-6 border-2 border-green-500/50 mb-8">
+        <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/20 rounded-2xl p-6 border border-green-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                     <Zap className="text-green-400" size={20} />
@@ -392,7 +392,7 @@ const QuickWin = ({ title, prompt, setupTime }) => {
 
 // Chapter Complete Box
 const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/50">
+    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
         <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
                 <CheckCircle className="text-green-400" size={24} />
@@ -494,7 +494,7 @@ const Chapter1 = () => {
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
-                        className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/50 mb-8"
+                        className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
                     >
                         <div className="flex items-center gap-2 text-cyan-400">
                             <Zap size={18} />
