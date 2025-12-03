@@ -479,14 +479,13 @@ const Chapter1 = () => {
 
                 {/* CAPTAIN EFFICIENCY - OPENER */}
                 {!speedRun && (
-                    <CaptainEfficiency>
-                        <p className="mb-2">
-                            <strong className="text-white">Welcome, future agent-builder.</strong> I'm Captain Efficiency, and I'll be your guide through this book.
-                        </p>
-                        <p className="mb-0">
-                            Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this chapter, you'll understand <em>why</em> that's happening—and see the first glimpse of how we fix it. Ready?
-                        </p>
-                    </CaptainEfficiency>
+                    <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                        <CaptainHero
+                            size="md"
+                            pose="default"
+                            message="Welcome, future agent-builder. I'm Captain Efficiency, and I'll be your guide through this book. Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this chapter, you'll understand why that's happening—and see the first glimpse of how we fix it. Ready?"
+                        />
+                    </Suspense>
                 )}
 
                 {/* Speed Run Notice */}
@@ -750,17 +749,14 @@ Then show me what tomorrow's briefing would look like.`}
 
                 {/* CAPTAIN EFFICIENCY - CLOSER */}
                 {!speedRun && (
-                    <CaptainEfficiency variant="celebration">
-                        <p className="mb-2">
-                            <strong className="text-white">Look at you!</strong> You just learned the most important concept in this entire book—the difference between a tool that waits and a system that works.
-                        </p>
-                        <p className="mb-0">
-                            That task you wrote down? In Chapter 2, I'm going to show you exactly how to hand it off to your first agent. No more mental Post-It notes. Let's go. 🚀
-                        </p>
-                    </CaptainEfficiency>
-                )}
-
-                {/* CHAPTER COMPLETE */}
+                    <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                        <CaptainHero
+                            size="md"
+                            pose="celebrating"
+                            message="Look at you! You just learned the most important concept in this entire book—the difference between a tool that waits and a system that works. That task you wrote down? In Chapter 2, I'm going to show you exactly how to hand it off to your first agent. No more mental Post-It notes. Let's go. 🚀"
+                        />
+                    </Suspense>
+                )}                {/* CHAPTER COMPLETE */}
                 <ChapterComplete
                     achievements={[
                         'The difference between chatbots and agents',
