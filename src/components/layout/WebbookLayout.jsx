@@ -101,7 +101,7 @@ const WebbookLayout = ({ children }) => {
             subChapters: [
                 { title: 'The Cost of Chaos', id: 'chapter1', path: '/part1/chapter1' },
                 { title: 'The Agentic Shift', id: 'chapter2', path: '/part1/chapter2' },
-                { title: '[Chapter 3]', id: 'chapter3', path: '/part1/chapter3' }
+                { title: 'Privacy & Security', id: 'chapter3', path: '/part1/chapter3' }
             ]
         },
         {

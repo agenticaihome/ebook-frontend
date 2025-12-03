@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Home } from 'lucide-react';
 
 const ChapterNavigation = ({ previousChapter, nextChapter, partNumber, chapterNumber }) => {
     return (
@@ -16,6 +16,15 @@ const ChapterNavigation = ({ previousChapter, nextChapter, partNumber, chapterNu
             ) : (
                 <div />
             )}
+
+            {/* Back to Main Page Button - Centered or placed appropriately */}
+            <Link
+                to="/"
+                className="hidden md:flex items-center gap-2 px-4 py-2 text-slate-400 hover:text-cyan-400 transition-colors text-sm font-medium"
+            >
+                <Home size={16} />
+                <span>Main Page</span>
+            </Link>
 
             {nextChapter ? (
                 <Link
