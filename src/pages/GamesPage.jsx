@@ -10,6 +10,7 @@ const AgentTriageGame = React.lazy(() => import('../components/gamification/Agen
 const CalendarDefenseGame = React.lazy(() => import('../components/gamification/CalendarDefenseGame'));
 const CaptainClickChallenge = React.lazy(() => import('../components/gamification/CaptainClickChallenge'));
 const DeepWorkDive = React.lazy(() => import('../components/gamification/DeepWorkDive'));
+const FocusFury = React.lazy(() => import('../components/gamification/FocusFury'));
 
 const GamesPage = () => {
     const [activeGame, setActiveGame] = useState(null); // 'triage', 'calendar', 'clicker', 'deepwork'
@@ -20,7 +21,7 @@ const GamesPage = () => {
     // Load high scores from backend
     useEffect(() => {
         const fetchScores = async () => {
-            const games = ['triage', 'calendar', 'clicker', 'deepwork'];
+            const games = ['triage', 'calendar', 'clicker', 'deepwork', 'focusfury'];
             const scores = {};
 
             for (const gameId of games) {
@@ -84,6 +85,17 @@ const GamesPage = () => {
             difficulty: 'Hard',
             playtime: '~1 min',
             objective: 'Survive 30 distractions for viral bragging rights'
+        },
+        {
+            id: 'focusfury',
+            title: 'Focus Blitz',
+            description: 'NEW! Zap incoming distractions with focus beams. 60 seconds of pure attention defense.',
+            icon: Zap,
+            color: 'from-cyan-500 to-blue-600',
+            component: FocusFury,
+            difficulty: 'Intermediate',
+            playtime: '~1 min',
+            objective: 'Zap 100+ distractions to reach Legendary status'
         }
     ], []);
 
