@@ -1,8 +1,9 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock, BarChart2 } from 'lucide-react';
+import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock, BarChart2, Lock } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import LeaderboardModal from '../components/gamification/LeaderboardModal';
+import PasswordGate from '../components/PasswordGate';
 import { api } from '../services/api';
 
 // Lazy load games
@@ -17,6 +18,8 @@ const GamesPage = () => {
     const [highScores, setHighScores] = useState({});
     const [leaderboardOpen, setLeaderboardOpen] = useState(false);
     const [selectedLeaderboardGame, setSelectedLeaderboardGame] = useState(null);
+    const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false);
+    const [showPasswordGate, setShowPasswordGate] = useState(false);
 
     // Load high scores from backend
     useEffect(() => {
@@ -51,7 +54,8 @@ const GamesPage = () => {
             component: AgentTriageGame,
             difficulty: 'Beginner',
             playtime: '~2 min',
-            objective: 'Triage 20 emails correctly'
+            objective: 'Triage 20 emails correctly',
+            isPremium: true
         },
         {
             id: 'calendar',
@@ -62,7 +66,8 @@ const GamesPage = () => {
             component: CalendarDefenseGame,
             difficulty: 'Intermediate',
             playtime: '~1 min',
-            objective: 'Protect 3+ hours of Deep Work'
+            objective: 'Protect 3+ hours of Deep Work',
+            isPremium: true
         },
         {
             id: 'clicker',
@@ -73,18 +78,21 @@ const GamesPage = () => {
             component: CaptainClickChallenge,
             difficulty: 'Beginner',
             playtime: '~30 sec',
-            objective: 'Score 40+ clicks for Legendary status'
+            objective: 'Score 40+ clicks for Legendary status',
+            isPremium: true
         },
         {
             id: 'deepwork',
             title: 'Deep Work Dive',
-            description: '🔥 VIRAL GAME! Flappy Bird meets productivity. Tap to surge, dodge distractions. Can you survive 30?',
+            description: '🔥 FREE TO PLAY! Flappy Bird meets productivity. Tap to surge, dodge distractions. Can you survive 30?',
             icon: Zap,
             color: 'from-blue-500 to-cyan-400',
             component: DeepWorkDive,
             difficulty: 'Hard',
             playtime: '~1 min',
-            objective: 'Survive 30 distractions for viral bragging rights'
+            objective: 'Survive 30 distractions for viral bragging rights',
+            isPremium: false,
+            isFeatured: true
         },
         {
             id: 'focusfury',
@@ -95,9 +103,23 @@ const GamesPage = () => {
             component: FocusFury,
             difficulty: 'Intermediate',
             playtime: '~1 min',
-            objective: 'Zap 100+ distractions to reach Legendary status'
+            objective: 'Zap 100+ distractions to reach Legendary status',
+            isPremium: true
         }
     ], []);
+
+    const handleGameClick = (game) => {
+        if (game.isPremium && !isPremiumUnlocked) {
+            setShowPasswordGate(true);
+        } else {
+            setActiveGame(game.id);
+        }
+    };
+
+    const handlePasswordSuccess = () => {
+        setIsPremiumUnlocked(true);
+        setShowPasswordGate(false);
+    };
 
     const openLeaderboard = (e, game) => {
         e.stopPropagation();
@@ -196,6 +218,32 @@ const GamesPage = () => {
 
                                         {/* Card Content */}
                                         <div className="p-8 flex-1 flex flex-col relative z-10">
+                                            {/* Locked Overlay */}
+                                            {game.isPremium && !isPremiumUnlocked && (
+                                                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-8 rounded-3xl">
+                                                    <Lock size={48} className="text-cyan-400 mb-4" />
+                                                    <h4 className="text-xl font-bold text-white mb-2">Premium Game</h4>
+                                                    <p className="text-slate-300 text-sm text-center mb-4">
+                                                        Unlock with Parts 2-5 of the webbook
+                                                    </p>
+                                                    <button
+                                                        onClick={() => setShowPasswordGate(true)}
+                                                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold text-sm hover:scale-105 transition-all"
+                                                    >
+                                                        🔓 Unlock Now
+                                                    </button>
+                                                </div>
+                                            )}
+
+                                            {/* FREE Badge */}
+                                            {game.isFeatured && (
+                                                <div className="absolute top-4 right-4 z-20">
+                                                    <span className="px-3 py-1 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 text-white text-xs font-bold shadow-lg">
+                                                        ✨ FREE
+                                                    </span>
+                                                </div>
+                                            )}
+
                                             {/* Top Row */}
                                             <div className="flex justify-between items-start mb-6">
                                                 <div className={`p-4 rounded-2xl bg-gradient-to-br ${game.color} shadow-lg shadow-black/20`}>
@@ -238,11 +286,20 @@ const GamesPage = () => {
                                                     Leaderboard
                                                 </button>
                                                 <button
-                                                    onClick={() => setActiveGame(game.id)}
+                                                    onClick={() => handleGameClick(game)}
                                                     className={`px-4 py-3 rounded-xl bg-gradient-to-r ${game.color} text-white font-bold text-sm shadow-lg shadow-cyan-900/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2`}
                                                 >
-                                                    Play Now
-                                                    <ArrowLeft className="rotate-180" size={16} />
+                                                    {game.isPremium && !isPremiumUnlocked ? (
+                                                        <>
+                                                            <Lock size={16} />
+                                                            Unlock
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            Play Now
+                                                            <ArrowLeft className="rotate-180" size={16} />
+                                                        </>
+                                                    )}
                                                 </button>
                                             </div>
                                         </div>
@@ -255,15 +312,4 @@ const GamesPage = () => {
                     {/* Leaderboard Modal */}
                     <LeaderboardModal
                         isOpen={leaderboardOpen}
-                        onClose={() => setLeaderboardOpen(false)}
-                        gameId={selectedLeaderboardGame?.id}
-                        gameTitle={selectedLeaderboardGame?.title}
-                    />
-
-                </div>
-            </div>
-        </WebbookLayout>
-    );
-};
-
-export default GamesPage;
+                        export default GamesPage;
