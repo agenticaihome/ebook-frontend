@@ -785,11 +785,11 @@ const DeepWorkDive = ({ onBack }) => {
                                 }`}
                         />
                         <img
-                            src="/assets/captain-efficiency-flying.png"
+                            src="/assets/captain-efficiency-flying.webp"
                             alt="Captain Efficiency"
                             className={`relative w-full h-full object-contain ${gameState === "dead"
-                                    ? "grayscale brightness-50"
-                                    : ""
+                                ? "grayscale brightness-50"
+                                : ""
                                 }`}
                             style={{
                                 filter:

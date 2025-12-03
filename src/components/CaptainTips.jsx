@@ -65,7 +65,7 @@ const CaptainTips = () => {
                             <div className="relative">
                                 <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full p-1 shadow-lg ring-4 ring-[#0f0f1a]">
                                     <img
-                                        src="/assets/captain-efficiency-dark-transparent.png"
+                                        src="/assets/captain-efficiency-dark-transparent.webp"
                                         alt="Captain Efficiency"
                                         className="w-full h-full object-contain rounded-full"
                                     />

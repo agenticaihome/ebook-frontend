@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Maximize2 } from 'lucide-react';
-import dashboardPreview from '../../assets/dashboard-preview.jpg';
+import dashboardPreview from '../../assets/dashboard-preview.webp';
 
 const ProductWalkthrough = () => {
     const [isPlaying, setIsPlaying] = useState(false);
