@@ -4,9 +4,15 @@ import { Lock, AlertCircle } from 'lucide-react';
 
 const PasswordGate = ({ children, partNumber }) => {
     const [password, setPassword] = useState('');
+    const storageKey = `unlocked_part_${partNumber}`;
+
     const [isUnlocked, setIsUnlocked] = useState(() => {
-        // Check sessionStorage
-        return sessionStorage.getItem('beta_access') === 'true';
+        // Check localStorage (permanent save)
+        try {
+            return localStorage.getItem(storageKey) === 'true' || localStorage.getItem('beta_access') === 'true';
+        } catch (e) {
+            return false;
+        }
     });
     const [error, setError] = useState('');
     const [isShaking, setIsShaking] = useState(false);
@@ -18,7 +24,15 @@ const PasswordGate = ({ children, partNumber }) => {
 
         if (password === BETA_PASSWORD) {
             setIsUnlocked(true);
-            sessionStorage.setItem('beta_access', 'true');
+            try {
+                localStorage.setItem(storageKey, 'true');
+                // Also set legacy key for backward compatibility if needed
+                if (partNumber === undefined) {
+                    localStorage.setItem('beta_access', 'true');
+                }
+            } catch (e) {
+                console.error('Failed to save unlock status', e);
+            }
             setError('');
         } else {
             setError('Incorrect password');
