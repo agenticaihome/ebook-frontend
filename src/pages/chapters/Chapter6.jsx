@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
+import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
 import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';

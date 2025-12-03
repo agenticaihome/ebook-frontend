@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
     LayoutDashboard, CheckCircle, Circle, ArrowRight,
@@ -13,6 +13,7 @@ import { api } from '../services/api';
 
 const Dashboard = () => {
     usePageTitle('Dashboard');
+    const navigate = useNavigate();
     const [progress, setProgress] = useState({
         part1: true, // Always unlocked
         part2: false,
