@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from 'react';
+import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PasswordGate from '../components/common/PasswordGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
@@ -20,6 +21,7 @@ const WorkflowVisual = React.lazy(() => import('../components/common/WorkflowVis
 const YearOneRoadmap = React.lazy(() => import('../components/common/YearOneRoadmap'));
 
 const Part5 = () => {
+    const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(13);
 
     const chapters = [
@@ -820,7 +822,7 @@ const Part5 = () => {
 
                             <div className="mt-12 text-center">
                                 <button
-                                    onClick={() => window.location.href = '/dashboard'}
+                                    onClick={() => navigate('/dashboard')}
                                     className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold transition-all border border-slate-700 hover:border-slate-600"
                                 >
                                     Return to Dashboard
