@@ -225,10 +225,10 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
             </div>
 
             <button
-                onClick={() => navigate(`/chapters/${nextChapter}`)}
+                onClick={() => navigate(nextChapter)}
                 className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
             >
-                Continue to Chapter {nextChapter}: {nextTitle}
+                Continue to Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
                 <ArrowRight size={18} />
             </button>
         </div>
@@ -670,201 +670,205 @@ For each suggestion, tell me:
 - How it transforms the original dish`;
 
     return (
-        <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+        <WebbookLayout>
+            <PasswordGate partNumber={2} chapterNumber={5}>
+                <SpeedRunContext.Provider value={speedRun}>
+                    <div className="min-h-screen bg-[#0f0f1a]">
+                        <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={5}
-                        total={16}
-                        part={2}
-                        partTitle="Daily Operations"
-                    />
+                            {/* Progress Bar with Part indicator */}
+                            <ChapterProgress
+                                current={5}
+                                total={16}
+                                part={2}
+                                partTitle="Daily Operations"
+                            />
 
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
+                            {/* Author Credibility */}
+                            <AuthorCredibility />
 
-                    {/* Chapter Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/4"
-                        nextChapter="/chapters/6"
-                        partNumber={2}
-                        chapterNumber={5}
-                    />
+                            {/* Chapter Navigation */}
+                            <ChapterNavigation
+                                previousChapter="/part2/chapter1"
+                                nextChapter="/part2/chapter3"
+                                partNumber={2}
+                                chapterNumber={5}
+                            />
 
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 5</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Kitchen & Grocery
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            End "what's for dinner?" forever—and save $200/month doing it
-                        </p>
+                            {/* Header */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mb-6"
+                            >
+                                <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 5</div>
+                                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                    Kitchen & Grocery
+                                </h1>
+                                <p className="text-xl text-slate-400 mb-4">
+                                    End "what's for dinner?" forever—and save $200/month doing it
+                                </p>
 
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>9 min read</span>
+                                {/* Reading time + Speed Run toggle */}
+                                <div className="flex items-center justify-between flex-wrap gap-4">
+                                    <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <Clock size={14} />
+                                            <span>9 min read</span>
+                                        </div>
+                                        <span>•</span>
+                                        <span className="text-orange-400">20 min to set up both agents</span>
+                                    </div>
+                                    <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                                 </div>
-                                <span>•</span>
-                                <span className="text-orange-400">20 min to set up both agents</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
+                            </motion.div>
 
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '$290', label: 'saved/month' },
-                            { value: '2', label: 'agents working together' },
-                            { value: '0', label: '"what\'s for dinner?"' },
-                        ]}
-                        primaryCTA="Calculate My Food Chaos"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="The kitchen is where families come together—or fall apart into hangry chaos. Every 'what's for dinner?' drains energy you could spend actually enjoying the meal. Let's fix that. By the end of this chapter, you'll have TWO agents working together: one that plans your meals, one that builds your grocery list. Your fridge is about to make sense."
+                            {/* TL;DR Card */}
+                            <TLDRCard
+                                stats={[
+                                    { value: '$290', label: 'saved/month' },
+                                    { value: '2', label: 'agents working together' },
+                                    { value: '0', label: '"what\'s for dinner?"' },
+                                ]}
+                                primaryCTA="Calculate My Food Chaos"
+                                onCTAClick={scrollToCalculator}
                             />
-                        </Suspense>
-                    )}
 
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts. Toggle off to see family mapping tools and full context.
-                            </p>
-                        </motion.div>
-                    )}
+                            {/* CAPTAIN EFFICIENCY - OPENER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="The kitchen is where families come together—or fall apart into hangry chaos. Every 'what's for dinner?' drains energy you could spend actually enjoying the meal. Let's fix that. By the end of this chapter, you'll have TWO agents working together: one that plans your meals, one that builds your grocery list. Your fridge is about to make sense."
+                                    />
+                                </Suspense>
+                            )}
 
-                    {/* ★ EMOTIONAL HOOK: Food Chaos Diary ★ */}
-                    {!speedRun && <FoodChaosDiary />}
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-cyan-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the essential prompts. Toggle off to see family mapping tools and full context.
+                                    </p>
+                                </motion.div>
+                            )}
 
-                    {/* FOOD CHAOS CALCULATOR */}
-                    <section id="food-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                            <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Chaos</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                        </div>
+                            {/* ★ EMOTIONAL HOOK: Food Chaos Diary ★ */}
+                            {!speedRun && <FoodChaosDiary />}
 
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading calculator...
-                            </div>
-                        }>
-                            <FoodChaosCalculator />
-                        </Suspense>
-                    </section>
+                            {/* FOOD CHAOS CALCULATOR */}
+                            <section id="food-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Chaos</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                </div>
 
-                    {/* BUDGET IMPACT VISUAL */}
-                    {!speedRun && <BudgetImpactVisual />}
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading calculator...
+                                    </div>
+                                }>
+                                    <FoodChaosCalculator />
+                                </Suspense>
+                            </section>
 
-                    {/* TWO AGENT SYSTEM EXPLAINER */}
-                    {!speedRun && <TwoAgentSystem />}
+                            {/* BUDGET IMPACT VISUAL */}
+                            {!speedRun && <BudgetImpactVisual />}
 
-                    {/* FAMILY TASTE MAPPER */}
-                    {!speedRun && <FamilyTasteMapper />}
+                            {/* TWO AGENT SYSTEM EXPLAINER */}
+                            {!speedRun && <TwoAgentSystem />}
 
-                    {/* PROMPT 1: MEAL PLANNER */}
-                    <QuickWin
-                        title="Agent 1: The Meal Planner"
-                        setupTime="10 min"
-                        prompt={mealPlannerPrompt}
-                    />
+                            {/* FAMILY TASTE MAPPER */}
+                            {!speedRun && <FamilyTasteMapper />}
 
-                    {/* PROMPT 2: GROCERY LIST */}
-                    <QuickWin
-                        title="Agent 2: The Grocery List Generator"
-                        setupTime="5 min"
-                        prompt={groceryListPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* BONUS: LEFTOVER TRANSFORMER */}
-                    <QuickWin
-                        title="Bonus: The Leftover Transformer"
-                        setupTime="2 min"
-                        prompt={leftoverPrompt}
-                        variant="bonus"
-                    />
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="The Martinez Family"
-                            role="2 adults, 3 kids (ages 4, 7, 11)"
-                            problem="$460/week on groceries + takeout. 35% food waste. Constant dinner stress."
-                            result="$235/week average. 10% waste. Kids actually eat what's served (most nights)."
-                            timeframe="8 weeks"
-                            quote="We went from food chaos to food peace. Sunday planning takes 15 minutes now, and the whole week just... works."
-                        />
-                    )}
-
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="The best meal plan isn't about eating healthy. It's about deciding once so you don't decide 21 times a week."
-                        chapter={5}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="You just automated the most-asked question in your household. No more staring into the fridge. No more 'I don't know, what do YOU want?' No more $40 impulse runs to the store. Your Meal Planning Agent and Grocery Agent are now a team. Next up: we tackle the rest of your household chaos—cleaning, maintenance, all of it. 🏠"
+                            {/* PROMPT 1: MEAL PLANNER */}
+                            <QuickWin
+                                title="Agent 1: The Meal Planner"
+                                setupTime="10 min"
+                                prompt={mealPlannerPrompt}
                             />
-                        </Suspense>
-                    )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Calculated your food chaos cost (time + money)',
-                            'Built your family taste profile',
-                            'Set up Meal Planning Agent',
-                            'Set up Grocery List Agent',
-                            'Bonus: Leftover Transformer prompt',
-                        ]}
-                        nextChapter={6}
-                        nextTitle="Household Management"
-                    />
+                            {/* PROMPT 2: GROCERY LIST */}
+                            <QuickWin
+                                title="Agent 2: The Grocery List Generator"
+                                setupTime="5 min"
+                                prompt={groceryListPrompt}
+                                variant="secondary"
+                            />
 
-                    {/* Bottom Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/4"
-                        nextChapter="/chapters/6"
-                        partNumber={2}
-                        chapterNumber={5}
-                    />
+                            {/* BONUS: LEFTOVER TRANSFORMER */}
+                            <QuickWin
+                                title="Bonus: The Leftover Transformer"
+                                setupTime="2 min"
+                                prompt={leftoverPrompt}
+                                variant="bonus"
+                            />
 
-                </div>
-            </div>
-        </SpeedRunContext.Provider>
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="The Martinez Family"
+                                    role="2 adults, 3 kids (ages 4, 7, 11)"
+                                    problem="$460/week on groceries + takeout. 35% food waste. Constant dinner stress."
+                                    result="$235/week average. 10% waste. Kids actually eat what's served (most nights)."
+                                    timeframe="8 weeks"
+                                    quote="We went from food chaos to food peace. Sunday planning takes 15 minutes now, and the whole week just... works."
+                                />
+                            )}
+
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="The best meal plan isn't about eating healthy. It's about deciding once so you don't decide 21 times a week."
+                                chapter={5}
+                            />
+
+                            {/* CAPTAIN EFFICIENCY - CLOSER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="You just automated the most-asked question in your household. No more staring into the fridge. No more 'I don't know, what do YOU want?' No more $40 impulse runs to the store. Your Meal Planning Agent and Grocery Agent are now a team. Next up: we tackle the rest of your household chaos—cleaning, maintenance, all of it. 🏠"
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterComplete
+                                achievements={[
+                                    'Calculated your food chaos cost (time + money)',
+                                    'Built your family taste profile',
+                                    'Set up Meal Planning Agent',
+                                    'Set up Grocery List Agent',
+                                    'Bonus: Leftover Transformer prompt',
+                                ]}
+                                nextChapter="/part2/chapter3"
+                                nextTitle="Household Management"
+                            />
+
+                            {/* Bottom Navigation */}
+                            <ChapterNavigation
+                                previousChapter="/part2/chapter1"
+                                nextChapter="/part2/chapter3"
+                                partNumber={2}
+                                chapterNumber={5}
+                            />
+
+                        </div>
+                    </div>
+                </SpeedRunContext.Provider>
+            </PasswordGate>
+        </WebbookLayout>
     );
 };
 

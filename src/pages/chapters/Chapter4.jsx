@@ -211,10 +211,10 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
             </div>
 
             <button
-                onClick={() => navigate(`/chapters/${nextChapter}`)}
+                onClick={() => navigate(nextChapter)}
                 className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
             >
-                Continue to Chapter {nextChapter}: {nextTitle}
+                Continue to Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
                 <ArrowRight size={18} />
             </button>
         </div>
@@ -578,200 +578,204 @@ Before generating briefs, ask me:
 - Any recurring events I should always know about?`;
 
     return (
-        <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+        <WebbookLayout>
+            <PasswordGate partNumber={2} chapterNumber={4}>
+                <SpeedRunContext.Provider value={speedRun}>
+                    <div className="min-h-screen bg-[#0f0f1a]">
+                        <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={4}
-                        total={16}
-                        part={2}
-                        partTitle="Daily Operations"
-                    />
+                            {/* Progress Bar with Part indicator */}
+                            <ChapterProgress
+                                current={4}
+                                total={16}
+                                part={2}
+                                partTitle="Daily Operations"
+                            />
 
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
+                            {/* Author Credibility */}
+                            <AuthorCredibility />
 
-                    {/* Chapter Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/3"
-                        nextChapter="/chapters/5"
-                        partNumber={2}
-                        chapterNumber={4}
-                    />
+                            {/* Chapter Navigation */}
+                            <ChapterNavigation
+                                previousChapter="/part1/chapter3"
+                                nextChapter="/part2/chapter2"
+                                partNumber={2}
+                                chapterNumber={4}
+                            />
 
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 4</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Morning Routines
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            Build the agent you'll actually use every single day
-                        </p>
+                            {/* Header */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mb-6"
+                            >
+                                <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 4</div>
+                                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                    Morning Routines
+                                </h1>
+                                <p className="text-xl text-slate-400 mb-4">
+                                    Build the agent you'll actually use every single day
+                                </p>
 
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>8 min read</span>
+                                {/* Reading time + Speed Run toggle */}
+                                <div className="flex items-center justify-between flex-wrap gap-4">
+                                    <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <Clock size={14} />
+                                            <span>8 min read</span>
+                                        </div>
+                                        <span>•</span>
+                                        <span className="text-orange-400">15 min to build your brief</span>
+                                    </div>
+                                    <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                                 </div>
-                                <span>•</span>
-                                <span className="text-orange-400">15 min to build your brief</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
+                            </motion.div>
 
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '30 min', label: 'saved daily' },
-                            { value: '30 sec', label: 'to read brief' },
-                            { value: '15 min', label: 'one-time setup' },
-                        ]}
-                        primaryCTA="Calculate My Chaos"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - OPENER (Energetic/Practical) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Enough theory. Time to build something you'll use EVERY SINGLE DAY. The Morning Brief Agent is about to become your favorite 30 seconds of the day. By tomorrow morning, you'll wonder how you ever started your day without it. Let's build it."
+                            {/* TL;DR Card */}
+                            <TLDRCard
+                                stats={[
+                                    { value: '30 min', label: 'saved daily' },
+                                    { value: '30 sec', label: 'to read brief' },
+                                    { value: '15 min', label: 'one-time setup' },
+                                ]}
+                                primaryCTA="Calculate My Chaos"
+                                onCTAClick={scrollToCalculator}
                             />
-                        </Suspense>
-                    )}
 
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts and tools. Toggle off to see the full chapter.
-                            </p>
-                        </motion.div>
-                    )}
+                            {/* CAPTAIN EFFICIENCY - OPENER (Energetic/Practical) */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="Enough theory. Time to build something you'll use EVERY SINGLE DAY. The Morning Brief Agent is about to become your favorite 30 seconds of the day. By tomorrow morning, you'll wonder how you ever started your day without it. Let's build it."
+                                    />
+                                </Suspense>
+                            )}
 
-                    {/* ★ TOOL FIRST: Morning Chaos Calculator ★ */}
-                    <section id="chaos-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                            <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Chaos</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                        </div>
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-cyan-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the essential prompts and tools. Toggle off to see the full chapter.
+                                    </p>
+                                </motion.div>
+                            )}
 
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading calculator...
-                            </div>
-                        }>
-                            <MorningChaosCalculator />
-                        </Suspense>
-                    </section>
+                            {/* ★ TOOL FIRST: Morning Chaos Calculator ★ */}
+                            <section id="chaos-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Chaos</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                </div>
 
-                    {/* MORNING TIMELINE COMPARISON */}
-                    {!speedRun && <MorningTimeline />}
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading calculator...
+                                    </div>
+                                }>
+                                    <MorningChaosCalculator />
+                                </Suspense>
+                            </section>
 
-                    {/* THE CORE PROMPT - Quick Win */}
-                    <QuickWin
-                        title="The Morning Brief Prompt"
-                        setupTime="15 min"
-                        prompt={morningBriefPrompt}
-                    />
+                            {/* MORNING TIMELINE COMPARISON */}
+                            {!speedRun && <MorningTimeline />}
 
-                    {/* PLATFORM-SPECIFIC SETUP */}
-                    {!speedRun && <PlatformSetup />}
-
-                    {/* MORNING BRIEF BUILDER */}
-                    <section className="mb-10">
-                        <h2 className="text-2xl font-bold text-white mb-2">Customize Your Brief</h2>
-                        <p className="text-slate-400 mb-6">
-                            Use this builder to create a personalized Morning Brief prompt:
-                        </p>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading builder...
-                            </div>
-                        }>
-                            <MorningBriefBuilder />
-                        </Suspense>
-                    </section>
-
-                    {/* WEEK ONE MILESTONES */}
-                    {!speedRun && <WeekOneMilestones />}
-
-                    {/* TROUBLESHOOTING */}
-                    {!speedRun && <TroubleshootingAccordion />}
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="David"
-                            role="Software engineer, father of 2"
-                            problem="Checked 6 apps before breakfast. Often forgot kid's activities or deadlines."
-                            result="One 30-second brief. Zero forgotten events. Calmer mornings for the whole family."
-                            timeframe="1 week"
-                            quote="My wife noticed the difference before I did. I'm just... less frantic now. The day starts smoothly instead of in chaos."
-                        />
-                    )}
-
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="The best morning routine isn't about waking up earlier. It's about waking up smarter."
-                        chapter={4}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - CLOSER (Celebrating First Win) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="You just built your first real agent. Not a chatbot you ask questions. An AGENT that works while you sleep and greets you with exactly what you need. Tomorrow morning is going to feel different. That's not hype—that's the system working. Now let's tackle what happens AFTER the morning brief: your kitchen. 🍳"
+                            {/* THE CORE PROMPT - Quick Win */}
+                            <QuickWin
+                                title="The Morning Brief Prompt"
+                                setupTime="15 min"
+                                prompt={morningBriefPrompt}
                             />
-                        </Suspense>
-                    )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Calculated your morning chaos cost',
-                            'Built your personalized Morning Brief Agent',
-                            'Know how to refine it over Week 1',
-                            'Troubleshooting tools if something goes wrong',
-                        ]}
-                        nextChapter={5}
-                        nextTitle="Kitchen & Grocery"
-                    />
+                            {/* PLATFORM-SPECIFIC SETUP */}
+                            {!speedRun && <PlatformSetup />}
 
-                    {/* Bottom Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/3"
-                        nextChapter="/chapters/5"
-                        partNumber={2}
-                        chapterNumber={4}
-                    />
+                            {/* MORNING BRIEF BUILDER */}
+                            <section className="mb-10">
+                                <h2 className="text-2xl font-bold text-white mb-2">Customize Your Brief</h2>
+                                <p className="text-slate-400 mb-6">
+                                    Use this builder to create a personalized Morning Brief prompt:
+                                </p>
 
-                </div>
-            </div>
-        </SpeedRunContext.Provider>
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading builder...
+                                    </div>
+                                }>
+                                    <MorningBriefBuilder />
+                                </Suspense>
+                            </section>
+
+                            {/* WEEK ONE MILESTONES */}
+                            {!speedRun && <WeekOneMilestones />}
+
+                            {/* TROUBLESHOOTING */}
+                            {!speedRun && <TroubleshootingAccordion />}
+
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="David"
+                                    role="Software engineer, father of 2"
+                                    problem="Checked 6 apps before breakfast. Often forgot kid's activities or deadlines."
+                                    result="One 30-second brief. Zero forgotten events. Calmer mornings for the whole family."
+                                    timeframe="1 week"
+                                    quote="My wife noticed the difference before I did. I'm just... less frantic now. The day starts smoothly instead of in chaos."
+                                />
+                            )}
+
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="The best morning routine isn't about waking up earlier. It's about waking up smarter."
+                                chapter={4}
+                            />
+
+                            {/* CAPTAIN EFFICIENCY - CLOSER (Celebrating First Win) */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="You just built your first real agent. Not a chatbot you ask questions. An AGENT that works while you sleep and greets you with exactly what you need. Tomorrow morning is going to feel different. That's not hype—that's the system working. Now let's tackle what happens AFTER the morning brief: your kitchen. 🍳"
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterComplete
+                                achievements={[
+                                    'Calculated your morning chaos cost',
+                                    'Built your personalized Morning Brief Agent',
+                                    'Know how to refine it over Week 1',
+                                    'Troubleshooting tools if something goes wrong',
+                                ]}
+                                nextChapter="/part2/chapter2"
+                                nextTitle="Kitchen & Grocery"
+                            />
+
+                            {/* Bottom Navigation */}
+                            <ChapterNavigation
+                                previousChapter="/part1/chapter3"
+                                nextChapter="/part2/chapter2"
+                                partNumber={2}
+                                chapterNumber={4}
+                            />
+
+                        </div>
+                    </div>
+                </SpeedRunContext.Provider>
+            </PasswordGate>
+        </WebbookLayout>
     );
 };
 

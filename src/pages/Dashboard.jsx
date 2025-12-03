@@ -31,6 +31,13 @@ const Dashboard = () => {
     ]);
 
     useEffect(() => {
+        // Auth Check
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+            return;
+        }
+
         // Check local storage for progress
         const p2 = sessionStorage.getItem('auth_Part 2') === 'true';
         const p3 = sessionStorage.getItem('auth_Part 3') === 'true';

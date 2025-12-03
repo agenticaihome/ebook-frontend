@@ -242,10 +242,10 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
             </div>
 
             <button
-                onClick={() => navigate(`/chapters/${nextChapter}`)}
+                onClick={() => navigate(nextChapter)}
                 className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
             >
-                Continue to Chapter {nextChapter}: {nextTitle}
+                Continue to Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
                 <ArrowRight size={18} />
             </button>
         </div>
@@ -696,179 +696,180 @@ const Chapter3 = () => {
     };
 
     return (
-        <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+        <WebbookLayout>
+            <SpeedRunContext.Provider value={speedRun}>
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar */}
-                    <ChapterProgress current={3} total={16} />
+                        {/* Progress Bar */}
+                        <ChapterProgress current={3} total={16} />
 
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                    {/* Chapter Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/2"
-                        nextChapter="/chapters/4"
-                        partNumber={1}
-                        chapterNumber={3}
-                    />
+                        {/* Chapter Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part1/chapter2"
+                            nextChapter="/part2/chapter1"
+                            partNumber={1}
+                            chapterNumber={3}
+                        />
 
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 3</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Privacy & Security
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            How to get all the benefits without giving up control
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>5 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-teal-400">5 min to lock down</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '3', label: 'data tiers to know' },
-                            { value: '5 min', label: 'to lock down' },
-                            { value: '100%', label: 'in your control' },
-                        ]}
-                        primaryCTA="Start Privacy Audit"
-                        onCTAClick={scrollToAudit}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - OPENER (Protective Guardian) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Before we build anything else, we need to talk about protection. You just gave an AI access to your calendar, maybe your email, your tasks. That's powerful—but power requires boundaries. This chapter is your security briefing. I won't let you build a system that puts your family at risk."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
+                        {/* Header */}
                         <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
                         >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential privacy actions. Toggle off to see the full chapter.
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 3</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Privacy & Security
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                How to get all the benefits without giving up control
                             </p>
-                        </motion.div>
-                    )}
 
-                    {/* ★ PROVOCATIVE OPENING HOOK ★ */}
-                    {!speedRun && <ProvocativeHook />}
-
-                    {/* PRIVACY AUDIT TOOL */}
-                    <section id="privacy-audit" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                            <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Privacy Audit</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading audit tool...
-                            </div>
-                        }>
-                            <PrivacyAssessment />
-                        </Suspense>
-                    </section>
-
-                    {/* 3-TIER DATA MODEL */}
-                    {!speedRun && <DataTierVisual />}
-
-                    {/* TOOL PRIVACY COMPARISON */}
-                    {!speedRun && <ToolPrivacyTable />}
-
-                    {/* 5-MINUTE PRIVACY LOCKDOWN */}
-                    <section className="mb-10">
-                        <PrivacyLockdown />
-                    </section>
-
-                    {/* DEEP DIVE: How Data Actually Flows */}
-                    <DeepDive title="How your data actually flows (technical)">
-                        <div className="space-y-4 text-sm">
-                            <p className="text-slate-300">
-                                When you send a message to an AI tool, here's what typically happens:
-                            </p>
-                            <div className="space-y-3">
-                                {[
-                                    { step: '1', title: 'Encryption in transit', desc: 'Your message is encrypted (HTTPS/TLS) between your device and their servers.' },
-                                    { step: '2', title: 'Processing', desc: 'The AI model processes your request on their servers. Your text is in memory briefly.' },
-                                    { step: '3', title: 'Response generation', desc: 'The model generates a response and sends it back to you (also encrypted).' },
-                                    { step: '4', title: 'Storage decision', desc: 'Depending on settings, your conversation may be stored for history, improvement, or deleted.' },
-                                ].map((item) => (
-                                    <div key={item.step} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
-                                        <span className="bg-purple-500/20 text-purple-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
-                                            {item.step}
-                                        </span>
-                                        <div>
-                                            <span className="text-white font-medium">{item.title}</span>
-                                            <p className="text-slate-400 text-xs mt-1">{item.desc}</p>
-                                        </div>
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>5 min read</span>
                                     </div>
-                                ))}
+                                    <span>•</span>
+                                    <span className="text-teal-400">5 min to lock down</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                             </div>
-                            <p className="text-slate-400">
-                                The key variables are: (a) whether conversations are stored, (b) whether they're used for training,
-                                and (c) whether you can delete them. All major tools now offer controls for these.
-                            </p>
-                        </div>
-                    </DeepDive>
+                        </motion.div>
 
-                    {/* AGENT CONSTITUTION BUILDER */}
-                    {!speedRun && (
-                        <section className="mb-10">
-                            <h2 className="text-2xl font-bold text-white mb-2">Your Agent Constitution</h2>
-                            <p className="text-slate-400 mb-6">
-                                Define the boundaries your agents must respect. This becomes your permission framework.
-                            </p>
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '3', label: 'data tiers to know' },
+                                { value: '5 min', label: 'to lock down' },
+                                { value: '100%', label: 'in your control' },
+                            ]}
+                            primaryCTA="Start Privacy Audit"
+                            onCTAClick={scrollToAudit}
+                        />
+
+                        {/* CAPTAIN EFFICIENCY - OPENER (Protective Guardian) */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="default"
+                                    message="Before we build anything else, we need to talk about protection. You just gave an AI access to your calendar, maybe your email, your tasks. That's powerful—but power requires boundaries. This chapter is your security briefing. I won't let you build a system that puts your family at risk."
+                                />
+                            </Suspense>
+                        )}
+
+                        {/* Speed Run Notice */}
+                        {speedRun && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                            >
+                                <div className="flex items-center gap-2 text-cyan-400">
+                                    <Zap size={18} />
+                                    <span className="font-bold">Speed Run Mode</span>
+                                </div>
+                                <p className="text-slate-400 text-sm mt-1">
+                                    Showing only the essential privacy actions. Toggle off to see the full chapter.
+                                </p>
+                            </motion.div>
+                        )}
+
+                        {/* ★ PROVOCATIVE OPENING HOOK ★ */}
+                        {!speedRun && <ProvocativeHook />}
+
+                        {/* PRIVACY AUDIT TOOL */}
+                        <section id="privacy-audit" className="mb-10">
+                            <div className="flex items-center gap-2 mb-4">
+                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Privacy Audit</span>
+                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                            </div>
 
                             <Suspense fallback={
                                 <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                    Loading constitution builder...
+                                    Loading audit tool...
                                 </div>
                             }>
-                                <AgentConstitutionBuilder />
+                                <PrivacyAssessment />
                             </Suspense>
                         </section>
-                    )}
 
-                    {/* RED FLAGS CHECKLIST */}
-                    {!speedRun && <RedFlagsChecklist />}
+                        {/* 3-TIER DATA MODEL */}
+                        {!speedRun && <DataTierVisual />}
 
-                    {/* QUICK WIN: Privacy-First Prompt */}
-                    <QuickWin
-                        title="Privacy-First Agent Instructions"
-                        setupTime="2 min"
-                        prompt={`Add this to any AI conversation to set boundaries:
+                        {/* TOOL PRIVACY COMPARISON */}
+                        {!speedRun && <ToolPrivacyTable />}
+
+                        {/* 5-MINUTE PRIVACY LOCKDOWN */}
+                        <section className="mb-10">
+                            <PrivacyLockdown />
+                        </section>
+
+                        {/* DEEP DIVE: How Data Actually Flows */}
+                        <DeepDive title="How your data actually flows (technical)">
+                            <div className="space-y-4 text-sm">
+                                <p className="text-slate-300">
+                                    When you send a message to an AI tool, here's what typically happens:
+                                </p>
+                                <div className="space-y-3">
+                                    {[
+                                        { step: '1', title: 'Encryption in transit', desc: 'Your message is encrypted (HTTPS/TLS) between your device and their servers.' },
+                                        { step: '2', title: 'Processing', desc: 'The AI model processes your request on their servers. Your text is in memory briefly.' },
+                                        { step: '3', title: 'Response generation', desc: 'The model generates a response and sends it back to you (also encrypted).' },
+                                        { step: '4', title: 'Storage decision', desc: 'Depending on settings, your conversation may be stored for history, improvement, or deleted.' },
+                                    ].map((item) => (
+                                        <div key={item.step} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                            <span className="bg-purple-500/20 text-purple-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
+                                                {item.step}
+                                            </span>
+                                            <div>
+                                                <span className="text-white font-medium">{item.title}</span>
+                                                <p className="text-slate-400 text-xs mt-1">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <p className="text-slate-400">
+                                    The key variables are: (a) whether conversations are stored, (b) whether they're used for training,
+                                    and (c) whether you can delete them. All major tools now offer controls for these.
+                                </p>
+                            </div>
+                        </DeepDive>
+
+                        {/* AGENT CONSTITUTION BUILDER */}
+                        {!speedRun && (
+                            <section className="mb-10">
+                                <h2 className="text-2xl font-bold text-white mb-2">Your Agent Constitution</h2>
+                                <p className="text-slate-400 mb-6">
+                                    Define the boundaries your agents must respect. This becomes your permission framework.
+                                </p>
+
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading constitution builder...
+                                    </div>
+                                }>
+                                    <AgentConstitutionBuilder />
+                                </Suspense>
+                            </section>
+                        )}
+
+                        {/* RED FLAGS CHECKLIST */}
+                        {!speedRun && <RedFlagsChecklist />}
+
+                        {/* QUICK WIN: Privacy-First Prompt */}
+                        <QuickWin
+                            title="Privacy-First Agent Instructions"
+                            setupTime="2 min"
+                            prompt={`Add this to any AI conversation to set boundaries:
 
 "Before we begin, here are my privacy rules:
 1. Never ask for passwords, SSN, or financial account numbers
@@ -877,60 +878,61 @@ const Chapter3 = () => {
 4. Focus on helping me with [YOUR TASK], nothing more
 
 Acknowledge these rules, then let's proceed."`}
-                    />
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="Jennifer"
-                            role="Healthcare administrator, privacy-conscious"
-                            problem="Worried about HIPAA compliance. Avoided AI tools entirely despite needing help."
-                            result="Uses Claude with strict boundaries. 40% faster on admin work, zero compliance issues."
-                            timeframe="1 month"
-                            quote="I realized privacy isn't about avoiding AI—it's about using it intentionally. Now I get the benefits without the risk."
                         />
-                    )}
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="Privacy isn't about hiding. It's about choosing what to share—and with whom."
-                        chapter={3}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - CLOSER (Reassuring/Empowering) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="You now have a privacy-first foundation. You know exactly what your tools collect, you've locked down the settings that matter, and you've written your Agent Constitution. Every system we build from here respects YOUR boundaries. You're not just protected—you're in control. Now let's put this foundation to work. 🛡️"
+                        {/* CASE STUDY */}
+                        {!speedRun && (
+                            <CaseStudyCard
+                                name="Jennifer"
+                                role="Healthcare administrator, privacy-conscious"
+                                problem="Worried about HIPAA compliance. Avoided AI tools entirely despite needing help."
+                                result="Uses Claude with strict boundaries. 40% faster on admin work, zero compliance issues."
+                                timeframe="1 month"
+                                quote="I realized privacy isn't about avoiding AI—it's about using it intentionally. Now I get the benefits without the risk."
                             />
-                        </Suspense>
-                    )}
+                        )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Understand the 3-tier data model (Local → Cloud → Training)',
-                            'Completed 5-minute privacy lockdown',
-                            'Created your Agent Constitution',
-                            'Know the red flags to watch for',
-                        ]}
-                        nextChapter={4}
-                        nextTitle="Morning Routines"
-                    />
+                        {/* SHAREABLE QUOTE */}
+                        <ShareableQuote
+                            quote="Privacy isn't about hiding. It's about choosing what to share—and with whom."
+                            chapter={3}
+                        />
 
-                    {/* Bottom Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/2"
-                        nextChapter="/chapters/4"
-                        partNumber={1}
-                        chapterNumber={3}
-                    />
+                        {/* CAPTAIN EFFICIENCY - CLOSER (Reassuring/Empowering) */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="You now have a privacy-first foundation. You know exactly what your tools collect, you've locked down the settings that matter, and you've written your Agent Constitution. Every system we build from here respects YOUR boundaries. You're not just protected—you're in control. Now let's put this foundation to work. 🛡️"
+                                />
+                            </Suspense>
+                        )}
 
+                        {/* CHAPTER COMPLETE */}
+                        <ChapterComplete
+                            achievements={[
+                                'Understand the 3-tier data model (Local → Cloud → Training)',
+                                'Completed 5-minute privacy lockdown',
+                                'Created your Agent Constitution',
+                                'Know the red flags to watch for',
+                            ]}
+                            nextChapter="/part2/chapter1"
+                            nextTitle="Morning Routines"
+                        />
+
+                        {/* Bottom Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part1/chapter2"
+                            nextChapter="/part2/chapter1"
+                            partNumber={1}
+                            chapterNumber={3}
+                        />
+
+                    </div>
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
+            </SpeedRunContext.Provider>
+        </WebbookLayout>
     );
 };
 

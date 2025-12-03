@@ -546,274 +546,276 @@ const Chapter2 = () => {
     };
 
     return (
-        <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+        <WebbookLayout>
+            <SpeedRunContext.Provider value={speedRun}>
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar */}
-                    <ChapterProgress current={2} total={16} />
+                        {/* Progress Bar */}
+                        <ChapterProgress current={2} total={16} />
 
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                    {/* Chapter Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/1"
-                        nextChapter="/chapters/3"
-                        partNumber={1}
-                        chapterNumber={2}
-                    />
-
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 2</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Building Your AI Team
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            The 4 roles that will delete that task you named
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>7 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-green-400">20 min to implement</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '4', label: 'roles to fill' },
-                            { value: '$0-20', label: 'to start' },
-                            { value: '20 min', label: 'to kill your task' },
-                        ]}
-                        primaryCTA="Find My Tools"
-                        onCTAClick={scrollToQuiz}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Time to build your team. In Chapter 1, you learned the difference between tools that wait and systems that work. Now we put that into practice. By the end of this chapter, you'll have picked your AI 'Brain' and handed off that recurring task you've been carrying. Ready to meet your new team?"
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential frameworks and prompts. Toggle off to see the full chapter.
-                            </p>
-                        </motion.div>
-                    )}
-
-                    {/* ★ QUIZ FIRST - PATTERN INTERRUPT ★ */}
-                    <section id="tool-quiz" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                            <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Find Your Match</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading quiz...
-                            </div>
-                        }>
-                            <ToolRecommendationQuiz />
-                        </Suspense>
-                    </section>
-
-                    {/* THE 4-ROLE FRAMEWORK */}
-                    <section className="mb-10">
-                        <h2 className="text-2xl font-bold text-white mb-2">The 4-Role Framework</h2>
-                        <p className="text-slate-400 mb-6">
-                            You don't need 47 apps. You need <strong className="text-white">4 roles filled</strong>. That's it.
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-4 mb-6">
-                            <RoleCard
-                                emoji="🧠"
-                                title="THE BRAIN"
-                                subtitle="The Thinker"
-                                description="Plans, drafts, analyzes, decides. Your strategic partner."
-                                examples={['Claude', 'ChatGPT', 'Gemini']}
-                                color="green"
-                                isFirst={true}
-                            />
-                            <RoleCard
-                                emoji="📚"
-                                title="THE MEMORY"
-                                subtitle="The Librarian"
-                                description="Remembers everything—preferences, files, past decisions."
-                                examples={['Notion', 'Obsidian', 'Apple Notes']}
-                                color="orange"
-                            />
-                            <RoleCard
-                                emoji="✋"
-                                title="THE HANDS"
-                                subtitle="The Doer"
-                                description="Takes action—sends emails, schedules meetings, pays bills."
-                                examples={['Calendar', 'Gmail', 'YNAB']}
-                                color="cyan"
-                            />
-                            <RoleCard
-                                emoji="⚡"
-                                title="THE NERVES"
-                                subtitle="The Connector"
-                                description="Wires the Brain to the Hands. Automations that trigger actions."
-                                examples={['Zapier', 'Make', 'IFTTT']}
-                                color="purple"
-                            />
-                        </div>
-
-                        {/* Quick mapping help */}
-                        {!speedRun && (
-                            <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm">
-                                <h3 className="text-white font-bold mb-3 flex items-center gap-2">
-                                    <Target className="text-cyan-400" size={18} />
-                                    Where Does Your Task Go?
-                                </h3>
-                                <p className="text-slate-400 text-sm mb-4">
-                                    That task from Chapter 1? Here's which role handles it:
-                                </p>
-                                <div className="space-y-2 text-sm">
-                                    {[
-                                        { role: 'BRAIN', examples: 'Morning briefings, email summaries, decision recommendations' },
-                                        { role: 'MEMORY', examples: 'Recipes, preferences, birthdays, gift ideas' },
-                                        { role: 'HANDS', examples: 'Scheduling, reminders, paying bills, sending messages' },
-                                        { role: 'NERVES', examples: '"When X happens, do Y" (we\'ll cover this in Chapter 13)' },
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
-                                            <span className="text-cyan-400 font-bold text-xs min-w-[60px]">{item.role}</span>
-                                            <span className="text-slate-300">{item.examples}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </section>
-
-                    {/* DECISION TREE - Which Tool? */}
-                    {!speedRun && (
-                        <section className="mb-10">
-                            <DecisionTree />
-                        </section>
-                    )}
-
-                    {/* MINIMUM VIABLE STACK */}
-                    <section className="mb-10">
-                        <MinimumViableStack />
-                    </section>
-
-                    {/* THE 20-MINUTE TASK KILLER */}
-                    <section className="mb-10">
-                        <TaskKillerProtocol />
-                    </section>
-
-                    {/* CASE STUDY - Compact */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="Marcus"
-                            role="Sales manager, father of 3"
-                            problem="Forgot to follow up with leads. Missed his daughter's recital reminder."
-                            result="Zero dropped leads. Phone buzzes only for what matters."
-                            timeframe="2 weeks"
-                            quote="I stopped being the person who forgets things. That identity shift was worth more than the hours saved."
+                        {/* Chapter Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part1/chapter1"
+                            nextChapter="/part1/chapter3"
+                            partNumber={1}
+                            chapterNumber={2}
                         />
-                    )}
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="You don't need 47 apps. You need 4 roles filled. The Brain thinks. The Memory remembers. The Hands act. The Nerves connect. That's your whole team."
-                        chapter={2}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="Your first agent is live. That task you've been carrying? It's no longer your problem. Your Brain is handling it now. But here's the thing—you just gave an AI access to your calendar, your tasks, maybe your email. Before we go deeper, Chapter 3 makes sure you stay safe while getting all the benefits. Trust me, it's important. 🔒"
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* CHAPTER COMPLETE */}
-                    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm mb-8">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                                <CheckCircle className="text-green-400" size={24} />
-                            </div>
-                            <div>
-                                <span className="text-green-400 font-bold block">Chapter 2 Complete</span>
-                                <span className="text-slate-400 text-sm">You're 12% of the way there</span>
-                            </div>
-                        </div>
-
-                        <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                            <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
-                            <ul className="space-y-2">
-                                <li className="flex items-center gap-2 text-sm text-slate-300">
-                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                    The 4-role framework (Brain, Memory, Hands, Nerves)
-                                </li>
-                                <li className="flex items-center gap-2 text-sm text-slate-300">
-                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                    Picked your AI "Brain" tool
-                                </li>
-                                <li className="flex items-center gap-2 text-sm text-slate-300">
-                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                    Set up your first agent to handle a recurring task
-                                </li>
-                            </ul>
-                        </div>
-
-                        <button
-                            onClick={() => navigate('/chapters/3')}
-                            className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
+                        {/* Header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
                         >
-                            Continue to Chapter 3: Privacy & Security
-                            <ArrowRight size={18} />
-                        </button>
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 2</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Building Your AI Team
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                The 4 roles that will delete that task you named
+                            </p>
+
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>7 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-green-400">20 min to implement</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </motion.div>
+
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '4', label: 'roles to fill' },
+                                { value: '$0-20', label: 'to start' },
+                                { value: '20 min', label: 'to kill your task' },
+                            ]}
+                            primaryCTA="Find My Tools"
+                            onCTAClick={scrollToQuiz}
+                        />
+
+                        {/* CAPTAIN EFFICIENCY - OPENER */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="default"
+                                    message="Time to build your team. In Chapter 1, you learned the difference between tools that wait and systems that work. Now we put that into practice. By the end of this chapter, you'll have picked your AI 'Brain' and handed off that recurring task you've been carrying. Ready to meet your new team?"
+                                />
+                            </Suspense>
+                        )}
+
+                        {/* Speed Run Notice */}
+                        {speedRun && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                            >
+                                <div className="flex items-center gap-2 text-cyan-400">
+                                    <Zap size={18} />
+                                    <span className="font-bold">Speed Run Mode</span>
+                                </div>
+                                <p className="text-slate-400 text-sm mt-1">
+                                    Showing only the essential frameworks and prompts. Toggle off to see the full chapter.
+                                </p>
+                            </motion.div>
+                        )}
+
+                        {/* ★ QUIZ FIRST - PATTERN INTERRUPT ★ */}
+                        <section id="tool-quiz" className="mb-10">
+                            <div className="flex items-center gap-2 mb-4">
+                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Find Your Match</span>
+                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                            </div>
+
+                            <Suspense fallback={
+                                <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    Loading quiz...
+                                </div>
+                            }>
+                                <ToolRecommendationQuiz />
+                            </Suspense>
+                        </section>
+
+                        {/* THE 4-ROLE FRAMEWORK */}
+                        <section className="mb-10">
+                            <h2 className="text-2xl font-bold text-white mb-2">The 4-Role Framework</h2>
+                            <p className="text-slate-400 mb-6">
+                                You don't need 47 apps. You need <strong className="text-white">4 roles filled</strong>. That's it.
+                            </p>
+
+                            <div className="grid md:grid-cols-2 gap-4 mb-6">
+                                <RoleCard
+                                    emoji="🧠"
+                                    title="THE BRAIN"
+                                    subtitle="The Thinker"
+                                    description="Plans, drafts, analyzes, decides. Your strategic partner."
+                                    examples={['Claude', 'ChatGPT', 'Gemini']}
+                                    color="green"
+                                    isFirst={true}
+                                />
+                                <RoleCard
+                                    emoji="📚"
+                                    title="THE MEMORY"
+                                    subtitle="The Librarian"
+                                    description="Remembers everything—preferences, files, past decisions."
+                                    examples={['Notion', 'Obsidian', 'Apple Notes']}
+                                    color="orange"
+                                />
+                                <RoleCard
+                                    emoji="✋"
+                                    title="THE HANDS"
+                                    subtitle="The Doer"
+                                    description="Takes action—sends emails, schedules meetings, pays bills."
+                                    examples={['Calendar', 'Gmail', 'YNAB']}
+                                    color="cyan"
+                                />
+                                <RoleCard
+                                    emoji="⚡"
+                                    title="THE NERVES"
+                                    subtitle="The Connector"
+                                    description="Wires the Brain to the Hands. Automations that trigger actions."
+                                    examples={['Zapier', 'Make', 'IFTTT']}
+                                    color="purple"
+                                />
+                            </div>
+
+                            {/* Quick mapping help */}
+                            {!speedRun && (
+                                <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm">
+                                    <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                                        <Target className="text-cyan-400" size={18} />
+                                        Where Does Your Task Go?
+                                    </h3>
+                                    <p className="text-slate-400 text-sm mb-4">
+                                        That task from Chapter 1? Here's which role handles it:
+                                    </p>
+                                    <div className="space-y-2 text-sm">
+                                        {[
+                                            { role: 'BRAIN', examples: 'Morning briefings, email summaries, decision recommendations' },
+                                            { role: 'MEMORY', examples: 'Recipes, preferences, birthdays, gift ideas' },
+                                            { role: 'HANDS', examples: 'Scheduling, reminders, paying bills, sending messages' },
+                                            { role: 'NERVES', examples: '"When X happens, do Y" (we\'ll cover this in Chapter 13)' },
+                                        ].map((item, i) => (
+                                            <div key={i} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                                <span className="text-cyan-400 font-bold text-xs min-w-[60px]">{item.role}</span>
+                                                <span className="text-slate-300">{item.examples}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </section>
+
+                        {/* DECISION TREE - Which Tool? */}
+                        {!speedRun && (
+                            <section className="mb-10">
+                                <DecisionTree />
+                            </section>
+                        )}
+
+                        {/* MINIMUM VIABLE STACK */}
+                        <section className="mb-10">
+                            <MinimumViableStack />
+                        </section>
+
+                        {/* THE 20-MINUTE TASK KILLER */}
+                        <section className="mb-10">
+                            <TaskKillerProtocol />
+                        </section>
+
+                        {/* CASE STUDY - Compact */}
+                        {!speedRun && (
+                            <CaseStudyCard
+                                name="Marcus"
+                                role="Sales manager, father of 3"
+                                problem="Forgot to follow up with leads. Missed his daughter's recital reminder."
+                                result="Zero dropped leads. Phone buzzes only for what matters."
+                                timeframe="2 weeks"
+                                quote="I stopped being the person who forgets things. That identity shift was worth more than the hours saved."
+                            />
+                        )}
+
+                        {/* SHAREABLE QUOTE */}
+                        <ShareableQuote
+                            quote="You don't need 47 apps. You need 4 roles filled. The Brain thinks. The Memory remembers. The Hands act. The Nerves connect. That's your whole team."
+                            chapter={2}
+                        />
+
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="Your first agent is live. That task you've been carrying? It's no longer your problem. Your Brain is handling it now. But here's the thing—you just gave an AI access to your calendar, your tasks, maybe your email. Before we go deeper, Chapter 3 makes sure you stay safe while getting all the benefits. Trust me, it's important. 🔒"
+                                />
+                            </Suspense>
+                        )}
+
+                        {/* CHAPTER COMPLETE */}
+                        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm mb-8">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                                    <CheckCircle className="text-green-400" size={24} />
+                                </div>
+                                <div>
+                                    <span className="text-green-400 font-bold block">Chapter 2 Complete</span>
+                                    <span className="text-slate-400 text-sm">You're 12% of the way there</span>
+                                </div>
+                            </div>
+
+                            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
+                                <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
+                                <ul className="space-y-2">
+                                    <li className="flex items-center gap-2 text-sm text-slate-300">
+                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                        The 4-role framework (Brain, Memory, Hands, Nerves)
+                                    </li>
+                                    <li className="flex items-center gap-2 text-sm text-slate-300">
+                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                        Picked your AI "Brain" tool
+                                    </li>
+                                    <li className="flex items-center gap-2 text-sm text-slate-300">
+                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                        Set up your first agent to handle a recurring task
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button
+                                onClick={() => navigate('/part1/chapter3')}
+                                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
+                            >
+                                Continue to Chapter 3: Privacy & Security
+                                <ArrowRight size={18} />
+                            </button>
+                        </div>
+
+                        {/* Bottom Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part1/chapter1"
+                            nextChapter="/part1/chapter3"
+                            partNumber={1}
+                            chapterNumber={2}
+                        />
+
                     </div>
-
-                    {/* Bottom Navigation */}
-                    <ChapterNavigation
-                        previousChapter="/chapters/1"
-                        nextChapter="/chapters/3"
-                        partNumber={1}
-                        chapterNumber={2}
-                    />
-
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
+            </SpeedRunContext.Provider>
+        </WebbookLayout>
     );
 };
 

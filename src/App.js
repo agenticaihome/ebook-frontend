@@ -18,6 +18,7 @@ import SalesPage from './SalesPage';
 const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
 const GameLandingPage = lazy(() => import('./pages/GameLandingPage'));
 const GamesPage = lazy(() => import('./pages/GamesPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Loading component
 const Loading = () => (
@@ -140,6 +141,13 @@ const AnimatedRoutes = () => {
             <Route path="/games" element={
               <Suspense fallback={<Loading />}>
                 <PageTransition><GamesPage /></PageTransition>
+              </Suspense>
+            } />
+
+            {/* 404 Route */}
+            <Route path="*" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><NotFoundPage /></PageTransition>
               </Suspense>
             } />
           </Routes>
