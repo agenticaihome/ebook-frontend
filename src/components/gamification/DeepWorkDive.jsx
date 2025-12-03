@@ -746,7 +746,7 @@ const DeepWorkDive = ({ onBack }) => {
                                 {/* Floating Captain */}
                                 <div className="animate-float animate-glow mb-4">
                                     <img
-                                        src="/assets/captain-efficiency-dark.png"
+                                        src="/assets/captain-efficiency-flying.png"
                                         alt="Captain Efficiency"
                                         className="w-24 h-24 sm:w-28 sm:h-28 mx-auto object-contain"
                                         draggable="false"
