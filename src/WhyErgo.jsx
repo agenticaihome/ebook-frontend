@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Shield, Zap, Database, Lock, Globe, Cpu, Server, ArrowLeft, CheckCircle, ExternalLink, Bot } from 'lucide-react';
@@ -10,6 +11,10 @@ import DecentralizationTable from './components/why-ergo/DecentralizationTable';
 export default function WhyErgo() {
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>Why Ergo? - Smart Money for the Agentic Age</title>
+                <meta name="description" content="Why we chose Ergo for payments. Decentralized, secure, and fair. Save 50% by paying with ERG." />
+            </Helmet>
             <div className="min-h-screen bg-[#0f0f1a] text-slate-300 font-sans selection:bg-green-500/30">
 
                 {/* HERO SECTION */}

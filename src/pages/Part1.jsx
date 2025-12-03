@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from 'react';
+import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 
@@ -7,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
 import { useUser } from '../context/UserContext';
+import { logEvent } from '../utils/analytics';
 
 const AIExperienceQuiz = React.lazy(() => import('../components/AIExperienceQuiz'));
 const MentalLoadCalculator = React.lazy(() => import('../components/MentalLoadCalculator'));
@@ -19,6 +21,8 @@ const TryThisNow = React.lazy(() => import('../components/common/TryThisNow'));
 const BeforeAfterComparison = React.lazy(() => import('../components/common/BeforeAfterComparison'));
 const ProgressBar = React.lazy(() => import('../components/common/ProgressBar'));
 const AgentLoopVisual = React.lazy(() => import('../components/common/AgentLoopVisual'));
+
+
 
 const Part1 = () => {
     const navigate = useNavigate();
@@ -74,14 +78,23 @@ const Part1 = () => {
 
     const scrollToChapter = (chapterId) => {
         setActiveChapter(chapterId);
+        logEvent('Webbook', 'Chapter View', `Part 1 - Chapter ${chapterId}`);
         const element = document.getElementById(`chapter-${chapterId}`);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 
+    React.useEffect(() => {
+        logEvent('Webbook', 'Access', 'Part 1');
+    }, []);
+
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>Part 1: Foundations - Agentic AI at Home</title>
+                <meta name="description" content="Start your journey to efficiency. Learn the core principles of Agentic AI and assess your current chaos level." />
+            </Helmet>
             <ProgressBar current={activeChapter} total={3} label="Part 1: Foundations - Understanding AI Agents" />
             <div className="min-h-screen bg-[#0f0f1a] text-white">
                 {/* Hero Section */}

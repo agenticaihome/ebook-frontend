@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /create-account
+Disallow: /success
+Disallow: /login
 
 Sitemap: https://agenticaihome.com/sitemap.xml

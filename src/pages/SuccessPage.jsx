@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import { api } from '../services/api';
+import { logPurchase } from '../utils/analytics';
 
 const SuccessPage = () => {
     const [searchParams] = useSearchParams();
@@ -24,6 +25,14 @@ const SuccessPage = () => {
                 if (result.success) {
                     setStatus('success');
                     setMessage('Payment confirmed! Redirecting to account creation...');
+
+                    // Log purchase event
+                    logPurchase({
+                        transaction_id: result.paymentId,
+                        value: 39.99, // Standard price
+                        currency: "USD",
+                        items: [{ item_id: "agentic_home_access", item_name: "Agentic AI Home Access" }]
+                    });
 
                     // Wait 2 seconds then redirect
                     setTimeout(() => {

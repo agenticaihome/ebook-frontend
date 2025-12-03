@@ -1,10 +1,12 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PasswordGate from '../components/common/PasswordGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 import { motion } from 'framer-motion';
 import { Layers, Home, Wrench, Flag, ArrowRight } from 'lucide-react';
+import { logEvent } from '../utils/analytics';
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
@@ -24,6 +26,10 @@ const Part5 = () => {
     const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(13);
 
+    useEffect(() => {
+        logEvent('Webbook', 'View', 'Part 5');
+    }, []);
+
     const chapters = [
         { id: 13, title: 'Life Operating System', icon: Layers },
         { id: 14, title: 'Smart Home (Optional)', icon: Home },
@@ -40,6 +46,10 @@ const Part5 = () => {
     };
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>Part 5: Life Operating System - Agentic AI at Home</title>
+                <meta name="description" content="Build your Life OS. Integrate all agents into a cohesive system, plan for the future, and launch your autonomous household." />
+            </Helmet>
             <PasswordGate>
                 <ProgressBar current={activeChapter - 12} total={4} label="Part 5: The Life Operating System" />
                 <div className="min-h-screen bg-[#0f0f1a] text-white">

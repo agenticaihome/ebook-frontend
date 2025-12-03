@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
@@ -7,6 +8,7 @@ import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
 import { Toaster, toast } from 'react-hot-toast';
 import { routeConfig } from './config/routes';
+import { initGA, logPageView } from './utils/analytics';
 
 // Eager load SalesPage
 import SalesPage from './SalesPage';
@@ -39,6 +41,7 @@ const AnimatedRoutes = () => {
 
   // Personalization: Track progress
   useEffect(() => {
+    logPageView(location.pathname + location.search);
     if (location.pathname !== '/' && location.pathname !== '/success' && !location.pathname.includes('widget')) {
       localStorage.setItem('last_visited_route', location.pathname);
     }
@@ -121,28 +124,35 @@ const AnimatedRoutes = () => {
   );
 };
 
+// ... imports
+
 function App() {
+  useEffect(() => {
+    initGA(process.env.REACT_APP_GA_MEASUREMENT_ID);
+  }, []);
+
   return (
-    <Router basename={process.env.PUBLIC_URL}>
-      <SoundProvider>
-        <UserProvider>
-          <ScrollToTop />
-          <Suspense fallback={<Loading />}>
-            <AnimatedRoutes />
-            <MobileBottomNav />
-            <Toaster
-              toastOptions={{
-                style: {
-                  background: '#1e293b',
-                  color: '#fff',
-                  border: '1px solid #334155',
-                },
-              }}
-            />
-          </Suspense>
-        </UserProvider>
-      </SoundProvider>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <SoundProvider>
+          <UserProvider>
+            <Suspense fallback={<Loading />}>
+              <AnimatedRoutes />
+              <MobileBottomNav />
+              <Toaster
+                toastOptions={{
+                  style: {
+                    background: '#1e293b',
+                    color: '#fff',
+                    border: '1px solid #334155',
+                  },
+                }}
+              />
+            </Suspense>
+          </UserProvider>
+        </SoundProvider>
+      </Router>
+    </HelmetProvider>
   );
 }
 

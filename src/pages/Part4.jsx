@@ -1,10 +1,12 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PasswordGate from '../components/common/PasswordGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 import { motion } from 'framer-motion';
 import { Activity, BookOpen, ArrowRight, Heart } from 'lucide-react';
+import { logEvent } from '../utils/analytics';
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
@@ -22,6 +24,10 @@ const Part4 = () => {
     const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(10);
 
+    useEffect(() => {
+        logEvent('Webbook', 'View', 'Part 4');
+    }, []);
+
     const chapters = [
         { id: 10, title: 'Health & Recovery', icon: Activity },
         { id: 11, title: 'Mental Wellbeing', icon: Heart },
@@ -37,6 +43,10 @@ const Part4 = () => {
     };
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>Part 4: Health & Recovery - Agentic AI at Home</title>
+                <meta name="description" content="Optimize your biology. Implement sleep protocols, mental load assessments, and a second brain for knowledge management." />
+            </Helmet>
             <PasswordGate>
                 <ProgressBar current={activeChapter - 9} total={3} label="Part 4: Health, Wellness, & Learning" />
                 <div className="min-h-screen bg-[#0f0f1a] text-white">

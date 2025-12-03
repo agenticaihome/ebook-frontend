@@ -1,10 +1,12 @@
 import React, { useState, Suspense, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock, BarChart2 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import LeaderboardModal from '../components/gamification/LeaderboardModal';
 import PasswordGate from '../components/common/PasswordGate';
 import { api } from '../services/api';
+import { logEvent } from '../utils/analytics';
 
 // Lazy load games
 const AgentTriageGame = React.lazy(() => import('../components/gamification/AgentTriageGame'));
@@ -12,6 +14,8 @@ const CalendarDefenseGame = React.lazy(() => import('../components/gamification/
 const CaptainClickChallenge = React.lazy(() => import('../components/gamification/CaptainClickChallenge'));
 const DeepWorkDive = React.lazy(() => import('../components/gamification/DeepWorkDive'));
 const FocusFury = React.lazy(() => import('../components/gamification/FocusFury'));
+
+
 
 const GamesPage = () => {
     const [activeGame, setActiveGame] = useState(null); // 'triage', 'calendar', 'clicker', 'deepwork'
@@ -102,6 +106,7 @@ const GamesPage = () => {
     ], []);
 
     const handleGameClick = (game) => {
+        logEvent('Game', 'Select', game.id);
         setActiveGame(game.id);
     };
 
@@ -113,6 +118,10 @@ const GamesPage = () => {
 
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>Games Hub - Agentic AI Training Grounds</title>
+                <meta name="description" content="Train your efficiency skills with our suite of productivity games. Inbox Defense, Deep Work Dive, and more." />
+            </Helmet>
             <PasswordGate>
                 <div className="min-h-screen bg-[#0f0f1a] text-white p-6 pb-24">
                     <div className="max-w-6xl mx-auto mt-8">

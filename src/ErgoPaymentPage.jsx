@@ -11,6 +11,7 @@ import { api } from './services/api';
 import { toast } from 'react-hot-toast';
 import { preventDoubleClick } from './utils/sanitizer';
 import { Client } from '@stomp/stompjs';
+import { logPurchase } from './utils/analytics';
 
 const ErgoPaymentPage = () => {
     const navigate = useNavigate();
@@ -265,6 +266,14 @@ const ErgoPaymentPage = () => {
         localStorage.setItem('ergo_payment', JSON.stringify(payment));
 
         console.log('✅ Payment confirmed! Redirecting to account creation...');
+
+        // Log purchase event
+        logPurchase({
+            transaction_id: txId,
+            value: 19.99, // Discounted price
+            currency: "USD",
+            items: [{ item_id: "agentic_home_access_ergo", item_name: "Agentic AI Home Access (Ergo)" }]
+        });
 
         // Generate temporary email for ERG payments  
         const tempEmail = `${txId.substring(0, 12)}@temp.ergo`;

@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -13,6 +14,8 @@ const ProductWalkthrough = React.lazy(() => import('./components/landing/Product
 const CryptoExplainerModal = React.lazy(() => import('./components/landing/CryptoExplainerModal'));
 const RecentPurchases = React.lazy(() => import('./components/landing/RecentPurchases'));
 
+
+
 export default function SalesPage() {
   const [showCryptoModal, setShowCryptoModal] = useState(false);
   const navigate = useNavigate();
@@ -24,6 +27,12 @@ export default function SalesPage() {
 
   return (
     <WebbookLayout>
+      <Helmet>
+        <title>Agentic AI at Home - Reclaim 10 Hours/Week</title>
+        <meta name="description" content="Build a 'Household Staff' of autonomous AI agents that handle email, calendar, meal planning, and home tasks. Stop drowning in to-do lists." />
+        <meta property="og:title" content="Agentic AI at Home - Automate Your Life" />
+        <meta property="og:description" content="Reclaim 10 hours/week. Deploy AI agents that manage your email, calendar, meal planning, and household tasks autonomously." />
+      </Helmet>
       <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-cyan-500/30">
 
         {/* HERO SECTION */}

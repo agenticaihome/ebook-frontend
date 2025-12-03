@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     ChevronDown, Search, MessageCircle, Shield, Zap,
@@ -646,6 +647,10 @@ export default function FAQ() {
 
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>FAQ - Agentic AI at Home</title>
+                <meta name="description" content="Frequently asked questions about the Agentic AI at Home course. Pricing, access, privacy, and more." />
+            </Helmet>
             <div className="min-h-screen bg-[#0f0f1a] text-slate-300 font-sans selection:bg-green-500/30 pb-20">
                 <div className="max-w-4xl mx-auto px-6 py-12">
 

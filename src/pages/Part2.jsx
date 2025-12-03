@@ -1,10 +1,12 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import PasswordGate from '../components/common/PasswordGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Coffee, UtensilsCrossed, Home, ArrowRight, CheckCircle, Clock, DollarSign } from 'lucide-react';
+import { logEvent } from '../utils/analytics';
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 const CaptainTip = React.lazy(() => import('../components/CaptainTip'));
@@ -26,6 +28,10 @@ const Part2 = () => {
     const navigate = useNavigate();
     const [activeChapter, setActiveChapter] = useState(4);
 
+    useEffect(() => {
+        logEvent('Webbook', 'View', 'Part 2');
+    }, []);
+
     const chapters = [
         { id: 4, title: 'Morning Routines', icon: Coffee },
         { id: 5, title: 'Kitchen & Grocery', icon: UtensilsCrossed },
@@ -42,6 +48,10 @@ const Part2 = () => {
 
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>Part 2: Daily Operations - Agentic AI at Home</title>
+                <meta name="description" content="Master your daily routine. Optimize morning rituals, kitchen logistics, and household management with AI agents." />
+            </Helmet>
             <PasswordGate partNumber={2}>
                 <ProgressBar current={activeChapter - 3} total={3} label="Part 2: Daily Operations" />
                 <div className="min-h-screen bg-[#0f0f1a] text-white">
