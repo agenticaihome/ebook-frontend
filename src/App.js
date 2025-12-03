@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
@@ -77,11 +77,39 @@ const AnimatedRoutes = () => {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><SalesPage /></PageTransition>} />
-            <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
-            <Route path="/part2" element={<PageTransition><routeConfig.part2.Component /></PageTransition>} />
-            <Route path="/part3" element={<PageTransition><routeConfig.part3.Component /></PageTransition>} />
-            <Route path="/part4" element={<PageTransition><routeConfig.part4.Component /></PageTransition>} />
-            <Route path="/part5" element={<PageTransition><routeConfig.part5.Component /></PageTransition>} />
+
+            {/* Part Redirects - redirect to first chapter of each part */}
+            <Route path="/part1" element={<Navigate to="/part1/chapter1" replace />} />
+            <Route path="/part2" element={<Navigate to="/part2/chapter1" replace />} />
+            <Route path="/part3" element={<Navigate to="/part3/chapter1" replace />} />
+            <Route path="/part4" element={<Navigate to="/part4/chapter1" replace />} />
+            <Route path="/part5" element={<Navigate to="/part5/chapter1" replace />} />
+
+            {/* Part 1 Chapters */}
+            <Route path="/part1/chapter1" element={<PageTransition><routeConfig.part1chapter1.Component /></PageTransition>} />
+            <Route path="/part1/chapter2" element={<PageTransition><routeConfig.part1chapter2.Component /></PageTransition>} />
+            <Route path="/part1/chapter3" element={<PageTransition><routeConfig.part1chapter3.Component /></PageTransition>} />
+
+            {/* Part 2 Chapters */}
+            <Route path="/part2/chapter1" element={<PageTransition><routeConfig.part2chapter1.Component /></PageTransition>} />
+            <Route path="/part2/chapter2" element={<PageTransition><routeConfig.part2chapter2.Component /></PageTransition>} />
+            <Route path="/part2/chapter3" element={<PageTransition><routeConfig.part2chapter3.Component /></PageTransition>} />
+
+            {/* Part 3 Chapters */}
+            <Route path="/part3/chapter1" element={<PageTransition><routeConfig.part3chapter1.Component /></PageTransition>} />
+            <Route path="/part3/chapter2" element={<PageTransition><routeConfig.part3chapter2.Component /></PageTransition>} />
+            <Route path="/part3/chapter3" element={<PageTransition><routeConfig.part3chapter3.Component /></PageTransition>} />
+
+            {/* Part 4 Chapters */}
+            <Route path="/part4/chapter1" element={<PageTransition><routeConfig.part4chapter1.Component /></PageTransition>} />
+            <Route path="/part4/chapter2" element={<PageTransition><routeConfig.part4chapter2.Component /></PageTransition>} />
+            <Route path="/part4/chapter3" element={<PageTransition><routeConfig.part4chapter3.Component /></PageTransition>} />
+
+            {/* Part 5 Chapters */}
+            <Route path="/part5/chapter1" element={<PageTransition><routeConfig.part5chapter1.Component /></PageTransition>} />
+            <Route path="/part5/chapter2" element={<PageTransition><routeConfig.part5chapter2.Component /></PageTransition>} />
+            <Route path="/part5/chapter3" element={<PageTransition><routeConfig.part5chapter3.Component /></PageTransition>} />
+
             <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
             <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
             <Route path="/dashboard" element={<PageTransition><routeConfig.dashboard.Component /></PageTransition>} />
@@ -114,9 +142,6 @@ const AnimatedRoutes = () => {
                 <PageTransition><GamesPage /></PageTransition>
               </Suspense>
             } />
-
-            {/* Legacy Redirects */}
-            <Route path="/part1" element={<PageTransition><routeConfig.part1.Component /></PageTransition>} />
           </Routes>
         </AnimatePresence>
       </MotionConfig>

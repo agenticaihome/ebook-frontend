@@ -97,38 +97,43 @@ const WebbookLayout = ({ children }) => {
 
     const chapters = [
         {
-            id: 'part1', title: 'Part 1: Diagnosis', path: '/part1', icon: <BookOpen size={18} />, progress: 0,
+            id: 'part1', title: 'Part 1: Diagnosis', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
             subChapters: [
-                { title: 'The Cost of Chaos', id: 'chaos' },
-                { title: 'The Agentic Shift', id: 'shift' }
+                { title: 'The Cost of Chaos', id: 'chapter1', path: '/part1/chapter1' },
+                { title: 'The Agentic Shift', id: 'chapter2', path: '/part1/chapter2' },
+                { title: '[Chapter 3]', id: 'chapter3', path: '/part1/chapter3' }
             ]
         },
         {
-            id: 'part2', title: 'Part 2: Getting Started', path: '/part2', icon: <Zap size={18} />, progress: 0, locked: true,
+            id: 'part2', title: 'Part 2: Getting Started', path: '/part2/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'The Morning Agent', id: 'morning' },
-                { title: 'Grocery Automation', id: 'grocery' }
+                { title: 'Morning Routines', id: 'chapter1', path: '/part2/chapter1' },
+                { title: 'Kitchen & Grocery', id: 'chapter2', path: '/part2/chapter2' },
+                { title: 'Household Management', id: 'chapter3', path: '/part2/chapter3' }
             ]
         },
         {
-            id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3', icon: <Shield size={18} />, progress: 0, locked: true,
+            id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3/chapter1', icon: <Shield size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Email Triage', id: 'email' },
-                { title: 'Deep Work Defense', id: 'deepwork' }
+                { title: '[Chapter 7]', id: 'chapter1', path: '/part3/chapter1' },
+                { title: '[Chapter 8]', id: 'chapter2', path: '/part3/chapter2' },
+                { title: '[Chapter 9]', id: 'chapter3', path: '/part3/chapter3' }
             ]
         },
         {
-            id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4', icon: <BookOpen size={18} />, progress: 0, locked: true,
+            id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4/chapter1', icon: <BookOpen size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Sleep Debt', id: 'sleep' },
-                { title: 'Recovery Metrics', id: 'recovery' }
+                { title: '[Chapter 10]', id: 'chapter1', path: '/part4/chapter1' },
+                { title: '[Chapter 11]', id: 'chapter2', path: '/part4/chapter2' },
+                { title: '[Chapter 12]', id: 'chapter3', path: '/part4/chapter3' }
             ]
         },
         {
-            id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5', icon: <Zap size={18} />, progress: 0, locked: true,
+            id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Multi-Agent Systems', id: 'multi' },
-                { title: 'The 12-Month Roadmap', id: 'roadmap' }
+                { title: '[Chapter 13]', id: 'chapter1', path: '/part5/chapter1' },
+                { title: '[Chapter 14]', id: 'chapter2', path: '/part5/chapter2' },
+                { title: '[Chapter 15]', id: 'chapter3', path: '/part5/chapter3' }
             ]
         },
     ];
@@ -137,8 +142,11 @@ const WebbookLayout = ({ children }) => {
     const [expandedChapter, setExpandedChapter] = useState(null);
 
     useEffect(() => {
-        // Auto-expand active chapter
-        const activeChapter = chapters.find(c => c.path === location.pathname);
+        // Auto-expand active chapter based on current path
+        const currentPath = location.pathname;
+        const activeChapter = chapters.find(c =>
+            currentPath.startsWith(`/${c.id.replace('part', 'part')}`)
+        );
         if (activeChapter) {
             setExpandedChapter(activeChapter.id);
         }
@@ -286,11 +294,19 @@ const WebbookLayout = ({ children }) => {
                                         >
                                             <div className="pl-12 pr-4 py-2 space-y-2 border-l border-slate-800 ml-6">
                                                 {chapter.subChapters?.map((sub) => (
-                                                    <div key={sub.id} className="flex items-center gap-2 text-xs text-slate-400 py-1">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-slate-700" />
+                                                    <Link
+                                                        key={sub.id}
+                                                        to={sub.path}
+                                                        className={`flex items-center gap-2 text-xs py-1 transition-colors rounded px-2 ${location.pathname === sub.path
+                                                            ? 'text-cyan-400 font-semibold bg-cyan-900/20'
+                                                            : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                                            }`}
+                                                    >
+                                                        <div className={`w-1.5 h-1.5 rounded-full ${location.pathname === sub.path ? 'bg-cyan-400' : 'bg-slate-700'
+                                                            }`} />
                                                         <span>{sub.title}</span>
                                                         {chapter.locked && <Lock size={10} className="ml-auto text-slate-600" />}
-                                                    </div>
+                                                    </Link>
                                                 ))}
                                             </div>
                                         </motion.div>
