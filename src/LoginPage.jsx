@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, Lock, Key, CreditCard, ArrowRight, AlertCircle } from 'lucide-react';
 import { api } from './services/api';
 import { usePageTitle } from './hooks/usePageTitle';
@@ -95,14 +95,14 @@ const LoginPage = () => {
                 {/* Content */}
                 <div className="p-8">
                     {error && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg mb-6 flex items-center gap-2 text-sm"
                         >
                             <AlertCircle size={16} />
                             {error}
-                        </motion.div>
+                        </m.div>
                     )}
 
                     <form onSubmit={handleEmailLogin} className="space-y-4">

@@ -5,7 +5,7 @@ import React, {
     useCallback,
     useMemo,
 } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from 'framer-motion';
 import { Play, Trophy, ArrowLeft, RotateCcw, Share2 } from "lucide-react";
 import confetti from "canvas-confetti";
 
@@ -662,16 +662,16 @@ const DeepWorkDive = ({ onBack }) => {
             {gameState === "playing" && (
                 <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none">
                     <div className="flex justify-between items-start p-3 sm:p-4">
-                        <motion.div
+                        <m.div
                             key={difficultyLevel}
                             initial={{ scale: 1.3, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             className={`${difficultyInfo.bg} ${difficultyInfo.color} px-3 py-1 rounded-full text-xs sm:text-sm font-bold border border-current/30`}
                         >
                             {difficultyInfo.text}
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             key={score}
                             initial={{ scale: 1.4 }}
                             animate={{ scale: 1 }}
@@ -680,7 +680,7 @@ const DeepWorkDive = ({ onBack }) => {
                             style={{ WebkitTextStroke: "2px rgba(0,0,0,0.3)" }}
                         >
                             {score}
-                        </motion.div>
+                        </m.div>
                     </div>
                 </div>
             )}
@@ -716,7 +716,7 @@ const DeepWorkDive = ({ onBack }) => {
                 {/* Flash */}
                 <AnimatePresence>
                     {flashColor && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0.4 }}
                             animate={{ opacity: 0 }}
                             exit={{ opacity: 0 }}
@@ -732,7 +732,7 @@ const DeepWorkDive = ({ onBack }) => {
                 {/* Near miss */}
                 <AnimatePresence>
                     {nearMiss && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 0.5 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
@@ -741,14 +741,14 @@ const DeepWorkDive = ({ onBack }) => {
                             <div className="bg-yellow-500 text-black font-black text-sm px-4 py-1.5 rounded-full shadow-lg">
                                 😰 CLOSE CALL!
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* +1 */}
                 <AnimatePresence>
                     {passedEffect && (
-                        <motion.div
+                        <m.div
                             key={passedEffect}
                             initial={{ opacity: 1, y: 0, scale: 1 }}
                             animate={{ opacity: 0, y: -50, scale: 1.4 }}
@@ -757,7 +757,7 @@ const DeepWorkDive = ({ onBack }) => {
                             className="absolute top-24 left-1/2 -translate-x-1/2 z-30 text-green-400 font-black text-3xl pointer-events-none"
                         >
                             +1
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
@@ -817,13 +817,13 @@ const DeepWorkDive = ({ onBack }) => {
                 {/* START SCREEN */}
                 <AnimatePresence>
                     {gameState === "idle" && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0, transition: { duration: 0.15 } }}
                             className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-30 backdrop-blur-sm p-4"
                         >
-                            <motion.div
+                            <m.div
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 className="text-center w-full max-w-sm"
@@ -858,7 +858,7 @@ const DeepWorkDive = ({ onBack }) => {
                                     </div>
                                 )}
 
-                                <motion.button
+                                <m.button
                                     whileTap={{ scale: 0.95 }}
                                     onClick={(e) => {
                                         e.stopPropagation();
@@ -867,27 +867,27 @@ const DeepWorkDive = ({ onBack }) => {
                                     className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 active:from-cyan-600 active:to-blue-700 text-white px-8 py-4 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-cyan-500/30 transition-all flex items-center justify-center gap-3"
                                 >
                                     <Play size={26} fill="white" /> TAP TO PLAY
-                                </motion.button>
+                                </m.button>
 
                                 <p className="text-slate-500 text-xs mt-4">
                                     Tap anywhere or press SPACE to fly
                                 </p>
-                            </motion.div>
-                        </motion.div>
+                            </m.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* DEATH SCREEN */}
                 <AnimatePresence>
                     {gameState === "dead" && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.15 }}
                             className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-30 backdrop-blur-sm p-4"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <motion.div
+                            <m.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.25, type: "spring" }}
@@ -895,7 +895,7 @@ const DeepWorkDive = ({ onBack }) => {
                             >
                                 {isNewBest ? (
                                     <>
-                                        <motion.div
+                                        <m.div
                                             animate={{
                                                 rotate: [-5, 5, -5],
                                                 scale: [1, 1.1, 1],
@@ -904,7 +904,7 @@ const DeepWorkDive = ({ onBack }) => {
                                             className="text-5xl mb-2"
                                         >
                                             🏆
-                                        </motion.div>
+                                        </m.div>
                                         <h2 className="text-2xl sm:text-3xl font-black text-yellow-400 mb-1">
                                             NEW BEST!
                                         </h2>
@@ -956,7 +956,7 @@ const DeepWorkDive = ({ onBack }) => {
                                 )}
 
                                 <div className="flex gap-3 justify-center mb-4">
-                                    <motion.button
+                                    <m.button
                                         whileTap={{ scale: 0.95 }}
                                         onClick={(e) => {
                                             e.stopPropagation();
@@ -965,8 +965,8 @@ const DeepWorkDive = ({ onBack }) => {
                                         className="bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white px-4 py-3 rounded-xl font-bold transition-all flex items-center gap-2 text-sm"
                                     >
                                         <ArrowLeft size={18} /> Back
-                                    </motion.button>
-                                    <motion.button
+                                    </m.button>
+                                    <m.button
                                         whileTap={{ scale: 0.95 }}
                                         onClick={(e) => {
                                             e.stopPropagation();
@@ -975,7 +975,7 @@ const DeepWorkDive = ({ onBack }) => {
                                         className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-5 py-3 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm"
                                     >
                                         <RotateCcw size={18} /> Try Again
-                                    </motion.button>
+                                    </m.button>
                                 </div>
 
                                 <button
@@ -987,17 +987,17 @@ const DeepWorkDive = ({ onBack }) => {
                                 >
                                     <Share2 size={16} /> Share Score
                                 </button>
-                            </motion.div>
+                            </m.div>
 
-                            <motion.p
+                            <m.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1.2 }}
                                 className="absolute bottom-4 text-slate-600 text-xs"
                             >
                                 Tap anywhere to play again
-                            </motion.p>
-                        </motion.div>
+                            </m.p>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft, Flame, Star } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
@@ -455,14 +455,14 @@ const CaptainClickChallenge = ({ onBack }) => {
                     <div className="flex items-center gap-3 sm:gap-5">
                         <div className="text-center">
                             <div className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider">Score</div>
-                            <motion.div
+                            <m.div
                                 key={score}
                                 initial={{ scale: 1.3 }}
                                 animate={{ scale: 1 }}
                                 className="text-xl sm:text-2xl font-black text-orange-400 font-mono"
                             >
                                 {score}
-                            </motion.div>
+                            </m.div>
                         </div>
                         <div className="text-center">
                             <div className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wider">Best</div>
@@ -485,7 +485,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                             </span>
                         </div>
                         <div className="w-20 sm:w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                            <motion.div
+                            <m.div
                                 className={`h-full rounded-full ${frenzyMode
                                     ? 'bg-gradient-to-r from-orange-500 to-yellow-400'
                                     : 'bg-gradient-to-r from-cyan-500 to-cyan-400'
@@ -500,7 +500,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                 {/* Active Power-up Indicator */}
                 <AnimatePresence>
                     {activePowerUp && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
@@ -514,7 +514,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                                     {POWER_UP_TYPES.find(p => p.type === activePowerUp)?.label} Active
                                 </span>
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>
@@ -540,7 +540,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                 {/* Flash overlay */}
                 <AnimatePresence>
                     {flashColor && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0.4 }}
                             animate={{ opacity: 0 }}
                             exit={{ opacity: 0 }}
@@ -567,24 +567,24 @@ const CaptainClickChallenge = ({ onBack }) => {
                 {/* Start Screen */}
                 <AnimatePresence>
                     {gameState === 'idle' && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0, transition: { duration: 0.15 } }}
                             className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 z-30 backdrop-blur-sm p-4"
                         >
-                            <motion.div
+                            <m.div
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 className="text-center w-full max-w-xs"
                             >
-                                <motion.div
+                                <m.div
                                     animate={{ scale: [1, 1.1, 1] }}
                                     transition={{ repeat: Infinity, duration: 1.5 }}
                                     className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-xl shadow-orange-500/40"
                                 >
                                     <Target className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                                </motion.div>
+                                </m.div>
 
                                 <h3 className="text-xl sm:text-2xl font-black text-white mb-2">Captain Click Challenge</h3>
                                 <p className="text-slate-400 mb-4 text-sm">
@@ -603,28 +603,28 @@ const CaptainClickChallenge = ({ onBack }) => {
                                     </div>
                                 )}
 
-                                <motion.button
+                                <m.button
                                     whileTap={{ scale: 0.95 }}
                                     onClick={startGame}
                                     className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-700 active:to-orange-600 text-white px-8 py-4 rounded-xl font-black text-lg shadow-lg shadow-orange-900/50 transition-all flex items-center justify-center gap-2"
                                 >
                                     <Play size={22} fill="white" /> TAP TO START
-                                </motion.button>
-                            </motion.div>
-                        </motion.div>
+                                </m.button>
+                            </m.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* End Screen */}
                 <AnimatePresence>
                     {gameState === 'finished' && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.1 }}
                             className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-30 backdrop-blur-sm p-4"
                         >
-                            <motion.div
+                            <m.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.2, type: 'spring' }}
@@ -632,13 +632,13 @@ const CaptainClickChallenge = ({ onBack }) => {
                             >
                                 {isNewHighScore ? (
                                     <>
-                                        <motion.div
+                                        <m.div
                                             animate={{ rotate: [-5, 5, -5], scale: [1, 1.1, 1] }}
                                             transition={{ repeat: Infinity, duration: 0.4 }}
                                             className="text-5xl mb-2"
                                         >
                                             🏆
-                                        </motion.div>
+                                        </m.div>
                                         <h2 className="text-2xl sm:text-3xl font-black text-yellow-400 mb-1">NEW HIGH SCORE!</h2>
                                     </>
                                 ) : (
@@ -670,30 +670,30 @@ const CaptainClickChallenge = ({ onBack }) => {
                                 </div>
 
                                 <div className="flex gap-3 justify-center">
-                                    <motion.button
+                                    <m.button
                                         whileTap={{ scale: 0.95 }}
                                         onClick={onBack}
                                         className="bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white px-4 sm:px-5 py-3 rounded-xl font-bold transition-all flex items-center gap-2 text-sm sm:text-base"
                                     >
                                         <ArrowLeft size={18} /> Back
-                                    </motion.button>
-                                    <motion.button
+                                    </m.button>
+                                    <m.button
                                         whileTap={{ scale: 0.95 }}
                                         onClick={startGame}
                                         className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-700 active:to-orange-600 text-white px-5 sm:px-6 py-3 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base"
                                     >
                                         <RotateCcw size={18} /> Again
-                                    </motion.button>
+                                    </m.button>
                                 </div>
-                            </motion.div>
-                        </motion.div>
+                            </m.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* The Captain - Now with SVG fallback */}
                 <AnimatePresence>
                     {gameState === 'playing' && (
-                        <motion.div
+                        <m.div
                             key="captain"
                             animate={{
                                 left: `${captainPos.x}%`,
@@ -710,7 +710,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                                 transform: 'translate(-50%, -50%)',
                             }}
                         >
-                            <motion.div
+                            <m.div
                                 animate={{
                                     rotate: isFrozen ? 0 : [0, 3, -3, 0],
                                 }}
@@ -749,15 +749,15 @@ const CaptainClickChallenge = ({ onBack }) => {
                                         </div>
                                     )}
                                 </div>
-                            </motion.div>
-                        </motion.div>
+                            </m.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* Power-ups */}
                 <AnimatePresence>
                     {powerUps.map((powerUp) => (
-                        <motion.button
+                        <m.button
                             key={powerUp.id}
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{
@@ -781,14 +781,14 @@ const CaptainClickChallenge = ({ onBack }) => {
                             }}
                         >
                             {powerUp.emoji}
-                        </motion.button>
+                        </m.button>
                     ))}
                 </AnimatePresence>
 
                 {/* Click Effects */}
                 <AnimatePresence>
                     {clickEffects.map((effect) => (
-                        <motion.div
+                        <m.div
                             key={effect.id}
                             initial={{ opacity: 1, scale: 1, y: 0 }}
                             animate={{ opacity: 0, scale: 1.4, y: -35 }}
@@ -803,7 +803,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                             }}
                         >
                             {effect.text}
-                        </motion.div>
+                        </m.div>
                     ))}
                 </AnimatePresence>
             </div>

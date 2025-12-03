@@ -4,7 +4,7 @@ import WebbookLayout from '../components/layout/WebbookLayout';
 import PasswordGate from '../components/common/PasswordGate';
 import BackgroundEffects from '../components/common/BackgroundEffects';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Coffee, UtensilsCrossed, Home, ArrowRight, CheckCircle, Clock, DollarSign } from 'lucide-react';
 import { logEvent } from '../utils/analytics';
 
@@ -60,7 +60,7 @@ const Part2 = () => {
                         <BackgroundEffects blob1Color="bg-purple-900/30" blob2Color="bg-teal-900/20" />
 
                         <div className="max-w-4xl mx-auto relative z-10">
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="text-center mb-12"
@@ -93,7 +93,7 @@ const Part2 = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                             {/* Chapter Navigation */}
                             <div className="grid md:grid-cols-3 gap-4 mb-12">

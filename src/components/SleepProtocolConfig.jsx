@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Moon, Battery, Activity, Award, Check } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import confetti from 'canvas-confetti';
@@ -119,7 +119,7 @@ const SleepProtocolConfig = () => {
                     Save Protocol & Unlock Badge
                 </button>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="bg-green-900/30 border border-green-500/50 rounded-xl p-4 text-center"
@@ -128,7 +128,7 @@ const SleepProtocolConfig = () => {
                         <Award size={20} /> Badge Unlocked: Bio-Hacker
                     </div>
                     <p className="text-slate-300 text-sm">Your recovery agent is now calibrated.</p>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

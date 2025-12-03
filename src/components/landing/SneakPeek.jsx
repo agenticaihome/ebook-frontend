@@ -1,6 +1,6 @@
 import React from 'react';
 import { Lock, Terminal, CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const SneakPeek = () => {
     return (
@@ -50,7 +50,7 @@ const SneakPeek = () => {
 
                 {/* Lock Overlay */}
                 <div className="absolute inset-0 top-32 bg-gradient-to-b from-slate-900/10 to-slate-900/90 backdrop-blur-[2px] flex flex-col items-center justify-center text-center p-6">
-                    <motion.div
+                    <m.div
                         initial={{ scale: 0.9, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         className="bg-slate-800/90 border border-cyan-500/50 p-6 rounded-2xl shadow-xl max-w-sm"
@@ -67,7 +67,7 @@ const SneakPeek = () => {
                             <div className="flex items-center gap-2"><CheckCircle size={12} className="text-green-400" /> Setup Guides</div>
                             <div className="flex items-center gap-2"><CheckCircle size={12} className="text-green-400" /> Troubleshooting Manuals</div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </div>

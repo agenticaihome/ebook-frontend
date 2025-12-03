@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X, BookOpen, Shield, Zap, Home, HelpCircle, Lock, ChevronDown, ChevronRight, Gamepad2 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
@@ -226,7 +226,7 @@ const WebbookLayout = ({ children }) => {
             </a>
 
             {/* Sidebar Navigation */}
-            <motion.aside
+            <m.aside
                 initial={{ width: 280 }}
                 animate={{ width: isSidebarOpen ? 280 : 0 }}
                 className={`fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 shadow-2xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out`}
@@ -303,7 +303,7 @@ const WebbookLayout = ({ children }) => {
 
                                 <AnimatePresence>
                                     {isExpanded && (
-                                        <motion.div
+                                        <m.div
                                             initial={{ height: 0, opacity: 0 }}
                                             animate={{ height: 'auto', opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
@@ -326,7 +326,7 @@ const WebbookLayout = ({ children }) => {
                                                     </Link>
                                                 ))}
                                             </div>
-                                        </motion.div>
+                                        </m.div>
                                     )}
                                 </AnimatePresence>
                             </div>
@@ -424,7 +424,7 @@ const WebbookLayout = ({ children }) => {
                         </p>
                     </div>
                 </div>
-            </motion.aside>
+            </m.aside>
 
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col min-w-0">
@@ -474,7 +474,7 @@ const WebbookLayout = ({ children }) => {
                         aria-valuemin="0"
                         aria-valuemax="100"
                     >
-                        <motion.div
+                        <m.div
                             className="h-full bg-cyan-500"
                             style={{ width: `${scrollProgress * 100}%` }}
                         />

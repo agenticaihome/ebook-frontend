@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Copy, Check, Calendar, Cloud, Mail, Car } from 'lucide-react';
 
 const MorningBriefBuilder = () => {
@@ -120,7 +120,7 @@ const MorningBriefBuilder = () => {
             </div>
 
             {!showResults ? (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="space-y-6"
@@ -237,9 +237,9 @@ const MorningBriefBuilder = () => {
                     >
                         Generate My Morning Brief
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
@@ -322,7 +322,7 @@ const MorningBriefBuilder = () => {
                     >
                         Customize Again
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

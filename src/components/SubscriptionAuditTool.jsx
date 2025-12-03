@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CreditCard, DollarSign, TrendingDown, AlertTriangle } from 'lucide-react';
 
 const SubscriptionAuditTool = () => {
@@ -124,7 +124,7 @@ const SubscriptionAuditTool = () => {
                 </div>
 
                 {/* Results Section */}
-                <motion.div layout className="grid md:grid-cols-2 gap-4">
+                <m.div layout className="grid md:grid-cols-2 gap-4">
                     <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
                         <div className="flex items-center gap-2 mb-2 text-slate-400">
                             <DollarSign size={18} />
@@ -141,7 +141,7 @@ const SubscriptionAuditTool = () => {
                         <div className="text-2xl font-bold text-green-400">${results.potentialSavings}</div>
                         <div className="text-xs text-slate-500 mt-1">${results.annualSavings} / year if cancelled</div>
                     </div>
-                </motion.div>
+                </m.div>
 
                 {results.cancelCount > 0 && (
                     <div className="bg-green-900/20 p-4 rounded-xl border border-green-500/30 flex items-start gap-3">

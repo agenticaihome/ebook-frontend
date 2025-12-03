@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ShieldCheck, Search, Loader2, AlertTriangle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { api } from '../services/api';
 
@@ -44,7 +44,7 @@ const ClaimAccessPage = () => {
             <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[120px]" />
             <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px]" />
 
-            <motion.div
+            <m.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8 relative z-10"
@@ -112,7 +112,7 @@ const ClaimAccessPage = () => {
                         )}
                     </button>
                 </form>
-            </motion.div>
+            </m.div>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FileText, Copy, Check } from 'lucide-react';
 
 const AgentConstitutionBuilder = () => {
@@ -196,7 +196,7 @@ Review and update quarterly or as needs change.`;
             </div>
 
             {hasSelections && (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-8"
@@ -228,7 +228,7 @@ Review and update quarterly or as needs change.`;
                     <div className="text-sm text-slate-400 text-center">
                         Save this document and share it with your AI agents when setting them up.
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

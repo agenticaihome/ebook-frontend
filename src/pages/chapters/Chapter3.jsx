@@ -1,7 +1,7 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Shield, Sparkles, Share2, Copy, Eye, EyeOff, Lock, Unlock,
@@ -29,7 +29,7 @@ const SpeedRunContext = createContext(false);
 const ChapterProgress = ({ current, total }) => (
     <div className="flex items-center gap-3 mb-6">
         <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-            <motion.div
+            <m.div
                 initial={{ width: 0 }}
                 animate={{ width: `${(current / total) * 100}%` }}
                 className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
@@ -70,7 +70,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
 );
 
 const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <motion.div
+    <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
@@ -91,7 +91,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
                 {primaryCTA} <ArrowRight size={18} />
             </button>
         </div>
-    </motion.div>
+    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -198,7 +198,7 @@ const DeepDive = ({ title, children }) => {
 
             <AnimatePresence>
                 {expanded && (
-                    <motion.div
+                    <m.div
                         initial={{ height: 0 }}
                         animate={{ height: 'auto' }}
                         exit={{ height: 0 }}
@@ -207,7 +207,7 @@ const DeepDive = ({ title, children }) => {
                         <div className="p-4 pt-0 border-t border-purple-500/20">
                             {children}
                         </div>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </div>
@@ -342,7 +342,7 @@ const DataTierVisual = () => {
                 {tiers.map((tier) => {
                     const c = colors[tier.color];
                     return (
-                        <motion.div
+                        <m.div
                             key={tier.level}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -366,7 +366,7 @@ const DataTierVisual = () => {
                                     </p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     );
                 })}
             </div>
@@ -579,7 +579,7 @@ const PrivacyLockdown = () => {
             </div>
 
             {completedCount === steps.length && (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-4 p-4 bg-green-900/30 rounded-xl border border-green-500/40 text-center"
@@ -587,7 +587,7 @@ const PrivacyLockdown = () => {
                     <CheckCircle className="text-green-400 mx-auto mb-2" size={24} />
                     <p className="text-green-400 font-bold">Privacy lockdown complete!</p>
                     <p className="text-slate-400 text-sm">Your data is now more protected than 90% of AI users.</p>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );
@@ -716,7 +716,7 @@ const Chapter3 = () => {
                         />
 
                         {/* Header */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-6"
@@ -741,7 +741,7 @@ const Chapter3 = () => {
                                 </div>
                                 <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                             </div>
-                        </motion.div>
+                        </m.div>
 
                         {/* TL;DR Card */}
                         <TLDRCard
@@ -767,7 +767,7 @@ const Chapter3 = () => {
 
                         {/* Speed Run Notice */}
                         {speedRun && (
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
@@ -779,7 +779,7 @@ const Chapter3 = () => {
                                 <p className="text-slate-400 text-sm mt-1">
                                     Showing only the essential privacy actions. Toggle off to see the full chapter.
                                 </p>
-                            </motion.div>
+                            </m.div>
                         )}
 
                         {/* ★ PROVOCATIVE OPENING HOOK ★ */}

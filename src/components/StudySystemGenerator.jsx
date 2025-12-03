@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { BookOpen, Calendar, CheckCircle } from 'lucide-react';
 
 const StudySystemGenerator = () => {
@@ -55,9 +55,9 @@ const StudySystemGenerator = () => {
             </div>
 
             {!showResults ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
                     {step === 0 && (
-                        <motion.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+                        <m.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                             <label className="block text-white font-medium mb-3">What are you studying for?</label>
                             <input
                                 type="text"
@@ -69,11 +69,11 @@ const StudySystemGenerator = () => {
                             <button onClick={nextStep} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all">
                                 Next
                             </button>
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {step === 1 && (
-                        <motion.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+                        <m.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                             <label className="block text-white font-medium mb-3">How many hours can you study per week?</label>
                             <input
                                 type="range"
@@ -87,11 +87,11 @@ const StudySystemGenerator = () => {
                             <button onClick={nextStep} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all">
                                 Next
                             </button>
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {step === 2 && (
-                        <motion.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+                        <m.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                             <label className="block text-white font-medium mb-3">What are your weakest topics?</label>
                             <textarea
                                 placeholder="e.g. Pharmacology, Ethics, Case Management"
@@ -102,11 +102,11 @@ const StudySystemGenerator = () => {
                             <button onClick={nextStep} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all">
                                 Next
                             </button>
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {step === 3 && (
-                        <motion.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+                        <m.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                             <div className="text-center mb-6">
                                 <h4 className="text-white font-bold text-xl mb-2">Ready to generate?</h4>
                                 <p className="text-slate-400">We'll build a custom plan based on your inputs.</p>
@@ -114,11 +114,11 @@ const StudySystemGenerator = () => {
                             <button onClick={nextStep} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all">
                                 Generate Study System
                             </button>
-                        </motion.div>
+                        </m.div>
                     )}
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+                <m.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                     <div className="text-center mb-8">
                         <div className="text-2xl font-bold text-white mb-1">{plan.examType} Plan</div>
                         <div className="text-cyan-400 font-mono text-sm">OPTIMIZED STUDY ARCHITECTURE</div>
@@ -182,7 +182,7 @@ const StudySystemGenerator = () => {
                     >
                         Create New Plan
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

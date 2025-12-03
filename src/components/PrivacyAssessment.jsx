@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Shield, Lock, Eye, AlertTriangle } from 'lucide-react';
 
 const PrivacyAssessment = () => {
@@ -123,7 +123,7 @@ const PrivacyAssessment = () => {
             </div>
 
             {!showResults ? (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="space-y-6"
@@ -179,9 +179,9 @@ const PrivacyAssessment = () => {
                     >
                         Get My Privacy Tier
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
@@ -236,7 +236,7 @@ const PrivacyAssessment = () => {
                     >
                         Retake Assessment
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { UtensilsCrossed, DollarSign, Clock, TrendingDown } from 'lucide-react';
 
 const FoodChaosCalculator = () => {
@@ -80,7 +80,7 @@ const FoodChaosCalculator = () => {
             </div>
 
             {!showResults ? (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="space-y-6"
@@ -189,9 +189,9 @@ const FoodChaosCalculator = () => {
                     >
                         Calculate My Food Chaos
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
@@ -264,7 +264,7 @@ const FoodChaosCalculator = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

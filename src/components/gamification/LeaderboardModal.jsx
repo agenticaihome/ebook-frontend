@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Trophy, X, Medal, Calendar, User } from 'lucide-react';
 import { api } from '../../services/api';
 
@@ -32,14 +32,14 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
 
     return (
         <AnimatePresence>
-            <motion.div
+            <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
                 onClick={onClose}
             >
-                <motion.div
+                <m.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
@@ -140,8 +140,8 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
                             Top 25 Agents Global Leaderboard
                         </p>
                     </div>
-                </motion.div>
-            </motion.div>
+                </m.div>
+            </m.div>
         </AnimatePresence>
     );
 };

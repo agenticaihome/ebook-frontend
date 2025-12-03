@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useUser } from '../context/UserContext';
 import useDeviceCapabilities from '../hooks/useDeviceCapabilities';
 
@@ -69,7 +69,7 @@ const CaptainHero = ({
     return (
         <div className={`flex items-center gap-4 md:gap-8 ${containerClasses[position]} ${className}`}>
             {/* Character Image or Video */}
-            <motion.div
+            <m.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -115,11 +115,11 @@ const CaptainHero = ({
                         style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))' }}
                     />
                 )}
-            </motion.div>
+            </m.div>
 
             {/* Message Bubble */}
             {message && (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -143,7 +143,7 @@ const CaptainHero = ({
                     </p>
 
                     {(!userState?.name || isEditing) && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             className="mt-3 pt-3 border-t border-white/10"
@@ -168,9 +168,9 @@ const CaptainHero = ({
                                     {isEditing ? "Save" : "Confirm"}
                                 </button>
                             </form>
-                        </motion.div>
+                        </m.div>
                     )}
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Play, RotateCcw, Terminal, Check } from 'lucide-react';
 
 const AgentSimulation = ({ agentName, task, steps }) => {
@@ -87,7 +87,7 @@ const AgentSimulation = ({ agentName, task, steps }) => {
                 )}
 
                 {logs.map((log, index) => (
-                    <motion.div
+                    <m.div
                         key={index}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -98,11 +98,11 @@ const AgentSimulation = ({ agentName, task, steps }) => {
                             <span className="text-blue-400 font-bold">[{log.action}]</span>{' '}
                             <span className="text-slate-300">{log.detail}</span>
                         </div>
-                    </motion.div>
+                    </m.div>
                 ))}
 
                 {isRunning && (
-                    <motion.div
+                    <m.div
                         animate={{ opacity: [0, 1, 0] }}
                         transition={{ repeat: Infinity, duration: 0.8 }}
                         className="w-2 h-4 bg-green-500"
@@ -110,21 +110,21 @@ const AgentSimulation = ({ agentName, task, steps }) => {
                 )}
 
                 {isComplete && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className="mt-4 p-3 bg-green-900/20 border border-green-900/50 rounded text-green-400 flex items-center gap-2"
                     >
                         <Check size={16} />
                         Task Completed Successfully.
-                    </motion.div>
+                    </m.div>
                 )}
             </div>
 
             {/* Progress Bar */}
             {isRunning && (
                 <div className="h-1 bg-slate-800 w-full">
-                    <motion.div
+                    <m.div
                         className="h-full bg-green-500"
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}

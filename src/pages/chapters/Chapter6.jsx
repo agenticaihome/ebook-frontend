@@ -5,7 +5,7 @@ import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
 import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, Home, Wrench, Package,
@@ -37,7 +37,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
         )}
         <div className="flex items-center gap-3">
             <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-                <motion.div
+                <m.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
                     className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
@@ -79,7 +79,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
 );
 
 const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <motion.div
+    <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
@@ -100,7 +100,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
                 {primaryCTA} <ArrowRight size={18} />
             </button>
         </div>
-    </motion.div>
+    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -226,7 +226,7 @@ const InvisibleLoadVisual = () => {
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden min-h-[300px]">
             <div className="absolute inset-0 overflow-hidden">
                 {thoughts.map((thought, i) => (
-                    <motion.div
+                    <m.div
                         key={i}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{
@@ -247,7 +247,7 @@ const InvisibleLoadVisual = () => {
                         }}
                     >
                         "{thought}"
-                    </motion.div>
+                    </m.div>
                 ))}
             </div>
 
@@ -316,7 +316,7 @@ const FourPillarsFramework = () => {
                 {pillars.map((pillar, i) => {
                     const c = colors[pillar.color];
                     return (
-                        <motion.div
+                        <m.div
                             key={pillar.name}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -339,7 +339,7 @@ const FourPillarsFramework = () => {
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     );
                 })}
             </div>
@@ -626,7 +626,7 @@ const Part2Celebration = () => {
     ];
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-gradient-to-br from-yellow-900/30 via-orange-900/20 to-red-900/20 rounded-2xl p-8 border-2 border-yellow-500/50 backdrop-blur-sm mb-8 relative overflow-hidden"
@@ -635,7 +635,7 @@ const Part2Celebration = () => {
             {celebrated && (
                 <div className="absolute inset-0 pointer-events-none">
                     {[...Array(20)].map((_, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             initial={{ opacity: 1, y: 0 }}
                             animate={{
@@ -651,21 +651,21 @@ const Part2Celebration = () => {
                             }}
                         >
                             {['🎉', '⭐', '🏆', '✨', '🚀'][i % 5]}
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             )}
 
             <div className="relative z-10">
                 <div className="text-center mb-6">
-                    <motion.div
+                    <m.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', delay: 0.2 }}
                         className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-yellow-500/20 mb-4"
                     >
                         <Trophy className="text-yellow-400" size={40} />
-                    </motion.div>
+                    </m.div>
                     <h2 className="text-3xl font-bold text-white mb-2">
                         🎉 PART 2 COMPLETE! 🎉
                     </h2>
@@ -676,7 +676,7 @@ const Part2Celebration = () => {
 
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
                     {achievements.map((item, i) => (
-                        <motion.div
+                        <m.div
                             key={item.chapter}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -687,7 +687,7 @@ const Part2Celebration = () => {
                             <div className="text-white font-bold text-sm">Ch {item.chapter}</div>
                             <div className="text-slate-400 text-xs mb-2">{item.title}</div>
                             <div className="text-green-400 font-bold text-sm">{item.result}</div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
 
@@ -719,7 +719,7 @@ const Part2Celebration = () => {
                     </p>
                 </div>
             </div>
-        </motion.div>
+        </m.div>
     );
 };
 
@@ -917,7 +917,7 @@ Ask me about my household size and preferences to estimate usage.`;
                             />
 
                             {/* Header */}
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="mb-6"
@@ -942,7 +942,7 @@ Ask me about my household size and preferences to estimate usage.`;
                                     </div>
                                     <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                             {/* TL;DR Card */}
                             <TLDRCard
@@ -968,7 +968,7 @@ Ask me about my household size and preferences to estimate usage.`;
 
                             {/* Speed Run Notice */}
                             {speedRun && (
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
@@ -980,7 +980,7 @@ Ask me about my household size and preferences to estimate usage.`;
                                     <p className="text-slate-400 text-sm mt-1">
                                         Showing only the essential prompts. Toggle off to see the full command center.
                                     </p>
-                                </motion.div>
+                                </m.div>
                             )}
 
                             {/* ★ THE INVISIBLE LOAD - Epic Opening ★ */}

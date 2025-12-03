@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 
@@ -130,7 +130,7 @@ const AIExperienceQuiz = () => {
         <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
             <AnimatePresence mode="wait">
                 {!showResults ? (
-                    <motion.div
+                    <m.div
                         key={currentQuestion}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -209,9 +209,9 @@ const AIExperienceQuiz = () => {
                             {currentQuestion < questions.length - 1 ? 'Next Question' : 'See Results'}
                             <ArrowRight size={20} />
                         </button>
-                    </motion.div>
+                    </m.div>
                 ) : (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center"
@@ -250,7 +250,7 @@ const AIExperienceQuiz = () => {
                         >
                             Retake Quiz
                         </button>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </div>

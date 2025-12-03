@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     ChevronDown, Search, MessageCircle, Shield, Zap,
     BookOpen, CreditCard, User, HelpCircle, FileText,
@@ -709,7 +709,7 @@ export default function FAQ() {
                             </div>
                         ) : (
                             searchedFaq.map((item) => (
-                                <motion.div
+                                <m.div
                                     key={item.id}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -728,7 +728,7 @@ export default function FAQ() {
                                     </button>
                                     <AnimatePresence>
                                         {expandedId === item.id && (
-                                            <motion.div
+                                            <m.div
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: 'auto', opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
@@ -737,10 +737,10 @@ export default function FAQ() {
                                                 <div className="px-6 pb-6 text-slate-300 leading-relaxed border-t border-slate-700/50 pt-4">
                                                     {item.answer}
                                                 </div>
-                                            </motion.div>
+                                            </m.div>
                                         )}
                                     </AnimatePresence>
-                                </motion.div>
+                                </m.div>
                             ))
                         )}
                     </div>

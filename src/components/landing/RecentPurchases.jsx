@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { MapPin, User } from 'lucide-react';
 
 const RecentPurchases = () => {
@@ -43,7 +43,7 @@ const RecentPurchases = () => {
     return (
         <AnimatePresence>
             {notification && (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 50, x: -50 }}
                     animate={{ opacity: 1, y: 0, x: 0 }}
                     exit={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ const RecentPurchases = () => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </AnimatePresence>
     );

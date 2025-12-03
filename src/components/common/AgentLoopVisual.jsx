@@ -1,6 +1,6 @@
 import React from 'react';
 import { MessageSquare, Zap, Eye, Brain, ArrowRight, CheckCircle, User, Bot } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const AgentLoopVisual = () => {
     return (
@@ -70,7 +70,7 @@ const AgentLoopVisual = () => {
 
                     {/* The Loop */}
                     <div className="ml-4 pl-4 border-l-2 border-dashed border-cyan-500/30 space-y-4">
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 }}
@@ -78,9 +78,9 @@ const AgentLoopVisual = () => {
                         >
                             <Eye size={16} className="text-purple-400" />
                             <span className="text-sm text-slate-300"><strong>Observes:</strong> Raining at 4 PM</span>
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.4 }}
@@ -88,9 +88,9 @@ const AgentLoopVisual = () => {
                         >
                             <Brain size={16} className="text-purple-400" />
                             <span className="text-sm text-slate-300"><strong>Thinks:</strong> "Outdoor event needs moving."</span>
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.6 }}
@@ -98,11 +98,11 @@ const AgentLoopVisual = () => {
                         >
                             <Zap size={16} className="text-purple-400" />
                             <span className="text-sm text-slate-300"><strong>Acts:</strong> Checks indoor venue availability</span>
-                        </motion.div>
+                        </m.div>
                     </div>
 
                     {/* Result */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 }}
@@ -112,7 +112,7 @@ const AgentLoopVisual = () => {
                         <div className="text-sm text-slate-200">
                             "I found an indoor venue for your 4 PM event. Want me to book it?"
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </div>

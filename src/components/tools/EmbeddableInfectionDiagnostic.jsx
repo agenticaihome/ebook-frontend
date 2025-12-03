@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Code } from 'lucide-react';
 
 const EmbeddableInfectionDiagnostic = () => {
@@ -77,7 +77,7 @@ const EmbeddableInfectionDiagnostic = () => {
                                     <span>{Math.round(((currentQuestion) / questions.length) * 100)}%</span>
                                 </div>
                                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                                    <motion.div
+                                    <m.div
                                         className="h-full bg-blue-500"
                                         initial={{ width: 0 }}
                                         animate={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
@@ -86,7 +86,7 @@ const EmbeddableInfectionDiagnostic = () => {
                             </div>
 
                             <AnimatePresence mode="wait" custom={direction}>
-                                <motion.div
+                                <m.div
                                     key={currentQuestion}
                                     initial={{ x: 50, opacity: 0 }}
                                     animate={{ x: 0, opacity: 1 }}
@@ -96,7 +96,7 @@ const EmbeddableInfectionDiagnostic = () => {
                                     <h3 className="text-xl font-bold text-slate-800">
                                         {questions[currentQuestion].text}
                                     </h3>
-                                </motion.div>
+                                </m.div>
                             </AnimatePresence>
 
                             <div className="grid grid-cols-2 gap-4 mt-8">
@@ -116,7 +116,7 @@ const EmbeddableInfectionDiagnostic = () => {
                         </>
                     ) : (
                         <div className="text-center">
-                            <motion.div
+                            <m.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                             >
@@ -150,7 +150,7 @@ const EmbeddableInfectionDiagnostic = () => {
                                 </div>
 
                                 {showEmbedCode && (
-                                    <motion.div
+                                    <m.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: 'auto', opacity: 1 }}
                                         className="mt-4"
@@ -162,9 +162,9 @@ const EmbeddableInfectionDiagnostic = () => {
                                             onClick={(e) => e.target.select()}
                                         />
                                         <p className="text-[10px] text-slate-400 mt-1">Copy and paste to your site</p>
-                                    </motion.div>
+                                    </m.div>
                                 )}
-                            </motion.div>
+                            </m.div>
                         </div>
                     )}
                 </div>

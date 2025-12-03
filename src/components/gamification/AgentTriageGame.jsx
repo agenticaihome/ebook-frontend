@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { m, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Clock, Flame, Keyboard, ChevronLeft, ChevronRight, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
@@ -47,29 +47,29 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
         : '0 4px 15px rgba(0,0,0,0.3)';
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.15 } }}
             className="relative w-full mb-2"
         >
             {/* Swipe Indicators Background */}
-            <motion.div
+            <m.div
                 className="absolute inset-0 rounded-xl flex items-center justify-between px-4 pointer-events-none"
                 style={{ background }}
             >
-                <motion.div style={{ opacity: leftIconOpacity }} className="flex items-center gap-2 text-red-400">
+                <m.div style={{ opacity: leftIconOpacity }} className="flex items-center gap-2 text-red-400">
                     <Trash2 size={24} />
                     <span className="font-bold text-sm">DELETE</span>
-                </motion.div>
-                <motion.div style={{ opacity: rightIconOpacity }} className="flex items-center gap-2 text-green-400">
+                </m.div>
+                <m.div style={{ opacity: rightIconOpacity }} className="flex items-center gap-2 text-green-400">
                     <span className="font-bold text-sm">DELEGATE</span>
                     <Check size={24} />
-                </motion.div>
-            </motion.div>
+                </m.div>
+            </m.div>
 
             {/* Draggable Card - FIXED: Combined x transform with boxShadow */}
-            <motion.div
+            <m.div
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
                 dragElastic={0.7}
@@ -84,7 +84,7 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
                 {/* Critical Timer Bar */}
                 {email.isCritical && (
                     <div className="absolute top-0 left-0 right-0 h-1.5 bg-red-900/50 rounded-t-xl overflow-hidden">
-                        <motion.div
+                        <m.div
                             className="h-full bg-gradient-to-r from-red-500 to-orange-500"
                             initial={{ width: '100%' }}
                             animate={{ width: `${Math.max(0, 100 - urgency * 100)}%` }}
@@ -136,8 +136,8 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
                     <span>swipe</span>
                     <ChevronRight size={12} />
                 </div>
-            </motion.div>
-        </motion.div>
+            </m.div>
+        </m.div>
     );
 };
 
@@ -792,7 +792,7 @@ const AgentTriageGame = ({ onBack }) => {
 
                 {/* Progress Bar */}
                 <div className="relative h-3 bg-slate-700/50 rounded-full overflow-hidden mb-2">
-                    <motion.div
+                    <m.div
                         className="absolute inset-y-0 left-0 bg-gradient-to-r from-cyan-500 to-green-500 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: `${progressPercent}%` }}
@@ -808,7 +808,7 @@ const AgentTriageGame = ({ onBack }) => {
                     {/* Combo */}
                     <div className="flex items-center gap-3">
                         {combo > 0 && (
-                            <motion.div
+                            <m.div
                                 initial={{ scale: 0.5 }}
                                 animate={{ scale: 1 }}
                                 className={`flex items-center gap-1 px-2 py-1 rounded-lg ${combo >= 7 ? 'bg-purple-500/30 text-purple-400' :
@@ -819,7 +819,7 @@ const AgentTriageGame = ({ onBack }) => {
                             >
                                 <Flame size={16} className={combo >= 5 ? 'animate-pulse' : ''} />
                                 <span className="font-bold font-mono">{combo}x</span>
-                            </motion.div>
+                            </m.div>
                         )}
                         <div className="text-xs text-slate-500 font-mono">W{wave}</div>
                     </div>
@@ -844,13 +844,13 @@ const AgentTriageGame = ({ onBack }) => {
 
                 {/* Captain Bar */}
                 <div className="flex items-center gap-3 mt-2 pt-2 border-t border-slate-700/50">
-                    <motion.div
+                    <m.div
                         animate={{ scale: captainMessage.mood === 'excited' || captainMessage.mood === 'victory' ? [1, 1.1, 1] : 1 }}
                         transition={{ repeat: captainMessage.mood === 'excited' ? Infinity : 0, duration: 0.5 }}
                         className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transition-all ${moodColors[captainMessage.mood]} ${captainMessage.mood === 'urgent' || captainMessage.mood === 'excited' ? 'animate-pulse' : ''}`}
                     >
                         CE
-                    </motion.div>
+                    </m.div>
                     <p className="flex-1 text-sm sm:text-base text-cyan-300 font-medium">{captainMessage.text}</p>
                 </div>
             </div>
@@ -858,7 +858,7 @@ const AgentTriageGame = ({ onBack }) => {
             {/* Keyboard Shortcuts Panel */}
             <AnimatePresence>
                 {showControls && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
@@ -882,7 +882,7 @@ const AgentTriageGame = ({ onBack }) => {
                                 <span className="text-slate-300">Quick select</span>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
 
@@ -899,7 +899,7 @@ const AgentTriageGame = ({ onBack }) => {
                 {/* Wave Announcement */}
                 <AnimatePresence>
                     {waveAnnouncement && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 2, y: -50 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.5 }}
@@ -908,28 +908,28 @@ const AgentTriageGame = ({ onBack }) => {
                             <div className="text-4xl sm:text-6xl font-black text-cyan-500/40 tracking-widest text-center">
                                 {waveAnnouncement}
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* Combo Popup */}
                 <AnimatePresence>
                     {comboPopup && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 0.5, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 1.5, y: -30 }}
                             className={`absolute top-4 left-1/2 -translate-x-1/2 ${comboPopup.color} font-black text-2xl sm:text-3xl z-30 pointer-events-none drop-shadow-lg`}
                         >
                             {comboPopup.text}
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* Start Screen */}
                 {gameState === 'start' && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 z-30 backdrop-blur-sm text-center p-4 sm:p-6">
-                        <motion.div
+                        <m.div
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             className="w-full max-w-sm"
@@ -982,36 +982,36 @@ const AgentTriageGame = ({ onBack }) => {
                                     Personal Best: {personalBest.score} pts
                                 </div>
                             )}
-                        </motion.div>
+                        </m.div>
                     </div>
                 )}
 
                 {/* Game Over Screen */}
                 {(gameState === 'won' || gameState === 'lost') && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/85 z-30 backdrop-blur-md text-center p-4 sm:p-6">
-                        <motion.div
+                        <m.div
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             className="w-full max-w-sm"
                         >
-                            <motion.h3
+                            <m.h3
                                 animate={gameState === 'won' ? { scale: [1, 1.05, 1] } : {}}
                                 transition={{ repeat: gameState === 'won' ? 3 : 0, duration: 0.3 }}
                                 className={`text-3xl sm:text-4xl font-bold mb-3 ${gameState === 'won' ? 'text-green-400' : 'text-red-400'}`}
                             >
                                 {gameState === 'won' ? '🎯 INBOX ZERO!' : '📥 OVERFLOW!'}
-                            </motion.h3>
+                            </m.h3>
 
                             <div className="text-5xl sm:text-6xl font-black text-white mb-2 font-mono">{score}</div>
 
                             {score > 0 && score >= personalBest.score && (
-                                <motion.div
+                                <m.div
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
                                     className="inline-flex items-center gap-1 bg-yellow-500/20 text-yellow-400 px-4 py-1.5 rounded-full text-sm font-bold mb-4"
                                 >
                                     <Trophy size={16} /> NEW PERSONAL BEST!
-                                </motion.div>
+                                </m.div>
                             )}
 
                             {/* Stats Grid */}
@@ -1058,7 +1058,7 @@ const AgentTriageGame = ({ onBack }) => {
                                     <Share2 size={20} /> Share
                                 </button>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </div>
                 )}
 
@@ -1093,7 +1093,7 @@ const AgentTriageGame = ({ onBack }) => {
                 {/* Floating Points */}
                 <AnimatePresence>
                     {particles.map(particle => (
-                        <motion.div
+                        <m.div
                             key={particle.id}
                             initial={{ opacity: 1, y: 0, scale: 1 }}
                             animate={{ opacity: 0, y: -60, scale: 1.3 }}
@@ -1105,13 +1105,13 @@ const AgentTriageGame = ({ onBack }) => {
                             {particle.subtext && (
                                 <div className="text-sm opacity-80">{particle.subtext}</div>
                             )}
-                        </motion.div>
+                        </m.div>
                     ))}
                 </AnimatePresence>
 
                 {/* Danger Border */}
                 {emails.length >= 4 && gameState === 'playing' && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: [0.4, 0.8, 0.4] }}
                         transition={{ repeat: Infinity, duration: 0.5 }}
@@ -1121,13 +1121,13 @@ const AgentTriageGame = ({ onBack }) => {
 
                 {/* Overflow Warning */}
                 {emails.length >= 5 && gameState === 'playing' && (
-                    <motion.div
+                    <m.div
                         initial={{ y: -20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         className="absolute top-2 left-1/2 -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded-lg font-bold text-sm animate-pulse z-20 shadow-lg"
                     >
                         ⚠️ INBOX CRITICAL! Clear emails NOW!
-                    </motion.div>
+                    </m.div>
                 )}
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Activity, AlertTriangle, CheckCircle, Wrench } from 'lucide-react';
 
 const SystemHealthDiagnostic = () => {
@@ -48,7 +48,7 @@ const SystemHealthDiagnostic = () => {
             </div>
 
             {!showResults ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <p className="text-slate-300 mb-6">Rate each agent's current helpfulness (1 = Useless, 5 = Essential).</p>
 
                     <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -82,9 +82,9 @@ const SystemHealthDiagnostic = () => {
                     >
                         Run Diagnostic
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+                <m.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                     <div className="text-center mb-8">
                         <div className={`text-6xl font-bold mb-2 ${results.percentage >= 80 ? 'text-green-400' : results.percentage >= 60 ? 'text-yellow-400' : 'text-red-400'}`}>
                             {results.percentage}%
@@ -144,7 +144,7 @@ const SystemHealthDiagnostic = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

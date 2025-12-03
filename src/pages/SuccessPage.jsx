@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import { api } from '../services/api';
 import { logPurchase } from '../utils/analytics';
@@ -54,7 +54,7 @@ const SuccessPage = () => {
 
     return (
         <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center p-4">
-            <motion.div
+            <m.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8 text-center"
@@ -92,7 +92,7 @@ const SuccessPage = () => {
                         </button>
                     </div>
                 )}
-            </motion.div>
+            </m.div>
         </div>
     );
 };

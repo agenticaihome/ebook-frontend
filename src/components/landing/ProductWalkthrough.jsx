@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Play, Maximize2 } from 'lucide-react';
 import dashboardPreview from '../../assets/dashboard-preview.webp';
 
@@ -25,14 +25,14 @@ const ProductWalkthrough = () => {
                                 style={{ backgroundImage: `url(${dashboardPreview})` }}
                             />
 
-                            <motion.button
+                            <m.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setIsPlaying(true)}
                                 className="relative z-10 w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 group-hover:bg-white/20 transition-colors"
                             >
                                 <Play className="w-8 h-8 text-white fill-white ml-1" />
-                            </motion.button>
+                            </m.button>
 
                             <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
                                 <div>

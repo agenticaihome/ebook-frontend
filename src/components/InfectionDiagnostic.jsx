@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import html2canvas from 'html2canvas';
 import { useSound } from '../context/SoundContext';
 import { AlertTriangle, CheckCircle, Clock, ArrowRight, Share2, Download, X } from 'lucide-react';
@@ -7,7 +7,7 @@ import { AlertTriangle, CheckCircle, Clock, ArrowRight, Share2, Download, X } fr
 const CaptainMemePopup = ({ onClose }) => {
     return (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <motion.div
+            <m.div
                 initial={{ scale: 0.5, opacity: 0, rotate: -10 }}
                 animate={{ scale: 1, opacity: 1, rotate: 0 }}
                 exit={{ scale: 0.5, opacity: 0 }}
@@ -41,7 +41,7 @@ const CaptainMemePopup = ({ onClose }) => {
                         I'll Share the Wisdom 🫡
                     </button>
                 </div>
-            </motion.div>
+            </m.div>
         </div>
     );
 };
@@ -261,7 +261,7 @@ const InfectionDiagnostic = () => {
                             </span>
                         </div>
                         <div className="h-4 bg-gray-200 rounded-full overflow-hidden relative">
-                            <motion.div
+                            <m.div
                                 className="h-full relative"
                                 style={{ backgroundColor: getVitalsColor() }}
                                 initial={{ width: 0 }}
@@ -269,14 +269,14 @@ const InfectionDiagnostic = () => {
                                 transition={{ duration: 0.5 }}
                             >
                                 <div className="absolute top-0 right-0 w-full h-full animate-pulse bg-white/30"></div>
-                            </motion.div>
+                            </m.div>
                         </div>
                     </div>
 
                     {/* Question Card */}
                     <div className="relative h-64">
                         <AnimatePresence initial={false} custom={direction}>
-                            <motion.div
+                            <m.div
                                 key={currentQuestion}
                                 custom={direction}
                                 initial={{ x: direction > 0 ? 1000 : -1000, opacity: 0 }}
@@ -308,12 +308,12 @@ const InfectionDiagnostic = () => {
                                         </button>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </m.div>
                         </AnimatePresence>
                     </div>
                 </>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center"
@@ -361,7 +361,7 @@ const InfectionDiagnostic = () => {
                             Begin Treatment <ArrowRight className="inline ml-2" size={20} />
                         </button>
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

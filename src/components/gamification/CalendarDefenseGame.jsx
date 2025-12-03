@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Calendar, XCircle, Shield, Clock, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Coffee, Zap, Battery, Keyboard } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
@@ -812,7 +812,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                 <div className="mt-2 flex items-center gap-2">
                     <Shield size={16} className={deepWorkHours < 3 ? 'text-red-500 animate-pulse' : 'text-cyan-400'} />
                     <div className="flex-1 h-3 bg-slate-700 rounded-full overflow-hidden">
-                        <motion.div
+                        <m.div
                             className={`h-full bg-gradient-to-r ${healthColor} rounded-full`}
                             initial={{ width: '100%' }}
                             animate={{ width: `${healthPercent}%` }}
@@ -856,7 +856,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             {/* Controls Overlay */}
             <AnimatePresence>
                 {showControls && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
@@ -871,7 +871,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                             </div>
                             <button onClick={() => setShowControls(false)} className="text-slate-400 hover:text-white">×</button>
                         </div>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
 
@@ -887,14 +887,14 @@ const CalendarDefenseGame = ({ onBack }) => {
 
                 {/* Shield Visual Effect */}
                 {shieldActive && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
                         className="absolute left-0 top-0 bottom-0 w-[15%] bg-gradient-to-r from-cyan-500/30 to-transparent pointer-events-none z-20"
                     >
                         <div className="absolute inset-0 border-r-4 border-cyan-400 animate-pulse" />
-                    </motion.div>
+                    </m.div>
                 )}
 
                 {/* Calendar Fortress */}
@@ -915,7 +915,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                 {/* Wave Announcement */}
                 <AnimatePresence>
                     {waveAnnouncement && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, scale: 1.5 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
@@ -924,7 +924,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                             <h1 className="text-5xl sm:text-7xl font-black text-purple-500/30 tracking-widest">
                                 {waveAnnouncement}
                             </h1>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
@@ -980,7 +980,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                 {/* Game Over Screen */}
                 {(gameState === 'won' || gameState === 'lost') && (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/85 z-30 backdrop-blur-md text-center p-4">
-                        <motion.div
+                        <m.div
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             className="w-full max-w-sm"
@@ -1031,7 +1031,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                                     <RotateCcw size={18} /> Again
                                 </button>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </div>
                 )}
 
@@ -1040,7 +1040,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                     {powerUps.map((powerUp) => {
                         const IconComponent = powerUp.icon;
                         return (
-                            <motion.button
+                            <m.button
                                 key={powerUp.id}
                                 initial={{ scale: 0, rotate: -180 }}
                                 animate={{ scale: 1, rotate: 0 }}
@@ -1055,7 +1055,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                                 }}
                             >
                                 <IconComponent size={20} className="text-white" />
-                            </motion.button>
+                            </m.button>
                         );
                     })}
                 </AnimatePresence>
@@ -1063,7 +1063,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                 {/* Enemies (Meetings) */}
                 <AnimatePresence>
                     {enemies.map((enemy) => (
-                        <motion.button
+                        <m.button
                             key={enemy.id}
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -1091,14 +1091,14 @@ const CalendarDefenseGame = ({ onBack }) => {
                             {!enemy.boss && (
                                 <XCircle size={12} className="text-white/70 hidden sm:block" />
                             )}
-                        </motion.button>
+                        </m.button>
                     ))}
                 </AnimatePresence>
 
                 {/* Particles */}
                 <AnimatePresence>
                     {particles.map(particle => (
-                        <motion.div
+                        <m.div
                             key={particle.id}
                             initial={{ opacity: 1, y: 0, scale: 1 }}
                             animate={{ opacity: 0, y: -50, scale: 1.3 }}
@@ -1112,7 +1112,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                             }}
                         >
                             {particle.text}
-                        </motion.div>
+                        </m.div>
                     ))}
                 </AnimatePresence>
 

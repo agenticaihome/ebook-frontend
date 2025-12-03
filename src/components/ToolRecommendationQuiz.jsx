@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { CheckCircle, ExternalLink, DollarSign } from 'lucide-react';
 
 const ToolRecommendationQuiz = () => {
@@ -148,7 +148,7 @@ const ToolRecommendationQuiz = () => {
 
             <AnimatePresence mode="wait">
                 {!showResults ? (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className="space-y-8"
@@ -189,9 +189,9 @@ const ToolRecommendationQuiz = () => {
                         >
                             Get My Recommendations
                         </button>
-                    </motion.div>
+                    </m.div>
                 ) : (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                     >
@@ -321,7 +321,7 @@ const ToolRecommendationQuiz = () => {
                         >
                             Retake Quiz
                         </button>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Shield, Zap, Activity, Award, CheckCircle, Lock } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import confetti from 'canvas-confetti';
@@ -59,7 +59,7 @@ const LifeOSDashboardPreview = () => {
 
                 {/* Health Bar */}
                 <div className="w-full h-4 bg-slate-800 rounded-full overflow-hidden mb-8 border border-slate-700">
-                    <motion.div
+                    <m.div
                         initial={{ width: 0 }}
                         animate={{ width: `${systemHealth}%` }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
@@ -96,7 +96,7 @@ const LifeOSDashboardPreview = () => {
                 </div>
 
                 {badges.includes('chief_automation_officer') && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1 }}
@@ -106,7 +106,7 @@ const LifeOSDashboardPreview = () => {
                         <p className="text-slate-300 text-sm">
                             You have successfully installed the core components of your Life Operating System.
                         </p>
-                    </motion.div>
+                    </m.div>
                 )}
             </div>
         </div>

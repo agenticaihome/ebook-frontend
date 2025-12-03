@@ -2,7 +2,7 @@ import React, { useState, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
 import { usePerformanceMode } from './hooks/usePerformanceMode';
@@ -59,7 +59,7 @@ export default function SalesPage() {
 
             {/* Right: Copy */}
             <div className="order-1 md:order-2 text-center md:text-left">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-900/30 border border-cyan-500/50 text-cyan-400 text-xs font-mono mb-6"
@@ -69,9 +69,9 @@ export default function SalesPage() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                 </span>
                 SYSTEM ONLINE
-              </motion.div>
+              </m.div>
 
-              <motion.h1
+              <m.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -80,9 +80,9 @@ export default function SalesPage() {
                 Everyone Deserves a
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 block mt-2 mb-4">Personal Assistant.</span>
                 <span className="block text-white">Build Yours Today.</span>
-              </motion.h1>
+              </m.h1>
 
-              <motion.p
+              <m.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -91,9 +91,9 @@ export default function SalesPage() {
                 The interactive webbook that teaches anyone how to build a "Personal Staff" of autonomous AI agents. No coding required.
                 <br /><br />
                 Stop drowning in admin. Start deploying agents.
-              </motion.p>
+              </m.p>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -112,7 +112,7 @@ export default function SalesPage() {
                 >
                   Sales Paused
                 </button>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </section>

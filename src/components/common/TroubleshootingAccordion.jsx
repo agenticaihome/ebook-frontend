@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, ChevronDown, ChevronUp, CheckCircle } from 'lucide-react';
 
 const TroubleshootingAccordion = ({ title = "Troubleshooting", issues = [] }) => {
@@ -33,7 +33,7 @@ const TroubleshootingAccordion = ({ title = "Troubleshooting", issues = [] }) =>
 
                         <AnimatePresence>
                             {activeIndex === index && (
-                                <motion.div
+                                <m.div
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: 'auto', opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
@@ -46,7 +46,7 @@ const TroubleshootingAccordion = ({ title = "Troubleshooting", issues = [] }) =>
                                             <div>{issue.solution}</div>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </m.div>
                             )}
                         </AnimatePresence>
                     </div>

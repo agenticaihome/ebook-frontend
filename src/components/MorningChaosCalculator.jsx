@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Coffee, AlertCircle, Clock } from 'lucide-react';
 
 const MorningChaosCalculator = () => {
@@ -74,7 +74,7 @@ const MorningChaosCalculator = () => {
             </div>
 
             {!showResults ? (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="space-y-6"
@@ -182,9 +182,9 @@ const MorningChaosCalculator = () => {
                     >
                         Calculate My Morning Chaos
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
@@ -254,7 +254,7 @@ const MorningChaosCalculator = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

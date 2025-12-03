@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Activity, TrendingUp, AlertCircle, Award, Lock } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 
@@ -101,7 +101,7 @@ const MentalLoadCalculator = () => {
             </div>
 
             {!showResults ? (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="space-y-6"
@@ -213,9 +213,9 @@ const MentalLoadCalculator = () => {
                     >
                         Calculate My Mental Load
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
@@ -236,7 +236,7 @@ const MentalLoadCalculator = () => {
 
                     {/* Gamification Reward */}
                     {unlockedTip && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="bg-gradient-to-r from-yellow-900/20 to-orange-900/20 border border-yellow-500/30 p-6 rounded-xl mb-8 relative overflow-hidden"
@@ -254,7 +254,7 @@ const MentalLoadCalculator = () => {
                                     <p className="text-slate-300 text-sm">{unlockedTip.content}</p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -301,7 +301,7 @@ const MentalLoadCalculator = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

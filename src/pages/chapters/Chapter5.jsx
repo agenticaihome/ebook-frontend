@@ -1,7 +1,7 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
@@ -35,7 +35,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
         )}
         <div className="flex items-center gap-3">
             <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-                <motion.div
+                <m.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
                     className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
@@ -77,7 +77,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
 );
 
 const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <motion.div
+    <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
@@ -98,7 +98,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
                 {primaryCTA} <ArrowRight size={18} />
             </button>
         </div>
-    </motion.div>
+    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -259,7 +259,7 @@ const FoodChaosDiary = () => {
 
             <div className="grid md:grid-cols-2 gap-3">
                 {moments.map((moment, i) => (
-                    <motion.div
+                    <m.div
                         key={i}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -273,7 +273,7 @@ const FoodChaosDiary = () => {
                                 <p className="text-slate-300 text-sm mt-1">{moment.text}</p>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 ))}
             </div>
 
@@ -327,7 +327,7 @@ const BudgetImpactVisual = () => {
                                 <span className="text-green-400 font-bold">${item.amount}</span>
                             </div>
                             <div className="h-1.5 bg-slate-800 rounded-full mt-1 overflow-hidden">
-                                <motion.div
+                                <m.div
                                     initial={{ width: 0 }}
                                     animate={{ width: `${(item.amount / total) * 100}%` }}
                                     transition={{ delay: 0.5 + i * 0.1 }}
@@ -696,7 +696,7 @@ For each suggestion, tell me:
                             />
 
                             {/* Header */}
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="mb-6"
@@ -721,7 +721,7 @@ For each suggestion, tell me:
                                     </div>
                                     <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                             {/* TL;DR Card */}
                             <TLDRCard
@@ -747,7 +747,7 @@ For each suggestion, tell me:
 
                             {/* Speed Run Notice */}
                             {speedRun && (
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
@@ -759,7 +759,7 @@ For each suggestion, tell me:
                                     <p className="text-slate-400 text-sm mt-1">
                                         Showing only the essential prompts. Toggle off to see family mapping tools and full context.
                                     </p>
-                                </motion.div>
+                                </m.div>
                             )}
 
                             {/* ★ EMOTIONAL HOOK: Food Chaos Diary ★ */}

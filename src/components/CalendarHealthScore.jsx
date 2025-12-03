@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Calendar, Check, Clock, Shield } from 'lucide-react';
 
 const CalendarHealthScore = () => {
@@ -71,7 +71,7 @@ const CalendarHealthScore = () => {
             </div>
 
             {!showResults ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
                     <div>
                         <label className="block text-white font-medium mb-3">Hours in meetings per week</label>
                         <input
@@ -153,9 +153,9 @@ const CalendarHealthScore = () => {
                     >
                         Calculate Health Score
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+                <m.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                     <div className="text-center mb-8">
                         <div className={`text-6xl font-bold ${getScoreColor(results.score)} mb-2`}>
                             {results.score}/10
@@ -195,7 +195,7 @@ const CalendarHealthScore = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Wallet, Copy, Check, AlertTriangle, ArrowRight, ArrowLeft,
     CheckCircle2, Clock, Smartphone, Loader2, Monitor, ExternalLink, ShieldCheck,
@@ -393,7 +393,7 @@ const ErgoPaymentPage = () => {
                 )}
 
                 {/* Header */}
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -409,11 +409,11 @@ const ErgoPaymentPage = () => {
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
                         Join the elite efficient. Pay with Ergo to receive your <span className="text-white font-semibold">50% Tech Literacy Discount</span>.
                     </p>
-                </motion.div>
+                </m.div>
 
                 <AnimatePresence mode="wait">
                     {step === 1 && (
-                        <motion.div
+                        <m.div
                             key="step1"
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -499,11 +499,11 @@ const ErgoPaymentPage = () => {
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {step === 2 && paymentStatus === 'WAITING' && (
-                        <motion.div
+                        <m.div
                             key="step2"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -702,7 +702,7 @@ const ErgoPaymentPage = () => {
 
                             {/* Gentle Helper Card (appears after 20 min) */}
                             {showHelper && (
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     className="mt-4"
@@ -741,13 +741,13 @@ const ErgoPaymentPage = () => {
                                             </button>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </m.div>
                             )}
-                        </motion.div>
+                        </m.div>
                     )}
 
                     {paymentStatus === 'CONFIRMED' && (
-                        <motion.div
+                        <m.div
                             key="confirmed"
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -766,7 +766,7 @@ const ErgoPaymentPage = () => {
                                     <span className="font-medium text-sm">Redirecting</span>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>

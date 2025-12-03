@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, Bell, Shield, CheckCircle, Award } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import confetti from 'canvas-confetti';
@@ -47,7 +47,7 @@ const DigitalDetoxChallenge = () => {
 
             <div className="grid md:grid-cols-2 gap-4 mb-6">
                 {items.map((item) => (
-                    <motion.button
+                    <m.button
                         key={item.id}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => handleCheck(item.id)}
@@ -69,12 +69,12 @@ const DigitalDetoxChallenge = () => {
                             </div>
                             <div className="text-xs text-slate-400 pl-8">{item.desc}</div>
                         </div>
-                    </motion.button>
+                    </m.button>
                 ))}
             </div>
 
             {isComplete && (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-gradient-to-r from-blue-900/40 to-indigo-900/40 border border-blue-500/50 rounded-xl p-6 text-center relative overflow-hidden"
@@ -94,7 +94,7 @@ const DigitalDetoxChallenge = () => {
                             You've built the first layer of your digital defense system. Your focus is now protected.
                         </p>
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

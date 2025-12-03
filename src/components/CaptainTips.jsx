@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Lightbulb } from 'lucide-react';
 
 // Captain E's Productivity Tips - 20 unique insights
@@ -53,7 +53,7 @@ const CaptainTips = () => {
     return (
         <AnimatePresence>
             {isVisible && (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 50, x: 50 }}
                     animate={{ opacity: 1, y: 0, x: 0 }}
                     exit={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -105,7 +105,7 @@ const CaptainTips = () => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </AnimatePresence>
     );

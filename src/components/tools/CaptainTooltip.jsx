@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { HelpCircle } from 'lucide-react';
 
 const CaptainTooltip = ({ content }) => {
@@ -20,7 +20,7 @@ const CaptainTooltip = ({ content }) => {
 
             <AnimatePresence>
                 {isVisible && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -36,7 +36,7 @@ const CaptainTooltip = ({ content }) => {
                         </div>
                         {/* Arrow */}
                         <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-8 border-transparent border-t-slate-900" />
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </div>

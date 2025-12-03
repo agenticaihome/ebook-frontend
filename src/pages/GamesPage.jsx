@@ -1,7 +1,7 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock, BarChart2, Lock } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import LeaderboardModal from '../components/gamification/LeaderboardModal';
@@ -207,7 +207,7 @@ const GamesPage = () => {
                     {/* Game View or List View */}
                     <AnimatePresence mode="wait">
                         {activeGame ? (
-                            <motion.div
+                            <m.div
                                 key="game-view"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -225,9 +225,9 @@ const GamesPage = () => {
                                         return GameComponent ? <GameComponent onBack={() => setActiveGame(null)} /> : null;
                                     })()}
                                 </Suspense>
-                            </motion.div>
+                            </m.div>
                         ) : (
-                            <motion.div
+                            <m.div
                                 key="list-view"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -239,7 +239,7 @@ const GamesPage = () => {
                                     const unlocked = isGameUnlocked(game);
 
                                     return (
-                                        <motion.div
+                                        <m.div
                                             key={game.id}
                                             whileHover={unlocked ? { y: -5 } : {}}
                                             className={`group relative bg-slate-800/40 border border-slate-700 rounded-3xl overflow-hidden transition-all shadow-lg backdrop-blur-sm flex flex-col ${unlocked ? 'hover:border-cyan-500/50 hover:shadow-cyan-500/10 cursor-pointer' : 'opacity-75'}`}
@@ -336,10 +336,10 @@ const GamesPage = () => {
                                                     </button>
                                                 </div>
                                             </div>
-                                        </motion.div>
+                                        </m.div>
                                     );
                                 })}
-                            </motion.div>
+                            </m.div>
                         )}
                     </AnimatePresence>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Award, Share2, Check } from 'lucide-react';
 
 const EfficiencyBadge = ({ savedHours, yearlySaved }) => {
@@ -37,7 +37,7 @@ Calculate your time back: https://agenticaihome.com`;
     };
 
     return (
-        <motion.div
+        <m.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             className={`relative overflow-hidden rounded-2xl border-2 ${rank.border} bg-gradient-to-br ${rank.bg} p-6 text-center shadow-2xl my-6`}
@@ -72,7 +72,7 @@ Calculate your time back: https://agenticaihome.com`;
                     {copied ? "Copied to Clipboard!" : "Share Badge"}
                 </button>
             </div>
-        </motion.div>
+        </m.div>
     );
 };
 

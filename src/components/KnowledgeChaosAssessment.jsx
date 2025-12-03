@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Database, Search, FolderOpen, AlertCircle } from 'lucide-react';
 
 const KnowledgeChaosAssessment = () => {
@@ -75,7 +75,7 @@ const KnowledgeChaosAssessment = () => {
             </div>
 
             {!showResults ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
                     <div>
                         <label className="block text-white font-medium mb-3">How often can you find info you've saved?</label>
                         <div className="grid grid-cols-2 gap-3">
@@ -152,9 +152,9 @@ const KnowledgeChaosAssessment = () => {
                     >
                         Calculate Chaos Score
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+                <m.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                     <div className="text-center mb-8">
                         <div className={`text-6xl font-bold ${getScoreColor(results.chaos)} mb-2`}>
                             {results.chaos}/10
@@ -198,7 +198,7 @@ const KnowledgeChaosAssessment = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

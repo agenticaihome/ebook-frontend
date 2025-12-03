@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
     CreditCard, Coins, Check, ArrowRight, Shield, Zap,
     Lock, Globe, Clock, Sparkles, Loader2, AlertCircle
@@ -47,7 +47,7 @@ export default function PaymentGuide() {
                 {/* HERO SECTION */}
                 <section className="py-16 px-6 border-b border-slate-800 bg-[#131320]">
                     <div className="max-w-5xl mx-auto">
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="text-center mb-12"
@@ -58,7 +58,7 @@ export default function PaymentGuide() {
                             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
                                 Two ways to unlock full access. Both include everything. Pick what works for you.
                             </p>
-                        </motion.div>
+                        </m.div>
 
                         {/* Captain's Insight */}
                         <div className="max-w-2xl mx-auto mb-12">
@@ -86,7 +86,7 @@ export default function PaymentGuide() {
                     <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
 
                         {/* STRIPE CARD */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.1 }}
@@ -161,10 +161,10 @@ export default function PaymentGuide() {
                                     </p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
 
                         {/* ERGO CARD */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 }}
@@ -232,7 +232,7 @@ export default function PaymentGuide() {
                                     </p>
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
 
                     </div>
                 </section>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Brain, Cloud, Wind, CheckCircle } from 'lucide-react';
 
 const MentalLoadAssessment = () => {
@@ -106,7 +106,7 @@ const MentalLoadAssessment = () => {
                         <span>{Math.round(((step) / questions.length) * 100)}% Complete</span>
                     </div>
 
-                    <motion.div
+                    <m.div
                         key={step}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -124,10 +124,10 @@ const MentalLoadAssessment = () => {
                                 </button>
                             ))}
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <div className="text-center mb-8">
                         <div className="text-6xl font-bold text-cyan-400 mb-2">{results.score}/10</div>
                         <div className="text-slate-400">Mental Load Score</div>
@@ -173,7 +173,7 @@ const MentalLoadAssessment = () => {
                     >
                         Retake Assessment
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

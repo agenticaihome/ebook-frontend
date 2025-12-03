@@ -4,7 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
 import React, { useState, Suspense, createContext, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Brain, Sparkles, Share2, Copy, Eye, EyeOff, MessageSquare,
@@ -28,7 +28,7 @@ const SpeedRunContext = createContext(false);
 const ChapterProgress = ({ current, total }) => (
     <div className="flex items-center gap-3 mb-6">
         <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-            <motion.div
+            <m.div
                 initial={{ width: 0 }}
                 animate={{ width: `${(current / total) * 100}%` }}
                 className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
@@ -72,7 +72,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
 
 // TL;DR Card with stats
 const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <motion.div
+    <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
@@ -93,7 +93,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
                 {primaryCTA} <ArrowRight size={18} />
             </button>
         </div>
-    </motion.div>
+    </m.div>
 );
 
 // Expandable Story Hook
@@ -111,7 +111,7 @@ const StoryHook = ({ hook, fullStory }) => {
 
             <AnimatePresence>
                 {expanded && (
-                    <motion.div
+                    <m.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -120,7 +120,7 @@ const StoryHook = ({ hook, fullStory }) => {
                         <div className="pt-4 mt-4 border-t border-slate-700 prose prose-invert prose-sm max-w-none">
                             {fullStory}
                         </div>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
 
@@ -203,7 +203,7 @@ const DeepDive = ({ title, children }) => {
 
             <AnimatePresence>
                 {expanded && (
-                    <motion.div
+                    <m.div
                         initial={{ height: 0 }}
                         animate={{ height: 'auto' }}
                         exit={{ height: 0 }}
@@ -212,7 +212,7 @@ const DeepDive = ({ title, children }) => {
                         <div className="p-4 pt-0 border-t border-purple-500/20">
                             {children}
                         </div>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </div>
@@ -320,7 +320,7 @@ const CaptainEfficiency = ({ variant = 'default', children }) => {
     const v = variants[variant];
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className={`bg-gradient-to-r ${v.bg} rounded-2xl p-6 border ${v.border} mb-8 relative overflow-hidden`}
@@ -347,7 +347,7 @@ const CaptainEfficiency = ({ variant = 'default', children }) => {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </m.div>
     );
 };
 
@@ -456,7 +456,7 @@ const Chapter1 = () => {
                         />
 
                         {/* Header */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-6"
@@ -477,7 +477,7 @@ const Chapter1 = () => {
                                 </div>
                                 <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                             </div>
-                        </motion.div>
+                        </m.div>
 
                         {/* TL;DR Card */}
                         <TLDRCard
@@ -503,7 +503,7 @@ const Chapter1 = () => {
 
                         {/* Speed Run Notice */}
                         {speedRun && (
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
@@ -515,7 +515,7 @@ const Chapter1 = () => {
                                 <p className="text-slate-400 text-sm mt-1">
                                     Showing only the essential prompts and tools. Toggle off to see the full chapter.
                                 </p>
-                            </motion.div>
+                            </m.div>
                         )}
 
                         {/* Story Hook - DARKER, SHORTER */}

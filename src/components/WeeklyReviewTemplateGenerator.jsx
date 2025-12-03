@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ClipboardList, CheckSquare, Clock } from 'lucide-react';
 
 const WeeklyReviewTemplateGenerator = () => {
@@ -62,7 +62,7 @@ const WeeklyReviewTemplateGenerator = () => {
             </div>
 
             {!showTemplate ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <p className="text-slate-300 mb-6">Select the agents you currently have running. We'll build a custom review checklist for you.</p>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
@@ -86,9 +86,9 @@ const WeeklyReviewTemplateGenerator = () => {
                     >
                         Generate Template
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+                <m.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                     <div className="bg-white text-slate-900 p-6 rounded-xl shadow-2xl mb-6 font-mono text-sm">
                         <div className="flex justify-between items-center border-b-2 border-slate-900 pb-4 mb-4">
                             <h4 className="text-xl font-bold uppercase">Weekly Review Protocol</h4>
@@ -132,7 +132,7 @@ const WeeklyReviewTemplateGenerator = () => {
                             Save / Print
                         </button>
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

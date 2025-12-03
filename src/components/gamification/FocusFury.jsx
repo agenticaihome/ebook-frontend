@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Play, RotateCcw, Trophy, Share2, ArrowLeft, Zap } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
@@ -651,28 +651,28 @@ const FocusFury = ({ onBack }) => {
 
                         {/* Score */}
                         <div className="text-center">
-                            <motion.div
+                            <m.div
                                 key={kills}
                                 initial={{ scale: 1.3 }}
                                 animate={{ scale: 1 }}
                                 className="text-4xl sm:text-5xl font-black text-white"
                             >
                                 {kills}
-                            </motion.div>
+                            </m.div>
                             <div className="text-[10px] text-slate-400">KILLS</div>
                         </div>
 
                         {/* Combo */}
                         <div className="text-center">
                             {combo > 0 && (
-                                <motion.div
+                                <m.div
                                     key={combo}
                                     initial={{ scale: 1.5, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
                                     className={`text-2xl sm:text-3xl font-black ${combo >= 10 ? 'text-yellow-400' : combo >= 5 ? 'text-cyan-400' : 'text-purple-400'}`}
                                 >
                                     {combo}x
-                                </motion.div>
+                                </m.div>
                             )}
                             <div className="text-[10px] text-slate-400">COMBO</div>
                         </div>
@@ -703,7 +703,7 @@ const FocusFury = ({ onBack }) => {
                 {/* Flash overlay */}
                 <AnimatePresence>
                     {flashColor && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0.4 }}
                             animate={{ opacity: 0 }}
                             exit={{ opacity: 0 }}
@@ -827,13 +827,13 @@ const FocusFury = ({ onBack }) => {
                 {/* START SCREEN */}
                 <AnimatePresence>
                     {gameState === 'idle' && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0, transition: { duration: 0.15 } }}
                             className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 z-30 backdrop-blur-sm p-4"
                         >
-                            <motion.div
+                            <m.div
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 className="text-center w-full max-w-sm"
@@ -862,32 +862,32 @@ const FocusFury = ({ onBack }) => {
                                     </div>
                                 )}
 
-                                <motion.button
+                                <m.button
                                     whileTap={{ scale: 0.95 }}
                                     onClick={startGame}
                                     className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 active:from-purple-600 active:to-pink-700 text-white px-8 py-4 rounded-2xl font-black text-lg sm:text-xl shadow-xl shadow-purple-500/30 transition-all flex items-center justify-center gap-3"
                                 >
                                     <Zap size={26} fill="white" /> UNLEASH FURY
-                                </motion.button>
+                                </m.button>
 
                                 <p className="text-slate-500 text-xs mt-4">
                                     Tap/click anywhere to fire focus beams
                                 </p>
-                            </motion.div>
-                        </motion.div>
+                            </m.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
 
                 {/* DEATH SCREEN */}
                 <AnimatePresence>
                     {gameState === 'dead' && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.15 }}
                             className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-30 backdrop-blur-sm p-4"
                         >
-                            <motion.div
+                            <m.div
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.25, type: 'spring' }}
@@ -895,13 +895,13 @@ const FocusFury = ({ onBack }) => {
                             >
                                 {isNewBest ? (
                                     <>
-                                        <motion.div
+                                        <m.div
                                             animate={{ rotate: [-5, 5, -5], scale: [1, 1.1, 1] }}
                                             transition={{ repeat: Infinity, duration: 0.5 }}
                                             className="text-5xl mb-2"
                                         >
                                             🏆
-                                        </motion.div>
+                                        </m.div>
                                         <h2 className="text-2xl sm:text-3xl font-black text-yellow-400 mb-1">NEW BEST!</h2>
                                     </>
                                 ) : (
@@ -941,20 +941,20 @@ const FocusFury = ({ onBack }) => {
                                 )}
 
                                 <div className="flex gap-3 justify-center mb-4">
-                                    <motion.button
+                                    <m.button
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => onBack?.()}
                                         className="bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white px-4 py-3 rounded-xl font-bold transition-all flex items-center gap-2 text-sm"
                                     >
                                         <ArrowLeft size={18} /> Back
-                                    </motion.button>
-                                    <motion.button
+                                    </m.button>
+                                    <m.button
                                         whileTap={{ scale: 0.95 }}
                                         onClick={startGame}
                                         className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 text-white px-5 py-3 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm"
                                     >
                                         <RotateCcw size={18} /> Fury Again
-                                    </motion.button>
+                                    </m.button>
                                 </div>
 
                                 <button
@@ -963,8 +963,8 @@ const FocusFury = ({ onBack }) => {
                                 >
                                     <Share2 size={16} /> Share Score
                                 </button>
-                            </motion.div>
-                        </motion.div>
+                            </m.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>

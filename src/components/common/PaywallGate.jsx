@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Lock, CreditCard, Coins } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ const PaywallGate = () => {
 
             {/* Gate Card */}
             <div className="relative z-20 max-w-2xl mx-auto px-4 -mt-32">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -83,7 +83,7 @@ const PaywallGate = () => {
                     <p className="text-xs text-slate-400">
                         Already purchased? <Link to="/login" className="text-blue-600 font-bold hover:underline">Login here</Link>
                     </p>
-                </motion.div>
+                </m.div>
             </div>
         </div>
     );

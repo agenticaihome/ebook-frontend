@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const ChaosCalculator = () => {
     const [weeklyTakeout, setWeeklyTakeout] = useState(100);
@@ -102,7 +102,7 @@ const ChaosCalculator = () => {
                         <p className="text-sm font-semibold mb-2" style={{ color: isInfected ? '#FF4444' : '#00DDDD' }}>
                             Annual Cost of Chaos
                         </p>
-                        <motion.div
+                        <m.div
                             className="text-5xl md:text-6xl font-bold medical-heading"
                             style={{ color: isInfected ? '#FF4444' : '#0055FF' }}
                             key={annualCost}
@@ -121,16 +121,16 @@ const ChaosCalculator = () => {
                             }}
                         >
                             ${annualCost.toLocaleString()}
-                        </motion.div>
+                        </m.div>
                         {isInfected && (
-                            <motion.p
+                            <m.p
                                 className="text-sm mt-2 font-semibold"
                                 style={{ color: '#FF4444' }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                             >
                                 ⚠️ Infection Zone: High Chaos Cost
-                            </motion.p>
+                            </m.p>
                         )}
                     </div>
 
@@ -138,7 +138,7 @@ const ChaosCalculator = () => {
                     <div className="flex justify-center items-end h-48 mb-6">
                         <div className="flex flex-col-reverse items-center gap-1">
                             {Array.from({ length: coinCount }).map((_, i) => (
-                                <motion.div
+                                <m.div
                                     key={i}
                                     className="coin"
                                     initial={{ scale: 0, y: -20 }}
@@ -156,7 +156,7 @@ const ChaosCalculator = () => {
 
                     {/* CTA Button */}
                     {showCTA && (
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
@@ -168,7 +168,7 @@ const ChaosCalculator = () => {
                             >
                                 📥 Download Part 1 Free
                             </button>
-                        </motion.div>
+                        </m.div>
                     )}
                 </div>
             </div>

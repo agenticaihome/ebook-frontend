@@ -1,7 +1,7 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
@@ -35,7 +35,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
         )}
         <div className="flex items-center gap-3">
             <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-                <motion.div
+                <m.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
                     className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
@@ -77,7 +77,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
 );
 
 const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <motion.div
+    <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
@@ -98,7 +98,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
                 {primaryCTA} <ArrowRight size={18} />
             </button>
         </div>
-    </motion.div>
+    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -498,7 +498,7 @@ const TroubleshootingAccordion = () => {
 
                         <AnimatePresence>
                             {openItem === item.id && (
-                                <motion.div
+                                <m.div
                                     initial={{ height: 0 }}
                                     animate={{ height: 'auto' }}
                                     exit={{ height: 0 }}
@@ -507,7 +507,7 @@ const TroubleshootingAccordion = () => {
                                     <div className="px-4 pb-4 pt-0 border-t border-slate-700">
                                         <p className="text-slate-300 text-sm pt-4">{item.answer}</p>
                                     </div>
-                                </motion.div>
+                                </m.div>
                             )}
                         </AnimatePresence>
                     </div>
@@ -604,7 +604,7 @@ Before generating briefs, ask me:
                             />
 
                             {/* Header */}
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="mb-6"
@@ -629,7 +629,7 @@ Before generating briefs, ask me:
                                     </div>
                                     <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                                 </div>
-                            </motion.div>
+                            </m.div>
 
                             {/* TL;DR Card */}
                             <TLDRCard
@@ -655,7 +655,7 @@ Before generating briefs, ask me:
 
                             {/* Speed Run Notice */}
                             {speedRun && (
-                                <motion.div
+                                <m.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
@@ -667,7 +667,7 @@ Before generating briefs, ask me:
                                     <p className="text-slate-400 text-sm mt-1">
                                         Showing only the essential prompts and tools. Toggle off to see the full chapter.
                                     </p>
-                                </motion.div>
+                                </m.div>
                             )}
 
                             {/* ★ TOOL FIRST: Morning Chaos Calculator ★ */}

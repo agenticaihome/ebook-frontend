@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ChevronRight, CheckCircle } from 'lucide-react';
 
 const InteractiveDiagram = ({ steps, title }) => {
@@ -44,7 +44,7 @@ const InteractiveDiagram = ({ steps, title }) => {
                 {/* Content Area */}
                 <div className="md:col-span-2 p-8 bg-white min-h-[300px] flex flex-col justify-center relative">
                     <AnimatePresence mode="wait">
-                        <motion.div
+                        <m.div
                             key={activeStep}
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -74,7 +74,7 @@ const InteractiveDiagram = ({ steps, title }) => {
                                     ))}
                                 </ul>
                             )}
-                        </motion.div>
+                        </m.div>
                     </AnimatePresence>
 
                     {/* Background Decoration */}

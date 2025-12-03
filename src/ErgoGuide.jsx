@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Wallet, CreditCard, Send, CheckCircle, HelpCircle,
     Smartphone, Monitor, AlertTriangle, ChevronDown, ChevronUp,

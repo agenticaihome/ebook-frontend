@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Lock, AlertCircle } from 'lucide-react';
 
 const PasswordGate = ({ children, partNumber }) => {
@@ -54,7 +54,7 @@ const PasswordGate = ({ children, partNumber }) => {
                 <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px]" />
             </div>
 
-            <motion.div
+            <m.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{
                     opacity: 1,
@@ -98,14 +98,14 @@ const PasswordGate = ({ children, partNumber }) => {
                         </div>
 
                         {error && (
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 border border-red-500/30 rounded-lg p-3"
                             >
                                 <AlertCircle size={16} />
                                 {error}
-                            </motion.div>
+                            </m.div>
                         )}
 
                         <button
@@ -120,7 +120,7 @@ const PasswordGate = ({ children, partNumber }) => {
                         Don't have access? Public release: <span className="text-cyan-400 font-medium">Coming Soon</span>
                     </p>
                 </div>
-            </motion.div >
+            </m.div >
         </div >
     );
 };

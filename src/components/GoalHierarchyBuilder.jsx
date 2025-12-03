@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Target, Calendar, Flag, CheckCircle, ArrowRight } from 'lucide-react';
 
 const GoalHierarchyBuilder = () => {
@@ -28,7 +28,7 @@ const GoalHierarchyBuilder = () => {
     };
 
     const renderInputStep = (title, subtitle, section, count, placeholder) => (
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
+        <m.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
             <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-white">{title}</h3>
                 <p className="text-slate-400">{subtitle}</p>
@@ -55,7 +55,7 @@ const GoalHierarchyBuilder = () => {
                     {step === 3 ? 'Generate Hierarchy' : 'Next Level'} <ArrowRight size={20} />
                 </button>
             </div>
-        </motion.div>
+        </m.div>
     );
 
     return (
@@ -100,7 +100,7 @@ const GoalHierarchyBuilder = () => {
                     )}
                 </div>
             ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <div className="text-center mb-8">
                         <h3 className="text-2xl font-bold text-white mb-2">Your Life Operating System</h3>
                         <p className="text-slate-400">Strategic Alignment Document</p>
@@ -169,7 +169,7 @@ const GoalHierarchyBuilder = () => {
                     >
                         Edit Hierarchy
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

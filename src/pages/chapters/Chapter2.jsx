@@ -1,7 +1,7 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Brain, Sparkles, Share2, Copy, Eye, EyeOff, Database, Hand,
@@ -28,7 +28,7 @@ const SpeedRunContext = createContext(false);
 const ChapterProgress = ({ current, total }) => (
     <div className="flex items-center gap-3 mb-6">
         <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-            <motion.div
+            <m.div
                 initial={{ width: 0 }}
                 animate={{ width: `${(current / total) * 100}%` }}
                 className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
@@ -72,7 +72,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
 
 // TL;DR Card with stats
 const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <motion.div
+    <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
@@ -93,7 +93,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
                 {primaryCTA} <ArrowRight size={18} />
             </button>
         </div>
-    </motion.div>
+    </m.div>
 );
 
 // Shareable Quote Card - for virality
@@ -229,7 +229,7 @@ const RoleCard = ({ emoji, title, subtitle, description, examples, color, isFirs
     const c = colors[color];
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className={`relative bg-gradient-to-br ${c.bg} rounded-xl p-5 border ${c.border} backdrop-blur-sm`}
@@ -254,7 +254,7 @@ const RoleCard = ({ emoji, title, subtitle, description, examples, color, isFirs
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </m.div>
     );
 };
 
@@ -297,7 +297,7 @@ const DecisionTree = () => {
                     ))}
                 </div>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center"
@@ -317,7 +317,7 @@ const DecisionTree = () => {
                     >
                         ← Choose again
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );
@@ -566,7 +566,7 @@ const Chapter2 = () => {
                         />
 
                         {/* Header */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-6"
@@ -591,7 +591,7 @@ const Chapter2 = () => {
                                 </div>
                                 <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                             </div>
-                        </motion.div>
+                        </m.div>
 
                         {/* TL;DR Card */}
                         <TLDRCard
@@ -617,7 +617,7 @@ const Chapter2 = () => {
 
                         {/* Speed Run Notice */}
                         {speedRun && (
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
@@ -629,7 +629,7 @@ const Chapter2 = () => {
                                 <p className="text-slate-400 text-sm mt-1">
                                     Showing only the essential frameworks and prompts. Toggle off to see the full chapter.
                                 </p>
-                            </motion.div>
+                            </m.div>
                         )}
 
                         {/* ★ QUIZ FIRST - PATTERN INTERRUPT ★ */}

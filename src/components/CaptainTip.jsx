@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Zap, AlertTriangle, Star, Info } from 'lucide-react';
 
 const CaptainTip = ({ type = 'tip', title, children, pose = 'default' }) => {
@@ -37,7 +37,7 @@ const CaptainTip = ({ type = 'tip', title, children, pose = 'default' }) => {
     const style = config[type] || config.tip;
 
     return (
-        <motion.div
+        <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -66,7 +66,7 @@ const CaptainTip = ({ type = 'tip', title, children, pose = 'default' }) => {
             <div className="text-slate-700 leading-relaxed text-sm md:text-base">
                 {children}
             </div>
-        </motion.div>
+        </m.div>
     );
 };
 

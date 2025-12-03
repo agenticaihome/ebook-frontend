@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Activity, TrendingUp, AlertCircle, ShieldCheck } from 'lucide-react';
 
 const FinancialHealthScore = () => {
@@ -78,7 +78,7 @@ const FinancialHealthScore = () => {
             </div>
 
             {!showResults ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
                     <div>
                         <label className="block text-white font-medium mb-3">Monthly Take-Home Income</label>
                         <input
@@ -157,9 +157,9 @@ const FinancialHealthScore = () => {
                     >
                         Calculate Health Score
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+                <m.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
                     <div className="text-center mb-8">
                         <div className={`text-6xl font-bold ${getScoreColor(results.score)} mb-2`}>
                             {results.score}/10
@@ -202,7 +202,7 @@ const FinancialHealthScore = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

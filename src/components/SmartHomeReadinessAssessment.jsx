@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Home, Lock, Zap } from 'lucide-react';
 
 const SmartHomeReadinessAssessment = () => {
@@ -105,7 +105,7 @@ const SmartHomeReadinessAssessment = () => {
                         </div>
                     </div>
 
-                    <motion.div
+                    <m.div
                         key={step}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -122,10 +122,10 @@ const SmartHomeReadinessAssessment = () => {
                                 </button>
                             ))}
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             ) : (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <div className="text-center mb-8">
                         <div className="text-slate-400 mb-2">Recommended Ecosystem</div>
                         <div className="text-4xl font-bold text-white mb-4">{result.ecosystem}</div>
@@ -163,7 +163,7 @@ const SmartHomeReadinessAssessment = () => {
                     >
                         Retake Assessment
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowRight, Database, Bot, FileText, CheckCircle } from 'lucide-react';
 
 const WorkflowVisual = ({
@@ -23,7 +23,7 @@ const WorkflowVisual = ({
                 {/* INPUTS */}
                 <div className="flex flex-col gap-4 w-full md:w-1/3">
                     {inputs.map((input, idx) => (
-                        <motion.div
+                        <m.div
                             key={idx}
                             initial={{ x: -20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
@@ -37,13 +37,13 @@ const WorkflowVisual = ({
 
                             {/* Connecting Line (Desktop) */}
                             <div className="hidden md:block absolute left-[30%] top-1/2 w-[20%] h-[2px] bg-gradient-to-r from-slate-700 to-cyan-900/0 -z-10" />
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
 
                 {/* AGENT (CENTER) */}
                 <div className="relative z-10">
-                    <motion.div
+                    <m.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         whileInView={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.3, type: "spring" }}
@@ -51,7 +51,7 @@ const WorkflowVisual = ({
                     >
                         <Bot size={40} className="text-white mb-2" />
                         <div className="text-white font-bold text-sm text-center px-2">{agentName}</div>
-                    </motion.div>
+                    </m.div>
 
                     {/* Pulsing Ring */}
                     <div className="absolute inset-0 bg-cyan-500/20 rounded-2xl blur-xl -z-10 animate-pulse" />
@@ -60,7 +60,7 @@ const WorkflowVisual = ({
                 {/* OUTPUTS */}
                 <div className="flex flex-col gap-4 w-full md:w-1/3">
                     {outputs.map((output, idx) => (
-                        <motion.div
+                        <m.div
                             key={idx}
                             initial={{ x: 20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
@@ -74,7 +74,7 @@ const WorkflowVisual = ({
                                 <span className="text-sm text-green-100 font-bold block">{output.label}</span>
                                 <span className="text-xs text-green-400/70">Ready to read</span>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle, Circle, ArrowDown } from 'lucide-react';
 
 const YearOneRoadmap = () => {
@@ -48,7 +48,7 @@ const YearOneRoadmap = () => {
 
             <div className="space-y-12">
                 {quarters.map((q, index) => (
-                    <motion.div
+                    <m.div
                         key={q.id}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -71,7 +71,7 @@ const YearOneRoadmap = () => {
                                 ))}
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 ))}
             </div>
 

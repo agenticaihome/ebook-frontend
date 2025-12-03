@@ -5,7 +5,7 @@ import BackgroundEffects from '../components/common/BackgroundEffects';
 
 import CaptainTip from '../components/CaptainTip';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Bot, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import { logEvent } from '../utils/analytics';
@@ -102,7 +102,7 @@ const Part1 = () => {
                     <BackgroundEffects blob1Color="bg-purple-900/30" blob2Color="bg-teal-900/20" />
 
                     <div className="max-w-4xl mx-auto relative z-10">
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="text-center mb-12"
@@ -114,7 +114,7 @@ const Part1 = () => {
                             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
                                 Learn the difference between chatbots and agents, choose your tools, and set up privacy boundaries.
                             </p>
-                        </motion.div>
+                        </m.div>
 
                         {/* Chapter Navigation */}
                         <div className="grid md:grid-cols-3 gap-4 mb-12">
@@ -140,7 +140,7 @@ const Part1 = () => {
                 </section>
 
                 {/* Chapter 1: What Are AI Agents? */}
-                <motion.section
+                <m.section
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -359,10 +359,10 @@ const Part1 = () => {
                             You named your task. Now let's kill it. Chapter 2 is where we build the team that makes it happen.
                         </CaptainTip>
                     </div>
-                </motion.section>
+                </m.section>
 
                 {/* Chapter 2: The Home AI Stack */}
-                <motion.section
+                <m.section
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -667,10 +667,10 @@ const Part1 = () => {
                             </p>
                         </div>
                     </div>
-                </motion.section>
+                </m.section>
 
                 {/* Chapter 3: Privacy, Security, and Control */}
-                <motion.section
+                <m.section
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
@@ -916,7 +916,7 @@ const Part1 = () => {
                             </div>
                         </div>
                     </div>
-                </motion.section>
+                </m.section>
 
                 {/* Social Share */}
                 <Suspense fallback={null}>

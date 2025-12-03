@@ -2,7 +2,8 @@
 /* High-Tech Clinical Aesthetic for DDS */
 
 /* Import Inter Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Import Inter Font - Moved to index.html for performance */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap'); */
 
 /* CSS Custom Properties - Clinical Color Palette */
 :root {

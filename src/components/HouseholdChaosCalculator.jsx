@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Home, AlertTriangle, DollarSign } from 'lucide-react';
 
 const HouseholdChaosCalculator = () => {
@@ -65,7 +65,7 @@ const HouseholdChaosCalculator = () => {
             </div>
 
             {!showResults ? (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="space-y-6"
@@ -172,9 +172,9 @@ const HouseholdChaosCalculator = () => {
                     >
                         Calculate My Household Chaos
                     </button>
-                </motion.div>
+                </m.div>
             ) : (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                 >
@@ -248,7 +248,7 @@ const HouseholdChaosCalculator = () => {
                     >
                         Recalculate
                     </button>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );

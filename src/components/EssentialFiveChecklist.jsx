@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { CheckCircle, Shield, DollarSign, Award } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 import confetti from 'canvas-confetti';
@@ -48,7 +48,7 @@ const EssentialFiveChecklist = () => {
 
             <div className="grid md:grid-cols-2 gap-4 mb-6">
                 {items.map((item) => (
-                    <motion.button
+                    <m.button
                         key={item.id}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => handleCheck(item.id)}
@@ -70,12 +70,12 @@ const EssentialFiveChecklist = () => {
                             </div>
                             <div className="text-xs text-slate-400 pl-8">{item.freq}</div>
                         </div>
-                    </motion.button>
+                    </m.button>
                 ))}
             </div>
 
             {isComplete && (
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-gradient-to-r from-green-900/40 to-emerald-900/40 border border-green-500/50 rounded-xl p-6 text-center relative overflow-hidden"
@@ -95,7 +95,7 @@ const EssentialFiveChecklist = () => {
                             By automating these 5 reminders, you've prevented the most common and expensive home disasters.
                         </p>
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </div>
     );
