@@ -312,4 +312,22 @@ const GamesPage = () => {
                     {/* Leaderboard Modal */}
                     <LeaderboardModal
                         isOpen={leaderboardOpen}
-                        export default GamesPage;
+                        onClose={() => setLeaderboardOpen(false)}
+                        gameId={selectedLeaderboardGame?.id}
+                        gameTitle={selectedLeaderboardGame?.title}
+                    />
+
+                    {/* Password Gate for Premium Games */}
+                    <PasswordGate
+                        isOpen={showPasswordGate}
+                        onClose={() => setShowPasswordGate(false)}
+                        onSuccess={handlePasswordSuccess}
+                    />
+
+                </div>
+            </div>
+        </WebbookLayout>
+    );
+};
+
+export default GamesPage;
