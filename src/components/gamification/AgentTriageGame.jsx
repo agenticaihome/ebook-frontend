@@ -511,7 +511,7 @@ const AgentTriageGame = ({ onBack }) => {
         }, 500);
 
         return () => clearInterval(checkExpired);
-    }, [gameState, playSound]);
+    }, [gameState]); // Fixed: Removed playSound from deps to prevent memory leak
 
     // Handle Action
     const handleAction = useCallback((id, action) => {
