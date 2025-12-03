@@ -1,15 +1,10 @@
-import React from 'react';
+import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { motion, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
-import { Helmet } from 'react-helmet-async';
-import WebbookLayout from '../../components/layout/WebbookLayout';
-import ChapterNavigation from '../../components/common/ChapterNavigation';
-
-import React, { useState, Suspense, createContext, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, ShoppingCart, Utensils,
