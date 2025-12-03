@@ -151,11 +151,10 @@ export default function PaymentGuide() {
                                     )}
 
                                     <button
-                                        onClick={handleStripePayment}
-                                        disabled={isStripeLoading}
-                                        className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 text-center flex items-center justify-center gap-2"
+                                        disabled
+                                        className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                                     >
-                                        {isStripeLoading ? <Loader2 className="animate-spin" /> : 'Get Instant Access'}
+                                        Sales Paused
                                     </button>
                                     <p className="text-xs text-slate-500 text-center">
                                         30-day money-back guarantee • Secure payment via Stripe
@@ -222,13 +221,12 @@ export default function PaymentGuide() {
                                     >
                                         Complete Ergo Guide (15-20 min setup)
                                     </Link>
-                                    <Link
-                                        to="/pay-ergo"
-                                        className="block w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-green-900/30 hover:shadow-green-900/50 text-center flex items-center justify-center gap-2"
+                                    <button
+                                        disabled
+                                        className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                                     >
-                                        Pay with ERG
-                                        <ArrowRight size={20} />
-                                    </Link>
+                                        Sales Paused
+                                    </button>
                                     <p className="text-xs text-slate-500 text-center">
                                         First time? Follow the guide above • Still 30-day guarantee
                                     </p>

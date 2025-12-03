@@ -106,10 +106,10 @@ export default function SalesPage() {
                   <Zap size={20} /> Start Part 1 (Free • 15 min)
                 </Link>
                 <button
-                  onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2"
+                  disabled
+                  className="bg-slate-700/50 text-slate-400 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                 >
-                  Get Full Access
+                  Sales Paused
                 </button>
               </motion.div>
             </div>
@@ -423,11 +423,11 @@ export default function SalesPage() {
 
               <div className="space-y-4">
                 <button
-                  onClick={handlePaymentClick}
-                  className="w-full bg-purple-600 hover:bg-purple-500 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 flex items-center justify-center gap-2"
+                  disabled
+                  className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                 >
                   <Lock size={18} />
-                  <span>Choose Payment Method</span>
+                  <span>Sales Paused</span>
                 </button>
                 <div className="flex items-center justify-center gap-4 mt-4 text-slate-500 text-xs">
                   <div className="flex items-center gap-1"><Shield size={12} /> 256-bit SSL Secure</div>
@@ -456,10 +456,10 @@ export default function SalesPage() {
               </ul>
               <div className="mt-auto">
                 <button
-                  onClick={handlePaymentClick}
-                  className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white py-4 rounded-xl font-bold transition-all shadow-lg shadow-green-900/30 hover:shadow-green-900/50"
+                  disabled
+                  className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                 >
-                  Choose Payment Method
+                  Sales Paused
                 </button>
                 <div className="mt-4 text-center">
                   <button
