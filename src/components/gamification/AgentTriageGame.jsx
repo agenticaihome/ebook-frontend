@@ -368,7 +368,7 @@ const AgentTriageGame = ({ onBack }) => {
 
         if (win) {
             updateCaptain('win');
-            if (navigator.vibrate) navigator.vibrate([50, 50, 50, 50, 100]);
+            if (navigator.vibrate) navigator.vibrate([30, 20, 30]);
             confetti({
                 particleCount: 200,
                 spread: 100,
@@ -558,7 +558,7 @@ const AgentTriageGame = ({ onBack }) => {
                         setComboPopup({ text: '🏆 10x LEGENDARY!', color: 'text-yellow-400' });
                         updateCaptain('combo10');
                         playSound('combo');
-                        if (navigator.vibrate) navigator.vibrate([30, 20, 30, 20, 30]);
+                        if (navigator.vibrate) navigator.vibrate([20, 15, 25]);
                     } else if (newCombo >= 7) {
                         points += 18;
                         setComboPopup({ text: '💎 7x CHAIN!', color: 'text-purple-400' });
