@@ -702,7 +702,7 @@ const DeepWorkDive = ({ onBack }) => {
 
                         {/* Captain Efficiency Image */}
                         <img
-                            src="/assets/captain-efficiency-dark.png"
+                            src="/assets/captain-efficiency-flying.png"
                             alt="Captain Efficiency"
                             className={`relative w-full h-full object-contain ${gameState === 'dead' ? 'grayscale brightness-50' : ''}`}
                             style={{
