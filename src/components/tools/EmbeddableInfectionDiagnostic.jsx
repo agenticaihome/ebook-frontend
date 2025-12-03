@@ -122,7 +122,7 @@ const EmbeddableInfectionDiagnostic = () => {
                             >
                                 <div className="text-6xl mb-4">{diagnosis.emoji}</div>
                                 <h3 className="text-2xl font-bold text-slate-800 mb-2">{diagnosis.stage}</h3>
-                                <p className="text-slate-500 mb-6">
+                                <p className="text-slate-400 mb-6">
                                     Your Chaos Score: <span className="font-bold" style={{ color: diagnosis.color }}>{infectionLevel}/5</span>
                                 </p>
 

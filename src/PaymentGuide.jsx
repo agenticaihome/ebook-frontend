@@ -62,7 +62,7 @@ export default function PaymentGuide() {
 
                         {/* Captain's Insight */}
                         <div className="max-w-2xl mx-auto mb-12">
-                            <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 flex gap-4 items-start">
+                            <div className="bg-slate-800/50 border border-slate-600 rounded-2xl p-6 flex gap-4 items-start">
                                 <div className="hidden md:block flex-shrink-0">
                                     <CaptainHero size="sm" pose="pointing" />
                                 </div>
@@ -90,7 +90,7 @@ export default function PaymentGuide() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all group relative overflow-hidden"
+                            className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-slate-600/50 hover:border-purple-500/50 transition-all group relative overflow-hidden"
                         >
                             {/* Background Icon */}
                             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -139,7 +139,7 @@ export default function PaymentGuide() {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             placeholder="name@example.com"
-                                            className="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors backdrop-blur-sm"
+                                            className="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors backdrop-blur-sm"
                                         />
                                     </div>
 
@@ -156,7 +156,7 @@ export default function PaymentGuide() {
                                     >
                                         Sales Paused
                                     </button>
-                                    <p className="text-xs text-slate-500 text-center">
+                                    <p className="text-xs text-slate-400 text-center">
                                         30-day money-back guarantee • Secure payment via Stripe
                                     </p>
                                 </div>
@@ -227,7 +227,7 @@ export default function PaymentGuide() {
                                     >
                                         Sales Paused
                                     </button>
-                                    <p className="text-xs text-slate-500 text-center">
+                                    <p className="text-xs text-slate-400 text-center">
                                         First time? Follow the guide above • Still 30-day guarantee
                                     </p>
                                 </div>
@@ -244,7 +244,7 @@ export default function PaymentGuide() {
                         <div className="overflow-x-auto">
                             <table className="w-full text-left border-collapse">
                                 <thead>
-                                    <tr className="border-b border-slate-700">
+                                    <tr className="border-b border-slate-600">
                                         <th className="py-4 px-4 text-slate-400 font-semibold">Feature</th>
                                         <th className="py-4 px-4 text-center text-purple-400 font-semibold">Stripe</th>
                                         <th className="py-4 px-4 text-center text-green-400 font-semibold">Ergo</th>

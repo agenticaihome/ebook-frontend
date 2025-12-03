@@ -40,9 +40,9 @@ const AgentSimulation = ({ agentName, task, steps }) => {
     };
 
     return (
-        <div className="bg-slate-900 rounded-xl overflow-hidden shadow-2xl my-12 border border-slate-700 font-mono text-sm">
+        <div className="bg-slate-900 rounded-xl overflow-hidden shadow-2xl my-12 border border-slate-600 font-mono text-sm">
             {/* Header */}
-            <div className="bg-slate-800 p-4 flex items-center justify-between border-b border-slate-700">
+            <div className="bg-slate-800 p-4 flex items-center justify-between border-b border-slate-600">
                 <div className="flex items-center gap-3">
                     <div className="flex gap-1.5">
                         <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -51,11 +51,11 @@ const AgentSimulation = ({ agentName, task, steps }) => {
                     </div>
                     <span className="text-slate-400 font-semibold ml-2">agent@{agentName}:~</span>
                 </div>
-                <div className="text-xs text-slate-500">v1.0.4</div>
+                <div className="text-xs text-slate-400">v1.0.4</div>
             </div>
 
             {/* Task Description */}
-            <div className="bg-slate-800/50 p-4 border-b border-slate-700 flex items-center justify-between">
+            <div className="bg-slate-800/50 p-4 border-b border-slate-600 flex items-center justify-between">
                 <div className="text-slate-300">
                     <span className="text-blue-400 font-bold">TASK:</span> {task}
                 </div>

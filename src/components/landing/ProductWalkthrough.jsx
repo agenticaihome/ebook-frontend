@@ -16,7 +16,7 @@ const ProductWalkthrough = () => {
                     </p>
                 </div>
 
-                <div className="relative aspect-video bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl shadow-purple-900/20 group">
+                <div className="relative aspect-video bg-slate-900 rounded-2xl overflow-hidden border border-slate-600 shadow-2xl shadow-purple-900/20 group">
                     {/* Placeholder for actual video */}
                     {!isPlaying ? (
                         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
@@ -43,7 +43,7 @@ const ProductWalkthrough = () => {
                         </div>
                     ) : (
                         <div className="w-full h-full flex items-center justify-center bg-black">
-                            <p className="text-slate-500">Video Player Placeholder (src/assets/walkthrough.mp4)</p>
+                            <p className="text-slate-400">Video Player Placeholder (src/assets/walkthrough.mp4)</p>
                             {/* 
                                 <video 
                                     src="/assets/walkthrough.mp4" 

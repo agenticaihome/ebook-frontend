@@ -48,7 +48,7 @@ const StudySystemGenerator = () => {
     const plan = showResults ? generatePlan() : null;
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <BookOpen className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Study System Generator</h3>
@@ -64,7 +64,7 @@ const StudySystemGenerator = () => {
                                 placeholder="e.g. Board Exams, PMP, Bar Exam"
                                 value={inputs.examType}
                                 onChange={(e) => handleInputChange('examType', e.target.value)}
-                                className="w-full p-4 bg-slate-900 border border-slate-700 rounded-xl text-white mb-4 focus:border-cyan-500 outline-none"
+                                className="w-full p-4 bg-slate-900 border border-slate-600 rounded-xl text-white mb-4 focus:border-cyan-500 outline-none"
                             />
                             <button onClick={nextStep} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all">
                                 Next
@@ -97,7 +97,7 @@ const StudySystemGenerator = () => {
                                 placeholder="e.g. Pharmacology, Ethics, Case Management"
                                 value={inputs.weakAreas}
                                 onChange={(e) => handleInputChange('weakAreas', e.target.value)}
-                                className="w-full p-4 bg-slate-900 border border-slate-700 rounded-xl text-white mb-4 h-32 focus:border-cyan-500 outline-none"
+                                className="w-full p-4 bg-slate-900 border border-slate-600 rounded-xl text-white mb-4 h-32 focus:border-cyan-500 outline-none"
                             />
                             <button onClick={nextStep} className="w-full bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-4 rounded-xl font-bold transition-all">
                                 Next
@@ -125,24 +125,24 @@ const StudySystemGenerator = () => {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-4 mb-6">
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700 text-center">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600 text-center">
                             <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Weak Areas</div>
                             <div className="text-2xl font-bold text-red-400">{plan.weakAreaFocus} hrs</div>
-                            <div className="text-xs text-slate-500">Deep Dive</div>
+                            <div className="text-xs text-slate-400">Deep Dive</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700 text-center">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600 text-center">
                             <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Practice</div>
                             <div className="text-2xl font-bold text-yellow-400">{plan.practiceFocus} hrs</div>
-                            <div className="text-xs text-slate-500">Active Recall</div>
+                            <div className="text-xs text-slate-400">Active Recall</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700 text-center">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600 text-center">
                             <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Review</div>
                             <div className="text-2xl font-bold text-green-400">{plan.reviewFocus} hrs</div>
-                            <div className="text-xs text-slate-500">Spaced Repetition</div>
+                            <div className="text-xs text-slate-400">Spaced Repetition</div>
                         </div>
                     </div>
 
-                    <div className="bg-slate-900/30 rounded-xl border border-slate-700 p-6 mb-6">
+                    <div className="bg-slate-900/30 rounded-xl border border-slate-600 p-6 mb-6">
                         <h4 className="text-white font-bold mb-4 flex items-center gap-2">
                             <Calendar size={20} className="text-cyan-400" />
                             Your Adaptive Schedule
@@ -156,7 +156,7 @@ const StudySystemGenerator = () => {
                                     <div>
                                         <div className="text-white font-bold">{phase.phase}</div>
                                         <div className="text-sm text-slate-300">{phase.focus}</div>
-                                        <div className="text-xs text-slate-500 mt-1">{phase.duration}</div>
+                                        <div className="text-xs text-slate-400 mt-1">{phase.duration}</div>
                                     </div>
                                 </div>
                             ))}

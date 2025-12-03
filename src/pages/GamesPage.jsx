@@ -163,7 +163,7 @@ const GamesPage = () => {
                             <div className="flex items-center justify-between mb-8">
                                 <button
                                     onClick={() => setActiveGame(null)}
-                                    className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-xl hover:bg-slate-700 hover:border-cyan-500/50 transition-all text-slate-300 hover:text-white"
+                                    className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-600 rounded-xl hover:bg-slate-700 hover:border-cyan-500/50 transition-all text-slate-300 hover:text-white"
                                 >
                                     <ArrowLeft size={20} />
                                     <span>Back to Hub</span>
@@ -190,7 +190,7 @@ const GamesPage = () => {
                                 </p>
 
                                 {/* Global Stats / Ticker could go here */}
-                                <div className="flex justify-center gap-8 text-sm text-slate-500 mb-12">
+                                <div className="flex justify-center gap-8 text-sm text-slate-400 mb-12">
                                     <div className="flex items-center gap-2">
                                         <Trophy size={16} className="text-yellow-500" />
                                         <span>Compete for Global Rank</span>
@@ -213,7 +213,7 @@ const GamesPage = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.15 }}
-                                className="bg-slate-900/50 border border-slate-700 rounded-2xl overflow-hidden shadow-2xl"
+                                className="bg-slate-900/50 border border-slate-600 rounded-2xl overflow-hidden shadow-2xl"
                             >
                                 <Suspense fallback={
                                     <div className="h-96 flex items-center justify-center">
@@ -242,7 +242,7 @@ const GamesPage = () => {
                                         <m.div
                                             key={game.id}
                                             whileHover={unlocked ? { y: -5 } : {}}
-                                            className={`group relative bg-slate-800/40 border border-slate-700 rounded-3xl overflow-hidden transition-all shadow-lg backdrop-blur-sm flex flex-col ${unlocked ? 'hover:border-cyan-500/50 hover:shadow-cyan-500/10 cursor-pointer' : 'opacity-75'}`}
+                                            className={`group relative bg-slate-800/40 border border-slate-600 rounded-3xl overflow-hidden transition-all shadow-lg backdrop-blur-sm flex flex-col ${unlocked ? 'hover:border-cyan-500/50 hover:shadow-cyan-500/10 cursor-pointer' : 'opacity-75'}`}
                                             onClick={() => unlocked && handleGameClick(game)}
                                         >
                                             {/* Background Gradient */}
@@ -252,7 +252,7 @@ const GamesPage = () => {
                                             {!unlocked && (
                                                 <div className="absolute inset-0 z-30 bg-slate-900/60 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6">
                                                     <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4 border border-slate-600">
-                                                        <Zap className="text-slate-500" size={24} />
+                                                        <Zap className="text-slate-400" size={24} />
                                                     </div>
                                                     <h3 className="text-xl font-bold text-white mb-2">Locked</h3>
                                                     <p className="text-slate-300 text-sm mb-4">
@@ -263,7 +263,7 @@ const GamesPage = () => {
                                                             e.stopPropagation();
                                                             navigate(`/part${game.unlockCondition}`);
                                                         }}
-                                                        className="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-cyan-400 border border-slate-700 hover:border-cyan-500/50 transition-all flex items-center gap-2 font-medium"
+                                                        className="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-cyan-400 border border-slate-600 hover:border-cyan-500/50 transition-all flex items-center gap-2 font-medium"
                                                     >
                                                         <Lock size={12} />
                                                         Enter Password
@@ -289,7 +289,7 @@ const GamesPage = () => {
                                                         <game.icon size={32} className="text-white" />
                                                     </div>
                                                     <div className="flex flex-col items-end">
-                                                        <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Personal Best</div>
+                                                        <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Personal Best</div>
                                                         <div className="font-mono text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
                                                             {highScores[game.id] > 0 ? highScores[game.id].toLocaleString() : '--'}
                                                         </div>
@@ -306,10 +306,10 @@ const GamesPage = () => {
 
                                                 {/* Tags */}
                                                 <div className="flex flex-wrap gap-2 mb-8">
-                                                    <span className="px-3 py-1 rounded-full bg-slate-900/50 border border-slate-700 text-xs text-slate-300 font-medium">
+                                                    <span className="px-3 py-1 rounded-full bg-slate-900/50 border border-slate-600 text-xs text-slate-300 font-medium">
                                                         {game.difficulty}
                                                     </span>
-                                                    <span className="px-3 py-1 rounded-full bg-slate-900/50 border border-slate-700 text-xs text-slate-300 font-medium flex items-center gap-1">
+                                                    <span className="px-3 py-1 rounded-full bg-slate-900/50 border border-slate-600 text-xs text-slate-300 font-medium flex items-center gap-1">
                                                         <Clock size={12} />
                                                         {game.playtime}
                                                     </span>
@@ -319,7 +319,7 @@ const GamesPage = () => {
                                                 <div className="grid grid-cols-2 gap-3 mt-auto">
                                                     <button
                                                         onClick={(e) => openLeaderboard(e, game)}
-                                                        className="px-4 py-3 rounded-xl bg-slate-900/50 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2"
+                                                        className="px-4 py-3 rounded-xl bg-slate-900/50 hover:bg-slate-800 border border-slate-600 hover:border-slate-600 text-slate-300 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2"
                                                     >
                                                         <Trophy size={16} className="text-yellow-500" />
                                                         Leaderboard
@@ -328,7 +328,7 @@ const GamesPage = () => {
                                                         disabled={!unlocked}
                                                         className={`px-4 py-3 rounded-xl font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2 ${unlocked
                                                             ? `bg-gradient-to-r ${game.color} text-white shadow-cyan-900/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98]`
-                                                            : 'bg-slate-700 text-slate-500 cursor-not-allowed'
+                                                            : 'bg-slate-700 text-slate-400 cursor-not-allowed'
                                                             }`}
                                                     >
                                                         {unlocked ? 'Play Now' : 'Locked'}

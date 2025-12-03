@@ -116,7 +116,7 @@ const PrivacyAssessment = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Shield className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Privacy Preference Assessment</h3>
@@ -160,7 +160,7 @@ const PrivacyAssessment = () => {
                                                 onClick={() => handleAnswer(question.id, option.value)}
                                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${isSelected
                                                         ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                                        : 'border-slate-700 hover:border-slate-600 bg-slate-900/50 text-slate-300'
+                                                        : 'border-slate-600 hover:border-slate-600 bg-slate-900/50 text-slate-300'
                                                     }`}
                                             >
                                                 {option.label}
@@ -199,7 +199,7 @@ const PrivacyAssessment = () => {
                         <h5 className="text-white font-bold mb-3">Recommended Tools</h5>
                         <div className="space-y-3">
                             {results.tools.map((tool, idx) => (
-                                <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-700">
+                                <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-600">
                                     <div className="text-white font-bold mb-1">{tool.name}</div>
                                     <div className="text-slate-400 text-sm">{tool.reason}</div>
                                 </div>

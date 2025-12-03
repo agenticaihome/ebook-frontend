@@ -90,7 +90,7 @@ const CreateAccountPage = () => {
             <m.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8"
+                className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-600 rounded-2xl p-8"
             >
                 {/* Success Header */}
                 <div className="text-center mb-8">

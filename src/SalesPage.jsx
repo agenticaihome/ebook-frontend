@@ -132,7 +132,7 @@ export default function SalesPage() {
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
                 <span className="text-green-400 font-bold text-sm">✓ Part 1 is FREE</span>
-                <span className="text-slate-500 text-xs">• Parts 2-5 unlock with purchase</span>
+                <span className="text-slate-400 text-xs">• Parts 2-5 unlock with purchase</span>
               </div>
             </div>
 
@@ -153,15 +153,15 @@ export default function SalesPage() {
                       ? 'bg-green-900/10 border-green-500/30 hover:bg-green-900/20 cursor-pointer hover:shadow-lg hover:shadow-green-900/20'
                       : part.status === 'OPEN'
                         ? 'bg-cyan-900/10 border-cyan-500/30 hover:bg-cyan-900/20 cursor-pointer'
-                        : 'bg-slate-800/40 border-slate-700/50 hover:border-slate-600 cursor-not-allowed opacity-75'}
+                        : 'bg-slate-800/40 border-slate-600/50 hover:border-slate-600 cursor-not-allowed opacity-75'}
                   `}
                 >
-                  <div className="text-xs font-mono text-slate-500 mb-2">PART {part.id}</div>
+                  <div className="text-xs font-mono text-slate-400 mb-2">PART {part.id}</div>
                   <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
                     {part.icon}
                   </div>
                   <div className="font-bold text-sm mb-1 text-slate-200 group-hover:text-white transition-colors">{part.title}</div>
-                  <div className="text-xs text-slate-500">{part.desc}</div>
+                  <div className="text-xs text-slate-400">{part.desc}</div>
                   <div className="absolute top-4 right-4">
                     {part.status === 'FREE' && <span className="text-xs font-bold text-green-400 bg-green-500/20 px-2 py-1 rounded">FREE</span>}
                     {part.status === 'LOCKED' && <Lock size={14} className="text-slate-600" />}
@@ -182,7 +182,7 @@ export default function SalesPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Feature 1 */}
-              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-700/50 hover:border-cyan-500/50 transition-all hover:bg-slate-800/50">
+              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-600/50 hover:border-cyan-500/50 transition-all hover:bg-slate-800/50">
                 <div className="bg-cyan-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-cyan-400 border border-cyan-500/20">
                   <Activity size={32} />
                 </div>
@@ -190,14 +190,14 @@ export default function SalesPage() {
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "When your schedule implodes, your AI automatically adjusts your calendar and recovery plan."
                 </p>
-                <ul className="text-sm text-slate-500 space-y-2">
+                <ul className="text-sm text-slate-400 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Sleep/Energy tracking</li>
                   <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Red/Yellow/Green day protocols</li>
                 </ul>
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-700/50 hover:border-purple-500/50 transition-all hover:bg-slate-800/50">
+              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-600/50 hover:border-purple-500/50 transition-all hover:bg-slate-800/50">
                 <div className="bg-purple-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-purple-400 border border-purple-500/20">
                   <Database size={32} />
                 </div>
@@ -205,14 +205,14 @@ export default function SalesPage() {
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "Upload 50 case files → searchable database indexed by diagnosis, treatment, and outcome."
                 </p>
-                <ul className="text-sm text-slate-500 space-y-2">
+                <ul className="text-sm text-slate-400 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-purple-500" /> Instant document retrieval</li>
                   <li className="flex gap-2"><Check size={16} className="text-purple-500" /> Study systems for exams</li>
                 </ul>
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-700/50 hover:border-green-500/50 transition-all hover:bg-slate-800/50">
+              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-600/50 hover:border-green-500/50 transition-all hover:bg-slate-800/50">
                 <div className="bg-green-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400 border border-green-500/20">
                   <Zap size={32} />
                 </div>
@@ -220,7 +220,7 @@ export default function SalesPage() {
                 <p className="text-slate-400 leading-relaxed mb-4">
                   "Not just automation — a strategic brain that coordinates everything toward your goals."
                 </p>
-                <ul className="text-sm text-slate-500 space-y-2">
+                <ul className="text-sm text-slate-400 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-green-500" /> Multi-agent coordination</li>
                   <li className="flex gap-2"><Check size={16} className="text-green-500" /> Goal Hierarchy alignment</li>
                 </ul>
@@ -236,7 +236,7 @@ export default function SalesPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">FROM CHAOS TO SYSTEM</h2>
               <p className="text-slate-400">Stop fighting entropy. Start managing it.</p>
             </div>
-            <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading comparison...</div>}>
+            <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading comparison...</div>}>
               <BeforeAfterComparison />
             </Suspense>
           </div>
@@ -245,7 +245,7 @@ export default function SalesPage() {
         {/* CALCULATOR SECTION */}
         <section className="py-24 px-6 bg-[#0f0f1a]">
           <div className="max-w-4xl mx-auto">
-            <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading calculator...</div>}>
+            <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading calculator...</div>}>
               <TimeBackCalculator />
             </Suspense>
           </div>
@@ -270,7 +270,7 @@ export default function SalesPage() {
 
         {/* RESULTS SECTION */}
         <section className="py-24 px-6 relative overflow-hidden">
-          <div className="max-w-5xl mx-auto bg-slate-800/40 rounded-3xl p-8 md:p-12 border border-slate-700/50 backdrop-blur-md relative shadow-2xl">
+          <div className="max-w-5xl mx-auto bg-slate-800/40 rounded-3xl p-8 md:p-12 border border-slate-600/50 backdrop-blur-md relative shadow-2xl">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
@@ -288,7 +288,7 @@ export default function SalesPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700/50">
+                <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-600/50">
                   <p className="text-slate-400 italic text-sm">
                     "These are real results from the DDS system. Your results begin when you unlock the system."
                   </p>
@@ -316,36 +316,36 @@ export default function SalesPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Testimonial 1 */}
-              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-cyan-500/30 transition-all">
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-cyan-500/30 transition-all">
                 <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
                 <p className="text-slate-300 mb-4 italic">
                   "I'm saving 8 hours a week with the Morning + Kitchen agents alone. This paid for itself in week 1."
                 </p>
-                <div className="text-sm text-slate-500">
+                <div className="text-sm text-slate-400">
                   <div className="font-bold text-slate-400">Sarah T.</div>
                   <div>Product Manager</div>
                 </div>
               </div>
 
               {/* Testimonial 2 */}
-              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-purple-500/30 transition-all">
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-purple-500/30 transition-all">
                 <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
                 <p className="text-slate-300 mb-4 italic">
                   "Finally, a course that doesn't just teach prompts. This is a complete operating system for life."
                 </p>
-                <div className="text-sm text-slate-500">
+                <div className="text-sm text-slate-400">
                   <div className="font-bold text-slate-400">Marcus L.</div>
                   <div>Software Engineer</div>
                 </div>
               </div>
 
               {/* Testimonial 3 */}
-              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/50 hover:border-green-500/30 transition-all">
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-green-500/30 transition-all">
                 <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
                 <p className="text-slate-300 mb-4 italic">
                   "The Recovery Agent alone changed my life. I'm sleeping better and getting more done. Paradox solved."
                 </p>
-                <div className="text-sm text-slate-500">
+                <div className="text-sm text-slate-400">
                   <div className="font-bold text-slate-400">Dr. Chen</div>
                   <div>Medical Resident</div>
                 </div>
@@ -357,7 +357,7 @@ export default function SalesPage() {
         {/* CREATOR SECTION */}
         <section className="py-16 px-6 text-center bg-[#0f0f1a] border-y border-slate-800/50">
           <div className="max-w-2xl mx-auto">
-            <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-4">WHO DEPLOYED ME?</h3>
+            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">WHO DEPLOYED ME?</h3>
             <h2 className="text-3xl font-bold mb-6">The Doctor of Digital Systems (DDS)</h2>
             <p className="text-slate-400 leading-relaxed mb-8">
               Endodontic resident working 50+ hour weeks.
@@ -395,13 +395,13 @@ export default function SalesPage() {
             <p className="text-slate-400 mb-8">Cheaper than one month of that meal kit service you forgot to pause.</p>
 
             {/* Value Anchor */}
-            <div className="inline-flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-700 mb-8">
+            <div className="inline-flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-600 mb-8">
               <div className="text-right border-r border-slate-600 pr-4">
-                <div className="text-xs text-slate-500 uppercase font-bold">Human Assistant</div>
+                <div className="text-xs text-slate-400 uppercase font-bold">Human Assistant</div>
                 <div className="text-red-400 font-mono line-through">$30/hour</div>
               </div>
               <div className="text-left pl-2">
-                <div className="text-xs text-slate-500 uppercase font-bold">AI Agent System</div>
+                <div className="text-xs text-slate-400 uppercase font-bold">AI Agent System</div>
                 <div className="text-green-400 font-mono font-bold">$39 (One-time)</div>
               </div>
             </div>
@@ -409,7 +409,7 @@ export default function SalesPage() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 relative z-10">
             {/* Standard Access */}
-            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-purple-900/20 hover:-translate-y-2">
+            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-slate-600/50 hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-purple-900/20 hover:-translate-y-2">
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <CreditCard size={120} />
               </div>
@@ -431,11 +431,11 @@ export default function SalesPage() {
                   <Lock size={18} />
                   <span>Sales Paused</span>
                 </button>
-                <div className="flex items-center justify-center gap-4 mt-4 text-slate-500 text-xs">
+                <div className="flex items-center justify-center gap-4 mt-4 text-slate-400 text-xs">
                   <div className="flex items-center gap-1"><Shield size={12} /> 256-bit SSL Secure</div>
                   <div className="flex items-center gap-1"><CreditCard size={12} /> Stripe Encrypted</div>
                 </div>
-                <p className="text-xs text-slate-500 text-center mt-2">30-day money-back guarantee. No questions asked.</p>
+                <p className="text-xs text-slate-400 text-center mt-2">30-day money-back guarantee. No questions asked.</p>
               </div>
             </div>
 
@@ -488,7 +488,7 @@ export default function SalesPage() {
                 { q: "What if I use Android/Windows?", a: "The system is platform-agnostic. We use tools that work on all major operating systems." },
                 { q: "How much time does it take to set up?", a: "You can build your first agent (Morning Agent) in about 30 minutes. The full system is built progressively over 30 days." }
               ].map((faq, i) => (
-                <div key={i} className="bg-slate-800/30 backdrop-blur-sm p-6 rounded-xl border border-slate-700/50 hover:bg-slate-800/50 transition-colors">
+                <div key={i} className="bg-slate-800/30 backdrop-blur-sm p-6 rounded-xl border border-slate-600/50 hover:bg-slate-800/50 transition-colors">
                   <h3 className="font-bold text-lg mb-2 text-slate-200">{faq.q}</h3>
                   <p className="text-slate-400">{faq.a}</p>
                 </div>
@@ -506,7 +506,7 @@ export default function SalesPage() {
               loading="lazy"
             />
           </div>
-          <p className="text-slate-500 text-sm">
+          <p className="text-slate-400 text-sm">
             © 2025 Agentic AI at Home. All systems nominal.
           </p>
         </footer>

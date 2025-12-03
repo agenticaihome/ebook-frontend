@@ -293,7 +293,7 @@ export default function FAQ() {
                 <>
                     <p className="mb-4">Two pricing options:</p>
                     <div className="grid md:grid-cols-2 gap-4 mb-4">
-                        <div className="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                        <div className="bg-slate-800 p-4 rounded-lg border border-slate-600">
                             <h4 className="font-bold text-white mb-2">STANDARD: $39.99</h4>
                             <ul className="text-sm text-slate-400 space-y-1">
                                 <li>Pay with Credit/Debit Card</li>
@@ -667,14 +667,14 @@ export default function FAQ() {
                     {/* Search */}
                     <div className="relative max-w-2xl mx-auto mb-12">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <Search className="h-5 w-5 text-slate-500" />
+                            <Search className="h-5 w-5 text-slate-400" />
                         </div>
                         <input
                             type="text"
                             placeholder="Search questions..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="block w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all shadow-lg"
+                            className="block w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all shadow-lg"
                         />
                     </div>
 
@@ -704,7 +704,7 @@ export default function FAQ() {
                     <div className="space-y-4">
                         {searchedFaq.length === 0 ? (
                             <div className="text-center py-12">
-                                <p className="text-slate-500 text-lg">No questions found matching your search.</p>
+                                <p className="text-slate-400 text-lg">No questions found matching your search.</p>
                                 <button onClick={() => setSearchQuery('')} className="mt-4 text-cyan-400 hover:underline">Clear search</button>
                             </div>
                         ) : (
@@ -713,7 +713,7 @@ export default function FAQ() {
                                     key={item.id}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className={`border rounded-2xl overflow-hidden transition-all ${expandedId === item.id ? 'bg-slate-800/80 border-cyan-500/50 shadow-lg shadow-cyan-900/20' : 'bg-slate-800/30 border-slate-700 hover:border-slate-600'}`}
+                                    className={`border rounded-2xl overflow-hidden transition-all ${expandedId === item.id ? 'bg-slate-800/80 border-cyan-500/50 shadow-lg shadow-cyan-900/20' : 'bg-slate-800/30 border-slate-600 hover:border-slate-600'}`}
                                 >
                                     <button
                                         onClick={() => toggleQuestion(item.id)}
@@ -723,7 +723,7 @@ export default function FAQ() {
                                             {item.question}
                                         </span>
                                         <ChevronDown
-                                            className={`w-5 h-5 transition-transform duration-300 ${expandedId === item.id ? 'transform rotate-180 text-cyan-400' : 'text-slate-500'}`}
+                                            className={`w-5 h-5 transition-transform duration-300 ${expandedId === item.id ? 'transform rotate-180 text-cyan-400' : 'text-slate-400'}`}
                                         />
                                     </button>
                                     <AnimatePresence>
@@ -734,7 +734,7 @@ export default function FAQ() {
                                                 exit={{ height: 0, opacity: 0 }}
                                                 transition={{ duration: 0.3 }}
                                             >
-                                                <div className="px-6 pb-6 text-slate-300 leading-relaxed border-t border-slate-700/50 pt-4">
+                                                <div className="px-6 pb-6 text-slate-300 leading-relaxed border-t border-slate-600/50 pt-4">
                                                     {item.answer}
                                                 </div>
                                             </m.div>
@@ -746,7 +746,7 @@ export default function FAQ() {
                     </div>
 
                     {/* Still have questions? */}
-                    <div className="mt-16 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 text-center relative overflow-hidden">
+                    <div className="mt-16 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-600 text-center relative overflow-hidden">
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold text-white mb-4">Still have questions?</h3>
                             <p className="text-slate-400 mb-8 max-w-xl mx-auto">

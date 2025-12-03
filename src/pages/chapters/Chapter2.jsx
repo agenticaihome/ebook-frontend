@@ -34,7 +34,7 @@ const ChapterProgress = ({ current, total }) => (
                 className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
             />
         </div>
-        <span className="text-slate-500 text-sm font-mono">
+        <span className="text-slate-400 text-sm font-mono">
             {current}/{total}
         </span>
     </div>
@@ -118,7 +118,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -289,7 +289,7 @@ const DecisionTree = () => {
                         <button
                             key={option.id}
                             onClick={() => setAnswer(option.id)}
-                            className="w-full flex items-center gap-3 bg-slate-900/50 hover:bg-slate-900 border border-slate-700 hover:border-cyan-500/50 rounded-xl p-4 text-left transition-all"
+                            className="w-full flex items-center gap-3 bg-slate-900/50 hover:bg-slate-900 border border-slate-600 hover:border-cyan-500/50 rounded-xl p-4 text-left transition-all"
                         >
                             <span className="text-xl">{option.emoji}</span>
                             <span className="text-slate-200">{option.label}</span>
@@ -446,7 +446,7 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
                 {steps.map((step) => (
                     <div
                         key={step.num}
-                        className="bg-slate-900/50 rounded-xl p-4 border border-slate-700"
+                        className="bg-slate-900/50 rounded-xl p-4 border border-slate-600"
                     >
                         <div className="flex items-start gap-4">
                             <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold text-sm flex-shrink-0">
@@ -491,9 +491,9 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
                         { task: 'Meal planning', result: 'Agent asks about the week each Sunday, suggests recipes' },
                     ].map((example, i) => (
                         <div key={i} className="flex items-start gap-2">
-                            <span className="text-slate-500">"</span>
+                            <span className="text-slate-400">"</span>
                             <span className="text-white font-medium">{example.task}</span>
-                            <span className="text-slate-500">"</span>
+                            <span className="text-slate-400">"</span>
                             <span className="text-slate-400">→ {example.result}</span>
                         </div>
                     ))}
@@ -512,7 +512,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
             <div>
                 <span className="text-white font-medium">{name}</span>
-                <span className="text-slate-500 text-sm ml-2">{role}</span>
+                <span className="text-slate-400 text-sm ml-2">{role}</span>
             </div>
         </div>
 
@@ -581,7 +581,7 @@ const Chapter2 = () => {
 
                             {/* Reading time + Speed Run toggle */}
                             <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                <div className="flex items-center gap-4 text-slate-400 text-sm">
                                     <div className="flex items-center gap-2">
                                         <Clock size={14} />
                                         <span>7 min read</span>
@@ -641,7 +641,7 @@ const Chapter2 = () => {
                             </div>
 
                             <Suspense fallback={
-                                <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                     Loading quiz...
                                 </div>
                             }>

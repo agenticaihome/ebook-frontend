@@ -81,10 +81,10 @@ const Part4 = () => {
                                                 onClick={() => scrollToChapter(chapter.id)}
                                                 className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
                                                     ? 'border-green-500 bg-green-900/20'
-                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                    : 'border-slate-600 hover:border-slate-600 bg-slate-800/50'
                                                     }`}
                                             >
-                                                <Icon className={activeChapter === chapter.id ? 'text-green-400' : 'text-slate-500'} size={24} />
+                                                <Icon className={activeChapter === chapter.id ? 'text-green-400' : 'text-slate-400'} size={24} />
                                                 <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
                                                 <div className="font-bold text-white">{chapter.title}</div>
                                             </button>
@@ -189,7 +189,7 @@ const Part4 = () => {
 
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Science of Sleep Debt</h3>
 
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                     <p className="text-white font-bold text-sm mb-3">Matthew Walker (Why We Sleep, UC Berkeley, 2017):</p>
                                     <ul className="space-y-2 text-sm text-slate-300 mb-4">
                                         <li>• After 1 night of 4 hours: <strong className="text-red-400">-40% cognitive performance</strong> on complex tasks</li>
@@ -314,21 +314,21 @@ const Part4 = () => {
 
                                 <h3 className="text-2xl font-bold text-green-400 mt-12 mb-4">The 3-Level Protocol</h3>
                                 <div className="space-y-4">
-                                    <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
+                                    <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-600">
                                         <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold flex-shrink-0">G</div>
                                         <div>
                                             <h4 className="text-white font-bold">Green Day (Full Capacity)</h4>
                                             <p className="text-sm text-slate-400">Front-load hardest tasks. High intensity workout. Push projects forward.</p>
                                         </div>
                                     </div>
-                                    <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
+                                    <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-600">
                                         <div className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold flex-shrink-0">Y</div>
                                         <div>
                                             <h4 className="text-white font-bold">Yellow Day (Moderate)</h4>
                                             <p className="text-sm text-slate-400">Standard load. 1 deep work block max. Protect sleep tonight.</p>
                                         </div>
                                     </div>
-                                    <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
+                                    <div className="flex gap-4 p-4 bg-slate-800/50 rounded-xl border border-slate-600">
                                         <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold flex-shrink-0">R</div>
                                         <div>
                                             <h4 className="text-white font-bold">Red Day (Survival)</h4>
@@ -899,13 +899,13 @@ const Part4 = () => {
                                 </div>
 
                                 <div className="grid md:grid-cols-2 gap-6 my-8">
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                         <h4 className="text-cyan-400 font-bold mb-3">Capture</h4>
                                         <p className="text-sm text-slate-300">
                                             Save articles, notes, and ideas instantly. No organizing yet—just get it into the "Knowledge Inbox".
                                         </p>
                                     </div>
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                         <h4 className="text-green-400 font-bold mb-3">Retrieve</h4>
                                         <p className="text-sm text-slate-300">
                                             "What did I read about X?" Your agent searches every document and summarizes the answer.
@@ -952,7 +952,7 @@ Act as my tutor.
 
                                 <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Science of Knowledge Retention</h3>
 
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                     <p className="text-white font-bold text-sm mb-3">Hermann Ebbinghaus (1885) - The Forgetting Curve:</p>
                                     <ul className="space-y-2 text-sm text-slate-300 mb-4">
                                         <li>• <strong className="text-red-400">24 hours:</strong> Forget 50% of new information</li>

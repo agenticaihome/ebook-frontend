@@ -84,10 +84,10 @@ const Part5 = () => {
                                                 onClick={() => scrollToChapter(chapter.id)}
                                                 className={`p-4 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
                                                     ? 'border-purple-500 bg-purple-900/20'
-                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                    : 'border-slate-600 hover:border-slate-600 bg-slate-800/50'
                                                     }`}
                                             >
-                                                <Icon className={activeChapter === chapter.id ? 'text-purple-400' : 'text-slate-500'} size={24} />
+                                                <Icon className={activeChapter === chapter.id ? 'text-purple-400' : 'text-slate-400'} size={24} />
                                                 <div className="mt-2 text-xs font-mono text-slate-400">Chapter {chapter.id === 16 ? 'End' : chapter.id}</div>
                                                 <div className="font-bold text-white text-sm">{chapter.title}</div>
                                             </button>
@@ -336,8 +336,8 @@ const Part5 = () => {
                     < section id="chapter-14" className="py-16 px-6" >
                         <div className="max-w-4xl mx-auto">
                             <div className="flex items-center gap-3 mb-6 opacity-70">
-                                <Home className="text-slate-500" />
-                                <span className="text-slate-500 font-mono uppercase tracking-widest text-sm">Optional Module</span>
+                                <Home className="text-slate-400" />
+                                <span className="text-slate-400 font-mono uppercase tracking-widest text-sm">Optional Module</span>
                             </div>
 
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
@@ -352,12 +352,12 @@ const Part5 = () => {
                                 <h2 className="text-4xl font-bold text-white mb-6">Chapter 14: Smart Home Integration</h2>
 
                                 <div className="grid md:grid-cols-2 gap-6 my-8">
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                         <h4 className="text-white font-bold mb-3">Dumb Smart Home</h4>
                                         <p className="text-sm text-slate-400 italic">"Hey Google, turn on the lights."</p>
                                         <p className="text-sm text-slate-400 mt-2">Reactive. Manual. Glorified remote control.</p>
                                     </div>
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                         <h4 className="text-cyan-400 font-bold mb-3">Intelligent Home</h4>
                                         <p className="text-sm text-slate-300 italic">Lights fade up 15 min before alarm. Coffee starts. Thermostat adjusts.</p>
                                         <p className="text-sm text-slate-400 mt-2">Proactive. Anticipatory. Magic.</p>
@@ -566,7 +566,7 @@ const Part5 = () => {
                                     <SystemHealthDiagnostic />
                                 </Suspense>
 
-                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 my-8">
+                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 my-8">
                                     <h3 className="text-xl font-bold text-white mb-4">The Golden Rule of Maintenance</h3>
                                     <p className="text-slate-300 mb-4">
                                         <strong>"Friction Log" everything.</strong>
@@ -815,7 +815,7 @@ const Part5 = () => {
                                 </div>
                             </div>
 
-                            <div className="mt-16 p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 text-center">
+                            <div className="mt-16 p-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-600 text-center">
                                 <h3 className="text-2xl font-bold text-white mb-4">One Final Thought</h3>
                                 <p className="text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
                                     This isn't about the technology. It's about getting your <strong className="text-white">LIFE</strong> back. The hours you save are for your kids, your partner, your health, your dreams. <br /><br />
@@ -824,7 +824,7 @@ const Part5 = () => {
                                 </p>
                                 <div className="text-cyan-400 font-bold text-lg mb-6">— Captain Efficiency 🤖</div>
 
-                                <div className="mt-8 pt-6 border-t border-slate-700">
+                                <div className="mt-8 pt-6 border-t border-slate-600">
                                     <p className="text-white font-bold mb-2">Ready to build?</p>
                                     <p className="text-slate-400 text-sm mb-4">Your agents are waiting. Start with Chapter 2.</p>
                                 </div>
@@ -833,7 +833,7 @@ const Part5 = () => {
                             <div className="mt-12 text-center">
                                 <button
                                     onClick={() => navigate('/dashboard')}
-                                    className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold transition-all border border-slate-700 hover:border-slate-600"
+                                    className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold transition-all border border-slate-600 hover:border-slate-600"
                                 >
                                     Return to Dashboard
                                     <ArrowRight size={20} />

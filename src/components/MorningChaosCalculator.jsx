@@ -67,7 +67,7 @@ const MorningChaosCalculator = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Coffee className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Morning Chaos Score Calculator</h3>
@@ -128,7 +128,7 @@ const MorningChaosCalculator = () => {
                                     onClick={() => handleInputChange('forgetThings', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgetThings === freq
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -148,7 +148,7 @@ const MorningChaosCalculator = () => {
                                     onClick={() => handleInputChange('lateFrequency', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.lateFrequency === freq
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -211,7 +211,7 @@ const MorningChaosCalculator = () => {
                                 <div className="text-sm text-slate-400">Annual Time Lost</div>
                             </div>
                             <div className="text-orange-400 font-bold text-3xl">{results.annualHours} hrs</div>
-                            <div className="text-xs text-slate-500 mt-1">That's {Math.round(results.annualHours / 8)} work days!</div>
+                            <div className="text-xs text-slate-400 mt-1">That's {Math.round(results.annualHours / 8)} work days!</div>
                         </div>
                         <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 p-6 rounded-xl border border-cyan-500/30">
                             <div className="flex items-center gap-2 mb-2">
@@ -219,12 +219,12 @@ const MorningChaosCalculator = () => {
                                 <div className="text-sm text-slate-400">Chaos Sources</div>
                             </div>
                             <div className="text-cyan-400 font-bold text-3xl">{results.sources.length}</div>
-                            <div className="text-xs text-slate-500 mt-1">Priority areas to fix</div>
+                            <div className="text-xs text-slate-400 mt-1">Priority areas to fix</div>
                         </div>
                     </div>
 
                     {results.sources.length > 0 && (
-                        <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 mb-6">
+                        <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600 mb-6">
                             <h4 className="text-white font-bold mb-4">Top Chaos Sources</h4>
                             <div className="space-y-3">
                                 {results.sources.map((source, idx) => (

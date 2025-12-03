@@ -760,7 +760,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             }}
         >
             {/* HUD */}
-            <div className="bg-slate-800/95 p-3 sm:p-4 border-b border-slate-700 backdrop-blur-xl">
+            <div className="bg-slate-800/95 p-3 sm:p-4 border-b border-slate-600 backdrop-blur-xl">
                 <div className="flex justify-between items-center gap-2">
                     {/* Left: Time & Wave */}
                     <div className="flex items-center gap-2 sm:gap-4">
@@ -770,7 +770,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                                 {timer}/45s
                             </span>
                         </div>
-                        <div className="text-slate-500 font-mono text-xs sm:text-sm">W{wave}</div>
+                        <div className="text-slate-400 font-mono text-xs sm:text-sm">W{wave}</div>
                         {combo > 0 && (
                             <div className="flex items-center gap-1 text-orange-400">
                                 <span className="font-bold font-mono text-sm">{combo}x</span>
@@ -787,7 +787,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                     <div className="text-center">
                         <div className="text-2xl sm:text-3xl font-bold text-white font-mono">{score}</div>
                         {personalBest.score > 0 && (
-                            <div className="text-[10px] text-slate-500">Best: {personalBest.score}</div>
+                            <div className="text-[10px] text-slate-400">Best: {personalBest.score}</div>
                         )}
                     </div>
 
@@ -797,7 +797,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                             onClick={() => setSoundEnabled(!soundEnabled)}
                             className="p-1.5 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors"
                         >
-                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-500" />}
+                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-400" />}
                         </button>
                         <button
                             onClick={() => setShowControls(!showControls)}
@@ -825,7 +825,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                 </div>
 
                 {/* Captain & Shield Status */}
-                <div className="flex items-center justify-between gap-2 mt-2 pt-2 border-t border-slate-700/50">
+                <div className="flex items-center justify-between gap-2 mt-2 pt-2 border-t border-slate-600/50">
                     <div className="flex items-center gap-2 flex-1 min-w-0">
                         <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm shadow-lg transition-all ${moodColors[captainMessage.mood]}`}>
                             CE
@@ -843,11 +843,11 @@ const CalendarDefenseGame = ({ onBack }) => {
                                     : 'bg-slate-700'
                                     }`}
                             >
-                                <Shield size={12} className={i < shieldCharges ? 'text-white' : 'text-slate-500'} />
+                                <Shield size={12} className={i < shieldCharges ? 'text-white' : 'text-slate-400'} />
                             </div>
                         ))}
                         {shieldCooldown > 0 && (
-                            <span className="text-xs text-slate-500 font-mono ml-1">{Math.ceil(shieldCooldown)}s</span>
+                            <span className="text-xs text-slate-400 font-mono ml-1">{Math.ceil(shieldCooldown)}s</span>
                         )}
                     </div>
                 </div>
@@ -867,7 +867,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                                 <div><kbd className="px-1.5 py-0.5 bg-slate-700 rounded text-slate-300 font-mono">Click</kbd> Decline meeting</div>
                                 <div><kbd className="px-1.5 py-0.5 bg-cyan-900/50 rounded text-cyan-400 font-mono">Space/S</kbd> Shield</div>
                                 <div><kbd className="px-1.5 py-0.5 bg-slate-700 rounded text-slate-300 font-mono">Hover+E</kbd> Decline</div>
-                                <div className="text-slate-500">Click power-ups to collect</div>
+                                <div className="text-slate-400">Click power-ups to collect</div>
                             </div>
                             <button onClick={() => setShowControls(false)} className="text-slate-400 hover:text-white">×</button>
                         </div>

@@ -47,7 +47,7 @@ const ClaimAccessPage = () => {
             <m.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8 relative z-10"
+                className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-600 rounded-2xl p-8 relative z-10"
             >
                 <button
                     onClick={() => navigate('/login')}
@@ -68,11 +68,11 @@ const ClaimAccessPage = () => {
 
                 <form onSubmit={handleClaim} className="space-y-6">
                     <div>
-                        <label className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-2 block">
+                        <label className="text-xs text-slate-400 uppercase tracking-wider font-bold mb-2 block">
                             Transaction ID / Access Code
                         </label>
                         <div className="relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                             <input
                                 type="text"
                                 value={identifier}
@@ -82,7 +82,7 @@ const ClaimAccessPage = () => {
                                 required
                             />
                         </div>
-                        <p className="text-xs text-slate-500 mt-2">
+                        <p className="text-xs text-slate-400 mt-2">
                             Check your email (Stripe) or wallet history (Ergo) for this ID.
                         </p>
                     </div>

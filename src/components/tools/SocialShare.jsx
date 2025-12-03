@@ -13,7 +13,7 @@ import { Share2 } from 'lucide-react';
 
 const SocialShare = ({ url = "https://agenticaihome.com", title, hashtags = ["AgenticAI", "Productivity"] }) => {
     return (
-        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-700 my-8">
+        <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-4">
                 <Share2 className="text-cyan-400" size={24} />
                 <h3 className="text-lg font-bold text-white">Share your progress</h3>

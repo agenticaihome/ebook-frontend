@@ -4,9 +4,9 @@ import { m } from 'framer-motion';
 
 const SneakPeek = () => {
     return (
-        <div className="relative max-w-3xl mx-auto my-16 rounded-xl overflow-hidden shadow-2xl border border-slate-700 bg-[#1e1e2e]">
+        <div className="relative max-w-3xl mx-auto my-16 rounded-xl overflow-hidden shadow-2xl border border-slate-600 bg-[#1e1e2e]">
             {/* Header */}
-            <div className="bg-[#2a2a3c] px-4 py-3 flex items-center gap-2 border-b border-slate-700">
+            <div className="bg-[#2a2a3c] px-4 py-3 flex items-center gap-2 border-b border-slate-600">
                 <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500/80" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -62,7 +62,7 @@ const SneakPeek = () => {
                         <p className="text-slate-400 text-sm mb-4">
                             Get the exact copy-paste code for the Morning Agent, Kitchen Manager, and 10+ other tools.
                         </p>
-                        <div className="flex flex-col gap-2 text-xs text-slate-300 text-left bg-slate-900/50 p-3 rounded-lg border border-slate-700">
+                        <div className="flex flex-col gap-2 text-xs text-slate-300 text-left bg-slate-900/50 p-3 rounded-lg border border-slate-600">
                             <div className="flex items-center gap-2"><CheckCircle size={12} className="text-green-400" /> Complete Prompt Libraries</div>
                             <div className="flex items-center gap-2"><CheckCircle size={12} className="text-green-400" /> Setup Guides</div>
                             <div className="flex items-center gap-2"><CheckCircle size={12} className="text-green-400" /> Troubleshooting Manuals</div>

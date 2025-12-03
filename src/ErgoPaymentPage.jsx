@@ -432,7 +432,7 @@ const ErgoPaymentPage = () => {
                                         <p className="text-slate-400 text-sm uppercase tracking-widest mb-2">Total Amount</p>
                                         <div className="flex items-baseline justify-center gap-3">
                                             <span className="text-5xl font-bold text-white">$19.99</span>
-                                            <span className="text-xl text-slate-500 line-through">$39.99</span>
+                                            <span className="text-xl text-slate-400 line-through">$39.99</span>
                                         </div>
 
                                         {/* Live ERG Conversion */}
@@ -476,7 +476,7 @@ const ErgoPaymentPage = () => {
                                         </button>
                                     </div>
 
-                                    <div className="mt-8 bg-slate-800/50 rounded-xl p-4 border border-slate-700/50 text-left">
+                                    <div className="mt-8 bg-slate-800/50 rounded-xl p-4 border border-slate-600/50 text-left">
                                         <div className="flex items-center gap-2 mb-3 text-sm font-bold text-white">
                                             <Clock size={16} className="text-cyan-400" />
                                             <span>Time to Complete:</span>
@@ -485,15 +485,15 @@ const ErgoPaymentPage = () => {
                                             <div>
                                                 <div className="text-slate-400 mb-1">New to Ergo?</div>
                                                 <div className="text-white font-bold text-sm">~15-20 mins</div>
-                                                <div className="text-slate-500">To setup wallet & buy</div>
+                                                <div className="text-slate-400">To setup wallet & buy</div>
                                             </div>
                                             <div>
                                                 <div className="text-slate-400 mb-1">Have Ergo?</div>
                                                 <div className="text-white font-bold text-sm">~1-2 mins</div>
-                                                <div className="text-slate-500">To send & confirm</div>
+                                                <div className="text-slate-400">To send & confirm</div>
                                             </div>
                                         </div>
-                                        <div className="mt-3 pt-2 border-t border-slate-700/50 text-[10px] text-slate-500 italic">
+                                        <div className="mt-3 pt-2 border-t border-slate-600/50 text-[10px] text-slate-400 italic">
                                             *Current block time ~2 mins. Soon with sub-blocks, transactions could be confirmed in seconds.
                                         </div>
                                     </div>
@@ -526,7 +526,7 @@ const ErgoPaymentPage = () => {
                                             </div>
                                         </div>
 
-                                        <div className="bg-white p-6 rounded-2xl shadow-inner mx-auto max-w-[280px]">
+                                        <div className="bg-white p-6 rounded-2xl shadow-inner mx-auto max-w-[280px]" role="img" aria-label="QR Code for payment">
                                             <QRCodeSVG value={ergoPayUrl} size={232} className="w-full h-auto" />
                                         </div>
 
@@ -623,7 +623,7 @@ const ErgoPaymentPage = () => {
                                                             <div className="text-xl text-purple-300/80 font-bold mt-2">ERG</div>
                                                         </div>
                                                         <div className="mt-3 text-xs text-slate-400">
-                                                            ≈ $19.99 USD {ergPrice && <span className="text-slate-500">(@ ${ergPrice?.toFixed(2)}/ERG)</span>}
+                                                            ≈ $19.99 USD {ergPrice && <span className="text-slate-400">(@ ${ergPrice?.toFixed(2)}/ERG)</span>}
                                                         </div>
                                                     </button>
 
@@ -680,7 +680,7 @@ const ErgoPaymentPage = () => {
                             {/* Status Bar */}
                             <div>
                                 <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-4" aria-live="polite">
                                         <div className="relative">
                                             <div className="w-3 h-3 bg-cyan-500 rounded-full animate-ping absolute inset-0" />
                                             <div className="w-3 h-3 bg-cyan-500 rounded-full relative" />
@@ -693,7 +693,7 @@ const ErgoPaymentPage = () => {
                                         </div>
                                     </div>
                                     <div className="text-right hidden md:block">
-                                        <div className="inline-block px-2 py-1 bg-slate-800 rounded text-xs font-mono text-slate-500 border border-slate-700">
+                                        <div className="inline-block px-2 py-1 bg-slate-800 rounded text-xs font-mono text-slate-400 border border-slate-600">
                                             Session ID: {accessCode}
                                         </div>
                                     </div>
@@ -735,7 +735,7 @@ const ErgoPaymentPage = () => {
                                             </div>
                                             <button
                                                 onClick={() => setShowHelper(false)}
-                                                className="text-slate-500 hover:text-white transition-colors"
+                                                className="text-slate-400 hover:text-white transition-colors"
                                             >
                                                 <X size={20} />
                                             </button>

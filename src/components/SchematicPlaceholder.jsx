@@ -9,7 +9,7 @@ const SchematicPlaceholder = ({ type = 'browser', label, subLabel }) => {
                 return (
                     <div className="w-full h-full flex flex-col">
                         {/* Browser Bar */}
-                        <div className="h-6 bg-slate-800 border-b border-slate-700 flex items-center px-3 gap-2">
+                        <div className="h-6 bg-slate-800 border-b border-slate-600 flex items-center px-3 gap-2">
                             <div className="flex gap-1.5">
                                 <div className="w-2 h-2 rounded-full bg-red-500/50"></div>
                                 <div className="w-2 h-2 rounded-full bg-yellow-500/50"></div>
@@ -33,8 +33,8 @@ const SchematicPlaceholder = ({ type = 'browser', label, subLabel }) => {
             case 'mobile':
                 return (
                     <div className="w-full h-full flex justify-center items-center py-2">
-                        <div className="w-32 h-full border-2 border-slate-700 rounded-2xl bg-slate-900/50 relative flex flex-col overflow-hidden">
-                            <div className="h-4 bg-slate-800 border-b border-slate-700 w-full flex justify-center items-center">
+                        <div className="w-32 h-full border-2 border-slate-600 rounded-2xl bg-slate-900/50 relative flex flex-col overflow-hidden">
+                            <div className="h-4 bg-slate-800 border-b border-slate-600 w-full flex justify-center items-center">
                                 <div className="w-8 h-1 bg-slate-700 rounded-full"></div>
                             </div>
                             <div className="flex-1 flex flex-col items-center justify-center p-2">
@@ -44,7 +44,7 @@ const SchematicPlaceholder = ({ type = 'browser', label, subLabel }) => {
                                 <div className="w-16 h-1.5 bg-slate-700/50 rounded mb-1"></div>
                                 <div className="w-10 h-1.5 bg-slate-700/50 rounded"></div>
                             </div>
-                            <div className="h-8 bg-slate-800 border-t border-slate-700 w-full"></div>
+                            <div className="h-8 bg-slate-800 border-t border-slate-600 w-full"></div>
                         </div>
                     </div>
                 );
@@ -87,12 +87,12 @@ const SchematicPlaceholder = ({ type = 'browser', label, subLabel }) => {
     };
 
     return (
-        <div className="w-full bg-slate-900/50 rounded-xl border border-slate-700/50 overflow-hidden mb-6 group hover:border-green-500/30 transition-colors">
+        <div className="w-full bg-slate-900/50 rounded-xl border border-slate-600/50 overflow-hidden mb-6 group hover:border-green-500/30 transition-colors">
             <div className="h-48 relative">
                 {renderContent()}
 
                 {/* Overlay Label */}
-                <div className="absolute bottom-0 left-0 right-0 bg-slate-900/90 border-t border-slate-700 p-3 flex items-center justify-between backdrop-blur-sm">
+                <div className="absolute bottom-0 left-0 right-0 bg-slate-900/90 border-t border-slate-600 p-3 flex items-center justify-between backdrop-blur-sm">
                     <div>
                         <div className="text-xs font-bold text-green-400 uppercase tracking-wider mb-0.5">Visual Guide</div>
                         <div className="text-sm text-white font-medium">{label}</div>

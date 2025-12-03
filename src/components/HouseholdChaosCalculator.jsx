@@ -58,7 +58,7 @@ const HouseholdChaosCalculator = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Home className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Household Chaos Score Calculator</h3>
@@ -138,7 +138,7 @@ const HouseholdChaosCalculator = () => {
                                     onClick={() => handleInputChange('forgettingFrequency', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgettingFrequency === freq
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -194,7 +194,7 @@ const HouseholdChaosCalculator = () => {
                                 <div className="text-sm text-slate-400">Money Lost Annually</div>
                             </div>
                             <div className="text-red-400 font-bold text-3xl">${results.annualLoss.toLocaleString()}</div>
-                            <div className="text-xs text-slate-500 mt-1">From preventable issues</div>
+                            <div className="text-xs text-slate-400 mt-1">From preventable issues</div>
                         </div>
                         <div className="bg-gradient-to-br from-orange-900/30 to-orange-900/10 p-6 rounded-xl border border-orange-500/30">
                             <div className="flex items-center gap-2 mb-2">
@@ -202,12 +202,12 @@ const HouseholdChaosCalculator = () => {
                                 <div className="text-sm text-slate-400">Problem Areas</div>
                             </div>
                             <div className="text-orange-400 font-bold text-3xl">{results.problems.length}</div>
-                            <div className="text-xs text-slate-500 mt-1">Priority fixes needed</div>
+                            <div className="text-xs text-slate-400 mt-1">Priority fixes needed</div>
                         </div>
                     </div>
 
                     {results.problems.length > 0 && (
-                        <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 mb-6">
+                        <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600 mb-6">
                             <h4 className="text-white font-bold mb-4">Top Problem Areas</h4>
                             <div className="space-y-2">
                                 {results.problems.map((problem, idx) => (
@@ -236,7 +236,7 @@ const HouseholdChaosCalculator = () => {
                                 <div>Track household supplies and set reorder points</div>
                             </div>
                         </div>
-                        <div className="mt-4 pt-4 border-t border-slate-700">
+                        <div className="mt-4 pt-4 border-t border-slate-600">
                             <div className="text-green-400 font-bold">Potential Annual Savings: ${Math.round(results.annualLoss * 0.8).toLocaleString()}</div>
                             <div className="text-xs text-slate-400 mt-1">By preventing 80% of these issues</div>
                         </div>

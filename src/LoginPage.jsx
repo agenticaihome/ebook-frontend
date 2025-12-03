@@ -50,18 +50,18 @@ const LoginPage = () => {
             // Don't store password in variable - use directly
             const data = await api.login(cleanEmail, password);
             // JWT is now in httpOnly cookie - no localStorage needed
-            
+
             // Clear sensitive data
             setEmail('');
             setPassword('');
-            
+
             navigate('/dashboard');
         } catch (err) {
             setError(err.message || 'Login failed. Please check your credentials.');
         } finally {
             setIsLoading(false);
         }
-        }, 2000);
+    }, 2000);
 
     const handleErgoClaim = async (e) => {
         e.preventDefault();
@@ -84,10 +84,10 @@ const LoginPage = () => {
 
     return (
         <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-            <div className="bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-700">
+            <div className="bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-600">
 
                 {/* Header */}
-                <div className="p-8 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-700">
+                <div className="p-8 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-600">
                     <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
                     <p className="text-slate-400">Access your digital library</p>
                 </div>
@@ -98,6 +98,7 @@ const LoginPage = () => {
                         <m.div
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
+                            role="alert"
                             className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg mb-6 flex items-center gap-2 text-sm"
                         >
                             <AlertCircle size={16} />
@@ -109,7 +110,7 @@ const LoginPage = () => {
                         <div>
                             <label className="block text-sm font-medium text-slate-400 mb-1">Email Address</label>
                             <div className="relative">
-                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                                 <input
                                     type="email"
                                     value={email}
@@ -120,7 +121,7 @@ const LoginPage = () => {
                                         }
                                     }}
                                     maxLength={255}
-                                    className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                                    className="w-full bg-slate-900 border border-slate-600 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                                     placeholder="you@example.com"
                                     required
                                     autoComplete="email"
@@ -130,7 +131,7 @@ const LoginPage = () => {
                         <div>
                             <label className="block text-sm font-medium text-slate-400 mb-1">Password</label>
                             <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                                 <input
                                     type="password"
                                     value={password}
@@ -141,7 +142,7 @@ const LoginPage = () => {
                                         }
                                     }}
                                     maxLength={128}
-                                    className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                                    className="w-full bg-slate-900 border border-slate-600 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                                     placeholder="••••••••"
                                     required
                                     autoComplete="current-password"
@@ -160,14 +161,14 @@ const LoginPage = () => {
                 </div>
 
                 {/* Footer Actions */}
-                <div className="p-6 bg-slate-900/50 border-t border-slate-700 space-y-4">
+                <div className="p-6 bg-slate-900/50 border-t border-slate-600 space-y-4">
                     <div className="text-center">
                         <p className="text-slate-400 text-sm mb-2">
                             Paid but no account?
                         </p>
                         <button
                             onClick={() => navigate('/claim-access')}
-                            className="w-full py-2 px-4 bg-slate-800 hover:bg-slate-700 text-cyan-400 font-medium rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2"
+                            className="w-full py-2 px-4 bg-slate-800 hover:bg-slate-700 text-cyan-400 font-medium rounded-lg border border-slate-600 transition-colors flex items-center justify-center gap-2"
                         >
                             <Key size={16} />
                             Claim Purchase
@@ -175,7 +176,7 @@ const LoginPage = () => {
                     </div>
 
                     <div className="text-center pt-2">
-                        <p className="text-slate-500 text-xs">
+                        <p className="text-slate-400 text-xs">
                             Need help? <Link to="/faq" className="text-blue-400 hover:underline">Contact Support</Link>
                         </p>
                     </div>

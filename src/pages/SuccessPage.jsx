@@ -57,7 +57,7 @@ const SuccessPage = () => {
             <m.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-2xl p-8 text-center"
+                className="max-w-md w-full bg-slate-800/50 backdrop-blur-lg border border-slate-600 rounded-2xl p-8 text-center"
             >
                 {status === 'verifying' && (
                     <div className="flex flex-col items-center gap-4">

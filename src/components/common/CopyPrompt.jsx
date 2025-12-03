@@ -65,7 +65,7 @@ const CopyPrompt = ({
             </div>
 
             {/* The Prompt */}
-            <div className="bg-slate-900/80 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4 border border-slate-700 overflow-x-auto">
+            <div className="bg-slate-900/80 p-4 rounded-lg font-mono text-sm text-slate-300 mb-4 border border-slate-600 overflow-x-auto">
                 <pre className="whitespace-pre-wrap">{prompt}</pre>
             </div>
 

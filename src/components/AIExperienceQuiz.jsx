@@ -127,7 +127,7 @@ const AIExperienceQuiz = () => {
     const results = showResults ? calculateResults() : null;
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <AnimatePresence mode="wait">
                 {!showResults ? (
                     <m.div
@@ -187,7 +187,7 @@ const AIExperienceQuiz = () => {
                                             onClick={() => handleAnswer(questions[currentQuestion].id, option.value)}
                                             className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${isSelected
                                                 ? 'border-cyan-500 bg-cyan-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-900/50'
+                                                : 'border-slate-600 hover:border-slate-600 bg-slate-900/50'
                                                 }`}
                                         >
                                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${isSelected ? 'border-cyan-500 bg-cyan-500' : 'border-slate-600'
@@ -225,11 +225,11 @@ const AIExperienceQuiz = () => {
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-4 mb-6">
-                            <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700">
+                            <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600">
                                 <div className="text-sm text-slate-400 mb-1">Recommended Starting Point</div>
                                 <div className="text-white font-bold">{results.recommendation}</div>
                             </div>
-                            <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700">
+                            <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600">
                                 <div className="text-sm text-slate-400 mb-1">Potential Time Savings</div>
                                 <div className="text-cyan-400 font-bold text-xl">{results.timeSavings}</div>
                             </div>

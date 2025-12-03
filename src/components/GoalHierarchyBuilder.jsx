@@ -35,19 +35,19 @@ const GoalHierarchyBuilder = () => {
             </div>
             {Array.from({ length: count }).map((_, i) => (
                 <div key={i} className="relative">
-                    <span className="absolute left-4 top-4 text-slate-500 font-mono text-sm">0{i + 1}</span>
+                    <span className="absolute left-4 top-4 text-slate-400 font-mono text-sm">0{i + 1}</span>
                     <input
                         type="text"
                         value={goals[section][i]}
                         onChange={(e) => handleInputChange(section, i, e.target.value)}
                         placeholder={placeholder}
-                        className="w-full bg-slate-900/50 border border-slate-700 rounded-xl p-4 pl-12 text-white focus:border-cyan-500 outline-none transition-all"
+                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl p-4 pl-12 text-white focus:border-cyan-500 outline-none transition-all"
                     />
                 </div>
             ))}
             <div className="flex gap-4 mt-8">
                 {step > 0 && (
-                    <button onClick={prevStep} className="flex-1 py-4 rounded-xl border border-slate-700 text-slate-300 hover:bg-slate-800 transition-all">
+                    <button onClick={prevStep} className="flex-1 py-4 rounded-xl border border-slate-600 text-slate-300 hover:bg-slate-800 transition-all">
                         Back
                     </button>
                 )}
@@ -59,8 +59,8 @@ const GoalHierarchyBuilder = () => {
     );
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
-            <div className="flex items-center gap-3 mb-8 border-b border-slate-700 pb-4">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
+            <div className="flex items-center gap-3 mb-8 border-b border-slate-600 pb-4">
                 <Target className="text-cyan-400" size={28} />
                 <div>
                     <h3 className="text-xl font-bold text-white">Goal Hierarchy Builder</h3>
@@ -122,7 +122,7 @@ const GoalHierarchyBuilder = () => {
                             </ul>
                         </div>
 
-                        <div className="bg-slate-900/60 p-6 rounded-xl border border-slate-700 relative z-10 ml-0 md:ml-8">
+                        <div className="bg-slate-900/60 p-6 rounded-xl border border-slate-600 relative z-10 ml-0 md:ml-8">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 border border-slate-600">
                                     <Calendar size={18} />
@@ -134,7 +134,7 @@ const GoalHierarchyBuilder = () => {
                             </ul>
                         </div>
 
-                        <div className="bg-slate-900/40 p-6 rounded-xl border border-slate-700 relative z-10 ml-0 md:ml-16">
+                        <div className="bg-slate-900/40 p-6 rounded-xl border border-slate-600 relative z-10 ml-0 md:ml-16">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 border border-slate-600">
                                     <CheckCircle size={16} />
@@ -165,7 +165,7 @@ const GoalHierarchyBuilder = () => {
                             setStep(0);
                             setShowResults(false);
                         }}
-                        className="w-full mt-6 text-slate-500 hover:text-white transition-colors"
+                        className="w-full mt-6 text-slate-400 hover:text-white transition-colors"
                     >
                         Edit Hierarchy
                     </button>

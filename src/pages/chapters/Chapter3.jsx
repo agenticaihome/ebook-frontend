@@ -35,7 +35,7 @@ const ChapterProgress = ({ current, total }) => (
                 className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
             />
         </div>
-        <span className="text-slate-500 text-sm font-mono">
+        <span className="text-slate-400 text-sm font-mono">
             {current}/{total}
         </span>
     </div>
@@ -114,7 +114,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -361,7 +361,7 @@ const DataTierVisual = () => {
                                         </span>
                                     </div>
                                     <p className="text-slate-300 text-sm mb-2">{tier.description}</p>
-                                    <p className="text-slate-500 text-xs">
+                                    <p className="text-slate-400 text-xs">
                                         <span className="text-slate-400">Examples:</span> {tier.examples}
                                     </p>
                                 </div>
@@ -438,7 +438,7 @@ const ToolPrivacyTable = () => {
 
             <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl border border-slate-500/40 backdrop-blur-sm overflow-hidden">
                 {/* Header */}
-                <div className="grid grid-cols-4 gap-4 p-4 border-b border-slate-700 bg-slate-900/50">
+                <div className="grid grid-cols-4 gap-4 p-4 border-b border-slate-600 bg-slate-900/50">
                     <span className="text-slate-400 text-sm font-medium">Tool</span>
                     <span className="text-slate-400 text-sm font-medium">Default Tier</span>
                     <span className="text-slate-400 text-sm font-medium">Can Opt Out?</span>
@@ -453,7 +453,7 @@ const ToolPrivacyTable = () => {
                     >
                         <div>
                             <span className="text-white font-medium">{tool.name}</span>
-                            <span className="text-slate-500 text-xs block">{tool.company}</span>
+                            <span className="text-slate-400 text-xs block">{tool.company}</span>
                         </div>
                         <div className="flex items-center">
                             {getTierBadge(tool.defaultTier)}
@@ -540,7 +540,7 @@ const PrivacyLockdown = () => {
                 </div>
                 <div className="text-right">
                     <span className="text-2xl font-bold text-teal-400">{completedCount}/{steps.length}</span>
-                    <span className="text-slate-500 text-xs block">completed</span>
+                    <span className="text-slate-400 text-xs block">completed</span>
                 </div>
             </div>
 
@@ -551,7 +551,7 @@ const PrivacyLockdown = () => {
                         onClick={() => toggleStep(step.id)}
                         className={`bg-slate-900/50 rounded-xl p-4 border cursor-pointer transition-all ${completed[step.id]
                             ? 'border-green-500/50 bg-green-900/10'
-                            : 'border-slate-700 hover:border-slate-600'
+                            : 'border-slate-600 hover:border-slate-600'
                             }`}
                     >
                         <div className="flex items-start gap-4">
@@ -565,11 +565,11 @@ const PrivacyLockdown = () => {
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <span className="text-cyan-400 text-xs font-bold">{step.tool}</span>
-                                        <h4 className={`font-medium ${completed[step.id] ? 'text-slate-500 line-through' : 'text-white'}`}>
+                                        <h4 className={`font-medium ${completed[step.id] ? 'text-slate-400 line-through' : 'text-white'}`}>
                                             {step.action}
                                         </h4>
                                     </div>
-                                    <span className="text-slate-500 text-xs">{step.time}</span>
+                                    <span className="text-slate-400 text-xs">{step.time}</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">{step.path}</p>
                             </div>
@@ -662,7 +662,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
             <div>
                 <span className="text-white font-medium">{name}</span>
-                <span className="text-slate-500 text-sm ml-2">{role}</span>
+                <span className="text-slate-400 text-sm ml-2">{role}</span>
             </div>
         </div>
 
@@ -731,7 +731,7 @@ const Chapter3 = () => {
 
                             {/* Reading time + Speed Run toggle */}
                             <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                <div className="flex items-center gap-4 text-slate-400 text-sm">
                                     <div className="flex items-center gap-2">
                                         <Clock size={14} />
                                         <span>5 min read</span>
@@ -794,7 +794,7 @@ const Chapter3 = () => {
                             </div>
 
                             <Suspense fallback={
-                                <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                     Loading audit tool...
                                 </div>
                             }>
@@ -853,7 +853,7 @@ const Chapter3 = () => {
                                 </p>
 
                                 <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                         Loading constitution builder...
                                     </div>
                                 }>

@@ -87,7 +87,7 @@ const SmartHomeReadinessAssessment = () => {
     const result = showResults ? calculateRecommendation() : null;
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Home className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Smart Home Readiness</h3>
@@ -116,7 +116,7 @@ const SmartHomeReadinessAssessment = () => {
                                 <button
                                     key={index}
                                     onClick={() => handleAnswer(option.value)}
-                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white"
+                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-600 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white"
                                 >
                                     {option.label}
                                 </button>
@@ -132,7 +132,7 @@ const SmartHomeReadinessAssessment = () => {
                         <p className="text-slate-300 max-w-md mx-auto">{result.reason}</p>
                     </div>
 
-                    <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 mb-6">
+                    <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600 mb-6">
                         <h4 className="text-cyan-400 font-bold mb-4 flex items-center gap-2">
                             <Zap size={20} />
                             Your Tier 1 Starter Kit
@@ -159,7 +159,7 @@ const SmartHomeReadinessAssessment = () => {
                             setAnswers({});
                             setShowResults(false);
                         }}
-                        className="w-full mt-6 text-slate-500 hover:text-white transition-colors"
+                        className="w-full mt-6 text-slate-400 hover:text-white transition-colors"
                     >
                         Retake Assessment
                     </button>

@@ -34,7 +34,7 @@ const SleepProtocolConfig = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Activity className="text-green-400" size={28} />
                 <div>
@@ -97,7 +97,7 @@ const SleepProtocolConfig = () => {
                                 onClick={() => toggleRule(rule.id)}
                                 className={`flex items-center gap-3 p-3 rounded-lg border text-sm text-left transition-all ${redDayRules[rule.id]
                                         ? 'bg-red-900/20 border-red-500/50 text-white'
-                                        : 'bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-600'
+                                        : 'bg-slate-800 border-slate-600 text-slate-400 hover:border-slate-600'
                                     }`}
                             >
                                 <div className={`w-5 h-5 rounded border flex items-center justify-center ${redDayRules[rule.id] ? 'bg-red-500 border-red-500' : 'border-slate-500'

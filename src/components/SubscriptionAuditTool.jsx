@@ -47,7 +47,7 @@ const SubscriptionAuditTool = () => {
     const results = calculateResults();
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <CreditCard className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Subscription Audit Tool</h3>
@@ -55,7 +55,7 @@ const SubscriptionAuditTool = () => {
 
             <div className="space-y-6">
                 {/* Input Section */}
-                <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                     <h4 className="text-white font-bold mb-4">Add Your Subscriptions</h4>
                     <div className="flex gap-2 mb-4">
                         <input
@@ -125,21 +125,21 @@ const SubscriptionAuditTool = () => {
 
                 {/* Results Section */}
                 <m.div layout className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                    <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                         <div className="flex items-center gap-2 mb-2 text-slate-400">
                             <DollarSign size={18} />
                             <span className="text-sm">Total Monthly Cost</span>
                         </div>
                         <div className="text-2xl font-bold text-white">${results.monthlyTotal}</div>
-                        <div className="text-xs text-slate-500 mt-1">${results.annualTotal} / year</div>
+                        <div className="text-xs text-slate-400 mt-1">${results.annualTotal} / year</div>
                     </div>
-                    <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                    <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                         <div className="flex items-center gap-2 mb-2 text-green-400">
                             <TrendingDown size={18} />
                             <span className="text-sm">Potential Savings</span>
                         </div>
                         <div className="text-2xl font-bold text-green-400">${results.potentialSavings}</div>
-                        <div className="text-xs text-slate-500 mt-1">${results.annualSavings} / year if cancelled</div>
+                        <div className="text-xs text-slate-400 mt-1">${results.annualSavings} / year if cancelled</div>
                     </div>
                 </m.div>
 

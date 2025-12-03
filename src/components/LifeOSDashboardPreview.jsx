@@ -39,7 +39,7 @@ const LifeOSDashboardPreview = () => {
     ];
 
     return (
-        <div className="bg-slate-900 rounded-2xl p-8 border border-slate-700 my-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-slate-900 rounded-2xl p-8 border border-slate-600 my-12 shadow-2xl relative overflow-hidden">
             {/* Background Grid */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
 
@@ -53,12 +53,12 @@ const LifeOSDashboardPreview = () => {
                     </div>
                     <div className="text-right">
                         <div className="text-3xl font-mono font-bold text-cyan-400">{systemHealth}%</div>
-                        <div className="text-xs text-slate-500 uppercase tracking-wider">Optimization Level</div>
+                        <div className="text-xs text-slate-400 uppercase tracking-wider">Optimization Level</div>
                     </div>
                 </div>
 
                 {/* Health Bar */}
-                <div className="w-full h-4 bg-slate-800 rounded-full overflow-hidden mb-8 border border-slate-700">
+                <div className="w-full h-4 bg-slate-800 rounded-full overflow-hidden mb-8 border border-slate-600">
                     <m.div
                         initial={{ width: 0 }}
                         animate={{ width: `${systemHealth}%` }}

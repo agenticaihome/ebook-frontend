@@ -73,7 +73,7 @@ const PasswordGate = ({ children, partNumber }) => {
                         <p className="text-slate-400 text-sm">
                             Part {partNumber} is currently in beta testing
                         </p>
-                        <p className="text-slate-500 text-xs mt-1">
+                        <p className="text-slate-400 text-xs mt-1">
                             Family members only • Coming soon for everyone
                         </p>
                     </div>
@@ -91,7 +91,7 @@ const PasswordGate = ({ children, partNumber }) => {
                                     setPassword(e.target.value);
                                     setError('');
                                 }}
-                                className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
                                 placeholder="••••••••"
                                 autoFocus
                             />
@@ -116,7 +116,7 @@ const PasswordGate = ({ children, partNumber }) => {
                         </button>
                     </form>
 
-                    <p className="text-center text-slate-500 text-xs mt-6">
+                    <p className="text-center text-slate-400 text-xs mt-6">
                         Don't have access? Public release: <span className="text-cyan-400 font-medium">Coming Soon</span>
                     </p>
                 </div>

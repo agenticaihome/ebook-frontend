@@ -22,7 +22,7 @@ export default function HowToPay() {
             className={`flex items-center gap-3 px-6 py-4 rounded-xl border transition-all w-full md:w-auto justify-center
                 ${device === type
                     ? 'bg-green-500/20 border-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.2)]'
-                    : 'bg-slate-800/50 border-slate-700 text-slate-400 hover:bg-slate-800 hover:border-slate-600'
+                    : 'bg-slate-800/50 border-slate-600 text-slate-400 hover:bg-slate-800 hover:border-slate-600'
                 }`}
         >
             <Icon size={24} className={device === type ? 'text-green-400' : ''} />
@@ -73,7 +73,7 @@ export default function HowToPay() {
                             </p>
 
                             {/* REASSURANCE BOX */}
-                            <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 max-w-2xl mx-auto flex gap-6 items-start text-left">
+                            <div className="bg-slate-800/50 border border-slate-600 rounded-2xl p-6 max-w-2xl mx-auto flex gap-6 items-start text-left">
                                 <div className="hidden md:block flex-shrink-0">
                                     <CaptainHero size="sm" pose="pointing" />
                                 </div>
@@ -111,7 +111,7 @@ export default function HowToPay() {
                             Before We Start: What You'll Need
                         </h3>
                         <div className="grid md:grid-cols-2 gap-8 mb-8">
-                            <div className="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                            <div className="bg-slate-800/30 p-6 rounded-xl border border-slate-600">
                                 <h4 className="font-bold text-white mb-4">Checklist</h4>
                                 <ul className="space-y-3">
                                     <li className="flex items-center gap-3"><CheckCircle size={18} className="text-green-500" /> Computer or Smartphone</li>
@@ -120,26 +120,26 @@ export default function HowToPay() {
                                     <li className="flex items-center gap-3"><CheckCircle size={18} className="text-green-500" /> ~20 Minutes</li>
                                 </ul>
                             </div>
-                            <div className="bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                            <div className="bg-slate-800/30 p-6 rounded-xl border border-slate-600">
                                 <h4 className="font-bold text-white mb-4">Cost Breakdown</h4>
                                 <p className="text-sm text-slate-400 mb-4">
                                     Why buy $22-25 when the course is $20?
                                 </p>
                                 <ul className="space-y-2 text-sm text-slate-400">
-                                    <li className="flex justify-between border-b border-slate-700 pb-1">
+                                    <li className="flex justify-between border-b border-slate-600 pb-1">
                                         <span>Exchange Fee</span>
                                         <span className="text-white">~$0.50 - $1.00</span>
                                     </li>
-                                    <li className="flex justify-between border-b border-slate-700 pb-1">
+                                    <li className="flex justify-between border-b border-slate-600 pb-1">
                                         <span>Network Fee</span>
                                         <span className="text-white">~$0.01</span>
                                     </li>
-                                    <li className="flex justify-between border-b border-slate-700 pb-1">
+                                    <li className="flex justify-between border-b border-slate-600 pb-1">
                                         <span>Price Buffer</span>
                                         <span className="text-white">~$2.00</span>
                                     </li>
                                 </ul>
-                                <p className="text-xs text-slate-500 mt-3 italic">
+                                <p className="text-xs text-slate-400 mt-3 italic">
                                     *Any leftover ERG stays in your wallet forever!
                                 </p>
                             </div>
@@ -158,7 +158,7 @@ export default function HowToPay() {
                         </p>
 
                         {/* DESKTOP - Nautilus (Primary Recommendation) */}
-                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 mb-6">
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 mb-6">
                             <div className="flex items-center gap-3 mb-4">
                                 <Monitor className="text-green-400" size={28} />
                                 <h3 className="text-xl font-bold text-white">Desktop: Nautilus Wallet (Recommended)</h3>
@@ -179,7 +179,7 @@ export default function HowToPay() {
                                     >
                                         Get Nautilus for Chrome <ExternalLink size={18} className="ml-2" />
                                     </a>
-                                    <p className="text-slate-500 text-sm mt-3">
+                                    <p className="text-slate-400 text-sm mt-3">
                                         Firefox users: Search "Nautilus Wallet" in Firefox Add-ons
                                     </p>
                                 </div>
@@ -203,7 +203,7 @@ export default function HowToPay() {
                                         <li className="flex items-center gap-2"><span className="text-red-400">❌</span> Do not email to yourself</li>
                                         <li className="flex items-center gap-2"><span className="text-green-400">✅</span> Write on paper and hide it safely</li>
                                     </ul>
-                                    <p className="text-xs text-slate-500">
+                                    <p className="text-xs text-slate-400">
                                         This is the ONLY way to recover your funds if your computer breaks.
                                     </p>
                                 </div>
@@ -221,7 +221,7 @@ export default function HowToPay() {
                         </div>
 
                         {/* MOBILE OPTIONS */}
-                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600">
                             <div className="flex items-center gap-3 mb-4">
                                 <Smartphone className="text-cyan-400" size={28} />
                                 <h3 className="text-xl font-bold text-white">Mobile: Ergo Wallet App</h3>
@@ -282,7 +282,7 @@ export default function HowToPay() {
                         </div>
 
                         {/* US USERS - Banxa */}
-                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 mb-6">
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 mb-6">
                             <div className="flex items-center gap-3 mb-4">
                                 <span className="text-2xl">🇺🇸</span>
                                 <h3 className="text-xl font-bold text-white">For US Users: Buy via Banxa (Easiest)</h3>
@@ -321,7 +321,7 @@ export default function HowToPay() {
                         </div>
 
                         {/* INTERNATIONAL USERS - Exchanges */}
-                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600">
                             <div className="flex items-center gap-3 mb-4">
                                 <span className="text-2xl">🌍</span>
                                 <h3 className="text-xl font-bold text-white">For International Users: Use an Exchange</h3>
@@ -341,7 +341,7 @@ export default function HowToPay() {
                                 <div>
                                     <h4 className="font-bold text-white mb-2">1. Create Account</h4>
                                     <p className="text-slate-400 mb-4">Go to CoinEx.com and sign up with your email.</p>
-                                    <div className="rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+                                    <div className="rounded-xl overflow-hidden border border-slate-600 shadow-2xl">
                                         <img
                                             src="/images/guide/guide-coinex-signup.png"
                                             alt="CoinEx Sign Up Page"
@@ -356,21 +356,21 @@ export default function HowToPay() {
                                         Click "Buy Crypto", select <strong>ERG</strong>, and enter <strong>$25</strong>. Pay with your card.
                                     </p>
                                     <div className="grid md:grid-cols-2 gap-4">
-                                        <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                                        <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg">
                                             <img
                                                 src="/images/guide/guide-search-erg.jpg"
                                                 alt="Search for ERG"
                                                 className="w-full h-auto"
                                             />
-                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Search for "ERG"</p>
+                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Search for "ERG"</p>
                                         </div>
-                                        <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                                        <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg">
                                             <img
                                                 src="/images/guide/guide-buy-erg.png"
                                                 alt="Buy ERG Interface"
                                                 className="w-full h-auto"
                                             />
-                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Select Amount & Buy</p>
+                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Select Amount & Buy</p>
                                         </div>
                                     </div>
                                 </div>
@@ -385,7 +385,7 @@ export default function HowToPay() {
                                             ⚠️ Triple-check the address! If you send to the wrong place, it's gone.
                                         </p>
                                     </div>
-                                    <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg">
+                                    <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg">
                                         <img
                                             src="/images/guide/guide-withdraw.png"
                                             alt="Withdraw Funds Interface"
@@ -410,14 +410,14 @@ export default function HowToPay() {
                                     Send <strong>$19.99 USD</strong> worth of ERG to the address below.
                                 </p>
 
-                                <div className="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 max-w-md mx-auto">
+                                <div className="bg-slate-900/50 border border-slate-600 rounded-xl p-6 mb-6 max-w-md mx-auto">
                                     <div className="mb-6">
                                         <label className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-2 block">Send Exactly</label>
                                         <div className="flex items-center gap-3">
                                             <span className="text-3xl font-bold text-white">$19.99 USD</span>
-                                            <span className="text-slate-500 text-sm font-medium">(in ERG)</span>
+                                            <span className="text-slate-400 text-sm font-medium">(in ERG)</span>
                                         </div>
-                                        <p className="text-xs text-slate-500 mt-2 bg-slate-800/50 p-2 rounded border border-slate-700/50">
+                                        <p className="text-xs text-slate-400 mt-2 bg-slate-800/50 p-2 rounded border border-slate-600/50">
                                             💡 <strong>Tip:</strong> In Terminus, you can just type "19.99" and select USD. It will calculate the ERG for you!
                                         </p>
                                     </div>
@@ -445,13 +445,13 @@ export default function HowToPay() {
                                     </div>
                                 </div>
 
-                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-[280px] mx-auto">
+                                <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg max-w-[280px] mx-auto">
                                     <img
                                         src="/images/guide/guide-wallet-qr.jpg"
                                         alt="Wallet QR Code"
                                         className="w-full h-auto"
                                     />
-                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Scan to Auto-Fill Address</p>
+                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Scan to Auto-Fill Address</p>
                                 </div>
                             </div>
 
@@ -462,13 +462,13 @@ export default function HowToPay() {
                                     <br />
                                     Scan the QR code above OR paste the address. Enter the <strong>EXACT</strong> amount.
                                 </p>
-                                <div className="rounded-xl overflow-hidden border border-slate-700 shadow-lg max-w-[280px] mx-auto">
+                                <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg max-w-[280px] mx-auto">
                                     <img
                                         src="/images/guide/guide-mobile-send.jpg"
                                         alt="Terminus Wallet Send Screen"
                                         className="w-full h-auto"
                                     />
-                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-500">Terminus Wallet: Confirm Address & Amount</p>
+                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Terminus Wallet: Confirm Address & Amount</p>
                                 </div>
                             </div>
 
@@ -494,7 +494,7 @@ export default function HowToPay() {
                         <p className="text-slate-400 max-w-xl mx-auto mb-8">
                             Our system detects the payment automatically. If you aren't redirected, you can <strong>claim your purchase</strong> using your Transaction ID.
                         </p>
-                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 max-w-lg mx-auto">
+                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 max-w-lg mx-auto">
                             <h4 className="font-bold text-white mb-2">Congratulations!</h4>
                             <p className="text-sm text-slate-400">
                                 You just set up a non-custodial wallet, bought crypto, and made a peer-to-peer transaction.
@@ -511,7 +511,7 @@ export default function HowToPay() {
                                 Ready? Go to Checkout
                                 <ArrowRight size={20} />
                             </Link>
-                            <p className="text-slate-500 text-sm mt-4">
+                            <p className="text-slate-400 text-sm mt-4">
                                 Don't worry, the checkout page has instructions too.
                             </p>
                         </div>
@@ -523,7 +523,7 @@ export default function HowToPay() {
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-2xl font-bold text-white mb-8 text-center">Troubleshooting & FAQ</h2>
                         <div className="space-y-4">
-                            <details className="bg-slate-800/30 rounded-xl border border-slate-700 group">
+                            <details className="bg-slate-800/30 rounded-xl border border-slate-600 group">
                                 <summary className="p-6 cursor-pointer font-bold text-white flex justify-between items-center">
                                     I don't see ERG in my wallet yet
                                     <ChevronDown className="group-open:rotate-180 transition-transform" />
@@ -532,7 +532,7 @@ export default function HowToPay() {
                                     Exchanges can sometimes take 10-30 minutes to process withdrawals. Check your email to see if you need to confirm the withdrawal.
                                 </div>
                             </details>
-                            <details className="bg-slate-800/30 rounded-xl border border-slate-700 group">
+                            <details className="bg-slate-800/30 rounded-xl border border-slate-600 group">
                                 <summary className="p-6 cursor-pointer font-bold text-white flex justify-between items-center">
                                     I sent the wrong amount
                                     <ChevronDown className="group-open:rotate-180 transition-transform" />
@@ -541,7 +541,7 @@ export default function HowToPay() {
                                     If you sent too little, you'll need to send the remainder. If you sent too much, contact support@agenticaihome.com and we'll refund the difference.
                                 </div>
                             </details>
-                            <details className="bg-slate-800/30 rounded-xl border border-slate-700 group">
+                            <details className="bg-slate-800/30 rounded-xl border border-slate-600 group">
                                 <summary className="p-6 cursor-pointer font-bold text-white flex justify-between items-center">
                                     Is this safe?
                                     <ChevronDown className="group-open:rotate-180 transition-transform" />

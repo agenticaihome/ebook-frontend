@@ -34,7 +34,7 @@ const ChapterProgress = ({ current, total }) => (
                 className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
             />
         </div>
-        <span className="text-slate-500 text-sm font-mono">
+        <span className="text-slate-400 text-sm font-mono">
             {current}/{total}
         </span>
     </div>
@@ -117,7 +117,7 @@ const StoryHook = ({ hook, fullStory }) => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                     >
-                        <div className="pt-4 mt-4 border-t border-slate-700 prose prose-invert prose-sm max-w-none">
+                        <div className="pt-4 mt-4 border-t border-slate-600 prose prose-invert prose-sm max-w-none">
                             {fullStory}
                         </div>
                     </m.div>
@@ -157,7 +157,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -275,7 +275,7 @@ const BeforeAfter = ({ before, after, metric }) => {
             {metric && (
                 <div className="bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-xl p-4 flex items-center justify-center gap-4 backdrop-blur-sm">
                     <span className="text-red-400 line-through text-xl">{metric.before}</span>
-                    <ArrowRight className="text-slate-500" size={20} />
+                    <ArrowRight className="text-slate-400" size={20} />
                     <span className="text-green-400 font-bold text-2xl">{metric.after}</span>
                     <span className="text-slate-400 text-sm">{metric.label}</span>
                 </div>
@@ -471,7 +471,7 @@ const Chapter1 = () => {
 
                             {/* Reading time + Speed Run toggle */}
                             <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-2 text-slate-500 text-sm">
+                                <div className="flex items-center gap-2 text-slate-400 text-sm">
                                     <Clock size={14} />
                                     <span>6 min read</span>
                                 </div>
@@ -610,10 +610,10 @@ const Chapter1 = () => {
                                         A brilliant assistant who waits for instructions.
                                     </p>
                                     <div className="bg-slate-900/50 rounded-lg p-3 text-sm">
-                                        <span className="text-slate-500">You:</span>{' '}
+                                        <span className="text-slate-400">You:</span>{' '}
                                         <span className="text-slate-300">"What's the weather?"</span>
                                         <br />
-                                        <span className="text-slate-500">Bot:</span>{' '}
+                                        <span className="text-slate-400">Bot:</span>{' '}
                                         <span className="text-slate-300">"72°F and sunny."</span>
                                     </div>
                                 </div>
@@ -625,7 +625,7 @@ const Chapter1 = () => {
                                         A team member who runs your playbook autonomously.
                                     </p>
                                     <div className="bg-slate-900/50 rounded-lg p-3 text-sm">
-                                        <span className="text-slate-500">Agent:</span>{' '}
+                                        <span className="text-slate-400">Agent:</span>{' '}
                                         <span className="text-slate-300">"Rain at 2 PM. I moved your outdoor meeting inside and texted the team."</span>
                                     </div>
                                 </div>
@@ -681,7 +681,7 @@ const Chapter1 = () => {
                             </div>
 
                             <Suspense fallback={
-                                <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                     Loading quiz...
                                 </div>
                             }>
@@ -693,7 +693,7 @@ const Chapter1 = () => {
                         {!speedRun && (
                             <section className="mb-10">
                                 <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                         Loading calculator...
                                     </div>
                                 }>

@@ -85,7 +85,7 @@ const CaptainTips = () => {
                                 </h3>
                                 <button
                                     onClick={closeTip}
-                                    className="text-slate-500 hover:text-white transition-colors"
+                                    className="text-slate-400 hover:text-white transition-colors"
                                 >
                                     <X size={16} />
                                 </button>

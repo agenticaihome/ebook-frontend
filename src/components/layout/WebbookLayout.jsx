@@ -229,10 +229,10 @@ const WebbookLayout = ({ children }) => {
             <m.aside
                 initial={{ width: 280 }}
                 animate={{ width: isSidebarOpen ? 280 : 0 }}
-                className={`fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 shadow-2xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out`}
+                className={`fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-600/50 shadow-2xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out`}
                 aria-label="Main Navigation"
             >
-                <div className="p-6 border-b border-slate-700 flex justify-between items-center">
+                <div className="p-6 border-b border-slate-600 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 font-bold text-cyan-400" aria-label="Go to Home">
                         <Shield size={24} />
                         <span>Agentic AI Home</span>
@@ -277,7 +277,7 @@ const WebbookLayout = ({ children }) => {
                                         to={chapter.path}
                                         className="flex-1 flex items-center gap-3 focus:outline-none"
                                     >
-                                        <span className={isActive ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                                        <span className={isActive ? 'text-cyan-200' : 'text-slate-400 group-hover:text-cyan-400'}>
                                             {chapter.icon}
                                         </span>
                                         <div className="flex-1">
@@ -293,7 +293,7 @@ const WebbookLayout = ({ children }) => {
 
                                     <button
                                         onClick={(e) => toggleChapter(e, chapter.id)}
-                                        className={`p-1 rounded hover:bg-white/10 transition-colors ${isActive ? 'text-cyan-200' : 'text-slate-500'}`}
+                                        className={`p-1 rounded hover:bg-white/10 transition-colors ${isActive ? 'text-cyan-200' : 'text-slate-400'}`}
                                         aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${chapter.title}`}
                                         aria-expanded={isExpanded}
                                     >
@@ -337,16 +337,16 @@ const WebbookLayout = ({ children }) => {
                         Quick Jumps
                     </div>
                     <div className="grid grid-cols-2 gap-2 px-2">
-                        <PrefetchLink to="/part1/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part1/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-600 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Foundations
                         </PrefetchLink>
-                        <PrefetchLink to="/part5/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part5/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-600 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Life OS
                         </PrefetchLink>
-                        <PrefetchLink to="/part2/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part2/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-600 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Daily Ops
                         </PrefetchLink>
-                        <PrefetchLink to="/part4/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part4/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-600 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Health
                         </PrefetchLink>
                     </div>
@@ -363,7 +363,7 @@ const WebbookLayout = ({ children }) => {
                             : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/payment-guide' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                        <span className={location.pathname === '/payment-guide' ? 'text-cyan-200' : 'text-slate-400 group-hover:text-cyan-400'}>
                             <Shield size={18} />
                         </span>
                         <span className="font-medium text-sm">Payment Guide</span>
@@ -375,7 +375,7 @@ const WebbookLayout = ({ children }) => {
                             : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/why-ergo' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                        <span className={location.pathname === '/why-ergo' ? 'text-cyan-200' : 'text-slate-400 group-hover:text-cyan-400'}>
                             <img src="/assets/ergo-logo.png" alt="Ergo" className="w-5 h-5 object-contain invert opacity-70 group-hover:opacity-100 transition-opacity" />
                         </span>
                         <span className="font-medium text-sm">Why Ergo?</span>
@@ -388,7 +388,7 @@ const WebbookLayout = ({ children }) => {
                             : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/games' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                        <span className={location.pathname === '/games' ? 'text-cyan-200' : 'text-slate-400 group-hover:text-cyan-400'}>
                             <Gamepad2 size={18} />
                         </span>
                         <span className="font-medium text-sm">Games Hub</span>
@@ -401,14 +401,14 @@ const WebbookLayout = ({ children }) => {
                             : 'text-slate-300 hover:bg-slate-800'
                             }`}
                     >
-                        <span className={location.pathname === '/faq' ? 'text-cyan-200' : 'text-slate-500 group-hover:text-cyan-400'}>
+                        <span className={location.pathname === '/faq' ? 'text-cyan-200' : 'text-slate-400 group-hover:text-cyan-400'}>
                             <HelpCircle size={18} />
                         </span>
                         <span className="font-medium text-sm">FAQ & Support</span>
                     </PrefetchLink>
                 </nav>
 
-                <div className="p-4 border-t border-slate-700">
+                <div className="p-4 border-t border-slate-600">
                     <div className="bg-gradient-to-br from-cyan-900/30 to-blue-900/30 p-4 rounded-xl border border-cyan-500/30">
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-8 h-8 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xs">
@@ -430,7 +430,7 @@ const WebbookLayout = ({ children }) => {
             <div className="flex-1 flex flex-col min-w-0">
                 <PreLaunchBanner />
                 {/* Top Bar */}
-                <header className="sticky top-0 z-30 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700/50 h-16 flex items-center px-4 justify-between transition-all duration-300">
+                <header className="sticky top-0 z-30 bg-slate-900/80 backdrop-blur-lg border-b border-slate-600/50 h-16 flex items-center px-4 justify-between transition-all duration-300">
                     <div className="flex items-center gap-4">
                         {!isSidebarOpen && (
                             <button

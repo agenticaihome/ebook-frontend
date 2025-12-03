@@ -28,7 +28,7 @@ const NotFoundPage = () => {
                             </Link>
                             <Link
                                 to="/part1"
-                                className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 rounded-xl font-bold transition-all border border-slate-700"
+                                className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-3 rounded-xl font-bold transition-all border border-slate-600"
                             >
                                 Start Part 1
                             </Link>

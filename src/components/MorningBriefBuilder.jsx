@@ -113,7 +113,7 @@ const MorningBriefBuilder = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Calendar className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Morning Brief Builder</h3>
@@ -134,7 +134,7 @@ const MorningBriefBuilder = () => {
                                 type="time"
                                 value={preferences.wakeTime}
                                 onChange={(e) => handleChange('wakeTime', e.target.value)}
-                                className="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-white"
+                                className="w-full p-3 bg-slate-900 border border-slate-600 rounded-xl text-white"
                             />
                         </div>
                         <div>
@@ -145,7 +145,7 @@ const MorningBriefBuilder = () => {
                                 type="time"
                                 value={preferences.weekendWakeTime}
                                 onChange={(e) => handleChange('weekendWakeTime', e.target.value)}
-                                className="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-white"
+                                className="w-full p-3 bg-slate-900 border border-slate-600 rounded-xl text-white"
                             />
                         </div>
                     </div>
@@ -166,14 +166,14 @@ const MorningBriefBuilder = () => {
                                     onClick={() => handleChange(key, !preferences[key])}
                                     className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${preferences[key]
                                         ? 'border-cyan-500 bg-cyan-900/20'
-                                        : 'border-slate-700 hover:border-slate-600 bg-slate-900/50'
+                                        : 'border-slate-600 hover:border-slate-600 bg-slate-900/50'
                                         }`}
                                 >
                                     <div className={`w-5 h-5 rounded border-2 flex items-center justify-center ${preferences[key] ? 'border-cyan-500 bg-cyan-500' : 'border-slate-600'
                                         }`}>
                                         {preferences[key] && <Check size={14} className="text-white" />}
                                     </div>
-                                    <Icon size={20} className={preferences[key] ? 'text-cyan-400' : 'text-slate-500'} />
+                                    <Icon size={20} className={preferences[key] ? 'text-cyan-400' : 'text-slate-400'} />
                                     <span className="text-white">{label}</span>
                                 </button>
                             ))}
@@ -196,7 +196,7 @@ const MorningBriefBuilder = () => {
                                     onClick={() => handleChange('painPoint', value)}
                                     className={`p-3 rounded-xl border-2 transition-all ${preferences.painPoint === value
                                         ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {label}
@@ -214,7 +214,7 @@ const MorningBriefBuilder = () => {
                                 onClick={() => handleChange('smartHome', !preferences.smartHome)}
                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${preferences.smartHome
                                     ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                    : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                    : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                     }`}
                             >
                                 I have smart home devices
@@ -223,7 +223,7 @@ const MorningBriefBuilder = () => {
                                 onClick={() => handleChange('familyCoordination', !preferences.familyCoordination)}
                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${preferences.familyCoordination
                                     ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                    : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                    : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                     }`}
                             >
                                 I need household/family coordination
@@ -248,7 +248,7 @@ const MorningBriefBuilder = () => {
                         <p className="text-slate-400 text-sm mb-4">
                             Copy this prompt and use it with your AI assistant (Claude, ChatGPT, etc.)
                         </p>
-                        <div className="bg-slate-900 rounded-xl p-6 border border-slate-700 mb-4 relative">
+                        <div className="bg-slate-900 rounded-xl p-6 border border-slate-600 mb-4 relative">
                             <button
                                 onClick={copyToClipboard}
                                 className="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg font-medium transition-all text-sm"
@@ -272,18 +272,18 @@ const MorningBriefBuilder = () => {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-4 mb-6">
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="text-sm text-slate-400 mb-1">Recommended Delivery</div>
                             <div className="text-cyan-400 font-bold text-xl">{getDeliveryTime()}</div>
-                            <div className="text-xs text-slate-500 mt-1">15 min before wake time</div>
+                            <div className="text-xs text-slate-400 mt-1">15 min before wake time</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="text-sm text-slate-400 mb-1">Automation Level</div>
                             <div className="text-purple-400 font-bold text-lg">
                                 {preferences.smartHome ? 'Advanced' : preferences.needEmail ? 'Intermediate' : 'Beginner'}
                             </div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="text-sm text-slate-400 mb-1">Time Saved Daily</div>
                             <div className="text-green-400 font-bold text-xl">~30 min</div>
                         </div>
@@ -294,7 +294,7 @@ const MorningBriefBuilder = () => {
                         <p className="text-slate-300 text-sm">{getAutomationApproach()}</p>
                     </div>
 
-                    <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-700">
+                    <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-600">
                         <h5 className="text-white font-bold mb-3">Week-by-Week Expansion Plan</h5>
                         <div className="space-y-2 text-sm text-slate-300">
                             <div className="flex items-start gap-2">

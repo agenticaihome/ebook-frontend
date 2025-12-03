@@ -41,7 +41,7 @@ const SystemHealthDiagnostic = () => {
     const getAgentName = (key) => key.replace(/([A-Z])/g, ' $1').trim().replace(/^\w/, c => c.toUpperCase());
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Activity className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">System Health Diagnostic</h3>
@@ -53,7 +53,7 @@ const SystemHealthDiagnostic = () => {
 
                     <div className="grid md:grid-cols-2 gap-6 mb-8">
                         {Object.keys(ratings).map((agent) => (
-                            <div key={agent} className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                            <div key={agent} className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                                 <div className="flex justify-between mb-2">
                                     <label className="text-white font-medium">{getAgentName(agent)} Agent</label>
                                     <span className={`font-bold ${ratings[agent] >= 4 ? 'text-green-400' : ratings[agent] <= 2 ? 'text-red-400' : 'text-yellow-400'}`}>
@@ -68,7 +68,7 @@ const SystemHealthDiagnostic = () => {
                                     onChange={(e) => handleRatingChange(agent, e.target.value)}
                                     className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                                 />
-                                <div className="flex justify-between text-xs text-slate-500 mt-1">
+                                <div className="flex justify-between text-xs text-slate-400 mt-1">
                                     <span>Useless</span>
                                     <span>Essential</span>
                                 </div>
@@ -126,7 +126,7 @@ const SystemHealthDiagnostic = () => {
                         </div>
                     </div>
 
-                    <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 mb-6">
+                    <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600 mb-6">
                         <h4 className="text-cyan-400 font-bold mb-2 flex items-center gap-2">
                             <Wrench size={20} />
                             Captain's Prescription

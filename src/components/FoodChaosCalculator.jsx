@@ -73,7 +73,7 @@ const FoodChaosCalculator = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <UtensilsCrossed className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Food Chaos Calculator</h3>
@@ -211,7 +211,7 @@ const FoodChaosCalculator = () => {
                                 <div className="text-sm text-slate-400">Money Wasted Monthly</div>
                             </div>
                             <div className="text-red-400 font-bold text-3xl">${results.monthlyWaste}</div>
-                            <div className="text-xs text-slate-500 mt-1">${results.monthlyWaste * 12}/year!</div>
+                            <div className="text-xs text-slate-400 mt-1">${results.monthlyWaste * 12}/year!</div>
                         </div>
                         <div className="bg-gradient-to-br from-orange-900/30 to-orange-900/10 p-6 rounded-xl border border-orange-500/30">
                             <div className="flex items-center gap-2 mb-2">
@@ -219,12 +219,12 @@ const FoodChaosCalculator = () => {
                                 <div className="text-sm text-slate-400">Time Wasted Monthly</div>
                             </div>
                             <div className="text-orange-400 font-bold text-3xl">{results.monthlyTimeWasted} hrs</div>
-                            <div className="text-xs text-slate-500 mt-1">That's {Math.round(results.monthlyTimeWasted / 8)} work days!</div>
+                            <div className="text-xs text-slate-400 mt-1">That's {Math.round(results.monthlyTimeWasted / 8)} work days!</div>
                         </div>
                     </div>
 
                     {results.opportunities.length > 0 && (
-                        <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 mb-6">
+                        <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600 mb-6">
                             <h4 className="text-white font-bold mb-4">Top 3 Opportunities for Improvement</h4>
                             <div className="space-y-3">
                                 {results.opportunities.map((opp, idx) => (
@@ -248,12 +248,12 @@ const FoodChaosCalculator = () => {
                             <div>
                                 <div className="text-sm text-slate-400 mb-1">Monthly Savings</div>
                                 <div className="text-green-400 font-bold text-2xl">${results.monthlySavings}</div>
-                                <div className="text-xs text-slate-500 mt-1">${results.monthlySavings * 12}/year</div>
+                                <div className="text-xs text-slate-400 mt-1">${results.monthlySavings * 12}/year</div>
                             </div>
                             <div>
                                 <div className="text-sm text-slate-400 mb-1">Time Saved Weekly</div>
                                 <div className="text-cyan-400 font-bold text-2xl">{results.timeSavings} hrs</div>
-                                <div className="text-xs text-slate-500 mt-1">{results.timeSavings * 52} hrs/year</div>
+                                <div className="text-xs text-slate-400 mt-1">{results.timeSavings * 52} hrs/year</div>
                             </div>
                         </div>
                     </div>

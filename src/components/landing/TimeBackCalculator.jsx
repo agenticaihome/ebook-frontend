@@ -46,7 +46,7 @@ export default function TimeBackCalculator() {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 backdrop-blur-sm">
+        <div className="bg-slate-800/50 rounded-3xl p-8 border border-slate-600 backdrop-blur-sm">
             <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
                     <Clock className="text-cyan-400" /> Time Back Calculator
@@ -104,7 +104,7 @@ export default function TimeBackCalculator() {
             <EfficiencyBadge savedHours={savedHours} yearlySaved={yearlySaved} />
 
             {/* Referral / Unlock System */}
-            <div className="bg-slate-900/80 rounded-xl p-4 border border-slate-700 text-center">
+            <div className="bg-slate-900/80 rounded-xl p-4 border border-slate-600 text-center">
                 {!isUnlocked ? (
                     <div>
                         <div className="flex items-center justify-center gap-2 text-white font-bold mb-2">

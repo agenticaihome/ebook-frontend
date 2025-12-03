@@ -38,7 +38,7 @@ const CryptoExplainerModal = ({ isOpen, onClose }) => {
                         <div className="space-y-6">
                             {/* Step 1 */}
                             <div className="flex gap-4">
-                                <div className="flex-shrink-0 w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-slate-700 font-bold text-white">1</div>
+                                <div className="flex-shrink-0 w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-slate-600 font-bold text-white">1</div>
                                 <div>
                                     <h3 className="text-white font-bold mb-1">Get a Wallet</h3>
                                     <p className="text-slate-400 text-sm mb-3">Download the Ergo Wallet App (Mobile) or Nautilus (Desktop).</p>
@@ -52,7 +52,7 @@ const CryptoExplainerModal = ({ isOpen, onClose }) => {
 
                             {/* Step 2 */}
                             <div className="flex gap-4">
-                                <div className="flex-shrink-0 w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-slate-700 font-bold text-white">2</div>
+                                <div className="flex-shrink-0 w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-slate-600 font-bold text-white">2</div>
                                 <div>
                                     <h3 className="text-white font-bold mb-1">Buy ERG</h3>
                                     <p className="text-slate-400 text-sm mb-3">Buy ~$22 worth of ERG (to cover fees) on an exchange.</p>
@@ -69,7 +69,7 @@ const CryptoExplainerModal = ({ isOpen, onClose }) => {
 
                             {/* Step 3 */}
                             <div className="flex gap-4">
-                                <div className="flex-shrink-0 w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-slate-700 font-bold text-white">3</div>
+                                <div className="flex-shrink-0 w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-slate-600 font-bold text-white">3</div>
                                 <div>
                                     <h3 className="text-white font-bold mb-1">Send Payment</h3>
                                     <p className="text-slate-400 text-sm">
@@ -80,7 +80,7 @@ const CryptoExplainerModal = ({ isOpen, onClose }) => {
                         </div>
 
                         <div className="mt-8 pt-6 border-t border-slate-800 text-center">
-                            <p className="text-xs text-slate-500 mb-4">
+                            <p className="text-xs text-slate-400 mb-4">
                                 Why do we do this? We believe in peer-to-peer commerce. We pass the savings (no Stripe fees) directly to you.
                             </p>
                             <button

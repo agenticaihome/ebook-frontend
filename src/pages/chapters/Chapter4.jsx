@@ -41,7 +41,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                     className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
                 />
             </div>
-            <span className="text-slate-500 text-sm font-mono">
+            <span className="text-slate-400 text-sm font-mono">
                 {current}/{total}
             </span>
         </div>
@@ -121,7 +121,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -256,7 +256,7 @@ const MorningTimeline = () => {
                     <div className="flex items-center gap-2 mb-4">
                         <X className="text-red-400" size={18} />
                         <span className="text-red-400 font-bold uppercase text-sm tracking-wider">Before</span>
-                        <span className="text-slate-500 text-xs ml-auto">35 min of chaos</span>
+                        <span className="text-slate-400 text-xs ml-auto">35 min of chaos</span>
                     </div>
                     <div className="space-y-3">
                         {beforeItems.map((item, i) => (
@@ -276,7 +276,7 @@ const MorningTimeline = () => {
                     <div className="flex items-center gap-2 mb-4">
                         <Check className="text-green-400" size={18} />
                         <span className="text-green-400 font-bold uppercase text-sm tracking-wider">After</span>
-                        <span className="text-slate-500 text-xs ml-auto">3 min to clarity</span>
+                        <span className="text-slate-400 text-xs ml-auto">3 min to clarity</span>
                     </div>
                     <div className="space-y-3">
                         {afterItems.map((item, i) => (
@@ -296,7 +296,7 @@ const MorningTimeline = () => {
                             <span className="text-slate-400 text-sm">Time saved:</span>
                             <span className="text-green-400 font-bold text-xl">32 min/day</span>
                         </div>
-                        <p className="text-slate-500 text-xs mt-1">
+                        <p className="text-slate-400 text-xs mt-1">
                             That's 194 hours/year you get back.
                         </p>
                     </div>
@@ -354,7 +354,7 @@ const PlatformSetup = () => {
     return (
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
             {/* Tab buttons */}
-            <div className="flex border-b border-slate-700">
+            <div className="flex border-b border-slate-600">
                 {Object.entries(platforms).map(([key, p]) => (
                     <button
                         key={key}
@@ -428,7 +428,7 @@ const WeekOneMilestones = () => {
                         <div className="text-2xl mb-2">{day.icon}</div>
                         <div className="text-cyan-400 font-bold text-xs">Day {day.day}</div>
                         <div className="text-white font-medium text-xs mt-1">{day.title}</div>
-                        <div className="text-slate-500 text-[10px] mt-1 hidden md:block">{day.desc}</div>
+                        <div className="text-slate-400 text-[10px] mt-1 hidden md:block">{day.desc}</div>
                     </div>
                 ))}
             </div>
@@ -504,7 +504,7 @@ const TroubleshootingAccordion = () => {
                                     exit={{ height: 0 }}
                                     className="overflow-hidden"
                                 >
-                                    <div className="px-4 pb-4 pt-0 border-t border-slate-700">
+                                    <div className="px-4 pb-4 pt-0 border-t border-slate-600">
                                         <p className="text-slate-300 text-sm pt-4">{item.answer}</p>
                                     </div>
                                 </m.div>
@@ -526,7 +526,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
             <div>
                 <span className="text-white font-medium">{name}</span>
-                <span className="text-slate-500 text-sm ml-2">{role}</span>
+                <span className="text-slate-400 text-sm ml-2">{role}</span>
             </div>
         </div>
 
@@ -619,7 +619,7 @@ Before generating briefs, ask me:
 
                                 {/* Reading time + Speed Run toggle */}
                                 <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-4 text-slate-400 text-sm">
                                         <div className="flex items-center gap-2">
                                             <Clock size={14} />
                                             <span>8 min read</span>
@@ -679,7 +679,7 @@ Before generating briefs, ask me:
                                 </div>
 
                                 <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                         Loading calculator...
                                     </div>
                                 }>
@@ -708,7 +708,7 @@ Before generating briefs, ask me:
                                 </p>
 
                                 <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                         Loading builder...
                                     </div>
                                 }>

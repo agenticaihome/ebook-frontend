@@ -15,7 +15,7 @@ const WorkflowVisual = ({
     ]
 }) => {
     return (
-        <div className="w-full max-w-3xl mx-auto my-12 p-6 bg-slate-800/30 rounded-2xl border border-slate-700/50 backdrop-blur-sm">
+        <div className="w-full max-w-3xl mx-auto my-12 p-6 bg-slate-800/30 rounded-2xl border border-slate-600/50 backdrop-blur-sm">
             <h4 className="text-center text-slate-400 text-sm font-bold uppercase tracking-wider mb-8">{title}</h4>
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative">
@@ -28,7 +28,7 @@ const WorkflowVisual = ({
                             initial={{ x: -20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="flex items-center gap-3 bg-slate-800 p-3 rounded-lg border border-slate-700 shadow-sm"
+                            className="flex items-center gap-3 bg-slate-800 p-3 rounded-lg border border-slate-600 shadow-sm"
                         >
                             <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400">
                                 <Database size={14} />

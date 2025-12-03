@@ -126,10 +126,10 @@ const Part1 = () => {
                                         onClick={() => scrollToChapter(chapter.id)}
                                         className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
                                             ? 'border-cyan-500 bg-cyan-900/20'
-                                            : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                            : 'border-slate-600 hover:border-slate-600 bg-slate-800/50'
                                             }`}
                                     >
-                                        <Icon className={activeChapter === chapter.id ? 'text-cyan-400' : 'text-slate-500'} size={24} />
+                                        <Icon className={activeChapter === chapter.id ? 'text-cyan-400' : 'text-slate-400'} size={24} />
                                         <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
                                         <div className="font-bold text-white">{chapter.title}</div>
                                     </button>
@@ -201,7 +201,7 @@ const Part1 = () => {
                                 Here's what happens <strong>before she even wakes up</strong>:
                             </p>
 
-                            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 my-6">
+                            <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 my-6">
                                 <h4 className="text-white font-bold mb-3">The agent has:</h4>
                                 <ul className="space-y-2 text-slate-300">
                                     {story.tasks.map((task, index) => (
@@ -313,10 +313,10 @@ const Part1 = () => {
                             </div>
                         </div>
 
-                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading quiz...</div>}>
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading quiz...</div>}>
                             <AIExperienceQuiz />
                         </Suspense>
-                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading calculator...</div>}>
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading calculator...</div>}>
                             <MentalLoadCalculator />
                         </Suspense>
 
@@ -404,7 +404,7 @@ const Part1 = () => {
                                 You need <strong>4 roles filled</strong>. That's it.
                             </p>
 
-                            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 my-8">
+                            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-600 my-8">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     {/* THE BRAIN */}
                                     <div className="bg-green-900/20 border border-green-500/30 p-5 rounded-xl flex items-start gap-4">
@@ -413,7 +413,7 @@ const Part1 = () => {
                                             <div className="text-green-400 font-bold text-lg">THE BRAIN</div>
                                             <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Manager</div>
                                             <div className="text-slate-300 text-sm">Thinking, planning, drafting emails, making decisions.</div>
-                                            <div className="text-slate-500 text-xs mt-2">Tools: Claude, ChatGPT</div>
+                                            <div className="text-slate-400 text-xs mt-2">Tools: Claude, ChatGPT</div>
                                         </div>
                                     </div>
 
@@ -424,7 +424,7 @@ const Part1 = () => {
                                             <div className="text-orange-400 font-bold text-lg">THE MEMORY</div>
                                             <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Librarian</div>
                                             <div className="text-slate-300 text-sm">Remembering your preferences, files, and past conversations.</div>
-                                            <div className="text-slate-500 text-xs mt-2">Tools: Notion, Obsidian, Google Drive</div>
+                                            <div className="text-slate-400 text-xs mt-2">Tools: Notion, Obsidian, Google Drive</div>
                                         </div>
                                     </div>
 
@@ -435,7 +435,7 @@ const Part1 = () => {
                                             <div className="text-cyan-400 font-bold text-lg">THE HANDS</div>
                                             <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Specialists</div>
                                             <div className="text-slate-300 text-sm">Doing the actual work (sending invites, paying bills).</div>
-                                            <div className="text-slate-500 text-xs mt-2">Tools: Calendar, Gmail, YNAB</div>
+                                            <div className="text-slate-400 text-xs mt-2">Tools: Calendar, Gmail, YNAB</div>
                                         </div>
                                     </div>
 
@@ -446,7 +446,7 @@ const Part1 = () => {
                                             <div className="text-purple-400 font-bold text-lg">THE NERVES</div>
                                             <div className="text-slate-400 text-xs font-bold uppercase mb-1">Role: The Messenger</div>
                                             <div className="text-slate-300 text-sm">Connecting the Brain to the Hands automatically.</div>
-                                            <div className="text-slate-500 text-xs mt-2">Tools: Zapier, Make</div>
+                                            <div className="text-slate-400 text-xs mt-2">Tools: Zapier, Make</div>
                                         </div>
                                     </div>
                                 </div>
@@ -490,7 +490,7 @@ const Part1 = () => {
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                     <h4 className="text-white font-bold text-xl mb-2">ChatGPT (OpenAI)</h4>
                                     <div className="text-sm text-slate-400 mb-3">Most Integrations</div>
                                     <div className="space-y-2 text-sm text-slate-300">
@@ -499,7 +499,7 @@ const Part1 = () => {
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                     <h4 className="text-white font-bold text-xl mb-2">Gemini (Google)</h4>
                                     <div className="text-sm text-slate-400 mb-3">Google Ecosystem</div>
                                     <div className="space-y-2 text-sm text-slate-300">
@@ -508,7 +508,7 @@ const Part1 = () => {
                                     </div>
                                 </div>
 
-                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                     <h4 className="text-white font-bold text-xl mb-2">Microsoft Copilot</h4>
                                     <div className="text-sm text-slate-400 mb-3">Microsoft Ecosystem</div>
                                     <div className="space-y-2 text-sm text-slate-300">
@@ -549,7 +549,7 @@ const Part1 = () => {
                                     <li><strong className="text-cyan-400">NOTES:</strong> Apple Notes, Google Keep, or Notion (Free)</li>
                                     <li><strong className="text-cyan-400">REMINDERS:</strong> Built-in phone reminders (Free)</li>
                                 </ul>
-                                <div className="mt-4 pt-4 border-t border-slate-700">
+                                <div className="mt-4 pt-4 border-t border-slate-600">
                                     <div className="grid grid-cols-3 gap-4 text-center">
                                         <div>
                                             <div className="text-2xl font-bold text-green-400">$0-20</div>
@@ -571,7 +571,7 @@ const Part1 = () => {
                             </div>
                         </div>
 
-                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading recommendations...</div>}>
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading recommendations...</div>}>
                             <ToolRecommendationQuiz />
                         </Suspense>
 
@@ -709,7 +709,7 @@ const Part1 = () => {
                                 Here's the actual risk: <strong>You already gave your data to 47 companies with worse security than Claude or ChatGPT.</strong>
                             </p>
 
-                            <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-8">
+                            <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-8">
                                 <h4 className="text-white font-bold mb-4">Companies That Already Have Your Data:</h4>
                                 <div className="grid md:grid-cols-2 gap-3 text-sm text-slate-300">
                                     <div className="flex items-center gap-2">
@@ -737,7 +737,7 @@ const Part1 = () => {
                             </div>
 
                             <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Trust Equation (Reframed)</h3>
-                            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 my-8">
+                            <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-600 my-8">
                                 <div className="text-xl font-mono text-white mb-4 text-center">
                                     Smart Privacy = <span className="text-cyan-400">(Max Value)</span> + <span className="text-green-400">(Clear Boundaries)</span> + <span className="text-purple-400">(Regular Audits)</span>
                                 </div>
@@ -760,7 +760,7 @@ const Part1 = () => {
                             </p>
 
                             <div className="my-8">
-                                <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading assessment...</div>}>
+                                <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading assessment...</div>}>
                                     <PrivacyAssessment />
                                 </Suspense>
                             </div>
@@ -818,7 +818,7 @@ const Part1 = () => {
                             </li>
                         </ul>
 
-                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-500">Loading builder...</div>}>
+                        <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading builder...</div>}>
                             <AgentConstitutionBuilder />
                         </Suspense>
 
@@ -910,7 +910,7 @@ const Part1 = () => {
                                     View Payment Options
                                     <ArrowRight size={20} />
                                 </button>
-                                <div className="text-xs text-slate-500 mt-4">
+                                <div className="text-xs text-slate-400 mt-4">
                                     Choose between Card ($39.99) or Crypto ($19.99) • Instant access to all 5 parts
                                 </div>
                             </div>

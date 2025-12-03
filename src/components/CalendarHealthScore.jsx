@@ -64,7 +64,7 @@ const CalendarHealthScore = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Calendar className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Calendar Health Score</h3>
@@ -138,7 +138,7 @@ const CalendarHealthScore = () => {
                                     onClick={() => handleInputChange('interruptionFreq', opt.val)}
                                     className={`p-3 rounded-xl border-2 transition-all text-sm ${inputs.interruptionFreq === opt.val
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt.label}
@@ -164,20 +164,20 @@ const CalendarHealthScore = () => {
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="flex items-center gap-2 mb-2 text-red-400">
                                 <Shield size={18} />
                                 <span className="text-sm">Biggest Problem</span>
                             </div>
                             <div className="text-xl font-bold text-white">{results.problem}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="flex items-center gap-2 mb-2 text-green-400">
                                 <Clock size={18} />
                                 <span className="text-sm">Recoverable Hours</span>
                             </div>
                             <div className="text-2xl font-bold text-green-400">{results.recoverable} hrs/week</div>
-                            <div className="text-xs text-slate-500 mt-1">Potential gain</div>
+                            <div className="text-xs text-slate-400 mt-1">Potential gain</div>
                         </div>
                     </div>
 

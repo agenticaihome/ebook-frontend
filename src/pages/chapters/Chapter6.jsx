@@ -43,7 +43,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                     className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
                 />
             </div>
-            <span className="text-slate-500 text-sm font-mono">
+            <span className="text-slate-400 text-sm font-mono">
                 {current}/{total}
             </span>
         </div>
@@ -123,7 +123,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -240,7 +240,7 @@ const InvisibleLoadVisual = () => {
                             repeat: Infinity,
                             repeatDelay: thoughts.length * 0.5 - 4,
                         }}
-                        className="absolute text-slate-500 text-sm whitespace-nowrap"
+                        className="absolute text-slate-400 text-sm whitespace-nowrap"
                         style={{
                             left: `${10 + (i % 3) * 30}%`,
                             top: `${20 + Math.floor(i / 3) * 25}%`,
@@ -416,7 +416,7 @@ const RoomScheduleBuilder = () => {
             <div className="overflow-x-auto">
                 <table className="w-full">
                     <thead>
-                        <tr className="border-b border-slate-700">
+                        <tr className="border-b border-slate-600">
                             <th className="text-left text-slate-400 text-sm py-2">Room</th>
                             <th className="text-center text-slate-400 text-sm py-2">Daily</th>
                             <th className="text-center text-slate-400 text-sm py-2">Weekly</th>
@@ -543,7 +543,7 @@ const CommandCenterDashboard = () => {
             <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl p-6 border border-cyan-500/30 backdrop-blur-sm">
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
                     {/* Morning Brief Status */}
-                    <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-600">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-slate-400 text-sm">Morning Brief</span>
                             <span className="text-green-400 text-xs flex items-center gap-1">
@@ -551,11 +551,11 @@ const CommandCenterDashboard = () => {
                             </span>
                         </div>
                         <div className="text-white font-bold">Delivered 6:00 AM</div>
-                        <div className="text-slate-500 text-xs mt-1">3 priorities • 2 meetings • sunny</div>
+                        <div className="text-slate-400 text-xs mt-1">3 priorities • 2 meetings • sunny</div>
                     </div>
 
                     {/* Meal Plan Status */}
-                    <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-600">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-slate-400 text-sm">Meal Plan</span>
                             <span className="text-green-400 text-xs flex items-center gap-1">
@@ -563,11 +563,11 @@ const CommandCenterDashboard = () => {
                             </span>
                         </div>
                         <div className="text-white font-bold">Week Planned</div>
-                        <div className="text-slate-500 text-xs mt-1">Tonight: Taco Tuesday</div>
+                        <div className="text-slate-400 text-xs mt-1">Tonight: Taco Tuesday</div>
                     </div>
 
                     {/* Household Status */}
-                    <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-600">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-slate-400 text-sm">Household</span>
                             <span className="text-green-400 text-xs flex items-center gap-1">
@@ -575,7 +575,7 @@ const CommandCenterDashboard = () => {
                             </span>
                         </div>
                         <div className="text-white font-bold">All Systems Go</div>
-                        <div className="text-slate-500 text-xs mt-1">Next: Bathroom deep clean (Sat)</div>
+                        <div className="text-slate-400 text-xs mt-1">Next: Bathroom deep clean (Sat)</div>
                     </div>
                 </div>
 
@@ -590,18 +590,18 @@ const CommandCenterDashboard = () => {
                         ].map((item, i) => (
                             <div key={i} className="flex items-center justify-between text-sm">
                                 <div className="flex items-center gap-2">
-                                    <item.icon className="text-slate-500" size={14} />
+                                    <item.icon className="text-slate-400" size={14} />
                                     <span className="text-slate-300">{item.task}</span>
                                 </div>
-                                <span className="text-slate-500 text-xs">{item.time}</span>
+                                <span className="text-slate-400 text-xs">{item.time}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Footer */}
-                <div className="mt-4 pt-4 border-t border-slate-700 text-center">
-                    <p className="text-slate-500 text-sm">
+                <div className="mt-4 pt-4 border-t border-slate-600 text-center">
+                    <p className="text-slate-400 text-sm">
                         Your Morning Brief Agent can pull from all of these systems.
                     </p>
                 </div>
@@ -714,7 +714,7 @@ const Part2Celebration = () => {
                     <p className="text-orange-400 font-bold">
                         Next: Part 3 — Digital Operations (Email, Calendar, Admin)
                     </p>
-                    <p className="text-slate-500 text-sm mt-1">
+                    <p className="text-slate-400 text-sm mt-1">
                         The real productivity gains are just beginning...
                     </p>
                 </div>
@@ -932,7 +932,7 @@ Ask me about my household size and preferences to estimate usage.`;
 
                                 {/* Reading time + Speed Run toggle */}
                                 <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-4 text-slate-400 text-sm">
                                         <div className="flex items-center gap-2">
                                             <Clock size={14} />
                                             <span>10 min read</span>
@@ -995,7 +995,7 @@ Ask me about my household size and preferences to estimate usage.`;
                                 </div>
 
                                 <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                         Loading calculator...
                                     </div>
                                 }>

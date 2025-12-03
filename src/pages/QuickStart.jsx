@@ -114,7 +114,7 @@ const QuickStart = () => {
 
                             <div className="space-y-6">
                                 {/* Email Triage Prompt */}
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600">
                                     <p className="text-green-400 font-bold mb-3">📧 Email Triage Agent Prompt:</p>
                                     <div className="bg-slate-950 p-4 rounded font-mono text-xs text-slate-300 mb-4 overflow-x-auto">
                                         {`You are my Email Triage Agent. Every morning, I'll paste my unread emails. Your job:
@@ -137,7 +137,7 @@ Ask me: What's your email pain point? (Too many newsletters? Missing important c
                                 </div>
 
                                 {/* Mental Load Prompt */}
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600">
                                     <p className="text-orange-400 font-bold mb-3">🧠 Mental Load Agent Prompt:</p>
                                     <div className="bg-slate-950 p-4 rounded font-mono text-xs text-slate-300 mb-4 overflow-x-auto">
                                         {`You are my Mental Wellbeing Agent. I'm going to do a "worry dump" every evening at 9 PM.
@@ -160,7 +160,7 @@ Ask me: What time works best for your evening worry dump? What's your biggest me
                                 </div>
 
                                 {/* Kitchen Agent Prompt */}
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600">
                                     <p className="text-purple-400 font-bold mb-3">🍳 Kitchen Agent Prompt:</p>
                                     <div className="bg-slate-950 p-4 rounded font-mono text-xs text-slate-300 mb-4 overflow-x-auto">
                                         {`You are my Kitchen Agent. I'll share:
@@ -279,7 +279,7 @@ Ask me: What's in your fridge right now? Any dietary restrictions? How many nigh
                                 Start With Chapter 1
                                 <ArrowRight size={20} />
                             </button>
-                            <p className="text-slate-500 text-sm mt-4">Or jump straight to your agent's chapter if you're ready</p>
+                            <p className="text-slate-400 text-sm mt-4">Or jump straight to your agent's chapter if you're ready</p>
                         </div>
                     </div>
                 </section>

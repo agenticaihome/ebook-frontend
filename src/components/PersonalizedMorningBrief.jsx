@@ -55,7 +55,7 @@ const PersonalizedMorningBrief = () => {
     const data = content[persona] || content.general;
 
     return (
-        <div className="bg-slate-900 p-6 rounded-xl border border-slate-700 font-mono text-sm text-slate-300 my-6 shadow-lg">
+        <div className="bg-slate-900 p-6 rounded-xl border border-slate-600 font-mono text-sm text-slate-300 my-6 shadow-lg">
             <div className="text-cyan-400 mb-4">════════════════════════════════════</div>
             <div className="text-white font-bold mb-2">{data.title} — Tuesday, March 18</div>
             <div className="text-cyan-400 mb-4">════════════════════════════════════</div>
@@ -78,7 +78,7 @@ const PersonalizedMorningBrief = () => {
             </div>
 
             <div className="text-cyan-400">════════════════════════════════════</div>
-            <div className="mt-2 text-slate-500 text-xs">Time to read: 2 minutes | Decisions made for you: 5+</div>
+            <div className="mt-2 text-slate-400 text-xs">Time to read: 2 minutes | Decisions made for you: 5+</div>
         </div>
     );
 };

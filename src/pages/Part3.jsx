@@ -82,10 +82,10 @@ const Part3 = () => {
                                             onClick={() => scrollToChapter(chapter.id)}
                                             className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
                                                 ? 'border-blue-500 bg-blue-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                : 'border-slate-600 hover:border-slate-600 bg-slate-800/50'
                                                 }`}
                                         >
-                                            <Icon className={activeChapter === chapter.id ? 'text-blue-400' : 'text-slate-500'} size={24} />
+                                            <Icon className={activeChapter === chapter.id ? 'text-blue-400' : 'text-slate-400'} size={24} />
                                             <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
                                             <div className="font-bold text-white">{chapter.title}</div>
                                         </button>
@@ -192,7 +192,7 @@ const Part3 = () => {
 
                                     <h3 className="text-2xl font-bold text-blue-400 mt-12 mb-4">The Science of Email Stress</h3>
 
-                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                         <p className="text-white font-bold text-sm mb-3">UC Irvine Research (Gloria Mark, 2012):</p>
                                         <ul className="space-y-2 text-sm text-slate-300 mb-4">
                                             <li>• Average worker checks email <strong className="text-red-400">74 times per day</strong></li>
@@ -276,7 +276,7 @@ const Part3 = () => {
                                     </Suspense>
 
                                     <div className="grid md:grid-cols-2 gap-6 my-8">
-                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                             <h4 className="text-white font-bold mb-3">Manual Processing</h4>
                                             <ul className="space-y-2 text-sm text-slate-300">
                                                 <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Read every subject line</li>
@@ -285,7 +285,7 @@ const Part3 = () => {
                                                 <li className="flex items-center gap-2"><Clock size={14} className="text-red-400" /> Reply to everything</li>
                                             </ul>
                                         </div>
-                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                             <h4 className="text-blue-400 font-bold mb-3">Agent Processing</h4>
                                             <ul className="space-y-2 text-sm text-slate-300">
                                                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-green-400" /> Filters noise automatically</li>
@@ -360,7 +360,7 @@ const Part3 = () => {
                                                     <div>• 3 team updates (AI summary: "Project on track")</div>
                                                     <div>• 2 vendor updates (AI summary: "Routine maintenance")</div>
                                                 </div>
-                                                <div className="text-slate-500 mt-2">ARCHIVE: 42 newsletters, receipts, spam</div>
+                                                <div className="text-slate-400 mt-2">ARCHIVE: 42 newsletters, receipts, spam</div>
                                             </div>
 
                                             <p className="text-white italic">Total time: 4 minutes to review, edit drafts, send.</p>
@@ -596,7 +596,7 @@ const Part3 = () => {
 
                                     <h3 className="text-2xl font-bold text-purple-400 mt-12 mb-4">The Science of Meeting Fragmentation</h3>
 
-                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                         <p className="text-white font-bold text-sm mb-3">UC Irvine (Gloria Mark, 2008):</p>
                                         <ul className="space-y-2 text-sm text-slate-300 mb-4">
                                             <li>• Average knowledge worker switches tasks <strong className="text-red-400">every 3 minutes</strong></li>
@@ -927,7 +927,7 @@ const Part3 = () => {
                                             <div>• Endless low-level anxiety ("Did I forget something?")</div>
                                         </div>
                                         <p className="text-red-400 mt-3">Thursday 11 PM: Finally renewed insurance. Mental note: "I need to get organized."</p>
-                                        <p className="text-slate-500 text-xs mt-2">(Narrator: He will not get organized. This will happen again next quarter.)</p>
+                                        <p className="text-slate-400 text-xs mt-2">(Narrator: He will not get organized. This will happen again next quarter.)</p>
                                     </div>
                                 </div>
 
@@ -943,7 +943,7 @@ const Part3 = () => {
 
                                     <h3 className="text-2xl font-bold text-indigo-400 mt-12 mb-4">The Science of Admin Avoidance</h3>
 
-                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                    <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                         <p className="text-white font-bold text-sm mb-3">Roy Baumeister (Decision Fatigue, 2011):</p>
                                         <ul className="space-y-2 text-sm text-slate-300 mb-4">
                                             <li>• Every decision depletes mental energy</li>
@@ -1034,13 +1034,13 @@ const Part3 = () => {
                                     </div>
 
                                     <div className="grid md:grid-cols-2 gap-6 my-8">
-                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                             <h4 className="text-indigo-400 font-bold mb-3">The "Admin Day" Strategy</h4>
                                             <p className="text-sm text-slate-300">
                                                 Instead of doing admin bits every day, batch them all into one "Power Hour" or half-day per week.
                                             </p>
                                         </div>
-                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                             <h4 className="text-indigo-400 font-bold mb-3">What to Outsource</h4>
                                             <ul className="space-y-1 text-sm text-slate-300">
                                                 <li>• Scheduling appointments</li>
@@ -1086,7 +1086,7 @@ const Part3 = () => {
                                                 <div>• Insurance renewal → "Insurance_Auto_2024_Renewal.pdf"</div>
                                                 <div>• HOA email → "HOA_Pool_Schedule_Nov2024.pdf"</div>
                                             </div>
-                                            <div className="text-slate-500 mt-2">DELETE: 3 promotional emails, 1 expired offer</div>
+                                            <div className="text-slate-400 mt-2">DELETE: 3 promotional emails, 1 expired offer</div>
                                         </div>
 
                                         <p className="text-white italic">Total time: 11:27 AM. 87 minutes. Admin complete for the week.</p>

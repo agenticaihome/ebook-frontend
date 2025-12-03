@@ -131,7 +131,7 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
                 </div>
 
                 {/* Swipe Hint for Mobile */}
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] text-slate-500 sm:hidden">
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] text-slate-400 sm:hidden">
                     <ChevronLeft size={12} />
                     <span>swipe</span>
                     <ChevronRight size={12} />
@@ -768,14 +768,14 @@ const AgentTriageGame = ({ onBack }) => {
             `}</style>
 
             {/* Header HUD */}
-            <div className="bg-slate-800/95 p-3 sm:p-4 border-b border-slate-700 backdrop-blur-xl">
+            <div className="bg-slate-800/95 p-3 sm:p-4 border-b border-slate-600 backdrop-blur-xl">
                 {/* Top Row - Score & Time */}
                 <div className="flex justify-between items-center gap-3 mb-2">
                     {/* Score */}
                     <div className="text-center flex-1">
                         <div className="text-3xl sm:text-4xl font-black text-white font-mono tracking-tight">{score}</div>
                         {personalBest.score > 0 && score <= personalBest.score && (
-                            <div className="text-[10px] text-slate-500">Best: {personalBest.score}</div>
+                            <div className="text-[10px] text-slate-400">Best: {personalBest.score}</div>
                         )}
                         {score > personalBest.score && (
                             <div className="text-[10px] text-yellow-400 font-bold animate-pulse">🏆 NEW BEST!</div>
@@ -821,7 +821,7 @@ const AgentTriageGame = ({ onBack }) => {
                                 <span className="font-bold font-mono">{combo}x</span>
                             </m.div>
                         )}
-                        <div className="text-xs text-slate-500 font-mono">W{wave}</div>
+                        <div className="text-xs text-slate-400 font-mono">W{wave}</div>
                     </div>
 
                     {/* Controls */}
@@ -831,7 +831,7 @@ const AgentTriageGame = ({ onBack }) => {
                             className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-600 active:scale-95 transition-all"
                             title={soundEnabled ? 'Mute' : 'Unmute'}
                         >
-                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-500" />}
+                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-400" />}
                         </button>
                         <button
                             onClick={() => setShowControls(!showControls)}
@@ -843,7 +843,7 @@ const AgentTriageGame = ({ onBack }) => {
                 </div>
 
                 {/* Captain Bar */}
-                <div className="flex items-center gap-3 mt-2 pt-2 border-t border-slate-700/50">
+                <div className="flex items-center gap-3 mt-2 pt-2 border-t border-slate-600/50">
                     <m.div
                         animate={{ scale: captainMessage.mood === 'excited' || captainMessage.mood === 'victory' ? [1, 1.1, 1] : 1 }}
                         transition={{ repeat: captainMessage.mood === 'excited' ? Infinity : 0, duration: 0.5 }}
@@ -862,7 +862,7 @@ const AgentTriageGame = ({ onBack }) => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="bg-slate-800/90 border-b border-slate-700 px-4 py-3 overflow-hidden"
+                        className="bg-slate-800/90 border-b border-slate-600 px-4 py-3 overflow-hidden"
                     >
                         <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-xs">
                             <div className="flex items-center gap-2">
@@ -958,12 +958,12 @@ const AgentTriageGame = ({ onBack }) => {
                             </div>
 
                             {/* Mobile hint */}
-                            <div className="text-xs text-slate-500 mb-4 sm:hidden">
+                            <div className="text-xs text-slate-400 mb-4 sm:hidden">
                                 📱 Swipe cards or tap buttons
                             </div>
 
                             {/* Desktop hint */}
-                            <div className="text-xs text-slate-500 mb-4 hidden sm:block">
+                            <div className="text-xs text-slate-400 mb-4 hidden sm:block">
                                 ⌨️ <kbd className="px-1 py-0.5 bg-slate-700 rounded mx-0.5">D</kbd> Delegate
                                 <kbd className="px-1 py-0.5 bg-slate-700 rounded mx-0.5">X</kbd> Delete
                                 <kbd className="px-1 py-0.5 bg-slate-700 rounded mx-0.5">Space</kbd> Start
@@ -1018,7 +1018,7 @@ const AgentTriageGame = ({ onBack }) => {
                             <div className="grid grid-cols-2 gap-2 mt-4 mb-6">
                                 <div className="bg-slate-800/60 rounded-xl p-3">
                                     <div className="text-slate-400 text-xs mb-1">Triaged</div>
-                                    <div className="text-2xl font-bold text-white">{emailsTriaged}<span className="text-slate-500 text-lg">/20</span></div>
+                                    <div className="text-2xl font-bold text-white">{emailsTriaged}<span className="text-slate-400 text-lg">/20</span></div>
                                 </div>
                                 <div className="bg-slate-800/60 rounded-xl p-3">
                                     <div className="text-slate-400 text-xs mb-1">Max Combo</div>
@@ -1069,7 +1069,7 @@ const AgentTriageGame = ({ onBack }) => {
                         className="p-3 sm:p-4 space-y-2 overflow-y-auto max-h-[400px] sm:max-h-[450px]"
                     >
                         {emails.length === 0 && (
-                            <div className="flex flex-col items-center justify-center h-48 text-slate-500">
+                            <div className="flex flex-col items-center justify-center h-48 text-slate-400">
                                 <Mail size={48} className="mb-3 opacity-30" />
                                 <p className="text-sm">Waiting for emails...</p>
                             </div>

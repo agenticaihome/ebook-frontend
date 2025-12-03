@@ -20,7 +20,7 @@ const CalendarAuditTool = () => {
     const health = getHealthScore();
 
     return (
-        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <Calendar className="text-purple-400" /> Calendar Health Audit
             </h3>
@@ -52,7 +52,7 @@ const CalendarAuditTool = () => {
                     <div className="text-right text-green-400 font-mono">{deepWork} hrs</div>
                 </div>
 
-                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700 flex justify-between items-center">
+                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-600 flex justify-between items-center">
                     <div>
                         <div className="text-sm text-slate-400">Health Score</div>
                         <div className={`text-3xl font-bold ${health.color}`}>{health.score}</div>

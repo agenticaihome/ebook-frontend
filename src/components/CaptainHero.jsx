@@ -158,7 +158,8 @@ const CaptainHero = ({
                                     onChange={(e) => setTempName(e.target.value)}
                                     placeholder="Enter your name"
                                     className="bg-slate-900/50 border border-slate-600 rounded px-3 py-1.5 text-sm text-white focus:border-cyan-500 outline-none w-full placeholder-slate-500 transition-colors"
-                                    autoFocus={!userState?.name}
+                                    aria-label="Enter your name"
+                                    autoFocus={false}
                                 />
                                 <button
                                     type="submit"

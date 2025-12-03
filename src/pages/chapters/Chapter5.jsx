@@ -41,7 +41,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                     className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
                 />
             </div>
-            <span className="text-slate-500 text-sm font-mono">
+            <span className="text-slate-400 text-sm font-mono">
                 {current}/{total}
             </span>
         </div>
@@ -121,7 +121,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -264,7 +264,7 @@ const FoodChaosDiary = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="bg-slate-900/50 rounded-xl p-4 border border-slate-700"
+                        className="bg-slate-900/50 rounded-xl p-4 border border-slate-600"
                     >
                         <div className="flex items-start gap-3">
                             <span className="text-2xl">{moment.emoji}</span>
@@ -344,7 +344,7 @@ const BudgetImpactVisual = () => {
                     <span className="text-slate-400">Annual savings:</span>
                     <span className="text-green-400 font-bold text-xl">${total * 12}/year</span>
                 </div>
-                <p className="text-slate-500 text-xs mt-1">
+                <p className="text-slate-400 text-xs mt-1">
                     That's a family vacation funded by eating smarter, not harder.
                 </p>
             </div>
@@ -405,13 +405,13 @@ const FamilyTasteMapper = () => {
 
             <div className="space-y-4 mb-6">
                 {profiles.map((profile, index) => (
-                    <div key={profile.id} className="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div key={profile.id} className="bg-slate-900/50 rounded-xl p-4 border border-slate-600">
                         <div className="flex items-center justify-between mb-3">
                             <span className="text-cyan-400 text-xs font-bold uppercase">Person {index + 1}</span>
                             {profiles.length > 1 && (
                                 <button
                                     onClick={() => removeProfile(profile.id)}
-                                    className="text-slate-500 hover:text-red-400 text-xs"
+                                    className="text-slate-400 hover:text-red-400 text-xs"
                                 >
                                     Remove
                                 </button>
@@ -560,7 +560,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
             <div>
                 <span className="text-white font-medium">{name}</span>
-                <span className="text-slate-500 text-sm ml-2">{role}</span>
+                <span className="text-slate-400 text-sm ml-2">{role}</span>
             </div>
         </div>
 
@@ -711,7 +711,7 @@ For each suggestion, tell me:
 
                                 {/* Reading time + Speed Run toggle */}
                                 <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-4 text-slate-400 text-sm">
                                         <div className="flex items-center gap-2">
                                             <Clock size={14} />
                                             <span>9 min read</span>
@@ -774,7 +774,7 @@ For each suggestion, tell me:
                                 </div>
 
                                 <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
                                         Loading calculator...
                                     </div>
                                 }>

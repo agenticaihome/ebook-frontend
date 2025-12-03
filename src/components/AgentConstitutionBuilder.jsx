@@ -87,7 +87,7 @@ Review and update quarterly or as needs change.`;
     const hasSelections = Object.values(selections).some(arr => arr.length > 0);
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <FileText className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Agent Constitution Builder</h3>
@@ -111,7 +111,7 @@ Review and update quarterly or as needs change.`;
                                 onClick={() => toggleSelection('alwaysAllowed', item)}
                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${selections.alwaysAllowed.includes(item)
                                         ? 'border-green-500 bg-green-900/20 text-white'
-                                        : 'border-slate-700 hover:border-slate-600 bg-slate-900/50 text-slate-300'
+                                        : 'border-slate-600 hover:border-slate-600 bg-slate-900/50 text-slate-300'
                                     }`}
                             >
                                 <div className="flex items-center gap-3">
@@ -143,7 +143,7 @@ Review and update quarterly or as needs change.`;
                                 onClick={() => toggleSelection('mustAsk', item)}
                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${selections.mustAsk.includes(item)
                                         ? 'border-yellow-500 bg-yellow-900/20 text-white'
-                                        : 'border-slate-700 hover:border-slate-600 bg-slate-900/50 text-slate-300'
+                                        : 'border-slate-600 hover:border-slate-600 bg-slate-900/50 text-slate-300'
                                     }`}
                             >
                                 <div className="flex items-center gap-3">
@@ -175,7 +175,7 @@ Review and update quarterly or as needs change.`;
                                 onClick={() => toggleSelection('neverAllowed', item)}
                                 className={`w-full p-3 rounded-xl border-2 transition-all text-left ${selections.neverAllowed.includes(item)
                                         ? 'border-red-500 bg-red-900/20 text-white'
-                                        : 'border-slate-700 hover:border-slate-600 bg-slate-900/50 text-slate-300'
+                                        : 'border-slate-600 hover:border-slate-600 bg-slate-900/50 text-slate-300'
                                     }`}
                             >
                                 <div className="flex items-center gap-3">
@@ -201,7 +201,7 @@ Review and update quarterly or as needs change.`;
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-8"
                 >
-                    <div className="bg-slate-900 rounded-xl p-6 border border-slate-700 mb-4">
+                    <div className="bg-slate-900 rounded-xl p-6 border border-slate-600 mb-4">
                         <div className="flex items-center justify-between mb-4">
                             <h5 className="text-white font-bold">Your Constitution</h5>
                             <button

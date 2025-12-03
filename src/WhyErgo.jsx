@@ -52,7 +52,7 @@ export default function WhyErgo() {
                 {/* SECTION 1: THE SHORT VERSION */}
                 <section className="py-16 px-6 bg-[#131320]">
                     <div className="max-w-4xl mx-auto">
-                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600">
                             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
                                 <Zap className="text-yellow-400" /> The Short Version
                             </h2>
@@ -76,7 +76,7 @@ export default function WhyErgo() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-700 text-center italic text-slate-400">
+                            <div className="mt-8 p-4 bg-slate-900/50 rounded-xl border border-slate-600 text-center italic text-slate-400">
                                 "Ergo is what Bitcoin would be if Satoshi had 10 more years of cryptographic research."
                             </div>
                         </div>
@@ -213,7 +213,7 @@ export default function WhyErgo() {
 
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* Feature 1 */}
-                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Database size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">1. Extended UTXO (eUTXO)</h3>
                                 <p className="text-slate-400 mb-4">
@@ -226,7 +226,7 @@ export default function WhyErgo() {
                             </div>
 
                             {/* Feature 2 */}
-                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Cpu size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">2. Autolykos (Mining)</h3>
                                 <p className="text-slate-400 mb-4">
@@ -239,7 +239,7 @@ export default function WhyErgo() {
                             </div>
 
                             {/* Feature 3 */}
-                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Shield size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">3. Sigma Protocols</h3>
                                 <p className="text-slate-400 mb-4">
@@ -252,7 +252,7 @@ export default function WhyErgo() {
                             </div>
 
                             {/* Feature 4 */}
-                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-700 hover:border-green-500/50 transition-colors">
+                            <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Server size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">4. Storage Rent</h3>
                                 <p className="text-slate-400 mb-4">
@@ -266,7 +266,7 @@ export default function WhyErgo() {
                         </div>
 
                         {/* CAPTAIN'S TECH EXPLAINER */}
-                        <div className="mt-16 bg-slate-800/50 rounded-3xl p-8 border border-slate-700 relative overflow-hidden">
+                        <div className="mt-16 bg-slate-800/50 rounded-3xl p-8 border border-slate-600 relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-4 opacity-5">
                                 <Bot size={120} />
                             </div>
@@ -315,17 +315,17 @@ export default function WhyErgo() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-bold text-green-400 border-b border-green-500/30 pb-2 mb-4">DeFi & Finance</h3>
 
-                                <a href="https://spectrum.fi" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                <a href="https://spectrum.fi" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-green-400 transition-colors">Spectrum Finance</div>
                                     <div className="text-sm text-slate-400">The #1 Decentralized Exchange (DEX). Swap assets without a middleman.</div>
                                 </a>
 
-                                <a href="https://mew.fi" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                <a href="https://mew.fi" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-green-400 transition-colors">MewFinance</div>
                                     <div className="text-sm text-slate-400">Lending, borrowing, and stablecoins. Banking without the bank.</div>
                                 </a>
 
-                                <a href="https://sigmafi.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                <a href="https://sigmafi.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-green-400 transition-colors">SigmaFi</div>
                                     <div className="text-sm text-slate-400">Peer-to-peer bonds and loans. Trustless financial agreements.</div>
                                 </a>
@@ -335,17 +335,17 @@ export default function WhyErgo() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-bold text-cyan-400 border-b border-cyan-500/30 pb-2 mb-4">Infrastructure</h3>
 
-                                <a href="https://rosen.tech" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                <a href="https://rosen.tech" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-cyan-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Rosen Bridge</div>
                                     <div className="text-sm text-slate-400">Trustless cross-chain bridge connecting Ergo to Bitcoin, Ethereum, and Cardano.</div>
                                 </a>
 
-                                <a href="https://ergomixer.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                <a href="https://ergomixer.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-cyan-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Ergo Mixer</div>
                                     <div className="text-sm text-slate-400">Non-custodial privacy. Protect your financial history.</div>
                                 </a>
 
-                                <a href="https://nautilus.wallet" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                <a href="https://nautilus.wallet" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-cyan-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Nautilus Wallet</div>
                                     <div className="text-sm text-slate-400">The privacy-first wallet that puts you in control.</div>
                                 </a>
@@ -355,17 +355,17 @@ export default function WhyErgo() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-bold text-purple-400 border-b border-purple-500/30 pb-2 mb-4">Gaming & Culture</h3>
 
-                                <a href="https://cyberverse.gg" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                <a href="https://cyberverse.gg" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-purple-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-purple-400 transition-colors">CyberVerse</div>
                                     <div className="text-sm text-slate-400">Open-world RPG powered by blockchain assets. Play to own.</div>
                                 </a>
 
-                                <a href="https://skyharbor.io" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                <a href="https://skyharbor.io" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-purple-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-purple-400 transition-colors">SkyHarbor</div>
                                     <div className="text-sm text-slate-400">The premier NFT marketplace for digital art and collectibles.</div>
                                 </a>
 
-                                <a href="https://sigmaverse.io" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                <a href="https://sigmaverse.io" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-purple-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-purple-400 transition-colors">SigmaValley</div>
                                     <div className="text-sm text-slate-400">The metaverse headquarters for the Ergo community.</div>
                                 </a>
@@ -407,13 +407,13 @@ export default function WhyErgo() {
                                 <div className="text-green-400 font-bold mb-2">STEP 1</div>
                                 <h3 className="text-xl font-bold text-white mb-2">Get a Wallet</h3>
                                 <p className="text-slate-400 mb-2">Nautilus (Browser) or Ergo Mobile Wallet (iOS/Android).</p>
-                                <p className="text-xs text-slate-500 italic">Takes ~5 mins to setup.</p>
+                                <p className="text-xs text-slate-400 italic">Takes ~5 mins to setup.</p>
                             </div>
                             <div className="bg-slate-800 p-6 rounded-xl">
                                 <div className="text-green-400 font-bold mb-2">STEP 2</div>
                                 <h3 className="text-xl font-bold text-white mb-2">Get ERG</h3>
                                 <p className="text-slate-400 mb-2">KuCoin, Gate.io, or CoinEx. (Not on Coinbase yet—we're early).</p>
-                                <p className="text-xs text-slate-500 italic">Takes ~10-15 mins to verify & buy.</p>
+                                <p className="text-xs text-slate-400 italic">Takes ~10-15 mins to verify & buy.</p>
                             </div>
                             <div className="bg-slate-800 p-6 rounded-xl">
                                 <div className="text-green-400 font-bold mb-2">STEP 3</div>
@@ -458,7 +458,7 @@ export default function WhyErgo() {
                             "I'm not asking you to speculate on ERG's price. I'm asking you to USE it. That's how we build the future we want."
                         </p>
                         <div className="text-green-400 font-bold text-lg mb-2">DDS</div>
-                        <div className="text-slate-500 text-sm">Dad Deploying Systems | Doctor of Digital Systems</div>
+                        <div className="text-slate-400 text-sm">Dad Deploying Systems | Doctor of Digital Systems</div>
                     </div>
                 </section>
 

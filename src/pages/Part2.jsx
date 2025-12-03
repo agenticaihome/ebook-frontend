@@ -105,10 +105,10 @@ const Part2 = () => {
                                             onClick={() => scrollToChapter(chapter.id)}
                                             className={`p-6 rounded-xl border-2 transition-all text-left ${activeChapter === chapter.id
                                                 ? 'border-cyan-500 bg-cyan-900/20'
-                                                : 'border-slate-700 hover:border-slate-600 bg-slate-800/50'
+                                                : 'border-slate-600 hover:border-slate-600 bg-slate-800/50'
                                                 }`}
                                         >
-                                            <Icon className={activeChapter === chapter.id ? 'text-cyan-400' : 'text-slate-500'} size={24} />
+                                            <Icon className={activeChapter === chapter.id ? 'text-cyan-400' : 'text-slate-400'} size={24} />
                                             <div className="mt-3 text-sm font-mono text-slate-400">Chapter {chapter.id}</div>
                                             <div className="font-bold text-white">{chapter.title}</div>
                                         </button>
@@ -234,7 +234,7 @@ Keep it under 3 minutes to read.`}
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Science: Why Mornings Matter</h3>
 
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                     <p className="text-slate-300 text-sm mb-3">
                                         <strong className="text-white">Research from Stanford (2016):</strong> Peak cortisol (stress hormone) is 6-9 AM.
                                     </p>
@@ -352,7 +352,7 @@ Keep it under 3 minutes to read.`}
                                 </p>
 
                                 <div className="grid md:grid-cols-2 gap-4 my-8">
-                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-600">
                                         <div className="text-lg mb-2">🏃 <strong className="text-cyan-400">Athletic Edition</strong></div>
                                         <div className="space-y-1 text-xs text-slate-300">
                                             <div>• Weather + UV index</div>
@@ -362,7 +362,7 @@ Keep it under 3 minutes to read.`}
                                         </div>
                                     </div>
 
-                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-600">
                                         <div className="text-lg mb-2">👔 <strong className="text-purple-400">Executive Edition</strong></div>
                                         <div className="space-y-1 text-xs text-slate-300">
                                             <div>• Pre-meeting brief for each calendar item</div>
@@ -372,7 +372,7 @@ Keep it under 3 minutes to read.`}
                                         </div>
                                     </div>
 
-                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-600">
                                         <div className="text-lg mb-2">👨‍👩‍👧 <strong className="text-green-400">Parent Edition</strong></div>
                                         <div className="space-y-1 text-xs text-slate-300">
                                             <div>• Kid's schedule + lunch reminders</div>
@@ -382,7 +382,7 @@ Keep it under 3 minutes to read.`}
                                         </div>
                                     </div>
 
-                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-5 rounded-xl border border-slate-600">
                                         <div className="text-lg mb-2">📚 <strong className="text-orange-400">Student Edition</strong></div>
                                         <div className="space-y-1 text-xs text-slate-300">
                                             <div>• Assignment deadlines (sorted by urgency)</div>
@@ -576,7 +576,7 @@ For each meal, list the ingredients I'd need to buy.`}
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Why "What's for Dinner?" Drains You</h3>
 
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                     <p className="text-slate-300 text-sm mb-3">
                                         <strong className="text-white">Research (Cornell, 2006):</strong> Average person makes <strong className="text-red-400">200+ food decisions per day</strong>.
                                     </p>
@@ -674,7 +674,7 @@ For each meal, list the ingredients I'd need to buy.`}
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">The Kitchen Agent Solution</h3>
 
                                 <div className="grid md:grid-cols-2 gap-6 my-8">
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                         <h4 className="text-cyan-400 font-bold mb-3">PLANNING</h4>
                                         <ul className="space-y-2 text-sm text-slate-300">
                                             <li className="flex items-start gap-2">
@@ -692,7 +692,7 @@ For each meal, list the ingredients I'd need to buy.`}
                                         </ul>
                                     </div>
 
-                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                                    <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
                                         <h4 className="text-green-400 font-bold mb-3">RESULTS</h4>
                                         <ul className="space-y-2 text-sm text-slate-300">
                                             <li className="flex items-start gap-2">
@@ -717,29 +717,29 @@ For each meal, list the ingredients I'd need to buy.`}
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Sample Meal Plan</h3>
 
-                                <div className="bg-slate-900 p-6 rounded-xl border border-slate-700 my-6">
+                                <div className="bg-slate-900 p-6 rounded-xl border border-slate-600 my-6">
                                     <div className="text-cyan-400 font-bold mb-4">🍽️ MEAL PLAN — Week of March 18-24</div>
                                     <div className="space-y-4 text-sm text-slate-300">
                                         <div className="border-l-4 border-cyan-500 pl-4">
                                             <div className="text-white font-bold">MONDAY (Busy: soccer practice)</div>
                                             <div className="text-cyan-400">Sheet Pan Chicken Fajitas</div>
                                             <div className="text-slate-400">⏱️ 10 min prep / 25 min cook | Easy</div>
-                                            <div className="text-slate-500 text-xs">Quick cleanup, feeds everyone</div>
+                                            <div className="text-slate-400 text-xs">Quick cleanup, feeds everyone</div>
                                         </div>
                                         <div className="border-l-4 border-purple-500 pl-4">
                                             <div className="text-white font-bold">TUESDAY (Normal evening)</div>
                                             <div className="text-purple-400">One-Pot Pasta Primavera</div>
                                             <div className="text-slate-400">⏱️ 10 min prep / 20 min cook | Easy</div>
-                                            <div className="text-slate-500 text-xs">Uses veggies before they go bad</div>
+                                            <div className="text-slate-400 text-xs">Uses veggies before they go bad</div>
                                         </div>
                                         <div className="border-l-4 border-green-500 pl-4">
                                             <div className="text-white font-bold">FRIDAY (Everyone's tired)</div>
                                             <div className="text-green-400">Homemade Pizza Night</div>
                                             <div className="text-slate-400">⏱️ 20 min prep / 15 min cook | Easy-Fun</div>
-                                            <div className="text-slate-500 text-xs">Kids help make it, cheaper than delivery</div>
+                                            <div className="text-slate-400 text-xs">Kids help make it, cheaper than delivery</div>
                                         </div>
                                     </div>
-                                    <div className="mt-4 pt-4 border-t border-slate-700 text-green-400 font-bold">
+                                    <div className="mt-4 pt-4 border-t border-slate-600 text-green-400 font-bold">
                                         SHOPPING LIST: $142 estimated (under budget ✓)
                                     </div>
                                 </div>
@@ -785,7 +785,7 @@ For each meal, list the ingredients I'd need to buy.`}
                                             <div>• WEDNESDAY: One-Pot Pasta Primavera (20 min)</div>
                                             <div>• THURSDAY: Grilled Cheese + Tomato Soup (Emma can help)</div>
                                             <div>• FRIDAY: Homemade Pizza Night (fun, under $15)</div>
-                                            <div className="pt-2 border-t border-slate-700 text-green-400">Shopping list: $128 for all 5 dinners</div>
+                                            <div className="pt-2 border-t border-slate-600 text-green-400">Shopping list: $128 for all 5 dinners</div>
                                         </div>
                                         <p>She screenshots it. Sends to husband: "Groceries tomorrow?"</p>
                                         <p className="text-white italic mt-3">Tuesday, 5:47 PM. The meeting ran late. She's in traffic.</p>
@@ -938,7 +938,7 @@ For each meal, list the ingredients I'd need to buy.`}
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Why You Forget (And Why That's Normal)</h3>
 
-                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-700 mb-6">
+                                <div className="bg-slate-900/80 p-6 rounded-xl border border-slate-600 mb-6">
                                     <p className="text-slate-300 text-sm mb-3">
                                         <strong className="text-white">Research (Zeigarnik Effect, 1927):</strong> Your brain ONLY remembers <strong className="text-red-400">incomplete urgent tasks</strong>.
                                     </p>
@@ -1090,7 +1090,7 @@ For each meal, list the ingredients I'd need to buy.`}
 
                                 <h3 className="text-2xl font-bold text-cyan-400 mt-12 mb-4">Weekly Household Brief</h3>
 
-                                <div className="bg-slate-900 p-6 rounded-xl border border-slate-700 font-mono text-sm text-slate-300 my-6">
+                                <div className="bg-slate-900 p-6 rounded-xl border border-slate-600 font-mono text-sm text-slate-300 my-6">
                                     <div className="text-cyan-400 mb-4">📋 WEEKLY HOUSEHOLD BRIEF (Sunday evening)</div>
 
                                     <div className="mb-4">

@@ -15,7 +15,7 @@ const AdminDayPlanner = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+        <div className="bg-slate-800/50 p-6 rounded-xl border border-slate-600">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                 <FileText className="text-indigo-400" /> Admin Day Planner
             </h3>
@@ -30,21 +30,21 @@ const AdminDayPlanner = () => {
                         onClick={() => toggleTask(task.id)}
                         className={`p-3 rounded-lg border cursor-pointer transition-all flex items-center gap-3 ${task.checked
                             ? 'bg-indigo-900/20 border-indigo-500/50'
-                            : 'bg-slate-900/50 border-slate-700 hover:border-slate-600'
+                            : 'bg-slate-900/50 border-slate-600 hover:border-slate-600'
                             }`}
                     >
                         <div className={`w-5 h-5 rounded border flex items-center justify-center ${task.checked ? 'bg-indigo-500 border-indigo-500' : 'border-slate-500'
                             }`}>
                             {task.checked && <CheckSquare size={14} className="text-white" />}
                         </div>
-                        <span className={task.checked ? 'text-slate-500 line-through' : 'text-slate-300'}>
+                        <span className={task.checked ? 'text-slate-400 line-through' : 'text-slate-300'}>
                             {task.text}
                         </span>
                     </div>
                 ))}
             </div>
 
-            <div className="mt-6 pt-6 border-t border-slate-700 flex items-center justify-between text-sm">
+            <div className="mt-6 pt-6 border-t border-slate-600 flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2 text-slate-400">
                     <Clock size={16} />
                     <span>Est. Time: 90 mins</span>

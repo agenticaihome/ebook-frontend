@@ -6,7 +6,7 @@ const AgentLoopVisual = () => {
     return (
         <div className="grid md:grid-cols-2 gap-8 my-12">
             {/* CHATBOT MODEL */}
-            <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 relative overflow-hidden">
+            <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-600 relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-slate-700 text-xs font-bold px-3 py-1 rounded-bl-xl text-slate-300">
                     OLD WAY
                 </div>
@@ -38,11 +38,11 @@ const AgentLoopVisual = () => {
                     </div>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-slate-700 text-center">
+                <div className="mt-6 pt-6 border-t border-slate-600 text-center">
                     <div className="inline-flex items-center gap-2 text-red-400 bg-red-900/20 px-4 py-2 rounded-full text-sm font-bold">
                         🛑 STOPS HERE
                     </div>
-                    <p className="text-xs text-slate-500 mt-2">
+                    <p className="text-xs text-slate-400 mt-2">
                         Waiting for your next command.
                     </p>
                 </div>

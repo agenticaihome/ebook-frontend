@@ -63,7 +63,7 @@ const PurchaseGate = ({ children }) => {
 
                     <button
                         onClick={() => navigate('/dashboard')}
-                        className="text-slate-500 hover:text-white text-sm transition-colors"
+                        className="text-slate-400 hover:text-white text-sm transition-colors"
                     >
                         Return to Dashboard
                     </button>

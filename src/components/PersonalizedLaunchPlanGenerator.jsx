@@ -51,7 +51,7 @@ const PersonalizedLaunchPlanGenerator = () => {
     const plan = showPlan ? generatePlan() : [];
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Rocket className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Your 30-Day Launch Plan</h3>
@@ -67,7 +67,7 @@ const PersonalizedLaunchPlanGenerator = () => {
                                     <button
                                         key={t}
                                         onClick={() => { handleInput('timePerDay', t); nextStep(); }}
-                                        className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white"
+                                        className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-600 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white"
                                     >
                                         {t} minutes
                                     </button>
@@ -88,7 +88,7 @@ const PersonalizedLaunchPlanGenerator = () => {
                                     <button
                                         key={opt.value}
                                         onClick={() => { handleInput('painPoint', opt.value); nextStep(); }}
-                                        className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white"
+                                        className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-600 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white"
                                     >
                                         {opt.label}
                                     </button>
@@ -101,8 +101,8 @@ const PersonalizedLaunchPlanGenerator = () => {
                         <m.div initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                             <label className="block text-white font-medium mb-4">Do you need to coordinate with family?</label>
                             <div className="space-y-3">
-                                <button onClick={() => { handleInput('family', true); nextStep(); }} className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 transition-all text-slate-300 hover:text-white">Yes, I have a partner/kids</button>
-                                <button onClick={() => { handleInput('family', false); nextStep(); }} className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 transition-all text-slate-300 hover:text-white">No, just me</button>
+                                <button onClick={() => { handleInput('family', true); nextStep(); }} className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-600 hover:border-cyan-500 transition-all text-slate-300 hover:text-white">Yes, I have a partner/kids</button>
+                                <button onClick={() => { handleInput('family', false); nextStep(); }} className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-600 hover:border-cyan-500 transition-all text-slate-300 hover:text-white">No, just me</button>
                             </div>
                         </m.div>
                     )}
@@ -128,7 +128,7 @@ const PersonalizedLaunchPlanGenerator = () => {
 
                     <div className="space-y-6">
                         {plan.map((week, i) => (
-                            <div key={i} className="bg-slate-900/50 p-6 rounded-xl border border-slate-700 relative overflow-hidden">
+                            <div key={i} className="bg-slate-900/50 p-6 rounded-xl border border-slate-600 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-4 opacity-10">
                                     <Calendar size={64} />
                                 </div>
@@ -168,7 +168,7 @@ const PersonalizedLaunchPlanGenerator = () => {
                             setStep(0);
                             setShowPlan(false);
                         }}
-                        className="w-full mt-6 text-slate-500 hover:text-white transition-colors"
+                        className="w-full mt-6 text-slate-400 hover:text-white transition-colors"
                     >
                         Create New Plan
                     </button>

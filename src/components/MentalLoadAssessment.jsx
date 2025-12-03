@@ -93,7 +93,7 @@ const MentalLoadAssessment = () => {
     const results = showResults ? calculateResults() : null;
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Brain className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Mental Load Assessment</h3>
@@ -118,7 +118,7 @@ const MentalLoadAssessment = () => {
                                 <button
                                     key={index}
                                     onClick={() => handleAnswer(option.score)}
-                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-700 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                                    className="w-full text-left p-4 rounded-xl bg-slate-900/50 border border-slate-600 hover:border-cyan-500 hover:bg-cyan-900/10 transition-all text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
                                 >
                                     {option.label}
                                 </button>
@@ -135,14 +135,14 @@ const MentalLoadAssessment = () => {
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="flex items-center gap-2 mb-2 text-cyan-400">
                                 <Cloud size={18} />
                                 <span className="text-sm">Primary Strategy</span>
                             </div>
                             <div className="text-lg font-bold text-white">{results.recommendation}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="flex items-center gap-2 mb-2 text-green-400">
                                 <CheckCircle size={18} />
                                 <span className="text-sm">First Action Step</span>

@@ -57,7 +57,7 @@ const PaywallGate = () => {
                                 </div>
                                 <div>
                                     <div className="font-bold text-slate-900">Pay with Ergo</div>
-                                    <div className="text-xs text-slate-500">Crypto Payment</div>
+                                    <div className="text-xs text-slate-400">Crypto Payment</div>
                                 </div>
                             </div>
                             <div className="text-2xl font-bold text-green-600">$20</div>
@@ -73,7 +73,7 @@ const PaywallGate = () => {
                                 </div>
                                 <div>
                                     <div className="font-bold text-slate-900">Pay with Card</div>
-                                    <div className="text-xs text-slate-500">Secure Stripe</div>
+                                    <div className="text-xs text-slate-400">Secure Stripe</div>
                                 </div>
                             </div>
                             <div className="text-2xl font-bold text-purple-600">$40</div>

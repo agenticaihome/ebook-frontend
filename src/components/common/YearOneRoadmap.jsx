@@ -59,13 +59,13 @@ const YearOneRoadmap = () => {
                             <span className={`font-bold ${q.color}`}>{q.id}</span>
                         </div>
 
-                        <div className="flex-1 bg-slate-900/50 p-6 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
+                        <div className="flex-1 bg-slate-900/50 p-6 rounded-xl border border-slate-800 hover:border-slate-600 transition-colors">
                             <h4 className={`text-xl font-bold ${q.color} mb-2`}>{q.title}</h4>
                             <p className="text-slate-400 text-sm mb-4 uppercase tracking-wider">{q.focus}</p>
 
                             <div className="flex flex-wrap gap-2">
                                 {q.agents.map((agent, i) => (
-                                    <span key={i} className="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-700">
+                                    <span key={i} className="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-600">
                                         {agent}
                                     </span>
                                 ))}

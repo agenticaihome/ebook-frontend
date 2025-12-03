@@ -143,7 +143,7 @@ const ToolRecommendationQuiz = () => {
     const allAnswered = questions.every(q => answers[q.id]);
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <h3 className="text-2xl font-bold text-white mb-6">Tool Recommendation Quiz</h3>
 
             <AnimatePresence mode="wait">
@@ -167,7 +167,7 @@ const ToolRecommendationQuiz = () => {
                                                 onClick={() => handleAnswer(question.id, option.value)}
                                                 className={`w-full p-4 rounded-xl border-2 transition-all text-left flex items-center gap-3 ${isSelected
                                                     ? 'border-cyan-500 bg-cyan-900/20'
-                                                    : 'border-slate-700 hover:border-slate-600 bg-slate-900/50'
+                                                    : 'border-slate-600 hover:border-slate-600 bg-slate-900/50'
                                                     }`}
                                             >
                                                 <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${isSelected ? 'border-cyan-500 bg-cyan-500' : 'border-slate-600'
@@ -224,7 +224,7 @@ const ToolRecommendationQuiz = () => {
                                 <h4 className="text-white font-bold mb-3">Recommended Specialized Tools</h4>
                                 <div className="space-y-3">
                                     {results.specializedTools.map((tool, idx) => (
-                                        <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-700 flex items-start justify-between">
+                                        <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-600 flex items-start justify-between">
                                             <div className="flex-1">
                                                 <div className="text-white font-bold mb-1">{tool.name}</div>
                                                 <div className="text-slate-400 text-sm mb-2">{tool.reason}</div>

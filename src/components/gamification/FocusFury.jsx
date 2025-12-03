@@ -612,7 +612,7 @@ const FocusFury = ({ onBack }) => {
     return (
         <div
             className={`w-full max-w-2xl mx-auto bg-slate-900 border-2 rounded-2xl overflow-hidden shadow-2xl relative select-none
-                ${gameState === 'playing' ? 'border-purple-500/50' : 'border-slate-700'}
+                ${gameState === 'playing' ? 'border-purple-500/50' : 'border-slate-600'}
                 ${screenShake ? 'animate-shake' : ''}
             `}
         >
@@ -870,7 +870,7 @@ const FocusFury = ({ onBack }) => {
                                     <Zap size={26} fill="white" /> UNLEASH FURY
                                 </m.button>
 
-                                <p className="text-slate-500 text-xs mt-4">
+                                <p className="text-slate-400 text-xs mt-4">
                                     Tap/click anywhere to fire focus beams
                                 </p>
                             </m.div>
@@ -922,7 +922,7 @@ const FocusFury = ({ onBack }) => {
                                         </div>
                                     </div>
                                     {!isNewBest && bestKills > 0 && (
-                                        <div className="text-xs text-slate-500 mt-1">
+                                        <div className="text-xs text-slate-400 mt-1">
                                             Best: {bestKills} {kills === bestKills && '(Tied!)'}
                                         </div>
                                     )}

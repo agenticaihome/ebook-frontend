@@ -71,7 +71,7 @@ const FinancialHealthScore = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Activity className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Financial Health Score</h3>
@@ -168,14 +168,14 @@ const FinancialHealthScore = () => {
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="flex items-center gap-2 mb-2 text-red-400">
                                 <AlertCircle size={18} />
                                 <span className="text-sm">Top Vulnerability</span>
                             </div>
                             <div className="text-xl font-bold text-white">{results.vulnerability}</div>
                         </div>
-                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
+                        <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="flex items-center gap-2 mb-2 text-green-400">
                                 <TrendingUp size={18} />
                                 <span className="text-sm">Biggest Opportunity</span>

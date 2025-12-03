@@ -43,7 +43,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
-                    className="bg-[#131320] border border-slate-700 w-full max-w-md rounded-2xl overflow-hidden shadow-2xl"
+                    className="bg-[#131320] border border-slate-600 w-full max-w-md rounded-2xl overflow-hidden shadow-2xl"
                     onClick={(e) => e.stopPropagation()}
                 >
                     {/* Header */}
@@ -82,7 +82,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
                                 </button>
                             </div>
                         ) : scores.length === 0 ? (
-                            <div className="text-center py-12 text-slate-500">
+                            <div className="text-center py-12 text-slate-400">
                                 <Trophy size={48} className="mx-auto mb-4 opacity-20" />
                                 <p>No scores yet. Be the first!</p>
                             </div>
@@ -94,7 +94,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
                                         className={`flex items-center justify-between p-3 rounded-xl border ${index === 0 ? 'bg-yellow-500/10 border-yellow-500/30' :
                                                 index === 1 ? 'bg-slate-300/10 border-slate-300/30' :
                                                     index === 2 ? 'bg-orange-500/10 border-orange-500/30' :
-                                                        'bg-slate-800/30 border-slate-700/50'
+                                                        'bg-slate-800/30 border-slate-600/50'
                                             }`}
                                     >
                                         <div className="flex items-center gap-4">
@@ -114,7 +114,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
                                                                 'text-orange-400'
                                                     } />}
                                                 </div>
-                                                <div className="text-xs text-slate-500 flex items-center gap-1">
+                                                <div className="text-xs text-slate-400 flex items-center gap-1">
                                                     <Calendar size={10} />
                                                     {new Date(score.date).toLocaleDateString()}
                                                 </div>
@@ -124,7 +124,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
                                             <div className="font-mono font-bold text-cyan-400 text-lg">
                                                 {score.score.toLocaleString()}
                                             </div>
-                                            <div className="text-[10px] text-slate-500 uppercase tracking-wider">
+                                            <div className="text-[10px] text-slate-400 uppercase tracking-wider">
                                                 Score
                                             </div>
                                         </div>
@@ -136,7 +136,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose }) => {
 
                     {/* Footer */}
                     <div className="p-4 border-t border-slate-800 bg-slate-900/50 text-center">
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-slate-400">
                             Top 25 Agents Global Leaderboard
                         </p>
                     </div>

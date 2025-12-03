@@ -64,7 +64,7 @@ const Dashboard = () => {
         switch (status) {
             case 'DEPLOYED': return 'text-green-400 bg-green-900/20 border-green-500/50';
             case 'BUILDING': return 'text-yellow-400 bg-yellow-900/20 border-yellow-500/50';
-            case 'NOT_STARTED': return 'text-slate-400 bg-slate-800/50 border-slate-700';
+            case 'NOT_STARTED': return 'text-slate-400 bg-slate-800/50 border-slate-600';
             case 'LOCKED': return 'text-slate-600 bg-slate-900/50 border-slate-800';
             default: return 'text-slate-400';
         }
@@ -101,12 +101,12 @@ const Dashboard = () => {
                                 { id: 4, name: 'Health', active: progress.part4 },
                                 { id: 5, name: 'Life OS', active: progress.part5 },
                             ].map((part) => (
-                                <div key={part.id} className={`p-4 rounded-xl border ${part.active ? 'bg-cyan-900/20 border-cyan-500/50' : 'bg-slate-800/30 border-slate-700 opacity-50'}`}>
+                                <div key={part.id} className={`p-4 rounded-xl border ${part.active ? 'bg-cyan-900/20 border-cyan-500/50' : 'bg-slate-800/30 border-slate-600 opacity-50'}`}>
                                     <div className="flex justify-between items-center mb-2">
-                                        <span className="text-xs font-mono text-slate-500">PART 0{part.id}</span>
+                                        <span className="text-xs font-mono text-slate-400">PART 0{part.id}</span>
                                         {part.active ? <CheckCircle size={16} className="text-cyan-400" /> : <Circle size={16} className="text-slate-600" />}
                                     </div>
-                                    <div className={`font-bold ${part.active ? 'text-white' : 'text-slate-500'}`}>{part.name}</div>
+                                    <div className={`font-bold ${part.active ? 'text-white' : 'text-slate-400'}`}>{part.name}</div>
                                 </div>
                             ))}
                         </div>
@@ -148,26 +148,26 @@ const Dashboard = () => {
                         <div>
                             <h2 className="text-xl font-bold mb-6 text-slate-200">Quick Tools</h2>
                             <div className="space-y-4">
-                                <Link to="/#calculator" className="block p-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 rounded-xl transition-all group">
+                                <Link to="/#calculator" className="block p-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-600 hover:border-cyan-500/50 rounded-xl transition-all group">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-cyan-900/30 p-2 rounded-lg text-cyan-400 group-hover:text-cyan-300">
                                             <Calculator size={20} />
                                         </div>
                                         <div>
                                             <div className="font-bold text-slate-200">Time Calculator</div>
-                                            <div className="text-xs text-slate-500">Audit your weekly hours</div>
+                                            <div className="text-xs text-slate-400">Audit your weekly hours</div>
                                         </div>
                                     </div>
                                 </Link>
 
-                                <Link to="/part1#diagnostic" className="block p-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-purple-500/50 rounded-xl transition-all group">
+                                <Link to="/part1#diagnostic" className="block p-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-600 hover:border-purple-500/50 rounded-xl transition-all group">
                                     <div className="flex items-center gap-3">
                                         <div className="bg-purple-900/30 p-2 rounded-lg text-purple-400 group-hover:text-purple-300">
                                             <Activity size={20} />
                                         </div>
                                         <div>
                                             <div className="font-bold text-slate-200">Infection Diagnostic</div>
-                                            <div className="text-xs text-slate-500">Check your "busy" levels</div>
+                                            <div className="text-xs text-slate-400">Check your "busy" levels</div>
                                         </div>
                                     </div>
                                 </Link>
@@ -226,7 +226,7 @@ const ChangePasswordForm = () => {
     };
 
     return (
-        <div className="p-6 bg-slate-800/30 border border-slate-700 rounded-xl">
+        <div className="p-6 bg-slate-800/30 border border-slate-600 rounded-xl">
             <h3 className="font-bold text-slate-200 mb-4 flex items-center gap-2">
                 <Shield size={16} className="text-cyan-400" /> Security Settings
             </h3>
@@ -238,7 +238,7 @@ const ChangePasswordForm = () => {
                         type="password"
                         value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
-                        className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
+                        className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
                         required
                     />
                 </div>
@@ -248,7 +248,7 @@ const ChangePasswordForm = () => {
                         type="password"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
+                        className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
                         required
                     />
                 </div>

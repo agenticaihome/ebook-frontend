@@ -37,7 +37,7 @@ const EssentialFiveChecklist = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Shield className="text-cyan-400" size={28} />
                 <div>
@@ -54,7 +54,7 @@ const EssentialFiveChecklist = () => {
                         onClick={() => handleCheck(item.id)}
                         className={`flex items-center gap-4 p-4 rounded-xl border transition-all text-left ${checkedItems[item.id]
                                 ? 'bg-green-900/20 border-green-500/50'
-                                : 'bg-slate-900/50 border-slate-700 hover:border-slate-600'
+                                : 'bg-slate-900/50 border-slate-600 hover:border-slate-600'
                             }`}
                     >
                         <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${checkedItems[item.id] ? 'bg-green-500 border-green-500' : 'border-slate-500'

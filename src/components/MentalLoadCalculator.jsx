@@ -94,7 +94,7 @@ const MentalLoadCalculator = () => {
     };
 
     return (
-        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 my-8">
+        <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 my-8">
             <div className="flex items-center gap-3 mb-6">
                 <Activity className="text-cyan-400" size={28} />
                 <h3 className="text-2xl font-bold text-white">Mental Load Calculator</h3>
@@ -178,7 +178,7 @@ const MentalLoadCalculator = () => {
                                     onClick={() => handleInputChange('forgetFrequency', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgetFrequency === freq
                                         ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                        : 'border-slate-700 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -261,20 +261,20 @@ const MentalLoadCalculator = () => {
                         <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 p-6 rounded-xl border border-cyan-500/30">
                             <div className="text-sm text-slate-400 mb-1">Hours Potentially Recoverable</div>
                             <div className="text-cyan-400 font-bold text-3xl">{results.recoverable} hrs/week</div>
-                            <div className="text-xs text-slate-500 mt-2">
+                            <div className="text-xs text-slate-400 mt-2">
                                 That's {results.recoverable * 52} hours per year!
                             </div>
                         </div>
                         <div className="bg-gradient-to-br from-purple-900/30 to-purple-900/10 p-6 rounded-xl border border-purple-500/30">
                             <div className="text-sm text-slate-400 mb-1">Intervention Priority</div>
                             <div className="text-purple-400 font-bold text-3xl">{results.areas.length} areas</div>
-                            <div className="text-xs text-slate-500 mt-2">
+                            <div className="text-xs text-slate-400 mt-2">
                                 Focus here for maximum impact
                             </div>
                         </div>
                     </div>
 
-                    <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-700">
+                    <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600">
                         <div className="flex items-center gap-2 mb-4">
                             <AlertCircle className="text-cyan-400" size={20} />
                             <h4 className="text-white font-bold">Top 3 Areas for Agent Intervention</h4>
