@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Home } from 'lucide-react';
+import PrefetchLink from '../layout/PrefetchLink';
 
 const ChapterNavigation = ({ previousChapter, nextChapter, partNumber, chapterNumber }) => {
     const isLoggedIn = !!localStorage.getItem('token');
@@ -11,14 +12,14 @@ const ChapterNavigation = ({ previousChapter, nextChapter, partNumber, chapterNu
     return (
         <div className="flex justify-between items-center py-8 px-6 border-t border-slate-800 mt-12 max-w-4xl mx-auto flex-wrap gap-4">
             {previousChapter ? (
-                <Link
+                <PrefetchLink
                     to={previousChapter}
                     onClick={handleNavClick}
                     className={`flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-all font-medium group focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${isLoading ? 'opacity-50 cursor-wait' : ''}`}
                 >
                     <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                     <span>Previous Chapter</span>
-                </Link>
+                </PrefetchLink>
             ) : (
                 <div />
             )}
@@ -33,14 +34,14 @@ const ChapterNavigation = ({ previousChapter, nextChapter, partNumber, chapterNu
             </Link>
 
             {nextChapter ? (
-                <Link
+                <PrefetchLink
                     to={nextChapter}
                     onClick={handleNavClick}
                     className={`flex items-center gap-2 px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-all font-medium shadow-lg shadow-cyan-900/30 group focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${isLoading ? 'opacity-50 cursor-wait' : ''}`}
                 >
                     <span>{isLoading ? 'Loading...' : 'Next Chapter'}</span>
                     {!isLoading && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
-                </Link>
+                </PrefetchLink>
             ) : (
                 <Link
                     to={isLoggedIn ? "/dashboard" : "/payment-guide"}

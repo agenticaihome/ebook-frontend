@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, BookOpen, Wrench, Volume2, VolumeX, Calculator, Activity, LayoutDashboard, Gamepad2 } from 'lucide-react';
 import { useSound } from '../../context/SoundContext';
+import PrefetchLink from './PrefetchLink';
 
 const MobileBottomNav = () => {
     const location = useLocation();
@@ -53,25 +54,25 @@ const MobileBottomNav = () => {
 
             <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f1a]/95 backdrop-blur-lg border-t border-slate-800 md:hidden z-50 pb-safe">
                 <div className="flex justify-around items-center p-3">
-                    <Link to="/" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <PrefetchLink to="/" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <Home size={24} />
                         <span className="text-[10px] font-bold">Home</span>
-                    </Link>
+                    </PrefetchLink>
 
-                    <Link to="/dashboard" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <PrefetchLink to="/dashboard" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <LayoutDashboard size={24} />
                         <span className="text-[10px] font-bold">Dash</span>
-                    </Link>
+                    </PrefetchLink>
 
-                    <Link to="/part1" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <PrefetchLink to="/part1" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <BookOpen size={24} />
                         <span className="text-[10px] font-bold">Read</span>
-                    </Link>
+                    </PrefetchLink>
 
-                    <Link to="/games" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <PrefetchLink to="/games" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <Gamepad2 size={24} />
                         <span className="text-[10px] font-bold">Games</span>
-                    </Link>
+                    </PrefetchLink>
 
                     <button
                         onClick={() => setShowTools(!showTools)}

@@ -17,7 +17,7 @@ const WebbookLayout = ({ children }) => {
     const [scrollProgress, setScrollProgress] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [newBadge, setNewBadge] = useState(null);
-    const { unlockBadge } = useUser();
+    const { userState, setUserState, unlockBadge } = useUser();
     const location = useLocation();
 
     // ... existing effects ...
@@ -77,6 +77,13 @@ const WebbookLayout = ({ children }) => {
             });
             setHasSaved(true);
 
+            // 1.5 Update User Progress
+            const currentChapterId = location.pathname;
+            setUserState(prev => ({
+                ...prev,
+                progress: { ...prev.progress, [currentChapterId]: true }
+            }));
+
             // 2. Check for Badge Unlock
             const badge = badges[location.pathname];
             if (badge) {
@@ -86,7 +93,7 @@ const WebbookLayout = ({ children }) => {
                 }
             }
         }
-    }, [scrollProgress, hasSaved, location.pathname, unlockBadge]);
+    }, [scrollProgress, hasSaved, location.pathname, unlockBadge, setUserState]);
 
     // Mobile: Auto-close sidebar on route change
     useEffect(() => {
@@ -139,7 +146,13 @@ const WebbookLayout = ({ children }) => {
     ];
 
     // Accordion State
-    const [expandedChapter, setExpandedChapter] = useState(null);
+    const [expandedChapter, setExpandedChapter] = useState(() => localStorage.getItem('expanded_chapter') || null);
+
+    useEffect(() => {
+        if (expandedChapter) {
+            localStorage.setItem('expanded_chapter', expandedChapter);
+        }
+    }, [expandedChapter]);
 
     useEffect(() => {
         // Auto-expand active chapter based on current path
@@ -245,7 +258,9 @@ const WebbookLayout = ({ children }) => {
 
                     <div className="pt-4 pb-2 px-4 text-xs font-bold text-slate-400 uppercase tracking-wider flex justify-between items-center">
                         <span>Table of Contents</span>
-                        <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full text-slate-300">27% Done</span>
+                        <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full text-slate-300">
+                            {Math.round((Object.keys(userState?.progress || {}).length / 15) * 100)}% Done
+                        </span>
                     </div>
 
                     {chapters.map((chapter) => {

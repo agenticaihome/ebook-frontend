@@ -761,8 +761,8 @@ export default function FAQ() {
                                 >
                                     Get the System ($19.99 with ERG)
                                 </Link>
-                                <p className="text-slate-400 text-sm">
-                                    Questions? Email us at <a href="mailto:support@agenticaihome.com" className="text-cyan-400 hover:underline">support@agenticaihome.com</a>
+                                <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
+                                    Questions? Email us at <a href="mailto:support@agenticaihome.com" className="text-cyan-400 hover:underline flex items-center gap-1"><Mail size={14} /> support@agenticaihome.com</a>
                                 </p>
                             </div>
                         </div>

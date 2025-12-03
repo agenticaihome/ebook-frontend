@@ -17,9 +17,20 @@ const pathToKey = {
     '/ergo-guide': 'ergoGuide',
 };
 
+const getRouteKey = (path) => {
+    if (pathToKey[path]) return pathToKey[path];
+
+    // Handle chapter paths: /part1/chapter2 -> part1chapter2
+    const match = path.match(/^\/part(\d+)\/chapter(\d+)$/);
+    if (match) {
+        return `part${match[1]}chapter${match[2]}`;
+    }
+    return null;
+};
+
 const PrefetchLink = ({ to, children, ...props }) => {
     const handlePrefetch = () => {
-        const key = pathToKey[to];
+        const key = getRouteKey(to);
         if (key && routeConfig[key] && routeConfig[key].prefetch) {
             // Execute the import function to start loading the chunk
             routeConfig[key].prefetch();

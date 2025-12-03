@@ -35,11 +35,11 @@ export const routeConfig = {
     part5chapter3: createRoute(() => import('../pages/chapters/Chapter15')),
 
     // Legacy Part pages (kept for compatibility, will redirect)
-    part1: createRoute(() => import('../pages/Part1')),
-    part2: createRoute(() => import('../pages/Part2')),
-    part3: createRoute(() => import('../pages/Part3')),
-    part4: createRoute(() => import('../pages/Part4')),
-    part5: createRoute(() => import('../pages/Part5')),
+    // part1: createRoute(() => import('../pages/Part1')),
+    // part2: createRoute(() => import('../pages/Part2')),
+    // part3: createRoute(() => import('../pages/Part3')),
+    // part4: createRoute(() => import('../pages/Part4')),
+    // part5: createRoute(() => import('../pages/Part5')),
 
     success: createRoute(() => import('../pages/SuccessPage')),
     createAccount: createRoute(() => import('../pages/CreateAccountPage')),

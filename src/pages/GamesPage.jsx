@@ -212,6 +212,7 @@ const GamesPage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
+                                transition={{ duration: 0.15 }}
                                 className="bg-slate-900/50 border border-slate-700 rounded-2xl overflow-hidden shadow-2xl"
                             >
                                 <Suspense fallback={
@@ -231,6 +232,7 @@ const GamesPage = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
+                                transition={{ duration: 0.15 }}
                                 className="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto"
                             >
                                 {games.map((game) => {
