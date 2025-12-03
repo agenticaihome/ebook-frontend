@@ -1,11 +1,11 @@
-import { Helmet } from 'react-helmet-async';
+import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
+import SEO from '../../components/SEO';
 import { useNavigate } from 'react-router-dom';
+import { m, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
-import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, Home, Wrench, Package,
@@ -798,54 +798,29 @@ MY HOUSEHOLD:
 - Biggest cleaning challenges: [e.g., pet hair, kids' messes, dust]
 
 YOUR RESPONSIBILITIES:
-1. Send me a daily quick-task reminder (5-10 min tasks)
-2. Send weekly cleaning checklist every [Saturday/Sunday] morning
-3. Remind me of monthly deep-clean tasks at the start of each month
-4. Track what's been done and what's overdue
+1. Create a daily/weekly checklist
+2. Remind me of seasonal tasks (e.g., change filters)
+3. Suggest "burst cleaning" sessions when I'm overwhelmed
+4. Help me delegate tasks to other family members
 
-OUTPUT FORMAT:
-- Keep reminders SHORT and specific
-- Include estimated time for each task
-- Celebrate when I complete things (positive reinforcement!)
+Ask me for any missing details, then generate my first weekly plan.`;
 
-Start by confirming my schedule and asking any clarifying questions.`;
+    const maintenanceAgentPrompt = `You are my Home Maintenance Agent. Your job is to prevent expensive repairs by keeping everything running smoothly.
 
-    const maintenanceAgentPrompt = `You are my Home Maintenance Agent. Your job is to prevent expensive repairs by reminding me of preventive maintenance.
-
-MY HOME DETAILS:
-- Home type: [House/Apartment/Condo]
-- Age of home: [X years]
-- HVAC type: [Central/Window units/etc.]
-- Water heater age: [X years]
-- Major appliances: [List with approximate ages]
-- Location/Climate: [e.g., Hot & humid, Cold winters]
-
-MAINTENANCE SCHEDULE TO TRACK:
-MONTHLY:
-- HVAC filter check/change
-- Garbage disposal cleaning
-- Drain maintenance
-
-QUARTERLY:
-- Smoke/CO detector test
-- Fire extinguisher check
-- Deep clean appliances
-
-SEASONAL:
-- [Spring] HVAC service, gutter cleaning, outdoor prep
-- [Summer] AC efficiency check, pest control
-- [Fall] Heating prep, weatherstripping, chimney
-- [Winter] Pipe insulation, emergency supplies
+MY HOME:
+- Age: [Approximate year built]
+- Key systems: [HVAC, Water Heater, Sump Pump, etc.]
+- Last major repairs: [Any recent work done]
 
 YOUR RESPONSIBILITIES:
-1. Remind me 1 week before each task is due
-2. Track when tasks were last completed
-3. Alert me if something is overdue
-4. Provide quick how-to guidance when I ask
+1. Track maintenance schedules for all systems
+2. Remind me to schedule service appointments
+3. Help me troubleshoot simple issues before calling a pro
+4. Keep a log of all maintenance performed
 
-Ask me about my specific home to customize this schedule.`;
+Generate a 12-month maintenance calendar for my home based on standard recommendations.`;
 
-    const suppliesAgentPrompt = `You are my Household Supplies Agent. Your job is to make sure we never run out of essentials.
+    const supplyAgentPrompt = `You are my Supply Manager Agent. Your job is to ensure we never run out of essentials.
 
 MY HOUSEHOLD SUPPLIES TO TRACK:
 
@@ -892,76 +867,81 @@ Ask me about my household size and preferences to estimate usage.`;
 
     return (
         <WebbookLayout>
-            <PasswordGate partNumber={2} chapterNumber={6}>
-                <SpeedRunContext.Provider value={speedRun}>
-                    <div className="min-h-screen bg-[#0f0f1a]">
-                        <div className="max-w-4xl mx-auto px-6 py-12">
+            <SEO
+                title="Household Management - Agentic AI at Home"
+                description="Automate your home operations. Cleaning, maintenance, and supplies."
+                canonical="/part2/chapter3"
+            />
+            <SpeedRunContext.Provider value={speedRun}>
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                            {/* Progress Bar with Part indicator */}
-                            <ChapterProgress
-                                current={6}
-                                total={16}
-                                part={2}
-                                partTitle="Daily Operations"
-                            />
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={6}
+                            total={16}
+                            part={2}
+                            partTitle="Daily Operations"
+                        />
 
-                            {/* Author Credibility */}
-                            <AuthorCredibility />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                            {/* Chapter Navigation */}
-                            <ChapterNavigation
-                                previousChapter="/part2/chapter2"
-                                nextChapter="/part3/chapter1"
-                                partNumber={2}
-                                chapterNumber={6}
-                            />
+                        {/* Chapter Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part2/chapter2"
+                            nextChapter="/part3/chapter1"
+                            partNumber={2}
+                            chapterNumber={6}
+                        />
 
-                            {/* Header */}
-                            <m.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="mb-6"
-                            >
-                                <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 6</div>
-                                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                    Household Management
-                                </h1>
-                                <p className="text-xl text-slate-400 mb-4">
-                                    Your home, running itself—cleaning, maintenance, supplies, all of it
-                                </p>
+                        {/* Header */}
+                        <m.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 6</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Household Management
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Your home, running itself—cleaning, maintenance, supplies, all of it
+                            </p>
 
-                                {/* Reading time + Speed Run toggle */}
-                                <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                        <div className="flex items-center gap-2">
-                                            <Clock size={14} />
-                                            <span>10 min read</span>
-                                        </div>
-                                        <span>•</span>
-                                        <span className="text-cyan-400">20 min to build your system</span>
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-400 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>10 min read</span>
                                     </div>
-                                    <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                                    <span>•</span>
+                                    <span className="text-cyan-400">20 min to build your system</span>
                                 </div>
-                            </m.div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </m.div>
 
-                            {/* TL;DR Card */}
-                            <TLDRCard
-                                stats={[
-                                    { value: '4', label: 'pillars of home ops' },
-                                    { value: '3', label: 'agents working together' },
-                                    { value: '0', label: 'forgotten tasks' },
-                                ]}
-                                primaryCTA="Calculate Household Chaos"
-                                onCTAClick={scrollToCalculator}
-                            />
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '4', label: 'pillars of home ops' },
+                                { value: '3', label: 'agents deployed' },
+                                { value: '0', label: 'forgotten chores' },
+                            ]}
+                            primaryCTA="Build My Schedule"
+                            onCTAClick={() => document.getElementById('schedule-builder')?.scrollIntoView({ behavior: 'smooth' })}
+                        />
 
+                        <PasswordGate partNumber={2} chapterNumber={6}>
                             {/* CAPTAIN EFFICIENCY - OPENER */}
                             {!speedRun && (
                                 <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                     <CaptainHero
                                         size="md"
                                         pose="default"
-                                        message="Welcome to the command center. You've built your morning brief, your meal system—now we wire your entire household into one smooth operation. This is where we go from 'managing fires' to 'preventing fires.' By the end of this chapter, you'll have a system that tracks what needs cleaning, what needs fixing, what needs buying—and reminds you BEFORE it becomes a crisis."
+                                        message="We've handled your morning and your meals. Now for the big one: the house itself. It's the silent energy drain—the mental load of remembering filters, lightbulbs, and deep cleaning. Today, we build a 'Command Center' that does the remembering for you. Let's turn your home into a well-oiled machine."
                                     />
                                 </Suspense>
                             )}
@@ -978,98 +958,82 @@ Ask me about my household size and preferences to estimate usage.`;
                                         <span className="font-bold">Speed Run Mode</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts. Toggle off to see the full command center.
+                                        Showing only the essential prompts and tools. Toggle off to see the full chapter.
                                     </p>
                                 </m.div>
                             )}
 
-                            {/* ★ THE INVISIBLE LOAD - Epic Opening ★ */}
+                            {/* VISUAL: The Invisible Load */}
                             {!speedRun && <InvisibleLoadVisual />}
 
-                            {/* HOUSEHOLD CHAOS CALCULATOR */}
-                            <section id="household-calculator" className="mb-10">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Chaos</span>
-                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                                </div>
+                            {/* FRAMEWORK: The 4 Pillars */}
+                            <FourPillarsFramework />
 
-                                <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
-                                        Loading calculator...
-                                    </div>
-                                }>
-                                    <HouseholdChaosCalculator />
-                                </Suspense>
+                            {/* ★ TOOL 1: Room Schedule Builder ★ */}
+                            <section id="schedule-builder" className="mb-10">
+                                <RoomScheduleBuilder />
                             </section>
 
-                            {/* THE FOUR PILLARS FRAMEWORK */}
-                            {!speedRun && <FourPillarsFramework />}
-
-                            {/* ROOM-BY-ROOM SCHEDULE BUILDER */}
-                            {!speedRun && <RoomScheduleBuilder />}
-
-                            {/* AGENT 1: CLEANING */}
+                            {/* PROMPT 1: CLEANING AGENT */}
                             <QuickWin
-                                title="Agent 1: The Cleaning Coordinator"
+                                title="Agent 1: The Cleaning Manager"
                                 setupTime="10 min"
                                 prompt={cleaningAgentPrompt}
-                                variant="default"
                             />
 
-                            {/* MAINTENANCE CALENDAR */}
-                            {!speedRun && <MaintenanceCalendar />}
+                            {/* VISUAL: Maintenance Calendar */}
+                            <MaintenanceCalendar />
 
-                            {/* AGENT 2: MAINTENANCE */}
+                            {/* PROMPT 2: MAINTENANCE AGENT */}
                             <QuickWin
-                                title="Agent 2: The Maintenance Manager"
-                                setupTime="10 min"
+                                title="Agent 2: The Maintenance Tracker"
+                                setupTime="5 min"
                                 prompt={maintenanceAgentPrompt}
                                 variant="secondary"
                             />
 
-                            {/* AGENT 3: SUPPLIES */}
+                            {/* PROMPT 3: SUPPLY AGENT */}
                             <QuickWin
-                                title="Agent 3: The Supplies Tracker"
+                                title="Agent 3: The Supply Manager"
                                 setupTime="5 min"
-                                prompt={suppliesAgentPrompt}
+                                prompt={supplyAgentPrompt}
                                 variant="tertiary"
                             />
 
-                            {/* COMMAND CENTER DASHBOARD */}
+                            {/* DASHBOARD PREVIEW */}
                             {!speedRun && <CommandCenterDashboard />}
 
                             {/* SHAREABLE QUOTE */}
                             <ShareableQuote
-                                quote="A clean house isn't about cleaning more. It's about deciding once when, what, and how—then letting the system remember."
+                                quote="A home shouldn't be a second job. It should be the place you rest from your first one."
                                 chapter={6}
                             />
 
-                            {/* CAPTAIN EFFICIENCY - CLOSER (Major Celebration) */}
+                            {/* CAPTAIN EFFICIENCY - CLOSER */}
                             {!speedRun && (
                                 <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                     <CaptainHero
                                         size="md"
                                         pose="celebrating"
-                                        message="Look at what you've built. A morning that starts with clarity. A kitchen that runs itself. A household that maintains itself. PART 2 IS COMPLETE. You've automated your daily operations. But we've only touched your physical world. Part 3 tackles your DIGITAL chaos: email, calendar, admin. The real productivity gains are just beginning. Take a breath. You've earned it. 🏆"
+                                        message="Look at what you've built! Morning Brief, Meal Planning, and now a full Household Command Center. You have effectively 'outsourced' the mental load of running your home to your AI agents. Take a moment to celebrate. You've just reclaimed hours of your life, every single week."
                                     />
                                 </Suspense>
                             )}
 
-                            {/* ★ PART 2 CELEBRATION ★ */}
-                            {!speedRun && <Part2Celebration />}
+                            {/* PART 2 CELEBRATION */}
+                            <Part2Celebration />
 
                             {/* CHAPTER COMPLETE */}
                             <ChapterCompleteWithPartEnd
                                 achievements={[
-                                    'Cleaning Coordinator Agent (daily/weekly/monthly)',
-                                    'Maintenance Manager Agent (preventive care calendar)',
-                                    'Supplies Tracker Agent (never run out again)',
-                                    'Room-by-room schedule customized to your home',
-                                    'Seasonal maintenance calendar',
+                                    'Built Room-by-Room Cleaning Schedule',
+                                    'Set up Cleaning Manager Agent',
+                                    'Set up Maintenance Tracker Agent',
+                                    'Set up Supply Manager Agent',
+                                    'Completed Part 2: Daily Operations',
                                 ]}
                                 nextChapter="/part3/chapter1"
-                                nextTitle="Email Triage"
+                                nextTitle="Email & Communications"
                                 nextPart={3}
                             />
 
@@ -1080,11 +1044,11 @@ Ask me about my household size and preferences to estimate usage.`;
                                 partNumber={2}
                                 chapterNumber={6}
                             />
+                        </PasswordGate>
 
-                        </div>
                     </div>
-                </SpeedRunContext.Provider>
-            </PasswordGate>
+                </div>
+            </SpeedRunContext.Provider>
         </WebbookLayout>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { m, AnimatePresence } from 'framer-motion';
 import {
     ChevronDown, Search, MessageCircle, Shield, Zap,
@@ -29,6 +29,39 @@ export default function FAQ() {
         { id: 'support', name: 'Support', icon: <HelpCircle size={18} /> },
         { id: 'misc', name: 'Miscellaneous', icon: <MessageCircle size={18} /> },
     ];
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What exactly is \"Agentic AI at Home\"?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Agentic AI at Home is a comprehensive course that teaches you how to build AI-powered systems that automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Who is this course for?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This course is designed for overwhelmed professionals, entrepreneurs, students, busy parents, and retirees who want to automate their daily life logistics."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "I'm not a parent. Is this still for me?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "YES. Absolutely. While the system was originally battle-tested by a busy parent, the core problem is universal: Life Admin Fatigue. The systems work for everyone including students, entrepreneurs, and retirees."
+                }
+            }
+        ]
+    };
+
+
 
     const faqData = [
         // SECTION 1: ABOUT THE COURSE
@@ -647,10 +680,12 @@ export default function FAQ() {
 
     return (
         <WebbookLayout>
-            <Helmet>
-                <title>FAQ - Agentic AI at Home</title>
-                <meta name="description" content="Frequently asked questions about the Agentic AI at Home course. Pricing, access, privacy, and more." />
-            </Helmet>
+            <SEO
+                title="Frequently Asked Questions - Agentic AI at Home"
+                description="Common questions about the Agentic AI at Home course, pricing, and implementation."
+                canonical="/faq"
+                schema={faqSchema}
+            />
             <div className="min-h-screen bg-[#0f0f1a] text-slate-300 font-sans selection:bg-green-500/30 pb-20">
                 <div className="max-w-4xl mx-auto px-6 py-12">
 

@@ -1,5 +1,5 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../../components/SEO';
 import { useNavigate } from 'react-router-dom';
 import { m, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
@@ -154,24 +154,42 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     };
 
     const variants = {
-        default: 'from-green-900/30 to-emerald-900/20 border-green-500/40',
-        secondary: 'from-purple-900/30 to-indigo-900/20 border-purple-500/40',
-        bonus: 'from-yellow-900/30 to-orange-900/20 border-yellow-500/40',
+        default: {
+            bg: 'from-green-900/30 to-emerald-900/20',
+            border: 'border-green-500/40',
+            icon: Zap,
+            iconColor: 'text-green-400',
+            btn: 'bg-green-500 text-white',
+            btnHover: 'bg-slate-700 hover:bg-slate-600'
+        },
+        secondary: {
+            bg: 'from-blue-900/30 to-cyan-900/20',
+            border: 'border-blue-500/40',
+            icon: ShoppingCart,
+            iconColor: 'text-blue-400',
+            btn: 'bg-blue-500 text-white',
+            btnHover: 'bg-slate-700 hover:bg-slate-600'
+        },
+        bonus: {
+            bg: 'from-purple-900/30 to-pink-900/20',
+            border: 'border-purple-500/40',
+            icon: Sparkles,
+            iconColor: 'text-purple-400',
+            btn: 'bg-purple-500 text-white',
+            btnHover: 'bg-slate-700 hover:bg-slate-600'
+        }
     };
 
-    const labelColors = {
-        default: 'text-green-400',
-        secondary: 'text-purple-400',
-        bonus: 'text-yellow-400',
-    };
+    const v = variants[variant] || variants.default;
+    const Icon = v.icon;
 
     return (
-        <div className={`bg-gradient-to-br ${variants[variant]} rounded-2xl p-6 border backdrop-blur-sm mb-8`}>
+        <div className={`bg-gradient-to-br ${v.bg} rounded-2xl p-6 border ${v.border} backdrop-blur-sm mb-8`}>
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                    <Zap className={labelColors[variant]} size={20} />
-                    <span className={`${labelColors[variant]} font-bold uppercase text-sm tracking-wider`}>
-                        {variant === 'bonus' ? 'Bonus Prompt' : 'Quick Win'}
+                    <Icon className={v.iconColor} size={20} />
+                    <span className={`${v.iconColor} font-bold uppercase text-sm tracking-wider`}>
+                        {variant === 'bonus' ? 'Bonus Agent' : 'Quick Win'}
                     </span>
                 </div>
                 <span className="text-slate-400 text-sm">{setupTime} setup</span>
@@ -186,7 +204,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
             <button
                 onClick={handleCopy}
                 className={`w-full py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${copied
-                    ? 'bg-green-500 text-white'
+                    ? v.btn
                     : 'bg-slate-700 hover:bg-slate-600 text-white'
                     }`}
             >
@@ -231,322 +249,6 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
                 Continue to Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
                 <ArrowRight size={18} />
             </button>
-        </div>
-    );
-};
-
-// ============================================
-// CHAPTER 5 SPECIFIC COMPONENTS
-// ============================================
-
-// Food Chaos Diary - Emotional Hook
-const FoodChaosDiary = () => {
-    const moments = [
-        { time: 'Monday 5:47 PM', text: 'Staring into fridge. Nothing goes together. Order pizza. Again.', emoji: '😩' },
-        { time: 'Tuesday 6:15 PM', text: '"What\'s for dinner?" "I don\'t know, what do YOU want?"', emoji: '😤' },
-        { time: 'Wednesday 7:30 PM', text: 'Discovered science experiment in back of fridge. RIP, $8 of produce.', emoji: '🤢' },
-        { time: 'Thursday 5:30 PM', text: 'Emergency grocery run. 4 items planned. $67 spent.', emoji: '💸' },
-        { time: 'Friday 6:00 PM', text: 'Kids won\'t eat what you made. Cereal for dinner it is.', emoji: '🥣' },
-        { time: 'Sunday 11 AM', text: 'Meal prepping. Burn out by meal #2. Back to square one.', emoji: '😮‍💨' },
-    ];
-
-    return (
-        <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl" />
-
-            <h2 className="text-2xl font-bold text-white mb-2">Sound Familiar?</h2>
-            <p className="text-slate-400 mb-6">A week in food chaos:</p>
-
-            <div className="grid md:grid-cols-2 gap-3">
-                {moments.map((moment, i) => (
-                    <m.div
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="bg-slate-900/50 rounded-xl p-4 border border-slate-600"
-                    >
-                        <div className="flex items-start gap-3">
-                            <span className="text-2xl">{moment.emoji}</span>
-                            <div>
-                                <span className="text-orange-400 text-xs font-mono">{moment.time}</span>
-                                <p className="text-slate-300 text-sm mt-1">{moment.text}</p>
-                            </div>
-                        </div>
-                    </m.div>
-                ))}
-            </div>
-
-            <div className="mt-6 p-4 bg-red-900/20 rounded-xl border border-red-500/30">
-                <p className="text-red-400 text-center font-medium">
-                    This cycle repeats 52 times a year. Let's break it.
-                </p>
-            </div>
-        </div>
-    );
-};
-
-// Budget Impact Visual
-const BudgetImpactVisual = () => {
-    const savings = [
-        { category: 'Reduced food waste', amount: 50, icon: Trash2, color: 'red' },
-        { category: 'Fewer impulse buys', amount: 80, icon: ShoppingCart, color: 'orange' },
-        { category: 'Less takeout/delivery', amount: 120, icon: Utensils, color: 'yellow' },
-        { category: 'Better bulk buying', amount: 40, icon: Receipt, color: 'green' },
-    ];
-
-    const total = savings.reduce((sum, item) => sum + item.amount, 0);
-
-    return (
-        <div className="bg-gradient-to-br from-green-900/20 to-emerald-900/20 rounded-2xl p-6 border border-green-500/40 backdrop-blur-sm mb-8">
-            <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                        <DollarSign className="text-green-400" size={20} />
-                    </div>
-                    <div>
-                        <h3 className="text-white font-bold text-lg">Monthly Savings Potential</h3>
-                        <p className="text-slate-400 text-sm">Average family of 4</p>
-                    </div>
-                </div>
-                <div className="text-right">
-                    <span className="text-3xl font-bold text-green-400">${total}</span>
-                    <span className="text-slate-400 text-sm block">/month</span>
-                </div>
-            </div>
-
-            <div className="space-y-3 mb-4">
-                {savings.map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-slate-900/50 flex items-center justify-center">
-                            <item.icon className="text-slate-400" size={16} />
-                        </div>
-                        <div className="flex-1">
-                            <div className="flex items-center justify-between">
-                                <span className="text-slate-300 text-sm">{item.category}</span>
-                                <span className="text-green-400 font-bold">${item.amount}</span>
-                            </div>
-                            <div className="h-1.5 bg-slate-800 rounded-full mt-1 overflow-hidden">
-                                <m.div
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${(item.amount / total) * 100}%` }}
-                                    transition={{ delay: 0.5 + i * 0.1 }}
-                                    className="h-full bg-green-500/50 rounded-full"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div className="p-4 bg-slate-900/50 rounded-xl">
-                <div className="flex items-center justify-between">
-                    <span className="text-slate-400">Annual savings:</span>
-                    <span className="text-green-400 font-bold text-xl">${total * 12}/year</span>
-                </div>
-                <p className="text-slate-400 text-xs mt-1">
-                    That's a family vacation funded by eating smarter, not harder.
-                </p>
-            </div>
-        </div>
-    );
-};
-
-// Family Taste Profile Quick Builder
-const FamilyTasteMapper = () => {
-    const [profiles, setProfiles] = useState([
-        { id: 1, name: '', likes: '', dislikes: '', dietary: '' },
-    ]);
-
-    const addProfile = () => {
-        if (profiles.length < 6) {
-            setProfiles([...profiles, { id: Date.now(), name: '', likes: '', dislikes: '', dietary: '' }]);
-        }
-    };
-
-    const updateProfile = (id, field, value) => {
-        setProfiles(profiles.map(p => p.id === id ? { ...p, [field]: value } : p));
-    };
-
-    const removeProfile = (id) => {
-        if (profiles.length > 1) {
-            setProfiles(profiles.filter(p => p.id !== id));
-        }
-    };
-
-    const generatePrompt = () => {
-        const profileText = profiles
-            .filter(p => p.name)
-            .map(p => `- ${p.name}: Likes: ${p.likes || 'not specified'}. Dislikes: ${p.dislikes || 'none'}. Dietary: ${p.dietary || 'none'}.`)
-            .join('\n');
-
-        return `Here are my family's food preferences:\n\n${profileText}\n\nPlease consider these preferences when suggesting meals.`;
-    };
-
-    const [copied, setCopied] = useState(false);
-
-    const handleCopy = () => {
-        navigator.clipboard.writeText(generatePrompt());
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
-
-    return (
-        <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
-            <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
-                    <Users className="text-purple-400" size={20} />
-                </div>
-                <div>
-                    <h3 className="text-white font-bold text-lg">Family Taste Mapper</h3>
-                    <p className="text-slate-400 text-sm">Quick-build your household preferences</p>
-                </div>
-            </div>
-
-            <div className="space-y-4 mb-6">
-                {profiles.map((profile, index) => (
-                    <div key={profile.id} className="bg-slate-900/50 rounded-xl p-4 border border-slate-600">
-                        <div className="flex items-center justify-between mb-3">
-                            <span className="text-cyan-400 text-xs font-bold uppercase">Person {index + 1}</span>
-                            {profiles.length > 1 && (
-                                <button
-                                    onClick={() => removeProfile(profile.id)}
-                                    className="text-slate-400 hover:text-red-400 text-xs"
-                                >
-                                    Remove
-                                </button>
-                            )}
-                        </div>
-                        <div className="grid md:grid-cols-2 gap-3">
-                            <input
-                                type="text"
-                                placeholder="Name (e.g., Dad, Mom, Emma)"
-                                value={profile.name}
-                                onChange={(e) => updateProfile(profile.id, 'name', e.target.value)}
-                                className="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Dietary (vegetarian, gluten-free...)"
-                                value={profile.dietary}
-                                onChange={(e) => updateProfile(profile.id, 'dietary', e.target.value)}
-                                className="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Likes (pasta, chicken, spicy...)"
-                                value={profile.likes}
-                                onChange={(e) => updateProfile(profile.id, 'likes', e.target.value)}
-                                className="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Dislikes (mushrooms, seafood...)"
-                                value={profile.dislikes}
-                                onChange={(e) => updateProfile(profile.id, 'dislikes', e.target.value)}
-                                className="bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
-                            />
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div className="flex gap-3">
-                <button
-                    onClick={addProfile}
-                    disabled={profiles.length >= 6}
-                    className="flex-1 py-2 rounded-xl border border-dashed border-slate-600 text-slate-400 hover:border-cyan-500 hover:text-cyan-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    + Add Family Member
-                </button>
-                <button
-                    onClick={handleCopy}
-                    className={`flex-1 py-2 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${copied
-                        ? 'bg-green-500 text-white'
-                        : 'bg-cyan-500 hover:bg-cyan-400 text-slate-900'
-                        }`}
-                >
-                    {copied ? <CheckCircle size={16} /> : <Copy size={16} />}
-                    {copied ? 'Copied!' : 'Copy Profile Prompt'}
-                </button>
-            </div>
-        </div>
-    );
-};
-
-// Two Agent System Visual
-const TwoAgentSystem = () => {
-    return (
-        <div className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Your Food System: 2 Agents Working Together</h2>
-            <p className="text-slate-400 mb-6">
-                These agents feed into each other for seamless meal planning:
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-4">
-                {/* Agent 1: Meal Planner */}
-                <div className="bg-gradient-to-br from-orange-900/30 to-red-900/20 rounded-2xl p-5 border border-orange-500/40">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center">
-                            <ChefHat className="text-orange-400" size={24} />
-                        </div>
-                        <div>
-                            <h3 className="text-orange-400 font-bold">Agent 1: Meal Planner</h3>
-                            <p className="text-slate-400 text-sm">Decides what you'll eat</p>
-                        </div>
-                    </div>
-                    <ul className="space-y-2 text-sm">
-                        {[
-                            'Creates weekly meal plans',
-                            'Considers family preferences',
-                            'Balances nutrition & variety',
-                            'Suggests based on what you have',
-                        ].map((item, i) => (
-                            <li key={i} className="flex items-center gap-2 text-slate-300">
-                                <CheckCircle size={14} className="text-orange-400" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* Arrow */}
-                <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 w-8">
-                    <ArrowRight className="text-cyan-400" size={24} />
-                </div>
-
-                {/* Agent 2: Grocery List */}
-                <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/20 rounded-2xl p-5 border border-green-500/40">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
-                            <ShoppingCart className="text-green-400" size={24} />
-                        </div>
-                        <div>
-                            <h3 className="text-green-400 font-bold">Agent 2: Grocery List</h3>
-                            <p className="text-slate-400 text-sm">Gets you what you need</p>
-                        </div>
-                    </div>
-                    <ul className="space-y-2 text-sm">
-                        {[
-                            'Generates list from meal plan',
-                            'Organizes by store section',
-                            'Suggests quantities',
-                            'Reminds of pantry staples',
-                        ].map((item, i) => (
-                            <li key={i} className="flex items-center gap-2 text-slate-300">
-                                <CheckCircle size={14} className="text-green-400" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-
-            <div className="mt-4 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30 text-center">
-                <p className="text-cyan-400 text-sm">
-                    <strong>The magic:</strong> Meal Planner output → Grocery List input. One seamless flow.
-                </p>
-            </div>
         </div>
     );
 };
@@ -671,69 +373,74 @@ For each suggestion, tell me:
 
     return (
         <WebbookLayout>
-            <PasswordGate partNumber={2} chapterNumber={5}>
-                <SpeedRunContext.Provider value={speedRun}>
-                    <div className="min-h-screen bg-[#0f0f1a]">
-                        <div className="max-w-4xl mx-auto px-6 py-12">
+            <SEO
+                title="Kitchen & Grocery - Agentic AI at Home"
+                description="End 'what's for dinner?' forever. Automated meal planning and grocery lists."
+                canonical="/part2/chapter2"
+            />
+            <SpeedRunContext.Provider value={speedRun}>
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                            {/* Progress Bar with Part indicator */}
-                            <ChapterProgress
-                                current={5}
-                                total={16}
-                                part={2}
-                                partTitle="Daily Operations"
-                            />
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={5}
+                            total={16}
+                            part={2}
+                            partTitle="Daily Operations"
+                        />
 
-                            {/* Author Credibility */}
-                            <AuthorCredibility />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                            {/* Chapter Navigation */}
-                            <ChapterNavigation
-                                previousChapter="/part2/chapter1"
-                                nextChapter="/part2/chapter3"
-                                partNumber={2}
-                                chapterNumber={5}
-                            />
+                        {/* Chapter Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part2/chapter1"
+                            nextChapter="/part2/chapter3"
+                            partNumber={2}
+                            chapterNumber={5}
+                        />
 
-                            {/* Header */}
-                            <m.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="mb-6"
-                            >
-                                <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 5</div>
-                                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                    Kitchen & Grocery
-                                </h1>
-                                <p className="text-xl text-slate-400 mb-4">
-                                    End "what's for dinner?" forever—and save $200/month doing it
-                                </p>
+                        {/* Header */}
+                        <m.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 5</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Kitchen & Grocery
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                End "what's for dinner?" forever—and save $200/month doing it
+                            </p>
 
-                                {/* Reading time + Speed Run toggle */}
-                                <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                        <div className="flex items-center gap-2">
-                                            <Clock size={14} />
-                                            <span>9 min read</span>
-                                        </div>
-                                        <span>•</span>
-                                        <span className="text-orange-400">20 min to set up both agents</span>
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-400 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>9 min read</span>
                                     </div>
-                                    <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                                    <span>•</span>
+                                    <span className="text-orange-400">20 min to set up both agents</span>
                                 </div>
-                            </m.div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </m.div>
 
-                            {/* TL;DR Card */}
-                            <TLDRCard
-                                stats={[
-                                    { value: '$290', label: 'saved/month' },
-                                    { value: '2', label: 'agents working together' },
-                                    { value: '0', label: '"what\'s for dinner?"' },
-                                ]}
-                                primaryCTA="Calculate My Food Chaos"
-                                onCTAClick={scrollToCalculator}
-                            />
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '$290', label: 'saved/month' },
+                                { value: '2', label: 'agents working together' },
+                                { value: '0', label: '"what\'s for dinner?"' },
+                            ]}
+                            primaryCTA="Calculate My Food Chaos"
+                            onCTAClick={scrollToCalculator}
+                        />
 
+                        <PasswordGate partNumber={2} chapterNumber={5}>
                             {/* CAPTAIN EFFICIENCY - OPENER */}
                             {!speedRun && (
                                 <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
@@ -757,19 +464,16 @@ For each suggestion, tell me:
                                         <span className="font-bold">Speed Run Mode</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts. Toggle off to see family mapping tools and full context.
+                                        Showing only the essential prompts and tools. Toggle off to see the full chapter.
                                     </p>
                                 </m.div>
                             )}
 
-                            {/* ★ EMOTIONAL HOOK: Food Chaos Diary ★ */}
-                            {!speedRun && <FoodChaosDiary />}
-
-                            {/* FOOD CHAOS CALCULATOR */}
+                            {/* ★ TOOL FIRST: Food Chaos Calculator ★ */}
                             <section id="food-calculator" className="mb-10">
                                 <div className="flex items-center gap-2 mb-4">
                                     <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Chaos</span>
+                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Food Chaos</span>
                                     <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
                                 </div>
 
@@ -782,19 +486,10 @@ For each suggestion, tell me:
                                 </Suspense>
                             </section>
 
-                            {/* BUDGET IMPACT VISUAL */}
-                            {!speedRun && <BudgetImpactVisual />}
-
-                            {/* TWO AGENT SYSTEM EXPLAINER */}
-                            {!speedRun && <TwoAgentSystem />}
-
-                            {/* FAMILY TASTE MAPPER */}
-                            {!speedRun && <FamilyTasteMapper />}
-
                             {/* PROMPT 1: MEAL PLANNER */}
                             <QuickWin
                                 title="Agent 1: The Meal Planner"
-                                setupTime="10 min"
+                                setupTime="15 min"
                                 prompt={mealPlannerPrompt}
                             />
 
@@ -863,11 +558,11 @@ For each suggestion, tell me:
                                 partNumber={2}
                                 chapterNumber={5}
                             />
+                        </PasswordGate>
 
-                        </div>
                     </div>
-                </SpeedRunContext.Provider>
-            </PasswordGate>
+                </div>
+            </SpeedRunContext.Provider>
         </WebbookLayout>
     );
 };

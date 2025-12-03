@@ -1,5 +1,5 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../../components/SEO';
 import { useNavigate } from 'react-router-dom';
 import { m, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
@@ -579,69 +579,74 @@ Before generating briefs, ask me:
 
     return (
         <WebbookLayout>
-            <PasswordGate partNumber={2} chapterNumber={4}>
-                <SpeedRunContext.Provider value={speedRun}>
-                    <div className="min-h-screen bg-[#0f0f1a]">
-                        <div className="max-w-4xl mx-auto px-6 py-12">
+            <SEO
+                title="Morning Routines - Agentic AI at Home"
+                description="Build the agent you'll actually use every single day. The Morning Brief Agent."
+                canonical="/part2/chapter1"
+            />
+            <SpeedRunContext.Provider value={speedRun}>
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                            {/* Progress Bar with Part indicator */}
-                            <ChapterProgress
-                                current={4}
-                                total={16}
-                                part={2}
-                                partTitle="Daily Operations"
-                            />
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={4}
+                            total={16}
+                            part={2}
+                            partTitle="Daily Operations"
+                        />
 
-                            {/* Author Credibility */}
-                            <AuthorCredibility />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                            {/* Chapter Navigation */}
-                            <ChapterNavigation
-                                previousChapter="/part1/chapter3"
-                                nextChapter="/part2/chapter2"
-                                partNumber={2}
-                                chapterNumber={4}
-                            />
+                        {/* Chapter Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part1/chapter3"
+                            nextChapter="/part2/chapter2"
+                            partNumber={2}
+                            chapterNumber={4}
+                        />
 
-                            {/* Header */}
-                            <m.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="mb-6"
-                            >
-                                <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 4</div>
-                                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                    Morning Routines
-                                </h1>
-                                <p className="text-xl text-slate-400 mb-4">
-                                    Build the agent you'll actually use every single day
-                                </p>
+                        {/* Header */}
+                        <m.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 4</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Morning Routines
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Build the agent you'll actually use every single day
+                            </p>
 
-                                {/* Reading time + Speed Run toggle */}
-                                <div className="flex items-center justify-between flex-wrap gap-4">
-                                    <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                        <div className="flex items-center gap-2">
-                                            <Clock size={14} />
-                                            <span>8 min read</span>
-                                        </div>
-                                        <span>•</span>
-                                        <span className="text-orange-400">15 min to build your brief</span>
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-400 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>8 min read</span>
                                     </div>
-                                    <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                                    <span>•</span>
+                                    <span className="text-orange-400">15 min to build your brief</span>
                                 </div>
-                            </m.div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </m.div>
 
-                            {/* TL;DR Card */}
-                            <TLDRCard
-                                stats={[
-                                    { value: '30 min', label: 'saved daily' },
-                                    { value: '30 sec', label: 'to read brief' },
-                                    { value: '15 min', label: 'one-time setup' },
-                                ]}
-                                primaryCTA="Calculate My Chaos"
-                                onCTAClick={scrollToCalculator}
-                            />
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '30 min', label: 'saved daily' },
+                                { value: '30 sec', label: 'to read brief' },
+                                { value: '15 min', label: 'one-time setup' },
+                            ]}
+                            primaryCTA="Calculate My Chaos"
+                            onCTAClick={scrollToCalculator}
+                        />
 
+                        <PasswordGate partNumber={2} chapterNumber={4}>
                             {/* CAPTAIN EFFICIENCY - OPENER (Energetic/Practical) */}
                             {!speedRun && (
                                 <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
@@ -770,11 +775,11 @@ Before generating briefs, ask me:
                                 partNumber={2}
                                 chapterNumber={4}
                             />
+                        </PasswordGate>
 
-                        </div>
                     </div>
-                </SpeedRunContext.Provider>
-            </PasswordGate>
+                </div>
+            </SpeedRunContext.Provider>
         </WebbookLayout>
     );
 };

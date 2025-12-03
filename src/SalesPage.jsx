@@ -1,5 +1,5 @@
 import React, { useState, Suspense } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './components/SEO';
 import { Check, CreditCard, Coins, Lock, Zap, Shield, Activity, Database, Terminal } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { m } from 'framer-motion';
@@ -27,12 +27,37 @@ export default function SalesPage() {
 
   return (
     <WebbookLayout>
-      <Helmet>
-        <title>Agentic AI at Home - Reclaim 10 Hours/Week</title>
-        <meta name="description" content="Build a 'Household Staff' of autonomous AI agents that handle email, calendar, meal planning, and home tasks. Stop drowning in to-do lists." />
-        <meta property="og:title" content="Agentic AI at Home - Automate Your Life" />
-        <meta property="og:description" content="Reclaim 10 hours/week. Deploy AI agents that manage your email, calendar, meal planning, and household tasks autonomously." />
-      </Helmet>
+      <SEO
+        title="Agentic AI at Home - Reclaim 10 Hours/Week"
+        description="Build a 'Household Staff' of autonomous AI agents that handle email, calendar, meal planning, and home tasks. Stop drowning in to-do lists."
+        canonical="/"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Agentic AI at Home",
+            "description": "A comprehensive guide to building autonomous AI agents for household management.",
+            "image": "https://agenticaihome.com/assets/captain-efficiency-flying.png",
+            "brand": {
+              "@type": "Brand",
+              "name": "Agentic AI at Home"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "39.99",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Agentic AI at Home",
+            "url": "https://agenticaihome.com",
+            "logo": "https://agenticaihome.com/assets/logo.png"
+          }
+        ]}
+      />
       <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-cyan-500/30">
 
         {/* HERO SECTION */}
