@@ -22,7 +22,7 @@ const CalendarDefenseGame = ({ onBack }) => {
     const [shieldCooldown, setShieldCooldown] = useState(0);
     const [shieldCharges, setShieldCharges] = useState(2);
     const SHIELD_DURATION = 2000;
-    const SHIELD_COOLDOWN = 12;
+    const SHIELD_COOLDOWN = 8;
 
     // Combo & Multiplier
     const [combo, setCombo] = useState(0);
@@ -74,7 +74,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'Touch Base',
             color: 'from-green-600 to-green-700',
             borderColor: 'border-green-400',
-            speed: 2.5,
+            speed: 4.0,
             damage: 0.5,
             points: 50,
             priority: 'low',
@@ -85,7 +85,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'FYI Email',
             color: 'from-emerald-600 to-emerald-700',
             borderColor: 'border-emerald-400',
-            speed: 2,
+            speed: 3.5,
             damage: 0.3,
             points: 30,
             priority: 'low',
@@ -98,7 +98,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'Brainstorm',
             color: 'from-yellow-500 to-yellow-600',
             borderColor: 'border-yellow-300',
-            speed: 3,
+            speed: 5.0,
             damage: 1,
             points: 100,
             priority: 'medium',
@@ -109,7 +109,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'Status Update',
             color: 'from-orange-500 to-orange-600',
             borderColor: 'border-orange-300',
-            speed: 3.5,
+            speed: 6.0,
             damage: 1,
             points: 100,
             priority: 'medium',
@@ -120,7 +120,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'Review Session',
             color: 'from-amber-500 to-amber-600',
             borderColor: 'border-amber-300',
-            speed: 2.8,
+            speed: 4.5,
             damage: 0.8,
             points: 80,
             priority: 'medium',
@@ -133,7 +133,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'Quick Sync',
             color: 'from-red-500 to-red-600',
             borderColor: 'border-red-300',
-            speed: 5,
+            speed: 8.0,
             damage: 1.5,
             points: 150,
             priority: 'high',
@@ -144,7 +144,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'Urgent Call',
             color: 'from-rose-500 to-rose-600',
             borderColor: 'border-rose-300',
-            speed: 4.5,
+            speed: 7.5,
             damage: 1.5,
             points: 150,
             priority: 'high',
@@ -157,7 +157,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'All Hands',
             color: 'from-pink-600 to-purple-700',
             borderColor: 'border-pink-300',
-            speed: 2,
+            speed: 3.5,
             damage: 2,
             points: 0,
             boss: true,
@@ -169,7 +169,7 @@ const CalendarDefenseGame = ({ onBack }) => {
             name: 'Exec Review',
             color: 'from-purple-600 to-indigo-700',
             borderColor: 'border-purple-300',
-            speed: 1.8,
+            speed: 3.0,
             damage: 2.5,
             points: 0,
             boss: true,
@@ -346,8 +346,8 @@ const CalendarDefenseGame = ({ onBack }) => {
         const currentWave = wave;
 
         // Filter based on wave
-        if (currentWave < 3) {
-            // Reduce boss meetings in early waves
+        if (currentWave < 2) {
+            // Reduce boss meetings in early waves (only Wave 1)
             availableTypes = meetingTypes.filter(m => !m.boss);
         }
 
@@ -397,7 +397,7 @@ const CalendarDefenseGame = ({ onBack }) => {
     const startGame = () => {
         setGameState('playing');
         setScore(0);
-        setDeepWorkHours(8);
+        setDeepWorkHours(6);
         setEnemies([]);
         setPowerUps([]);
         setWave(1);
@@ -451,12 +451,12 @@ const CalendarDefenseGame = ({ onBack }) => {
             });
 
             // Wave transitions
-            if (gameTimeRef.current >= 20 && gameTimeRef.current < 20.1 && wave === 1) {
+            if (gameTimeRef.current >= 12 && gameTimeRef.current < 12.1 && wave === 1) {
                 setWave(2);
                 setWaveAnnouncement('WAVE 2');
                 updateCaptain('wave2');
                 setTimeout(() => setWaveAnnouncement(null), 2000);
-            } else if (gameTimeRef.current >= 40 && gameTimeRef.current < 40.1 && wave === 2) {
+            } else if (gameTimeRef.current >= 28 && gameTimeRef.current < 28.1 && wave === 2) {
                 setWave(3);
                 setWaveAnnouncement('FINAL WAVE');
                 updateCaptain('wave3');
@@ -464,16 +464,16 @@ const CalendarDefenseGame = ({ onBack }) => {
             }
 
             // Win condition
-            if (gameTimeRef.current >= 60) {
+            if (gameTimeRef.current >= 45) {
                 endGame(true);
             }
         }, 16); // ~60fps
 
         // Enemy spawner
-        startSpawner(2200);
+        startSpawner(1400);
 
         // Power-up spawner
-        powerUpSpawnerRef.current = setInterval(spawnPowerUp, 8000);
+        powerUpSpawnerRef.current = setInterval(spawnPowerUp, 12000);
     };
 
     const startSpawner = (interval) => {
@@ -489,10 +489,10 @@ const CalendarDefenseGame = ({ onBack }) => {
 
         switch (wave) {
             case 2:
-                startSpawner(1600);
+                startSpawner(900);
                 break;
             case 3:
-                startSpawner(1000);
+                startSpawner(650);
                 break;
             default:
                 break;
@@ -621,7 +621,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                 setTimeout(() => setSlowMotion(false), powerUp.duration);
                 break;
             case 'heal':
-                setDeepWorkHours(prev => Math.min(8, prev + powerUp.amount));
+                setDeepWorkHours(prev => Math.min(6, prev + powerUp.amount));
                 createParticle(powerUp.x, powerUp.y, '+1 HOUR!', 'text-green-400');
                 break;
             case 'massZap':
@@ -732,7 +732,7 @@ const CalendarDefenseGame = ({ onBack }) => {
     }, []);
 
     // Calculate health bar color
-    const healthPercent = (deepWorkHours / 8) * 100;
+    const healthPercent = (deepWorkHours / 6) * 100;
     const healthColor = healthPercent > 50 ? 'from-green-500 to-emerald-400'
         : healthPercent > 25 ? 'from-yellow-500 to-orange-400'
             : 'from-red-500 to-rose-400';
@@ -766,8 +766,8 @@ const CalendarDefenseGame = ({ onBack }) => {
                     <div className="flex items-center gap-2 sm:gap-4">
                         <div className="flex items-center gap-1.5">
                             <Clock size={16} className="text-purple-400" />
-                            <span className={`font-bold font-mono text-sm sm:text-lg ${timer >= 50 ? 'text-green-400' : 'text-purple-400'}`}>
-                                {timer}/60s
+                            <span className={`font-bold font-mono text-sm sm:text-lg ${timer >= 38 ? 'text-green-400' : 'text-purple-400'}`}>
+                                {timer}/45s
                             </span>
                         </div>
                         <div className="text-slate-500 font-mono text-xs sm:text-sm">W{wave}</div>
@@ -839,8 +839,8 @@ const CalendarDefenseGame = ({ onBack }) => {
                             <div
                                 key={i}
                                 className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${i < shieldCharges
-                                        ? shieldActive ? 'bg-cyan-400 animate-pulse' : 'bg-cyan-600'
-                                        : 'bg-slate-700'
+                                    ? shieldActive ? 'bg-cyan-400 animate-pulse' : 'bg-cyan-600'
+                                    : 'bg-slate-700'
                                     }`}
                             >
                                 <Shield size={12} className={i < shieldCharges ? 'text-white' : 'text-slate-500'} />
@@ -1073,8 +1073,8 @@ const CalendarDefenseGame = ({ onBack }) => {
                             onMouseEnter={() => setHoveredEnemy(enemy.id)}
                             onMouseLeave={() => setHoveredEnemy(null)}
                             className={`absolute px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg shadow-lg flex items-center gap-1.5 border-2 ${enemy.borderColor} transition-all z-20 ${enemy.boss
-                                    ? shieldActive ? 'cursor-pointer ring-2 ring-cyan-400' : 'cursor-not-allowed opacity-90'
-                                    : 'cursor-pointer hover:ring-2 hover:ring-white/50'
+                                ? shieldActive ? 'cursor-pointer ring-2 ring-cyan-400' : 'cursor-not-allowed opacity-90'
+                                : 'cursor-pointer hover:ring-2 hover:ring-white/50'
                                 } bg-gradient-to-r ${enemy.color}`}
                             style={{
                                 left: `${enemy.x}%`,
