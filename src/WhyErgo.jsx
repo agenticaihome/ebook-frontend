@@ -32,7 +32,7 @@ export default function WhyErgo() {
                             <div className="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 shadow-[0_0_30px_rgba(34,197,94,0.2)] backdrop-blur-sm">
                                 <img
                                     src="/assets/ergo-logo.png"
-                                    alt="Ergo Logo"
+                                    alt="Ergo blockchain logo - cryptocurrency payment option"
                                     className="w-12 h-12 object-contain invert opacity-90"
                                 />
                             </div>
@@ -315,17 +315,17 @@ export default function WhyErgo() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-bold text-green-400 border-b border-green-500/30 pb-2 mb-4">DeFi & Finance</h3>
 
-                                <a href="https://spectrum.fi" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                <a href="https://spectrum.fi" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-green-400 transition-colors">Spectrum Finance</div>
                                     <div className="text-sm text-slate-400">The #1 Decentralized Exchange (DEX). Swap assets without a middleman.</div>
                                 </a>
 
-                                <a href="https://mew.fi" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                <a href="https://mew.fi" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-green-400 transition-colors">MewFinance</div>
                                     <div className="text-sm text-slate-400">Lending, borrowing, and stablecoins. Banking without the bank.</div>
                                 </a>
 
-                                <a href="https://sigmafi.org" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
+                                <a href="https://sigmafi.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-green-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-green-400 transition-colors">SigmaFi</div>
                                     <div className="text-sm text-slate-400">Peer-to-peer bonds and loans. Trustless financial agreements.</div>
                                 </a>
@@ -335,17 +335,17 @@ export default function WhyErgo() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-bold text-cyan-400 border-b border-cyan-500/30 pb-2 mb-4">Infrastructure</h3>
 
-                                <a href="https://rosen.tech" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                <a href="https://rosen.tech" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Rosen Bridge</div>
                                     <div className="text-sm text-slate-400">Trustless cross-chain bridge connecting Ergo to Bitcoin, Ethereum, and Cardano.</div>
                                 </a>
 
-                                <a href="https://ergomixer.org" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                <a href="https://ergomixer.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Ergo Mixer</div>
                                     <div className="text-sm text-slate-400">Non-custodial privacy. Protect your financial history.</div>
                                 </a>
 
-                                <a href="https://nautilus.wallet" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
+                                <a href="https://nautilus.wallet" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Nautilus Wallet</div>
                                     <div className="text-sm text-slate-400">The privacy-first wallet that puts you in control.</div>
                                 </a>
@@ -355,17 +355,17 @@ export default function WhyErgo() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-bold text-purple-400 border-b border-purple-500/30 pb-2 mb-4">Gaming & Culture</h3>
 
-                                <a href="https://cyberverse.gg" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                <a href="https://cyberverse.gg" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-purple-400 transition-colors">CyberVerse</div>
                                     <div className="text-sm text-slate-400">Open-world RPG powered by blockchain assets. Play to own.</div>
                                 </a>
 
-                                <a href="https://skyharbor.io" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                <a href="https://skyharbor.io" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-purple-400 transition-colors">SkyHarbor</div>
                                     <div className="text-sm text-slate-400">The premier NFT marketplace for digital art and collectibles.</div>
                                 </a>
 
-                                <a href="https://sigmaverse.io" target="_blank" rel="noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
+                                <a href="https://sigmaverse.io" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-700 hover:border-purple-500/50 transition-all group">
                                     <div className="font-bold text-white group-hover:text-purple-400 transition-colors">SigmaValley</div>
                                     <div className="text-sm text-slate-400">The metaverse headquarters for the Ergo community.</div>
                                 </a>
@@ -468,29 +468,29 @@ export default function WhyErgo() {
                         <div>
                             <h4 className="font-bold text-white mb-4">Official</h4>
                             <ul className="space-y-2 text-slate-400">
-                                <li><a href="https://ergoplatform.org" target="_blank" rel="noreferrer" className="hover:text-green-400">Ergo Platform</a></li>
-                                <li><a href="https://docs.ergoplatform.org" target="_blank" rel="noreferrer" className="hover:text-green-400">Documentation</a></li>
+                                <li><a href="https://ergoplatform.org" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Ergo Platform</a></li>
+                                <li><a href="https://docs.ergoplatform.org" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Documentation</a></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-bold text-white mb-4">Community</h4>
                             <ul className="space-y-2 text-slate-400">
-                                <li><a href="https://reddit.com/r/ergonauts" target="_blank" rel="noreferrer" className="hover:text-green-400">Reddit</a></li>
-                                <li><a href="https://discord.gg/ergo" target="_blank" rel="noreferrer" className="hover:text-green-400">Discord</a></li>
+                                <li><a href="https://reddit.com/r/ergonauts" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Reddit</a></li>
+                                <li><a href="https://discord.gg/ergo" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Discord</a></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-bold text-white mb-4">Tools</h4>
                             <ul className="space-y-2 text-slate-400">
-                                <li><a href="https://explorer.ergoplatform.com" target="_blank" rel="noreferrer" className="hover:text-green-400">Explorer</a></li>
-                                <li><a href="https://sigmaverse.io" target="_blank" rel="noreferrer" className="hover:text-green-400">Sigmaverse</a></li>
+                                <li><a href="https://explorer.ergoplatform.com" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Explorer</a></li>
+                                <li><a href="https://sigmaverse.io" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Sigmaverse</a></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-bold text-white mb-4">Wallets</h4>
                             <ul className="space-y-2 text-slate-400">
-                                <li><a href="https://nautilus.wallet" target="_blank" rel="noreferrer" className="hover:text-green-400">Nautilus</a></li>
-                                <li><a href="https://ergoplatform.org/en/get-erg/#Wallets" target="_blank" rel="noreferrer" className="hover:text-green-400">Mobile Wallets</a></li>
+                                <li><a href="https://nautilus.wallet" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Nautilus</a></li>
+                                <li><a href="https://ergoplatform.org/en/get-erg/#Wallets" target="_blank" rel="noopener noreferrer" className="hover:text-green-400">Mobile Wallets</a></li>
                             </ul>
                         </div>
                     </div>

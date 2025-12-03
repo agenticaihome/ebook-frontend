@@ -8,7 +8,10 @@ const MobileBottomNav = () => {
     const { isSoundEnabled, toggleSound } = useSound();
     const [showTools, setShowTools] = useState(false);
 
-    const isActive = (path) => location.pathname === path;
+    const isActive = (path) => {
+        if (path === '/') return location.pathname === '/';
+        return location.pathname.startsWith(path);
+    };
 
     return (
         <>
@@ -19,7 +22,7 @@ const MobileBottomNav = () => {
                         <Link
                             to="/#calculator"
                             onClick={() => setShowTools(false)}
-                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors"
+                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
                             <Calculator className="text-cyan-400" />
                             <span className="text-xs font-bold text-slate-300">Time Calc</span>
@@ -27,14 +30,14 @@ const MobileBottomNav = () => {
                         <Link
                             to="/part1#diagnostic"
                             onClick={() => setShowTools(false)}
-                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors"
+                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
                             <Activity className="text-purple-400" />
                             <span className="text-xs font-bold text-slate-300">Diagnostic</span>
                         </Link>
                         <button
                             onClick={toggleSound}
-                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors col-span-2"
+                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors col-span-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
                             {isSoundEnabled ? <Volume2 className="text-purple-400" /> : <VolumeX className="text-slate-400" />}
                             <span className="text-xs font-bold text-slate-300">Sound: {isSoundEnabled ? 'On' : 'Off'}</span>
@@ -50,29 +53,29 @@ const MobileBottomNav = () => {
 
             <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f1a]/95 backdrop-blur-lg border-t border-slate-800 md:hidden z-50 pb-safe">
                 <div className="flex justify-around items-center p-3">
-                    <Link to="/" className={`flex flex-col items-center gap-1 ${isActive('/') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <Link to="/" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <Home size={24} />
                         <span className="text-[10px] font-bold">Home</span>
                     </Link>
 
-                    <Link to="/dashboard" className={`flex flex-col items-center gap-1 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <Link to="/dashboard" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <LayoutDashboard size={24} />
                         <span className="text-[10px] font-bold">Dash</span>
                     </Link>
 
-                    <Link to="/part1" className={`flex flex-col items-center gap-1 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <Link to="/part1" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <BookOpen size={24} />
                         <span className="text-[10px] font-bold">Read</span>
                     </Link>
 
-                    <Link to="/games" className={`flex flex-col items-center gap-1 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-500'}`}>
+                    <Link to="/games" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-500'}`}>
                         <Gamepad2 size={24} />
                         <span className="text-[10px] font-bold">Games</span>
                     </Link>
 
                     <button
                         onClick={() => setShowTools(!showTools)}
-                        className={`flex flex-col items-center gap-1 ${showTools ? 'text-cyan-400' : 'text-slate-500'}`}
+                        className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${showTools ? 'text-cyan-400' : 'text-slate-500'}`}
                     >
                         <Wrench size={24} />
                         <span className="text-[10px] font-bold">Tools</span>

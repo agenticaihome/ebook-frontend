@@ -107,6 +107,7 @@ export default function SalesPage() {
                 </Link>
                 <button
                   disabled
+                  title="Sales resume on December 4th"
                   className="bg-slate-700/50 text-slate-400 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                 >
                   Sales Paused
@@ -424,6 +425,7 @@ export default function SalesPage() {
               <div className="space-y-4">
                 <button
                   disabled
+                  title="Sales resume on December 4th"
                   className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                 >
                   <Lock size={18} />
@@ -457,6 +459,7 @@ export default function SalesPage() {
               <div className="mt-auto">
                 <button
                   disabled
+                  title="Sales resume on December 4th"
                   className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                 >
                   Sales Paused

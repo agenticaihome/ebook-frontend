@@ -279,6 +279,8 @@ const WebbookLayout = ({ children }) => {
                                     <button
                                         onClick={(e) => toggleChapter(e, chapter.id)}
                                         className={`p-1 rounded hover:bg-white/10 transition-colors ${isActive ? 'text-cyan-200' : 'text-slate-500'}`}
+                                        aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${chapter.title}`}
+                                        aria-expanded={isExpanded}
                                     >
                                         {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                                     </button>
@@ -320,16 +322,16 @@ const WebbookLayout = ({ children }) => {
                         Quick Jumps
                     </div>
                     <div className="grid grid-cols-2 gap-2 px-2">
-                        <PrefetchLink to="/part1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part1/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Foundations
                         </PrefetchLink>
-                        <PrefetchLink to="/part5" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part5/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Life OS
                         </PrefetchLink>
-                        <PrefetchLink to="/part2" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part2/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Daily Ops
                         </PrefetchLink>
-                        <PrefetchLink to="/part4" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                        <PrefetchLink to="/part4/chapter1" className="p-2 bg-slate-800 hover:bg-cyan-900/30 rounded-lg text-xs font-medium text-slate-300 text-center border border-slate-700 hover:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-400">
                             Health
                         </PrefetchLink>
                     </div>
@@ -449,7 +451,14 @@ const WebbookLayout = ({ children }) => {
 
 
                     {/* Progress Bar */}
-                    <div className="absolute bottom-0 left-0 h-1 bg-slate-800 w-full">
+                    <div
+                        className="absolute bottom-0 left-0 h-1 bg-slate-800 w-full"
+                        role="progressbar"
+                        aria-label="Reading progress"
+                        aria-valuenow={Math.round(scrollProgress * 100)}
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                    >
                         <motion.div
                             className="h-full bg-cyan-500"
                             style={{ width: `${scrollProgress * 100}%` }}
