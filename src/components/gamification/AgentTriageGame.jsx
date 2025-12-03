@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Clock, Flame, Keyboard, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Clock, Flame, Keyboard, ChevronLeft, ChevronRight, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 
@@ -380,6 +380,26 @@ const AgentTriageGame = ({ onBack }) => {
             if (navigator.vibrate) navigator.vibrate(200);
         }
     }, [updateCaptain]);
+    // Share Score
+    const shareScore = useCallback(() => {
+        const accuracy = stats.correct + stats.wrong > 0
+            ? Math.round((stats.correct / (stats.correct + stats.wrong)) * 100)
+            : 0;
+
+        const text = `📧 I triaged ${emailsTriaged} emails and scored ${score} points in Inbox Defense!\\n\\nAccuracy: ${accuracy}%\\nMax Combo: ${maxCombo}x\\nCritical Saved: ${stats.criticalSaved}\\n\\nPlay at AgenticAIHome.com/games`;
+
+        if (navigator.share) {
+            navigator.share({
+                title: 'Inbox Defense Score',
+                text
+            }).catch(() => {
+                navigator.clipboard?.writeText(text);
+            });
+        } else {
+            navigator.clipboard?.writeText(text);
+            updateCaptain({ text: '📋 Score copied to clipboard!', mood: 'happy' });
+        }
+    }, [score, emailsTriaged, maxCombo, stats, updateCaptain]);
 
     // Spawn Email
     const spawnEmail = useCallback((currentWave) => {
@@ -631,7 +651,7 @@ const AgentTriageGame = ({ onBack }) => {
                 return prevEmails; // Keep email on wrong action
             }
         });
-    }, [gameState, playSound, updateCaptain, endGame]);
+    }, [gameState]); // Fixed: Removed playSound to prevent memory leak
 
     // Keyboard Controls
     useEffect(() => {
@@ -1030,6 +1050,12 @@ const AgentTriageGame = ({ onBack }) => {
                                     className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 active:scale-95 text-white px-5 py-3 rounded-xl font-bold transition-all shadow-lg shadow-cyan-900/50"
                                 >
                                     <RotateCcw size={20} /> Play Again
+                                </button>
+                                <button
+                                    onClick={shareScore}
+                                    className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white px-5 py-3 rounded-xl font-bold transition-all"
+                                >
+                                    <Share2 size={20} /> Share
                                 </button>
                             </div>
                         </motion.div>
