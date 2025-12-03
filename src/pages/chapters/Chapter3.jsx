@@ -1,5 +1,6 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
@@ -213,37 +214,43 @@ const DeepDive = ({ title, children }) => {
     );
 };
 
-const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-        <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                <CheckCircle className="text-green-400" size={24} />
+const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
+    const navigate = useNavigate();
+
+    return (
+        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
+            <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                    <CheckCircle className="text-green-400" size={24} />
+                </div>
+                <div>
+                    <span className="text-green-400 font-bold block">Chapter 3 Complete</span>
+                    <span className="text-slate-400 text-sm">You're 19% of the way there</span>
+                </div>
             </div>
-            <div>
-                <span className="text-green-400 font-bold block">Chapter 3 Complete</span>
-                <span className="text-slate-400 text-sm">You're 19% of the way there</span>
+
+            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
+                <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
+                <ul className="space-y-2">
+                    {achievements.map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
+                            <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
             </div>
+
+            <button
+                onClick={() => navigate(`/chapters/${nextChapter}`)}
+                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
+            >
+                Continue to Chapter {nextChapter}: {nextTitle}
+                <ArrowRight size={18} />
+            </button>
         </div>
-
-        <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-            <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
-            <ul className="space-y-2">
-                {achievements.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                        {item}
-                    </li>
-                ))}
-            </ul>
-        </div>
-
-        <button className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
-            Continue to Chapter {nextChapter}: {nextTitle}
-            <ArrowRight size={18} />
-        </button>
-    </div>
-);
-
+    );
+};
 // ============================================
 // CHAPTER 3 SPECIFIC COMPONENTS
 // ============================================
@@ -682,6 +689,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
 
 const Chapter3 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const navigate = useNavigate();
 
     const scrollToAudit = () => {
         document.getElementById('privacy-audit')?.scrollIntoView({ behavior: 'smooth' });
@@ -697,6 +705,14 @@ const Chapter3 = () => {
 
                     {/* Author Credibility */}
                     <AuthorCredibility />
+
+                    {/* Chapter Navigation */}
+                    <ChapterNavigation
+                        previousChapter="/chapters/2"
+                        nextChapter="/chapters/4"
+                        partNumber={1}
+                        chapterNumber={3}
+                    />
 
                     {/* Header */}
                     <motion.div
@@ -902,6 +918,14 @@ Acknowledge these rules, then let's proceed."`}
                         ]}
                         nextChapter={4}
                         nextTitle="Morning Routines"
+                    />
+
+                    {/* Bottom Navigation */}
+                    <ChapterNavigation
+                        previousChapter="/chapters/2"
+                        nextChapter="/chapters/4"
+                        partNumber={1}
+                        chapterNumber={3}
                     />
 
                 </div>

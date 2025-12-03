@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
@@ -722,53 +723,62 @@ const Part2Celebration = () => {
 };
 
 // Chapter Complete (custom for Part end)
-const ChapterCompleteWithPartEnd = ({ achievements, nextChapter, nextTitle, nextPart }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-        <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                <CheckCircle className="text-green-400" size={24} />
+const ChapterCompleteWithPartEnd = ({ achievements, nextChapter, nextTitle, nextPart }) => {
+    const navigate = useNavigate();
+
+    return (
+        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
+            <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                    <CheckCircle className="text-green-400" size={24} />
+                </div>
+                <div>
+                    <span className="text-green-400 font-bold block">Chapter 6 Complete</span>
+                    <span className="text-slate-400 text-sm">Part 2 finished — 37% of the way there</span>
+                </div>
             </div>
-            <div>
-                <span className="text-green-400 font-bold block">Chapter 6 Complete</span>
-                <span className="text-slate-400 text-sm">Part 2 finished — 37% of the way there</span>
+
+            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
+                <p className="text-white font-bold text-sm mb-3">Your Household Command Center includes:</p>
+                <ul className="space-y-2">
+                    {achievements.map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
+                            <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
             </div>
-        </div>
 
-        <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-            <p className="text-white font-bold text-sm mb-3">Your Household Command Center includes:</p>
-            <ul className="space-y-2">
-                {achievements.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                        {item}
-                    </li>
-                ))}
-            </ul>
-        </div>
-
-        <div className="bg-orange-900/20 rounded-xl p-4 border border-orange-500/30 mb-6">
-            <div className="flex items-center gap-2 text-orange-400 font-bold mb-1">
-                <Rocket size={16} />
-                Next: Part 3 — Digital Operations
+            <div className="bg-orange-900/20 rounded-xl p-4 border border-orange-500/30 mb-6">
+                <div className="flex items-center gap-2 text-orange-400 font-bold mb-1">
+                    <Rocket size={16} />
+                    Next: Part 3 — Digital Operations
+                </div>
+                <p className="text-slate-400 text-sm">
+                    Email triage, calendar defense, admin automation. Where the hours really add up.
+                </p>
             </div>
-            <p className="text-slate-400 text-sm">
-                Email triage, calendar defense, admin automation. Where the hours really add up.
-            </p>
+
+            <button
+                onClick={() => navigate(`/chapters/${nextChapter}`)}
+                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
+            >
+                Continue to Part {nextPart}, Chapter {nextChapter}: {nextTitle}
+                <ArrowRight size={18} />
+            </button>
         </div>
-
-        <button className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
-            Continue to Chapter {nextChapter}: {nextTitle}
-            <ArrowRight size={18} />
-        </button>
-    </div>
-);
-
+    );
+};
+// =========
+//===================================
 // ============================================
 // CHAPTER 6 MAIN COMPONENT
 // ============================================
 
 const Chapter6 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const navigate = useNavigate();
 
     const scrollToCalculator = () => {
         document.getElementById('household-calculator')?.scrollIntoView({ behavior: 'smooth' });
@@ -894,6 +904,14 @@ Ask me about my household size and preferences to estimate usage.`;
 
                     {/* Author Credibility */}
                     <AuthorCredibility />
+
+                    {/* Chapter Navigation */}
+                    <ChapterNavigation
+                        previousChapter="/chapters/5"
+                        nextChapter="/chapters/7"
+                        partNumber={2}
+                        chapterNumber={6}
+                    />
 
                     {/* Header */}
                     <motion.div
@@ -1050,6 +1068,14 @@ Ask me about my household size and preferences to estimate usage.`;
                         nextChapter={7}
                         nextTitle="Email Triage"
                         nextPart={3}
+                    />
+
+                    {/* Bottom Navigation */}
+                    <ChapterNavigation
+                        previousChapter="/chapters/5"
+                        nextChapter="/chapters/7"
+                        partNumber={2}
+                        chapterNumber={6}
                     />
 
                 </div>

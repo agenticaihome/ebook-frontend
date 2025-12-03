@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
@@ -428,6 +429,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
 
 const Chapter1 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const navigate = useNavigate();
 
     const scrollToQuiz = () => {
         document.getElementById('experience-quiz')?.scrollIntoView({ behavior: 'smooth' });
@@ -443,6 +445,14 @@ const Chapter1 = () => {
 
                     {/* Author Credibility */}
                     <AuthorCredibility />
+
+                    {/* Chapter Navigation */}
+                    <ChapterNavigation
+                        previousChapter={null}
+                        nextChapter="/chapters/2"
+                        partNumber={1}
+                        chapterNumber={1}
+                    />
 
                     {/* Header */}
                     <motion.div
@@ -758,15 +768,53 @@ Then show me what tomorrow's briefing would look like.`}
                                 message="Look at you! You just learned the most important concept in this entire book—the difference between a tool that waits and a system that works. That task you wrote down? In Chapter 2, I'm going to show you exactly how to hand it off to your first agent. No more mental Post-It notes. Let's go. 🚀"
                             />
                         </Suspense>
-                    )}                {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'The difference between chatbots and agents',
-                            'Why mental load is measurable (and fixable)',
-                            'The Observe → Plan → Act → Report loop',
-                        ]}
-                        nextChapter={2}
-                        nextTitle="Building Your AI Team"
+                    )}
+
+                    {/* CHAPTER COMPLETE */}
+                    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm mb-8">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <CheckCircle className="text-green-400" size={24} />
+                            </div>
+                            <div>
+                                <span className="text-green-400 font-bold block">Chapter 1 Complete</span>
+                                <span className="text-slate-400 text-sm">You're 6% of the way there</span>
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
+                            <p className="text-white font-bold text-sm mb-3">What you now understand:</p>
+                            <ul className="space-y-2">
+                                <li className="flex items-center gap-2 text-sm text-slate-300">
+                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                    The difference between chatbots and agents
+                                </li>
+                                <li className="flex items-center gap-2 text-sm text-slate-300">
+                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                    Why mental load is measurable (and fixable)
+                                </li>
+                                <li className="flex items-center gap-2 text-sm text-slate-300">
+                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                    The Observe → Plan → Act → Report loop
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button
+                            onClick={() => navigate('/chapters/2')}
+                            className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
+                        >
+                            Continue to Chapter 2: Building Your AI Team
+                            <ArrowRight size={18} />
+                        </button>
+                    </div>
+
+                    {/* Bottom Navigation */}
+                    <ChapterNavigation
+                        previousChapter={null}
+                        nextChapter="/chapters/2"
+                        partNumber={1}
+                        chapterNumber={1}
                     />
 
                 </div>

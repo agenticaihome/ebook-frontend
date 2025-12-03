@@ -1,5 +1,6 @@
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
@@ -538,6 +539,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
 
 const Chapter2 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const navigate = useNavigate();
 
     const scrollToQuiz = () => {
         document.getElementById('tool-quiz')?.scrollIntoView({ behavior: 'smooth' });
@@ -553,6 +555,14 @@ const Chapter2 = () => {
 
                     {/* Author Credibility */}
                     <AuthorCredibility />
+
+                    {/* Chapter Navigation */}
+                    <ChapterNavigation
+                        previousChapter="/chapters/1"
+                        nextChapter="/chapters/3"
+                        partNumber={1}
+                        chapterNumber={2}
+                    />
 
                     {/* Header */}
                     <motion.div
@@ -755,14 +765,50 @@ const Chapter2 = () => {
                     )}
 
                     {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'The 4-role framework (Brain, Memory, Hands, Nerves)',
-                            'Picked your AI "Brain" tool',
-                            'Set up your first agent to handle a recurring task',
-                        ]}
-                        nextChapter={3}
-                        nextTitle="Privacy & Security"
+                    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm mb-8">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <CheckCircle className="text-green-400" size={24} />
+                            </div>
+                            <div>
+                                <span className="text-green-400 font-bold block">Chapter 2 Complete</span>
+                                <span className="text-slate-400 text-sm">You're 12% of the way there</span>
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
+                            <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
+                            <ul className="space-y-2">
+                                <li className="flex items-center gap-2 text-sm text-slate-300">
+                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                    The 4-role framework (Brain, Memory, Hands, Nerves)
+                                </li>
+                                <li className="flex items-center gap-2 text-sm text-slate-300">
+                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                    Picked your AI "Brain" tool
+                                </li>
+                                <li className="flex items-center gap-2 text-sm text-slate-300">
+                                    <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
+                                    Set up your first agent to handle a recurring task
+                                </li>
+                            </ul>
+                        </div>
+
+                        <button
+                            onClick={() => navigate('/chapters/3')}
+                            className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
+                        >
+                            Continue to Chapter 3: Privacy & Security
+                            <ArrowRight size={18} />
+                        </button>
+                    </div>
+
+                    {/* Bottom Navigation */}
+                    <ChapterNavigation
+                        previousChapter="/chapters/1"
+                        nextChapter="/chapters/3"
+                        partNumber={1}
+                        chapterNumber={2}
                     />
 
                 </div>
