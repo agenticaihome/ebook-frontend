@@ -37,6 +37,18 @@ const DeepWorkDive = ({ onBack }) => {
     const scoreRef = useRef(0);
     const obstaclesRef = useRef([]);
     const lastSpawnRef = useRef(0);
+    const gameStartTimeRef = useRef(0);
+
+    // ===================
+    // EASY MODE PHYSICS - Tuned for accessibility
+    // ===================
+    const FIXED_TIMESTEP = 1000 / 60;
+    const GRAVITY = 0.22;
+    const JUMP_VELOCITY = -6.2;    // Strong but safe hop (peaks ~22% up)
+    const TERMINAL_VELOCITY = 6.5;
+    const RISE_DAMPING = 0.90;     // Stops float quicker, no overshoot
+    const BASE_SPEED = 2.8;
+    const SPEED_INCREASE = 0.0004;
     const SPAWN_INTERVAL = 1700;        // ↑ Way more space between distractions (was 1450)
 
     // ===================
@@ -195,15 +207,15 @@ const DeepWorkDive = ({ onBack }) => {
                 velocityRef.current = Math.min(velocityRef.current, TERMINAL_VELOCITY);
             }
 
-            // Update position
-            captainYRef.current += velocityRef.current;
+            // Update position (prevents fly-off, tunes feel)
+            captainYRef.current += velocityRef.current * 0.6;
 
             // Calculate current speed (increases with score)
             const currentSpeed = BASE_SPEED * (1 + scoreRef.current * SPEED_INCREASE);
 
             // Move obstacles
             obstaclesRef.current = obstaclesRef.current
-                .map(obs => ({ ...obs, x: obs.x - currentSpeed * 0.5 }))
+                .map(obs => ({ ...obs, x: obs.x - currentSpeed * 0.6 }))
                 .filter(obs => obs.x > -OBSTACLE_WIDTH - 5);
 
             // Spawn new obstacles
