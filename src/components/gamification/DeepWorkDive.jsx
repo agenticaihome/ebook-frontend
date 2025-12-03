@@ -43,22 +43,22 @@ const DeepWorkDive = ({ onBack }) => {
     // EASY MODE PHYSICS - Tuned for accessibility
     // ===================
     const FIXED_TIMESTEP = 1000 / 60;
-    const GRAVITY = 0.22;
-    const JUMP_VELOCITY = -6.2;    // Strong but safe hop (peaks ~22% up)
-    const TERMINAL_VELOCITY = 6.5;
-    const RISE_DAMPING = 0.90;     // Stops float quicker, no overshoot
-    const BASE_SPEED = 2.8;
-    const SPEED_INCREASE = 0.0004;
-    const SPAWN_INTERVAL = 1700;        // ↑ Way more space between distractions (was 1450)
+    const GRAVITY = 0.32;             // More predictable (was 0.22)
+    const JUMP_VELOCITY = -4.8;       // Controlled hop (was -6.2)
+    const TERMINAL_VELOCITY = 7.0;
+    const RISE_DAMPING = 0.92;        // Smoother float (was 0.90)
+    const BASE_SPEED = 2.5;           // More reaction time (was 2.8)
+    const SPEED_INCREASE = 0.0003;    // Gentler progression (was 0.0004)
+    const SPAWN_INTERVAL = 2000;      // More breathing room (was 1700)
 
     // ===================
     // GAME DIMENSIONS (percentage-based for responsiveness)
     // ===================
     const CAPTAIN_X = 22;             // Captain horizontal position (%)
-    const CAPTAIN_SIZE = 11;          // Captain size as % of container width
+    const CAPTAIN_SIZE = 13;          // Optimized for mobile (was 11)
     const OBSTACLE_WIDTH = 15;        // Obstacle width (%)
-    const GAP_SIZE = 35;              // ↑ Massive gaps (was 28) – auto-win most
-    const HITBOX_SHRINK = 2.5;        // ↑ Super forgiving (was 1.5) – barely collide
+    const GAP_SIZE = 38;              // More forgiving (was 35)
+    const HITBOX_SHRINK = 3.0;        // Very forgiving (was 2.5)
 
     // Distraction types
     const distractionTypes = [
