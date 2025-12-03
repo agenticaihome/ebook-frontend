@@ -1,0 +1,14 @@
+import React, { useState, Suspense, createContext, useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
+import WebbookLayout from '../../components/layout/WebbookLayout';
+import ChapterNavigation from '../../components/common/ChapterNavigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+    Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
+    Brain, Sparkles, Share2, Copy, Eye, EyeOff, MessageSquare,
+    AlertTriangle, Target, Lightbulb
+} from 'lucide-react';
+
+// Lazy load interactive components
+const AIExperienceQuiz = React.lazy(() => import('../../components/AIExperienceQuiz'));
+const MentalLoadCalculator = React.lazy(() => import('../../components/MentalLoadCalculator'));

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
@@ -12,9 +11,8 @@ import {
 } from 'lucide-react';
 
 // Lazy load interactive components
-const AIExperienceQuiz = React.lazy(() => import('../components/AIExperienceQuiz'));
-const MentalLoadCalculator = React.lazy(() => import('../components/MentalLoadCalculator'));
-
+const AIExperienceQuiz = React.lazy(() => import('../../components/AIExperienceQuiz'));
+const MentalLoadCalculator = React.lazy(() => import('../../components/MentalLoadCalculator'));
 // ============================================
 // SPEED RUN CONTEXT
 // ============================================
@@ -61,8 +59,8 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-                ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
-                : 'bg-slate-800/50 text-slate-400 border border-slate-700 hover:border-slate-600'
+            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            : 'bg-slate-800/50 text-slate-400 border border-slate-700 hover:border-slate-600'
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
@@ -162,8 +160,8 @@ const ShareableQuote = ({ quote, chapter }) => {
                         <button
                             onClick={handleCopy}
                             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-all ${copied
-                                    ? 'bg-green-500/20 text-green-400'
-                                    : 'bg-slate-700/50 text-slate-400 hover:text-white'
+                                ? 'bg-green-500/20 text-green-400'
+                                : 'bg-slate-700/50 text-slate-400 hover:text-white'
                                 }`}
                         >
                             {copied ? <CheckCircle size={14} /> : <Copy size={14} />}
@@ -380,8 +378,8 @@ const QuickWin = ({ title, prompt, setupTime }) => {
             <button
                 onClick={handleCopy}
                 className={`w-full py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${copied
-                        ? 'bg-green-500 text-white'
-                        : 'bg-slate-700 hover:bg-slate-600 text-white'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-slate-700 hover:bg-slate-600 text-white'
                     }`}
             >
                 {copied ? <CheckCircle size={18} /> : <Copy size={18} />}
