@@ -13,6 +13,7 @@ import {
 // Lazy load interactive components
 const AIExperienceQuiz = React.lazy(() => import('../../components/AIExperienceQuiz'));
 const MentalLoadCalculator = React.lazy(() => import('../../components/MentalLoadCalculator'));
+const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 // ============================================
 // SPEED RUN CONTEXT
 // ============================================
