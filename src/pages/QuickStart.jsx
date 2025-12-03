@@ -1,8 +1,10 @@
 import React, { Suspense, lazy } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Clock, CheckCircle, Zap } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 
 const QuickStart = () => {
+    const navigate = useNavigate();
     return (
         <WebbookLayout currentPart={6}>
             <div className="min-h-screen bg-gradient-to-b from-[#0a0a0f] via-[#131320] to-[#0a0a0f]">
@@ -271,7 +273,7 @@ Ask me: What's in your fridge right now? Any dietary restrictions? How many nigh
 
                         <div className="mt-12 text-center">
                             <button
-                                onClick={() => window.location.href = '/part1'}
+                                onClick={() => navigate('/part1')}
                                 className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold transition-all"
                             >
                                 Start With Chapter 1
