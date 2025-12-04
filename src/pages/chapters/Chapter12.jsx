@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async';
-import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import PasswordGate from '../../components/common/PasswordGate';
 
-import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, Suspense, createContext, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, BookOpen, GraduationCap,
@@ -245,8 +245,8 @@ const LearningGraveyardVisual = () => {
                             onMouseEnter={() => setHoveredItem(i)}
                             onMouseLeave={() => setHoveredItem(null)}
                             className={`bg-slate-900/50 rounded-xl p-4 border transition-all cursor-pointer ${hoveredItem === i
-                                    ? 'border-rose-500/50 bg-rose-900/20'
-                                    : 'border-slate-700'
+                                ? 'border-rose-500/50 bg-rose-900/20'
+                                : 'border-slate-700'
                                 }`}
                         >
                             <item.icon className={`mb-2 ${hoveredItem === i ? 'text-rose-400' : 'text-slate-500'}`} size={20} />
@@ -397,8 +397,8 @@ const SecondBrainPreview = () => {
                             key={i}
                             onClick={() => setActiveNote(i)}
                             className={`flex items-center justify-between p-3 rounded-lg cursor-pointer transition-all ${activeNote === i
-                                    ? 'bg-purple-500/20 border border-purple-500/50'
-                                    : 'bg-slate-800/50 border border-slate-700 hover:border-slate-600'
+                                ? 'bg-purple-500/20 border border-purple-500/50'
+                                : 'bg-slate-800/50 border border-slate-700 hover:border-slate-600'
                                 }`}
                         >
                             <div className="flex items-center gap-3">
@@ -589,8 +589,8 @@ const MicroLearningSchedule = () => {
                                     key={opt.value}
                                     onClick={() => setSchedule(s => ({ ...s, [period]: opt.value }))}
                                     className={`p-2 rounded-lg text-sm transition-all text-left ${schedule[period] === opt.value
-                                            ? 'bg-green-500/20 border border-green-500/50 text-green-400'
-                                            : 'bg-slate-800/50 border border-slate-700 text-slate-400 hover:border-slate-600'
+                                        ? 'bg-green-500/20 border border-green-500/50 text-green-400'
+                                        : 'bg-slate-800/50 border border-slate-700 text-slate-400 hover:border-slate-600'
                                         }`}
                                 >
                                     <div>{opt.label}</div>
@@ -1082,6 +1082,13 @@ Help me prepare effectively without cramming or burning out.`;
 
                 </div>
             </div>
+
+            <ChapterNavigation
+                previousChapter="/part4/chapter2"
+                nextChapter="/part5/chapter1"
+                partNumber={4}
+                chapterNumber={3}
+            />
         </SpeedRunContext.Provider>
     );
 };
