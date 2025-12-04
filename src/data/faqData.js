@@ -18,7 +18,6 @@ export const categories = [
 ];
 
 // Helper for icons in text
-import { Shield } from 'lucide-react';
 
 export const faqData = [
     // SECTION 1: ABOUT THE COURSE

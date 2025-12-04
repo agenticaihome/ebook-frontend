@@ -92,9 +92,8 @@ function registerValidSW(swUrl, config) {
             };
         })
         .catch((error) => {
-        .catch ((error) => {
-                // Silent fail
-            });
+            console.error('Error during service worker registration:', error);
+        });
 }
 
 function checkValidServiceWorker(swUrl, config) {
