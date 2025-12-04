@@ -632,8 +632,8 @@ const DeclineTemplates = () => {
                                 <button
                                     onClick={() => handleCopy(i, t.template)}
                                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${copiedIndex === i
-                                            ? 'bg-green-500/20 text-green-400'
-                                            : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                        ? 'bg-green-500/20 text-green-400'
+                                        : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                         }`}
                                 >
                                     {copiedIndex === i ? 'Copied!' : 'Copy'}
@@ -691,13 +691,13 @@ const FocusBlockBuilder = () => {
                         key={i}
                         onClick={() => toggleBlock(i)}
                         className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all ${block.active
-                                ? 'bg-green-900/30 border border-green-500/30'
-                                : 'bg-slate-900/50 border border-slate-700 opacity-50'
+                            ? 'bg-green-900/30 border border-green-500/30'
+                            : 'bg-slate-900/50 border border-slate-700 opacity-50'
                             }`}
                     >
                         <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${block.active
-                                ? 'bg-green-500 text-white'
-                                : 'bg-slate-700 text-slate-400'
+                            ? 'bg-green-500 text-white'
+                            : 'bg-slate-700 text-slate-400'
                             }`}>
                             {block.active ? <Lock size={12} /> : <Unlock size={12} />}
                         </div>
@@ -859,210 +859,210 @@ OUTPUT FORMAT:
 Help me enter each week with my calendar under control.`;
 
     return (
-            <>
+        <>
             <Helmet>
                 <title>Chapter 8: Calendar Defense | Agentic AI at Home</title>
                 <meta name="description" content="Protect your time from meeting creep and reclaim your schedule" />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={8}
-                        total={16}
-                        part={3}
-                        partTitle="Digital Operations"
-                    />
-
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
-
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 8</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Calendar Defense
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            Stop letting meetings eat your life
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>10 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-purple-400">15 min to reclaim your calendar</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '10+', label: 'hrs/week reclaimed' },
-                            { value: '4', label: 'question filter' },
-                            { value: '2h', label: 'daily focus protected' },
-                        ]}
-                        primaryCTA="Audit My Calendar"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    <PasswordGate partNumber={3}>
-                        {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Email is conquered. Now we face the other time thief: your calendar. The average professional spends 31 hours per month in unproductive meetings. That's almost 4 full workdays—gone. Today we install a bouncer at the door. Every meeting request will need to earn its place on your calendar."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts and frameworks. Toggle off for full context.
-                            </p>
-                        </motion.div>
-                    )}
-
-                    {/* ★ CALENDAR AUTOPSY ★ */}
-                    {!speedRun && <CalendarAutopsyVisual />}
-
-                    {/* MEETING AUDIT CALCULATOR */}
-                    <section id="meeting-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                            <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Audit Your Calendar</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading calculator...
-                            </div>
-                        }>
-                            <MeetingAuditCalculator />
-                        </Suspense>
-                    </section>
-
-                    {/* MEETING WORTHINESS TEST */}
-                    <MeetingWorthinessTest />
-
-                    {/* TIME BLOCKING FRAMEWORK */}
-                    {!speedRun && <TimeBlockingFramework />}
-
-                    {/* AGENT 1: CALENDAR DEFENSE */}
-                    <QuickWin
-                        title="Agent 1: The Calendar Defender"
-                        setupTime="10 min"
-                        prompt={calendarDefensePrompt}
-                        variant="default"
-                    />
-
-                    {/* FOCUS BLOCK BUILDER */}
-                    {!speedRun && <FocusBlockBuilder />}
-
-                    {/* AGENT 2: MEETING PREP */}
-                    <QuickWin
-                        title="Agent 2: The Meeting Prep Assistant"
-                        setupTime="5 min"
-                        prompt={meetingPrepPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* DECLINE TEMPLATES */}
-                    {!speedRun && <DeclineTemplates />}
-
-                    {/* AGENT 3: WEEKLY CALENDAR REVIEW */}
-                    <QuickWin
-                        title="Agent 3: Weekly Calendar Review"
-                        setupTime="5 min"
-                        prompt={weeklyCalendarReviewPrompt}
-                        variant="tertiary"
-                    />
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="Rachel"
-                            role="Engineering manager, 8 direct reports"
-                            problem="35+ hours/week in meetings. Zero deep work. Coding on weekends just to keep up."
-                            result="18 hours/week meetings. 3 focus blocks daily. Actually leading instead of just attending."
-                            timeframe="1 month"
-                            quote="I used to accept every meeting by default. Now my default is 'Does this need me?' My team actually respects me more for protecting my time."
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={8}
+                            total={16}
+                            part={3}
+                            partTitle="Digital Operations"
                         />
-                    )}
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="Every meeting is a trade. You're trading an hour of your life. Make sure you're getting something worth an hour in return."
-                        chapter={8}
-                    />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="Your calendar has a bouncer now. The Meeting Worthiness Test filters requests. Your focus blocks are locked. And you have templates to decline gracefully. But there's one more piece of digital chaos we haven't touched: all those admin tasks that nibble away at your time—bills, paperwork, subscriptions, the stuff that's not hard but never stops. Let's automate that too. 📋"
+                        {/* Header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 8</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Calendar Defense
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Stop letting meetings eat your life
+                            </p>
+
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>10 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-purple-400">15 min to reclaim your calendar</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </motion.div>
+
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '10+', label: 'hrs/week reclaimed' },
+                                { value: '4', label: 'question filter' },
+                                { value: '2h', label: 'daily focus protected' },
+                            ]}
+                            primaryCTA="Audit My Calendar"
+                            onCTAClick={scrollToCalculator}
+                        />
+
+                        <PasswordGate partNumber={3}>
+                            {/* CAPTAIN EFFICIENCY - OPENER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="Email is conquered. Now we face the other time thief: your calendar. The average professional spends 31 hours per month in unproductive meetings. That's almost 4 full workdays—gone. Today we install a bouncer at the door. Every meeting request will need to earn its place on your calendar."
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-cyan-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the essential prompts and frameworks. Toggle off for full context.
+                                    </p>
+                                </motion.div>
+                            )}
+
+                            {/* ★ CALENDAR AUTOPSY ★ */}
+                            {!speedRun && <CalendarAutopsyVisual />}
+
+                            {/* MEETING AUDIT CALCULATOR */}
+                            <section id="meeting-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Audit Your Calendar</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                </div>
+
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading calculator...
+                                    </div>
+                                }>
+                                    <MeetingAuditCalculator />
+                                </Suspense>
+                            </section>
+
+                            {/* MEETING WORTHINESS TEST */}
+                            <MeetingWorthinessTest />
+
+                            {/* TIME BLOCKING FRAMEWORK */}
+                            {!speedRun && <TimeBlockingFramework />}
+
+                            {/* AGENT 1: CALENDAR DEFENSE */}
+                            <QuickWin
+                                title="Agent 1: The Calendar Defender"
+                                setupTime="10 min"
+                                prompt={calendarDefensePrompt}
+                                variant="default"
                             />
-                        </Suspense>
-                    )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Calendar Defense Agent (meeting filter)',
-                            'Meeting Prep Assistant (5-min prep)',
-                            'Weekly Calendar Review system',
-                            'Meeting Worthiness Test framework',
-                            'Focus block schedule created',
-                            'Decline templates library',
-                        ]}
-                        nextChapter={9}
-                        nextTitle="Admin & Paperwork"
-                    />
+                            {/* FOCUS BLOCK BUILDER */}
+                            {!speedRun && <FocusBlockBuilder />}
 
-                </PasswordGate>
-                <ChapterNavigation
-                    previousChapter="/part3/chapter1"
-                    nextChapter="/part3/chapter3"
-                    partNumber={3}
-                    chapterNumber={2}
-                />
+                            {/* AGENT 2: MEETING PREP */}
+                            <QuickWin
+                                title="Agent 2: The Meeting Prep Assistant"
+                                setupTime="5 min"
+                                prompt={meetingPrepPrompt}
+                                variant="secondary"
+                            />
+
+                            {/* DECLINE TEMPLATES */}
+                            {!speedRun && <DeclineTemplates />}
+
+                            {/* AGENT 3: WEEKLY CALENDAR REVIEW */}
+                            <QuickWin
+                                title="Agent 3: Weekly Calendar Review"
+                                setupTime="5 min"
+                                prompt={weeklyCalendarReviewPrompt}
+                                variant="tertiary"
+                            />
+
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="Rachel"
+                                    role="Engineering manager, 8 direct reports"
+                                    problem="35+ hours/week in meetings. Zero deep work. Coding on weekends just to keep up."
+                                    result="Reclaimed weekends. 18 hours/week meetings. 3 focus blocks daily. Actually leading instead of just attending."
+                                    timeframe="1 month"
+                                    quote="I used to accept every meeting by default. Now my default is 'Does this need me?' My team actually respects me more for protecting my time."
+                                />
+                            )}
+
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="Every meeting is a trade. You're trading an hour of your life. Make sure you're getting something worth an hour in return."
+                                chapter={8}
+                            />
+
+                            {/* CAPTAIN EFFICIENCY - CLOSER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="Your calendar has a bouncer now. The Meeting Worthiness Test filters requests. Your focus blocks are locked. And you have templates to decline gracefully. But there's one more piece of digital chaos we haven't touched: all those admin tasks that nibble away at your time—bills, paperwork, subscriptions, the stuff that's not hard but never stops. Let's automate that too. 📋"
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterComplete
+                                achievements={[
+                                    'Calendar Defense Agent (meeting filter)',
+                                    'Meeting Prep Assistant (5-min prep)',
+                                    'Weekly Calendar Review system',
+                                    'Meeting Worthiness Test framework',
+                                    'Focus block schedule created',
+                                    'Decline templates library',
+                                ]}
+                                nextChapter={9}
+                                nextTitle="Admin & Paperwork"
+                            />
+
+                        </PasswordGate>
+                        <ChapterNavigation
+                            previousChapter="/part3/chapter1"
+                            nextChapter="/part3/chapter3"
+                            partNumber={3}
+                            chapterNumber={2}
+                        />
 
 
 
 
 
 
+                    </div>
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
+            </SpeedRunContext.Provider>
 
         </>
     );

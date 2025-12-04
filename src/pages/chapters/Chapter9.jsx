@@ -641,7 +641,7 @@ const Part3Celebration = () => {
                                 top: '100%',
                             }}
                         >
-                            {['💻', '📧', '📅', '✨', '🎯'][i % 5]}
+                            {['💻', '📧', '📅', '💰', '📄', '✨', '🎯'][i % 7]}
                         </motion.div>
                     ))}
                 </div>
@@ -915,210 +915,210 @@ OUTPUT FORMAT:
 Help me get through paperwork without the dread.`;
 
     return (
-            <>
+        <>
             <Helmet>
                 <title>Chapter 9: Admin & Finances | Agentic AI at Home</title>
                 <meta name="description" content="Automate the life admin tasks you hate" />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={9}
-                        total={16}
-                        part={3}
-                        partTitle="Digital Operations"
-                    />
-
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
-
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 9</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Admin & Paperwork
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            Death by a thousand paper cuts—automated away
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>9 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-purple-400">20 min to inventory & automate</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '$500+', label: 'late fees avoided/yr' },
-                            { value: '30', label: 'day advance warnings' },
-                            { value: '0', label: 'surprise deadlines' },
-                        ]}
-                        primaryCTA="Audit My Admin"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    <PasswordGate partNumber={3}>
-                        {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Email? Handled. Calendar? Protected. But there's one more digital dragon to slay: the never-ending stream of admin tasks. Car registration. Insurance renewals. Subscription fees. Forms to fill. None of it is hard—but all of it steals your peace of mind when it ambushes you. Let's build a system that sees it all coming."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts. Toggle off for full inventory tools.
-                            </p>
-                        </motion.div>
-                    )}
-
-                    {/* ★ ADMIN AMBUSH CALENDAR ★ */}
-                    {!speedRun && <AdminAmbushCalendar />}
-
-                    {/* ADMIN INVENTORY CALCULATOR */}
-                    <section id="admin-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                            <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Build Your Inventory</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading calculator...
-                            </div>
-                        }>
-                            <AdminInventoryCalculator />
-                        </Suspense>
-                    </section>
-
-                    {/* ADMIN INVENTORY BUILDER */}
-                    {!speedRun && <AdminInventoryBuilder />}
-
-                    {/* AGENT 1: ADMIN TRACKER */}
-                    <QuickWin
-                        title="Agent 1: The Admin Tracker"
-                        setupTime="10 min"
-                        prompt={adminTrackerPrompt}
-                        variant="default"
-                    />
-
-                    {/* SUBSCRIPTION AUDIT */}
-                    {!speedRun && <SubscriptionAudit />}
-
-                    {/* AGENT 2: SUBSCRIPTION MANAGER */}
-                    <QuickWin
-                        title="Agent 2: The Subscription Manager"
-                        setupTime="10 min"
-                        prompt={subscriptionManagerPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* LATE FEE GRAVEYARD */}
-                    {!speedRun && <LateFeeGraveyard />}
-
-                    {/* AGENT 3: DOCUMENT PROCESSOR */}
-                    <QuickWin
-                        title="Agent 3: The Document Processor"
-                        setupTime="5 min"
-                        prompt={documentProcessorPrompt}
-                        variant="tertiary"
-                    />
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="Kevin"
-                            role="Freelancer, managing everything himself"
-                            problem="Missed car registration = $150 late fee. Forgot to cancel trial = $200 charge. Insurance lapsed = panic."
-                            result="Zero surprises. 30-day warnings on everything. Saved $400+ in first 3 months."
-                            timeframe="3 months"
-                            quote="I used to dread opening my mail. Now my agent tells me what's coming before it arrives. The anxiety is just... gone."
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={9}
+                            total={16}
+                            part={3}
+                            partTitle="Digital Operations"
                         />
-                    )}
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="Admin isn't hard. It's just relentless. The key isn't doing more—it's never being surprised."
-                        chapter={9}
-                    />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="PART 3 IS COMPLETE! Your digital life is now on autopilot. Email triaged. Calendar defended. Admin tracked. You've reclaimed 20+ hours per week and saved hundreds in avoided late fees. But here's the thing—we've optimized your work. Now it's time to optimize your LIFE. Part 4 tackles health, relationships, and personal growth. The best is yet to come. 🚀"
+                        {/* Header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 9</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Admin & Paperwork
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Death by a thousand paper cuts—automated away
+                            </p>
+
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>9 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-purple-400">20 min to inventory & automate</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </motion.div>
+
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '$500+', label: 'late fees avoided/yr' },
+                                { value: '30', label: 'day advance warnings' },
+                                { value: '0', label: 'surprise deadlines' },
+                            ]}
+                            primaryCTA="Audit My Admin"
+                            onCTAClick={scrollToCalculator}
+                        />
+
+                        <PasswordGate partNumber={3}>
+                            {/* CAPTAIN EFFICIENCY - OPENER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="Email? Handled. Calendar? Protected. But there's one more digital dragon to slay: the never-ending stream of admin tasks. Car registration. Insurance renewals. Subscription fees. Forms to fill. None of it is hard—but all of it steals your peace of mind when it ambushes you. Let's build a system that sees it all coming."
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-cyan-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the essential prompts. Toggle off for full inventory tools.
+                                    </p>
+                                </motion.div>
+                            )}
+
+                            {/* ★ ADMIN AMBUSH CALENDAR ★ */}
+                            {!speedRun && <AdminAmbushCalendar />}
+
+                            {/* ADMIN INVENTORY CALCULATOR */}
+                            <section id="admin-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Build Your Inventory</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                </div>
+
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading calculator...
+                                    </div>
+                                }>
+                                    <AdminInventoryCalculator />
+                                </Suspense>
+                            </section>
+
+                            {/* ADMIN INVENTORY BUILDER */}
+                            {!speedRun && <AdminInventoryBuilder />}
+
+                            {/* AGENT 1: ADMIN TRACKER */}
+                            <QuickWin
+                                title="Agent 1: The Admin Tracker"
+                                setupTime="10 min"
+                                prompt={adminTrackerPrompt}
+                                variant="default"
                             />
-                        </Suspense>
-                    )}
 
-                    {/* ★ PART 3 CELEBRATION ★ */}
-                    {!speedRun && <Part3Celebration />}
+                            {/* SUBSCRIPTION AUDIT */}
+                            {!speedRun && <SubscriptionAudit />}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterCompleteWithPartEnd
-                        achievements={[
-                            'Admin Tracker Agent (30-day advance warnings)',
-                            'Subscription Manager (audit & optimization)',
-                            'Document Processor (paperwork made easy)',
-                            'Admin inventory mapped across 5 categories',
-                            'Late fee prevention system active',
-                        ]}
-                        nextChapter={10}
-                        nextTitle="Health & Wellness Tracking"
-                        nextPart={4}
-                    />
+                            {/* AGENT 2: SUBSCRIPTION MANAGER */}
+                            <QuickWin
+                                title="Agent 2: The Subscription Manager"
+                                setupTime="10 min"
+                                prompt={subscriptionManagerPrompt}
+                                variant="secondary"
+                            />
 
-                </PasswordGate>
-                <ChapterNavigation
-                    previousChapter="/part3/chapter2"
-                    nextChapter="/part4/chapter1"
-                    partNumber={3}
-                    chapterNumber={3}
-                />
+                            {/* LATE FEE GRAVEYARD */}
+                            {!speedRun && <LateFeeGraveyard />}
+
+                            {/* AGENT 3: DOCUMENT PROCESSOR */}
+                            <QuickWin
+                                title="Agent 3: The Document Processor"
+                                setupTime="5 min"
+                                prompt={documentProcessorPrompt}
+                                variant="tertiary"
+                            />
+
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="Kevin"
+                                    role="Freelancer, managing everything himself"
+                                    problem="Missed car registration = $150 late fee. Forgot to cancel trial = $200 charge. Insurance lapsed = panic."
+                                    result="Zero surprises. 30-day warnings on everything. Saved $400+ in first 3 months."
+                                    timeframe="3 months"
+                                    quote="I used to dread opening my mail. Now my agent tells me what's coming before it arrives. The anxiety is just... gone."
+                                />
+                            )}
+
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="Admin isn't hard. It's just relentless. The key isn't doing more—it's never being surprised."
+                                chapter={9}
+                            />
+
+                            {/* CAPTAIN EFFICIENCY - CLOSER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="PART 3 IS COMPLETE! Your digital life is now on autopilot. Email triaged. Calendar defended. Admin tracked. You've reclaimed 20+ hours per week and saved hundreds in avoided late fees. But here's the thing—we've optimized your work. Now it's time to optimize your LIFE. Part 4 tackles health, relationships, and personal growth. The best is yet to come. 🚀"
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* ★ PART 3 CELEBRATION ★ */}
+                            {!speedRun && <Part3Celebration />}
+
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterCompleteWithPartEnd
+                                achievements={[
+                                    'Admin Tracker Agent (30-day advance warnings)',
+                                    'Subscription Manager (audit & optimization)',
+                                    'Document Processor (paperwork made easy)',
+                                    'Admin inventory mapped across 5 categories',
+                                    'Late fee prevention system active',
+                                ]}
+                                nextChapter={10}
+                                nextTitle="Health & Wellness Tracking"
+                                nextPart={4}
+                            />
+
+                        </PasswordGate>
+                        <ChapterNavigation
+                            previousChapter="/part3/chapter2"
+                            nextChapter="/part4/chapter1"
+                            partNumber={3}
+                            chapterNumber={3}
+                        />
 
 
 
 
 
 
+                    </div>
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
+            </SpeedRunContext.Provider>
 
         </>
     );
