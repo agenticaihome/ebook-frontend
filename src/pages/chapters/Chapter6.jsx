@@ -202,6 +202,36 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     );
 };
 
+// Compact Case Study
+const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
+    <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm mb-8">
+        <div className="flex items-center gap-2 mb-3">
+            <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 text-sm">
+                {name.charAt(0)}
+            </div>
+            <div>
+                <span className="text-white font-medium">{name}</span>
+                <span className="text-slate-400 text-sm ml-2">{role}</span>
+            </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-4">
+            <div className="bg-red-900/20 rounded-lg p-3 border border-red-500/20">
+                <span className="text-red-400 text-xs font-bold uppercase">Before</span>
+                <p className="text-slate-300 text-sm mt-1">{problem}</p>
+            </div>
+            <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/20">
+                <span className="text-green-400 text-xs font-bold uppercase">After {timeframe}</span>
+                <p className="text-slate-300 text-sm mt-1">{result}</p>
+            </div>
+        </div>
+
+        <p className="text-slate-400 text-sm italic border-l-2 border-cyan-500/50 pl-3">
+            "{quote}"
+        </p>
+    </div>
+);
+
 // ============================================
 // CHAPTER 6 SPECIFIC COMPONENTS
 // ============================================
@@ -772,8 +802,7 @@ const ChapterCompleteWithPartEnd = ({ achievements, nextChapter, nextTitle, next
         </div>
     );
 };
-// =========
-//===================================
+
 // ============================================
 // CHAPTER 6 MAIN COMPONENT
 // ============================================
@@ -872,8 +901,8 @@ Ask me about my household size and preferences to estimate usage.`;
                 <title>Chapter 6: Household Management | Agentic AI at Home</title>
                 <meta name="description" content="Your home runs itself with smart automation agents" />
             </Helmet>
-            
-                        <SEO
+
+            <SEO
                 title="Household Management - Agentic AI at Home"
                 description="Automate your home operations. Cleaning, maintenance, and supplies."
                 canonical="/part2/chapter3"
@@ -1008,6 +1037,18 @@ Ask me about my household size and preferences to estimate usage.`;
 
                             {/* DASHBOARD PREVIEW */}
                             {!speedRun && <CommandCenterDashboard />}
+
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="The Chen Family"
+                                    role="New homeowners, both working full-time"
+                                    problem="Spent every Saturday cleaning, fixing things, and running to the hardware store. Zero relaxation."
+                                    result="Saturdays are now 100% free. The 'Cleaning Manager' assigns 15-min daily tasks, so the mess never piles up."
+                                    timeframe="4 weeks"
+                                    quote="We didn't realize how much the 'invisible load' was weighing us down until it was gone. Our house runs on autopilot now."
+                                />
+                            )}
 
                             {/* SHAREABLE QUOTE */}
                             <ShareableQuote

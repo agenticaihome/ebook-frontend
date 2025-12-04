@@ -314,14 +314,14 @@ const InboxAnxietyVisual = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.15 }}
                             className={`flex items-center gap-3 p-3 rounded-lg ${trigger.type === 'urgent' ? 'bg-red-900/30 border border-red-500/30' :
-                                    trigger.type === 'avoided' ? 'bg-yellow-900/20 border border-yellow-500/20' :
-                                        'bg-slate-900/50 border border-slate-700'
+                                trigger.type === 'avoided' ? 'bg-yellow-900/20 border border-yellow-500/20' :
+                                    'bg-slate-900/50 border border-slate-700'
                                 }`}
                         >
                             <div className={`w-2 h-2 rounded-full ${trigger.type === 'urgent' ? 'bg-red-500' :
-                                    trigger.type === 'avoided' ? 'bg-yellow-500' :
-                                        trigger.type === 'newsletter' ? 'bg-slate-500' :
-                                            'bg-blue-500'
+                                trigger.type === 'avoided' ? 'bg-yellow-500' :
+                                    trigger.type === 'newsletter' ? 'bg-slate-500' :
+                                        'bg-blue-500'
                                 }`} />
                             <span className="text-slate-300 text-sm">{trigger.text}</span>
                         </motion.div>
@@ -528,8 +528,8 @@ const AutoResponseLibrary = () => {
                                 <button
                                     onClick={() => handleCopy(i, t.template)}
                                     className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${copiedIndex === i
-                                            ? 'bg-green-500/20 text-green-400'
-                                            : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+                                        ? 'bg-green-500/20 text-green-400'
+                                        : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                                         }`}
                                 >
                                     {copiedIndex === i ? 'Copied!' : 'Copy'}
@@ -589,13 +589,13 @@ const UnsubscribeBlitz = () => {
                         key={cat.id}
                         onClick={() => toggleComplete(cat.id)}
                         className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all ${completed[cat.id]
-                                ? 'bg-green-900/30 border border-green-500/30'
-                                : 'bg-slate-900/50 border border-slate-700 hover:border-slate-600'
+                            ? 'bg-green-900/30 border border-green-500/30'
+                            : 'bg-slate-900/50 border border-slate-700 hover:border-slate-600'
                             }`}
                     >
                         <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${completed[cat.id]
-                                ? 'bg-green-500 text-white'
-                                : 'bg-slate-700 text-slate-400'
+                            ? 'bg-green-500 text-white'
+                            : 'bg-slate-700 text-slate-400'
                             }`}>
                             {completed[cat.id] ? <CheckCircle size={14} /> : '○'}
                         </div>
@@ -802,215 +802,215 @@ OUTPUT FORMAT:
 Help me start each week with email under control.`;
 
     return (
-            <>
+        <>
             <Helmet>
                 <title>Chapter 7: Email Triage | Agentic AI at Home</title>
                 <meta name="description" content="Stop drowning in your inbox with intelligent email filtering" />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={7}
-                        total={16}
-                        part={3}
-                        partTitle="Digital Operations"
-                    />
-
-                    {/* Part 3 Intro Banner */}
-                    {!speedRun && <Part3Intro />}
-
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
-
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 7</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Email Triage
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            Stop drowning. Start commanding.
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>10 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-purple-400">15 min to reclaim your inbox</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '2.5 hrs', label: 'saved daily' },
-                            { value: '4', label: 'quadrant system' },
-                            { value: '0', label: 'inbox anxiety' },
-                        ]}
-                        primaryCTA="Calculate Email Load"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    <PasswordGate partNumber={3}>
-                        {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Welcome to Part 3. Your physical world is handled—morning, meals, household, all running smoothly. Now we go where the hours REALLY disappear: your inbox. The average professional spends 28% of their workday on email. That's 2.5 hours daily, 650 hours yearly. Let's take that back. By the end of this chapter, your inbox will serve YOU, not the other way around."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts and triage system. Toggle off for full context.
-                            </p>
-                        </motion.div>
-                    )}
-
-                    {/* ★ INBOX ANXIETY VISUAL ★ */}
-                    {!speedRun && <InboxAnxietyVisual />}
-
-                    {/* EMAIL STATS IMPACT */}
-                    {!speedRun && <EmailStatsImpact />}
-
-                    {/* EMAIL VOLUME CALCULATOR */}
-                    <section id="email-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                            <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Load</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading calculator...
-                            </div>
-                        }>
-                            <EmailVolumeCalculator />
-                        </Suspense>
-                    </section>
-
-                    {/* THE TRIAGE MATRIX */}
-                    <TriageMatrix />
-
-                    {/* AGENT 1: EMAIL TRIAGE */}
-                    <QuickWin
-                        title="Agent 1: The Email Triage Master"
-                        setupTime="10 min"
-                        prompt={emailTriagePrompt}
-                        variant="default"
-                    />
-
-                    {/* AGENT 2: EMAIL DRAFTER */}
-                    <QuickWin
-                        title="Agent 2: The Email Draft Assistant"
-                        setupTime="5 min"
-                        prompt={emailDraftPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* AUTO-RESPONSE LIBRARY */}
-                    {!speedRun && <AutoResponseLibrary />}
-
-                    {/* UNSUBSCRIBE BLITZ */}
-                    {!speedRun && <UnsubscribeBlitz />}
-
-                    {/* AGENT 3: WEEKLY REVIEW */}
-                    <QuickWin
-                        title="Agent 3: Weekly Email Review"
-                        setupTime="5 min"
-                        prompt={weeklyReviewPrompt}
-                        variant="tertiary"
-                    />
-
-                    {/* EMAIL BOUNDARIES */}
-                    {!speedRun && <EmailBoundariesCard />}
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="Michael"
-                            role="Marketing director, 200+ emails/day"
-                            problem="4+ hours daily in email. Missed important messages buried in noise. Constant anxiety."
-                            result="90 minutes daily. Zero missed priorities. Inbox zero every Friday."
-                            timeframe="3 weeks"
-                            quote="I used to check email 50+ times a day. Now I check 4 times and get more done. The triage system changed everything."
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={7}
+                            total={16}
+                            part={3}
+                            partTitle="Digital Operations"
                         />
-                    )}
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="Your inbox is everyone else's to-do list for you. It's time to take back control."
-                        chapter={7}
-                    />
+                        {/* Part 3 Intro Banner */}
+                        {!speedRun && <Part3Intro />}
 
-                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="Your inbox just got a bouncer. The Email Triage Agent now guards the door, letting in what matters and handling the rest. You've got template responses ready, an unsubscribe blitz behind you, and a weekly review system to keep things clean. But email is just one piece of your digital chaos. Next up: we defend your calendar from the meeting creep that's stealing your deep work time. 📅"
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
+
+                        {/* Header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 7</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Email Triage
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Stop drowning. Start commanding.
+                            </p>
+
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>10 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-purple-400">15 min to reclaim your inbox</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </motion.div>
+
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '2.5 hrs', label: 'saved daily' },
+                                { value: '4', label: 'quadrant system' },
+                                { value: '0', label: 'inbox anxiety' },
+                            ]}
+                            primaryCTA="Calculate Email Load"
+                            onCTAClick={scrollToCalculator}
+                        />
+
+                        <PasswordGate partNumber={3}>
+                            {/* CAPTAIN EFFICIENCY - OPENER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="Welcome to Part 3. Your physical world is handled—morning, meals, household, all running smoothly. Now we go where the hours REALLY disappear: your inbox. The average professional spends 28% of their workday on email. That's 2.5 hours daily, 650 hours yearly. Let's take that back. By the end of this chapter, your inbox will serve YOU, not the other way around."
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-cyan-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the essential prompts and triage system. Toggle off for full context.
+                                    </p>
+                                </motion.div>
+                            )}
+
+                            {/* ★ INBOX ANXIETY VISUAL ★ */}
+                            {!speedRun && <InboxAnxietyVisual />}
+
+                            {/* EMAIL STATS IMPACT */}
+                            {!speedRun && <EmailStatsImpact />}
+
+                            {/* EMAIL VOLUME CALCULATOR */}
+                            <section id="email-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Load</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                </div>
+
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading calculator...
+                                    </div>
+                                }>
+                                    <EmailVolumeCalculator />
+                                </Suspense>
+                            </section>
+
+                            {/* THE TRIAGE MATRIX */}
+                            <TriageMatrix />
+
+                            {/* AGENT 1: EMAIL TRIAGE */}
+                            <QuickWin
+                                title="Agent 1: The Email Triage Master"
+                                setupTime="10 min"
+                                prompt={emailTriagePrompt}
+                                variant="default"
                             />
-                        </Suspense>
-                    )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Email Triage Agent (4-quadrant categorization)',
-                            'Email Draft Assistant (quick, tone-matched responses)',
-                            'Weekly Email Review system',
-                            'Auto-response template library',
-                            'Unsubscribe blitz completed',
-                        ]}
-                        nextChapter={8}
-                        nextTitle="Calendar Defense"
-                    />
+                            {/* AGENT 2: EMAIL DRAFTER */}
+                            <QuickWin
+                                title="Agent 2: The Email Draft Assistant"
+                                setupTime="5 min"
+                                prompt={emailDraftPrompt}
+                                variant="secondary"
+                            />
 
-                    </PasswordGate>
-                <ChapterNavigation
-                    previousChapter="/part2/chapter3"
-                    nextChapter="/part3/chapter2"
-                    partNumber={3}
-                    chapterNumber={1}
-                />
+                            {/* AUTO-RESPONSE LIBRARY */}
+                            {!speedRun && <AutoResponseLibrary />}
+
+                            {/* UNSUBSCRIBE BLITZ */}
+                            {!speedRun && <UnsubscribeBlitz />}
+
+                            {/* AGENT 3: WEEKLY REVIEW */}
+                            <QuickWin
+                                title="Agent 3: Weekly Email Review"
+                                setupTime="5 min"
+                                prompt={weeklyReviewPrompt}
+                                variant="tertiary"
+                            />
+
+                            {/* EMAIL BOUNDARIES */}
+                            {!speedRun && <EmailBoundariesCard />}
+
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="Michael"
+                                    role="Marketing director, 200+ emails/day"
+                                    problem="4+ hours daily in email. Missed important messages buried in noise. Constant anxiety."
+                                    result="90 minutes daily. He now leaves work at 5 PM sharp to coach soccer, with zero 'did I miss an email?' anxiety."
+                                    timeframe="3 weeks"
+                                    quote="I used to check email 50+ times a day. Now I check 4 times and get more done. The triage system changed everything."
+                                />
+                            )}
+
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="Your inbox is everyone else's to-do list for you. It's time to take back control."
+                                chapter={7}
+                            />
+
+                            {/* CAPTAIN EFFICIENCY - CLOSER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="Your inbox just got a bouncer. The Email Triage Agent now guards the door, letting in what matters and handling the rest. You've got template responses ready, an unsubscribe blitz behind you, and a weekly review system to keep things clean. But email is just one piece of your digital chaos. Next up: we defend your calendar from the meeting creep that's stealing your deep work time. 📅"
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterComplete
+                                achievements={[
+                                    'Email Triage Agent (4-quadrant categorization)',
+                                    'Email Draft Assistant (quick, tone-matched responses)',
+                                    'Weekly Email Review system',
+                                    'Auto-response template library',
+                                    'Unsubscribe blitz completed',
+                                ]}
+                                nextChapter={8}
+                                nextTitle="Calendar Defense"
+                            />
+
+                        </PasswordGate>
+                        <ChapterNavigation
+                            previousChapter="/part2/chapter3"
+                            nextChapter="/part3/chapter2"
+                            partNumber={3}
+                            chapterNumber={1}
+                        />
 
 
 
 
 
 
+                    </div>
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
+            </SpeedRunContext.Provider>
 
         </>
     );
