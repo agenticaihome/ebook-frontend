@@ -131,6 +131,7 @@ const AnimatedRoutes = () => {
             <Route path="/part5/chapter1" element={<PageTransition><routeConfig.part5chapter1.Component /></PageTransition>} />
             <Route path="/part5/chapter2" element={<PageTransition><routeConfig.part5chapter2.Component /></PageTransition>} />
             <Route path="/part5/chapter3" element={<PageTransition><routeConfig.part5chapter3.Component /></PageTransition>} />
+            <Route path="/part5/chapter4" element={<PageTransition><routeConfig.part5chapter4.Component /></PageTransition>} />
 
             <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
             <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />

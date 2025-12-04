@@ -33,6 +33,7 @@ export const routeConfig = {
     part5chapter1: createRoute(() => import('../pages/chapters/Chapter13')),
     part5chapter2: createRoute(() => import('../pages/chapters/Chapter14')),
     part5chapter3: createRoute(() => import('../pages/chapters/Chapter15')),
+    part5chapter4: createRoute(() => import('../pages/chapters/Chapter16')),
 
     // Legacy Part pages (kept for compatibility, will redirect)
     // part1: createRoute(() => import('../pages/Part1')),
