@@ -8,6 +8,7 @@ import {
     Users, BookOpen, Target, TrendingUp, Gift, MessageCircle,
     Twitter, Linkedin, Award, PartyPopper, Gem, Sunrise, Flag
 } from 'lucide-react';
+import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
@@ -159,8 +160,8 @@ const TransformationVisual = () => {
                 <button
                     onClick={() => setShowAfter(false)}
                     className={`px-6 py-3 rounded-xl font-bold transition-all ${!showAfter
-                            ? 'bg-red-500/20 text-red-400 border border-red-500/50'
-                            : 'bg-slate-800/50 text-slate-500'
+                        ? 'bg-red-500/20 text-red-400 border border-red-500/50'
+                        : 'bg-slate-800/50 text-slate-500'
                         }`}
                 >
                     😰 Before
@@ -168,8 +169,8 @@ const TransformationVisual = () => {
                 <button
                     onClick={() => setShowAfter(true)}
                     className={`px-6 py-3 rounded-xl font-bold transition-all ${showAfter
-                            ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-                            : 'bg-slate-800/50 text-slate-500'
+                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
+                        : 'bg-slate-800/50 text-slate-500'
                         }`}
                 >
                     😌 After
@@ -181,8 +182,8 @@ const TransformationVisual = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={`rounded-2xl p-6 border backdrop-blur-sm ${showAfter
-                        ? 'bg-gradient-to-br from-green-900/30 to-emerald-900/30 border-green-500/40'
-                        : 'bg-gradient-to-br from-red-900/30 to-orange-900/30 border-red-500/40'
+                    ? 'bg-gradient-to-br from-green-900/30 to-emerald-900/30 border-green-500/40'
+                    : 'bg-gradient-to-br from-red-900/30 to-orange-900/30 border-red-500/40'
                     }`}
             >
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -507,8 +508,8 @@ const CallToAction = () => {
                 <button
                     onClick={handleCopy}
                     className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${copied
-                            ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-                            : 'bg-slate-700 text-white hover:bg-slate-600'
+                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
+                        : 'bg-slate-700 text-white hover:bg-slate-600'
                         }`}
                 >
                     {copied ? <CheckCircle size={16} /> : <Copy size={16} />}
@@ -611,63 +612,63 @@ const Chapter16 = () => {
 
                     <PasswordGate partNumber={5}>
                         {/* CAPTAIN EFFICIENCY - OPENER */}
-                    <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                        <CaptainHero
-                            size="lg"
-                            pose="celebrating"
-                            message="Look at you. You started this journey overwhelmed, drowning in tasks, wondering how other people seem to have it together. And now? You have a Life Operating System. Twenty-plus agents working around the clock. Meals planned. Emails handled. Calendar protected. Health tracked. Relationships nurtured. Growth happening. You didn't just read about AI. You BUILT with it. You TRANSFORMED with it. I couldn't be prouder."
-                        />
-                    </Suspense>
+                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                            <CaptainHero
+                                size="lg"
+                                pose="celebrating"
+                                message="Look at you. You started this journey overwhelmed, drowning in tasks, wondering how other people seem to have it together. And now? You have a Life Operating System. Twenty-plus agents working around the clock. Meals planned. Emails handled. Calendar protected. Health tracked. Relationships nurtured. Growth happening. You didn't just read about AI. You BUILT with it. You TRANSFORMED with it. I couldn't be prouder."
+                            />
+                        </Suspense>
 
-                    {/* BEFORE / AFTER */}
-                    <TransformationVisual />
+                        {/* BEFORE / AFTER */}
+                        <TransformationVisual />
 
-                    {/* IMPACT RESULTS */}
-                    <ImpactResults />
+                        {/* IMPACT RESULTS */}
+                        <ImpactResults />
 
-                    {/* JOURNEY RECAP */}
-                    <JourneyRecap />
+                        {/* JOURNEY RECAP */}
+                        <JourneyRecap />
 
-                    {/* AGENT ARMY */}
-                    <AgentArmySummary />
+                        {/* AGENT ARMY */}
+                        <AgentArmySummary />
 
-                    {/* FUTURE VISION */}
-                    <FutureVision />
+                        {/* FUTURE VISION */}
+                        <FutureVision />
 
-                    {/* SHAREABLE QUOTE */}
-                    <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
-                        <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-3xl" />
+                        {/* SHAREABLE QUOTE */}
+                        <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-3xl" />
 
-                        <div className="relative text-center">
-                            <div className="text-6xl text-purple-500/30 font-serif leading-none mb-2">"</div>
-                            <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-4">
-                                You didn't just learn about AI.
-                                <br />
-                                <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                                    You built a new life with it.
-                                </span>
-                            </p>
-                            <span className="text-slate-500 text-sm">— The Doctor of Digital Systems</span>
+                            <div className="relative text-center">
+                                <div className="text-6xl text-purple-500/30 font-serif leading-none mb-2">"</div>
+                                <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-4">
+                                    You didn't just learn about AI.
+                                    <br />
+                                    <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                                        You built a new life with it.
+                                    </span>
+                                </p>
+                                <span className="text-slate-500 text-sm">— The Doctor of Digital Systems</span>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* CALL TO ACTION */}
-                    <CallToAction />
+                        {/* CALL TO ACTION */}
+                        <CallToAction />
 
-                                            {/* CAPTAIN CLOSER */}
-                    <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                        <CaptainHero
-                            size="md"
-                            pose="waving"
-                            message="This isn't goodbye—it's the beginning. Your agents will keep working. Your system will keep evolving. And you? You'll keep getting better at this. Remember: the goal was never to be perfect. It was to have a system that handles the chaos so YOU can focus on what matters. Mission accomplished. Now go live your new life. I'll be here if you need me. 💜"
-                        />
-                    </Suspense>
+                        {/* CAPTAIN CLOSER */}
+                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                            <CaptainHero
+                                size="md"
+                                pose="waving"
+                                message="This isn't goodbye—it's the beginning. Your agents will keep working. Your system will keep evolving. And you? You'll keep getting better at this. Remember: the goal was never to be perfect. It was to have a system that handles the chaos so YOU can focus on what matters. Mission accomplished. Now go live your new life. I'll be here if you need me. 💜"
+                            />
+                        </Suspense>
 
-                    {/* FINAL CELEBRATION */}
-                    <FinalCelebration />
+                        {/* FINAL CELEBRATION */}
+                        <FinalCelebration />
 
-                </PasswordGate>
+                    </PasswordGate>
 
 
 

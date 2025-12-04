@@ -10,6 +10,7 @@ import {
     Sliders, Cpu, Network, BookOpen, PenTool, Repeat, Gauge,
     Users, Rocket, Award, TrendingUp
 } from 'lucide-react';
+import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
@@ -352,8 +353,8 @@ Tone: Professional but warm`,
                         key={i}
                         onClick={() => setActiveExample(i)}
                         className={`px-4 py-2 rounded-lg text-sm transition-all ${activeExample === i
-                                ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
-                                : 'bg-slate-800/50 text-slate-500 hover:text-slate-300'
+                            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                            : 'bg-slate-800/50 text-slate-500 hover:text-slate-300'
                             }`}
                     >
                         {ex.context}
@@ -478,8 +479,8 @@ const CRAFTFramework = () => {
                         key={i}
                         onClick={() => setActiveStep(i)}
                         className={`flex-1 py-3 rounded-xl font-bold text-2xl transition-all ${activeStep === i
-                                ? `${bgColors[step.color]} ${textColors[step.color]}`
-                                : 'bg-slate-800/50 text-slate-500 hover:text-slate-300'
+                            ? `${bgColors[step.color]} ${textColors[step.color]}`
+                            : 'bg-slate-800/50 text-slate-500 hover:text-slate-300'
                             }`}
                     >
                         {step.letter}
@@ -933,46 +934,46 @@ const Chapter14 = () => {
 
                     <PasswordGate partNumber={5}>
                         {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="You have the system. It works. But what if I told you there's another level? Custom agents built from scratch for YOUR unique situations. Multi-agent chains that handle complex workflows with a single trigger. Prompt engineering techniques that get dramatically better results. Welcome to power user mode. Let's turn you from user to MASTER."
-                            />
-                        </Suspense>
-                    )}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="default"
+                                    message="You have the system. It works. But what if I told you there's another level? Custom agents built from scratch for YOUR unique situations. Multi-agent chains that handle complex workflows with a single trigger. Prompt engineering techniques that get dramatically better results. Welcome to power user mode. Let's turn you from user to MASTER."
+                                />
+                            </Suspense>
+                        )}
 
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing key techniques only. Toggle off for interactive builders and examples.
-                            </p>
-                        </motion.div>
-                    )}
+                        {/* Speed Run Notice */}
+                        {speedRun && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                            >
+                                <div className="flex items-center gap-2 text-cyan-400">
+                                    <Zap size={18} />
+                                    <span className="font-bold">Speed Run Mode</span>
+                                </div>
+                                <p className="text-slate-400 text-sm mt-1">
+                                    Showing key techniques only. Toggle off for interactive builders and examples.
+                                </p>
+                            </motion.div>
+                        )}
 
-                    {/* BEFORE/AFTER TRANSFORMATION */}
-                    {!speedRun && <PromptTransformation />}
+                        {/* BEFORE/AFTER TRANSFORMATION */}
+                        {!speedRun && <PromptTransformation />}
 
-                    {/* CRAFT FRAMEWORK */}
-                    <section id="craft-framework">
-                        <CRAFTFramework />
-                    </section>
+                        {/* CRAFT FRAMEWORK */}
+                        <section id="craft-framework">
+                            <CRAFTFramework />
+                        </section>
 
-                    {/* QUICK WIN: CRAFT Prompt Builder */}
-                    <QuickWin
-                        title="CRAFT Prompt Builder"
-                        description="Use this meta-prompt to build any agent using the CRAFT framework."
-                        prompt={`You are my Prompt Engineering Assistant. Help me build a perfect agent prompt using the CRAFT framework.
+                        {/* QUICK WIN: CRAFT Prompt Builder */}
+                        <QuickWin
+                            title="CRAFT Prompt Builder"
+                            description="Use this meta-prompt to build any agent using the CRAFT framework."
+                            prompt={`You are my Prompt Engineering Assistant. Help me build a perfect agent prompt using the CRAFT framework.
 
 Ask me these questions one at a time:
 
@@ -989,20 +990,20 @@ Ask me these questions one at a time:
 After I answer all 5, generate a complete, polished prompt I can copy and use.
 
 Format the final prompt clearly with headers for each CRAFT element.`}
-                    />
+                        />
 
-                    {/* CUSTOM AGENT BUILDER */}
-                    {!speedRun && <CustomAgentBuilder />}
+                        {/* CUSTOM AGENT BUILDER */}
+                        {!speedRun && <CustomAgentBuilder />}
 
-                    {/* MULTI-AGENT CHAINS */}
-                    {!speedRun && <MultiAgentChains />}
+                        {/* MULTI-AGENT CHAINS */}
+                        {!speedRun && <MultiAgentChains />}
 
-                    {/* QUICK WIN: Chain Builder */}
-                    <QuickWin
-                        variant="secondary"
-                        title="Multi-Agent Chain Designer"
-                        description="Create complex workflows that trigger multiple agents in sequence."
-                        prompt={`You are my Workflow Automation Designer. Help me create a multi-agent chain.
+                        {/* QUICK WIN: Chain Builder */}
+                        <QuickWin
+                            variant="secondary"
+                            title="Multi-Agent Chain Designer"
+                            description="Create complex workflows that trigger multiple agents in sequence."
+                            prompt={`You are my Workflow Automation Designer. Help me create a multi-agent chain.
 
 When I describe a situation or trigger, help me design:
 
@@ -1019,20 +1020,20 @@ Example chains to inspire:
 - "Birthday party for [name]" → Calendar (block prep time) → Budget (check party fund) → Contacts (guest list) → Meals (party menu)
 
 Ask me what workflow I want to automate, then design the chain step by step.`}
-                    />
+                        />
 
-                    {/* VOICE & MOBILE */}
-                    {!speedRun && <VoiceMobileIntegration />}
+                        {/* VOICE & MOBILE */}
+                        {!speedRun && <VoiceMobileIntegration />}
 
-                    {/* CASE STUDY */}
-                    {!speedRun && <PowerUserCaseStudy />}
+                        {/* CASE STUDY */}
+                        {!speedRun && <PowerUserCaseStudy />}
 
-                    {/* QUICK WIN: Voice Command Setup */}
-                    <QuickWin
-                        variant="tertiary"
-                        title="Voice Command Translator"
-                        description="Convert natural voice commands into structured agent requests."
-                        prompt={`You are my Voice Command Interpreter. I'll speak naturally, and you translate into the right agent action.
+                        {/* QUICK WIN: Voice Command Setup */}
+                        <QuickWin
+                            variant="tertiary"
+                            title="Voice Command Translator"
+                            description="Convert natural voice commands into structured agent requests."
+                            prompt={`You are my Voice Command Interpreter. I'll speak naturally, and you translate into the right agent action.
 
 Understand these shorthand commands:
 
@@ -1059,40 +1060,40 @@ When I give a voice command, respond with:
 4. Any clarifying questions
 
 Keep responses brief - I'm probably multitasking!`}
-                    />
+                        />
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="The difference between a good agent and a great agent is in the prompt. CRAFT your way to 10x better results."
-                        chapter={14}
-                    />
+                        {/* SHAREABLE QUOTE */}
+                        <ShareableQuote
+                            quote="The difference between a good agent and a great agent is in the prompt. CRAFT your way to 10x better results."
+                            chapter={14}
+                        />
 
-                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="You now have the tools to build ANY agent you need. The CRAFT framework for perfect prompts. Custom agent creation for unique situations. Multi-agent chains for complex workflows. Voice and mobile integration for on-the-go access. You're not just using AI—you're MASTERING it. But what happens when things go wrong? Next chapter: Troubleshooting. Because even the best systems need maintenance. 🔧"
-                            />
-                        </Suspense>
-                    )}
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="You now have the tools to build ANY agent you need. The CRAFT framework for perfect prompts. Custom agent creation for unique situations. Multi-agent chains for complex workflows. Voice and mobile integration for on-the-go access. You're not just using AI—you're MASTERING it. But what happens when things go wrong? Next chapter: Troubleshooting. Because even the best systems need maintenance. 🔧"
+                                />
+                            </Suspense>
+                        )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'CRAFT framework for perfect prompts',
-                            'Before/after prompt transformation',
-                            'Custom agent creation process',
-                            'Multi-agent chain design',
-                            'Voice & mobile integration',
-                            'Power user techniques mastered',
-                        ]}
-                        nextChapter={15}
-                        nextTitle="Troubleshooting"
-                    />
+                        {/* CHAPTER COMPLETE */}
+                        <ChapterComplete
+                            achievements={[
+                                'CRAFT framework for perfect prompts',
+                                'Before/after prompt transformation',
+                                'Custom agent creation process',
+                                'Multi-agent chain design',
+                                'Voice & mobile integration',
+                                'Power user techniques mastered',
+                            ]}
+                            nextChapter={15}
+                            nextTitle="Troubleshooting"
+                        />
 
-                </PasswordGate>
+                    </PasswordGate>
 
 
 

@@ -9,6 +9,7 @@ import {
     MessageSquare, Repeat, TrendingDown, TrendingUp, Activity,
     FileQuestion, Clipboard, Heart, AlertCircle, Timer, RotateCcw
 } from 'lucide-react';
+import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
@@ -720,46 +721,46 @@ const Chapter15 = () => {
 
                     <PasswordGate partNumber={5}>
                         {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Here's a secret: every system breaks sometimes. Your car needs oil changes. Your phone needs updates. Your agents need maintenance too. This isn't a failure—it's normal. The difference between frustrated users and power users? Knowing how to diagnose and fix problems quickly. Let's make you self-sufficient."
-                            />
-                        </Suspense>
-                    )}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="default"
+                                    message="Here's a secret: every system breaks sometimes. Your car needs oil changes. Your phone needs updates. Your agents need maintenance too. This isn't a failure—it's normal. The difference between frustrated users and power users? Knowing how to diagnose and fix problems quickly. Let's make you self-sufficient."
+                                />
+                            </Suspense>
+                        )}
 
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-orange-900/30 rounded-xl p-4 border border-orange-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-orange-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing essential fixes only. Toggle off for interactive diagnostics.
-                            </p>
-                        </motion.div>
-                    )}
+                        {/* Speed Run Notice */}
+                        {speedRun && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="bg-orange-900/30 rounded-xl p-4 border border-orange-500/40 backdrop-blur-sm mb-8"
+                            >
+                                <div className="flex items-center gap-2 text-orange-400">
+                                    <Zap size={18} />
+                                    <span className="font-bold">Speed Run Mode</span>
+                                </div>
+                                <p className="text-slate-400 text-sm mt-1">
+                                    Showing essential fixes only. Toggle off for interactive diagnostics.
+                                </p>
+                            </motion.div>
+                        )}
 
-                    {/* COMMON PROBLEMS */}
-                    <section id="common-problems">
-                        <CommonProblemsGrid />
-                    </section>
+                        {/* COMMON PROBLEMS */}
+                        <section id="common-problems">
+                            <CommonProblemsGrid />
+                        </section>
 
-                    {/* DIAGNOSTIC FLOWCHART */}
-                    {!speedRun && <DiagnosticFlowchart />}
+                        {/* DIAGNOSTIC FLOWCHART */}
+                        {!speedRun && <DiagnosticFlowchart />}
 
-                    {/* QUICK WIN: System Health Check */}
-                    <QuickWin
-                        title="System Health Check Agent"
-                        description="Run a diagnostic on your entire Life OS to find issues before they become problems."
-                        prompt={`You are my System Health Check Agent. Help me audit my Life Operating System.
+                        {/* QUICK WIN: System Health Check */}
+                        <QuickWin
+                            title="System Health Check Agent"
+                            description="Run a diagnostic on your entire Life OS to find issues before they become problems."
+                            prompt={`You are my System Health Check Agent. Help me audit my Life Operating System.
 
 Ask me about each agent category:
 
@@ -786,17 +787,17 @@ After the audit, provide:
 - Missing coverage (new agents to consider)
 
 Keep it actionable—I want a clear to-do list.`}
-                    />
+                        />
 
-                    {/* MAINTENANCE SCHEDULE */}
-                    {!speedRun && <MaintenanceSchedule />}
+                        {/* MAINTENANCE SCHEDULE */}
+                        {!speedRun && <MaintenanceSchedule />}
 
-                    {/* QUICK WIN: Prompt Doctor */}
-                    <QuickWin
-                        variant="secondary"
-                        title="Prompt Doctor"
-                        description="Diagnose and fix underperforming prompts with targeted improvements."
-                        prompt={`You are my Prompt Doctor. I'll share a prompt that isn't working well, and you'll diagnose and fix it.
+                        {/* QUICK WIN: Prompt Doctor */}
+                        <QuickWin
+                            variant="secondary"
+                            title="Prompt Doctor"
+                            description="Diagnose and fix underperforming prompts with targeted improvements."
+                            prompt={`You are my Prompt Doctor. I'll share a prompt that isn't working well, and you'll diagnose and fix it.
 
 When I share a problematic prompt, analyze it for:
 
@@ -826,17 +827,17 @@ For each issue found:
 - Provide the fixed version
 
 Then give me the complete, improved prompt I can copy and use.`}
-                    />
+                        />
 
-                    {/* WHEN TO START FRESH */}
-                    {!speedRun && <WhenToStartFresh />}
+                        {/* WHEN TO START FRESH */}
+                        {!speedRun && <WhenToStartFresh />}
 
-                    {/* QUICK WIN: Fresh Start */}
-                    <QuickWin
-                        variant="tertiary"
-                        title="Fresh Start Builder"
-                        description="When fixing isn't worth it, build a better replacement from scratch."
-                        prompt={`You are my Fresh Start Builder. I have an agent that's beyond repair—help me build a better replacement.
+                        {/* QUICK WIN: Fresh Start */}
+                        <QuickWin
+                            variant="tertiary"
+                            title="Fresh Start Builder"
+                            description="When fixing isn't worth it, build a better replacement from scratch."
+                            prompt={`You are my Fresh Start Builder. I have an agent that's beyond repair—help me build a better replacement.
 
 First, ask me:
 1. What was the OLD agent supposed to do?
@@ -858,40 +859,40 @@ Include:
 - Updates for how my needs have evolved
 
 Give me the complete new prompt, ready to use.`}
-                    />
+                        />
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="The best systems aren't the ones that never break. They're the ones you know how to fix."
-                        chapter={15}
-                    />
+                        {/* SHAREABLE QUOTE */}
+                        <ShareableQuote
+                            quote="The best systems aren't the ones that never break. They're the ones you know how to fix."
+                            chapter={15}
+                        />
 
-                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="You're now self-sufficient. When agents misbehave, you know how to diagnose the problem. When prompts underperform, you can fix them. When systems need maintenance, you have a schedule. You're not dependent on anyone else to keep your Life OS running. One chapter left. Let's see how far you've come—and where you're going. The finale awaits. 🌟"
-                            />
-                        </Suspense>
-                    )}
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="You're now self-sufficient. When agents misbehave, you know how to diagnose the problem. When prompts underperform, you can fix them. When systems need maintenance, you have a schedule. You're not dependent on anyone else to keep your Life OS running. One chapter left. Let's see how far you've come—and where you're going. The finale awaits. 🌟"
+                                />
+                            </Suspense>
+                        )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            '6 common problems and their fixes',
-                            'Diagnostic flowchart mastery',
-                            'System Health Check agent',
-                            'Maintenance schedule established',
-                            'Prompt Doctor for repairs',
-                            'Fresh Start process for rebuilds',
-                        ]}
-                        nextChapter={16}
-                        nextTitle="Your New Life"
-                    />
+                        {/* CHAPTER COMPLETE */}
+                        <ChapterComplete
+                            achievements={[
+                                '6 common problems and their fixes',
+                                'Diagnostic flowchart mastery',
+                                'System Health Check agent',
+                                'Maintenance schedule established',
+                                'Prompt Doctor for repairs',
+                                'Fresh Start process for rebuilds',
+                            ]}
+                            nextChapter={16}
+                            nextTitle="Your New Life"
+                        />
 
-                </PasswordGate>
+                    </PasswordGate>
 
 
 
