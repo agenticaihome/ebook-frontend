@@ -1,10 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { m } from 'framer-motion';
 
+const STORAGE_KEY = 'chaosCalculator';
+
 const ChaosCalculator = () => {
-    const [weeklyTakeout, setWeeklyTakeout] = useState(100);
-    const [foodWaste, setFoodWaste] = useState(20);
-    const [uselessSubscriptions, setUselessSubscriptions] = useState(50);
+    // Initialize state from localStorage or defaults
+    const [weeklyTakeout, setWeeklyTakeout] = useState(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved).weeklyTakeout : 100;
+    });
+    const [foodWaste, setFoodWaste] = useState(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved).foodWaste : 20;
+    });
+    const [uselessSubscriptions, setUselessSubscriptions] = useState(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved).uselessSubscriptions : 50;
+    });
+
+    // Save to localStorage whenever values change
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            weeklyTakeout,
+            foodWaste,
+            uselessSubscriptions
+        }));
+    }, [weeklyTakeout, foodWaste, uselessSubscriptions]);
 
     // Calculate annual cost
     const annualCost = Math.round(

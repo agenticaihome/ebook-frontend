@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import HowThisWorks from '../../components/common/HowThisWorks';
 
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
@@ -441,8 +442,8 @@ const Chapter1 = () => {
                 <title>Chapter 1: The Everything-Manager | Agentic AI at Home</title>
                 <meta name="description" content="Understanding the mental load of modern life and how AI agents can help you regain control of your time and sanity." />
             </Helmet>
-            
-                        <SpeedRunContext.Provider value={speedRun}>
+
+            <SpeedRunContext.Provider value={speedRun}>
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
@@ -495,7 +496,8 @@ const Chapter1 = () => {
                             onCTAClick={scrollToQuiz}
                         />
 
-                        {/* CAPTAIN EFFICIENCY - OPENER */}
+                        {/* How This Works - Early clarification for non-tech readers */}
+                        <HowThisWorks />
                         {!speedRun && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
