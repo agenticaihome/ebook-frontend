@@ -6,6 +6,8 @@ import { m } from 'framer-motion';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
 import { usePerformanceMode } from './hooks/usePerformanceMode';
+import { useScrollTracking } from './hooks/useScrollTracking';
+import ReactGA from 'react-ga4';
 const TimeBackCalculator = React.lazy(() => import('./components/landing/TimeBackCalculator'));
 const BeforeAfterComparison = React.lazy(() => import('./components/landing/BeforeAfterComparison'));
 const TryThisNow = React.lazy(() => import('./components/common/TryThisNow'));
@@ -21,6 +23,9 @@ export default function SalesPage() {
   const [showCryptoModal, setShowCryptoModal] = useState(false);
   const navigate = useNavigate();
   const isPerformanceMode = usePerformanceMode();
+
+  // Track scroll depth for engagement insights
+  useScrollTracking();
 
   const handlePaymentClick = () => {
     navigate('/payment-guide');

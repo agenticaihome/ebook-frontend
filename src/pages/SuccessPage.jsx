@@ -26,12 +26,20 @@ const SuccessPage = () => {
                     setStatus('success');
                     setMessage('Payment confirmed! Redirecting to account creation...');
 
-                    // Log purchase event
+                    // Log purchase event with dynamic pricing
+                    const actualPrice = result.paymentType === 'stripe' ? 39.99 : 19.99;
                     logPurchase({
                         transaction_id: result.paymentId,
-                        value: 39.99, // Standard price
+                        value: actualPrice,
                         currency: "USD",
-                        items: [{ item_id: "agentic_home_access", item_name: "Agentic AI Home Access" }]
+                        payment_method: result.paymentType || 'stripe',
+                        items: [{
+                            item_id: result.paymentType === 'stripe' ? 'ebook_standard' : 'ebook_crypto',
+                            item_name: `Agentic AI at Home - ${result.paymentType === 'stripe' ? 'Standard' : 'Crypto'} Access`,
+                            price: actualPrice,
+                            quantity: 1,
+                            item_category: 'digital_product'
+                        }]
                     });
 
                     // Wait 2 seconds then redirect

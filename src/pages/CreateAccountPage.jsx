@@ -4,6 +4,7 @@ import { m } from 'framer-motion';
 import { ShieldCheck, Lock, Mail, Loader2, CheckCircle2, AlertTriangle, Check } from 'lucide-react';
 import { api } from '../services/api';
 import { usePageTitle } from '../hooks/usePageTitle';
+import ReactGA from 'react-ga4';
 
 const CreateAccountPage = () => {
     usePageTitle('Create Account');
@@ -13,6 +14,7 @@ const CreateAccountPage = () => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [formStarted, setFormStarted] = useState(false);
 
     // Get payment info from URL params
     const paymentId = searchParams.get('payment_id');
@@ -24,6 +26,12 @@ const CreateAccountPage = () => {
     const handleCreateAccount = async (e) => {
         e.preventDefault();
         setError('');
+
+        // Track form submission
+        ReactGA.event('form_submit', {
+            form_name: 'create_account',
+            payment_type: paymentType
+        });
 
         // Validation
         if (!email || !email.includes('@')) {
