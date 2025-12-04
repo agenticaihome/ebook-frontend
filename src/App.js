@@ -39,10 +39,31 @@ const ScrollToTop = () => {
 const AnimatedRoutes = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const prevLocationRef = React.useRef();
 
-  // Personalization: Track progress
+  // Personalization: Track progress with deduplication
   useEffect(() => {
-    logPageView(location.pathname + location.search);
+    const currentPath = location.pathname + location.search;
+
+    // Only log if path actually changed (prevents redirect double-counts)
+    if (prevLocationRef.current !== currentPath) {
+      logPageView(currentPath);
+      prevLocationRef.current = currentPath;
+    }
+
+    // Preserve first-touch UTM parameters in sessionStorage for attribution
+    const params = new URLSearchParams(location.search);
+    const utmSource = params.get('utm_source');
+
+    if (utmSource && !sessionStorage.getItem('initial_utm_source')) {
+      sessionStorage.setItem('initial_utm_source', utmSource);
+      sessionStorage.setItem('initial_utm_medium', params.get('utm_medium') || '');
+      sessionStorage.setItem('initial_utm_campaign', params.get('utm_campaign') || '');
+      sessionStorage.setItem('initial_utm_content', params.get('utm_content') || '');
+      sessionStorage.setItem('initial_utm_term', params.get('utm_term') || '');
+    }
+
+    // Track last visited route for resume functionality
     if (location.pathname !== '/' && location.pathname !== '/success' && !location.pathname.includes('widget')) {
       localStorage.setItem('last_visited_route', location.pathname);
     }
@@ -161,7 +182,16 @@ const AnimatedRoutes = () => {
 
 function App() {
   useEffect(() => {
-    initGA(process.env.REACT_APP_GA_MEASUREMENT_ID);
+    const measurementId = process.env.REACT_APP_GA_MEASUREMENT_ID || 'G-QDYN0E69MT';
+
+    // Initialize GA4 (React-GA4 handles the script injection)
+    initGA(measurementId);
+
+    // Auto-grant consent for now (TODO: Add cookie banner in future)
+    // This allows tracking to start immediately after consent mode default
+    if (window.grantAnalyticsConsent) {
+      window.grantAnalyticsConsent();
+    }
   }, []);
 
   return (
