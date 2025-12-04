@@ -668,6 +668,10 @@ const Chapter16 = () => {
                     {/* FINAL CELEBRATION */}
                     <FinalCelebration />
 
+                </PasswordGate>
+
+
+
                 </div>
             </div>
         </>

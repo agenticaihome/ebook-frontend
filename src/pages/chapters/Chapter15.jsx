@@ -896,6 +896,12 @@ Give me the complete new prompt, ready to use.`}
 
 
 
+                </PasswordGate>
+
+
+
+
+
                 </div>
             </div>
         </SpeedRunContext.Provider>
