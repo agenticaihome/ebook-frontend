@@ -1021,10 +1021,6 @@ Help me notice patterns before they become problems. Be supportive, not judgment
 
 
 
-                </PasswordGate>
-
-
-
 
 
                 </div>

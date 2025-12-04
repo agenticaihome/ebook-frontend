@@ -1046,10 +1046,6 @@ Help me enter each week with my calendar under control.`;
 
 
 
-                </PasswordGate>
-
-
-
 
 
                 </div>
