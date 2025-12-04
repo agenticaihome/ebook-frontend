@@ -1,9 +1,9 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
-    Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
+    Clock, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Heart, Star, Crown, Trophy, Rocket,
     Sun, Moon, Coffee, Utensils, Home, Mail, Calendar, Brain,
     Users, BookOpen, Target, TrendingUp, Gift, MessageCircle,
@@ -670,11 +670,11 @@ const Chapter16 = () => {
                         <FinalCelebration />
 
                     </PasswordGate>                <ChapterNavigation
-                    previousChapter="/part5/chapter3"
-                    nextChapter={null}
-                    partNumber={5}
-                    chapterNumber={4}
-                />
+                        previousChapter="/part5/chapter3"
+                        nextChapter={null}
+                        partNumber={5}
+                        chapterNumber={4}
+                    />
 
 
 
