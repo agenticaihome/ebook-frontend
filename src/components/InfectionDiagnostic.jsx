@@ -185,9 +185,9 @@ const InfectionDiagnostic = () => {
             const shares = JSON.parse(localStorage.getItem('chaos_shares') || '[]');
             shares.push({ platform, timestamp: new Date().toISOString() });
             localStorage.setItem('chaos_shares', JSON.stringify(shares));
-            console.log(`Tracked share to ${platform}`);
+            localStorage.setItem('chaos_shares', JSON.stringify(shares));
         } catch (e) {
-            console.error("Tracking failed", e);
+            // Silent fail
         }
     };
 

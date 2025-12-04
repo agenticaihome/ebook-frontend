@@ -53,7 +53,7 @@ const ErgoPaymentPage = () => {
                     setTimeRemaining(Math.floor((30 * 60 * 1000 - age) / 1000));
                 }
             } catch (e) {
-                console.error('Failed to restore payment state', e);
+                // Silent fail on state restore
             }
         }
     }, []);
@@ -111,12 +111,10 @@ const ErgoPaymentPage = () => {
             const client = new Client({
                 brokerURL: 'ws://localhost:8080/ws', // TODO: Make this configurable for prod
                 onConnect: () => {
-                    console.log('Connected to WebSocket');
                     client.subscribe(`/topic/payment/${accessCode}`, (message) => {
                         if (message.body) {
                             const update = JSON.parse(message.body);
                             if (update.status === 'CONFIRMED' || update.status === 'PAID') {
-                                console.log('WebSocket Payment Confirmed!');
                                 confirmPayment(update.paymentId); // Assuming paymentId is txId or we fetch it
                                 // If paymentId is just accessCode, we might need to fetch the txId or just trust it.
                                 // For safety, let's do a quick check to get the txId if needed, or if the message has it.
@@ -131,11 +129,10 @@ const ErgoPaymentPage = () => {
                     });
                 },
                 onWebSocketError: (error) => {
-                    console.error('Error with WebSocket', error);
+                    // Silent fail
                 },
                 onStompError: (frame) => {
-                    console.error('Broker reported error: ' + frame.headers['message']);
-                    console.error('Additional details: ' + frame.body);
+                    // Silent fail
                 },
             });
 
@@ -159,7 +156,7 @@ const ErgoPaymentPage = () => {
                 return;
             }
         } catch (err) {
-            console.warn('CoinGecko fetch failed, falling back to backend', err);
+            // Silent fail
         }
 
         // Fallback to backend if CoinGecko fails
@@ -170,7 +167,7 @@ const ErgoPaymentPage = () => {
                 setErgPrice(result.ergPriceUsd);
             }
         } catch (err) {
-            console.error('Failed to fetch quote', err);
+            // Silent fail
         }
     };
 
@@ -217,7 +214,6 @@ const ErgoPaymentPage = () => {
                 toast.error(result.error || 'Payment initialization failed');
             }
         } catch (err) {
-            console.error(err);
             setError('Connection error. Please try again.');
             toast.error('Connection error. Please try again.');
         } finally {
@@ -235,7 +231,7 @@ const ErgoPaymentPage = () => {
                 confirmPayment(result.transactionId);
             }
         } catch (err) {
-            console.error('Auto-check failed', err);
+            // Silent fail
         }
     };
 
@@ -251,7 +247,6 @@ const ErgoPaymentPage = () => {
                 toast.error('Payment not yet confirmed. Please wait a moment and try again.', { id: toastId });
             }
         } catch (err) {
-            console.error('Manual check failed', err);
             toast.error('Connection failed. Please try again.', { id: toastId });
         }
     };
@@ -264,8 +259,6 @@ const ErgoPaymentPage = () => {
         payment.paid = true;
         payment.txId = txId;
         localStorage.setItem('ergo_payment', JSON.stringify(payment));
-
-        console.log('✅ Payment confirmed! Redirecting to account creation...');
 
         // Log purchase event
         logPurchase({
@@ -339,7 +332,6 @@ const ErgoPaymentPage = () => {
                 setWalletError('Connection rejected by user.');
             }
         } catch (err) {
-            console.error('Nautilus connection failed:', err);
             setWalletError('Failed to connect. Please try again.');
         } finally {
             setIsConnectingWallet(false);
@@ -431,7 +423,7 @@ const ErgoPaymentPage = () => {
                                     <div className="mb-10">
                                         <p className="text-slate-400 text-sm uppercase tracking-widest mb-2">Total Amount</p>
                                         <div className="flex items-baseline justify-center gap-3">
-                                            <span className="text-5xl font-bold text-white">$19.99</span>
+                                            <span className="text-3xl md:text-5xl font-bold text-white">$19.99</span>
                                             <span className="text-xl text-slate-400 line-through">$39.99</span>
                                         </div>
 

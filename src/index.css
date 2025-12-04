@@ -13,6 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
+  text-size-adjust: 100%;
 }
 
 code {
@@ -45,8 +46,16 @@ code {
   background: #94a3b8;
 }
 
-/* Captain Efficiency Glow Utilities */
+/* Safe Area Utilities for Mobile */
 @layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+
   .bg-gradient-radial {
     background-image: radial-gradient(circle, var(--tw-gradient-stops));
   }

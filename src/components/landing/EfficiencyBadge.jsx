@@ -27,7 +27,7 @@ Calculate your time back: https://agenticaihome.com`;
                     url: 'https://agenticaihome.com',
                 });
             } catch (err) {
-                console.log('Error sharing:', err);
+                // Silent fail
             }
         } else {
             navigator.clipboard.writeText(shareText);

@@ -13,9 +13,6 @@ const getApiUrl = () => {
 
 const API_URL = getApiUrl();
 
-console.log('Frontend configured with API_URL:', API_URL);
-console.log('Current hostname:', window.location.hostname);
-
 /**
  * Get CSRF token from cookie
  * Backend sets this automatically when CSRF is enabled
@@ -250,7 +247,6 @@ export const api = {
       if (!response.ok) throw new Error('Failed to fetch tip');
       return await response.json();
     } catch (error) {
-      console.error('AI Tip Error:', error);
       return null;
     }
   }

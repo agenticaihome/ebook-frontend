@@ -31,22 +31,18 @@ const CaptainTips = () => {
     const [tip, setTip] = useState('');
 
     useEffect(() => {
-        console.log('✅ CaptainTips mounted - will show tip in 5 seconds');
-
         // Show tip after 5 seconds
         const timer = setTimeout(() => {
             // Pick a random tip
             const randomTip = CAPTAIN_TIPS[Math.floor(Math.random() * CAPTAIN_TIPS.length)];
             setTip(`Captain's Insight: ${randomTip}`);
             setIsVisible(true);
-            console.log('⏰ Showing Captain tip!');
         }, 5000);
 
         return () => clearTimeout(timer);
     }, []);
 
     const closeTip = () => {
-        console.log('🚫 Closing tip');
         setIsVisible(false);
     };
 

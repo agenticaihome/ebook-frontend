@@ -139,7 +139,7 @@ export default function PaymentGuide() {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             placeholder="name@example.com"
-                                            className="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors backdrop-blur-sm"
+                                            className="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3 text-base text-white focus:outline-none focus:border-purple-500 transition-colors backdrop-blur-sm"
                                         />
                                     </div>
 
