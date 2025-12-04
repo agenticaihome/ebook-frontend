@@ -866,8 +866,7 @@ Give me the complete new prompt, ready to use.`}
                         chapter={15}
                     />
 
-                    <PasswordGate partNumber={5}>
-                        {/* CAPTAIN EFFICIENCY - CLOSER */}
+                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero

@@ -958,8 +958,7 @@ Help me maintain genuine professional relationships, not just collect contacts.`
                         chapter={11}
                     />
 
-                    <PasswordGate partNumber={4}>
-                        {/* CAPTAIN EFFICIENCY - CLOSER (Heartfelt) */}
+                                            {/* CAPTAIN EFFICIENCY - CLOSER (Heartfelt) */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero

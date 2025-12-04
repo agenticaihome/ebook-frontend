@@ -992,8 +992,7 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                         chapter={10}
                     />
 
-                    <PasswordGate partNumber={4}>
-                        {/* CAPTAIN EFFICIENCY - CLOSER (Warm, supportive) */}
+                                            {/* CAPTAIN EFFICIENCY - CLOSER (Warm, supportive) */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero

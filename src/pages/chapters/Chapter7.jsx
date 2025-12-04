@@ -965,8 +965,7 @@ Help me start each week with email under control.`;
                         chapter={7}
                     />
 
-                    <PasswordGate partNumber={3}>
-                        {/* CAPTAIN EFFICIENCY - CLOSER */}
+                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
