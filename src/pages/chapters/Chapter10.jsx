@@ -835,8 +835,7 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                 <title>Chapter 10: Health & Wellness | Agentic AI at Home</title>
                 <meta name="description" content="Track and improve your health automatically" />
             </Helmet>
-            
-            
+
         <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">

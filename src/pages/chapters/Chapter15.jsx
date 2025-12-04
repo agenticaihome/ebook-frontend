@@ -1,5 +1,6 @@
 import React, { useState, Suspense, createContext } from 'react';
 import { Helmet } from 'react-helmet-async';
+import ChapterNavigation from '../../components/common/ChapterNavigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,

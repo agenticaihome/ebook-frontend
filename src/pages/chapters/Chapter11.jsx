@@ -804,8 +804,7 @@ Help me maintain genuine professional relationships, not just collect contacts.`
                 <title>Chapter 11: Relationships | Agentic AI at Home</title>
                 <meta name="description" content="Remember birthdays, stay connected, and nurture relationships effortlessly" />
             </Helmet>
-            
-            
+
         <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">

@@ -862,8 +862,7 @@ Help me enter each week with my calendar under control.`;
                 <title>Chapter 8: Calendar Defense | Agentic AI at Home</title>
                 <meta name="description" content="Protect your time from meeting creep and reclaim your schedule" />
             </Helmet>
-            
-            
+
         <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">
