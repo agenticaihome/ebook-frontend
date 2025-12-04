@@ -701,8 +701,8 @@ const Chapter3 = () => {
                 <title>Chapter 3: The Agentic Principles | Agentic AI at Home</title>
                 <meta name="description" content="Core principles for designing effective AI agents that actually work" />
             </Helmet>
-            
-                        <SpeedRunContext.Provider value={speedRun}>
+
+            <SpeedRunContext.Provider value={speedRun}>
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
@@ -890,8 +890,8 @@ Acknowledge these rules, then let's proceed."`}
                             <CaseStudyCard
                                 name="Jennifer"
                                 role="Healthcare administrator, privacy-conscious"
-                                problem="Worried about HIPAA compliance. Avoided AI tools entirely despite needing help."
-                                result="Uses Claude with strict boundaries. 40% faster on admin work, zero compliance issues."
+                                problem="Drowning in patient intake forms but feared HIPAA violations. Avoided AI entirely."
+                                result="Uses 'Tier 1' local processing for sensitive data. Automates scheduling via 'Tier 2' with strict de-identification. 12 hours saved/week."
                                 timeframe="1 month"
                                 quote="I realized privacy isn't about avoiding AI—it's about using it intentionally. Now I get the benefits without the risk."
                             />
