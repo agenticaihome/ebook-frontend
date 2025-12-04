@@ -541,10 +541,17 @@ const Chapter1 = () => {
                                     <p className="text-slate-300 mb-4">
                                         By 6:32 AM, Sarah was sitting in her car, presentation half-ready, wondering how other people made this look easy. Her kids would wake up in an hour. Her husband was traveling. And she couldn't remember if she'd paid the electricity bill.
                                     </p>
-                                    <p className="text-slate-400 italic">
-                                        Three months later, Sarah would wake up to a single notification. Everything she needed—weather, calendar, kids' schedules, that electricity bill—summarized in 30 seconds. She didn't ask for it. Her agent just... handled it.
-                                    </p>
-                                </>
+                                    <div className="bg-cyan-900/20 rounded-lg p-4 border-l-4 border-cyan-500/50 my-4">
+                                        <p className="text-slate-300 mb-2">
+                                            <strong className="text-white">Three months later:</strong> Sarah woke to one notification. Weather, calendar, bills—summarized in 30 seconds.
+                                        </p>
+                                        <p className="text-slate-400 text-sm mb-2">
+                                            But Week 1 was chaos. Her AI agent sent 47 alerts. "Check this." "Reminder." "Update." She almost deleted it.
+                                        </p>
+                                        <p className="text-slate-400 text-sm">
+                                            By Week 3, she'd taught it to surface only what mattered. The agent learned. She slept through the night for the first time in months.
+                                        </p>
+                                    </div>                                </>
                             }
                         />
 
@@ -561,6 +568,17 @@ const Chapter1 = () => {
                                     <StatCard value="23 min" label="to refocus after interruption" color="red" />
                                     <StatCard value="2.5 hrs" label="daily life admin" color="red" />
                                     <StatCard value="60%" label="tasks automatable" color="cyan" />
+                                </div>
+                                {/* Research Citations */}
+                                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                                    <p className="text-slate-400 text-xs mb-2">
+                                        <strong className="text-slate-300">Research sources:</strong>
+                                    </p>
+                                    <ul className="text-slate-500 text-xs space-y-1">
+                                        <li>• 35,000 decisions/day: Cornell University food choice study</li>
+                                        <li>• 23 min refocus: Gloria Mark, UC Irvine attention research</li>
+                                        <li>• 60% automatable: McKinsey Global Institute, 2024</li>
+                                    </ul>
                                 </div>
                             </section>
                         )}
@@ -697,6 +715,41 @@ const Chapter1 = () => {
                                         Loading calculator...
                                     </div>
                                 }>
+                                    {/* OBJECTION HANDLING - "What if I'm not ready?" */}
+                                    {!speedRun && (
+                                        <div className="bg-yellow-900/20 rounded-xl p-6 border-2 border-yellow-500/40 backdrop-blur-sm mb-8">
+                                            <h3 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                                                <HelpCircle className="text-yellow-400" size={24} />
+                                                "Wait, what if I'm not ready?"
+                                            </h3>
+
+                                            <p className="text-slate-300 mb-4">
+                                                You don't need to give AI full access to your calendar, email, or personal data today.
+                                            </p>
+
+                                            <div className="bg-slate-900/50 rounded-lg p-4 mb-4">
+                                                <p className="text-white font-medium mb-2">Start with just a conversation:</p>
+                                                <ul className="space-y-2 text-sm text-slate-300">
+                                                    <li className="flex items-start gap-2">
+                                                        <CheckCircle size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
+                                                        <span>No calendar access required</span>
+                                                    </li>
+                                                    <li className="flex items-start gap-2">
+                                                        <CheckCircle size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
+                                                        <span>No email permission needed</span>
+                                                    </li>
+                                                    <li className="flex items-start gap-2">
+                                                        <CheckCircle size={16} className="text-green-400 mt-0.5 flex-shrink-0" />
+                                                        <span>Just you, the AI, and that task you named</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <p className="text-cyan-400 text-sm">
+                                                <strong>Chapter 3 covers privacy boundaries in detail.</strong> For now, test the conversation approach with the Quick Win above.
+                                            </p>
+                                        </div>
+                                    )}
                                     <MentalLoadCalculator />
                                 </Suspense>
                             </section>
@@ -797,6 +850,14 @@ Then show me what tomorrow's briefing would look like.`}
                                     <li className="flex items-center gap-2 text-sm text-slate-300">
                                         <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
                                         The Observe → Plan → Act → Report loop
+                                    </li>
+                                    <li className="flex items-center gap-2 text-sm text-slate-300 bg-green-900/10 rounded-lg p-2 -mx-2">
+                                        <Zap size={14} className="text-green-400 flex-shrink-0" />
+                                        <span><strong className="text-white">Practical:</strong> ONE copy-paste prompt ready to use in 10 minutes</span>
+                                    </li>
+                                    <li className="flex items-center gap-2 text-sm text-slate-300 bg-green-900/10 rounded-lg p-2 -mx-2">
+                                        <Target size={14} className="text-green-400 flex-shrink-0" />
+                                        <span><strong className="text-white">Action:</strong> The task you'll delete in Chapter 2</span>
                                     </li>
                                 </ul>
                             </div>
