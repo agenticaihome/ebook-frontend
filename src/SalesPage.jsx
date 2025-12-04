@@ -266,6 +266,165 @@ export default function SalesPage() {
           </div>
         </section>
 
+        {/* IRON-CLAD GUARANTEE SECTION */}
+        <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-green-900/10 to-slate-900 border-y border-green-500/20">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-green-500/30 relative overflow-hidden">
+              {/* Decorative glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl"></div>
+
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* Left: Shield Icon */}
+                  <div className="flex-shrink-0">
+                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center border-4 border-green-500/40">
+                      <Shield size={48} className="text-green-400" />
+                    </div>
+                  </div>
+
+                  {/* Right: Copy */}
+                  <div className="flex-1 text-center md:text-left">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                      Our Iron-Clad 30-Day Guarantee
+                    </h2>
+                    <p className="text-lg text-slate-200 leading-relaxed mb-6">
+                      Try the <span className="font-bold text-green-400">complete system</span> for 30 days.
+                      If you don't save at least <span className="font-bold text-white">5 hours in Week 1</span>,
+                      email us and we'll refund <span className="font-bold text-white">100%</span>.
+                      No hoops. No fine print. No questions asked.
+                    </p>
+
+                    <div className="bg-green-900/20 border border-green-500/30 rounded-xl p-4 mb-4">
+                      <p className="text-green-300 font-bold text-center">
+                        "That's how confident we are this works."
+                      </p>
+                      <p className="text-slate-400 text-sm text-center mt-1">— Captain Efficiency</p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm text-slate-300">
+                      <div className="flex items-center gap-2">
+                        <Check size={16} className="text-green-400" />
+                        <span>Full refund within 30 days</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Check size={16} className="text-green-400" />
+                        <span>Keep all bonuses either way</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Check size={16} className="text-green-400" />
+                        <span>Zero risk to you</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* COMPARISON TABLE SECTION */}
+        <section className="py-24 px-6 bg-[#0f0f1a]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">HOW WE STACK UP</h2>
+              <p className="text-slate-400">Most courses teach prompts. We build you a staff.</p>
+            </div>
+
+            {/* Desktop Table */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-slate-700">
+                    <th className="text-left py-4 px-6 text-slate-400 font-normal text-sm uppercase tracking-wide">Feature</th>
+                    <th className="text-center py-4 px-6 text-slate-400 font-normal text-sm uppercase tracking-wide">Other AI Courses</th>
+                    <th className="text-center py-4 px-6 bg-cyan-900/10 border-l border-r border-cyan-500/30">
+                      <div className="text-cyan-400 font-bold text-base">Agentic AI at Home</div>
+                      <div className="text-xs text-slate-400 mt-1">This System</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { feature: 'No coding required', others: '❌', ours: '✅' },
+                    { feature: 'Recovery-aware scheduling', others: '❌', ours: '✅' },
+                    { feature: 'Second Brain integration', others: '❌', ours: '✅' },
+                    { feature: 'Real-world tested (50+ hr weeks)', others: '❌', ours: '✅' },
+                    { feature: 'Multi-agent coordination', others: '❌', ours: '✅' },
+                    { feature: 'Privacy-first approach', others: '⚠️', ours: '✅' },
+                    { feature: 'Interactive tools & calculators', others: '❌', ours: '✅' },
+                    { feature: 'Price', others: '$199-499', ours: '$40', highlight: true }
+                  ].map((row, i) => (
+                    <tr key={i} className={`border-b border-slate-800 hover:bg-slate-800/30 transition-colors ${row.highlight ? 'bg-green-900/10' : ''}`}>
+                      <td className="py-4 px-6 text-slate-200 font-medium">{row.feature}</td>
+                      <td className="py-4 px-6 text-center text-2xl">
+                        {row.others === '❌' && <span className="text-red-400">❌</span>}
+                        {row.others === '⚠️' && <span className="text-yellow-400">⚠️</span>}
+                        {row.others.startsWith('$') && <span className="text-red-400 line-through text-lg">{row.others}</span>}
+                      </td>
+                      <td className="py-4 px-6 text-center bg-cyan-900/5 border-l border-r border-cyan-500/20">
+                        {row.ours === '✅' && <span className="text-green-400 text-2xl">✓</span>}
+                        {row.ours.startsWith('$') && <span className="text-green-400 font-bold text-lg">{row.ours}</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Cards */}
+            <div className="md:hidden space-y-4">
+              {[
+                { feature: 'No coding required', others: false, ours: true },
+                { feature: 'Recovery-aware scheduling', others: false, ours: true },
+                { feature: 'Second Brain integration', others: false, ours: true },
+                { feature: 'Real-world tested (50+ hr weeks)', others: false, ours: true },
+                { feature: 'Multi-agent coordination', others: false, ours: true },
+                { feature: 'Privacy-first approach', others: 'partial', ours: true },
+                { feature: 'Interactive tools & calculators', others: false, ours: true },
+                { feature: 'Price', others: '$199-499', ours: '$40' }
+              ].map((row, i) => (
+                <div key={i} className="bg-slate-800/30 rounded-xl p-4 border border-slate-700">
+                  <div className="font-bold text-white mb-3">{row.feature}</div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center">
+                      <div className="text-xs text-slate-400 mb-2">Other Courses</div>
+                      <div className="text-xl">
+                        {row.others === false && <span className="text-red-400">❌</span>}
+                        {row.others === 'partial' && <span className="text-yellow-400">⚠️</span>}
+                        {typeof row.others === 'string' && row.others.startsWith('$') && (
+                          <span className="text-red-400 line-through">{row.others}</span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-center bg-cyan-900/20 rounded-lg py-2 border border-cyan-500/30">
+                      <div className="text-xs text-cyan-400 mb-2 font-bold">This System</div>
+                      <div className="text-xl">
+                        {row.ours === true && <span className="text-green-400">✓</span>}
+                        {typeof row.ours === 'string' && row.ours.startsWith('$') && (
+                          <span className="text-green-400 font-bold">{row.ours}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="text-center mt-12">
+              <p className="text-slate-300 text-lg mb-6">
+                The choice is clear. Get more value for <span className="text-green-400 font-bold">1/5th the price</span>.
+              </p>
+              <a
+                href="#pricing"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg"
+              >
+                See Pricing Options
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* TRANSFORMATION SECTION */}
         <section className="py-24 px-6 bg-[#0f0f1a] border-y border-slate-800/50">
           <div className="max-w-7xl mx-auto">
