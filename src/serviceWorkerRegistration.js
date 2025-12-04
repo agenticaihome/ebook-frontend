@@ -118,9 +118,8 @@ function checkValidServiceWorker(swUrl, config) {
             }
         })
         .catch(() => {
-        .catch (() => {
-                // Silent fail
-            });
+            // Silent fail
+        });
 }
 
 export function unregister() {
@@ -130,8 +129,7 @@ export function unregister() {
                 registration.unregister();
             })
             .catch((error) => {
-            .catch ((error) => {
-                    // Silent fail
-                });
+                // Silent fail
+            });
     }
 }

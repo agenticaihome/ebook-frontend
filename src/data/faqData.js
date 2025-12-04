@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     BookOpen, CreditCard, User, HelpCircle, FileText,
-    Cpu, Zap, MessageCircle, CheckCircle, AlertTriangle, Mail
+    Cpu, Zap, MessageCircle, CheckCircle, AlertTriangle, Mail, Shield
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
