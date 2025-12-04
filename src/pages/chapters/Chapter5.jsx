@@ -378,8 +378,8 @@ For each suggestion, tell me:
                 <title>Chapter 5: Kitchen & Grocery Automation | Agentic AI at Home</title>
                 <meta name="description" content="Never run out of essentials again with automated grocery management" />
             </Helmet>
-            
-                        <SEO
+
+            <SEO
                 title="Kitchen & Grocery - Agentic AI at Home"
                 description="End 'what's for dinner?' forever. Automated meal planning and grocery lists."
                 canonical="/part2/chapter2"
@@ -523,7 +523,7 @@ For each suggestion, tell me:
                                     problem="$460/week on groceries + takeout. 35% food waste. Constant dinner stress."
                                     result="$235/week average. 10% waste. Kids actually eat what's served (most nights)."
                                     timeframe="8 weeks"
-                                    quote="We went from food chaos to food peace. Sunday planning takes 15 minutes now, and the whole week just... works."
+                                    quote="We went from food chaos to food peace. We generate the plan during Sunday breakfast, and the grocery order is placed by 10 AM. No more mid-week store runs."
                                 />
                             )}
 

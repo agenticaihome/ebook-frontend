@@ -584,8 +584,8 @@ Before generating briefs, ask me:
                 <title>Chapter 4: Morning Routines | Agentic AI at Home</title>
                 <meta name="description" content="Automate your morning briefing and start every day ahead" />
             </Helmet>
-            
-                        <SEO
+
+            <SEO
                 title="Morning Routines - Agentic AI at Home"
                 description="Build the agent you'll actually use every single day. The Morning Brief Agent."
                 canonical="/part2/chapter1"
@@ -739,7 +739,7 @@ Before generating briefs, ask me:
                                     name="David"
                                     role="Software engineer, father of 2"
                                     problem="Checked 6 apps before breakfast. Often forgot kid's activities or deadlines."
-                                    result="One 30-second brief. Zero forgotten events. Calmer mornings for the whole family."
+                                    result="Agent flagged a 7 AM parent-teacher conference he would have slept through. Zero forgotten events since."
                                     timeframe="1 week"
                                     quote="My wife noticed the difference before I did. I'm just... less frantic now. The day starts smoothly instead of in chaos."
                                 />
