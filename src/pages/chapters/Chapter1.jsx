@@ -8,7 +8,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Brain, Sparkles, Share2, Copy, Eye, EyeOff, MessageSquare,
-    AlertTriangle, Target, Lightbulb
+    AlertTriangle, Target, Lightbulb, HelpCircle
 } from 'lucide-react';
 
 // Lazy load interactive components
@@ -557,10 +557,10 @@ const Chapter1 = () => {
                                 </p>
 
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                                    <StatCard value="200+" label="decisions per day" color="red" />
+                                    <StatCard value="35,000" label="decisions per day" color="red" />
                                     <StatCard value="23 min" label="to refocus after interruption" color="red" />
                                     <StatCard value="2.5 hrs" label="daily life admin" color="red" />
-                                    <StatCard value="80%" label="can be automated" color="cyan" />
+                                    <StatCard value="60%" label="tasks automatable" color="cyan" />
                                 </div>
                             </section>
                         )}
