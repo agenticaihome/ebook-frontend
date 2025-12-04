@@ -100,12 +100,23 @@ export default function SalesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-4xl md:text-7xl font-bold mb-6 leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight"
               >
-                Everyone Deserves a
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 block mt-2 mb-4">Personal Assistant.</span>
-                <span className="block text-white">Build Yours Today.</span>
+                <span className="block text-white mb-2">Reclaim 10+ Hours</span>
+                <span className="block text-white mb-2">Every Week With Your</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 block mb-3">AI Personal Staff</span>
               </m.h1>
+
+              <m.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 font-medium"
+              >
+                <span className="block sm:inline">(No Coding Required</span>
+                <span className="hidden sm:inline"> • </span>
+                <span className="block sm:inline">Built in 30 Minutes)</span>
+              </m.div>
 
               <m.p
                 initial={{ opacity: 0, y: 20 }}
@@ -128,7 +139,7 @@ export default function SalesPage() {
                   to="/part1"
                   className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-900/50 flex items-center justify-center gap-2"
                 >
-                  <Zap size={20} /> Start Part 1 (Free • 15 min)
+                  <Zap size={20} /> Start Reclaiming Your Time (Free • 15 min)
                 </Link>
                 <button
                   disabled
