@@ -668,7 +668,14 @@ const Chapter16 = () => {
                         {/* FINAL CELEBRATION */}
                         <FinalCelebration />
 
-                    </PasswordGate>
+                    </PasswordGate>                <ChapterNavigation
+                    previousChapter="/part5/chapter3"
+                    nextChapter={null}
+                    partNumber={5}
+                    chapterNumber={4}
+                />
+
+
 
 
 

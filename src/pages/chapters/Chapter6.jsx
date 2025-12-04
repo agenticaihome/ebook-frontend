@@ -867,7 +867,12 @@ Ask me about my household size and preferences to estimate usage.`;
 
     return (
         <WebbookLayout>
-            <SEO
+            <Helmet>
+                <title>Chapter 6: Household Management | Agentic AI at Home</title>
+                <meta name="description" content="Your home runs itself with smart automation agents" />
+            </Helmet>
+            
+                        <SEO
                 title="Household Management - Agentic AI at Home"
                 description="Automate your home operations. Cleaning, maintenance, and supplies."
                 canonical="/part2/chapter3"

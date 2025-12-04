@@ -1094,6 +1094,13 @@ Keep responses brief - I'm probably multitasking!`}
                         />
 
                     </PasswordGate>
+                <ChapterNavigation
+                    previousChapter="/part5/chapter1"
+                    nextChapter="/part5/chapter3"
+                    partNumber={5}
+                    chapterNumber={2}
+                />
+
 
 
 

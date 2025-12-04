@@ -858,7 +858,12 @@ OUTPUT FORMAT:
 
 Help me enter each week with my calendar under control.`;
 
-    return (
+    return (            <Helmet>
+                <title>Chapter 8: Calendar Defense | Agentic AI at Home</title>
+                <meta name="description" content="Protect your time from meeting creep and reclaim your schedule" />
+            </Helmet>
+            
+            
         <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">
@@ -1042,6 +1047,13 @@ Help me enter each week with my calendar under control.`;
                     />
 
                 </PasswordGate>
+                <ChapterNavigation
+                    previousChapter="/part3/chapter1"
+                    nextChapter="/part3/chapter3"
+                    partNumber={3}
+                    chapterNumber={2}
+                />
+
 
 
 

@@ -893,6 +893,13 @@ Give me the complete new prompt, ready to use.`}
                         />
 
                     </PasswordGate>
+                <ChapterNavigation
+                    previousChapter="/part5/chapter2"
+                    nextChapter="/part5/chapter4"
+                    partNumber={5}
+                    chapterNumber={3}
+                />
+
 
 
 

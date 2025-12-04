@@ -831,7 +831,12 @@ OUTPUT FORMAT:
 
 Help me notice patterns before they become problems. Be supportive, not judgmental.`;
 
-    return (
+    return (            <Helmet>
+                <title>Chapter 10: Health & Wellness | Agentic AI at Home</title>
+                <meta name="description" content="Track and improve your health automatically" />
+            </Helmet>
+            
+            
         <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">
@@ -1017,6 +1022,13 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                     />
 
                 </PasswordGate>
+                <ChapterNavigation
+                    previousChapter="/part3/chapter3"
+                    nextChapter="/part4/chapter2"
+                    partNumber={4}
+                    chapterNumber={1}
+                />
+
 
 
 

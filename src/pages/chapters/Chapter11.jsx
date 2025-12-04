@@ -800,7 +800,12 @@ OUTPUT FORMAT:
 
 Help me maintain genuine professional relationships, not just collect contacts.`;
 
-    return (
+    return (            <Helmet>
+                <title>Chapter 11: Relationships | Agentic AI at Home</title>
+                <meta name="description" content="Remember birthdays, stay connected, and nurture relationships effortlessly" />
+            </Helmet>
+            
+            
         <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">
@@ -984,6 +989,13 @@ Help me maintain genuine professional relationships, not just collect contacts.`
                     />
 
                 </PasswordGate>
+                <ChapterNavigation
+                    previousChapter="/part4/chapter1"
+                    nextChapter="/part4/chapter3"
+                    partNumber={4}
+                    chapterNumber={2}
+                />
+
 
 
 

@@ -882,7 +882,12 @@ OUTPUT FORMAT:
 
 Help me continuously improve my Life Operating System.`;
 
-    return (
+    return (            <Helmet>
+                <title>Chapter 13: Your Life OS | Agentic AI at Home</title>
+                <meta name="description" content="Bringing it all together into a complete life operating system" />
+            </Helmet>
+            
+            
         <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">
@@ -1042,6 +1047,13 @@ Help me continuously improve my Life Operating System.`;
                     />
 
                 </PasswordGate>
+                <ChapterNavigation
+                    previousChapter="/part4/chapter3"
+                    nextChapter="/part5/chapter2"
+                    partNumber={5}
+                    chapterNumber={1}
+                />
+
 
 
 

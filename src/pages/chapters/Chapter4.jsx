@@ -579,7 +579,12 @@ Before generating briefs, ask me:
 
     return (
         <WebbookLayout>
-            <SEO
+            <Helmet>
+                <title>Chapter 4: Morning Routines | Agentic AI at Home</title>
+                <meta name="description" content="Automate your morning briefing and start every day ahead" />
+            </Helmet>
+            
+                        <SEO
                 title="Morning Routines - Agentic AI at Home"
                 description="Build the agent you'll actually use every single day. The Morning Brief Agent."
                 canonical="/part2/chapter1"

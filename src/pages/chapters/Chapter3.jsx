@@ -697,7 +697,12 @@ const Chapter3 = () => {
 
     return (
         <WebbookLayout>
-            <SpeedRunContext.Provider value={speedRun}>
+            <Helmet>
+                <title>Chapter 3: The Agentic Principles | Agentic AI at Home</title>
+                <meta name="description" content="Core principles for designing effective AI agents that actually work" />
+            </Helmet>
+            
+                        <SpeedRunContext.Provider value={speedRun}>
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 

@@ -373,7 +373,12 @@ For each suggestion, tell me:
 
     return (
         <WebbookLayout>
-            <SEO
+            <Helmet>
+                <title>Chapter 5: Kitchen & Grocery Automation | Agentic AI at Home</title>
+                <meta name="description" content="Never run out of essentials again with automated grocery management" />
+            </Helmet>
+            
+                        <SEO
                 title="Kitchen & Grocery - Agentic AI at Home"
                 description="End 'what's for dinner?' forever. Automated meal planning and grocery lists."
                 canonical="/part2/chapter2"
