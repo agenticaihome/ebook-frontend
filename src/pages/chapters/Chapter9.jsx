@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 // Lazy load interactive components
-// const AdminInventoryCalculator = React.lazy(() => import('../../components/AdminInventoryCalculator'));
+const AdminInventoryCalculator = React.lazy(() => import('../../components/AdminInventoryCalculator'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
 // ============================================
@@ -408,8 +408,8 @@ const AdminInventoryBuilder = () => {
                                     key={i}
                                     onClick={() => toggleItem(cat.name, i)}
                                     className={`flex items-center gap-2 text-sm cursor-pointer p-2 rounded-lg transition-all ${item.tracked
-                                            ? 'bg-green-900/30 text-green-400'
-                                            : 'text-slate-400 hover:bg-slate-800/50'
+                                        ? 'bg-green-900/30 text-green-400'
+                                        : 'text-slate-400 hover:bg-slate-800/50'
                                         }`}
                                 >
                                     <div className={`w-4 h-4 rounded flex items-center justify-center ${item.tracked ? 'bg-green-500' : 'border border-slate-600'
@@ -485,8 +485,8 @@ const SubscriptionAudit = () => {
                     <div
                         key={i}
                         className={`flex items-center justify-between p-3 rounded-xl border transition-all ${sub.keep === true ? 'bg-green-900/20 border-green-500/30' :
-                                sub.keep === false ? 'bg-red-900/20 border-red-500/30 opacity-60' :
-                                    'bg-slate-900/50 border-slate-700'
+                            sub.keep === false ? 'bg-red-900/20 border-red-500/30 opacity-60' :
+                                'bg-slate-900/50 border-slate-700'
                             }`}
                     >
                         <div>
@@ -501,8 +501,8 @@ const SubscriptionAudit = () => {
                             <button
                                 onClick={() => setDecision(i, true)}
                                 className={`px-3 py-1 rounded-lg text-sm transition-all ${sub.keep === true
-                                        ? 'bg-green-500 text-white'
-                                        : 'bg-slate-700 text-slate-400 hover:bg-green-500/20 hover:text-green-400'
+                                    ? 'bg-green-500 text-white'
+                                    : 'bg-slate-700 text-slate-400 hover:bg-green-500/20 hover:text-green-400'
                                     }`}
                             >
                                 Keep
@@ -510,8 +510,8 @@ const SubscriptionAudit = () => {
                             <button
                                 onClick={() => setDecision(i, false)}
                                 className={`px-3 py-1 rounded-lg text-sm transition-all ${sub.keep === false
-                                        ? 'bg-red-500 text-white'
-                                        : 'bg-slate-700 text-slate-400 hover:bg-red-500/20 hover:text-red-400'
+                                    ? 'bg-red-500 text-white'
+                                    : 'bg-slate-700 text-slate-400 hover:bg-red-500/20 hover:text-red-400'
                                     }`}
                             >
                                 Cancel
