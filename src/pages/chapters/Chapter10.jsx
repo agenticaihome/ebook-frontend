@@ -727,7 +727,7 @@ const Chapter10 = () => {
         document.getElementById('health-calculator')?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const healthCoordinatorPrompt = \`You are my Health Coordinator Agent. Your job is to help me stay on top of preventive care and health appointments.
+    const healthCoordinatorPrompt = `You are my Health Coordinator Agent. Your job is to help me stay on top of preventive care and health appointments.
 
 MY HEALTH PROFILE:
 - Age: [Your age]
@@ -766,9 +766,9 @@ OUTPUT FORMAT:
 💊 Medications:
 - Refills needed: [List]
 
-Help me never miss a health appointment or run out of medication.\`;
+Help me never miss a health appointment or run out of medication.`;
 
-    const medicationManagerPrompt = \`You are my Medication Manager Agent. Your job is to help me track medications, timing, and refills.
+    const medicationManagerPrompt = `You are my Medication Manager Agent. Your job is to help me track medications, timing, and refills.
 
 MY MEDICATIONS:
 [List your medications with dosage and frequency]
@@ -803,9 +803,9 @@ OUTPUT FORMAT:
 📅 Refills Needed Soon:
 - [Medication] - [X days remaining]
 
-Help me take the right medications at the right time, every time.\`;
+Help me take the right medications at the right time, every time.`;
 
-    const wellnessTrackerPrompt = \`You are my Wellness Tracker Agent. Your job is to help me maintain daily wellness habits and notice patterns.
+    const wellnessTrackerPrompt = `You are my Wellness Tracker Agent. Your job is to help me maintain daily wellness habits and notice patterns.
 
 DAILY CHECK-IN (ask me each morning or evening):
 1. How's your mood? (1-5 or great/okay/low)
@@ -847,7 +847,7 @@ OUTPUT FORMAT:
 - Sleep avg: [X hrs]
 - Mood trend: [stable/improving/declining]
 
-Help me notice patterns before they become problems. Be supportive, not judgmental.\`;
+Help me notice patterns before they become problems. Be supportive, not judgmental.`;
 
     return (
             <>
