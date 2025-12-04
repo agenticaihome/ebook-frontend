@@ -263,10 +263,10 @@ const DecisionTree = () => {
     const [answer, setAnswer] = useState(null);
 
     const recommendations = {
-        google: { name: 'Gemini', reason: 'Deep integration with your existing Google tools' },
-        microsoft: { name: 'Microsoft Copilot', reason: 'Already in your Microsoft 365 workflow' },
-        privacy: { name: 'Claude', reason: 'Best balance of capability and data handling' },
-        unsure: { name: 'Claude', reason: 'Most versatile starting point—you can always switch' },
+        google: { name: 'Gemini', reason: 'Reads your Gmail/Calendar natively—instant context' },
+        microsoft: { name: 'Microsoft Copilot', reason: 'Built into Office 365—no context-switching' },
+        privacy: { name: 'Claude', reason: 'Data not used for training. Privacy + strong reasoning.' },
+        unsure: { name: 'Claude', reason: 'No lock-in, works everywhere. Switch anytime.' },
     };
 
     return (
@@ -551,8 +551,8 @@ const Chapter2 = () => {
                 <title>Chapter 2: Building Your AI Team | Agentic AI at Home</title>
                 <meta name="description" content="How to create and manage your first AI agents for maximum efficiency" />
             </Helmet>
-            
-                        <SpeedRunContext.Provider value={speedRun}>
+
+            <SpeedRunContext.Provider value={speedRun}>
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
@@ -728,6 +728,12 @@ const Chapter2 = () => {
                         {!speedRun && (
                             <section className="mb-10">
                                 <DecisionTree />
+
+                                <div className="bg-slate-900/50 rounded-lg p-3 border border-slate-700 mt-4">
+                                    <p className="text-slate-400 text-sm">
+                                        <strong className="text-white">Don't stress the choice.</strong> All these tools do 90% of the same things. Pick one, try it for a week. Switching later takes 10 minutes.
+                                    </p>
+                                </div>
                             </section>
                         )}
 
@@ -746,10 +752,10 @@ const Chapter2 = () => {
                             <CaseStudyCard
                                 name="Marcus"
                                 role="Sales manager, father of 3"
-                                problem="Forgot to follow up with leads. Missed his daughter's recital reminder."
-                                result="Zero dropped leads. Phone buzzes only for what matters."
+                                problem="Forgot to follow up with 3 high-value leads in one week. Missed his daughter's recital—she noticed."
+                                result="100% lead follow-up rate. Agent sends 9 AM summary + evening family reminder. Zero guilt."
                                 timeframe="2 weeks"
-                                quote="I stopped being the person who forgets things. That identity shift was worth more than the hours saved."
+                                quote="I stopped being the person who forgets things. My daughter said 'Dad always remembers now.' That identity shift was worth more than the hours saved."
                             />
                         )}
 
