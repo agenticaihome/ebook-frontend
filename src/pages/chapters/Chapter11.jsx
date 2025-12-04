@@ -1,16 +1,15 @@
 import { Helmet } from 'react-helmet-async';
-import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import PasswordGate from '../../components/common/PasswordGate';
 
-import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, Suspense, createContext } from 'react';
+import { motion } from 'framer-motion';
 import {
-    Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
+    Clock, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, Heart, Users, UserPlus,
-    Calendar, MessageCircle, Gift, Phone, Mail, Coffee, Home,
-    Briefcase, Star, AlertCircle, TrendingDown, Bell, Smile,
-    MapPin, Cake, Award, Bookmark, Link2, UserCheck, HeartHandshake
+    Calendar, MessageCircle, Gift, Phone, Coffee,
+    Star, Cake, Award,
+    Link2
 } from 'lucide-react';
 
 // Lazy load interactive components
@@ -292,8 +291,8 @@ const RelationshipFadeVisual = () => {
                         >
                             <div
                                 className={`flex items-center justify-between p-3 rounded-xl border transition-all cursor-pointer ${hoveredPerson === i
-                                        ? 'bg-rose-900/30 border-rose-500/50'
-                                        : 'bg-slate-900/50 border-slate-700'
+                                    ? 'bg-rose-900/30 border-rose-500/50'
+                                    : 'bg-slate-900/50 border-slate-700'
                                     }`}
                                 style={{ opacity: hoveredPerson === i ? 1 : 0.5 + person.opacity }}
                             >
@@ -343,7 +342,6 @@ const RelationshipCircles = () => {
     const circles = [
         {
             name: 'Inner Circle',
-            radius: 'closest',
             color: 'rose',
             frequency: 'Weekly',
             count: '5-7 people',
@@ -352,7 +350,6 @@ const RelationshipCircles = () => {
         },
         {
             name: 'Close Circle',
-            radius: 'close',
             color: 'orange',
             frequency: 'Monthly',
             count: '15-20 people',
@@ -361,7 +358,6 @@ const RelationshipCircles = () => {
         },
         {
             name: 'Maintain Circle',
-            radius: 'maintain',
             color: 'yellow',
             frequency: 'Quarterly',
             count: '50-100 people',
@@ -370,7 +366,6 @@ const RelationshipCircles = () => {
         },
         {
             name: 'Reconnect Circle',
-            radius: 'reconnect',
             color: 'blue',
             frequency: 'Yearly',
             count: '100+ people',
@@ -503,6 +498,13 @@ const PeopleMapper = () => {
                                 <option key={c.value} value={c.value}>{c.label}</option>
                             ))}
                         </select>
+                        <input
+                            type="text"
+                            value={person.lastContact}
+                            onChange={(e) => updatePerson(i, 'lastContact', e.target.value)}
+                            placeholder="Last contact"
+                            className="w-32 bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2 text-white placeholder-slate-500 focus:outline-none text-sm"
+                        />
                         <input
                             type="text"
                             value={person.birthday}
@@ -798,214 +800,207 @@ OUTPUT FORMAT:
 
 💡 This week's networking action: [One specific thing]
 
-Help me maintain genuine professional relationships, not just collect contacts.`;
+Help me build a network that gives more than it takes.`;
 
     return (
-            <>
+        <>
             <Helmet>
                 <title>Chapter 11: Relationships | Agentic AI at Home</title>
                 <meta name="description" content="Remember birthdays, stay connected, and nurture relationships effortlessly" />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={11}
-                        total={16}
-                        part={4}
-                        partTitle="Life Systems"
-                    />
-
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
-
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-rose-400 font-mono text-sm mb-2">Chapter 11</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Social & Relationships
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            The people who matter deserve more than your leftovers
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>10 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-rose-400">20 min to map your people</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '4', label: 'relationship circles' },
-                            { value: '0', label: 'forgotten birthdays' },
-                            { value: '∞', label: 'stronger connections' },
-                        ]}
-                        primaryCTA="Map My Relationships"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    <PasswordGate partNumber={4}>
-                        {/* CAPTAIN EFFICIENCY - OPENER (Warm, human) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="This might be the most important chapter. Not because it saves you time—but because it saves your relationships. The people who matter most often get the least of us. We're 'too busy' for the call. 'Too tired' for the visit. Then one day we realize years have passed. This isn't about managing people like tasks. It's about being intentional with the humans who make life worth living."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-rose-900/30 rounded-xl p-4 border border-rose-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-rose-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts. Toggle off for relationship mapping tools.
-                            </p>
-                        </motion.div>
-                    )}
-
-                    {/* ★ RELATIONSHIP FADE VISUAL ★ */}
-                    {!speedRun && <RelationshipFadeVisual />}
-
-                    {/* RELATIONSHIP CALCULATOR */}
-                    <section id="relationship-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-rose-500/50" />
-                            <span className="text-rose-400 font-bold uppercase text-sm tracking-wider">Your Connection Audit</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-rose-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading relationship audit...
-                            </div>
-                        }>
-                            <RelationshipAuditCalculator />
-                        </Suspense>
-                    </section>
-
-                    {/* RELATIONSHIP CIRCLES FRAMEWORK */}
-                    {!speedRun && <RelationshipCircles />}
-
-                    {/* PEOPLE MAPPER */}
-                    {!speedRun && <PeopleMapper />}
-
-                    {/* AGENT 1: CONNECTION AGENT */}
-                    <QuickWin
-                        title="Agent 1: The Connection Agent"
-                        setupTime="15 min"
-                        prompt={connectionAgentPrompt}
-                        variant="default"
-                    />
-
-                    {/* OCCASION TRACKER */}
-                    {!speedRun && <OccasionTracker />}
-
-                    {/* AGENT 2: OCCASION AGENT */}
-                    <QuickWin
-                        title="Agent 2: The Occasion Agent"
-                        setupTime="10 min"
-                        prompt={occasionAgentPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* CONNECTION IDEAS */}
-                    {!speedRun && <ConnectionIdeasPreview />}
-
-                    {/* AGENT 3: NETWORK NURTURER */}
-                    <QuickWin
-                        title="Agent 3: The Network Nurturer"
-                        setupTime="10 min"
-                        prompt={networkNurturerPrompt}
-                        variant="tertiary"
-                    />
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="James"
-                            role="Startup founder, 'always too busy'"
-                            problem="Realized he hadn't called his mom in 2 months. Missed his best friend's promotion. Lost touch with the mentor who helped him raise his first round."
-                            result="Weekly calls with mom. Monthly dinners with close friends. Quarterly check-ins with his network. Relationships stronger than ever."
-                            timeframe="3 months"
-                            quote="I thought I was too busy for relationships. Turns out I was just disorganized. 10 minutes of planning saves hours of guilt and regret."
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={11}
+                            total={16}
+                            part={4}
+                            partTitle="Life Systems"
                         />
-                    )}
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="Relationships don't fade from lack of love. They fade from lack of attention. The system handles the attention so you can focus on the love."
-                        chapter={11}
-                    />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                                            {/* CAPTAIN EFFICIENCY - CLOSER (Heartfelt) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="You now have a system that remembers when you're busy living. Birthdays won't slip by. Old friends won't fade away. The people who matter will feel it. But there's one more piece of a full life we haven't touched: your growth. Learning, skills, becoming who you want to be. Let's make sure YOU don't get neglected either. 🌱"
+                        {/* Header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-rose-400 font-mono text-sm mb-2">Chapter 11</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Social & Relationships
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                The people who matter deserve more than your leftovers
+                            </p>
+
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>10 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-rose-400">20 min to map your people</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </motion.div>
+
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '4', label: 'relationship circles' },
+                                { value: '0', label: 'forgotten birthdays' },
+                                { value: '∞', label: 'stronger connections' },
+                            ]}
+                            primaryCTA="Map My Relationships"
+                            onCTAClick={scrollToCalculator}
+                        />
+
+                        <PasswordGate partNumber={4}>
+                            {/* CAPTAIN EFFICIENCY - OPENER (Warm, human) */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="This might be the most important chapter. Not because it saves you time—but because it saves your relationships. The people who matter most often get the least of us. We're 'too busy' for the call. 'Too tired' for the visit. Then one day we realize years have passed. This isn't about managing people like tasks. It's about being intentional with the humans who make life worth living."
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-rose-900/30 rounded-xl p-4 border border-rose-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-rose-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the essential prompts. Toggle off for relationship mapping tools.
+                                    </p>
+                                </motion.div>
+                            )}
+
+                            {/* ★ RELATIONSHIP FADE VISUAL ★ */}
+                            {!speedRun && <RelationshipFadeVisual />}
+
+                            {/* RELATIONSHIP CALCULATOR */}
+                            <section id="relationship-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-rose-500/50" />
+                                    <span className="text-rose-400 font-bold uppercase text-sm tracking-wider">Your Connection Audit</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-rose-500/50" />
+                                </div>
+
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading relationship audit...
+                                    </div>
+                                }>
+                                    <RelationshipAuditCalculator />
+                                </Suspense>
+                            </section>
+
+                            {/* RELATIONSHIP CIRCLES FRAMEWORK */}
+                            {!speedRun && <RelationshipCircles />}
+
+                            {/* PEOPLE MAPPER */}
+                            {!speedRun && <PeopleMapper />}
+
+                            {/* AGENT 1: CONNECTION AGENT */}
+                            <QuickWin
+                                title="Agent 1: The Connection Agent"
+                                setupTime="15 min"
+                                prompt={connectionAgentPrompt}
+                                variant="default"
                             />
-                        </Suspense>
-                    )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Connection Agent (relationship circle reminders)',
-                            'Occasion Agent (birthdays & milestones)',
-                            'Network Nurturer (professional relationships)',
-                            'Relationship circles mapped',
-                            'People mapper started',
-                            'Connection ideas library',
-                        ]}
-                        nextChapter={12}
-                        nextTitle="Learning & Growth"
-                    />
+                            {/* OCCASION TRACKER */}
+                            {!speedRun && <OccasionTracker />}
 
-                </PasswordGate>
-                <ChapterNavigation
-                    previousChapter="/part4/chapter1"
-                    nextChapter="/part4/chapter3"
-                    partNumber={4}
-                    chapterNumber={2}
-                />
+                            {/* AGENT 2: OCCASION AGENT */}
+                            <QuickWin
+                                title="Agent 2: The Occasion Agent"
+                                setupTime="10 min"
+                                prompt={occasionAgentPrompt}
+                                variant="secondary"
+                            />
 
+                            {/* CONNECTION IDEAS */}
+                            {!speedRun && <ConnectionIdeasPreview />}
 
+                            {/* AGENT 3: NETWORK NURTURER */}
+                            <QuickWin
+                                title="Agent 3: The Network Nurturer"
+                                setupTime="10 min"
+                                prompt={networkNurturerPrompt}
+                                variant="tertiary"
+                            />
 
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="James"
+                                    role="Startup founder, 'always too busy'"
+                                    problem="Realized he hadn't called his mom in 2 months. Missed his best friend's promotion. Lost touch with the mentor who helped him raise his first round."
+                                    result="Weekly calls with mom. Monthly dinners with close friends. Quarterly check-ins with his network. Relationships stronger than ever."
+                                    timeframe="3 months"
+                                    quote="I thought I was too busy for relationships. Turns out I was just disorganized. 10 minutes of planning saves hours of guilt and regret."
+                                />
+                            )}
 
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="Relationships don't fade from lack of love. They fade from lack of attention. The system handles the attention so you can focus on the love."
+                                chapter={11}
+                            />
 
+                            {/* CAPTAIN EFFICIENCY - CLOSER (Heartfelt) */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="You now have a system that remembers when you're busy living. Birthdays won't slip by. Old friends won't fade away. The people who matter will feel it. But there's one more piece of a full life we haven't touched: your growth. Learning, skills, becoming who you want to be. Let's make sure YOU don't get neglected either. 🌱"
+                                    />
+                                </Suspense>
+                            )}
 
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterComplete
+                                achievements={[
+                                    'Connection Agent (relationship circle reminders)',
+                                    'Occasion Agent (birthdays & milestones)',
+                                    'Network Nurturer (professional relationships)',
+                                    'Relationship circles mapped',
+                                    'People mapper started',
+                                    'Connection ideas library',
+                                ]}
+                                nextChapter={12}
+                                nextTitle="Learning & Growth"
+                            />
+
+                        </PasswordGate>
+                        <ChapterNavigation
+                            previousChapter="/part4/chapter1"
+                            nextChapter="/part4/chapter3"
+                            partNumber={4}
+                            chapterNumber={2}
+                        />
+                    </div>
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
-
+            </SpeedRunContext.Provider>
         </>
     );
 };

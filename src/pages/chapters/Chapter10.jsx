@@ -1,17 +1,15 @@
 import { Helmet } from 'react-helmet-async';
-import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import PasswordGate from '../../components/common/PasswordGate';
 
-import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, Suspense, createContext } from 'react';
+import { motion } from 'framer-motion';
 import {
-    Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
-    Sparkles, Share2, Copy, Eye, EyeOff, Heart, Activity, Pill,
-    Calendar, Moon, Sun, Droplets, Apple, Brain, Shield, Bell,
-    AlertCircle, TrendingUp, Stethoscope, Thermometer, Wind,
-    Coffee, Dumbbell, Bed, ClipboardList, UserCheck, Rocket,
-    Smile, Frown, Meh, Plus, Check
+    Clock, Zap, CheckCircle, ArrowRight,
+    Share2, Copy, Eye, EyeOff, Heart, Activity, Pill,
+    Calendar, Moon, Sun, Droplets, Brain, Shield,
+    AlertCircle, TrendingUp, Stethoscope,
+    Dumbbell, ClipboardList, Plus, Check, Smile, Meh, Frown
 } from 'lucide-react';
 
 // Lazy load interactive components
@@ -316,13 +314,13 @@ const HealthChaosAudit = () => {
                         key={item.id}
                         onClick={() => toggleItem(item.id)}
                         className={`flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all ${checkedItems[item.id]
-                                ? 'bg-green-900/20 border border-green-500/30'
-                                : 'bg-slate-900/50 border border-slate-700 hover:border-slate-600'
+                            ? 'bg-green-900/20 border border-green-500/30'
+                            : 'bg-slate-900/50 border border-slate-700 hover:border-slate-600'
                             }`}
                     >
                         <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${checkedItems[item.id]
-                                ? 'bg-green-500 text-white'
-                                : 'bg-slate-700 text-slate-400'
+                            ? 'bg-green-500 text-white'
+                            : 'bg-slate-700 text-slate-400'
                             }`}>
                             {checkedItems[item.id] ? <Check size={14} /> : <item.icon size={14} />}
                         </div>
@@ -334,8 +332,8 @@ const HealthChaosAudit = () => {
             </div>
 
             <div className={`p-4 rounded-xl border ${healthScore >= 80 ? 'bg-green-900/20 border-green-500/30' :
-                    healthScore >= 50 ? 'bg-yellow-900/20 border-yellow-500/30' :
-                        'bg-rose-900/20 border-rose-500/30'
+                healthScore >= 50 ? 'bg-yellow-900/20 border-yellow-500/30' :
+                    'bg-rose-900/20 border-rose-500/30'
                 }`}>
                 <p className={`text-sm font-medium ${message.color}`}>
                     {message.text}
@@ -572,6 +570,7 @@ const WellnessCheckInPreview = () => {
     const [mood, setMood] = useState(null);
     const [energy, setEnergy] = useState(null);
     const [sleep, setSleep] = useState(null);
+    const [water, setWater] = useState(null);
 
     const moods = [
         { value: 'great', icon: Smile, label: 'Great', color: 'text-green-400' },
@@ -601,8 +600,8 @@ const WellnessCheckInPreview = () => {
                                 key={m.value}
                                 onClick={() => setMood(m.value)}
                                 className={`flex-1 flex flex-col items-center gap-1 p-3 rounded-xl transition-all ${mood === m.value
-                                        ? 'bg-purple-500/20 border-2 border-purple-500'
-                                        : 'bg-slate-900/50 border border-slate-700 hover:border-slate-600'
+                                    ? 'bg-purple-500/20 border-2 border-purple-500'
+                                    : 'bg-slate-900/50 border border-slate-700 hover:border-slate-600'
                                     }`}
                             >
                                 <m.icon className={mood === m.value ? m.color : 'text-slate-500'} size={24} />
@@ -623,8 +622,8 @@ const WellnessCheckInPreview = () => {
                                 key={level}
                                 onClick={() => setEnergy(level)}
                                 className={`flex-1 py-2 rounded-lg transition-all ${energy === level
-                                        ? 'bg-purple-500 text-white'
-                                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                    ? 'bg-purple-500 text-white'
+                                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                                     }`}
                             >
                                 {level}
@@ -642,8 +641,8 @@ const WellnessCheckInPreview = () => {
                                 key={hours}
                                 onClick={() => setSleep(hours)}
                                 className={`flex-1 py-2 rounded-lg text-sm transition-all ${sleep === hours
-                                        ? 'bg-purple-500 text-white'
-                                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                    ? 'bg-purple-500 text-white'
+                                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                                     }`}
                             >
                                 {hours}
@@ -651,9 +650,28 @@ const WellnessCheckInPreview = () => {
                         ))}
                     </div>
                 </div>
+
+                {/* Water */}
+                <div>
+                    <label className="text-slate-400 text-sm mb-2 block">Water intake? (glasses)</label>
+                    <div className="flex gap-2">
+                        {['1-2', '3-4', '5-6', '7-8', '8+'].map((glasses) => (
+                            <button
+                                key={glasses}
+                                onClick={() => setWater(glasses)}
+                                className={`flex-1 py-2 rounded-lg text-sm transition-all ${water === glasses
+                                    ? 'bg-blue-500 text-white'
+                                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                    }`}
+                            >
+                                {glasses}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
 
-            {mood && energy && sleep && (
+            {mood && energy && sleep && water && (
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -709,7 +727,7 @@ const Chapter10 = () => {
         document.getElementById('health-calculator')?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const healthCoordinatorPrompt = `You are my Health Coordinator Agent. Your job is to help me stay on top of preventive care and health appointments.
+    const healthCoordinatorPrompt = \`You are my Health Coordinator Agent. Your job is to help me stay on top of preventive care and health appointments.
 
 MY HEALTH PROFILE:
 - Age: [Your age]
@@ -748,9 +766,9 @@ OUTPUT FORMAT:
 💊 Medications:
 - Refills needed: [List]
 
-Help me never miss a health appointment or run out of medication.`;
+Help me never miss a health appointment or run out of medication.\`;
 
-    const medicationManagerPrompt = `You are my Medication Manager Agent. Your job is to help me track medications, timing, and refills.
+    const medicationManagerPrompt = \`You are my Medication Manager Agent. Your job is to help me track medications, timing, and refills.
 
 MY MEDICATIONS:
 [List your medications with dosage and frequency]
@@ -785,9 +803,9 @@ OUTPUT FORMAT:
 📅 Refills Needed Soon:
 - [Medication] - [X days remaining]
 
-Help me take the right medications at the right time, every time.`;
+Help me take the right medications at the right time, every time.\`;
 
-    const wellnessTrackerPrompt = `You are my Wellness Tracker Agent. Your job is to help me maintain daily wellness habits and notice patterns.
+    const wellnessTrackerPrompt = \`You are my Wellness Tracker Agent. Your job is to help me maintain daily wellness habits and notice patterns.
 
 DAILY CHECK-IN (ask me each morning or evening):
 1. How's your mood? (1-5 or great/okay/low)
@@ -829,7 +847,7 @@ OUTPUT FORMAT:
 - Sleep avg: [X hrs]
 - Mood trend: [stable/improving/declining]
 
-Help me notice patterns before they become problems. Be supportive, not judgmental.`;
+Help me notice patterns before they become problems. Be supportive, not judgmental.\`;
 
     return (
             <>

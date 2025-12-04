@@ -1,10 +1,9 @@
 import { Helmet } from 'react-helmet-async';
-import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import PasswordGate from '../../components/common/PasswordGate';
 
-import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, Suspense, createContext } from 'react';
+import { motion } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, Cpu, Network, Layers,
@@ -435,13 +434,13 @@ const DayInTheLifeTimeline = () => {
                         >
                             {/* Timeline dot */}
                             <div className={`absolute left-2 top-2 w-5 h-5 rounded-full border-2 transition-all ${activeHour === item.hour
-                                    ? 'bg-cyan-500 border-cyan-400 scale-125'
-                                    : 'bg-slate-800 border-slate-600'
+                                ? 'bg-cyan-500 border-cyan-400 scale-125'
+                                : 'bg-slate-800 border-slate-600'
                                 }`} />
 
                             <div className={`bg-slate-900/50 rounded-xl p-4 border transition-all ${activeHour === item.hour
-                                    ? 'border-cyan-500/50'
-                                    : 'border-slate-700'
+                                ? 'border-cyan-500/50'
+                                : 'border-slate-700'
                                 }`}>
                                 <div className="flex items-center justify-between mb-2">
                                     <div className="flex items-center gap-3">
@@ -883,186 +882,186 @@ OUTPUT FORMAT:
 Help me continuously improve my Life Operating System.`;
 
     return (
-            <>
+        <>
             <Helmet>
                 <title>Chapter 13: Your Life OS | Agentic AI at Home</title>
                 <meta name="description" content="Bringing it all together into a complete life operating system" />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={13}
-                        total={16}
-                        part={5}
-                        partTitle="Integration & Mastery"
-                    />
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={13}
+                            total={16}
+                            part={5}
+                            partTitle="Integration & Mastery"
+                        />
 
-                    {/* Part 5 Intro Banner */}
-                    {!speedRun && <Part5Intro />}
+                        {/* Part 5 Intro Banner */}
+                        {!speedRun && <Part5Intro />}
 
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
 
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 13</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Life Operating System
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            Where everything connects. Where the magic happens.
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>12 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-cyan-400">15 min to connect your agents</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '20+', label: 'agents unified' },
-                            { value: '1', label: 'operating system' },
-                            { value: '∞', label: 'peace of mind' },
-                        ]}
-                        primaryCTA="See My Life OS"
-                        onCTAClick={scrollToDashboard}
-                    />
-
-                    <PasswordGate partNumber={5}>
-                        {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Welcome to Part 5. This is where everything changes. Look at what you've built: a Morning Brief Agent, a Meal Planner, a Household Command Center, Email Triage, Calendar Defense, Admin Tracking, Health Coordination, Connection Management, Recovery-Aware Learning. Twenty-plus agents. Each one powerful. But here's the secret: they're about to become MORE than the sum of their parts. Today, we connect them into your Life Operating System."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
+                        {/* Header */}
                         <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
                         >
-                            <div className="flex items-center gap-2 text-cyan-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the master prompts. Toggle off for the full integration experience.
+                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 13</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Life Operating System
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Where everything connects. Where the magic happens.
                             </p>
+
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>12 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-cyan-400">15 min to connect your agents</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
                         </motion.div>
-                    )}
 
-                    {/* ★ AGENT ARMY VISUAL ★ */}
-                    {!speedRun && <AgentArmyVisual />}
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '20+', label: 'agents unified' },
+                                { value: '1', label: 'operating system' },
+                                { value: '∞', label: 'peace of mind' },
+                            ]}
+                            primaryCTA="See My Life OS"
+                            onCTAClick={scrollToDashboard}
+                        />
 
-                    {/* LIFE OS DASHBOARD */}
-                    <section id="life-os-dashboard">
-                        <LifeOSDashboard />
-                    </section>
+                        <PasswordGate partNumber={5}>
+                            {/* CAPTAIN EFFICIENCY - OPENER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="Welcome to Part 5. This is where everything changes. Look at what you've built: a Morning Brief Agent, a Meal Planner, a Household Command Center, Email Triage, Calendar Defense, Admin Tracking, Health Coordination, Connection Management, Recovery-Aware Learning. Twenty-plus agents. Each one powerful. But here's the secret: they're about to become MORE than the sum of their parts. Today, we connect them into your Life Operating System."
+                                    />
+                                </Suspense>
+                            )}
 
-                    {/* DAY IN THE LIFE */}
-                    {!speedRun && <DayInTheLifeTimeline />}
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-cyan-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the master prompts. Toggle off for the full integration experience.
+                                    </p>
+                                </motion.div>
+                            )}
 
-                    {/* MASTER AGENT: THE CONDUCTOR */}
-                    <QuickWin
-                        title="The Conductor Agent"
-                        setupTime="15 min"
-                        prompt={conductorAgentPrompt}
-                        variant="master"
-                    />
+                            {/* ★ AGENT ARMY VISUAL ★ */}
+                            {!speedRun && <AgentArmyVisual />}
 
-                    {/* AGENT COMMUNICATION FLOW */}
-                    {!speedRun && <AgentCommunicationFlow />}
+                            {/* LIFE OS DASHBOARD */}
+                            <section id="life-os-dashboard">
+                                <LifeOSDashboard />
+                            </section>
 
-                    {/* DAILY BRIEFING AGENT */}
-                    <QuickWin
-                        title="Daily Briefing Agent"
-                        setupTime="10 min"
-                        prompt={dailyBriefingPrompt}
-                        variant="default"
-                    />
+                            {/* DAY IN THE LIFE */}
+                            {!speedRun && <DayInTheLifeTimeline />}
 
-                    {/* WEEKLY REVIEW FRAMEWORK */}
-                    {!speedRun && <WeeklyReviewFramework />}
-
-                    {/* WEEKLY REVIEW AGENT */}
-                    <QuickWin
-                        title="Weekly Review Agent"
-                        setupTime="10 min"
-                        prompt={weeklyReviewPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="A Life Operating System isn't about doing more. It's about the right things happening at the right time, without you having to remember them all."
-                        chapter={13}
-                    />
-
-                                            {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="Your Life Operating System is LIVE. Twenty agents, one conductor, working together like a symphony. The Morning Brief pulls from calendar, weather, and priorities. The Meal Planner triggers the Grocery List. The Calendar Defender protects your focus time. Everything connected. Everything automated. But we're not done yet—next chapter, we unlock the advanced techniques. Power user mode, activated. ⚡"
+                            {/* MASTER AGENT: THE CONDUCTOR */}
+                            <QuickWin
+                                title="The Conductor Agent"
+                                setupTime="15 min"
+                                prompt={conductorAgentPrompt}
+                                variant="master"
                             />
-                        </Suspense>
-                    )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Life Operating System activated',
-                            'Conductor Agent (master orchestrator)',
-                            'Daily Briefing Agent (morning overview)',
-                            'Weekly Review Agent (system maintenance)',
-                            'Agent communication flows mapped',
-                            '20+ agents working as one system',
-                        ]}
-                        nextChapter={14}
-                        nextTitle="Advanced Techniques"
-                    />
+                            {/* AGENT COMMUNICATION FLOW */}
+                            {!speedRun && <AgentCommunicationFlow />}
 
-                </PasswordGate>
-                <ChapterNavigation
-                    previousChapter="/part4/chapter3"
-                    nextChapter="/part5/chapter2"
-                    partNumber={5}
-                    chapterNumber={1}
-                />
+                            {/* DAILY BRIEFING AGENT */}
+                            <QuickWin
+                                title="Daily Briefing Agent"
+                                setupTime="10 min"
+                                prompt={dailyBriefingPrompt}
+                                variant="default"
+                            />
+
+                            {/* WEEKLY REVIEW FRAMEWORK */}
+                            {!speedRun && <WeeklyReviewFramework />}
+
+                            {/* WEEKLY REVIEW AGENT */}
+                            <QuickWin
+                                title="Weekly Review Agent"
+                                setupTime="10 min"
+                                prompt={weeklyReviewPrompt}
+                                variant="secondary"
+                            />
+
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="A Life Operating System isn't about doing more. It's about the right things happening at the right time, without you having to remember them all."
+                                chapter={13}
+                            />
+
+                            {/* CAPTAIN EFFICIENCY - CLOSER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="Your Life Operating System is LIVE. Twenty agents, one conductor, working together like a symphony. The Morning Brief pulls from calendar, weather, and priorities. The Meal Planner triggers the Grocery List. The Calendar Defender protects your focus time. Everything connected. Everything automated. But we're not done yet—next chapter, we unlock the advanced techniques. Power user mode, activated. ⚡"
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterComplete
+                                achievements={[
+                                    'Life Operating System activated',
+                                    'Conductor Agent (master orchestrator)',
+                                    'Daily Briefing Agent (morning overview)',
+                                    'Weekly Review Agent (system maintenance)',
+                                    'Agent communication flows mapped',
+                                    '20+ agents working as one system',
+                                ]}
+                                nextChapter={14}
+                                nextTitle="Advanced Techniques"
+                            />
+
+                        </PasswordGate>
+                        <ChapterNavigation
+                            previousChapter="/part4/chapter3"
+                            nextChapter="/part5/chapter2"
+                            partNumber={5}
+                            chapterNumber={1}
+                        />
 
 
 
 
 
 
+                    </div>
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
+            </SpeedRunContext.Provider>
 
         </>
     );
