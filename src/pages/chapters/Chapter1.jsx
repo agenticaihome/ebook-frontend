@@ -802,7 +802,7 @@ Then show me what tomorrow's briefing would look like.`}
                             </div>
 
                             <button
-                                onClick={() => navigate('/chapters/2')}
+                                onClick={() => navigate('/part1/chapter2')}
                                 className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
                             >
                                 Continue to Chapter 2: Building Your AI Team
