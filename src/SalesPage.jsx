@@ -13,6 +13,7 @@ const SneakPeek = React.lazy(() => import('./components/landing/SneakPeek'));
 const ProductWalkthrough = React.lazy(() => import('./components/landing/ProductWalkthrough'));
 const CryptoExplainerModal = React.lazy(() => import('./components/landing/CryptoExplainerModal'));
 const RecentPurchases = React.lazy(() => import('./components/landing/RecentPurchases'));
+const CountdownTimer = React.lazy(() => import('./components/CountdownTimer'));
 
 
 
@@ -430,6 +431,19 @@ export default function SalesPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Access Method</h2>
             <p className="text-slate-400 mb-8">Cheaper than one month of that meal kit service you forgot to pause.</p>
 
+            {/* Urgency Timer */}
+            <Suspense fallback={null}>
+              <div className="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-500/30 rounded-xl p-6 mb-8 text-center max-w-2xl mx-auto">
+                <div className="text-red-400 font-bold text-lg mb-3">
+                  ⏰ Early Bird Pricing Ends In:
+                </div>
+                <CountdownTimer targetDate="2025-12-15T23:59:59" />
+                <p className="text-sm text-slate-300 mt-4">
+                  Price increases to <span className="font-bold text-white">$59</span> after December 15th
+                </p>
+              </div>
+            </Suspense>
+
             {/* Value Anchor */}
             <div className="inline-flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-600 mb-8">
               <div className="text-right border-r border-slate-600 pr-4">
@@ -535,6 +549,26 @@ export default function SalesPage() {
 
         {/* FOOTER */}
         <footer className="py-12 text-center border-t border-slate-800/50 bg-[#0f0f1a]">
+          {/* Trust Badges Row */}
+          <div className="flex flex-wrap items-center justify-center gap-6 mb-8 px-4">
+            <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <Shield size={16} className="text-green-400" />
+              <span>256-bit SSL Secure</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <Check size={16} className="text-green-400" />
+              <span>30-Day Money-Back</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <CreditCard size={16} className="text-purple-400" />
+              <span>Stripe Encrypted</span>
+            </div>
+            <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <Coins size={16} className="text-green-400" />
+              <span>Crypto Accepted</span>
+            </div>
+          </div>
+
           <div className="flex justify-center mb-6">
             <CaptainHero
               size="sm"

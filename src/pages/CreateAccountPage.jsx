@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { m } from 'framer-motion';
-import { ShieldCheck, Lock, Mail, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { ShieldCheck, Lock, Mail, Loader2, CheckCircle2, AlertTriangle, Check } from 'lucide-react';
 import { api } from '../services/api';
 import { usePageTitle } from '../hooks/usePageTitle';
 
@@ -11,7 +11,6 @@ const CreateAccountPage = () => {
     const navigate = useNavigate();
 
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -34,11 +33,6 @@ const CreateAccountPage = () => {
 
         if (password.length < 8) {
             setError('Password must be at least 8 characters');
-            return;
-        }
-
-        if (password !== confirmPassword) {
-            setError('Passwords do not match');
             return;
         }
 
@@ -154,21 +148,22 @@ const CreateAccountPage = () => {
                             </div>
                         </div>
 
-                        {/* Confirm Password */}
-                        <div>
-                            <label className="text-sm text-slate-400 block mb-2">Confirm Password</label>
-                            <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                                <input
-                                    type="password"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    placeholder="Re-enter password"
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-base text-white focus:border-purple-500 focus:outline-none"
-                                    required
-                                />
+                        {/* Password Strength Indicator */}
+                        {password.length > 0 && (
+                            <div className="bg-slate-700/30 rounded-lg p-3 text-sm">
+                                {password.length >= 8 ? (
+                                    <div className="flex items-center gap-2 text-green-400">
+                                        <Check size={16} />
+                                        <span>✓ Strong password</span>
+                                    </div>
+                                ) : (
+                                    <div className="flex items-center gap-2 text-yellow-400">
+                                        <AlertTriangle size={16} />
+                                        <span>⚠ Min 8 characters required ({password.length}/8)</span>
+                                    </div>
+                                )}
                             </div>
-                        </div>
+                        )}
 
                         {/* Error Message */}
                         {error && (
