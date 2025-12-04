@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import PasswordGate from '../../components/common/PasswordGate';
 
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -912,7 +913,8 @@ Help me enter each week with my calendar under control.`;
                         onCTAClick={scrollToCalculator}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - OPENER */}
+                    <PasswordGate partNumber={3}>
+                        {/* CAPTAIN EFFICIENCY - OPENER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -1014,7 +1016,8 @@ Help me enter each week with my calendar under control.`;
                         chapter={8}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - CLOSER */}
+                    <PasswordGate partNumber={3}>
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -1038,6 +1041,10 @@ Help me enter each week with my calendar under control.`;
                         nextChapter={9}
                         nextTitle="Admin & Paperwork"
                     />
+
+                </PasswordGate>
+
+
 
                 </div>
             </div>

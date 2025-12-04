@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import PasswordGate from '../../components/common/PasswordGate';
 
 import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -939,7 +940,8 @@ Help me continuously improve my Life Operating System.`;
                         onCTAClick={scrollToDashboard}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - OPENER */}
+                    <PasswordGate partNumber={5}>
+                        {/* CAPTAIN EFFICIENCY - OPENER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -1014,7 +1016,8 @@ Help me continuously improve my Life Operating System.`;
                         chapter={13}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - CLOSER */}
+                    <PasswordGate partNumber={5}>
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -1038,6 +1041,10 @@ Help me continuously improve my Life Operating System.`;
                         nextChapter={14}
                         nextTitle="Advanced Techniques"
                     />
+
+                </PasswordGate>
+
+
 
                 </div>
             </div>

@@ -609,7 +609,8 @@ const Chapter16 = () => {
                     {/* EPIC HEADER */}
                     <EpicHeader />
 
-                    {/* CAPTAIN EFFICIENCY - OPENER */}
+                    <PasswordGate partNumber={5}>
+                        {/* CAPTAIN EFFICIENCY - OPENER */}
                     <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                         <CaptainHero
                             size="lg"
@@ -654,7 +655,8 @@ const Chapter16 = () => {
                     {/* CALL TO ACTION */}
                     <CallToAction />
 
-                    {/* CAPTAIN CLOSER */}
+                    <PasswordGate partNumber={5}>
+                        {/* CAPTAIN CLOSER */}
                     <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                         <CaptainHero
                             size="md"

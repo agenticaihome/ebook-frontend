@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import PasswordGate from '../../components/common/PasswordGate';
 
 import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -888,7 +889,8 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                         onCTAClick={scrollToCalculator}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - OPENER (Gentler tone) */}
+                    <PasswordGate partNumber={4}>
+                        {/* CAPTAIN EFFICIENCY - OPENER (Gentler tone) */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -990,7 +992,8 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                         chapter={10}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - CLOSER (Warm, supportive) */}
+                    <PasswordGate partNumber={4}>
+                        {/* CAPTAIN EFFICIENCY - CLOSER (Warm, supportive) */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -1013,6 +1016,10 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                         nextChapter={11}
                         nextTitle="Social & Relationship Management"
                     />
+
+                </PasswordGate>
+
+
 
                 </div>
             </div>

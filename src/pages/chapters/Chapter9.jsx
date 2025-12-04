@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import PasswordGate from '../../components/common/PasswordGate';
 
 import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -968,7 +969,8 @@ Help me get through paperwork without the dread.`;
                         onCTAClick={scrollToCalculator}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - OPENER */}
+                    <PasswordGate partNumber={3}>
+                        {/* CAPTAIN EFFICIENCY - OPENER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -1067,7 +1069,8 @@ Help me get through paperwork without the dread.`;
                         chapter={9}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - CLOSER */}
+                    <PasswordGate partNumber={3}>
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -1094,6 +1097,10 @@ Help me get through paperwork without the dread.`;
                         nextTitle="Health & Wellness Tracking"
                         nextPart={4}
                     />
+
+                </PasswordGate>
+
+
 
                 </div>
             </div>

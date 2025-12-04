@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import PasswordGate from '../../components/common/PasswordGate';
 
 import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -854,7 +855,8 @@ Help me maintain genuine professional relationships, not just collect contacts.`
                         onCTAClick={scrollToCalculator}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - OPENER (Warm, human) */}
+                    <PasswordGate partNumber={4}>
+                        {/* CAPTAIN EFFICIENCY - OPENER (Warm, human) */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -956,7 +958,8 @@ Help me maintain genuine professional relationships, not just collect contacts.`
                         chapter={11}
                     />
 
-                    {/* CAPTAIN EFFICIENCY - CLOSER (Heartfelt) */}
+                    <PasswordGate partNumber={4}>
+                        {/* CAPTAIN EFFICIENCY - CLOSER (Heartfelt) */}
                     {!speedRun && (
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
@@ -980,6 +983,10 @@ Help me maintain genuine professional relationships, not just collect contacts.`
                         nextChapter={12}
                         nextTitle="Learning & Growth"
                     />
+
+                </PasswordGate>
+
+
 
                 </div>
             </div>
