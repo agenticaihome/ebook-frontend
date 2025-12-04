@@ -655,8 +655,7 @@ const Chapter16 = () => {
                     {/* CALL TO ACTION */}
                     <CallToAction />
 
-                    <PasswordGate partNumber={5}>
-                        {/* CAPTAIN CLOSER */}
+                                            {/* CAPTAIN CLOSER */}
                     <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                         <CaptainHero
                             size="md"
