@@ -914,12 +914,14 @@ OUTPUT FORMAT:
 
 Help me get through paperwork without the dread.`;
 
-    return (            <Helmet>
+    return (
+            <>
+            <Helmet>
                 <title>Chapter 9: Admin & Finances | Agentic AI at Home</title>
                 <meta name="description" content="Automate the life admin tasks you hate" />
             </Helmet>
 
-        <SpeedRunContext.Provider value={speedRun}>
+            <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">
 
@@ -1117,6 +1119,8 @@ Help me get through paperwork without the dread.`;
                 </div>
             </div>
         </SpeedRunContext.Provider>
+
+        </>
     );
 };
 

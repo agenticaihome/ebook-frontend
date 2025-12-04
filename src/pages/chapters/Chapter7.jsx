@@ -801,12 +801,14 @@ OUTPUT FORMAT:
 
 Help me start each week with email under control.`;
 
-    return (            <Helmet>
+    return (
+            <>
+            <Helmet>
                 <title>Chapter 7: Email Triage | Agentic AI at Home</title>
                 <meta name="description" content="Stop drowning in your inbox with intelligent email filtering" />
             </Helmet>
 
-        <SpeedRunContext.Provider value={speedRun}>
+            <SpeedRunContext.Provider value={speedRun}>
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-4xl mx-auto px-6 py-12">
 
@@ -1009,6 +1011,8 @@ Help me start each week with email under control.`;
                 </div>
             </div>
         </SpeedRunContext.Provider>
+
+        </>
     );
 };
 
