@@ -4,14 +4,17 @@ import { Flame, Star, Trophy, Sparkles, ChevronUp } from 'lucide-react';
 import { useUser } from '../../context/UserContext';
 
 // ============================================
-// RANK SYSTEM
+// RANK SYSTEM - FRONTIER COMMAND
 // ============================================
 const RANKS = [
-    { name: 'Novice Automator', minXP: 0, icon: '🌱', color: 'from-slate-400 to-slate-500' },
-    { name: 'Apprentice Agent Builder', minXP: 301, icon: '⚔️', color: 'from-green-400 to-emerald-500' },
-    { name: 'Efficiency Knight', minXP: 701, icon: '🛡️', color: 'from-blue-400 to-cyan-500' },
-    { name: 'Automation Wizard', minXP: 1201, icon: '🧙', color: 'from-purple-400 to-pink-500' },
-    { name: 'Grand Master of Systems', minXP: 1601, icon: '👑', color: 'from-yellow-400 to-orange-500' },
+    { name: 'Newcomer', minXP: 0, icon: '🧭', color: 'from-slate-400 to-slate-500' },
+    { name: 'Pathfinder', minXP: 200, icon: '🗺️', color: 'from-green-400 to-emerald-500' },
+    { name: 'Settler', minXP: 400, icon: '⛏️', color: 'from-teal-400 to-cyan-500' },
+    { name: 'Pioneer', minXP: 600, icon: '🏴', color: 'from-blue-400 to-indigo-500' },
+    { name: 'Homesteader', minXP: 850, icon: '💎', color: 'from-purple-400 to-violet-500' },
+    { name: 'Trailblazer', minXP: 1000, icon: '⭐', color: 'from-amber-400 to-orange-500' },
+    { name: 'Territory Captain', minXP: 1200, icon: '🔥', color: 'from-orange-400 to-red-500' },
+    { name: 'Frontier Commander', minXP: 1600, icon: '👑', color: 'from-yellow-400 to-amber-500' },
 ];
 
 const getRank = (xp) => {
@@ -45,10 +48,10 @@ const XPProgressBar = ({ currentXP, maxXP = 1850 }) => {
         <div className="flex-1 max-w-md">
             <div className="flex items-center justify-between mb-1">
                 <span className="text-xs text-slate-400 font-medium">
-                    {nextRank ? `Progress to ${nextRank.name}` : 'MAX RANK'}
+                    {nextRank ? `Exploring toward ${nextRank.name}` : 'FRONTIER MASTERED'}
                 </span>
                 <span className="text-xs font-mono text-cyan-400">
-                    {currentXP.toLocaleString()} / {maxXP.toLocaleString()} XP
+                    {currentXP.toLocaleString()} / {maxXP.toLocaleString()} DP
                 </span>
             </div>
             <div className="h-3 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
@@ -82,21 +85,24 @@ const DailyStreak = ({ streak }) => {
 };
 
 // ============================================
-// CAPTAIN COMPANION
+// CAPTAIN COMPANION (Scout)
 // ============================================
 const CaptainCompanion = ({ xp, streak }) => {
     const [message, setMessage] = useState('');
     const [isHovered, setIsHovered] = useState(false);
 
     const messages = useMemo(() => [
-        { condition: () => streak === 0, msg: "Welcome back, Operator! Ready to continue your quest?" },
-        { condition: () => streak >= 7, msg: "🔥 A WEEK STRAIGHT! You're unstoppable!" },
-        { condition: () => streak >= 3, msg: "Great streak! Keep the momentum going!" },
-        { condition: () => xp >= 1601, msg: "👑 Grand Master! You've conquered it all!" },
-        { condition: () => xp >= 1201, msg: "🧙 A true Automation Wizard! Almost there!" },
-        { condition: () => xp >= 701, msg: "⚔️ Efficiency Knight status achieved!" },
-        { condition: () => xp >= 301, msg: "Great progress, Apprentice!" },
-        { condition: () => true, msg: "Your quest awaits, Operator!" },
+        { condition: () => streak === 0, msg: "Welcome back, Explorer! Ready to chart new territory?" },
+        { condition: () => streak >= 7, msg: "🔥 A WEEK of exploration! Legendary dedication!" },
+        { condition: () => streak >= 3, msg: "Great expedition streak! The frontier awaits!" },
+        { condition: () => xp >= 1600, msg: "👑 Frontier Commander! You've conquered all territories!" },
+        { condition: () => xp >= 1200, msg: "🔥 Territory Captain! Almost at the summit!" },
+        { condition: () => xp >= 1000, msg: "⭐ Trailblazer status! Blazing new paths!" },
+        { condition: () => xp >= 850, msg: "💎 Homesteader achieved! Building your empire!" },
+        { condition: () => xp >= 600, msg: "🏴 Pioneer! Claiming new ground!" },
+        { condition: () => xp >= 400, msg: "⛏️ Settler! Establishing your base!" },
+        { condition: () => xp >= 200, msg: "🗺️ Pathfinder! The map is expanding!" },
+        { condition: () => true, msg: "New territories await, Explorer!" },
     ], [xp, streak]);
 
     useEffect(() => {

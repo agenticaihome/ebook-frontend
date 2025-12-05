@@ -7,77 +7,77 @@ import {
 } from 'lucide-react';
 
 // ============================================
-// COURSE STRUCTURE
+// FRONTIER TERRITORY STRUCTURE
 // ============================================
 const REGIONS = [
     {
         id: 1,
-        name: 'The Foundations',
-        subtitle: 'Part I: Daily Ops',
+        name: 'Base Camp',
+        subtitle: 'Territory I: The Foundations',
         color: 'from-emerald-500 to-cyan-500',
         chapters: [
-            { id: 1, title: 'Operation: Wake-Up Call', path: '/part1/chapter1', xp: 100, duration: '6 min' },
-            { id: 2, title: 'Operation: Basic Training', path: '/part1/chapter2', xp: 100, duration: '7 min' },
-            { id: 3, title: 'Operation: Security Perimeter', path: '/part1/chapter3', xp: 100, duration: '8 min' },
+            { id: 1, title: 'Expedition: First Contact', path: '/part1/chapter1', xp: 100, duration: '6 min' },
+            { id: 2, title: 'Expedition: Basic Recon', path: '/part1/chapter2', xp: 100, duration: '7 min' },
+            { id: 3, title: 'Expedition: Secure Perimeter', path: '/part1/chapter3', xp: 100, duration: '8 min' },
         ]
     },
     {
         id: 2,
-        name: 'The Home Front',
-        subtitle: 'Part II: Domestic Ops',
+        name: 'Homestead Valley',
+        subtitle: 'Territory II: The Home Front',
         color: 'from-orange-500 to-amber-500',
         chapters: [
-            { id: 4, title: 'Operation: Morning Brief', path: '/part2/chapter1', xp: 100, duration: '8 min' },
-            { id: 5, title: 'Operation: Kitchen Command', path: '/part2/chapter2', xp: 100, duration: '9 min' },
-            { id: 6, title: 'Operation: Household HQ', path: '/part2/chapter3', xp: 100, duration: '8 min' },
+            { id: 4, title: 'Expedition: Morning Patrol', path: '/part2/chapter1', xp: 100, duration: '8 min' },
+            { id: 5, title: 'Expedition: Kitchen Outpost', path: '/part2/chapter2', xp: 100, duration: '9 min' },
+            { id: 6, title: 'Expedition: Household Command', path: '/part2/chapter3', xp: 100, duration: '8 min' },
         ]
     },
     {
         id: 3,
         name: 'Digital Frontier',
-        subtitle: 'Part III: Digital Life',
+        subtitle: 'Territory III: The Digital Wilds',
         color: 'from-purple-500 to-pink-500',
         chapters: [
-            { id: 7, title: 'Operation: Inbox Zero', path: '/part3/chapter1', xp: 100, duration: '9 min' },
-            { id: 8, title: 'Operation: Calendar Defense', path: '/part3/chapter2', xp: 100, duration: '8 min' },
-            { id: 9, title: 'Operation: Digital Declutter', path: '/part3/chapter3', xp: 100, duration: '7 min' },
+            { id: 7, title: 'Expedition: Inbox Clearing', path: '/part3/chapter1', xp: 100, duration: '9 min' },
+            { id: 8, title: 'Expedition: Calendar Territory', path: '/part3/chapter2', xp: 100, duration: '8 min' },
+            { id: 9, title: 'Expedition: Digital Cleanup', path: '/part3/chapter3', xp: 100, duration: '7 min' },
         ]
     },
     {
         id: 4,
-        name: 'The Stronghold',
-        subtitle: 'Part IV: Health & Wealth',
+        name: 'Wellness Mountains',
+        subtitle: 'Territory IV: Health & Wealth',
         color: 'from-red-500 to-orange-500',
         chapters: [
-            { id: 10, title: 'Operation: Wealth Watch', path: '/part4/chapter1', xp: 100, duration: '10 min' },
-            { id: 11, title: 'Operation: Health Protocol', path: '/part4/chapter2', xp: 100, duration: '9 min' },
-            { id: 12, title: 'Operation: Recovery Mode', path: '/part4/chapter3', xp: 100, duration: '8 min' },
+            { id: 10, title: 'Expedition: Wealth Mapping', path: '/part4/chapter1', xp: 100, duration: '10 min' },
+            { id: 11, title: 'Expedition: Health Outpost', path: '/part4/chapter2', xp: 100, duration: '9 min' },
+            { id: 12, title: 'Expedition: Recovery Base', path: '/part4/chapter3', xp: 100, duration: '8 min' },
         ]
     },
     {
         id: 5,
         name: 'Grand Command',
-        subtitle: 'Part V: Life OS',
+        subtitle: 'Territory V: Life HQ',
         color: 'from-cyan-500 to-blue-600',
         chapters: [
-            { id: 13, title: 'Operation: Second Brain', path: '/part5/chapter1', xp: 100, duration: '12 min' },
-            { id: 14, title: 'Operation: Automation Army', path: '/part5/chapter2', xp: 100, duration: '10 min' },
-            { id: 15, title: 'Operation: Future Proof', path: '/part5/chapter3', xp: 100, duration: '8 min' },
-            { id: 16, title: 'Operation: Grand Finale', path: '/part5/chapter4', xp: 150, duration: '6 min' },
+            { id: 13, title: 'Expedition: Knowledge Base', path: '/part5/chapter1', xp: 100, duration: '12 min' },
+            { id: 14, title: 'Expedition: Automation Grid', path: '/part5/chapter2', xp: 100, duration: '10 min' },
+            { id: 15, title: 'Expedition: Future Outpost', path: '/part5/chapter3', xp: 100, duration: '8 min' },
+            { id: 16, title: 'Expedition: Final Summit', path: '/part5/chapter4', xp: 150, duration: '6 min' },
         ]
     }
 ];
 
 const BOSS_ARENAS = [
-    { id: 'deepwork', name: 'Deep Work Dive', path: '/games', xp: 50, icon: '🎯', afterRegion: 1 },
-    { id: 'triage', name: 'Inbox Defense', path: '/games', xp: 50, icon: '📧', afterRegion: 2 },
-    { id: 'calendar', name: 'Calendar Defense', path: '/games', xp: 50, icon: '📅', afterRegion: 3 },
+    { id: 'deepwork', name: 'Deep Focus Trial', path: '/games', xp: 50, icon: '🎯', afterRegion: 1 },
+    { id: 'triage', name: 'Inbox Assault', path: '/games', xp: 50, icon: '📧', afterRegion: 2 },
+    { id: 'calendar', name: 'Calendar Siege', path: '/games', xp: 50, icon: '📅', afterRegion: 3 },
     { id: 'focusfury', name: 'Focus Blitz', path: '/games', xp: 50, icon: '⚡', afterRegion: 4 },
-    { id: 'clicker', name: 'Captain Click', path: '/games', xp: 50, icon: '🖱️', afterRegion: 5 },
+    { id: 'clicker', name: 'Captain Click Rally', path: '/games', xp: 50, icon: '🖱️', afterRegion: 5 },
 ];
 
 // ============================================
-// QUEST NODE (Chapter)
+// EXPEDITION NODE (Chapter)
 // ============================================
 const QuestNode = ({ chapter, isCompleted, isActive, index }) => {
     return (
@@ -121,7 +121,7 @@ const QuestNode = ({ chapter, isCompleted, isActive, index }) => {
                         <div className="text-white font-bold text-sm mb-1">{chapter.title}</div>
                         <div className="flex items-center gap-3 text-xs text-slate-400">
                             <span>⏱️ {chapter.duration}</span>
-                            <span className="text-cyan-400">+{chapter.xp} XP</span>
+                            <span className="text-cyan-400">+{chapter.xp} DP</span>
                         </div>
                         <div className="absolute left-1/2 -translate-x-1/2 top-full w-3 h-3 bg-slate-900 border-r border-b border-slate-700 rotate-45 -mt-1.5" />
                     </div>
@@ -166,10 +166,9 @@ const BossArenaNode = ({ arena, isCompleted }) => {
                     </div>
                 )}
 
-                {/* Label */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 text-center">
                     <div className="text-xs text-white font-bold whitespace-nowrap">{arena.name}</div>
-                    <div className="text-xs text-purple-400">BOSS</div>
+                    <div className="text-xs text-purple-400">CHALLENGE</div>
                 </div>
             </m.div>
         </Link>
@@ -273,14 +272,14 @@ const QuestMap = () => {
                 <div className="flex items-center gap-3">
                     <MapPin className="text-cyan-400" size={24} />
                     <div>
-                        <h2 className="text-xl font-bold text-white">Quest Map</h2>
-                        <p className="text-sm text-slate-400">Your journey to AI mastery</p>
+                        <h2 className="text-xl font-bold text-white">Territory Map</h2>
+                        <p className="text-sm text-slate-400">Chart your path across the frontier</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                     <Sparkles className="text-yellow-400" size={16} />
                     <span className="text-white font-bold">{totalCompleted}</span>
-                    <span className="text-slate-400">/ {totalChapters} quests</span>
+                    <span className="text-slate-400">/ {totalChapters} expeditions</span>
                 </div>
             </div>
 
@@ -309,7 +308,7 @@ const QuestMap = () => {
                         className="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2"
                     >
                         <Flag size={18} />
-                        Continue Your Quest
+                        Continue Your Expedition
                         <ChevronRight size={18} />
                     </m.button>
                 </Link>

@@ -197,7 +197,7 @@ const Dashboard = () => {
         <WebbookLayout>
             <Helmet>
                 <title>Quest Dashboard | Agentic AI at Home</title>
-                <meta name="description" content="Track your progress in mastering AI agents. Complete quests, earn XP, and level up your rank." />
+                <meta name="description" content="Your Frontier Command center - track expeditions, earn Discovery Points, and conquer new territories on your AI journey." />
             </Helmet>
 
             {/* Welcome Modal - First Time Visitors */}
@@ -217,12 +217,12 @@ const Dashboard = () => {
                             className="relative max-w-md w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-cyan-500/30 rounded-2xl p-6 shadow-2xl shadow-cyan-500/10"
                             onClick={e => e.stopPropagation()}
                         >
-                            {/* Captain Efficiency */}
+                            {/* Captain Efficiency - Scout Companion */}
                             <div className="flex justify-center mb-4">
                                 <div className="relative w-20 h-20">
                                     <img
                                         src="/assets/images/captain-e-transparent.png"
-                                        alt="Captain Efficiency welcomes you"
+                                        alt="Captain Efficiency, your scout companion"
                                         className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]"
                                     />
                                     <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-full" />
@@ -232,11 +232,11 @@ const Dashboard = () => {
                             {/* Welcome Message */}
                             <div className="text-center mb-6">
                                 <h2 className="text-2xl font-bold text-white mb-2">
-                                    Welcome, Agent! 🎖️
+                                    Welcome, Explorer! 🧭
                                 </h2>
                                 <p className="text-slate-300 text-sm leading-relaxed">
-                                    Captain Efficiency here! This is your <span className="text-cyan-400 font-medium">Quest Dashboard</span> —
-                                    your mission control for mastering AI agents.
+                                    I'm Captain Efficiency, your scout companion! This is your <span className="text-cyan-400 font-medium">Frontier Command</span> —
+                                    your base for charting the AI frontier.
                                 </p>
                             </div>
 
@@ -245,22 +245,22 @@ const Dashboard = () => {
                                 <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
                                     <Map className="text-cyan-400 flex-shrink-0 mt-0.5" size={18} />
                                     <div>
-                                        <p className="text-white text-sm font-medium">Quest Map</p>
-                                        <p className="text-slate-400 text-xs">Track progress through all 16 operations</p>
+                                        <p className="text-white text-sm font-medium">Territory Map</p>
+                                        <p className="text-slate-400 text-xs">Explore 16 expeditions across 5 territories</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
                                     <Trophy className="text-yellow-400 flex-shrink-0 mt-0.5" size={18} />
                                     <div>
-                                        <p className="text-white text-sm font-medium">Earn XP & Rank Up</p>
-                                        <p className="text-slate-400 text-xs">Complete operations to level up</p>
+                                        <p className="text-white text-sm font-medium">Earn Discovery Points</p>
+                                        <p className="text-slate-400 text-xs">Complete expeditions to rank up</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
                                     <Gamepad2 className="text-purple-400 flex-shrink-0 mt-0.5" size={18} />
                                     <div>
-                                        <p className="text-white text-sm font-medium">Games Hub</p>
-                                        <p className="text-slate-400 text-xs">Unlock mini-games as rewards</p>
+                                        <p className="text-white text-sm font-medium">Frontier Challenges</p>
+                                        <p className="text-slate-400 text-xs">Unlock mini-games after each territory</p>
                                     </div>
                                 </div>
                             </div>
@@ -271,7 +271,7 @@ const Dashboard = () => {
                                 onClick={handleCloseWelcome}
                                 className="block w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-center font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/25"
                             >
-                                Start Operation 1 →
+                                Begin First Expedition →
                             </Link>
 
                             {/* Skip */}
@@ -279,7 +279,7 @@ const Dashboard = () => {
                                 onClick={handleCloseWelcome}
                                 className="block w-full mt-3 py-2 text-slate-400 hover:text-white text-sm text-center transition-colors"
                             >
-                                Explore Dashboard First
+                                Explore Base Camp First
                             </button>
                         </m.div>
                     </m.div>
