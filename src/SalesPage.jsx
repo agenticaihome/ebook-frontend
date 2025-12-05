@@ -994,12 +994,12 @@ export default function SalesPage() {
               <div className="space-y-4">
                 <div className="bg-amber-900/20 border border-amber-500/30 p-3 rounded-lg text-amber-400 text-sm text-center mb-2">
                   <strong className="block mb-1">🚧 Pre-Launch Mode: Live-Beta Testing</strong>
-                  Please do not make purchases yet. Returning users: clear cache for newest updates.
+                  Returning users: clear cache for newest updates.
                   <br /><span className="text-xs opacity-80">The New Frontier Is Coming Soon.</span>
                 </div>
                 <button
                   disabled
-                  title="Sales resume on December 4th"
+                  title="Sales resume soon."
                   className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                 >
                   <Lock size={18} />
