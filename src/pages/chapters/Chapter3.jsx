@@ -98,7 +98,7 @@ const ShareableQuote = ({ quote, operation }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Operation ${operation}`);
+        navigator.clipboard.writeText(`"${quote}" — AI Frontier Adventure, Discovery ${operation}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -114,7 +114,7 @@ const ShareableQuote = ({ quote, operation }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-400 text-sm">— Operation {operation}</span>
+                    <span className="text-slate-400 text-sm">— Discovery {operation}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -554,7 +554,7 @@ const PrivacyLockdown = ({ onComplete }) => {
                     className="mt-4 p-4 bg-green-900/30 rounded-xl border border-green-500/40 text-center"
                 >
                     <CheckCircle className="text-green-400 mx-auto mb-2" size={24} />
-                    <p className="text-green-400 font-bold">Security perimeter established!</p>
+                    <p className="text-green-400 font-bold">Privacy settings configured!</p>
                     <p className="text-slate-400 text-sm">You've taken more privacy precautions than most AI users.</p>
                 </motion.div>
             )}
@@ -716,8 +716,8 @@ const Chapter3 = () => {
         <BlitzModeContext.Provider value={blitzMode}>
             <WebbookLayout>
                 <Helmet>
-                    <title>Operation 3: Security Perimeter | Agentic AI at Home</title>
-                    <meta name="description" content="Establish your privacy boundaries with AI tools. Learn where your data goes and how to protect it." />
+                    <title>Discovery 3: Privacy & Control | AI Frontier Adventure</title>
+                    <meta name="description" content="Understand where your data goes with AI tools and how to protect it. Establish smart boundaries." />
                 </Helmet>
 
                 {/* MISSION BRIEFING MODAL */}

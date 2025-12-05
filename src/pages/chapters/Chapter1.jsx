@@ -88,7 +88,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Expedition ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — AI Frontier Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -104,7 +104,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-400 text-sm">— Expedition {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -281,8 +281,8 @@ Then show me what tomorrow's briefing would look like.`,
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Expedition: Wake-Up Call | Agentic AI at Home</title>
-                <meta name="description" content="Recognize the frontier and identify the challenge (Decision Fatigue). Deploy your first Companion." />
+                <title>Discovery 1: Wake-Up Call | AI Frontier Adventure</title>
+                <meta name="description" content="Discover why your brain is overwhelmed and meet your first AI helper." />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
@@ -481,15 +481,15 @@ The tools are coming. You're learning how to lead them.`}
                                 You've probably heard of ChatGPT, Claude, or Gemini. Those are <strong className="text-white">chatbots</strong>—you ask, they answer.
                             </p>
                             <p>
-                                An <strong className="text-white">agent</strong> is different. It's a chatbot with a mission, context about YOUR life, and permission to help without being asked every time.
+                                An <strong className="text-white">AI helper</strong> is different. It's a chatbot with a mission, context about YOUR life, and permission to help without being asked every time.
                             </p>
                         </NewbieBox>
 
-                        {/* TACTICAL ANALYSIS: Chatbot vs Agent */}
+                        {/* ANALYSIS: Chatbot vs AI Helper */}
                         <section className="mb-10">
                             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
                                 <Target className="text-cyan-400" size={24} />
-                                TACTICAL ANALYSIS
+                                THE KEY DIFFERENCE
                             </h2>
 
                             <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -591,7 +591,7 @@ The tools are coming. You're learning how to lead them.`}
                                 <div className="bg-gradient-to-br from-yellow-900/30 to-orange-900/20 rounded-2xl p-8 border-2 border-yellow-500/50">
                                     <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                                         <Target className="text-yellow-400" />
-                                        PRE-MISSION CHECK
+                                        BEFORE YOU GO
                                     </h3>
 
                                     <p className="text-slate-300 mb-6">
@@ -609,7 +609,7 @@ The tools are coming. You're learning how to lead them.`}
 
                                     <div className="p-4 bg-amber-900/30 rounded-lg border border-amber-500/40">
                                         <p className="text-amber-400 font-bold text-center">
-                                            Expedition 2 shows you exactly how to delegate this task to an agent.
+                                            Discovery 2 shows you exactly how to delegate this task to an AI helper.
                                         </p>
                                     </div>
                                 </div>
@@ -622,7 +622,7 @@ The tools are coming. You're learning how to lead them.`}
                                 <CaptainHero
                                     size="md"
                                     pose="celebrating"
-                                    message="Outstanding work, Explorer! You just completed your first expedition and earned your first companion card. You now understand the most important concept in this entire journey—the difference between a tool that waits and a system that works. That task you identified? In Expedition 2, we're delegating it. No more mental Post-It notes. Let's move! 🚀"
+                                    message="Outstanding work! You just completed your first discovery and unlocked your first AI helper. You now understand the most important concept in this entire journey—the difference between a tool that waits and a system that works. That task you identified? In Discovery 2, we're delegating it. No more mental Post-It notes. Let's keep exploring! 🚀"
                                 />
                             </Suspense>
                         )}

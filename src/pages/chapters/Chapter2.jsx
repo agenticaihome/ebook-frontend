@@ -140,7 +140,7 @@ const ShareableQuote = ({ quote, operation }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Operation ${operation}`);
+        navigator.clipboard.writeText(`"${quote}" — AI Frontier Adventure, Discovery ${operation}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -277,7 +277,7 @@ const DecisionTree = () => {
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
             <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
                 <Crosshair className="text-cyan-400" size={20} />
-                Tactical Decision: Select Your Brain
+                Choose Your Brain
             </h3>
 
             {answer === null ? (
@@ -333,10 +333,10 @@ const MinimumViableStack = () => (
         <div className="flex items-center justify-between mb-4">
             <h3 className="text-white font-bold text-lg flex items-center gap-2">
                 <Shield className="text-green-400" size={20} />
-                Minimum Viable Arsenal
+                Your Starter Kit
             </h3>
             <span className="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
-                MISSION READY
+                READY TO GO
             </span>
         </div>
 
@@ -345,7 +345,7 @@ const MinimumViableStack = () => (
                 { role: '🧠 BRAIN', tool: 'Claude or ChatGPT', cost: '$0-20/mo' },
                 { role: '📚 MEMORY', tool: 'Apple Notes, Google Keep, or Notion', cost: 'Free' },
                 { role: '✋ HANDS', tool: 'Your calendar + reminders app', cost: 'Free' },
-                { role: '⚡ NERVES', tool: '(Deploy in Operation 13)', cost: '—' },
+                { role: '⚡ NERVES', tool: '(Set up in Discovery 13)', cost: '—' },
             ].map((item, i) => (
                 <div key={i} className="flex items-center justify-between bg-slate-900/50 rounded-lg p-3">
                     <div className="flex items-center gap-3">
@@ -454,15 +454,15 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
                     <Crosshair className="text-orange-400" size={20} />
                 </div>
                 <div>
-                    <h3 className="text-xl font-bold text-white">20-Minute Task Elimination Protocol</h3>
-                    <p className="text-slate-400 text-sm">Neutralize that recurring task—right now</p>
+                    <h3 className="text-xl font-bold text-white">20-Minute Task Delegation</h3>
+                    <p className="text-slate-400 text-sm">Hand off that recurring task—right now</p>
                 </div>
             </div>
 
             <div className="my-6 p-4 bg-yellow-900/30 rounded-xl border border-yellow-500/40">
                 <p className="text-yellow-400 font-medium text-sm flex items-center gap-2">
                     <Target size={16} />
-                    Remember the task you logged in Operation 1? This is the extraction.
+                    Remember the task you logged in Discovery 1? Let's delegate it now.
                 </p>
             </div>
 
@@ -530,7 +530,7 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
             <div className="mt-6 p-4 bg-green-900/30 rounded-xl border border-green-500/40">
                 <h4 className="text-green-400 font-bold mb-2 flex items-center gap-2">
                     <CheckCircle size={16} />
-                    Confirmed Kills
+                    Success Stories
                 </h4>
                 <div className="space-y-2 text-sm">
                     {[
@@ -645,8 +645,8 @@ const Chapter2 = () => {
         <BlitzModeContext.Provider value={blitzMode}>
             <WebbookLayout>
                 <Helmet>
-                    <title>Operation 2: Basic Training | Agentic AI at Home</title>
-                    <meta name="description" content="Build your AI team with the 4-Role Framework. Pick your Brain, set up your stack, and eliminate that recurring task." />
+                    <title>Discovery 2: Your AI Toolkit | AI Frontier Adventure</title>
+                    <meta name="description" content="Build your AI team with the 4-Role Framework. Pick your Brain, set up your stack, and automate that recurring task." />
                 </Helmet>
 
                 {/* MISSION BRIEFING MODAL */}
