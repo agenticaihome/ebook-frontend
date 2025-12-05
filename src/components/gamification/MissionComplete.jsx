@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
+import {
     Trophy, Star, Zap, ArrowRight, Award, Clock, Target,
-    CheckCircle, Sparkles, Crown, Share2, Twitter, ChevronRight
+    CheckCircle, Sparkles, Crown, Share2, Twitter, ChevronRight, Flag, Compass, Map
 } from 'lucide-react';
 
 /**
- * MissionComplete - Celebration screen after completing an operation
- * Shows rewards, stats, achievements, and next mission
+ * MissionComplete - Celebration screen after completing an expedition
+ * Shows rewards, stats, achievements, and next territory
  */
 
-// Confetti burst
+// Territory claimed confetti
 const ConfettiBurst = () => {
-    const emojis = ['🎉', '⭐', '🏆', '✨', '💫', '🚀', '💜', '🎊'];
-    
+    const emojis = ['🧭', '⭐', '🏆', '✨', '💫', '🚀', '🗺️', '🎊', '⛏️', '🏴'];
+
     return (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {Array.from({ length: 20 }).map((_, i) => {
@@ -27,20 +27,20 @@ const ConfettiBurst = () => {
                 return (
                     <motion.div
                         key={i}
-                        initial={{ 
-                            x: `${startX}%`, 
+                        initial={{
+                            x: `${startX}%`,
                             y: '100%',
                             scale: 0,
                             rotate: 0,
                         }}
-                        animate={{ 
-                            x: `${endX}%`, 
+                        animate={{
+                            x: `${endX}%`,
                             y: `${endY}%`,
                             scale: [0, 1, 1, 0.5],
                             rotate: Math.random() * 360,
                         }}
-                        transition={{ 
-                            duration, 
+                        transition={{
+                            duration,
                             delay,
                             ease: 'easeOut',
                         }}
@@ -103,10 +103,10 @@ const AchievementBadge = ({ id, name, description, isNew }) => {
 
 const MissionComplete = ({
     operationId,
-    operationName = "MISSION",
+    operationName = "EXPEDITION",
     operationNumber = 1,
     nextOperationPath,
-    nextOperationName = "Next Operation",
+    nextOperationName = "Next Expedition",
     rewards = { xp: 100, cards: [], achievements: [] },
     stats = {},
     onContinue,
@@ -127,7 +127,7 @@ const MissionComplete = ({
             localStorage.setItem('completed_operations', JSON.stringify(completed));
         }
 
-        // Save XP
+        // Save DP (Discovery Points)
         const currentXP = parseInt(localStorage.getItem('total_xp') || '0');
         localStorage.setItem('total_xp', (currentXP + rewards.xp).toString());
 
@@ -147,10 +147,10 @@ const MissionComplete = ({
 
     // Achievement data
     const achievementData = {
-        first_blood: { name: 'First Blood', description: 'Complete your first operation' },
-        card_collector: { name: 'Card Collector', description: 'Collect 10 agent cards' },
-        speed_runner: { name: 'Speed Runner', description: 'Complete in under 5 minutes' },
-        perfectionist: { name: 'Perfectionist', description: 'Complete all objectives' },
+        first_blood: { name: 'First Discovery', description: 'Complete your first expedition' },
+        card_collector: { name: 'Companion Keeper', description: 'Collect 10 companion agents' },
+        speed_runner: { name: 'Trail Blazer', description: 'Complete in under 5 minutes' },
+        perfectionist: { name: 'Master Explorer', description: 'Complete all objectives' },
     };
 
     return (
@@ -175,24 +175,24 @@ const MissionComplete = ({
                     className="text-center mb-8"
                 >
                     <motion.div
-                        animate={{ 
+                        animate={{
                             rotate: [0, 10, -10, 0],
                             scale: [1, 1.1, 1],
                         }}
                         transition={{ duration: 0.5, delay: 0.5 }}
                     >
-                        <Trophy className="text-yellow-400 mx-auto mb-4" size={64} />
+                        <Flag className="text-amber-400 mx-auto mb-4" size={64} />
                     </motion.div>
-                    
+
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                         className="text-3xl font-bold text-white mb-2"
                     >
-                        OPERATION COMPLETE!
+                        TERRITORY CLAIMED!
                     </motion.h2>
-                    
+
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -211,10 +211,10 @@ const MissionComplete = ({
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-8"
                         >
-                            {/* XP and Stats */}
+                            {/* DP and Stats */}
                             <div className="grid grid-cols-3 gap-4 mb-6">
                                 <div className="bg-cyan-500/20 rounded-xl p-4 text-center border border-cyan-500/30">
-                                    <Zap className="text-cyan-400 mx-auto mb-2" size={24} />
+                                    <Compass className="text-cyan-400 mx-auto mb-2" size={24} />
                                     <motion.span
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
@@ -222,7 +222,7 @@ const MissionComplete = ({
                                     >
                                         +{rewards.xp}
                                     </motion.span>
-                                    <span className="text-cyan-400 text-sm">XP Earned</span>
+                                    <span className="text-cyan-400 text-sm">Discovery Points</span>
                                 </div>
 
                                 {rewards.cards?.length > 0 && (
@@ -232,26 +232,26 @@ const MissionComplete = ({
                                             +{rewards.cards.length}
                                         </span>
                                         <span className="text-purple-400 text-sm">
-                                            {rewards.cards.length === 1 ? 'Card' : 'Cards'}
+                                            {rewards.cards.length === 1 ? 'Companion' : 'Companions'}
                                         </span>
                                     </div>
                                 )}
 
                                 <div className="bg-green-500/20 rounded-xl p-4 text-center border border-green-500/30">
-                                    <CheckCircle className="text-green-400 mx-auto mb-2" size={24} />
+                                    <Map className="text-green-400 mx-auto mb-2" size={24} />
                                     <span className="text-2xl font-bold text-white block">
                                         {operationNumber}/16
                                     </span>
-                                    <span className="text-green-400 text-sm">Operations</span>
+                                    <span className="text-green-400 text-sm">Expeditions</span>
                                 </div>
                             </div>
 
-                            {/* Cards earned */}
+                            {/* Companions recruited */}
                             {rewards.cards?.length > 0 && (
                                 <div className="bg-slate-800/50 rounded-xl p-4 mb-6">
                                     <h4 className="text-white font-bold text-sm mb-3 flex items-center gap-2">
                                         <Star className="text-yellow-400" size={16} />
-                                        CARDS ACQUIRED
+                                        COMPANIONS RECRUITED
                                     </h4>
                                     <div className="flex flex-wrap gap-2">
                                         {rewards.cards.map((card, i) => (
@@ -294,7 +294,7 @@ const MissionComplete = ({
                             {Object.keys(stats).length > 0 && (
                                 <div className="bg-slate-800/30 rounded-xl p-4 mb-6">
                                     <h4 className="text-slate-400 font-bold text-xs mb-3 uppercase tracking-wider">
-                                        Mission Stats
+                                        Expedition Stats
                                     </h4>
                                     <div className="grid grid-cols-2 gap-4">
                                         {stats.timeToComplete && (
@@ -329,7 +329,7 @@ const MissionComplete = ({
                                 onClick={handleContinue}
                                 className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-cyan-500/25 transition-all group"
                             >
-                                <span>PROCEED TO: {nextOperationName}</span>
+                                <span>EXPLORE NEXT: {nextOperationName}</span>
                                 <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
                             </button>
 
@@ -337,7 +337,7 @@ const MissionComplete = ({
                             <div className="flex justify-center gap-4 mt-4">
                                 <button className="flex items-center gap-2 text-slate-400 hover:text-white text-sm transition-colors">
                                     <Share2 size={14} />
-                                    Share Victory
+                                    Share Discovery
                                 </button>
                             </div>
                         </motion.div>
