@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { m } from 'framer-motion';
 import { Activity, TrendingUp, AlertCircle, Award, Lock } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 
+const STORAGE_KEY = 'mentalLoadCalculator';
+
 const MentalLoadCalculator = () => {
     const { unlockBadge } = useUser();
-    const [inputs, setInputs] = useState({
-        emailHours: 2,
-        adminHours: 5,
-        recurringTasks: 10,
-        forgetFrequency: 'sometimes',
-        stressLevel: 5
+    const [inputs, setInputs] = useState(() => {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : {
+            emailHours: 2,
+            adminHours: 5,
+            recurringTasks: 10,
+            forgetFrequency: 'sometimes',
+            stressLevel: 5
+        };
     });
     const [showResults, setShowResults] = useState(false);
     const [unlockedTip, setUnlockedTip] = useState(null);
+
+    // Save to localStorage whenever inputs change
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(inputs));
+    }, [inputs]);
 
     const handleInputChange = (field, value) => {
         setInputs({ ...inputs, [field]: value });
