@@ -1,9 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
-import ChapterNavigation from '../../components/common/ChapterNavigation';
-import HowThisWorks from '../../components/common/HowThisWorks';
-import { FutureProofBanner, WhereWeAre } from '../../components/common/HonestAIFraming';
 import MissionBriefing from '../../components/gamification/MissionBriefing';
 import MissionComplete from '../../components/gamification/MissionComplete';
 import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
@@ -29,22 +26,6 @@ const SpeedRunContext = createContext(false);
 // REUSABLE COMPONENTS
 // ============================================
 
-// Author credibility - builds trust fast
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
-
 // Speed Run Toggle - for impatient readers
 const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
@@ -57,32 +38,6 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
         {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
     </button>
-);
-
-// TL;DR Card with stats
-const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <m.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
-    >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-wrap justify-center md:justify-start gap-6">
-                {stats.map((stat, i) => (
-                    <div key={i} className="text-center">
-                        <div className="text-3xl font-bold text-white">{stat.value}</div>
-                        <div className="text-sm text-slate-400">{stat.label}</div>
-                    </div>
-                ))}
-            </div>
-            <button
-                onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
-            >
-                {primaryCTA} <ArrowRight size={18} />
-            </button>
-        </div>
-    </m.div>
 );
 
 // Expandable Story Hook
@@ -286,60 +241,6 @@ const NewbieBox = ({ title, children }) => (
     </div>
 );
 
-// Captain Efficiency - Your AI Guide
-const CaptainEfficiency = ({ variant = 'default', children }) => {
-    const variants = {
-        default: {
-            bg: 'from-cyan-900/40 to-blue-900/40',
-            border: 'border-cyan-500/50',
-            accent: 'text-cyan-400',
-        },
-        celebration: {
-            bg: 'from-green-900/40 to-cyan-900/40',
-            border: 'border-green-500/50',
-            accent: 'text-green-400',
-        },
-        tip: {
-            bg: 'from-yellow-900/40 to-orange-900/40',
-            border: 'border-yellow-500/50',
-            accent: 'text-yellow-400',
-        },
-    };
-
-    const v = variants[variant];
-
-    return (
-        <m.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className={`bg-gradient-to-r ${v.bg} rounded-2xl p-6 border ${v.border} mb-8 relative overflow-hidden`}
-        >
-            {/* Subtle background decoration */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-
-            <div className="flex gap-4 relative">
-                {/* Captain Avatar */}
-                <div className="flex-shrink-0">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/25">
-                        <span className="text-2xl">🦸</span>
-                    </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-2">
-                        <span className={`font-bold ${v.accent}`}>Captain Efficiency</span>
-                        <Sparkles size={14} className={v.accent} />
-                    </div>
-                    <div className="text-slate-200 text-[15px] leading-relaxed">
-                        {children}
-                    </div>
-                </div>
-            </div>
-        </m.div>
-    );
-};
-
 // Quick Win Box
 const QuickWin = ({ title, prompt, setupTime }) => {
     const [copied, setCopied] = useState(false);
@@ -424,42 +325,12 @@ const Chapter1 = () => {
                             ]}
                         />
 
-                        {/* Author Credibility */}
-                        <AuthorCredibility />
-
-                        {/* Chapter Navigation */}
-                        <ChapterNavigation
-                            previousChapter={null}
-                            nextChapter="/part1/chapter2"
-                            partNumber={1}
-                            chapterNumber={1}
-                        />
-
-                        {/* Future-Proof Banner */}
-                        <FutureProofBanner />
-
-                        {/* TL;DR Card */}
-                        <TLDRCard
-                            stats={[
-                                { value: '100+', label: 'decisions/morning' },
-                                { value: '30 min', label: 'saved daily' },
-                                { value: '$0', label: 'to start' },
-                            ]}
-                            primaryCTA="Take the Quiz"
-                            onCTAClick={scrollToQuiz}
-                        />
-
-                        {/* How This Works - Early clarification for non-tech readers */}
-                        <HowThisWorks />
-
-                        {/* Where We Are - Honest framing about AI agents */}
-                        <WhereWeAre />
                         {!speedRun && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
                                     size="md"
                                     pose="default"
-                                    message="Welcome, future agent-builder. I'm Captain Efficiency, and I'll be your guide through this book. Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this chapter, you'll understand why that's happening—and see the first glimpse of how we fix it. Ready?"
+                                    message="Welcome, future agent-builder. I'm Captain Efficiency, and I'll be your guide. Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this operation, you'll understand why that's happening—and see the first glimpse of how we fix it. Ready?"
                                 />
                             </Suspense>
                         )}
@@ -792,14 +663,6 @@ Then show me what tomorrow's briefing would look like.`}
                             operationId="op_1"
                             nextOperationPath="/part1/chapter2"
                             rewards={{ xp: 100, cards: [] }}
-                        />
-
-                        {/* Bottom Navigation */}
-                        <ChapterNavigation
-                            previousChapter={null}
-                            nextChapter="/part1/chapter2"
-                            partNumber={1}
-                            chapterNumber={1}
                         />
 
                     </div>
