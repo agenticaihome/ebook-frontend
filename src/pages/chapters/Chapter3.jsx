@@ -733,9 +733,9 @@ const Chapter3 = () => {
                         'Learn threat indicators to watch for',
                     ]}
                     rewards={{
-                        xp: 100,
+                        dp: 100,
                         cards: 2,
-                        cardNames: ['Privacy Guard Agent', 'Data Auditor Agent']
+                        cardNames: ['Privacy Guard Companion', 'Data Auditor Companion']
                     }}
                     intel="You gave AI tools access to personal information. Before building further, you need to understand where that data goes—and establish clear boundaries. This is your security briefing."
                 />
@@ -756,9 +756,9 @@ const Chapter3 = () => {
                             className="mb-6"
                         >
                             <div className="flex items-center gap-3 mb-2">
-                                <span className="text-cyan-400 font-mono text-sm">OPERATION 3</span>
+                                <span className="text-amber-400 font-mono text-sm">EXPEDITION 3</span>
                                 <span className="text-slate-600">•</span>
-                                <span className="text-slate-500 text-sm">Part I: Daily Ops</span>
+                                <span className="text-slate-500 text-sm">Territory I: Base Camp</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                 SECURITY PERIMETER
@@ -960,14 +960,14 @@ const Chapter3 = () => {
 
                         {/* MISSION COMPLETE */}
                         <MissionComplete
-                            operationId="op_3"
+                            operationId="exp_3"
                             operationName="SECURITY PERIMETER"
                             operationNumber={3}
                             nextOperationPath="/part1/chapter4"
                             nextOperationName="MORNING ROUTINE"
                             rewards={{
-                                xp: 100,
-                                cards: ['Privacy Guard Agent', 'Data Auditor Agent'],
+                                dp: 100,
+                                cards: ['Privacy Guard Companion', 'Data Auditor Companion'],
                                 achievements: ['perimeter_secured']
                             }}
                             stats={{

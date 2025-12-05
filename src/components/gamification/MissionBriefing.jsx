@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-    Shield, Clock, AlertTriangle, ChevronRight, 
+import {
+    Shield, Clock, AlertTriangle, ChevronRight,
     Radio, Target, Zap, Lock, Unlock
 } from 'lucide-react';
 
 /**
- * MissionBriefing - Military-style mission header
- * Sets the stage for each operation with dramatic styling
+ * MissionBriefing - Explorer-style expedition header
+ * Sets the stage for each expedition with dramatic styling
  */
 
 const MissionBriefing = ({
@@ -26,10 +26,10 @@ const MissionBriefing = ({
     // Typewriter effect for briefing
     useEffect(() => {
         if (!briefing) return;
-        
+
         let index = 0;
         const speed = 20; // ms per character
-        
+
         const timer = setInterval(() => {
             if (index < briefing.length) {
                 setDisplayedText(briefing.slice(0, index + 1));
@@ -72,7 +72,7 @@ const MissionBriefing = ({
 
             {/* Main briefing container */}
             <div className="bg-gradient-to-br from-slate-900 via-slate-800/95 to-slate-900 rounded-2xl border-2 border-cyan-500/30 overflow-hidden shadow-2xl shadow-cyan-500/10">
-                
+
                 {/* Header bar */}
                 <div className="bg-gradient-to-r from-cyan-900/50 via-slate-800 to-purple-900/50 px-6 py-4 border-b border-cyan-500/20">
                     <div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ const MissionBriefing = ({
                         <div className="flex items-center gap-4">
                             <div className="relative">
                                 <motion.div
-                                    animate={currentStatus.pulse ? { 
+                                    animate={currentStatus.pulse ? {
                                         boxShadow: [
                                             '0 0 0 0 rgba(34, 211, 238, 0.4)',
                                             '0 0 0 10px rgba(34, 211, 238, 0)',
@@ -99,7 +99,7 @@ const MissionBriefing = ({
                             </div>
                             <div>
                                 <p className="text-slate-400 text-xs font-mono uppercase tracking-wider mb-1">
-                                    Operation {missionNumber} of {totalMissions}
+                                    Expedition {missionNumber} of {totalMissions}
                                 </p>
                                 <h1 className="text-2xl md:text-3xl font-bold text-white tracking-wide">
                                     {title}
@@ -120,7 +120,7 @@ const MissionBriefing = ({
                             </div>
                             <div className="flex items-center gap-2 text-slate-400 text-sm">
                                 <Clock size={14} />
-                                <span>Mission Duration: {duration}</span>
+                                <span>Expedition Duration: {duration}</span>
                             </div>
                         </div>
                     </div>
@@ -136,8 +136,8 @@ const MissionBriefing = ({
                         >
                             <AlertTriangle className="text-yellow-400" size={20} />
                         </motion.div>
-                        <span className="text-yellow-400 font-bold font-mono text-sm tracking-wider">
-                            MISSION BRIEFING
+                        <span className="text-amber-400 font-bold font-mono text-sm tracking-wider">
+                            EXPEDITION BRIEFING
                         </span>
                         <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent" />
                     </div>
@@ -160,7 +160,7 @@ const MissionBriefing = ({
                     {objectives.length > 0 && (
                         <div className="grid md:grid-cols-3 gap-3">
                             {objectives.slice(0, 3).map((obj, i) => (
-                                <div 
+                                <div
                                     key={i}
                                     className="flex items-center gap-2 bg-slate-800/50 rounded-lg p-3 border border-slate-700/50"
                                 >
@@ -174,7 +174,7 @@ const MissionBriefing = ({
                     {/* Bottom action hint */}
                     <div className="mt-6 flex items-center justify-center gap-2 text-slate-500 text-sm">
                         <Zap className="text-cyan-400" size={14} />
-                        <span>Scroll down to begin operation</span>
+                        <span>Scroll down to begin expedition</span>
                         <motion.div
                             animate={{ y: [0, 5, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}

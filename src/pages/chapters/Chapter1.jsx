@@ -88,7 +88,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Operation ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Expedition ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -104,7 +104,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-400 text-sm">— Operation {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Expedition {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -281,7 +281,7 @@ Then show me what tomorrow's briefing would look like.`,
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Operation: Wake-Up Call | Agentic AI at Home</title>
+                <title>Expedition: Wake-Up Call | Agentic AI at Home</title>
                 <meta name="description" content="Recognize the battlefield and identify the enemy (Decision Fatigue). Deploy your first agent." />
             </Helmet>
 
@@ -291,14 +291,14 @@ Then show me what tomorrow's briefing would look like.`,
 
                         {/* MISSION BRIEFING - Epic Header */}
                         <MissionBriefing
-                            title="OPERATION: WAKE-UP CALL"
+                            title="EXPEDITION: WAKE-UP CALL"
                             missionNumber={1}
                             totalMissions={16}
                             duration="6 min"
-                            briefing="ATTENTION, OPERATOR. Your mental capacity is under siege. Intelligence reports 35,000 decisions per day are draining your combat effectiveness. Your objective: Recognize the battlefield and identify the enemy (Decision Fatigue). Prepare to deploy your first agent."
+                            briefing="ATTENTION, EXPLORER! Your mental capacity is under siege. Intelligence reports 35,000 decisions per day are draining your effectiveness. Your objective: Recognize the battlefield and identify the enemy (Decision Fatigue). Prepare to deploy your first agent."
                             status="IN PROGRESS"
                             objectives={[
-                                "Read the mission intel",
+                                "Read the expedition intel",
                                 "Understand Chatbots vs Agents",
                                 "Deploy your first agent"
                             ]}
@@ -314,9 +314,9 @@ Then show me what tomorrow's briefing would look like.`,
 
                         {/* OBJECTIVES CHECKLIST - Interactive */}
                         <ObjectivesChecklist
-                            operationId="op_1"
+                            operationId="exp_1"
                             primaryObjectives={[
-                                { id: "read_intel", label: "Read the mission intel" },
+                                { id: "read_intel", label: "Read the expedition intel" },
                                 { id: "understand_difference", label: "Understand Chatbots vs Agents" },
                                 { id: "deploy_first", label: "Deploy your first agent" }
                             ]}
@@ -332,7 +332,7 @@ Then show me what tomorrow's briefing would look like.`,
                                 title="THE CURRENT STATE OF AI AGENTS"
                                 classification="LEVEL 1"
                                 defaultExpanded={false}
-                                content={`Let's be straight with you, Operator.
+                                content={`Let's be straight with you, Explorer.
 
 When you hear 'AI agents,' you might imagine robots that run your life automatically while you sleep. That tech is coming—OpenAI, Google, Apple, and Anthropic are all racing to build it.
 
@@ -340,9 +340,9 @@ But we're not quite there yet.
 
 What you're learning here is how to COMMAND these agents. Today, you'll deploy them manually using ChatGPT or Claude. Tomorrow, when fully autonomous agents arrive, you'll already know how to direct them.
 
-Think of this as officer training before the army expands.
+Think of this as scout training before the frontier expands.
 
-The soldiers are coming. You're learning how to lead them.`}
+The tools are coming. You're learning how to lead them.`}
                             />
                         )}
 
@@ -352,7 +352,7 @@ The soldiers are coming. You're learning how to lead them.`}
                                 <CaptainHero
                                     size="md"
                                     pose="default"
-                                    message="Welcome, future agent-builder. I'm Captain Efficiency, and I'll be your commanding officer through these operations. Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this operation, you'll understand why that's happening—and deploy your first agent to fight back. Ready, Operator?"
+                                    message="Welcome, Explorer! I'm Captain Efficiency, your scout companion on this frontier. Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this expedition, you'll understand why that's happening—and deploy your first agent to fight back. Ready to explore?"
                                 />
                             </Suspense>
                         )}
@@ -606,9 +606,9 @@ The soldiers are coming. You're learning how to lead them.`}
                                         </p>
                                     </div>
 
-                                    <div className="p-4 bg-cyan-900/30 rounded-lg border border-cyan-500/40">
-                                        <p className="text-cyan-400 font-bold text-center">
-                                            Operation 2 shows you exactly how to delegate this task to an agent.
+                                    <div className="p-4 bg-amber-900/30 rounded-lg border border-amber-500/40">
+                                        <p className="text-amber-400 font-bold text-center">
+                                            Expedition 2 shows you exactly how to delegate this task to an agent.
                                         </p>
                                     </div>
                                 </div>
@@ -621,22 +621,22 @@ The soldiers are coming. You're learning how to lead them.`}
                                 <CaptainHero
                                     size="md"
                                     pose="celebrating"
-                                    message="Outstanding work, Operator! You just completed your first operation and earned your first agent card. You now understand the most important concept in this entire training—the difference between a tool that waits and a system that works. That task you identified? In Operation 2, we're delegating it. No more mental Post-It notes. Move out! 🚀"
+                                    message="Outstanding work, Explorer! You just completed your first expedition and earned your first companion card. You now understand the most important concept in this entire journey—the difference between a tool that waits and a system that works. That task you identified? In Expedition 2, we're delegating it. No more mental Post-It notes. Let's move! 🚀"
                                 />
                             </Suspense>
                         )}
 
                         {/* MISSION COMPLETE */}
                         <MissionComplete
-                            operationId="op_1"
+                            operationId="exp_1"
                             operationName="WAKE-UP CALL"
                             operationNumber={1}
                             nextOperationPath="/part1/chapter2"
                             nextOperationName="BASIC TRAINING"
                             rewards={{
-                                xp: 100,
-                                cards: ['Morning Brief Agent'],
-                                achievements: ['first_blood']
+                                dp: 100,
+                                cards: ['Morning Brief Companion'],
+                                achievements: ['first_discovery']
                             }}
                             stats={{
                                 objectivesCompleted: "3/3",

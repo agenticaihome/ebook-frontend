@@ -728,7 +728,7 @@ const Chapter2 = () => {
                                 <CaptainHero
                                     size="md"
                                     pose="default"
-                                    message="Time to build your squad, Operator. In Operation 1, you learned the difference between tools that wait and systems that work. Now we assemble the team. By the end of this operation, you'll have selected your AI 'Brain' and handed off that recurring task you've been carrying. Ready to meet your new unit?"
+                                    message="Time to build your squad, Explorer! In Expedition 1, you learned the difference between tools that wait and systems that work. Now we assemble the team. By the end of this expedition, you'll have selected your AI 'Brain' and handed off that recurring task you've been carrying. Ready to meet your new companions?"
                                 />
                             </Suspense>
                         )}
@@ -900,21 +900,21 @@ const Chapter2 = () => {
                                 <CaptainHero
                                     size="md"
                                     pose="celebrating"
-                                    message="Your first agent is deployed. That task you've been carrying? It's no longer your problem. Your Brain is handling it now. But here's the thing—you just gave an AI access to your calendar, your tasks, maybe your email. Before we go deeper, Operation 3 establishes your security perimeter. Trust me, it's critical. 🔒"
+                                    message="Your first companion is deployed! That task you've been carrying? It's no longer your problem. Your Brain is handling it now. But here's the thing—you just gave an AI access to your calendar, your tasks, maybe your email. Before we go deeper, Expedition 3 establishes your security perimeter. Trust me, it's critical. 🔒"
                                 />
                             </Suspense>
                         )}
 
                         {/* MISSION COMPLETE */}
                         <MissionComplete
-                            operationId="op_2"
+                            operationId="exp_2"
                             operationName="BASIC TRAINING"
                             operationNumber={2}
                             nextOperationPath="/part1/chapter3"
                             nextOperationName="SECURITY PERIMETER"
                             rewards={{
-                                xp: 100,
-                                cards: ['Task Delegate Agent', 'AI Stack Advisor'],
+                                dp: 100,
+                                cards: ['Task Delegate Companion', 'AI Stack Advisor'],
                                 achievements: ['squad_assembled']
                             }}
                             stats={{
