@@ -106,41 +106,41 @@ const WebbookLayout = ({ children }) => {
         {
             id: 'part1', title: 'Part 1: Diagnosis', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
             subChapters: [
-                { title: 'The Cost of Chaos', id: 'chapter1', path: '/part1/chapter1' },
-                { title: 'The Agentic Shift', id: 'chapter2', path: '/part1/chapter2' },
-                { title: 'Privacy & Security', id: 'chapter3', path: '/part1/chapter3' }
+                { title: 'Op 1: Wake-Up Call', id: 'chapter1', path: '/part1/chapter1' },
+                { title: 'Op 2: Basic Training', id: 'chapter2', path: '/part1/chapter2' },
+                { title: 'Op 3: Privacy & Security', id: 'chapter3', path: '/part1/chapter3' }
             ]
         },
         {
             id: 'part2', title: 'Part 2: Getting Started', path: '/part2/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Morning Routines', id: 'chapter1', path: '/part2/chapter1' },
-                { title: 'Kitchen & Grocery', id: 'chapter2', path: '/part2/chapter2' },
-                { title: 'Household Management', id: 'chapter3', path: '/part2/chapter3' }
+                { title: 'Op 4: Morning Routines', id: 'chapter1', path: '/part2/chapter1' },
+                { title: 'Op 5: Kitchen & Grocery', id: 'chapter2', path: '/part2/chapter2' },
+                { title: 'Op 6: Household Management', id: 'chapter3', path: '/part2/chapter3' }
             ]
         },
         {
             id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3/chapter1', icon: <Shield size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: '[Chapter 7]', id: 'chapter1', path: '/part3/chapter1' },
-                { title: '[Chapter 8]', id: 'chapter2', path: '/part3/chapter2' },
-                { title: '[Chapter 9]', id: 'chapter3', path: '/part3/chapter3' }
+                { title: 'Op 7: Deep Work', id: 'chapter1', path: '/part3/chapter1' },
+                { title: 'Op 8: Email Triage', id: 'chapter2', path: '/part3/chapter2' },
+                { title: 'Op 9: Meeting Intelligence', id: 'chapter3', path: '/part3/chapter3' }
             ]
         },
         {
             id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4/chapter1', icon: <BookOpen size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: '[Chapter 10]', id: 'chapter1', path: '/part4/chapter1' },
-                { title: '[Chapter 11]', id: 'chapter2', path: '/part4/chapter2' },
-                { title: '[Chapter 12]', id: 'chapter3', path: '/part4/chapter3' }
+                { title: 'Op 10: Sleep Optimization', id: 'chapter1', path: '/part4/chapter1' },
+                { title: 'Op 11: Nutrition Systems', id: 'chapter2', path: '/part4/chapter2' },
+                { title: 'Op 12: Fitness Tracking', id: 'chapter3', path: '/part4/chapter3' }
             ]
         },
         {
             id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: '[Chapter 13]', id: 'chapter1', path: '/part5/chapter1' },
-                { title: '[Chapter 14]', id: 'chapter2', path: '/part5/chapter2' },
-                { title: '[Chapter 15]', id: 'chapter3', path: '/part5/chapter3' }
+                { title: 'Op 13: Advanced Automation', id: 'chapter1', path: '/part5/chapter1' },
+                { title: 'Op 14: Family Dashboard', id: 'chapter2', path: '/part5/chapter2' },
+                { title: 'Op 15: Legacy & Ethics', id: 'chapter3', path: '/part5/chapter3' }
             ]
         },
     ];

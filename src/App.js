@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navig
 import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
-import { GameProvider } from './context/GameContext';
+
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
 import { Toaster, toast } from 'react-hot-toast';
@@ -209,21 +209,19 @@ function App() {
       <Router>
         <SoundProvider>
           <UserProvider>
-            <GameProvider>
-              <Suspense fallback={<Loading />}>
-                <AnimatedRoutes />
-                <MobileBottomNav />
-                <Toaster
-                  toastOptions={{
-                    style: {
-                      background: '#1e293b',
-                      color: '#fff',
-                      border: '1px solid #334155',
-                    },
-                  }}
-                />
-              </Suspense>
-            </GameProvider>
+            <Suspense fallback={<Loading />}>
+              <AnimatedRoutes />
+              <MobileBottomNav />
+              <Toaster
+                toastOptions={{
+                  style: {
+                    background: '#1e293b',
+                    color: '#fff',
+                    border: '1px solid #334155',
+                  },
+                }}
+              />
+            </Suspense>
           </UserProvider>
         </SoundProvider>
       </Router>
