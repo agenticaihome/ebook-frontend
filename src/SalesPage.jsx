@@ -260,23 +260,23 @@ export default function SalesPage() {
                   to={part.link || '#pricing'}
                   key={index}
                   className={`
-                    relative p-6 rounded-2xl border transition-all group hover:-translate-y-1 backdrop-blur-md
+                    tactical-card p-6 rounded-lg transition-all group hover:-translate-y-1
                     ${part.status === 'FREE'
-                      ? 'bg-green-900/10 border-green-500/30 hover:bg-green-900/20 cursor-pointer hover:shadow-lg hover:shadow-green-900/20 animate-pulse-subtle'
+                      ? 'border-green-500/50 hover:border-green-400 animate-pulse-subtle'
                       : part.status === 'OPEN'
-                        ? 'bg-cyan-900/10 border-cyan-500/30 hover:bg-cyan-900/20 cursor-pointer'
-                        : 'bg-slate-800/40 border-slate-600/50 hover:border-amber-500/30 cursor-pointer opacity-90 hover:opacity-100'}
+                        ? 'border-cyan-500/30 hover:border-cyan-400'
+                        : 'opacity-90 hover:opacity-100'}
                   `}
                 >
-                  <div className="text-xs font-mono text-slate-400 mb-2">TERRITORY {part.id}</div>
-                  <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
+                  <div className="text-xs font-mono text-amber-500/80 mb-2">TERRITORY {part.id}</div>
+                  <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-500'}`}>
                     {part.icon}
                   </div>
-                  <div className="font-bold text-sm mb-1 text-slate-200 group-hover:text-white transition-colors">{part.title}</div>
+                  <div className="font-bold text-sm mb-1 text-slate-200 group-hover:text-amber-400 transition-colors">{part.title}</div>
                   <div className="text-xs text-slate-400">{part.desc}</div>
                   <div className="absolute top-4 right-4">
-                    {part.status === 'FREE' && <span className="text-xs font-bold text-green-400 bg-green-500/20 px-2 py-1 rounded">FREE</span>}
-                    {part.status === 'LOCKED' && <Lock size={14} className="text-slate-600" />}
+                    {part.status === 'FREE' && <span className="text-xs font-mono font-bold text-green-400 bg-green-500/20 px-2 py-1 rounded border border-green-500/30">FREE</span>}
+                    {part.status === 'LOCKED' && <Lock size={14} className="text-amber-500/50" />}
                   </div>
                 </Link>
               ))}
@@ -979,17 +979,17 @@ export default function SalesPage() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 relative z-10">
             {/* Standard Access */}
-            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-slate-600/50 hover:border-purple-500/50 transition-all duration-300 group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-purple-900/20 hover:-translate-y-2">
+            <div className="tactical-card rounded-xl p-8 flex flex-col relative overflow-hidden hover:-translate-y-2 transition-all duration-300 group">
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <CreditCard size={120} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-white">Standard Access</h3>
-              <div className="text-4xl font-bold text-white mb-6">$39.99 <span className="text-sm text-slate-400 font-normal">USD</span></div>
+              <h3 className="text-2xl font-bold mb-2 text-white font-mono">Standard Access</h3>
+              <div className="text-4xl font-bold text-amber-400 mb-6">$39.99 <span className="text-sm text-slate-400 font-normal">USD</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
-                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Full access to all 5 parts</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>5 Pre-made Agent Prompts</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Kitchen Optimization Template</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-purple-400 flex-shrink-0" /> <span>Household Maintenance Schedule</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>Full access to all 5 Territories</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>5 Pre-made Companion Prompts</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>Kitchen Optimization Template</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>Household Maintenance Schedule</span></li>
               </ul>
 
               <div className="space-y-4">
@@ -1015,20 +1015,20 @@ export default function SalesPage() {
             </div>
 
             {/* Crypto Access */}
-            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 border border-green-500/30 hover:border-green-400/50 transition-all duration-300 group relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-green-900/20 hover:-translate-y-2">
-              <div className="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-4 py-1.5 rounded-bl-2xl shadow-lg">
+            <div className="tactical-card rounded-xl p-8 flex flex-col relative overflow-hidden hover:-translate-y-2 transition-all duration-300 group border-green-500/40">
+              <div className="absolute top-0 right-0 bg-gradient-to-r from-green-500 to-emerald-400 text-black text-xs font-mono font-bold px-4 py-1.5 rounded-bl-xl shadow-lg">
                 50% OFF
               </div>
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Coins size={120} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-green-400">Crypto Access</h3>
+              <h3 className="text-2xl font-bold mb-2 text-green-400 font-mono">Crypto Access</h3>
               <div className="text-4xl font-bold text-white mb-6">$19.99 <span className="text-sm text-slate-400 font-normal">in ERG</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
                 <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>Everything in Standard Access</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>50% Tech Literacy Discount</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>"Early Adopter" Badge</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>Support decentralized commerce</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>50% Tech Pioneer Discount</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>"Early Explorer" Badge</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>Support decentralized frontier</span></li>
                 <li className="flex gap-3"><Check size={18} className="text-green-400 flex-shrink-0" /> <span>Private & Secure</span></li>
               </ul>
               <div className="mt-auto">
