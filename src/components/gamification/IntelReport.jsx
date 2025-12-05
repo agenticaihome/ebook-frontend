@@ -3,15 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FileWarning, ChevronDown, ChevronUp, Shield, Eye } from 'lucide-react';
 
 /**
- * IntelReport - Classified document styling for honest framing
+ * IntelReport - Scout report styling for honest framing
  * Used to set expectations about current AI agent technology
  */
-const IntelReport = ({ 
-    title = "CLASSIFIED INTEL", 
+const IntelReport = ({
+    title = "SCOUT REPORT",
     content,
-    classification = "LEVEL 1",
+    classification = "TERRITORY 1",
     collapsible = true,
-    defaultExpanded = false 
+    defaultExpanded = false
 }) => {
     const [expanded, setExpanded] = useState(defaultExpanded);
 
@@ -23,16 +23,16 @@ const IntelReport = ({
             animate={{ opacity: 1, y: 0 }}
             className="relative mb-8"
         >
-            {/* Classified tape effect at top */}
+            {/* Scout report tape effect at top */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                <div className="bg-yellow-500 text-yellow-950 px-6 py-1 font-mono text-xs font-bold tracking-widest transform -rotate-1 shadow-lg">
-                    ⚠️ CLASSIFIED
+                <div className="bg-amber-500 text-amber-950 px-6 py-1 font-mono text-xs font-bold tracking-widest transform -rotate-1 shadow-lg">
+                    🧭 SCOUT REPORT
                 </div>
             </div>
 
             {/* Main document */}
             <div className="bg-gradient-to-br from-amber-950/40 via-slate-900/80 to-slate-900/90 rounded-xl border-2 border-amber-700/50 overflow-hidden shadow-2xl">
-                
+
                 {/* Document header */}
                 <div className="bg-gradient-to-r from-amber-900/50 to-amber-800/30 px-6 py-4 border-b border-amber-700/50">
                     <div className="flex items-center justify-between">
@@ -47,12 +47,12 @@ const IntelReport = ({
                                 <div className="flex items-center gap-2 mt-0.5">
                                     <Shield className="text-amber-600" size={12} />
                                     <span className="text-amber-600 text-xs font-mono">
-                                        CLEARANCE: {classification}
+                                        {classification}
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         {collapsible && (
                             <button
                                 onClick={() => setExpanded(!expanded)}
@@ -60,7 +60,7 @@ const IntelReport = ({
                             >
                                 <Eye size={16} />
                                 <span className="text-xs font-mono">
-                                    {expanded ? 'REDACT' : 'DECLASSIFY'}
+                                    {expanded ? 'HIDE' : 'REVEAL'}
                                 </span>
                                 {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                             </button>
@@ -82,18 +82,17 @@ const IntelReport = ({
                                 {/* Watermark */}
                                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
                                     <span className="text-6xl font-mono font-bold text-amber-400 transform rotate-[-15deg]">
-                                        CLASSIFIED
+                                        SCOUT INTEL
                                     </span>
                                 </div>
 
                                 {/* Content */}
                                 <div className="relative space-y-4">
                                     {lines.map((paragraph, i) => (
-                                        <p 
-                                            key={i} 
-                                            className={`text-slate-300 leading-relaxed ${
-                                                i === 0 ? 'text-lg font-medium text-white' : 'text-sm'
-                                            }`}
+                                        <p
+                                            key={i}
+                                            className={`text-slate-300 leading-relaxed ${i === 0 ? 'text-lg font-medium text-white' : 'text-sm'
+                                                }`}
                                         >
                                             {paragraph}
                                         </p>
@@ -124,17 +123,17 @@ const IntelReport = ({
                             onClick={() => setExpanded(true)}
                             className="text-amber-400 text-sm mt-2 hover:text-amber-300 font-medium"
                         >
-                            Read full intel report →
+                            Read full scout report →
                         </button>
                     </div>
                 )}
             </div>
 
             {/* Corner stamps */}
-            <div className="absolute -bottom-2 -right-2 bg-red-600 text-white px-3 py-1 font-mono text-xs font-bold transform rotate-3 shadow-lg">
-                FOR YOUR EYES ONLY
+            <div className="absolute -bottom-2 -right-2 bg-cyan-600 text-white px-3 py-1 font-mono text-xs font-bold transform rotate-3 shadow-lg">
+                EXPLORER INTEL
             </div>
-        </motion.div>
+        </motion.div >
     );
 };
 

@@ -58,16 +58,16 @@ const MissionBriefing = ({
             animate={{ opacity: 1, y: 0 }}
             className="relative mb-8"
         >
-            {/* Top classified banner */}
+            {/* Top territory banner */}
             <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
-                <div className="flex items-center gap-2 bg-slate-900 px-4 py-1 rounded-full border border-cyan-500/30">
-                    <Shield className="text-cyan-400" size={14} />
-                    <span className="text-cyan-400 font-mono text-xs tracking-wider">
-                        CLASSIFIED: {classification}
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+                <div className="flex items-center gap-2 bg-slate-900 px-4 py-1 rounded-full border border-amber-500/30">
+                    <Shield className="text-amber-400" size={14} />
+                    <span className="text-amber-400 font-mono text-xs tracking-wider">
+                        TERRITORY: {classification}
                     </span>
                 </div>
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
             </div>
 
             {/* Main briefing container */}

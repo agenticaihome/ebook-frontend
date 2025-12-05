@@ -282,7 +282,7 @@ Then show me what tomorrow's briefing would look like.`,
         <WebbookLayout>
             <Helmet>
                 <title>Expedition: Wake-Up Call | Agentic AI at Home</title>
-                <meta name="description" content="Recognize the battlefield and identify the enemy (Decision Fatigue). Deploy your first agent." />
+                <meta name="description" content="Recognize the frontier and identify the challenge (Decision Fatigue). Deploy your first Companion." />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
@@ -295,8 +295,9 @@ Then show me what tomorrow's briefing would look like.`,
                             missionNumber={1}
                             totalMissions={16}
                             duration="6 min"
-                            briefing="ATTENTION, EXPLORER! Your mental capacity is under siege. Intelligence reports 35,000 decisions per day are draining your effectiveness. Your objective: Recognize the battlefield and identify the enemy (Decision Fatigue). Prepare to deploy your first agent."
+                            briefing="Welcome, Explorer! Your mental capacity is overwhelmed. Reports show 35,000 decisions per day are draining your effectiveness. Your objective: Recognize the frontier and identify the challenge (Decision Fatigue). Prepare to deploy your first Companion."
                             status="IN PROGRESS"
+                            classification="TERRITORY 1"
                             objectives={[
                                 "Read the expedition intel",
                                 "Understand Chatbots vs Agents",
@@ -317,8 +318,8 @@ Then show me what tomorrow's briefing would look like.`,
                             operationId="exp_1"
                             primaryObjectives={[
                                 { id: "read_intel", label: "Read the expedition intel" },
-                                { id: "understand_difference", label: "Understand Chatbots vs Agents" },
-                                { id: "deploy_first", label: "Deploy your first agent" }
+                                { id: "understand_difference", label: "Understand Chatbots vs Companions" },
+                                { id: "deploy_first", label: "Deploy your first Companion" }
                             ]}
                             bonusObjectives={[
                                 { id: "quick_win", label: "Complete the Quick Win prompt" },
@@ -352,7 +353,7 @@ The tools are coming. You're learning how to lead them.`}
                                 <CaptainHero
                                     size="md"
                                     pose="default"
-                                    message="Welcome, Explorer! I'm Captain Efficiency, your scout companion on this frontier. Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this expedition, you'll understand why that's happening—and deploy your first agent to fight back. Ready to explore?"
+                                    message="Welcome, Explorer! I'm Captain Efficiency, your scout companion on this frontier. Right now, your brain is juggling a hundred things it shouldn't have to. By the end of this expedition, you'll understand why that's happening—and deploy your first Companion to help you push forward. Ready to explore?"
                                 />
                             </Suspense>
                         )}
@@ -369,7 +370,7 @@ The tools are coming. You're learning how to lead them.`}
                                     <span className="font-bold">Blitz Mode Active</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">
-                                    Showing only essential intel and card unlocks. Toggle off for full operation experience.
+                                    Showing only essential intel and Companion unlocks. Toggle off for full expedition experience.
                                 </p>
                             </motion.div>
                         )}
@@ -399,7 +400,7 @@ The tools are coming. You're learning how to lead them.`}
                                             <strong className="text-white">Three months later:</strong> Sarah woke to one notification. Weather, calendar, bills—summarized in 30 seconds.
                                         </p>
                                         <p className="text-slate-400 text-sm">
-                                            Her Morning Brief Agent had learned what mattered. She slept through the night for the first time in months.
+                                            Her Morning Companion had learned what mattered. She slept through the night for the first time in months.
                                         </p>
                                     </div>
                                 </>
@@ -410,8 +411,8 @@ The tools are coming. You're learning how to lead them.`}
                         {!speedRun && (
                             <section className="mb-10">
                                 <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
-                                    <AlertTriangle className="text-red-400" size={24} />
-                                    THREAT ASSESSMENT
+                                    <AlertTriangle className="text-amber-400" size={24} />
+                                    FRONTIER RECON
                                 </h2>
                                 <p className="text-slate-400 mb-6">
                                     This isn't about discipline. It's about capacity.
