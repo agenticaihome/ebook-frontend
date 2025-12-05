@@ -366,7 +366,7 @@ const MinimumViableStack = () => (
             </div>
             <div className="text-center">
                 <div className="text-2xl font-bold text-cyan-400">30 min</div>
-                <div className="text-xs text-slate-400">setup</div>
+                <div className="text-xs text-slate-400">setup + tuning</div>
             </div>
             <div className="text-center">
                 <div className="text-2xl font-bold text-purple-400">70%</div>
@@ -397,7 +397,9 @@ const TaskKillerProtocol = ({ onComplete }) => {
 I want you to act as my agent for this. Ask me questions about:
 - When this typically needs to happen
 - What information you'd need to help me
-- What "done" looks like for this task`,
+- What "done" looks like for this task
+
+(Note: Your first prompt won't be perfect. The agent will ask dumb questions. Iterate. That's the job.)`,
         },
         {
             num: 3,
@@ -468,16 +470,16 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
                     <div
                         key={step.num}
                         className={`bg-slate-900/50 rounded-xl p-4 border transition-all ${completedSteps.includes(step.num)
-                                ? 'border-green-500/50'
-                                : 'border-slate-700'
+                            ? 'border-green-500/50'
+                            : 'border-slate-700'
                             }`}
                     >
                         <div className="flex items-start gap-4">
                             <button
                                 onClick={() => toggleStep(step.num)}
                                 className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 transition-all ${completedSteps.includes(step.num)
-                                        ? 'bg-green-500 text-white'
-                                        : 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/30'
+                                    ? 'bg-green-500 text-white'
+                                    : 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/30'
                                     }`}
                             >
                                 {completedSteps.includes(step.num) ? <CheckCircle size={16} /> : step.num}

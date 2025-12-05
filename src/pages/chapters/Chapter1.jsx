@@ -436,6 +436,20 @@ The soldiers are coming. You're learning how to lead them.`}
                             </section>
                         )}
 
+                        {/* REALITY CHECK */}
+                        {!speedRun && (
+                            <div className="bg-yellow-900/20 rounded-xl p-4 border border-yellow-500/30 mb-8 flex items-start gap-3">
+                                <AlertTriangle className="text-yellow-500 flex-shrink-0 mt-1" size={20} />
+                                <div>
+                                    <h4 className="text-yellow-400 font-bold text-sm uppercase tracking-wider mb-1">Reality Check: The First Week</h4>
+                                    <p className="text-slate-300 text-sm">
+                                        Let's be real: You will forget to check your agent. It will hallucinate. You will feel faster doing it yourself.
+                                        <strong className="text-white"> This is normal.</strong> You are building a system, not just installing an app. The goal isn't instant magic—it's compounding leverage.
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+
                         {/* Before/After */}
                         <BeforeAfter
                             before={[
@@ -618,8 +632,8 @@ The soldiers are coming. You're learning how to lead them.`}
                             operationNumber={1}
                             nextOperationPath="/part1/chapter2"
                             nextOperationName="BASIC TRAINING"
-                            rewards={{ 
-                                xp: 100, 
+                            rewards={{
+                                xp: 100,
                                 cards: ['Morning Brief Agent'],
                                 achievements: ['first_blood']
                             }}
