@@ -18,6 +18,7 @@ import ObjectivesChecklist from '../../components/gamification/ObjectivesCheckli
 import IntelReport from '../../components/gamification/IntelReport';
 import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
+import ChapterNavigation from '../../components/common/ChapterNavigation';
 
 // Lazy load interactive components
 const ToolRecommendationQuiz = React.lazy(() => import('../../components/ToolRecommendationQuiz'));
@@ -920,6 +921,14 @@ const Chapter2 = () => {
                                 objectivesCompleted: "3/3",
                                 tasksEliminated: "1",
                             }}
+                        />
+
+                        {/* Bottom Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part1/chapter1"
+                            nextChapter="/part1/chapter3"
+                            partNumber={1}
+                            chapterNumber={2}
                         />
 
                     </div>

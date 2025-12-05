@@ -61,7 +61,7 @@ const MobileBottomNav = () => {
 
                     <PrefetchLink to="/dashboard" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-400'}`}>
                         <LayoutDashboard size={24} />
-                        <span className="text-[10px] font-bold">Dash</span>
+                        <span className="text-[10px] font-bold">Quests</span>
                     </PrefetchLink>
 
                     <PrefetchLink to="/part1" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-400'}`}>

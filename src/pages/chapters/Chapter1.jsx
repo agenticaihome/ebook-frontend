@@ -17,6 +17,7 @@ import ObjectivesChecklist from '../../components/gamification/ObjectivesCheckli
 import IntelReport from '../../components/gamification/IntelReport';
 import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
+import ChapterNavigation from '../../components/common/ChapterNavigation';
 
 // Lazy load heavy components
 const AIExperienceQuiz = React.lazy(() => import('../../components/AIExperienceQuiz'));
@@ -640,6 +641,14 @@ The soldiers are coming. You're learning how to lead them.`}
                             stats={{
                                 objectivesCompleted: "3/3",
                             }}
+                        />
+
+                        {/* Bottom Navigation */}
+                        <ChapterNavigation
+                            previousChapter={null}
+                            nextChapter="/part1/chapter2"
+                            partNumber={1}
+                            chapterNumber={1}
                         />
 
                     </div>

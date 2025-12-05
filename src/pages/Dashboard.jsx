@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
-import { m } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Home, Settings, LogOut, Shield, Trophy,
-    Sparkles, ChevronRight, Bell
+    Sparkles, ChevronRight, Bell, Map, Gamepad2
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import { usePageTitle } from '../hooks/usePageTitle';
@@ -158,6 +158,7 @@ const Dashboard = () => {
     const [streak, setStreak] = useState(0);
     const [showSettings, setShowSettings] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showWelcome, setShowWelcome] = useState(false);
 
     // Check login status (but don't redirect - dashboard is public)
     useEffect(() => {
@@ -165,12 +166,23 @@ const Dashboard = () => {
         setIsLoggedIn(!!token);
     }, []);
 
-    // Load progress
+    // Load progress and check first visit
     useEffect(() => {
         setCompletedChapters(JSON.parse(localStorage.getItem('completed_chapters') || '[]'));
         setCompletedGames(JSON.parse(localStorage.getItem('completed_games') || '[]'));
         setStreak(parseInt(localStorage.getItem('daily_streak') || '0'));
+
+        // Show welcome modal on first dashboard visit
+        const hasSeenWelcome = localStorage.getItem('dashboard_welcomed');
+        if (!hasSeenWelcome) {
+            setShowWelcome(true);
+        }
     }, []);
+
+    const handleCloseWelcome = () => {
+        setShowWelcome(false);
+        localStorage.setItem('dashboard_welcomed', 'true');
+    };
 
     const handleLevelUp = (rank) => {
         setNewRank(rank);
@@ -187,6 +199,92 @@ const Dashboard = () => {
                 <title>Quest Dashboard | Agentic AI at Home</title>
                 <meta name="description" content="Track your progress in mastering AI agents. Complete quests, earn XP, and level up your rank." />
             </Helmet>
+
+            {/* Welcome Modal - First Time Visitors */}
+            <AnimatePresence>
+                {showWelcome && (
+                    <m.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        onClick={handleCloseWelcome}
+                    >
+                        <m.div
+                            initial={{ scale: 0.9, y: 20 }}
+                            animate={{ scale: 1, y: 0 }}
+                            exit={{ scale: 0.9, y: 20 }}
+                            className="relative max-w-md w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-cyan-500/30 rounded-2xl p-6 shadow-2xl shadow-cyan-500/10"
+                            onClick={e => e.stopPropagation()}
+                        >
+                            {/* Captain Efficiency */}
+                            <div className="flex justify-center mb-4">
+                                <div className="relative w-20 h-20">
+                                    <img
+                                        src="/assets/images/captain-e-transparent.png"
+                                        alt="Captain Efficiency welcomes you"
+                                        className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+                                    />
+                                    <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-full" />
+                                </div>
+                            </div>
+
+                            {/* Welcome Message */}
+                            <div className="text-center mb-6">
+                                <h2 className="text-2xl font-bold text-white mb-2">
+                                    Welcome, Agent! 🎖️
+                                </h2>
+                                <p className="text-slate-300 text-sm leading-relaxed">
+                                    Captain Efficiency here! This is your <span className="text-cyan-400 font-medium">Quest Dashboard</span> —
+                                    your mission control for mastering AI agents.
+                                </p>
+                            </div>
+
+                            {/* Quick Guide */}
+                            <div className="space-y-3 mb-6">
+                                <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                                    <Map className="text-cyan-400 flex-shrink-0 mt-0.5" size={18} />
+                                    <div>
+                                        <p className="text-white text-sm font-medium">Quest Map</p>
+                                        <p className="text-slate-400 text-xs">Track progress through all 16 operations</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                                    <Trophy className="text-yellow-400 flex-shrink-0 mt-0.5" size={18} />
+                                    <div>
+                                        <p className="text-white text-sm font-medium">Earn XP & Rank Up</p>
+                                        <p className="text-slate-400 text-xs">Complete operations to level up</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
+                                    <Gamepad2 className="text-purple-400 flex-shrink-0 mt-0.5" size={18} />
+                                    <div>
+                                        <p className="text-white text-sm font-medium">Games Hub</p>
+                                        <p className="text-slate-400 text-xs">Unlock mini-games as rewards</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* CTA */}
+                            <Link
+                                to="/chapters/1"
+                                onClick={handleCloseWelcome}
+                                className="block w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-center font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/25"
+                            >
+                                Start Operation 1 →
+                            </Link>
+
+                            {/* Skip */}
+                            <button
+                                onClick={handleCloseWelcome}
+                                className="block w-full mt-3 py-2 text-slate-400 hover:text-white text-sm text-center transition-colors"
+                            >
+                                Explore Dashboard First
+                            </button>
+                        </m.div>
+                    </m.div>
+                )}
+            </AnimatePresence>
 
             {/* Level Up Celebration */}
             <LevelUpCelebration

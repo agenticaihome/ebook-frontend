@@ -19,6 +19,7 @@ import ObjectivesChecklist from '../../components/gamification/ObjectivesCheckli
 import IntelReport from '../../components/gamification/IntelReport';
 import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
+import ChapterNavigation from '../../components/common/ChapterNavigation';
 
 // Lazy load interactive components
 const PrivacyAssessment = React.lazy(() => import('../../components/PrivacyAssessment'));
@@ -973,6 +974,14 @@ const Chapter3 = () => {
                                 objectivesCompleted: "3/3",
                                 settingsSecured: "4",
                             }}
+                        />
+
+                        {/* Bottom Navigation */}
+                        <ChapterNavigation
+                            previousChapter="/part1/chapter2"
+                            nextChapter="/part2/chapter1"
+                            partNumber={1}
+                            chapterNumber={3}
                         />
 
                     </div>
