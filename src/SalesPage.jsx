@@ -81,10 +81,11 @@ export default function SalesPage() {
         <section className="relative pt-24 pb-32 px-6 overflow-hidden">
           {/* Background Glows */}
           {!isPerformanceMode && (
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-              <div className="absolute top-20 right-10 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse mix-blend-screen"></div>
-              <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/20 rounded-full blur-3xl mix-blend-screen"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none bg-grid-pattern opacity-40">
+              <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-[#0f0f1a] to-transparent"></div>
+              <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#0f0f1a] to-transparent"></div>
+              <div className="absolute top-20 right-10 w-96 h-96 bg-amber-900/10 rounded-full blur-3xl animate-pulse mix-blend-screen"></div>
+              <div className="absolute bottom-0 left-10 w-64 h-64 bg-cyan-900/10 rounded-full blur-3xl mix-blend-screen"></div>
             </div>
           )}
 
@@ -104,11 +105,11 @@ export default function SalesPage() {
               <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-900/30 to-cyan-900/30 border border-purple-500/50 text-purple-400 text-xs font-mono mb-6"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-900/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6 backdrop-blur-sm"
               >
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                 </span>
                 🧭 YOUR EXPEDITION AWAITS
               </m.div>
@@ -120,8 +121,8 @@ export default function SalesPage() {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight"
               >
                 <span className="block text-white mb-2">Your Journey:</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 block mb-2">Reclaim 10 Hours/Week</span>
-                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium">In 16 Frontier Expeditions</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 block mb-2">Reclaim 10 Hours/Week</span>
+                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium font-mono">In 16 Frontier Expeditions</span>
               </m.h1>
 
               <m.div
