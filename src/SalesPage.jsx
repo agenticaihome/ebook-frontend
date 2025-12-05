@@ -93,13 +93,13 @@ export default function SalesPage() {
               <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-900/30 border border-cyan-500/50 text-cyan-400 text-xs font-mono mb-6"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-900/30 to-cyan-900/30 border border-purple-500/50 text-purple-400 text-xs font-mono mb-6"
               >
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
                 </span>
-                SYSTEM ONLINE
+                🎮 YOUR QUEST AWAITS
               </m.div>
 
               <m.h1
@@ -108,9 +108,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight"
               >
-                <span className="block text-white mb-2">Reclaim 10+ Hours</span>
-                <span className="block text-white mb-2">Every Week With Your</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 block mb-3">AI Personal Staff</span>
+                <span className="block text-white mb-2">Master AI Agents</span>
+                <span className="block text-white mb-2">On Your Epic Quest</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 block mb-3">To Reclaim Your Time</span>
               </m.h1>
 
               <m.div
@@ -119,9 +119,11 @@ export default function SalesPage() {
                 transition={{ delay: 0.15 }}
                 className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 font-medium"
               >
-                <span className="block sm:inline">(No Coding Required</span>
+                <span className="block sm:inline">🗡️ 16 Quests</span>
                 <span className="hidden sm:inline"> • </span>
-                <span className="block sm:inline">Built in 30 Minutes)</span>
+                <span className="block sm:inline">🎲 5 Skill Games</span>
+                <span className="hidden sm:inline"> • </span>
+                <span className="block sm:inline">👑 Level Up IRL</span>
               </m.div>
 
               <m.p
@@ -130,9 +132,8 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                The interactive webbook that teaches anyone how to build a "Personal Staff" of AI agents and workflows. No coding required.
-                <br /><br />
-                Stop drowning in admin. Start deploying agents.
+                Join Captain Efficiency on an interactive adventure to build your own "AI Personal Staff."
+                No coding required. Just you, your guide, and 16 missions to automation mastery.
               </m.p>
 
               <m.div
@@ -143,17 +144,18 @@ export default function SalesPage() {
               >
                 <Link
                   to="/part1"
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-green-900/50 flex items-center justify-center gap-2"
+                  className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-900/50 flex items-center justify-center gap-2 group"
                 >
-                  <Zap size={20} /> Start Reclaiming Your Time (Free • 15 min)
+                  <span className="text-xl">⚔️</span>
+                  Begin Your Quest
+                  <span className="text-sm opacity-75">(Free)</span>
                 </Link>
-                <button
-                  disabled
-                  title="Sales resume on December 4th"
-                  className="bg-slate-700/50 text-slate-400 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
+                <Link
+                  to="/dashboard"
+                  className="bg-slate-800/80 hover:bg-slate-700 border border-slate-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2"
                 >
-                  Sales Paused
-                </button>
+                  <span className="text-xl">🗺️</span> View Quest Map
+                </Link>
               </m.div>
             </div>
           </div>
@@ -168,23 +170,26 @@ export default function SalesPage() {
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
+                🗺️ THE ADVENTURE MAP
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">5 REGIONS TO CONQUER</h2>
               <p className="text-slate-400 max-w-2xl mx-auto mb-4">
-                A systematic progression from basic tools to a complete, AI-powered Life Operating System.
+                Each region unlocks new powers. Complete quests, earn XP, and level up your rank.
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
-                <span className="text-green-400 font-bold text-sm">✓ Part 1 is FREE</span>
-                <span className="text-slate-400 text-xs">• Parts 2-5 unlock with purchase</span>
+                <span className="text-green-400 font-bold text-sm">✓ Region 1 is FREE to explore</span>
+                <span className="text-slate-400 text-xs">• Regions 2-5 unlock with full access</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               {[
-                { id: '01', title: 'FOUNDATIONS', desc: 'AI Stack & Privacy', icon: <Terminal />, status: 'FREE', link: '/part1' },
-                { id: '02', title: 'DAILY OPS', desc: 'Morning, Kitchen, Logistics', icon: <Zap />, status: 'LOCKED' },
-                { id: '03', title: 'DIGITAL LIFE', desc: 'Email, Calendar, Finance', icon: <Activity />, status: 'LOCKED' },
-                { id: '04', title: 'HEALTH', desc: 'Recovery & Second Brain', icon: <Shield />, status: 'LOCKED' },
-                { id: '05', title: 'LIFE OS', desc: 'Multi-Agent Systems', icon: <Database />, status: 'LOCKED' }
+                { id: '01', title: 'THE FOUNDATIONS', desc: '3 Starter Quests', icon: <Terminal />, status: 'FREE', link: '/part1', emoji: '🏕️' },
+                { id: '02', title: 'THE HOME FRONT', desc: '3 Domestic Missions', icon: <Zap />, status: 'LOCKED', emoji: '🏠' },
+                { id: '03', title: 'DIGITAL FRONTIER', desc: '3 Tech Quests', icon: <Activity />, status: 'LOCKED', emoji: '💻' },
+                { id: '04', title: 'THE STRONGHOLD', desc: '3 Power Quests', icon: <Shield />, status: 'LOCKED', emoji: '💪' },
+                { id: '05', title: 'GRAND COMMAND', desc: '4 Master Quests', icon: <Database />, status: 'LOCKED', emoji: '🚀' }
               ].map((part, index) => (
                 <Link
                   to={part.link || '#pricing'}
@@ -218,8 +223,11 @@ export default function SalesPage() {
         <section className="py-24 px-6 bg-[#0f0f1a]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">WHY THIS SYSTEM IS DIFFERENT</h2>
-              <p className="text-slate-400">Most courses teach you prompts. We build you a staff.</p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-400 text-sm font-bold mb-6">
+                ⚡ POWER-UPS UNLOCKED
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">YOUR LEGENDARY ABILITIES</h2>
+              <p className="text-slate-400">Most courses give you a sword. We give you an army.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -475,7 +483,7 @@ export default function SalesPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
-                  <Activity className="text-green-400" /> SYSTEM PERFORMANCE REPORT
+                  <Activity className="text-green-400" /> 📊 HERO STATS UNLOCKED
                 </h2>
                 <ul className="space-y-4">
                   {[
@@ -511,8 +519,11 @@ export default function SalesPage() {
         <section className="py-24 px-6 bg-[#0f0f1a]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">REAL RESULTS FROM REAL USERS</h2>
-              <p className="text-slate-400">Not hype. Just people who deployed the system.</p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-900/20 border border-yellow-500/30 text-yellow-400 text-sm font-bold mb-6">
+                ⭐ HALL OF HEROES
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">FELLOW ADVENTURERS SPEAK</h2>
+              <p className="text-slate-400">Not hype. Just heroes who completed the quest.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -592,7 +603,10 @@ export default function SalesPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-[500px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
 
           <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Access Method</h2>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
+              🏪 THE ADVENTURER'S GUILD
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Path</h2>
             <p className="text-slate-400 mb-8">Cheaper than one month of that meal kit service you forgot to pause.</p>
 
             {/* Urgency Timer */}
@@ -694,7 +708,10 @@ export default function SalesPage() {
         {/* FAQ SECTION */}
         <section className="py-24 px-6 bg-[#0f0f1a] border-t border-slate-800/50">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">FREQUENTLY ASKED QUESTIONS</h2>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-600 text-slate-300 text-sm font-bold mb-6 mx-auto flex justify-center">
+              📜 QUEST GUIDE
+            </div>
+            <h2 className="text-3xl font-bold mb-12 text-center">COMMON QUESTIONS</h2>
             <div className="space-y-8">
               {[
                 { q: "Do I need to know how to code?", a: "No. The course teaches you how to use no-code tools and natural language to build your agents." },
