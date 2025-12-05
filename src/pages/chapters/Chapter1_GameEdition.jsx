@@ -244,7 +244,38 @@ const NewbieBox = ({ title, children }) => (
 
 const Chapter1 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const [cardUnlocked, setCardUnlocked] = useState(false);
     const navigate = useNavigate();
+
+    // Morning Brief Agent card data
+    const morningBriefCard = {
+        id: 'morning_brief',
+        name: 'Morning Brief Agent',
+        rarity: 'common',
+        category: 'Daily Ops',
+        timeSaved: '30 min/day',
+        moneySaved: '$0',
+        complexity: 2,
+        powerLevel: 45,
+        prompt: `I want you to act as my morning briefing agent.
+
+Ask me:
+1. What time I wake up
+2. What info I need each morning (weather, calendar, priorities)
+3. How I want it formatted (bullet points, paragraphs, etc.)
+
+Then show me what tomorrow's briefing would look like.`,
+    };
+
+    const handleCardUnlock = (cardId) => {
+        setCardUnlocked(true);
+        // Save to localStorage
+        const unlockedCards = JSON.parse(localStorage.getItem('unlocked_cards') || '[]');
+        if (!unlockedCards.includes(cardId)) {
+            unlockedCards.push(cardId);
+            localStorage.setItem('unlocked_cards', JSON.stringify(unlockedCards));
+        }
+    };
 
     return (
         <WebbookLayout>
@@ -530,6 +561,14 @@ The soldiers are coming. You're learning how to lead them.`}
                             </section>
                         )}
 
+                        {/* CARD UNLOCK - Morning Brief Agent */}
+                        <AgentCardUnlock
+                            card={morningBriefCard}
+                            onUnlock={handleCardUnlock}
+                            onComplete={() => console.log('Card added to deck')}
+                            autoReveal={false}
+                        />
+
                         {/* PRE-MISSION CHECK */}
                         {!speedRun && (
                             <section className="mb-10">
@@ -567,7 +606,7 @@ The soldiers are coming. You're learning how to lead them.`}
                                 <CaptainHero
                                     size="md"
                                     pose="celebrating"
-                                    message="Outstanding work, Operator! You just completed your first operation. You now understand the most important concept in this entire training—the difference between a tool that waits and a system that works. That task you identified? In Operation 2, we're delegating it. No more mental Post-It notes. Move out! 🚀"
+                                    message="Outstanding work, Operator! You just completed your first operation and earned your first agent card. You now understand the most important concept in this entire training—the difference between a tool that waits and a system that works. That task you identified? In Operation 2, we're delegating it. No more mental Post-It notes. Move out! 🚀"
                                 />
                             </Suspense>
                         )}
@@ -579,9 +618,9 @@ The soldiers are coming. You're learning how to lead them.`}
                             operationNumber={1}
                             nextOperationPath="/part1/chapter2"
                             nextOperationName="BASIC TRAINING"
-                            rewards={{
-                                xp: 100,
-                                cards: [],
+                            rewards={{ 
+                                xp: 100, 
+                                cards: ['Morning Brief Agent'],
                                 achievements: ['first_blood']
                             }}
                             stats={{

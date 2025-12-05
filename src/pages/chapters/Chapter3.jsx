@@ -12,6 +12,11 @@ import {
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+
 // Lazy load interactive components
 const PrivacyAssessment = React.lazy(() => import('../../components/PrivacyAssessment'));
 const AgentConstitutionBuilder = React.lazy(() => import('../../components/AgentConstitutionBuilder'));
@@ -23,23 +28,8 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const SpeedRunContext = createContext(false);
 
 // ============================================
-// REUSABLE COMPONENTS (matching Chapters 1 & 2)
+// REUSABLE COMPONENTS
 // ============================================
-
-const ChapterProgress = ({ current, total }) => (
-    <div className="flex items-center gap-3 mb-6">
-        <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-            <m.div
-                initial={{ width: 0 }}
-                animate={{ width: `${(current / total) * 100}%` }}
-                className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
-            />
-        </div>
-        <span className="text-slate-400 text-sm font-mono">
-            {current}/{total}
-        </span>
-    </div>
-);
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
@@ -67,31 +57,6 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
         {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
     </button>
-);
-
-const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <m.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
-    >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-wrap justify-center md:justify-start gap-6">
-                {stats.map((stat, i) => (
-                    <div key={i} className="text-center">
-                        <div className="text-3xl font-bold text-white">{stat.value}</div>
-                        <div className="text-sm text-slate-400">{stat.label}</div>
-                    </div>
-                ))}
-            </div>
-            <button
-                onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
-            >
-                {primaryCTA} <ArrowRight size={18} />
-            </button>
-        </div>
-    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -214,43 +179,6 @@ const DeepDive = ({ title, children }) => {
     );
 };
 
-const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
-    const navigate = useNavigate();
-
-    return (
-        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-            <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <CheckCircle className="text-green-400" size={24} />
-                </div>
-                <div>
-                    <span className="text-green-400 font-bold block">Chapter 3 Complete</span>
-                    <span className="text-slate-400 text-sm">You're 19% of the way there</span>
-                </div>
-            </div>
-
-            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
-                <ul className="space-y-2">
-                    {achievements.map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                            <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <button
-                onClick={() => navigate(nextChapter)}
-                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
-            >
-                Continue to Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
-                <ArrowRight size={18} />
-            </button>
-        </div>
-    );
-};
 // ============================================
 // CHAPTER 3 SPECIFIC COMPONENTS
 // ============================================
@@ -698,7 +626,7 @@ const Chapter3 = () => {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 3: The Agentic Principles | Agentic AI at Home</title>
+                <title>Operation: Privacy Shield | Agentic AI at Home</title>
                 <meta name="description" content="Core principles for designing effective AI agents that actually work" />
             </Helmet>
 
@@ -706,8 +634,31 @@ const Chapter3 = () => {
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
-                        {/* Progress Bar */}
-                        <ChapterProgress current={3} total={16} />
+                        {/* MISSION BRIEFING */}
+                        <MissionBriefing
+                            title="OPERATION: PRIVACY SHIELD"
+                            missionNumber={3}
+                            duration="5 min"
+                            briefing="Before we build anything else, we need to talk about protection. You just gave an AI access to your calendar, maybe your email, your tasks. That's powerful—but power requires boundaries. This chapter is your security briefing. I won't let you build a system that puts your family at risk."
+                            objectives={[
+                                "Understand the 3-Tier Data Model",
+                                "Complete the Privacy Audit",
+                                "Create your Agent Constitution"
+                            ]}
+                        />
+
+                        {/* OBJECTIVES */}
+                        <ObjectivesChecklist
+                            operationId="op_3"
+                            primaryObjectives={[
+                                { id: "understand_tiers", label: "Understand the 3-Tier Data Model" },
+                                { id: "privacy_audit", label: "Complete the Privacy Audit" },
+                                { id: "agent_constitution", label: "Create your Agent Constitution" }
+                            ]}
+                            bonusObjectives={[
+                                { id: "privacy_lockdown", label: "Complete the 5-Minute Privacy Lockdown" }
+                            ]}
+                        />
 
                         {/* Author Credibility */}
                         <AuthorCredibility />
@@ -720,44 +671,10 @@ const Chapter3 = () => {
                             chapterNumber={3}
                         />
 
-                        {/* Header */}
-                        <m.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-6"
-                        >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 3</div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                Privacy & Security
-                            </h1>
-                            <p className="text-xl text-slate-400 mb-4">
-                                How to get all the benefits without giving up control
-                            </p>
-
-                            {/* Reading time + Speed Run toggle */}
-                            <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={14} />
-                                        <span>5 min read</span>
-                                    </div>
-                                    <span>•</span>
-                                    <span className="text-teal-400">5 min to lock down</span>
-                                </div>
-                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                            </div>
-                        </m.div>
-
-                        {/* TL;DR Card */}
-                        <TLDRCard
-                            stats={[
-                                { value: '3', label: 'data tiers to know' },
-                                { value: '5 min', label: 'to lock down' },
-                                { value: '100%', label: 'in your control' },
-                            ]}
-                            primaryCTA="Start Privacy Audit"
-                            onCTAClick={scrollToAudit}
-                        />
+                        {/* Speed Run Toggle */}
+                        <div className="flex justify-end mb-6">
+                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                        </div>
 
                         {/* CAPTAIN EFFICIENCY - OPENER (Protective Guardian) */}
                         {!speedRun && (
@@ -914,16 +831,21 @@ Acknowledge these rules, then let's proceed."`}
                             </Suspense>
                         )}
 
-                        {/* CHAPTER COMPLETE */}
-                        <ChapterComplete
-                            achievements={[
-                                'Understand the 3-tier data model (Local → Cloud → Training)',
-                                'Completed 5-minute privacy lockdown',
-                                'Created your Agent Constitution',
-                                'Know the red flags to watch for',
-                            ]}
-                            nextChapter="/part2/chapter1"
-                            nextTitle="Morning Routines"
+                        {/* MISSION COMPLETE */}
+                        <MissionComplete
+                            operationId="op_3"
+                            operationName="PRIVACY SHIELD"
+                            operationNumber={3}
+                            nextOperationPath="/part2/chapter1"
+                            nextOperationName="MORNING ROUTINES"
+                            rewards={{
+                                xp: 150,
+                                cards: [],
+                                achievements: ['privacy_shield']
+                            }}
+                            stats={{
+                                objectivesCompleted: "3/3",
+                            }}
                         />
 
                         {/* Bottom Navigation */}

@@ -1,103 +1,350 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useGame } from '../../context/GameContext';
-import confetti from 'canvas-confetti';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+    Trophy, Star, Zap, ArrowRight, Award, Clock, Target,
+    CheckCircle, Sparkles, Crown, Share2, Twitter, ChevronRight
+} from 'lucide-react';
+
+/**
+ * MissionComplete - Celebration screen after completing an operation
+ * Shows rewards, stats, achievements, and next mission
+ */
+
+// Confetti burst
+const ConfettiBurst = () => {
+    const emojis = ['🎉', '⭐', '🏆', '✨', '💫', '🚀', '💜', '🎊'];
+    
+    return (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {Array.from({ length: 20 }).map((_, i) => {
+                const emoji = emojis[i % emojis.length];
+                const startX = 50 + (Math.random() - 0.5) * 20;
+                const endX = startX + (Math.random() - 0.5) * 100;
+                const endY = -(100 + Math.random() * 200);
+                const duration = 1 + Math.random() * 1;
+                const delay = i * 0.05;
+
+                return (
+                    <motion.div
+                        key={i}
+                        initial={{ 
+                            x: `${startX}%`, 
+                            y: '100%',
+                            scale: 0,
+                            rotate: 0,
+                        }}
+                        animate={{ 
+                            x: `${endX}%`, 
+                            y: `${endY}%`,
+                            scale: [0, 1, 1, 0.5],
+                            rotate: Math.random() * 360,
+                        }}
+                        transition={{ 
+                            duration, 
+                            delay,
+                            ease: 'easeOut',
+                        }}
+                        className="absolute text-2xl"
+                    >
+                        {emoji}
+                    </motion.div>
+                );
+            })}
+        </div>
+    );
+};
+
+// Achievement badge component
+const AchievementBadge = ({ id, name, description, isNew }) => {
+    const achievementIcons = {
+        first_blood: { icon: Zap, color: 'cyan' },
+        card_collector: { icon: Star, color: 'yellow' },
+        speed_runner: { icon: Clock, color: 'green' },
+        perfectionist: { icon: Target, color: 'purple' },
+        default: { icon: Award, color: 'blue' },
+    };
+
+    const config = achievementIcons[id] || achievementIcons.default;
+    const IconComponent = config.icon;
+
+    const colorClasses = {
+        cyan: 'from-cyan-500/20 to-cyan-500/5 border-cyan-500/40 text-cyan-400',
+        yellow: 'from-yellow-500/20 to-yellow-500/5 border-yellow-500/40 text-yellow-400',
+        green: 'from-green-500/20 to-green-500/5 border-green-500/40 text-green-400',
+        purple: 'from-purple-500/20 to-purple-500/5 border-purple-500/40 text-purple-400',
+        blue: 'from-blue-500/20 to-blue-500/5 border-blue-500/40 text-blue-400',
+    };
+
+    return (
+        <motion.div
+            initial={{ scale: 0, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 200 }}
+            className={`
+                relative bg-gradient-to-br ${colorClasses[config.color]}
+                rounded-xl p-4 border text-center
+            `}
+        >
+            {isNew && (
+                <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute -top-2 -right-2 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full"
+                >
+                    NEW!
+                </motion.div>
+            )}
+            <IconComponent className="mx-auto mb-2" size={28} />
+            <p className="font-bold text-sm">{name}</p>
+            <p className="text-slate-400 text-xs mt-1">{description}</p>
+        </motion.div>
+    );
+};
 
 const MissionComplete = ({
     operationId,
+    operationName = "MISSION",
+    operationNumber = 1,
     nextOperationPath,
-    rewards = { xp: 100, cards: [] }
+    nextOperationName = "Next Operation",
+    rewards = { xp: 100, cards: [], achievements: [] },
+    stats = {},
+    onContinue,
 }) => {
-    const { completeOperation, addXp, collectCard } = useGame();
+    const [stage, setStage] = useState('celebrating'); // 'celebrating', 'rewards', 'ready'
+    const [showConfetti, setShowConfetti] = useState(true);
 
     useEffect(() => {
-        // Trigger completion logic on mount
-        completeOperation(operationId);
+        // Progress through stages
+        const timer1 = setTimeout(() => setStage('rewards'), 1500);
+        const timer2 = setTimeout(() => setStage('ready'), 3000);
+        const timer3 = setTimeout(() => setShowConfetti(false), 2000);
 
-        // Fire confetti
-        const duration = 3000;
-        const end = Date.now() + duration;
+        // Save completion to localStorage
+        const completed = JSON.parse(localStorage.getItem('completed_operations') || '[]');
+        if (!completed.includes(operationId)) {
+            completed.push(operationId);
+            localStorage.setItem('completed_operations', JSON.stringify(completed));
+        }
 
-        const frame = () => {
-            confetti({
-                particleCount: 2,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 },
-                colors: ['#06b6d4', '#8b5cf6', '#f59e0b']
-            });
-            confetti({
-                particleCount: 2,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 },
-                colors: ['#06b6d4', '#8b5cf6', '#f59e0b']
-            });
+        // Save XP
+        const currentXP = parseInt(localStorage.getItem('total_xp') || '0');
+        localStorage.setItem('total_xp', (currentXP + rewards.xp).toString());
 
-            if (Date.now() < end) {
-                requestAnimationFrame(frame);
-            }
+        return () => {
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+            clearTimeout(timer3);
         };
-        frame();
+    }, [operationId, rewards.xp]);
 
-    }, [operationId, completeOperation]);
+    const handleContinue = () => {
+        onContinue?.();
+        if (nextOperationPath) {
+            window.location.href = nextOperationPath;
+        }
+    };
+
+    // Achievement data
+    const achievementData = {
+        first_blood: { name: 'First Blood', description: 'Complete your first operation' },
+        card_collector: { name: 'Card Collector', description: 'Collect 10 agent cards' },
+        speed_runner: { name: 'Speed Runner', description: 'Complete in under 5 minutes' },
+        perfectionist: { name: 'Perfectionist', description: 'Complete all objectives' },
+    };
 
     return (
-        <div className="max-w-4xl mx-auto my-12 p-8 bg-gray-900 rounded-xl border-2 border-green-500/50 relative overflow-hidden text-center">
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-green-500/40 overflow-hidden"
+        >
+            {/* Confetti */}
+            {showConfetti && <ConfettiBurst />}
 
-            {/* Background Glow */}
-            <div className="absolute inset-0 bg-green-500/5 z-0"></div>
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-t from-green-500/10 to-transparent pointer-events-none" />
 
-            <div className="relative z-10">
+            {/* Content */}
+            <div className="relative p-8">
+                {/* Big celebration header */}
                 <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ type: 'spring', bounce: 0.5 }}
-                    className="inline-block border-4 border-green-500 text-green-500 font-black text-3xl md:text-5xl px-8 py-4 rounded uppercase tracking-widest mb-8 transform -rotate-2"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
+                    className="text-center mb-8"
                 >
-                    Mission Complete
+                    <motion.div
+                        animate={{ 
+                            rotate: [0, 10, -10, 0],
+                            scale: [1, 1.1, 1],
+                        }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                    >
+                        <Trophy className="text-yellow-400 mx-auto mb-4" size={64} />
+                    </motion.div>
+                    
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="text-3xl font-bold text-white mb-2"
+                    >
+                        OPERATION COMPLETE!
+                    </motion.h2>
+                    
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        className="text-green-400 font-mono text-lg"
+                    >
+                        {operationName}
+                    </motion.p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">XP Earned</div>
-                        <div className="text-3xl font-bold text-purple-400">+{rewards.xp} XP</div>
-                    </div>
+                {/* Rewards section */}
+                <AnimatePresence>
+                    {stage !== 'celebrating' && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-8"
+                        >
+                            {/* XP and Stats */}
+                            <div className="grid grid-cols-3 gap-4 mb-6">
+                                <div className="bg-cyan-500/20 rounded-xl p-4 text-center border border-cyan-500/30">
+                                    <Zap className="text-cyan-400 mx-auto mb-2" size={24} />
+                                    <motion.span
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        className="text-2xl font-bold text-white block"
+                                    >
+                                        +{rewards.xp}
+                                    </motion.span>
+                                    <span className="text-cyan-400 text-sm">XP Earned</span>
+                                </div>
 
-                    <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Status</div>
-                        <div className="text-3xl font-bold text-green-400">SUCCESS</div>
-                    </div>
+                                {rewards.cards?.length > 0 && (
+                                    <div className="bg-purple-500/20 rounded-xl p-4 text-center border border-purple-500/30">
+                                        <Star className="text-purple-400 mx-auto mb-2" size={24} />
+                                        <span className="text-2xl font-bold text-white block">
+                                            +{rewards.cards.length}
+                                        </span>
+                                        <span className="text-purple-400 text-sm">
+                                            {rewards.cards.length === 1 ? 'Card' : 'Cards'}
+                                        </span>
+                                    </div>
+                                )}
 
-                    <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-                        <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Agents Unlocked</div>
-                        <div className="text-3xl font-bold text-cyan-400">{rewards.cards.length}</div>
-                    </div>
-                </div>
+                                <div className="bg-green-500/20 rounded-xl p-4 text-center border border-green-500/30">
+                                    <CheckCircle className="text-green-400 mx-auto mb-2" size={24} />
+                                    <span className="text-2xl font-bold text-white block">
+                                        {operationNumber}/16
+                                    </span>
+                                    <span className="text-green-400 text-sm">Operations</span>
+                                </div>
+                            </div>
 
-                <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Outstanding work, Operator. You have successfully completed this operation.
-                    Your Life OS is becoming stronger.
-                </p>
+                            {/* Cards earned */}
+                            {rewards.cards?.length > 0 && (
+                                <div className="bg-slate-800/50 rounded-xl p-4 mb-6">
+                                    <h4 className="text-white font-bold text-sm mb-3 flex items-center gap-2">
+                                        <Star className="text-yellow-400" size={16} />
+                                        CARDS ACQUIRED
+                                    </h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {rewards.cards.map((card, i) => (
+                                            <motion.div
+                                                key={i}
+                                                initial={{ scale: 0 }}
+                                                animate={{ scale: 1 }}
+                                                transition={{ delay: 0.1 * i }}
+                                                className="bg-gradient-to-r from-purple-500/20 to-cyan-500/20 px-3 py-1.5 rounded-lg border border-purple-500/30"
+                                            >
+                                                <span className="text-white text-sm font-medium">{card}</span>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
-                {nextOperationPath ? (
-                    <Link
-                        to={nextOperationPath}
-                        className="inline-flex items-center justify-center px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-lg text-lg uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg shadow-green-500/20"
-                    >
-                        Proceed to Next Operation →
-                    </Link>
-                ) : (
-                    <Link
-                        to="/dashboard"
-                        className="inline-flex items-center justify-center px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg text-lg uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20"
-                    >
-                        Return to Base
-                    </Link>
-                )}
+                            {/* Achievements */}
+                            {rewards.achievements?.length > 0 && (
+                                <div className="mb-6">
+                                    <h4 className="text-white font-bold text-sm mb-3 flex items-center gap-2">
+                                        <Award className="text-yellow-400" size={16} />
+                                        ACHIEVEMENTS UNLOCKED
+                                    </h4>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        {rewards.achievements.map((achievementId, i) => (
+                                            <AchievementBadge
+                                                key={i}
+                                                id={achievementId}
+                                                name={achievementData[achievementId]?.name || achievementId}
+                                                description={achievementData[achievementId]?.description || ''}
+                                                isNew={true}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Stats breakdown */}
+                            {Object.keys(stats).length > 0 && (
+                                <div className="bg-slate-800/30 rounded-xl p-4 mb-6">
+                                    <h4 className="text-slate-400 font-bold text-xs mb-3 uppercase tracking-wider">
+                                        Mission Stats
+                                    </h4>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {stats.timeToComplete && (
+                                            <div className="flex items-center gap-2">
+                                                <Clock className="text-slate-500" size={14} />
+                                                <span className="text-slate-400 text-sm">Time:</span>
+                                                <span className="text-white text-sm font-medium">{stats.timeToComplete}</span>
+                                            </div>
+                                        )}
+                                        {stats.objectivesCompleted && (
+                                            <div className="flex items-center gap-2">
+                                                <Target className="text-slate-500" size={14} />
+                                                <span className="text-slate-400 text-sm">Objectives:</span>
+                                                <span className="text-white text-sm font-medium">{stats.objectivesCompleted}</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Continue button */}
+                <AnimatePresence>
+                    {stage === 'ready' && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                        >
+                            <button
+                                onClick={handleContinue}
+                                className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-cyan-500/25 transition-all group"
+                            >
+                                <span>PROCEED TO: {nextOperationName}</span>
+                                <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                            </button>
+
+                            {/* Share option */}
+                            <div className="flex justify-center gap-4 mt-4">
+                                <button className="flex items-center gap-2 text-slate-400 hover:text-white text-sm transition-colors">
+                                    <Share2 size={14} />
+                                    Share Victory
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

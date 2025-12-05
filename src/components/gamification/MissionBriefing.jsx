@@ -1,101 +1,206 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import CaptainHero from '../CaptainHero'; // Assuming this exists, or I'll use a placeholder
+import { 
+    Shield, Clock, AlertTriangle, ChevronRight, 
+    Radio, Target, Zap, Lock, Unlock
+} from 'lucide-react';
+
+/**
+ * MissionBriefing - Military-style mission header
+ * Sets the stage for each operation with dramatic styling
+ */
 
 const MissionBriefing = ({
     title,
-    missionNumber,
-    duration,
+    missionNumber = 1,
+    totalMissions = 16,
+    duration = "10 min",
     briefing,
-    onAccept
+    classification = "LEVEL 1",
+    status = "NOT STARTED", // "NOT STARTED", "IN PROGRESS", "COMPLETE"
+    objectives = [],
 }) => {
+    const [isTyping, setIsTyping] = useState(true);
+    const [displayedText, setDisplayedText] = useState('');
+
+    // Typewriter effect for briefing
+    useEffect(() => {
+        if (!briefing) return;
+        
+        let index = 0;
+        const speed = 20; // ms per character
+        
+        const timer = setInterval(() => {
+            if (index < briefing.length) {
+                setDisplayedText(briefing.slice(0, index + 1));
+                index++;
+            } else {
+                setIsTyping(false);
+                clearInterval(timer);
+            }
+        }, speed);
+
+        return () => clearInterval(timer);
+    }, [briefing]);
+
+    const statusConfig = {
+        "NOT STARTED": { color: 'red', icon: Lock, pulse: true },
+        "IN PROGRESS": { color: 'yellow', icon: Radio, pulse: true },
+        "COMPLETE": { color: 'green', icon: Unlock, pulse: false },
+    };
+
+    const currentStatus = statusConfig[status] || statusConfig["NOT STARTED"];
+    const StatusIcon = currentStatus.icon;
+
     return (
-        <div className="max-w-4xl mx-auto mb-12">
-            {/* Top Secret Stamp */}
-            <motion.div
-                initial={{ opacity: 0, scale: 2, rotate: -45 }}
-                animate={{ opacity: 0.1, scale: 1, rotate: -15 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="absolute top-0 right-0 text-red-600 font-black text-8xl border-8 border-red-600 p-4 rounded uppercase pointer-events-none select-none z-0"
-            >
-                Classified
-            </motion.div>
-
-            {/* Header */}
-            <div className="relative z-10 bg-gray-900 border-2 border-cyan-500/50 rounded-t-lg p-6 flex items-center justify-between">
-                <div>
-                    <h3 className="text-cyan-400 font-mono text-sm tracking-widest mb-1">
-                        OPERATION ORDER #{missionNumber.toString().padStart(3, '0')}
-                    </h3>
-                    <h1 className="text-3xl md:text-4xl font-black text-white uppercase italic">
-                        {title}
-                    </h1>
+        <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="relative mb-8"
+        >
+            {/* Top classified banner */}
+            <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                <div className="flex items-center gap-2 bg-slate-900 px-4 py-1 rounded-full border border-cyan-500/30">
+                    <Shield className="text-cyan-400" size={14} />
+                    <span className="text-cyan-400 font-mono text-xs tracking-wider">
+                        CLASSIFIED: {classification}
+                    </span>
                 </div>
-                <div className="text-right hidden md:block">
-                    <div className="text-gray-400 text-xs uppercase tracking-wider">Est. Duration</div>
-                    <div className="text-xl font-bold text-yellow-400">{duration}</div>
-                </div>
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
             </div>
 
-            {/* Main Content */}
-            <div className="relative z-10 bg-gray-800/80 border-x-2 border-b-2 border-cyan-500/30 rounded-b-lg p-6 md:p-8 backdrop-blur-sm">
-                <div className="flex flex-col md:flex-row gap-8 items-start">
+            {/* Main briefing container */}
+            <div className="bg-gradient-to-br from-slate-900 via-slate-800/95 to-slate-900 rounded-2xl border-2 border-cyan-500/30 overflow-hidden shadow-2xl shadow-cyan-500/10">
+                
+                {/* Header bar */}
+                <div className="bg-gradient-to-r from-cyan-900/50 via-slate-800 to-purple-900/50 px-6 py-4 border-b border-cyan-500/20">
+                    <div className="flex items-center justify-between">
+                        {/* Mission number and title */}
+                        <div className="flex items-center gap-4">
+                            <div className="relative">
+                                <motion.div
+                                    animate={currentStatus.pulse ? { 
+                                        boxShadow: [
+                                            '0 0 0 0 rgba(34, 211, 238, 0.4)',
+                                            '0 0 0 10px rgba(34, 211, 238, 0)',
+                                        ],
+                                    } : {}}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                    className={`
+                                        w-14 h-14 rounded-xl flex items-center justify-center font-mono font-bold text-xl
+                                        ${currentStatus.color === 'red' ? 'bg-red-500/20 text-red-400 border border-red-500/50' : ''}
+                                        ${currentStatus.color === 'yellow' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/50' : ''}
+                                        ${currentStatus.color === 'green' ? 'bg-green-500/20 text-green-400 border border-green-500/50' : ''}
+                                    `}
+                                >
+                                    {String(missionNumber).padStart(2, '0')}
+                                </motion.div>
+                            </div>
+                            <div>
+                                <p className="text-slate-400 text-xs font-mono uppercase tracking-wider mb-1">
+                                    Operation {missionNumber} of {totalMissions}
+                                </p>
+                                <h1 className="text-2xl md:text-3xl font-bold text-white tracking-wide">
+                                    {title}
+                                </h1>
+                            </div>
+                        </div>
 
-                    {/* Captain Image */}
-                    <div className="w-full md:w-1/3 flex-shrink-0">
-                        <div className="bg-cyan-900/20 rounded-lg border border-cyan-500/30 p-4 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-                            {/* Using a placeholder for now if CaptainHero isn't exactly what we want, but trying to reuse */}
-                            <div className="relative z-10">
-                                {/* Placeholder for Captain Efficiency Command Room Pose */}
-                                <img
-                                    src="/assets/captain-efficiency-command.png"
-                                    alt="Captain Efficiency"
-                                    className="w-full h-auto rounded shadow-lg"
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = 'https://placehold.co/400x400/1e293b/06b6d4?text=Captain+Efficiency';
-                                    }}
+                        {/* Status and duration */}
+                        <div className="hidden md:flex flex-col items-end gap-2">
+                            <div className={`
+                                flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold
+                                ${currentStatus.color === 'red' ? 'bg-red-500/20 text-red-400' : ''}
+                                ${currentStatus.color === 'yellow' ? 'bg-yellow-500/20 text-yellow-400' : ''}
+                                ${currentStatus.color === 'green' ? 'bg-green-500/20 text-green-400' : ''}
+                            `}>
+                                <StatusIcon size={12} />
+                                {status}
+                            </div>
+                            <div className="flex items-center gap-2 text-slate-400 text-sm">
+                                <Clock size={14} />
+                                <span>Mission Duration: {duration}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Briefing content */}
+                <div className="p-6 md:p-8">
+                    {/* Alert header */}
+                    <div className="flex items-center gap-3 mb-4">
+                        <motion.div
+                            animate={{ rotate: [0, 10, -10, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                        >
+                            <AlertTriangle className="text-yellow-400" size={20} />
+                        </motion.div>
+                        <span className="text-yellow-400 font-bold font-mono text-sm tracking-wider">
+                            MISSION BRIEFING
+                        </span>
+                        <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent" />
+                    </div>
+
+                    {/* Briefing text with typewriter effect */}
+                    <div className="bg-slate-950/50 rounded-xl p-5 border border-slate-700/50 mb-6">
+                        <p className="text-slate-200 leading-relaxed font-mono text-sm md:text-base">
+                            {displayedText}
+                            {isTyping && (
+                                <motion.span
+                                    animate={{ opacity: [1, 0, 1] }}
+                                    transition={{ duration: 0.8, repeat: Infinity }}
+                                    className="inline-block w-2 h-4 bg-cyan-400 ml-1"
                                 />
-                            </div>
-                            <div className="mt-2 text-center">
-                                <div className="text-cyan-400 font-bold text-sm">CPT. EFFICIENCY</div>
-                                <div className="text-cyan-600 text-[10px] uppercase tracking-wider">Mission Commander</div>
-                            </div>
-                        </div>
+                            )}
+                        </p>
                     </div>
 
-                    {/* Briefing Text */}
-                    <div className="flex-1">
-                        <h4 className="text-gray-400 font-bold text-sm uppercase tracking-widest mb-4 border-b border-gray-700 pb-2">
-                            Mission Briefing
-                        </h4>
-
-                        <div className="prose prose-invert max-w-none mb-6">
-                            <p className="text-lg leading-relaxed text-gray-200 font-light">
-                                {briefing}
-                            </p>
+                    {/* Quick objectives preview */}
+                    {objectives.length > 0 && (
+                        <div className="grid md:grid-cols-3 gap-3">
+                            {objectives.slice(0, 3).map((obj, i) => (
+                                <div 
+                                    key={i}
+                                    className="flex items-center gap-2 bg-slate-800/50 rounded-lg p-3 border border-slate-700/50"
+                                >
+                                    <Target className="text-cyan-400 flex-shrink-0" size={14} />
+                                    <span className="text-slate-300 text-sm">{obj}</span>
+                                </div>
+                            ))}
                         </div>
+                    )}
 
-                        <div className="bg-yellow-900/20 border-l-4 border-yellow-500 p-4 mb-6">
-                            <h5 className="text-yellow-500 font-bold text-sm uppercase mb-1">Objective</h5>
-                            <p className="text-gray-300 text-sm">
-                                Deploy the designated agents to neutralize the threat and reclaim your resources.
-                            </p>
-                        </div>
-
-                        {onAccept && (
-                            <button
-                                onClick={onAccept}
-                                className="w-full md:w-auto px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/20"
-                            >
-                                Accept Mission
-                            </button>
-                        )}
+                    {/* Bottom action hint */}
+                    <div className="mt-6 flex items-center justify-center gap-2 text-slate-500 text-sm">
+                        <Zap className="text-cyan-400" size={14} />
+                        <span>Scroll down to begin operation</span>
+                        <motion.div
+                            animate={{ y: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                            <ChevronRight className="text-cyan-400 rotate-90" size={16} />
+                        </motion.div>
                     </div>
                 </div>
+
+                {/* Bottom progress bar */}
+                <div className="h-1 bg-slate-800">
+                    <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${(missionNumber / totalMissions) * 100}%` }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
+                    />
+                </div>
             </div>
-        </div>
+
+            {/* Corner decorations */}
+            <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-cyan-500/50 rounded-tl-lg" />
+            <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-cyan-500/50 rounded-tr-lg" />
+            <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-cyan-500/50 rounded-bl-lg" />
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-cyan-500/50 rounded-br-lg" />
+        </motion.div>
     );
 };
 

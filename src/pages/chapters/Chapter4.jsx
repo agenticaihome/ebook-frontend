@@ -13,6 +13,12 @@ import {
     Play, Pause, RotateCcw, Check, X, HelpCircle, Sunrise
 } from 'lucide-react';
 
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
+
 // Lazy load interactive components
 const MorningChaosCalculator = React.lazy(() => import('../../components/MorningChaosCalculator'));
 const MorningBriefBuilder = React.lazy(() => import('../../components/MorningBriefBuilder'));
@@ -24,30 +30,8 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const SpeedRunContext = createContext(false);
 
 // ============================================
-// REUSABLE COMPONENTS (matching previous chapters)
+// REUSABLE COMPONENTS
 // ============================================
-
-const ChapterProgress = ({ current, total, part, partTitle }) => (
-    <div className="mb-6">
-        {part && (
-            <div className="text-orange-400 font-bold text-sm mb-2 uppercase tracking-wider">
-                Part {part}: {partTitle}
-            </div>
-        )}
-        <div className="flex items-center gap-3">
-            <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-                <m.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
-                />
-            </div>
-            <span className="text-slate-400 text-sm font-mono">
-                {current}/{total}
-            </span>
-        </div>
-    </div>
-);
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
@@ -75,31 +59,6 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
         {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
     </button>
-);
-
-const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <m.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
-    >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-wrap justify-center md:justify-start gap-6">
-                {stats.map((stat, i) => (
-                    <div key={i} className="text-center">
-                        <div className="text-3xl font-bold text-white">{stat.value}</div>
-                        <div className="text-sm text-slate-400">{stat.label}</div>
-                    </div>
-                ))}
-            </div>
-            <button
-                onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
-            >
-                {primaryCTA} <ArrowRight size={18} />
-            </button>
-        </div>
-    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -179,44 +138,6 @@ const QuickWin = ({ title, prompt, setupTime }) => {
             >
                 {copied ? <CheckCircle size={18} /> : <Copy size={18} />}
                 {copied ? 'Copied!' : 'Copy Prompt'}
-            </button>
-        </div>
-    );
-};
-
-const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
-    const navigate = useNavigate();
-
-    return (
-        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-            <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <CheckCircle className="text-green-400" size={24} />
-                </div>
-                <div>
-                    <span className="text-green-400 font-bold block">Chapter 4 Complete</span>
-                    <span className="text-slate-400 text-sm">You're 25% of the way there</span>
-                </div>
-            </div>
-
-            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                <p className="text-white font-bold text-sm mb-3">What you built:</p>
-                <ul className="space-y-2">
-                    {achievements.map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                            <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <button
-                onClick={() => navigate(nextChapter)}
-                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
-            >
-                Continue to Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
-                <ArrowRight size={18} />
             </button>
         </div>
     );
@@ -554,7 +475,38 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
 
 const Chapter4 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const [cardUnlocked, setCardUnlocked] = useState(false);
     const navigate = useNavigate();
+
+    // Morning Brief Agent card data
+    const morningBriefCard = {
+        id: 'morning_brief',
+        name: 'Morning Brief Agent',
+        rarity: 'common',
+        category: 'Daily Ops',
+        timeSaved: '30 min/day',
+        moneySaved: '$0',
+        complexity: 2,
+        powerLevel: 45,
+        prompt: `I want you to act as my morning briefing agent.
+
+Ask me:
+1. What time I wake up
+2. What info I need each morning (weather, calendar, priorities)
+3. How I want it formatted (bullet points, paragraphs, etc.)
+
+Then show me what tomorrow's briefing would look like.`,
+    };
+
+    const handleCardUnlock = (cardId) => {
+        setCardUnlocked(true);
+        // Save to localStorage
+        const unlockedCards = JSON.parse(localStorage.getItem('unlocked_cards') || '[]');
+        if (!unlockedCards.includes(cardId)) {
+            unlockedCards.push(cardId);
+            localStorage.setItem('unlocked_cards', JSON.stringify(unlockedCards));
+        }
+    };
 
     const scrollToCalculator = () => {
         document.getElementById('chaos-calculator')?.scrollIntoView({ behavior: 'smooth' });
@@ -581,12 +533,12 @@ Before generating briefs, ask me:
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 4: Morning Routines | Agentic AI at Home</title>
+                <title>Operation: Morning Glory | Agentic AI at Home</title>
                 <meta name="description" content="Automate your morning briefing and start every day ahead" />
             </Helmet>
 
             <SEO
-                title="Morning Routines - Agentic AI at Home"
+                title="Operation: Morning Glory - Agentic AI at Home"
                 description="Build the agent you'll actually use every single day. The Morning Brief Agent."
                 canonical="/part2/chapter1"
             />
@@ -594,12 +546,30 @@ Before generating briefs, ask me:
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
-                        {/* Progress Bar with Part indicator */}
-                        <ChapterProgress
-                            current={4}
-                            total={16}
-                            part={2}
-                            partTitle="Daily Operations"
+                        {/* MISSION BRIEFING */}
+                        <MissionBriefing
+                            title="OPERATION: MORNING GLORY"
+                            missionNumber={4}
+                            duration="8 min"
+                            briefing="Enough theory. Time to build something you'll use EVERY SINGLE DAY. The Morning Brief Agent is about to become your favorite 30 seconds of the day. By tomorrow morning, you'll wonder how you ever started your day without it. Let's build it."
+                            objectives={[
+                                "Calculate Your Chaos",
+                                "Build Your Morning Brief Agent",
+                                "Set Up Your Platform"
+                            ]}
+                        />
+
+                        {/* OBJECTIVES */}
+                        <ObjectivesChecklist
+                            operationId="op_4"
+                            primaryObjectives={[
+                                { id: "chaos_calc", label: "Calculate Your Chaos" },
+                                { id: "build_agent", label: "Build Your Morning Brief Agent" },
+                                { id: "setup_platform", label: "Set Up Your Platform" }
+                            ]}
+                            bonusObjectives={[
+                                { id: "week_one", label: "Complete the Week 1 Milestones" }
+                            ]}
                         />
 
                         {/* Author Credibility */}
@@ -613,44 +583,10 @@ Before generating briefs, ask me:
                             chapterNumber={4}
                         />
 
-                        {/* Header */}
-                        <m.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-6"
-                        >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 4</div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                Morning Routines
-                            </h1>
-                            <p className="text-xl text-slate-400 mb-4">
-                                Build the agent you'll actually use every single day
-                            </p>
-
-                            {/* Reading time + Speed Run toggle */}
-                            <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={14} />
-                                        <span>8 min read</span>
-                                    </div>
-                                    <span>•</span>
-                                    <span className="text-orange-400">15 min to build your brief</span>
-                                </div>
-                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                            </div>
-                        </m.div>
-
-                        {/* TL;DR Card */}
-                        <TLDRCard
-                            stats={[
-                                { value: '30 min', label: 'saved daily' },
-                                { value: '30 sec', label: 'to read brief' },
-                                { value: '15 min', label: 'one-time setup' },
-                            ]}
-                            primaryCTA="Calculate My Chaos"
-                            onCTAClick={scrollToCalculator}
-                        />
+                        {/* Speed Run Toggle */}
+                        <div className="flex justify-end mb-6">
+                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                        </div>
 
                         <PasswordGate partNumber={2} chapterNumber={4}>
                             {/* CAPTAIN EFFICIENCY - OPENER (Energetic/Practical) */}
@@ -727,6 +663,14 @@ Before generating briefs, ask me:
                                 </Suspense>
                             </section>
 
+                            {/* CARD UNLOCK - Morning Brief Agent */}
+                            <AgentCardUnlock
+                                card={morningBriefCard}
+                                onUnlock={handleCardUnlock}
+                                onComplete={() => console.log('Card added to deck')}
+                                autoReveal={false}
+                            />
+
                             {/* WEEK ONE MILESTONES */}
                             {!speedRun && <WeekOneMilestones />}
 
@@ -762,16 +706,21 @@ Before generating briefs, ask me:
                                 </Suspense>
                             )}
 
-                            {/* CHAPTER COMPLETE */}
-                            <ChapterComplete
-                                achievements={[
-                                    'Calculated your morning chaos cost',
-                                    'Built your personalized Morning Brief Agent',
-                                    'Know how to refine it over Week 1',
-                                    'Troubleshooting tools if something goes wrong',
-                                ]}
-                                nextChapter="/part2/chapter2"
-                                nextTitle="Kitchen & Grocery"
+                            {/* MISSION COMPLETE */}
+                            <MissionComplete
+                                operationId="op_4"
+                                operationName="MORNING GLORY"
+                                operationNumber={4}
+                                nextOperationPath="/part2/chapter2"
+                                nextOperationName="KITCHEN & GROCERY"
+                                rewards={{
+                                    xp: 200,
+                                    cards: ['Morning Brief Agent'],
+                                    achievements: ['morning_glory']
+                                }}
+                                stats={{
+                                    objectivesCompleted: "3/3",
+                                }}
                             />
 
                             {/* Bottom Navigation */}
