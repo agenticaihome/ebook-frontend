@@ -25,10 +25,10 @@ export default function FAQ() {
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What exactly is \"Agentic AI at Home\"?",
+                "name": "What exactly is Frontier Command?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Agentic AI at Home is a comprehensive course that teaches you how to build AI-powered systems that automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
+                    "text": "Frontier Command is a comprehensive expedition that teaches you how to build AI-powered Companions that automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
                 }
             },
             {
@@ -60,18 +60,18 @@ export default function FAQ() {
     return (
         <WebbookLayout>
             <SEO
-                title="FAQ - Agentic AI at Home"
-                description="Frequently asked questions about the Agentic AI at Home course. Learn about the curriculum, prerequisites, privacy, and more."
-                keywords={["FAQ", "Agentic AI", "Course Details", "Pricing", "Privacy"]}
+                title="FAQ - Frontier Command"
+                description="Frequently asked questions about Frontier Command. Learn about the expedition, AI Companions, prerequisites, privacy, and more."
+                keywords={["FAQ", "Frontier Command", "AI Companions", "Expedition", "Pricing", "Privacy"]}
                 schema={faqSchema}
             />
 
-            <div className="min-h-screen bg-[#0f0f1a] text-slate-300 font-sans selection:bg-cyan-500/30">
+            <div className="min-h-screen bg-[var(--color-void-dark)] bg-grid-pattern text-slate-300 font-sans selection:bg-amber-500/30">
                 {/* Hero Section */}
                 <div className="relative pt-32 pb-20 px-6 overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-                        <div className="absolute top-20 left-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px]" />
-                        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+                        <div className="absolute top-20 left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px]" />
+                        <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-500/10 rounded-full blur-[100px]" />
                     </div>
 
                     <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -80,11 +80,11 @@ export default function FAQ() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
                         >
-                            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                                Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Questions</span>
+                            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight font-mono">
+                                <span className="text-amber-400">🧭</span> EXPEDITION <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600">GUIDE</span>
                             </h1>
                             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-                                Everything you need to know about the course, the technology, and how it will transform your daily life.
+                                Everything you need to know about the expedition, your AI Companions, and how they will transform your daily life.
                             </p>
                         </m.div>
 
@@ -103,7 +103,7 @@ export default function FAQ() {
                                 placeholder="Search questions..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-slate-900/50 border border-slate-700 rounded-2xl py-4 pl-12 pr-6 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all shadow-lg backdrop-blur-sm"
+                                className="w-full bg-slate-900/50 border border-teal-500/30 rounded-2xl py-4 pl-12 pr-6 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-all shadow-lg backdrop-blur-sm font-mono"
                             />
                         </m.div>
                     </div>
@@ -114,9 +114,9 @@ export default function FAQ() {
                     <div className="flex flex-wrap justify-center gap-3">
                         <button
                             onClick={() => setActiveCategory('all')}
-                            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === 'all'
-                                ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/25'
-                                : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-700'
+                            className={`px-4 py-2 rounded-full text-sm font-medium font-mono transition-all ${activeCategory === 'all'
+                                ? 'bg-amber-600 text-white shadow-lg shadow-amber-500/25'
+                                : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-teal-500/30'
                                 }`}
                         >
                             All Questions
@@ -125,9 +125,9 @@ export default function FAQ() {
                             <button
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat.id)}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === cat.id
-                                    ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/25'
-                                    : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-700'
+                                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium font-mono transition-all ${activeCategory === cat.id
+                                    ? 'bg-amber-600 text-white shadow-lg shadow-amber-500/25'
+                                    : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-teal-500/30'
                                     }`}
                             >
                                 {cat.icon}
@@ -147,9 +147,9 @@ export default function FAQ() {
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                                    className={`group rounded-2xl border transition-all duration-300 ${expandedId === item.id
-                                        ? 'bg-slate-800/80 border-cyan-500/30 shadow-2xl shadow-cyan-900/10'
-                                        : 'bg-slate-900/40 border-slate-800 hover:border-slate-700 hover:bg-slate-800/40'
+                                    className={`tactical-card group rounded-2xl transition-all duration-300 ${expandedId === item.id
+                                        ? 'bg-slate-800/80 border-amber-500/40 shadow-2xl shadow-amber-900/20'
+                                        : 'bg-slate-900/40 hover:border-teal-500/40 hover:bg-slate-800/40'
                                         }`}
                                 >
                                     <button
@@ -157,12 +157,12 @@ export default function FAQ() {
                                         className="w-full text-left p-6 flex items-start justify-between gap-4"
                                     >
                                         <div className="flex items-start gap-4">
-                                            <div className={`mt-1 p-2 rounded-lg transition-colors ${expandedId === item.id ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-500 group-hover:text-slate-400'
+                                            <div className={`mt-1 p-2 rounded-lg transition-colors ${expandedId === item.id ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-800 text-slate-500 group-hover:text-teal-400'
                                                 }`}>
                                                 <HelpCircle size={20} />
                                             </div>
                                             <div>
-                                                <h3 className={`text-lg font-semibold transition-colors ${expandedId === item.id ? 'text-white' : 'text-slate-200 group-hover:text-white'
+                                                <h3 className={`text-lg font-semibold font-mono transition-colors ${expandedId === item.id ? 'text-amber-400' : 'text-slate-200 group-hover:text-amber-400'
                                                     }`}>
                                                     {item.question}
                                                 </h3>
@@ -174,7 +174,7 @@ export default function FAQ() {
                                             </div>
                                         </div>
                                         <ChevronDown
-                                            className={`flex-shrink-0 transition-transform duration-300 ${expandedId === item.id ? 'rotate-180 text-cyan-400' : 'text-slate-500'
+                                            className={`flex-shrink-0 transition-transform duration-300 ${expandedId === item.id ? 'rotate-180 text-amber-400' : 'text-slate-500'
                                                 }`}
                                         />
                                     </button>
@@ -189,7 +189,7 @@ export default function FAQ() {
                                                 className="overflow-hidden"
                                             >
                                                 <div className="px-6 pb-6 pl-[4.5rem] text-slate-300 leading-relaxed">
-                                                    <div className="prose prose-invert prose-p:text-slate-300 prose-a:text-cyan-400 max-w-none">
+                                                    <div className="prose prose-invert prose-p:text-slate-300 prose-a:text-amber-400 max-w-none">
                                                         {item.answer}
                                                     </div>
                                                 </div>
@@ -207,7 +207,7 @@ export default function FAQ() {
                                 <p className="text-slate-400">Try adjusting your search or category filter.</p>
                                 <button
                                     onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
-                                    className="mt-4 text-cyan-400 hover:text-cyan-300 font-medium"
+                                    className="mt-4 text-amber-400 hover:text-amber-300 font-medium font-mono"
                                 >
                                     Clear all filters
                                 </button>
@@ -217,21 +217,21 @@ export default function FAQ() {
                 </div>
 
                 {/* Contact Section */}
-                <div className="bg-slate-900 border-t border-slate-800 py-20">
+                <div className="bg-slate-900/80 border-t border-teal-500/20 py-20">
                     <div className="max-w-4xl mx-auto px-6 text-center">
-                        <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-cyan-500/20">
+                        <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20">
                             <Mail className="text-white" size={32} />
                         </div>
-                        <h2 className="text-3xl font-bold text-white mb-4">Still have questions?</h2>
+                        <h2 className="text-3xl font-bold text-white mb-4 font-mono">Still have questions?</h2>
                         <p className="text-slate-400 mb-8 max-w-xl mx-auto">
-                            We're happy to help. Send us an email and we'll get back to you within 24 hours.
+                            Our expedition support team is ready to help. Send us a signal and we'll respond within 24 hours.
                         </p>
                         <a
                             href="mailto:support@agenticai.home"
-                            className="inline-flex items-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-slate-200 transition-colors"
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-bold font-mono hover:from-amber-600 hover:to-orange-700 transition-all shadow-lg shadow-amber-500/25"
                         >
                             <Mail size={20} />
-                            Contact Support
+                            Contact Expedition Support
                         </a>
                     </div>
                 </div>
