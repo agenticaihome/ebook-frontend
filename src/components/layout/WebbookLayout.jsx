@@ -395,6 +395,19 @@ const WebbookLayout = ({ children }) => {
                     </PrefetchLink>
 
                     <PrefetchLink
+                        to="/deck"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/deck'
+                            ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'
+                            : 'text-slate-300 hover:bg-slate-800'
+                            }`}
+                    >
+                        <span className={location.pathname === '/deck' ? 'text-cyan-200' : 'text-slate-400 group-hover:text-cyan-400'}>
+                            <div className="w-[18px] h-[18px] border-2 border-current rounded-sm flex items-center justify-center text-[10px] font-bold">A</div>
+                        </span>
+                        <span className="font-medium text-sm">Agent Deck</span>
+                    </PrefetchLink>
+
+                    <PrefetchLink
                         to="/faq"
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all group focus:outline-none focus:ring-2 focus:ring-cyan-400 ${location.pathname === '/faq'
                             ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/30'

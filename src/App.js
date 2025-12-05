@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navig
 import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
+import { GameProvider } from './context/GameContext';
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
 import { Toaster, toast } from 'react-hot-toast';
@@ -19,6 +20,7 @@ const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
 const GameLandingPage = lazy(() => import('./pages/GameLandingPage'));
 const GamesPage = lazy(() => import('./pages/GamesPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const AgentWallet = lazy(() => import('./pages/AgentWallet'));
 
 // Loading component
 const Loading = () => (
@@ -166,6 +168,13 @@ const AnimatedRoutes = () => {
               </Suspense>
             } />
 
+            {/* Agent Wallet / Deck */}
+            <Route path="/deck" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><AgentWallet /></PageTransition>
+              </Suspense>
+            } />
+
             {/* 404 Route */}
             <Route path="*" element={
               <Suspense fallback={<Loading />}>
@@ -200,19 +209,21 @@ function App() {
       <Router>
         <SoundProvider>
           <UserProvider>
-            <Suspense fallback={<Loading />}>
-              <AnimatedRoutes />
-              <MobileBottomNav />
-              <Toaster
-                toastOptions={{
-                  style: {
-                    background: '#1e293b',
-                    color: '#fff',
-                    border: '1px solid #334155',
-                  },
-                }}
-              />
-            </Suspense>
+            <GameProvider>
+              <Suspense fallback={<Loading />}>
+                <AnimatedRoutes />
+                <MobileBottomNav />
+                <Toaster
+                  toastOptions={{
+                    style: {
+                      background: '#1e293b',
+                      color: '#fff',
+                      border: '1px solid #334155',
+                    },
+                  }}
+                />
+              </Suspense>
+            </GameProvider>
           </UserProvider>
         </SoundProvider>
       </Router>
