@@ -165,6 +165,25 @@ export default function SalesPage() {
                   <span className="text-green-400">✓</span> No credit card required
                 </div>
               </m.div>
+
+              {/* Social Proof Banner */}
+              <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-center gap-3 mt-6 text-sm text-slate-400"
+              >
+                <div className="flex -space-x-2">
+                  {['🧑‍💻', '👩‍💼', '👨‍🔬', '👩‍🏫'].map((emoji, i) => (
+                    <span key={i} className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-sm border-2 border-slate-900">
+                      {emoji}
+                    </span>
+                  ))}
+                </div>
+                <span>
+                  <span className="text-amber-400 font-bold">50+ explorers</span> already charting the frontier
+                </span>
+              </m.div>
             </div>
           </div>
         </section>
@@ -242,10 +261,10 @@ export default function SalesPage() {
                   className={`
                     relative p-6 rounded-2xl border transition-all group hover:-translate-y-1 backdrop-blur-md
                     ${part.status === 'FREE'
-                      ? 'bg-green-900/10 border-green-500/30 hover:bg-green-900/20 cursor-pointer hover:shadow-lg hover:shadow-green-900/20'
+                      ? 'bg-green-900/10 border-green-500/30 hover:bg-green-900/20 cursor-pointer hover:shadow-lg hover:shadow-green-900/20 animate-pulse-subtle'
                       : part.status === 'OPEN'
                         ? 'bg-cyan-900/10 border-cyan-500/30 hover:bg-cyan-900/20 cursor-pointer'
-                        : 'bg-slate-800/40 border-slate-600/50 hover:border-slate-600 cursor-not-allowed opacity-75'}
+                        : 'bg-slate-800/40 border-slate-600/50 hover:border-amber-500/30 cursor-pointer opacity-90 hover:opacity-100'}
                   `}
                 >
                   <div className="text-xs font-mono text-slate-400 mb-2">TERRITORY {part.id}</div>
@@ -261,6 +280,60 @@ export default function SalesPage() {
                 </Link>
               ))}
             </div>
+
+            {/* Progress Teaser */}
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-8 text-center"
+            >
+              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-amber-900/20 to-orange-900/20 border border-amber-500/30">
+                <span className="text-2xl">🏅</span>
+                <span className="text-amber-400">
+                  Reach <span className="font-bold">Pioneer rank</span> to unlock exclusive bonus expeditions
+                </span>
+              </div>
+            </m.div>
+
+            {/* Your Companion Squad */}
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-16"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-xl font-bold text-white mb-2">🤖 Your Companion Squad</h3>
+                <p className="text-slate-400 text-sm">The AI team you'll recruit on your expedition</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                {[
+                  { emoji: '🧠', name: 'Brain', desc: 'Thinks & plans', color: 'purple' },
+                  { emoji: '💾', name: 'Memory', desc: 'Never forgets', color: 'cyan' },
+                  { emoji: '🤲', name: 'Hands', desc: 'Takes action', color: 'green' },
+                  { emoji: '⚡', name: 'Nerves', desc: 'Connects all', color: 'amber' },
+                  { emoji: '🛡️', name: 'Guard', desc: 'Protects you', color: 'red' },
+                ].map((companion, i) => (
+                  <m.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`p-4 rounded-xl border text-center bg-${companion.color}-900/10 border-${companion.color}-500/30 hover:border-${companion.color}-400/50 transition-all backdrop-blur-sm`}
+                    style={{
+                      background: `rgba(var(--${companion.color}-900), 0.1)`,
+                      borderColor: `rgba(var(--${companion.color}-500), 0.3)`
+                    }}
+                  >
+                    <div className="text-3xl mb-2">{companion.emoji}</div>
+                    <div className="font-bold text-white text-sm">{companion.name}</div>
+                    <div className="text-slate-400 text-xs">{companion.desc}</div>
+                  </m.div>
+                ))}
+              </div>
+            </m.div>
           </div>
         </section>
 
@@ -379,6 +452,35 @@ export default function SalesPage() {
               </p>
               <p className="text-sm text-slate-500 mt-2">— Cpt. E</p>
             </div>
+
+            {/* Frontier Testimonial */}
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-12 bg-gradient-to-r from-amber-900/20 to-orange-900/10 rounded-2xl p-8 border border-amber-500/30"
+            >
+              <div className="flex items-start gap-4">
+                <div className="text-4xl">🏕️</div>
+                <div>
+                  <p className="text-lg text-slate-200 italic mb-3">
+                    "I went from <span className="text-amber-400 font-bold">Newcomer to Pioneer</span> in 3 weeks.
+                    The gamification isn't just fun—it made me actually <span className="text-white font-bold">finish</span> something
+                    for once. My morning routine now runs on autopilot."
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-lg">👨‍💻</div>
+                    <div>
+                      <div className="font-bold text-white">Marcus T.</div>
+                      <div className="text-sm text-slate-400">Software Engineer, Dad of 2</div>
+                    </div>
+                    <div className="ml-auto px-3 py-1 bg-amber-500/20 rounded-full text-amber-400 text-xs font-bold">
+                      🏅 Pioneer Rank
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </m.div>
           </div>
         </section>
 
