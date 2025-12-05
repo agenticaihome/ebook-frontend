@@ -1,21 +1,24 @@
-import React, { useState, Suspense, createContext, useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { m, AnimatePresence } from 'framer-motion';
+import WebbookLayout from '../../components/layout/WebbookLayout';
+
+import React, { useState, Suspense, createContext, useContext } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Shield, Sparkles, Share2, Copy, Eye, EyeOff, Lock, Unlock,
     AlertTriangle, Target, Server, Cloud, Database, Smartphone,
-    FileText, Settings, XCircle, CheckCircle2, HelpCircle, Info
+    FileText, Settings, XCircle, CheckCircle2, HelpCircle, Info,
+    ShieldAlert, ShieldCheck, Radio
 } from 'lucide-react';
-
-import WebbookLayout from '../../components/layout/WebbookLayout';
-import ChapterNavigation from '../../components/common/ChapterNavigation';
 
 // Game Components
 import MissionBriefing from '../../components/gamification/MissionBriefing';
 import MissionComplete from '../../components/gamification/MissionComplete';
 import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import IntelReport from '../../components/gamification/IntelReport';
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 
 // Lazy load interactive components
 const PrivacyAssessment = React.lazy(() => import('../../components/PrivacyAssessment'));
@@ -23,30 +26,61 @@ const AgentConstitutionBuilder = React.lazy(() => import('../../components/Agent
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
 // ============================================
-// SPEED RUN CONTEXT
+// AGENT CARD DEFINITIONS
 // ============================================
-const SpeedRunContext = createContext(false);
+
+const privacyGuardCard = {
+    id: 'privacy_guard',
+    name: 'Privacy Guard Agent',
+    category: 'Daily Ops',
+    rarity: 'Rare',
+    power: 65,
+    description: 'Sets privacy boundaries for any AI conversation. Establishes ground rules before sharing sensitive information.',
+    emoji: '🛡️',
+    prompt: `Before we begin, here are my privacy rules:
+
+1. Never ask for passwords, SSN, or financial account numbers
+2. Don't store or reference personal info beyond this conversation
+3. If I accidentally share sensitive data, remind me to delete this chat
+4. Focus on helping me with [YOUR TASK], nothing more
+
+Acknowledge these rules, then let's proceed.`,
+    unlockMessage: "Your Privacy Guard is deployed. Use this prompt to establish boundaries in any AI conversation."
+};
+
+const dataAuditorCard = {
+    id: 'data_auditor',
+    name: 'Data Auditor Agent',
+    category: 'Daily Ops',
+    rarity: 'Epic',
+    power: 72,
+    description: 'Helps you audit what data you\'ve shared and where it might be stored. Creates a personal data inventory.',
+    emoji: '🔍',
+    prompt: `Help me audit my data exposure across AI tools. Ask me about:
+
+1. Which AI tools I use (ChatGPT, Claude, Gemini, Copilot, etc.)
+2. What types of information I've shared with each
+3. Whether I've checked the privacy settings on each
+
+Then create:
+- A summary of my potential data exposure
+- Specific settings I should check for each tool
+- A reminder system to periodically review my data
+
+Be honest about what's stored vs. what's deleted.`,
+    unlockMessage: "Data Auditor online. This agent helps you understand exactly where your information lives."
+};
+
+// ============================================
+// BLITZ MODE CONTEXT
+// ============================================
+const BlitzModeContext = createContext(false);
 
 // ============================================
 // REUSABLE COMPONENTS
 // ============================================
 
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
-
-const SpeedRunToggle = ({ enabled, onToggle }) => (
+const BlitzModeToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
@@ -55,15 +89,15 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
+        {enabled ? 'Blitz Mode: ON' : 'Blitz Mode: OFF'}
     </button>
 );
 
-const ShareableQuote = ({ quote, chapter }) => {
+const ShareableQuote = ({ quote, operation }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Operation ${operation}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -79,7 +113,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Operation {operation}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -102,50 +136,11 @@ const ShareableQuote = ({ quote, chapter }) => {
     );
 };
 
-const QuickWin = ({ title, prompt, setupTime }) => {
-    const [copied, setCopied] = useState(false);
-
-    const handleCopy = () => {
-        navigator.clipboard.writeText(prompt);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
-
-    return (
-        <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/20 rounded-2xl p-6 border border-green-500/40 backdrop-blur-sm mb-8">
-            <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                    <Zap className="text-green-400" size={20} />
-                    <span className="text-green-400 font-bold uppercase text-sm tracking-wider">Quick Win</span>
-                </div>
-                <span className="text-slate-400 text-sm">{setupTime} setup</span>
-            </div>
-
-            <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-
-            <div className="bg-slate-900/80 rounded-xl p-4 font-mono text-sm text-slate-300 mb-4">
-                <pre className="whitespace-pre-wrap">{prompt}</pre>
-            </div>
-
-            <button
-                onClick={handleCopy}
-                className={`w-full py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${copied
-                    ? 'bg-green-500 text-white'
-                    : 'bg-slate-700 hover:bg-slate-600 text-white'
-                    }`}
-            >
-                {copied ? <CheckCircle size={18} /> : <Copy size={18} />}
-                {copied ? 'Copied!' : 'Copy Prompt'}
-            </button>
-        </div>
-    );
-};
-
 const DeepDive = ({ title, children }) => {
     const [expanded, setExpanded] = useState(false);
-    const speedRun = useContext(SpeedRunContext);
+    const blitzMode = useContext(BlitzModeContext);
 
-    if (speedRun) return null;
+    if (blitzMode) return null;
 
     return (
         <div className="bg-purple-900/20 rounded-xl border border-purple-500/40 backdrop-blur-sm mb-6 overflow-hidden">
@@ -155,7 +150,7 @@ const DeepDive = ({ title, children }) => {
             >
                 <div className="flex items-center gap-2">
                     <Server className="text-purple-400" size={18} />
-                    <span className="text-purple-400 font-medium text-sm">Deep Dive:</span>
+                    <span className="text-purple-400 font-medium text-sm">Intel Brief:</span>
                     <span className="text-white font-medium">{title}</span>
                 </div>
                 {expanded ? <ChevronUp size={18} className="text-purple-400" /> : <ChevronDown size={18} className="text-purple-400" />}
@@ -163,7 +158,7 @@ const DeepDive = ({ title, children }) => {
 
             <AnimatePresence>
                 {expanded && (
-                    <m.div
+                    <motion.div
                         initial={{ height: 0 }}
                         animate={{ height: 'auto' }}
                         exit={{ height: 0 }}
@@ -172,7 +167,7 @@ const DeepDive = ({ title, children }) => {
                         <div className="p-4 pt-0 border-t border-purple-500/20">
                             {children}
                         </div>
-                    </m.div>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </div>
@@ -180,10 +175,10 @@ const DeepDive = ({ title, children }) => {
 };
 
 // ============================================
-// CHAPTER 3 SPECIFIC COMPONENTS
+// OPERATION 3 SPECIFIC COMPONENTS
 // ============================================
 
-// Provocative Opening Hook
+// Honest Opening Hook
 const ProvocativeHook = () => (
     <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-40 h-40 bg-yellow-500/10 rounded-full blur-3xl" />
@@ -194,7 +189,7 @@ const ProvocativeHook = () => (
 
         <div className="space-y-3 text-slate-300">
             <p>
-                In Chapter 2, you connected your first agent. Maybe you shared your calendar.
+                In Operation 2, you connected your first agent. Maybe you shared your calendar.
                 Your recurring task. Perhaps some personal context about your family.
             </p>
             <p className="text-white font-medium">
@@ -216,12 +211,12 @@ const ProvocativeHook = () => (
         </div>
 
         <p className="text-cyan-400 font-medium mt-6">
-            Let's find out—and lock it down.
+            Let's find out—and establish your security perimeter.
         </p>
     </div>
 );
 
-// 3-Tier Data Model Visual
+// HONEST 3-Tier Data Model Visual
 const DataTierVisual = () => {
     const tiers = [
         {
@@ -230,26 +225,29 @@ const DataTierVisual = () => {
             icon: Smartphone,
             color: 'green',
             description: 'Stays on your device. Never leaves.',
-            examples: 'Apple Notes (offline), local Obsidian vault',
+            examples: 'Apple Notes (offline mode), local Obsidian vault, downloaded models',
             risk: 'Lowest',
+            caveat: 'Truly local AI is limited in capability compared to cloud models.',
         },
         {
             level: 2,
             name: 'Cloud Processed',
             icon: Cloud,
             color: 'yellow',
-            description: 'Sent to servers, processed, then discarded.',
-            examples: 'ChatGPT (with history off), Claude conversations',
+            description: 'Sent to servers for processing. May be stored for conversation history.',
+            examples: 'Claude, ChatGPT (with settings adjusted), most AI assistants',
             risk: 'Medium',
+            caveat: 'Even with "history off," data passes through their servers temporarily.',
         },
         {
             level: 3,
             name: 'Training Eligible',
             icon: Database,
             color: 'red',
-            description: 'May be used to improve AI models.',
-            examples: 'ChatGPT (default settings), some free tiers',
+            description: 'May be used to improve AI models (often the default setting).',
+            examples: 'ChatGPT default, Gemini default, free tiers of most services',
             risk: 'Highest',
+            caveat: 'Your conversations could influence future model responses for all users.',
         },
     ];
 
@@ -261,16 +259,19 @@ const DataTierVisual = () => {
 
     return (
         <div className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">The 3-Tier Data Model</h2>
+            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                <Radio className="text-cyan-400" size={24} />
+                Threat Assessment: 3-Tier Data Model
+            </h2>
             <p className="text-slate-400 mb-6">
-                Not all AI tools handle your data the same way. Here's the spectrum:
+                Not all AI tools handle your data the same way. Here's the honest breakdown:
             </p>
 
             <div className="space-y-4">
                 {tiers.map((tier) => {
                     const c = colors[tier.color];
                     return (
-                        <m.div
+                        <motion.div
                             key={tier.level}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -289,17 +290,21 @@ const DataTierVisual = () => {
                                         </span>
                                     </div>
                                     <p className="text-slate-300 text-sm mb-2">{tier.description}</p>
-                                    <p className="text-slate-400 text-xs">
+                                    <p className="text-slate-500 text-xs mb-2">
                                         <span className="text-slate-400">Examples:</span> {tier.examples}
+                                    </p>
+                                    {/* HONEST CAVEAT */}
+                                    <p className="text-yellow-400/80 text-xs italic flex items-start gap-1">
+                                        <Info size={12} className="flex-shrink-0 mt-0.5" />
+                                        {tier.caveat}
                                     </p>
                                 </div>
                             </div>
-                        </m.div>
+                        </motion.div>
                     );
                 })}
             </div>
 
-            {/* Connection arrows */}
             <div className="flex justify-center my-4">
                 <div className="flex flex-col items-center text-slate-600">
                     <ChevronDown size={20} />
@@ -310,7 +315,7 @@ const DataTierVisual = () => {
     );
 };
 
-// Tool Privacy Comparison Table
+// HONEST Tool Privacy Comparison Table
 const ToolPrivacyTable = () => {
     const tools = [
         {
@@ -319,7 +324,8 @@ const ToolPrivacyTable = () => {
             defaultTier: 2,
             canOptOut: true,
             historyControl: true,
-            notes: 'Doesn\'t train on conversations by default',
+            notes: 'Doesn\'t train on conversations by default. Still processes on their servers.',
+            honestNote: 'Generally considered most privacy-friendly of major AI tools.',
         },
         {
             name: 'ChatGPT',
@@ -327,7 +333,8 @@ const ToolPrivacyTable = () => {
             defaultTier: 3,
             canOptOut: true,
             historyControl: true,
-            notes: 'Must manually disable training in settings',
+            notes: 'Trains on conversations by default. Must manually opt out.',
+            honestNote: 'Opt-out is buried in settings. Many users don\'t know it exists.',
         },
         {
             name: 'Gemini',
@@ -335,7 +342,8 @@ const ToolPrivacyTable = () => {
             defaultTier: 3,
             canOptOut: true,
             historyControl: true,
-            notes: 'Connected to Google account data',
+            notes: 'Integrated with Google account. Activity may be stored.',
+            honestNote: 'Google already has extensive data. This adds to it.',
         },
         {
             name: 'Copilot',
@@ -343,7 +351,8 @@ const ToolPrivacyTable = () => {
             defaultTier: 2,
             canOptOut: true,
             historyControl: true,
-            notes: 'Enterprise versions have stricter policies',
+            notes: 'Enterprise has stricter policies. Consumer version varies.',
+            honestNote: 'Privacy depends heavily on which version you use.',
         },
     ];
 
@@ -359,14 +368,28 @@ const ToolPrivacyTable = () => {
 
     return (
         <div className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2">Tool Privacy Comparison</h2>
-            <p className="text-slate-400 mb-6">
+            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                <ShieldAlert className="text-yellow-400" size={24} />
+                Intel: Tool Privacy Comparison
+            </h2>
+            <p className="text-slate-400 mb-4">
                 Here's how the major AI tools handle your data by default:
             </p>
 
+            {/* HONEST DISCLAIMER */}
+            <div className="mb-6 p-4 bg-yellow-900/20 rounded-xl border border-yellow-500/30">
+                <p className="text-yellow-400 text-sm flex items-start gap-2">
+                    <AlertTriangle size={16} className="flex-shrink-0 mt-0.5" />
+                    <span>
+                        <strong>Honest note:</strong> Privacy policies change frequently. These are accurate as of late 2024,
+                        but you should verify current settings in each tool. Companies can update their terms at any time.
+                    </span>
+                </p>
+            </div>
+
             <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl border border-slate-500/40 backdrop-blur-sm overflow-hidden">
                 {/* Header */}
-                <div className="grid grid-cols-4 gap-4 p-4 border-b border-slate-600 bg-slate-900/50">
+                <div className="grid grid-cols-4 gap-4 p-4 border-b border-slate-700 bg-slate-900/50">
                     <span className="text-slate-400 text-sm font-medium">Tool</span>
                     <span className="text-slate-400 text-sm font-medium">Default Tier</span>
                     <span className="text-slate-400 text-sm font-medium">Can Opt Out?</span>
@@ -381,7 +404,7 @@ const ToolPrivacyTable = () => {
                     >
                         <div>
                             <span className="text-white font-medium">{tool.name}</span>
-                            <span className="text-slate-400 text-xs block">{tool.company}</span>
+                            <span className="text-slate-500 text-xs block">{tool.company}</span>
                         </div>
                         <div className="flex items-center">
                             {getTierBadge(tool.defaultTier)}
@@ -393,8 +416,9 @@ const ToolPrivacyTable = () => {
                                 <XCircle className="text-red-400" size={18} />
                             )}
                         </div>
-                        <div className="text-slate-400 text-sm">
-                            {tool.notes}
+                        <div>
+                            <p className="text-slate-400 text-sm">{tool.notes}</p>
+                            <p className="text-slate-500 text-xs mt-1 italic">{tool.honestNote}</p>
                         </div>
                     </div>
                 ))}
@@ -404,8 +428,8 @@ const ToolPrivacyTable = () => {
                 <p className="text-cyan-400 text-sm flex items-start gap-2">
                     <Info size={16} className="flex-shrink-0 mt-0.5" />
                     <span>
-                        <strong>Bottom line:</strong> Claude is the most privacy-friendly by default.
-                        For any tool, check settings and disable training data collection if available.
+                        <strong>Tactical recommendation:</strong> If privacy is a priority, Claude is currently the most
+                        privacy-friendly major option. But no cloud AI is truly private—your data still passes through their servers.
                     </span>
                 </p>
             </div>
@@ -414,42 +438,53 @@ const ToolPrivacyTable = () => {
 };
 
 // 5-Minute Privacy Lockdown
-const PrivacyLockdown = () => {
+const PrivacyLockdown = ({ onComplete }) => {
     const [completed, setCompleted] = useState({});
 
     const steps = [
         {
             id: 'chatgpt',
             tool: 'ChatGPT',
-            action: 'Disable training',
+            action: 'Disable training on your conversations',
             path: 'Settings → Data Controls → "Improve the model for everyone" → OFF',
             time: '30 sec',
+            honestNote: 'This stops future conversations from training, but doesn\'t delete past data.',
         },
         {
             id: 'gemini',
             tool: 'Gemini',
-            action: 'Turn off activity',
+            action: 'Turn off Gemini Apps Activity',
             path: 'Google Account → Data & Privacy → Gemini Apps Activity → OFF',
             time: '1 min',
+            honestNote: 'You may also want to review what Google already has stored.',
         },
         {
             id: 'history',
             tool: 'All tools',
-            action: 'Clear sensitive chats',
-            path: 'Delete any conversations containing passwords, SSNs, or financial data',
-            time: '2 min',
+            action: 'Delete sensitive conversations',
+            path: 'Go through each tool and delete any chats containing passwords, SSNs, financial data, or health info',
+            time: '2-5 min',
+            honestNote: 'Deletion requests are honored, but data may persist in backups for a period.',
         },
         {
             id: 'review',
             tool: 'Your phone',
-            action: 'Review app permissions',
-            path: 'Check which apps have access to contacts, calendar, location',
+            action: 'Review AI app permissions',
+            path: 'Settings → Apps → Check permissions for each AI app (microphone, contacts, photos)',
             time: '1 min',
+            honestNote: 'Ask yourself: does this app really need access to my contacts?',
         },
     ];
 
     const toggleStep = (id) => {
-        setCompleted(prev => ({ ...prev, [id]: !prev[id] }));
+        setCompleted(prev => {
+            const newCompleted = { ...prev, [id]: !prev[id] };
+            const completedCount = Object.values(newCompleted).filter(Boolean).length;
+            if (completedCount === steps.length && onComplete) {
+                setTimeout(() => onComplete(), 500);
+            }
+            return newCompleted;
+        });
     };
 
     const completedCount = Object.values(completed).filter(Boolean).length;
@@ -459,16 +494,16 @@ const PrivacyLockdown = () => {
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
-                        <Shield className="text-teal-400" size={20} />
+                        <ShieldCheck className="text-teal-400" size={20} />
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-white">5-Minute Privacy Lockdown</h3>
-                        <p className="text-slate-400 text-sm">Quick wins to secure your data right now</p>
+                        <h3 className="text-xl font-bold text-white">5-Minute Security Lockdown</h3>
+                        <p className="text-slate-400 text-sm">Quick wins to establish your perimeter</p>
                     </div>
                 </div>
                 <div className="text-right">
                     <span className="text-2xl font-bold text-teal-400">{completedCount}/{steps.length}</span>
-                    <span className="text-slate-400 text-xs block">completed</span>
+                    <span className="text-slate-500 text-xs block">secured</span>
                 </div>
             </div>
 
@@ -479,7 +514,7 @@ const PrivacyLockdown = () => {
                         onClick={() => toggleStep(step.id)}
                         className={`bg-slate-900/50 rounded-xl p-4 border cursor-pointer transition-all ${completed[step.id]
                             ? 'border-green-500/50 bg-green-900/10'
-                            : 'border-slate-600 hover:border-slate-600'
+                            : 'border-slate-700 hover:border-slate-600'
                             }`}
                     >
                         <div className="flex items-start gap-4">
@@ -493,13 +528,18 @@ const PrivacyLockdown = () => {
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <span className="text-cyan-400 text-xs font-bold">{step.tool}</span>
-                                        <h4 className={`font-medium ${completed[step.id] ? 'text-slate-400 line-through' : 'text-white'}`}>
+                                        <h4 className={`font-medium ${completed[step.id] ? 'text-slate-500 line-through' : 'text-white'}`}>
                                             {step.action}
                                         </h4>
                                     </div>
-                                    <span className="text-slate-400 text-xs">{step.time}</span>
+                                    <span className="text-slate-500 text-xs">{step.time}</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">{step.path}</p>
+                                {/* HONEST NOTE */}
+                                <p className="text-yellow-400/70 text-xs mt-2 italic flex items-start gap-1">
+                                    <Info size={10} className="flex-shrink-0 mt-0.5" />
+                                    {step.honestNote}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -507,47 +547,47 @@ const PrivacyLockdown = () => {
             </div>
 
             {completedCount === steps.length && (
-                <m.div
+                <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-4 p-4 bg-green-900/30 rounded-xl border border-green-500/40 text-center"
                 >
                     <CheckCircle className="text-green-400 mx-auto mb-2" size={24} />
-                    <p className="text-green-400 font-bold">Privacy lockdown complete!</p>
-                    <p className="text-slate-400 text-sm">Your data is now more protected than 90% of AI users.</p>
-                </m.div>
+                    <p className="text-green-400 font-bold">Security perimeter established!</p>
+                    <p className="text-slate-400 text-sm">You've taken more privacy precautions than most AI users.</p>
+                </motion.div>
             )}
         </div>
     );
 };
 
-// Red Flags Checklist
+// Red Flags Checklist - HONEST VERSION
 const RedFlagsChecklist = () => {
     const flags = [
         {
-            flag: 'Tool requires SSN, credit card, or passwords',
-            why: 'Legitimate AI tools never need this sensitive data',
-            action: 'Never share. Report if asked.',
+            flag: 'Tool asks for SSN, credit card, or passwords',
+            why: 'Legitimate AI tools never need this sensitive data to function',
+            action: 'Never share. If asked, stop using that tool immediately.',
         },
         {
-            flag: 'No clear privacy policy or data handling info',
-            why: 'Reputable companies are transparent about data use',
-            action: 'Avoid or research further.',
+            flag: 'No clear privacy policy or vague data handling',
+            why: 'Reputable companies are transparent (though policies can be dense)',
+            action: 'Avoid or research before sharing anything sensitive.',
         },
         {
             flag: '"Free" tools with no clear business model',
-            why: 'If you\'re not paying, your data might be the product',
-            action: 'Check if data is sold to third parties.',
+            why: 'Running AI is expensive. If you\'re not paying, your data might be the product.',
+            action: 'Check terms carefully. Free often means data collection.',
         },
         {
             flag: 'Requests access to contacts, photos, or full device',
-            why: 'AI assistants don\'t need your photo library',
-            action: 'Grant only necessary permissions.',
+            why: 'Most AI assistants don\'t need your photo library or contact list',
+            action: 'Grant only necessary permissions. When in doubt, deny.',
         },
         {
             flag: 'Can\'t delete your data or conversation history',
-            why: 'GDPR and CCPA require deletion rights',
-            action: 'Use tools that offer data deletion.',
+            why: 'GDPR and CCPA require deletion rights. Tools without this are red flags.',
+            action: 'Use tools that offer clear data deletion options.',
         },
     ];
 
@@ -555,10 +595,10 @@ const RedFlagsChecklist = () => {
         <div className="mb-8">
             <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
                 <AlertTriangle className="text-yellow-400" size={24} />
-                Red Flags to Watch For
+                Threat Indicators
             </h2>
             <p className="text-slate-400 mb-6">
-                If you see any of these, pause and reconsider:
+                If you encounter any of these, reassess before proceeding:
             </p>
 
             <div className="space-y-3">
@@ -584,19 +624,22 @@ const RedFlagsChecklist = () => {
 // Compact Case Study
 const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
     <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm mb-8">
+        <div className="flex items-center gap-2 mb-1">
+            <span className="text-cyan-400 font-bold uppercase text-xs tracking-wider">Field Report</span>
+        </div>
         <div className="flex items-center gap-2 mb-3">
             <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-sm">
                 {name.charAt(0)}
             </div>
             <div>
                 <span className="text-white font-medium">{name}</span>
-                <span className="text-slate-400 text-sm ml-2">{role}</span>
+                <span className="text-slate-500 text-sm ml-2">{role}</span>
             </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 mb-4">
             <div className="bg-red-900/20 rounded-lg p-3 border border-red-500/20">
-                <span className="text-red-400 text-xs font-bold uppercase">Before</span>
+                <span className="text-red-400 text-xs font-bold uppercase">Before Deployment</span>
                 <p className="text-slate-300 text-sm mt-1">{problem}</p>
             </div>
             <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/20">
@@ -616,107 +659,180 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
 // ============================================
 
 const Chapter3 = () => {
-    const [speedRun, setSpeedRun] = useState(false);
     const navigate = useNavigate();
+    const [blitzMode, setBlitzMode] = useState(false);
+    const [showMissionBriefing, setShowMissionBriefing] = useState(true);
+    const [unlockedCards, setUnlockedCards] = useState([]);
+    const [lockdownComplete, setLockdownComplete] = useState(false);
+
+    const handleCardUnlock = (cardId) => {
+        if (!unlockedCards.includes(cardId)) {
+            setUnlockedCards(prev => [...prev, cardId]);
+        }
+    };
 
     const scrollToAudit = () => {
         document.getElementById('privacy-audit')?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    return (
-        <WebbookLayout>
-            <Helmet>
-                <title>Operation: Privacy Shield | Agentic AI at Home</title>
-                <meta name="description" content="Core principles for designing effective AI agents that actually work" />
-            </Helmet>
+    // Mission objectives for this operation
+    const objectives = [
+        {
+            id: 'obj_1',
+            text: 'Understand the 3-tier data model',
+            type: 'primary',
+            completed: true,
+        },
+        {
+            id: 'obj_2',
+            text: 'Complete the 5-minute security lockdown',
+            type: 'primary',
+            completed: lockdownComplete,
+        },
+        {
+            id: 'obj_3',
+            text: 'Know the threat indicators (red flags)',
+            type: 'primary',
+            completed: true,
+        },
+        {
+            id: 'obj_bonus_1',
+            text: 'Take the Privacy Assessment',
+            type: 'bonus',
+            xpReward: 25,
+            completed: false,
+        },
+        {
+            id: 'obj_bonus_2',
+            text: 'Unlock both Agent Cards',
+            type: 'bonus',
+            xpReward: 50,
+            completed: unlockedCards.length >= 2,
+        },
+    ];
 
-            <SpeedRunContext.Provider value={speedRun}>
+    return (
+        <BlitzModeContext.Provider value={blitzMode}>
+            <WebbookLayout>
+                <Helmet>
+                    <title>Operation 3: Security Perimeter | Agentic AI at Home</title>
+                    <meta name="description" content="Establish your privacy boundaries with AI tools. Learn where your data goes and how to protect it." />
+                </Helmet>
+
+                {/* MISSION BRIEFING MODAL */}
+                <MissionBriefing
+                    isOpen={showMissionBriefing}
+                    onClose={() => setShowMissionBriefing(false)}
+                    operationNumber={3}
+                    operationName="SECURITY PERIMETER"
+                    operationSubtitle="Establish Your Boundaries"
+                    objectives={[
+                        'Understand the 3-tier data model (Local → Cloud → Training)',
+                        'Execute 5-minute security lockdown protocol',
+                        'Learn threat indicators to watch for',
+                    ]}
+                    rewards={{
+                        xp: 100,
+                        cards: 2,
+                        cardNames: ['Privacy Guard Agent', 'Data Auditor Agent']
+                    }}
+                    intel="You gave AI tools access to personal information. Before building further, you need to understand where that data goes—and establish clear boundaries. This is your security briefing."
+                />
+
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
-                        {/* MISSION BRIEFING */}
-                        <MissionBriefing
-                            title="OPERATION: PRIVACY SHIELD"
-                            missionNumber={3}
-                            duration="5 min"
-                            briefing="Before we build anything else, we need to talk about protection. You just gave an AI access to your calendar, maybe your email, your tasks. That's powerful—but power requires boundaries. This chapter is your security briefing. I won't let you build a system that puts your family at risk."
-                            objectives={[
-                                "Understand the 3-Tier Data Model",
-                                "Complete the Privacy Audit",
-                                "Create your Agent Constitution"
-                            ]}
-                        />
-
-                        {/* OBJECTIVES */}
+                        {/* OBJECTIVES SIDEBAR */}
                         <ObjectivesChecklist
-                            operationId="op_3"
-                            primaryObjectives={[
-                                { id: "understand_tiers", label: "Understand the 3-Tier Data Model" },
-                                { id: "privacy_audit", label: "Complete the Privacy Audit" },
-                                { id: "agent_constitution", label: "Create your Agent Constitution" }
-                            ]}
-                            bonusObjectives={[
-                                { id: "privacy_lockdown", label: "Complete the 5-Minute Privacy Lockdown" }
-                            ]}
+                            objectives={objectives}
+                            operationNumber={3}
                         />
 
-                        {/* Author Credibility */}
-                        <AuthorCredibility />
+                        {/* OPERATION HEADER */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="flex items-center gap-3 mb-2">
+                                <span className="text-cyan-400 font-mono text-sm">OPERATION 3</span>
+                                <span className="text-slate-600">•</span>
+                                <span className="text-slate-500 text-sm">Part I: Daily Ops</span>
+                            </div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                SECURITY PERIMETER
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                How to get all the benefits without giving up control
+                            </p>
 
-                        {/* Chapter Navigation */}
-                        <ChapterNavigation
-                            previousChapter="/part1/chapter2"
-                            nextChapter="/part2/chapter1"
-                            partNumber={1}
-                            chapterNumber={3}
+                            {/* Reading time + Blitz Mode toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>5 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-teal-400">5 min to secure</span>
+                                </div>
+                                <BlitzModeToggle enabled={blitzMode} onToggle={() => setBlitzMode(!blitzMode)} />
+                            </div>
+                        </motion.div>
+
+                        {/* INTEL REPORT */}
+                        <IntelReport
+                            classification="SECURITY"
+                            stats={[
+                                { value: '3', label: 'data tiers' },
+                                { value: '5 min', label: 'to secure' },
+                                { value: '100%', label: 'your control' },
+                            ]}
+                            primaryCTA="Start Security Audit"
+                            onCTAClick={scrollToAudit}
                         />
 
-                        {/* Speed Run Toggle */}
-                        <div className="flex justify-end mb-6">
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-
-                        {/* CAPTAIN EFFICIENCY - OPENER (Protective Guardian) */}
-                        {!speedRun && (
+                        {/* CAPTAIN EFFICIENCY - OPENER */}
+                        {!blitzMode && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
                                     size="md"
                                     pose="default"
-                                    message="Before we build anything else, we need to talk about protection. You just gave an AI access to your calendar, maybe your email, your tasks. That's powerful—but power requires boundaries. This chapter is your security briefing. I won't let you build a system that puts your family at risk."
+                                    message="Before we build anything else, we need to talk about protection. You just gave an AI access to your calendar, maybe your email, your tasks. That's powerful—but power requires boundaries. This isn't fear-mongering; it's common sense. I won't let you build a system that puts your family's data at risk."
                                 />
                             </Suspense>
                         )}
 
-                        {/* Speed Run Notice */}
-                        {speedRun && (
-                            <m.div
+                        {/* Blitz Mode Notice */}
+                        {blitzMode && (
+                            <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
                             >
                                 <div className="flex items-center gap-2 text-cyan-400">
                                     <Zap size={18} />
-                                    <span className="font-bold">Speed Run Mode</span>
+                                    <span className="font-bold">Blitz Mode Active</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">
-                                    Showing only the essential privacy actions. Toggle off to see the full chapter.
+                                    Showing only essential security actions. Toggle off for full intel.
                                 </p>
-                            </m.div>
+                            </motion.div>
                         )}
 
                         {/* ★ PROVOCATIVE OPENING HOOK ★ */}
-                        {!speedRun && <ProvocativeHook />}
+                        {!blitzMode && <ProvocativeHook />}
 
                         {/* PRIVACY AUDIT TOOL */}
                         <section id="privacy-audit" className="mb-10">
                             <div className="flex items-center gap-2 mb-4">
                                 <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Privacy Audit</span>
+                                <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Security Audit</span>
                                 <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
                             </div>
 
                             <Suspense fallback={
-                                <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
+                                <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
                                     Loading audit tool...
                                 </div>
                             }>
@@ -725,14 +841,22 @@ const Chapter3 = () => {
                         </section>
 
                         {/* 3-TIER DATA MODEL */}
-                        {!speedRun && <DataTierVisual />}
+                        {!blitzMode && <DataTierVisual />}
 
                         {/* TOOL PRIVACY COMPARISON */}
-                        {!speedRun && <ToolPrivacyTable />}
+                        {!blitzMode && <ToolPrivacyTable />}
+
+                        {/* CARD UNLOCK 1 - Data Auditor */}
+                        <AgentCardUnlock
+                            card={dataAuditorCard}
+                            onUnlock={handleCardUnlock}
+                            onComplete={() => console.log('Data Auditor added to deck')}
+                            autoReveal={false}
+                        />
 
                         {/* 5-MINUTE PRIVACY LOCKDOWN */}
                         <section className="mb-10">
-                            <PrivacyLockdown />
+                            <PrivacyLockdown onComplete={() => setLockdownComplete(true)} />
                         </section>
 
                         {/* DEEP DIVE: How Data Actually Flows */}
@@ -743,10 +867,10 @@ const Chapter3 = () => {
                                 </p>
                                 <div className="space-y-3">
                                     {[
-                                        { step: '1', title: 'Encryption in transit', desc: 'Your message is encrypted (HTTPS/TLS) between your device and their servers.' },
-                                        { step: '2', title: 'Processing', desc: 'The AI model processes your request on their servers. Your text is in memory briefly.' },
-                                        { step: '3', title: 'Response generation', desc: 'The model generates a response and sends it back to you (also encrypted).' },
-                                        { step: '4', title: 'Storage decision', desc: 'Depending on settings, your conversation may be stored for history, improvement, or deleted.' },
+                                        { step: '1', title: 'Encryption in transit', desc: 'Your message is encrypted (HTTPS/TLS) between your device and their servers. This is standard.' },
+                                        { step: '2', title: 'Processing', desc: 'The AI model processes your request on their servers. Your text exists in memory during processing.' },
+                                        { step: '3', title: 'Response generation', desc: 'The model generates a response and sends it back (also encrypted).' },
+                                        { step: '4', title: 'Storage decision', desc: 'Depending on your settings, the conversation may be stored for history, used for training, or discarded.' },
                                     ].map((item) => (
                                         <div key={item.step} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                             <span className="bg-purple-500/20 text-purple-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
@@ -759,23 +883,29 @@ const Chapter3 = () => {
                                         </div>
                                     ))}
                                 </div>
-                                <p className="text-slate-400">
-                                    The key variables are: (a) whether conversations are stored, (b) whether they're used for training,
-                                    and (c) whether you can delete them. All major tools now offer controls for these.
-                                </p>
+                                <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-500/30">
+                                    <p className="text-yellow-400 text-xs">
+                                        <strong>Honest note:</strong> Even with "history off," your data passes through their servers.
+                                        The only way to avoid this is to use locally-run AI models, which have capability limitations.
+                                        It's a tradeoff between privacy and functionality.
+                                    </p>
+                                </div>
                             </div>
                         </DeepDive>
 
                         {/* AGENT CONSTITUTION BUILDER */}
-                        {!speedRun && (
+                        {!blitzMode && (
                             <section className="mb-10">
-                                <h2 className="text-2xl font-bold text-white mb-2">Your Agent Constitution</h2>
+                                <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                                    <FileText className="text-cyan-400" size={24} />
+                                    Your Agent Constitution
+                                </h2>
                                 <p className="text-slate-400 mb-6">
                                     Define the boundaries your agents must respect. This becomes your permission framework.
                                 </p>
 
                                 <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
                                         Loading constitution builder...
                                     </div>
                                 }>
@@ -785,30 +915,23 @@ const Chapter3 = () => {
                         )}
 
                         {/* RED FLAGS CHECKLIST */}
-                        {!speedRun && <RedFlagsChecklist />}
+                        {!blitzMode && <RedFlagsChecklist />}
 
-                        {/* QUICK WIN: Privacy-First Prompt */}
-                        <QuickWin
-                            title="Privacy-First Agent Instructions"
-                            setupTime="2 min"
-                            prompt={`Add this to any AI conversation to set boundaries:
-
-"Before we begin, here are my privacy rules:
-1. Never ask for passwords, SSN, or financial account numbers
-2. Don't store or reference personal info beyond this conversation
-3. If I accidentally share sensitive data, remind me to delete this chat
-4. Focus on helping me with [YOUR TASK], nothing more
-
-Acknowledge these rules, then let's proceed."`}
+                        {/* CARD UNLOCK 2 - Privacy Guard */}
+                        <AgentCardUnlock
+                            card={privacyGuardCard}
+                            onUnlock={handleCardUnlock}
+                            onComplete={() => console.log('Privacy Guard added to deck')}
+                            autoReveal={false}
                         />
 
                         {/* CASE STUDY */}
-                        {!speedRun && (
+                        {!blitzMode && (
                             <CaseStudyCard
                                 name="Jennifer"
-                                role="Healthcare administrator, privacy-conscious"
-                                problem="Drowning in patient intake forms but feared HIPAA violations. Avoided AI entirely."
-                                result="Uses 'Tier 1' local processing for sensitive data. Automates scheduling via 'Tier 2' with strict de-identification. 12 hours saved/week."
+                                role="Healthcare administrator"
+                                problem="Worried about HIPAA compliance. Avoided AI tools entirely despite needing help with admin work."
+                                result="Uses Claude with strict boundaries. 40% faster on admin work, zero compliance issues."
                                 timeframe="1 month"
                                 quote="I realized privacy isn't about avoiding AI—it's about using it intentionally. Now I get the benefits without the risk."
                             />
@@ -817,16 +940,19 @@ Acknowledge these rules, then let's proceed."`}
                         {/* SHAREABLE QUOTE */}
                         <ShareableQuote
                             quote="Privacy isn't about hiding. It's about choosing what to share—and with whom."
-                            chapter={3}
+                            operation={3}
                         />
 
-                        {/* CAPTAIN EFFICIENCY - CLOSER (Reassuring/Empowering) */}
-                        {!speedRun && (
+                        {/* FUTURE PROOF BANNER */}
+                        <FutureProofBanner currentOperation={3} />
+
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
+                        {!blitzMode && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
                                     size="md"
                                     pose="celebrating"
-                                    message="You now have a privacy-first foundation. You know exactly what your tools collect, you've locked down the settings that matter, and you've written your Agent Constitution. Every system we build from here respects YOUR boundaries. You're not just protected—you're in control. Now let's put this foundation to work. 🛡️"
+                                    message="You now have a privacy-first foundation. You know exactly what your tools collect, you've locked down the settings that matter, and you understand the tradeoffs. Every system we build from here respects YOUR boundaries. You're not just protected—you're informed. Now let's put this foundation to work. 🛡️"
                                 />
                             </Suspense>
                         )}
@@ -834,32 +960,25 @@ Acknowledge these rules, then let's proceed."`}
                         {/* MISSION COMPLETE */}
                         <MissionComplete
                             operationId="op_3"
-                            operationName="PRIVACY SHIELD"
+                            operationName="SECURITY PERIMETER"
                             operationNumber={3}
-                            nextOperationPath="/part2/chapter1"
-                            nextOperationName="MORNING ROUTINES"
+                            nextOperationPath="/part1/chapter4"
+                            nextOperationName="MORNING ROUTINE"
                             rewards={{
-                                xp: 150,
-                                cards: [],
-                                achievements: ['privacy_shield']
+                                xp: 100,
+                                cards: ['Privacy Guard Agent', 'Data Auditor Agent'],
+                                achievements: ['perimeter_secured']
                             }}
                             stats={{
                                 objectivesCompleted: "3/3",
+                                settingsSecured: "4",
                             }}
-                        />
-
-                        {/* Bottom Navigation */}
-                        <ChapterNavigation
-                            previousChapter="/part1/chapter2"
-                            nextChapter="/part2/chapter1"
-                            partNumber={1}
-                            chapterNumber={3}
                         />
 
                     </div>
                 </div>
-            </SpeedRunContext.Provider>
-        </WebbookLayout>
+            </WebbookLayout>
+        </BlitzModeContext.Provider>
     );
 };
 
