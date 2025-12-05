@@ -387,7 +387,7 @@ const HealthPillarFramework = () => {
         <div className="mb-8">
             <h2 className="text-2xl font-bold text-white mb-2">The 4 Pillars of Health Management</h2>
             <p className="text-slate-400 mb-6">
-                Your Health Agent will cover all four—automatically.
+                Your Health prompts will help you track all four with minimal effort.
             </p>
 
             <div className="grid md:grid-cols-2 gap-4">
@@ -850,212 +850,212 @@ OUTPUT FORMAT:
 Help me notice patterns before they become problems. Be supportive, not judgmental.`;
 
     return (
-            <>
+        <>
             <Helmet>
                 <title>Chapter 10: Health & Wellness | Agentic AI at Home</title>
                 <meta name="description" content="Track and improve your health automatically" />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={10}
-                        total={16}
-                        part={4}
-                        partTitle="Life Systems"
-                    />
-
-                    {/* Part 4 Intro Banner */}
-                    {!speedRun && <Part4Intro />}
-
-                    {/* Author Credibility */}
-                    <AuthorCredibility />
-
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-rose-400 font-mono text-sm mb-2">Chapter 10</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Health & Wellness
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            Take care of yourself—without thinking about it
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>10 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-rose-400">15 min to set up your health system</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '4', label: 'health pillars covered' },
-                            { value: '0', label: 'missed appointments' },
-                            { value: '∞', label: 'peace of mind' },
-                        ]}
-                        primaryCTA="Check My Health Basics"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    <PasswordGate partNumber={4}>
-                        {/* CAPTAIN EFFICIENCY - OPENER (Gentler tone) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="We've optimized your work. Now let's take care of YOU. This chapter is different—it's not about productivity, it's about wellbeing. The annual physical you keep postponing. The prescription that runs out at midnight. The water bottle that's been empty since noon. None of this is hard. But when life gets busy, we neglect ourselves first. Let's build a gentle system that has your back."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-rose-900/30 rounded-xl p-4 border border-rose-500/40 backdrop-blur-sm mb-8"
-                        >
-                            <div className="flex items-center gap-2 text-rose-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts. Toggle off for interactive health tools.
-                            </p>
-                        </motion.div>
-                    )}
-
-                    {/* ★ HEALTH CHAOS AUDIT ★ */}
-                    {!speedRun && <HealthChaosAudit />}
-
-                    {/* HEALTH CALCULATOR */}
-                    <section id="health-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-rose-500/50" />
-                            <span className="text-rose-400 font-bold uppercase text-sm tracking-wider">Your Health Baseline</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-rose-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading health assessment...
-                            </div>
-                        }>
-                            <HealthAuditCalculator />
-                        </Suspense>
-                    </section>
-
-                    {/* HEALTH PILLAR FRAMEWORK */}
-                    {!speedRun && <HealthPillarFramework />}
-
-                    {/* AGENT 1: HEALTH COORDINATOR */}
-                    <QuickWin
-                        title="Agent 1: The Health Coordinator"
-                        setupTime="10 min"
-                        prompt={healthCoordinatorPrompt}
-                        variant="default"
-                    />
-
-                    {/* ANNUAL HEALTH CALENDAR */}
-                    {!speedRun && <AnnualHealthCalendar />}
-
-                    {/* MEDICATION SCHEDULE BUILDER */}
-                    {!speedRun && <MedicationScheduleBuilder />}
-
-                    {/* AGENT 2: MEDICATION MANAGER */}
-                    <QuickWin
-                        title="Agent 2: The Medication Manager"
-                        setupTime="10 min"
-                        prompt={medicationManagerPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* DAILY WELLNESS CHECK-IN */}
-                    {!speedRun && <WellnessCheckInPreview />}
-
-                    {/* AGENT 3: WELLNESS TRACKER */}
-                    <QuickWin
-                        title="Agent 3: The Wellness Tracker"
-                        setupTime="5 min"
-                        prompt={wellnessTrackerPrompt}
-                        variant="tertiary"
-                    />
-
-                    {/* CASE STUDY */}
-                    {!speedRun && (
-                        <CaseStudyCard
-                            name="Maria"
-                            role="Working mom, 2 kids, managing parents' health too"
-                            problem="Missed her own physical for 3 years. Ran out of thyroid medication twice. Kids' vaccinations always last-minute panic."
-                            result="All appointments scheduled for the year. Refill reminders work perfectly. Even tracks her parents' appointments."
-                            timeframe="2 months"
-                            quote="I used to feel guilty about neglecting my health. Now it just... happens. The system remembers so I don't have to."
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={10}
+                            total={16}
+                            part={4}
+                            partTitle="Life Systems"
                         />
-                    )}
 
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="You can't pour from an empty cup. Taking care of yourself isn't selfish—it's essential."
-                        chapter={10}
-                    />
+                        {/* Part 4 Intro Banner */}
+                        {!speedRun && <Part4Intro />}
 
-                                            {/* CAPTAIN EFFICIENCY - CLOSER (Warm, supportive) */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="You now have a system that cares about your health when you're too busy to. Appointments tracked. Medications managed. Wellness patterns noticed. But health is just one part of a full life. Next, we tackle something most people struggle with: staying connected to the people who matter. Let's make sure important relationships don't slip through the cracks. 💜"
+                        {/* Author Credibility */}
+                        <AuthorCredibility />
+
+                        {/* Header */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
+                        >
+                            <div className="text-rose-400 font-mono text-sm mb-2">Chapter 10</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Health & Wellness
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Take care of yourself—without thinking about it
+                            </p>
+
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>10 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-rose-400">15 min to set up your health system</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            </div>
+                        </motion.div>
+
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '4', label: 'health pillars covered' },
+                                { value: '0', label: 'missed appointments' },
+                                { value: '∞', label: 'peace of mind' },
+                            ]}
+                            primaryCTA="Check My Health Basics"
+                            onCTAClick={scrollToCalculator}
+                        />
+
+                        <PasswordGate partNumber={4}>
+                            {/* CAPTAIN EFFICIENCY - OPENER (Gentler tone) */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="default"
+                                        message="We've optimized your work. Now let's take care of YOU. This chapter is different—it's not about productivity, it's about wellbeing. The annual physical you keep postponing. The prescription that runs out at midnight. The water bottle that's been empty since noon. None of this is hard. But when life gets busy, we neglect ourselves first. Let's build a gentle system that has your back."
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* Speed Run Notice */}
+                            {speedRun && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="bg-rose-900/30 rounded-xl p-4 border border-rose-500/40 backdrop-blur-sm mb-8"
+                                >
+                                    <div className="flex items-center gap-2 text-rose-400">
+                                        <Zap size={18} />
+                                        <span className="font-bold">Speed Run Mode</span>
+                                    </div>
+                                    <p className="text-slate-400 text-sm mt-1">
+                                        Showing only the essential prompts. Toggle off for interactive health tools.
+                                    </p>
+                                </motion.div>
+                            )}
+
+                            {/* ★ HEALTH CHAOS AUDIT ★ */}
+                            {!speedRun && <HealthChaosAudit />}
+
+                            {/* HEALTH CALCULATOR */}
+                            <section id="health-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-rose-500/50" />
+                                    <span className="text-rose-400 font-bold uppercase text-sm tracking-wider">Your Health Baseline</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-rose-500/50" />
+                                </div>
+
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading health assessment...
+                                    </div>
+                                }>
+                                    <HealthAuditCalculator />
+                                </Suspense>
+                            </section>
+
+                            {/* HEALTH PILLAR FRAMEWORK */}
+                            {!speedRun && <HealthPillarFramework />}
+
+                            {/* AGENT 1: HEALTH COORDINATOR */}
+                            <QuickWin
+                                title="Agent 1: The Health Coordinator"
+                                setupTime="10 min"
+                                prompt={healthCoordinatorPrompt}
+                                variant="default"
                             />
-                        </Suspense>
-                    )}
 
-                    {/* CHAPTER COMPLETE */}
-                    <ChapterComplete
-                        achievements={[
-                            'Health Coordinator Agent (preventive care tracking)',
-                            'Medication Manager (never run out again)',
-                            'Wellness Tracker (daily check-ins & patterns)',
-                            'Annual health calendar mapped',
-                            'Medication schedule built',
-                        ]}
-                        nextChapter={11}
-                        nextTitle="Social & Relationship Management"
-                    />
+                            {/* ANNUAL HEALTH CALENDAR */}
+                            {!speedRun && <AnnualHealthCalendar />}
 
-                </PasswordGate>
-                <ChapterNavigation
-                    previousChapter="/part3/chapter3"
-                    nextChapter="/part4/chapter2"
-                    partNumber={4}
-                    chapterNumber={1}
-                />
+                            {/* MEDICATION SCHEDULE BUILDER */}
+                            {!speedRun && <MedicationScheduleBuilder />}
+
+                            {/* AGENT 2: MEDICATION MANAGER */}
+                            <QuickWin
+                                title="Agent 2: The Medication Manager"
+                                setupTime="10 min"
+                                prompt={medicationManagerPrompt}
+                                variant="secondary"
+                            />
+
+                            {/* DAILY WELLNESS CHECK-IN */}
+                            {!speedRun && <WellnessCheckInPreview />}
+
+                            {/* AGENT 3: WELLNESS TRACKER */}
+                            <QuickWin
+                                title="Agent 3: The Wellness Tracker"
+                                setupTime="5 min"
+                                prompt={wellnessTrackerPrompt}
+                                variant="tertiary"
+                            />
+
+                            {/* CASE STUDY */}
+                            {!speedRun && (
+                                <CaseStudyCard
+                                    name="Maria"
+                                    role="Working mom, 2 kids, managing parents' health too"
+                                    problem="Missed her own physical for 3 years. Ran out of thyroid medication twice. Kids' vaccinations always last-minute panic."
+                                    result="All appointments scheduled for the year. Refill reminders work perfectly. Even tracks her parents' appointments."
+                                    timeframe="2 months"
+                                    quote="I used to feel guilty about neglecting my health. Now it just... happens. The system remembers so I don't have to."
+                                />
+                            )}
+
+                            {/* SHAREABLE QUOTE */}
+                            <ShareableQuote
+                                quote="You can't pour from an empty cup. Taking care of yourself isn't selfish—it's essential."
+                                chapter={10}
+                            />
+
+                            {/* CAPTAIN EFFICIENCY - CLOSER (Warm, supportive) */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="You now have a system that cares about your health when you're too busy to. Appointments tracked. Medications managed. Wellness patterns noticed. But health is just one part of a full life. Next, we tackle something most people struggle with: staying connected to the people who matter. Let's make sure important relationships don't slip through the cracks. 💜"
+                                    />
+                                </Suspense>
+                            )}
+
+                            {/* CHAPTER COMPLETE */}
+                            <ChapterComplete
+                                achievements={[
+                                    'Health Coordinator Agent (preventive care tracking)',
+                                    'Medication Manager (never run out again)',
+                                    'Wellness Tracker (daily check-ins & patterns)',
+                                    'Annual health calendar mapped',
+                                    'Medication schedule built',
+                                ]}
+                                nextChapter={11}
+                                nextTitle="Social & Relationship Management"
+                            />
+
+                        </PasswordGate>
+                        <ChapterNavigation
+                            previousChapter="/part3/chapter3"
+                            nextChapter="/part4/chapter2"
+                            partNumber={4}
+                            chapterNumber={1}
+                        />
 
 
 
 
 
 
+                    </div>
                 </div>
-            </div>
-        </SpeedRunContext.Provider>
+            </SpeedRunContext.Provider>
 
         </>
     );

@@ -394,7 +394,7 @@ const DayInTheLifeTimeline = () => {
 
     const timeline = [
         { hour: 6, time: '6:00 AM', label: 'Wake Up', agents: ['Morning Brief'], color: 'orange', description: 'Your Morning Brief Agent delivers: weather, calendar, priorities, and one motivating thought.' },
-        { hour: 7, time: '7:00 AM', label: 'Breakfast', agents: ['Meal Planner'], color: 'green', description: 'Meal Planner already prepped breakfast ideas. Groceries were ordered automatically.' },
+        { hour: 7, time: '7:00 AM', label: 'Breakfast', agents: ['Meal Planner'], color: 'green', description: 'Your Meal Planner prompt gave you breakfast ideas. You added groceries to your list with a quick prompt.' },
         { hour: 8, time: '8:00 AM', label: 'Email Block', agents: ['Email Triage', 'Email Drafter'], color: 'purple', description: 'Email Triage has pre-sorted your inbox. Drafts ready for quick responses.' },
         { hour: 9, time: '9:00 AM', label: 'Focus Block', agents: ['Calendar Defender'], color: 'blue', description: 'Calendar Defender protected this time. No meetings scheduled. Deep work happens.' },
         { hour: 12, time: '12:00 PM', label: 'Lunch', agents: ['Wellness Tracker', 'Meal Planner'], color: 'rose', description: 'Wellness check-in. Lunch planned. Hydration reminder.' },
@@ -473,7 +473,7 @@ const DayInTheLifeTimeline = () => {
             <div className="mt-4 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30">
                 <p className="text-cyan-400 text-sm">
                     <strong>Notice:</strong> You're not managing 20 agents. They're managing your day.
-                    The right information appears at the right time, automatically.
+                    The right information surfaces when you need it—one prompt away.
                 </p>
             </div>
         </div>
@@ -650,7 +650,7 @@ const AgentCommunicationFlow = () => {
 
             <div className="mt-4 p-4 bg-slate-900/50 rounded-xl">
                 <p className="text-purple-400 text-sm">
-                    <strong>The power:</strong> No agent works in isolation. Information flows automatically,
+                    <strong>The power:</strong> No prompt works in isolation. The frameworks you learn connect together,
                     so nothing falls through the cracks.
                 </p>
             </div>

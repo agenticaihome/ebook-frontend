@@ -899,7 +899,7 @@ Ask me about my household size and preferences to estimate usage.`;
         <WebbookLayout>
             <Helmet>
                 <title>Chapter 6: Household Management | Agentic AI at Home</title>
-                <meta name="description" content="Your home runs itself with smart automation agents" />
+                <meta name="description" content="Master household management with AI-powered prompts and systems" />
             </Helmet>
 
             <SEO

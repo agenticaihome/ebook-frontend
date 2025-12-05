@@ -757,7 +757,7 @@ Before generating briefs, ask me:
                                     <CaptainHero
                                         size="md"
                                         pose="celebrating"
-                                        message="You just built your first real agent. Not a chatbot you ask questions. An AGENT that works while you sleep and greets you with exactly what you need. Tomorrow morning is going to feel different. That's not hype—that's the system working. Now let's tackle what happens AFTER the morning brief: your kitchen. 🍳"
+                                        message="You just built your first AI workflow. Not a chatbot you ask questions—a PROMPT you can run every morning to get exactly what you need. Copy it into ChatGPT tonight, and tomorrow morning will feel different. That's not hype—that's the system working. Now let's tackle what happens AFTER the morning brief: your kitchen. 🍳"
                                     />
                                 </Suspense>
                             )}
