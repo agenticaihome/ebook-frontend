@@ -95,7 +95,7 @@ export default function SalesPage() {
               <CaptainHero
                 size="lg"
                 className="scale-100 md:scale-110"
-                message="You're running on 4 hours of sleep and 3 deadlines. Let's work with what we've got."
+                message="Hey! Curious about AI but not sure where to start? I've mapped out 15 easy discoveries that'll save you hours every week. Ready to explore?"
                 videoSrc="/assets/captain-waving-cyan.mp4?v=cyan"
               />
             </div>
@@ -111,7 +111,7 @@ export default function SalesPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                 </span>
-                🧭 YOUR EXPEDITION AWAITS
+                🧭 DISCOVER THE FRONTIER
               </m.div>
 
               <m.h1
@@ -122,7 +122,7 @@ export default function SalesPage() {
               >
                 <span className="block text-white mb-2">Your Journey:</span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 block mb-2">Reclaim 10 Hours/Week</span>
-                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium font-mono">In 16 Frontier Expeditions</span>
+                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium font-mono">15 Discoveries That Change Everything</span>
               </m.h1>
 
               <m.div
@@ -131,11 +131,11 @@ export default function SalesPage() {
                 transition={{ delay: 0.15 }}
                 className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 font-medium"
               >
-                <span className="block sm:inline">🤖 Build Your AI Personal Staff</span>
+                <span className="block sm:inline">🤖 Meet Your AI Helpers</span>
                 <span className="hidden sm:inline"> • </span>
-                <span className="block sm:inline">🎮 Gamified Learning</span>
+                <span className="block sm:inline">🎮 Learn by Exploring</span>
                 <span className="hidden sm:inline"> • </span>
-                <span className="block sm:inline">💻 No Coding Required</span>
+                <span className="block sm:inline">💻 No Tech Skills Needed</span>
               </m.div>
 
               <m.p
@@ -144,9 +144,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                Your first companion is already here. Meet Captain Efficiency, your scout guide
-                who'll show you how to recruit a whole team of AI helpers.
-                No coding. Just exploration and discovery.
+                Your first AI friend is already here. Meet Captain Efficiency, your friendly guide
+                who'll introduce you to a whole team of helpful AI tools.
+                No tech skills required — just curiosity.
               </m.p>
 
               <m.div
@@ -160,7 +160,7 @@ export default function SalesPage() {
                   className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-900/50 flex items-center justify-center gap-2 group"
                 >
                   <span className="text-xl">🧭</span>
-                  Begin First Expedition Free
+                  Start Your Discovery — Free
                 </Link>
                 <div className="text-center sm:text-left text-sm text-slate-400 flex items-center justify-center gap-2">
                   <span className="text-green-400">✓</span> No credit card required
@@ -182,7 +182,7 @@ export default function SalesPage() {
                   ))}
                 </div>
                 <span>
-                  <span className="text-amber-400 font-bold">50+ explorers</span> already charting the frontier
+                  <span className="text-amber-400 font-bold">Join 50+ curious minds</span> already discovering the frontier
                 </span>
               </m.div>
             </div>
@@ -220,7 +220,7 @@ export default function SalesPage() {
             </div>
             <div className="text-center mt-10">
               <p className="text-xl text-slate-200 font-medium">
-                What if AI could handle most of this... <span className="text-yellow-400">automatically?</span>
+                What if friendly AI could handle this for you... <span className="text-yellow-400">so you can focus on what matters?</span>
               </p>
             </div>
           </div>
@@ -236,15 +236,15 @@ export default function SalesPage() {
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
-                🗺️ THE FRONTIER MAP
+                🗺️ YOUR DISCOVERY MAP
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">5 TERRITORIES TO EXPLORE</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">5 AREAS TO EXPLORE</h2>
               <p className="text-slate-400 max-w-2xl mx-auto mb-4">
-                Each territory unlocks new abilities. Complete expeditions, earn Discovery Points, and rank up.
+                Each area teaches you something valuable. Track your progress, unlock new skills, and learn at your own pace.
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
-                <span className="text-green-400 font-bold text-sm">✓ Base Camp (Territory 1) is FREE</span>
-                <span className="text-slate-400 text-xs">• Territories 2-5 unlock with full access</span>
+                <span className="text-green-400 font-bold text-sm">✓ Start here — it's completely free!</span>
+                <span className="text-slate-400 text-xs">• No signup required</span>
               </div>
             </div>
 
@@ -305,8 +305,8 @@ export default function SalesPage() {
               className="mt-16"
             >
               <div className="text-center mb-8">
-                <h3 className="text-xl font-bold text-white mb-2">🤖 Your Companion Squad</h3>
-                <p className="text-slate-400 text-sm">The AI team you'll recruit on your expedition</p>
+                <h3 className="text-xl font-bold text-white mb-2">🤖 Meet Your AI Helpers</h3>
+                <p className="text-slate-400 text-sm">The friendly AI tools you'll discover along the way</p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {[
@@ -343,10 +343,10 @@ export default function SalesPage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/20 border border-amber-500/30 text-amber-400 text-sm font-mono font-bold mb-6">
-                ⚡ COMPANION ABILITIES
+                ⚡ WHAT YOU'LL LEARN
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">YOUR LEGENDARY TOOLKIT</h2>
-              <p className="text-slate-400">Most courses give you a sword. We give you an entire expedition crew.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">YOUR NEW SUPERPOWERS</h2>
+              <p className="text-slate-400">Most courses give you information. We give you skills that actually save time.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -355,9 +355,9 @@ export default function SalesPage() {
                 <div className="bg-cyan-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-cyan-400 border border-cyan-500/30">
                   <Activity size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-cyan-400 font-mono">Recovery Companion</h3>
+                <h3 className="text-xl font-bold mb-4 text-cyan-400 font-mono">Smart Scheduling</h3>
                 <p className="text-slate-300 leading-relaxed mb-4">
-                  "When your schedule implodes, your AI helps you instantly replan your calendar and recovery."
+                  "When life gets chaotic, your AI helps you instantly reorganize and find time for what matters."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-cyan-400" /> Sleep/Energy tracking</li>
@@ -370,9 +370,9 @@ export default function SalesPage() {
                 <div className="bg-amber-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-amber-400 border border-amber-500/30">
                   <Database size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-amber-400 font-mono">Second Brain Companion</h3>
+                <h3 className="text-xl font-bold mb-4 text-amber-400 font-mono">Personal Memory Bank</h3>
                 <p className="text-slate-300 leading-relaxed mb-4">
-                  "Upload 50 documents → searchable database indexed by topic, date, and relevance."
+                  "Never lose track of important info again. Your AI remembers everything so you don't have to."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-amber-400" /> Instant document retrieval</li>
@@ -385,9 +385,9 @@ export default function SalesPage() {
                 <div className="bg-green-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-green-400 border border-green-500/30">
                   <Zap size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-green-400 font-mono">Strategy Companion</h3>
+                <h3 className="text-xl font-bold mb-4 text-green-400 font-mono">Task Automation</h3>
                 <p className="text-slate-300 leading-relaxed mb-4">
-                  "Not just automation — a strategic brain that coordinates everything toward your goals."
+                  "Set up AI workflows that handle repetitive tasks automatically — emails, reminders, reports, and more."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-green-400" /> Multi-companion workflows</li>
@@ -403,34 +403,34 @@ export default function SalesPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/20 border border-amber-500/30 text-amber-400 text-sm font-mono font-bold mb-6">
-                🎮 WHY THE EXPEDITION FORMAT?
+                🎮 WHY MAKE LEARNING AN ADVENTURE?
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 font-mono">This Isn't a Gimmick. It's Strategy.</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 font-mono">Because Learning Should Feel Rewarding</h2>
               <p className="text-slate-400 max-w-2xl mx-auto">
-                Most courses are boring, and boring courses don't get finished. We designed this as an expedition because...
+                Most courses are boring, and boring courses don't get finished. We designed this as an adventure because...
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               {[
                 {
                   emoji: '🧠',
-                  title: 'Exploration Is Addictive',
-                  desc: 'We use discovery psychology for your benefit, not against you'
+                  title: 'Curiosity Keeps You Going',
+                  desc: 'Discovery-based learning makes you want to keep exploring'
                 },
                 {
                   emoji: '📊',
-                  title: 'Discovery Points Show REAL Progress',
-                  desc: 'Not just pages read — actual territories you\'ve conquered'
+                  title: 'See Your Real Progress',
+                  desc: 'Not just pages read — actual skills you\'ve learned and can use today'
                 },
                 {
                   emoji: '🎯',
-                  title: 'Expeditions = Clear Goals',
-                  desc: 'Specific, completable journeys — not endless "best practices"'
+                  title: 'Clear, Achievable Goals',
+                  desc: 'Each section has a specific outcome — no vague "best practices"'
                 },
                 {
                   emoji: '🏆',
                   title: 'You Actually Finish',
-                  desc: 'Frontier challenges at each territory keep you engaged until real results'
+                  desc: 'Small wins along the way keep you motivated to the end'
                 },
               ].map((item, i) => (
                 <m.div
@@ -504,20 +504,20 @@ export default function SalesPage() {
                   {/* Right: Copy */}
                   <div className="flex-1 text-center md:text-left">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-mono">
-                      Explorer's 30-Day Guarantee
+                      Our Promise to You
                     </h2>
                     <p className="text-lg text-slate-200 leading-relaxed mb-6">
-                      Try the <span className="font-bold text-green-400">complete expedition</span> for 30 days.
+                      We want you to succeed. Try <span className="font-bold text-green-400">everything</span> for 30 days.
                       If you don't save at least <span className="font-bold text-amber-400">5 hours in Week 1</span>,
-                      email us and we'll refund <span className="font-bold text-white">100%</span>.
+                      email us for a <span className="font-bold text-white">full refund</span>.
                       No hoops. No fine print. No questions asked.
                     </p>
 
                     <div className="tactical-card p-4 mb-4 border-green-500/30 rounded-lg">
                       <p className="text-green-400 font-bold text-center font-mono">
-                        "That's how confident we are this works."
+                        "We believe in this so much, the risk is on us — not you."
                       </p>
-                      <p className="text-slate-400 text-sm text-center mt-1">— Cpt. E</p>
+                      <p className="text-slate-400 text-sm text-center mt-1">— Captain E</p>
                     </div>
 
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm text-slate-300">
@@ -527,11 +527,11 @@ export default function SalesPage() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Check size={16} className="text-green-400" />
-                        <span>Keep all Companions either way</span>
+                        <span>Keep everything you learned</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Check size={16} className="text-green-400" />
-                        <span>Zero risk to you</span>
+                        <span>Zero risk to try</span>
                       </div>
                     </div>
                   </div>
@@ -546,10 +546,10 @@ export default function SalesPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/20 border border-amber-500/30 text-amber-400 text-sm font-mono font-bold mb-6">
-                📊 TACTICAL COMPARISON
+                📊 SEE THE DIFFERENCE
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-mono">HOW WE STACK UP</h2>
-              <p className="text-slate-400">Most courses teach prompts. We build you an expedition crew.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-mono">WHY CHOOSE THIS ADVENTURE</h2>
+              <p className="text-slate-400">Most courses teach prompts. We help you build real, time-saving skills.</p>
             </div>
 
             {/* Desktop Table */}
@@ -1112,12 +1112,12 @@ export default function SalesPage() {
           <div className="flex justify-center mb-6">
             <CaptainHero
               size="sm"
-              message="I'll be waiting on the other side of the frontier."
+              message="See you on the other side! Your adventure awaits. 🧭"
               loading="lazy"
             />
           </div>
           <p className="text-slate-400 text-sm font-mono">
-            © 2025 Frontier Command. All systems nominal.
+            © 2025 AI Frontier Adventure. Made for curious minds.
           </p>
         </footer>
 
@@ -1138,9 +1138,9 @@ export default function SalesPage() {
           to="/part1"
           className="flex items-center gap-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 px-6 py-3 rounded-full font-bold shadow-lg shadow-orange-900/50 transition-all hover:scale-105"
         >
-          <span className="text-lg">⚔️</span>
+          <span className="text-lg">🧭</span>
           <span>Start Free</span>
-          <span className="bg-white/20 px-2 py-0.5 rounded-full text-xs">Chapter 1</span>
+          <span className="bg-white/20 px-2 py-0.5 rounded-full text-xs">Discovery 1</span>
         </Link>
       </m.div>
     </WebbookLayout>
