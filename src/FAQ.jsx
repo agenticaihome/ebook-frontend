@@ -25,18 +25,18 @@ export default function FAQ() {
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What exactly is Frontier Command?",
+                "name": "What exactly is AI Frontier Adventure?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Frontier Command is a comprehensive expedition that teaches you how to build AI-powered Companions that automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
+                    "text": "AI Frontier Adventure is a fun, interactive experience that teaches you how to use AI tools to automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Who is this course for?",
+                "name": "Who is this adventure for?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "This course is designed for overwhelmed professionals, entrepreneurs, students, busy parents, and retirees who want to automate their daily life logistics."
+                    "text": "This adventure is designed for overwhelmed professionals, entrepreneurs, students, busy parents, and retirees who want to automate their daily life logistics."
                 }
             },
             {
@@ -44,7 +44,7 @@ export default function FAQ() {
                 "name": "I'm not a parent. Is this still for me?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "YES. Absolutely. While the system was originally battle-tested by a busy parent, the core problem is universal: Life Admin Fatigue. The systems work for everyone including students, entrepreneurs, and retirees."
+                    "text": "YES. Absolutely. While the system was originally tested by a busy parent, the core problem is universal: Life Admin Fatigue. The systems work for everyone including students, entrepreneurs, and retirees."
                 }
             }
         ]
@@ -60,9 +60,9 @@ export default function FAQ() {
     return (
         <WebbookLayout>
             <SEO
-                title="FAQ - Frontier Command"
-                description="Frequently asked questions about Frontier Command. Learn about the expedition, AI Companions, prerequisites, privacy, and more."
-                keywords={["FAQ", "Frontier Command", "AI Companions", "Expedition", "Pricing", "Privacy"]}
+                title="FAQ - AI Frontier Adventure"
+                description="Frequently asked questions about AI Frontier Adventure. Learn about AI helpers, getting started, privacy, and more."
+                keywords={["FAQ", "AI Frontier Adventure", "AI Helpers", "Learn AI", "Pricing", "Privacy"]}
                 schema={faqSchema}
             />
 
@@ -81,10 +81,10 @@ export default function FAQ() {
                             transition={{ duration: 0.6 }}
                         >
                             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight font-mono">
-                                <span className="text-amber-400">🧭</span> EXPEDITION <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600">GUIDE</span>
+                                <span className="text-amber-400">🧭</span> ADVENTURE <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600">GUIDE</span>
                             </h1>
                             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-                                Everything you need to know about the expedition, your AI Companions, and how they will transform your daily life.
+                                Everything you need to know — from getting started to advanced AI helpers.
                             </p>
                         </m.div>
 

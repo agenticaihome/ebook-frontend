@@ -6,7 +6,7 @@ import {
 import { Link } from 'react-router-dom';
 
 export const categories = [
-    { id: 'about', name: 'About the Course', icon: <BookOpen size={18} /> },
+    { id: 'about', name: 'About This Adventure', icon: <BookOpen size={18} /> },
     { id: 'payment', name: 'Payment & Pricing', icon: <CreditCard size={18} /> },
     { id: 'access', name: 'Access & Technical', icon: <Cpu size={18} /> },
     { id: 'author', name: 'Author & Credibility', icon: <User size={18} /> },
@@ -24,12 +24,12 @@ export const faqData = [
     {
         id: 'what-is-it',
         category: 'about',
-        question: 'What exactly is "Agentic AI at Home"?',
+        question: 'What exactly is "AI Frontier Adventure"?',
         answer: (
             <>
-                <p className="mb-4">"Agentic AI at Home is a comprehensive course that teaches you how to build AI-powered systems that automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more.</p>
-                <p className="mb-4">Unlike chatbots that just answer questions, AI 'agents' take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
-                <p className="mb-2 font-bold">The course is organized into 5 parts (15 chapters):</p>
+                <p className="mb-4">AI Frontier Adventure is a fun, interactive experience that teaches you how to use AI tools to automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more.</p>
+                <p className="mb-4">Unlike chatbots that just answer questions, AI 'helpers' take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
+                <p className="mb-2 font-bold">The adventure is organized into 5 areas (15 discoveries):</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Part 1: Foundations</strong> (understanding AI agents, choosing tools, privacy)</li>
                     <li><strong>Part 2: Daily Operations</strong> (morning routines, kitchen, household)</li>
@@ -37,14 +37,14 @@ export const faqData = [
                     <li><strong>Part 4: Health & Learning</strong> (recovery tracking, wellbeing, knowledge management)</li>
                     <li><strong>Part 5: Advanced Systems</strong> (multi-agent coordination, Life Operating System)</li>
                 </ul>
-                <p>By the end, you'll have a complete system — a 'Life Operating System' — where all your agents work together toward your goals."</p>
+                <p>By the end, you'll have a complete system — a 'Life Operating System' — where all your AI helpers work together toward your goals."</p>
             </>
         )
     },
     {
         id: 'who-is-it-for',
         category: 'about',
-        question: 'Who is this course for?',
+        question: 'Who is this adventure for?',
         answer: (
             <>
                 <p className="mb-4">This course is designed for:</p>
@@ -74,21 +74,21 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg">YES. Absolutely.</p>
-                <p className="mb-4">While the system was originally battle-tested by a busy parent, the core problem is universal: <strong>Life Admin Fatigue.</strong></p>
+                <p className="mb-4">While the system was originally tested by a busy parent, the core problem is universal: <strong>Life Admin Fatigue.</strong></p>
                 <p className="mb-2">The systems work for everyone:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Students:</strong> Use the "Second Brain" for exams and "Morning Agent" for class schedules.</li>
                     <li><strong>Entrepreneurs:</strong> Use the "Email Agent" to handle client comms and "Finance Agent" for invoices.</li>
                     <li><strong>Retirees:</strong> Use the "Health Agent" for appointments and "Travel Agent" for planning trips.</li>
                 </ul>
-                <p>Any reference to "family" or "kids" in the templates can be deleted or replaced with "clients," "pets," or "projects" in seconds.</p>
+                <p>Any reference to "family" or "kids" in the templates can be replaced with "clients," "pets," or "projects" in seconds.</p>
             </>
         )
     },
     {
         id: 'technical-skills',
         category: 'about',
-        question: 'Do I need technical skills or coding knowledge?',
+        question: 'Do I need technical skills?',
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg">No coding required. Seriously.</p>
@@ -101,7 +101,7 @@ export const faqData = [
                 </ul>
                 <p className="mb-4">...you can do this.</p>
                 <p className="mb-4">The course uses plain English 'prompts' that you give to AI tools. You're not writing code — you're having structured conversations with AI and setting up automations using user-friendly tools.</p>
-                <p>We provide copy-ready templates for everything. You'll customize them to your situation, but you won't be starting from scratch or writing anything technical.</p>
+                <p>We provide ready-to-use templates for everything. You'll customize them to your situation, but you won't be starting from scratch or writing anything technical.</p>
             </>
         )
     },
