@@ -267,7 +267,7 @@ const Dashboard = () => {
 
                             {/* CTA */}
                             <Link
-                                to="/chapters/1"
+                                to="/part1/chapter1"
                                 onClick={handleCloseWelcome}
                                 className="block w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-center font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/25"
                             >
