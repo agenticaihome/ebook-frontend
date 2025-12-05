@@ -25,10 +25,10 @@ export default function FAQ() {
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What exactly is AI Frontier Adventure?",
+                "name": "What exactly is The Agentic AI Adventure?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "AI Frontier Adventure is a fun, interactive experience that teaches you how to use AI tools to automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
+                    "text": "The Agentic AI Adventure is a fun, interactive experience that teaches you how to use AI tools to automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
                 }
             },
             {
@@ -60,9 +60,9 @@ export default function FAQ() {
     return (
         <WebbookLayout>
             <SEO
-                title="FAQ - AI Frontier Adventure"
-                description="Frequently asked questions about AI Frontier Adventure. Learn about AI helpers, getting started, privacy, and more."
-                keywords={["FAQ", "AI Frontier Adventure", "AI Helpers", "Learn AI", "Pricing", "Privacy"]}
+                title="FAQ - The Agentic AI Adventure"
+                description="Frequently asked questions about The Agentic AI Adventure. Learn about AI helpers, getting started, privacy, and more."
+                keywords={["FAQ", "The Agentic AI Adventure", "AI Helpers", "Learn AI", "Pricing", "Privacy"]}
                 schema={faqSchema}
             />
 

@@ -88,7 +88,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — AI Frontier Adventure, Discovery ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -281,7 +281,7 @@ Then show me what tomorrow's briefing would look like.`,
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Discovery 1: Wake-Up Call | AI Frontier Adventure</title>
+                <title>Discovery 1: Wake-Up Call | The Agentic AI Adventure</title>
                 <meta name="description" content="Discover why your brain is overwhelmed and meet your first AI helper." />
             </Helmet>
 

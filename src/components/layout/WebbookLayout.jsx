@@ -185,7 +185,7 @@ const WebbookLayout = ({ children }) => {
                             <span className="text-lg">🧭</span>
                         </div>
                         <div>
-                            <span className="text-white text-sm font-bold block">AI Frontier</span>
+                            <span className="text-white text-sm font-bold block">Agentic AI</span>
                             <span className="text-amber-400 text-xs">Adventure</span>
                         </div>
                     </Link>

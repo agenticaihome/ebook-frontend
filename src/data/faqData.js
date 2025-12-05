@@ -24,10 +24,10 @@ export const faqData = [
     {
         id: 'what-is-it',
         category: 'about',
-        question: 'What exactly is "AI Frontier Adventure"?',
+        question: 'What exactly is "The Agentic AI Adventure"?',
         answer: (
             <>
-                <p className="mb-4">AI Frontier Adventure is a fun, interactive experience that teaches you how to use AI tools to automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more.</p>
+                <p className="mb-4">The Agentic AI Adventure is a fun, interactive experience that teaches you how to use AI tools to automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more.</p>
                 <p className="mb-4">Unlike chatbots that just answer questions, AI 'helpers' take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
                 <p className="mb-2 font-bold">The adventure is organized into 5 areas (15 discoveries):</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">

@@ -98,7 +98,7 @@ const ShareableQuote = ({ quote, operation }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — AI Frontier Adventure, Discovery ${operation}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${operation}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -716,7 +716,7 @@ const Chapter3 = () => {
         <BlitzModeContext.Provider value={blitzMode}>
             <WebbookLayout>
                 <Helmet>
-                    <title>Discovery 3: Privacy & Control | AI Frontier Adventure</title>
+                    <title>Discovery 3: Privacy & Control | The Agentic AI Adventure</title>
                     <meta name="description" content="Understand where your data goes with AI tools and how to protect it. Establish smart boundaries." />
                 </Helmet>
 

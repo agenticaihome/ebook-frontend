@@ -140,7 +140,7 @@ const ShareableQuote = ({ quote, operation }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — AI Frontier Adventure, Discovery ${operation}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${operation}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -645,7 +645,7 @@ const Chapter2 = () => {
         <BlitzModeContext.Provider value={blitzMode}>
             <WebbookLayout>
                 <Helmet>
-                    <title>Discovery 2: Your AI Toolkit | AI Frontier Adventure</title>
+                    <title>Discovery 2: Your AI Toolkit | The Agentic AI Adventure</title>
                     <meta name="description" content="Build your AI team with the 4-Role Framework. Pick your Brain, set up your stack, and automate that recurring task." />
                 </Helmet>
 

@@ -196,7 +196,7 @@ const Dashboard = () => {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Adventure Dashboard | AI Frontier Adventure</title>
+                <title>Adventure Dashboard | The Agentic AI Adventure</title>
                 <meta name="description" content="Your adventure hub - track discoveries, earn points, and learn new AI skills on your journey." />
             </Helmet>
 
