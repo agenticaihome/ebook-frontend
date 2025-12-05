@@ -6,13 +6,18 @@ import { m, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
-
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, ShoppingCart, Utensils,
     DollarSign, Target, Refrigerator, Trash2, Users, Calendar,
     AlertTriangle, HelpCircle, Leaf, ChefHat, Receipt, TrendingDown
 } from 'lucide-react';
+
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 
 // Lazy load interactive components
 const FoodChaosCalculator = React.lazy(() => import('../../components/FoodChaosCalculator'));
@@ -24,30 +29,8 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const SpeedRunContext = createContext(false);
 
 // ============================================
-// REUSABLE COMPONENTS (matching previous chapters)
+// REUSABLE COMPONENTS
 // ============================================
-
-const ChapterProgress = ({ current, total, part, partTitle }) => (
-    <div className="mb-6">
-        {part && (
-            <div className="text-orange-400 font-bold text-sm mb-2 uppercase tracking-wider">
-                Part {part}: {partTitle}
-            </div>
-        )}
-        <div className="flex items-center gap-3">
-            <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-                <m.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
-                />
-            </div>
-            <span className="text-slate-400 text-sm font-mono">
-                {current}/{total}
-            </span>
-        </div>
-    </div>
-);
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
@@ -75,31 +58,6 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
         {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
     </button>
-);
-
-const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <m.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
-    >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-wrap justify-center md:justify-start gap-6">
-                {stats.map((stat, i) => (
-                    <div key={i} className="text-center">
-                        <div className="text-3xl font-bold text-white">{stat.value}</div>
-                        <div className="text-sm text-slate-400">{stat.label}</div>
-                    </div>
-                ))}
-            </div>
-            <button
-                onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
-            >
-                {primaryCTA} <ArrowRight size={18} />
-            </button>
-        </div>
-    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -216,44 +174,6 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     );
 };
 
-const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => {
-    const navigate = useNavigate();
-
-    return (
-        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-            <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <CheckCircle className="text-green-400" size={24} />
-                </div>
-                <div>
-                    <span className="text-green-400 font-bold block">Chapter 5 Complete</span>
-                    <span className="text-slate-400 text-sm">You're 31% of the way there</span>
-                </div>
-            </div>
-
-            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                <p className="text-white font-bold text-sm mb-3">What you built:</p>
-                <ul className="space-y-2">
-                    {achievements.map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                            <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <button
-                onClick={() => navigate(nextChapter)}
-                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
-            >
-                Continue to Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
-                <ArrowRight size={18} />
-            </button>
-        </div>
-    );
-};
-
 // Compact Case Study
 const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
     <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm mb-8">
@@ -290,7 +210,39 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
 
 const Chapter5 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const [cardUnlocked, setCardUnlocked] = useState(false);
     const navigate = useNavigate();
+
+    // Meal Planner Agent card data
+    const mealPlannerCard = {
+        id: 'meal_planner',
+        name: 'Meal Planning Agent',
+        rarity: 'rare',
+        category: 'Kitchen',
+        timeSaved: '2 hrs/week',
+        moneySaved: '$200/mo',
+        complexity: 3,
+        powerLevel: 65,
+        prompt: `You are my Meal Planning Agent. Your job is to create weekly meal plans that my whole family will actually eat.
+
+MY FAMILY'S PREFERENCES:
+[Paste your Family Taste Mapper output here]
+
+CONSTRAINTS:
+- Budget: Approximately $150-200/week for groceries
+- Cooking time: Max 30-45 minutes on weeknights
+- Variety: Don't repeat proteins more than 2x per week`,
+    };
+
+    const handleCardUnlock = (cardId) => {
+        setCardUnlocked(true);
+        // Save to localStorage
+        const unlockedCards = JSON.parse(localStorage.getItem('unlocked_cards') || '[]');
+        if (!unlockedCards.includes(cardId)) {
+            unlockedCards.push(cardId);
+            localStorage.setItem('unlocked_cards', JSON.stringify(unlockedCards));
+        }
+    };
 
     const scrollToCalculator = () => {
         document.getElementById('food-calculator')?.scrollIntoView({ behavior: 'smooth' });
@@ -375,12 +327,12 @@ For each suggestion, tell me:
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 5: Kitchen & Grocery Automation | Agentic AI at Home</title>
+                <title>Operation: Kitchen Sync | Agentic AI at Home</title>
                 <meta name="description" content="Never run out of essentials again with automated grocery management" />
             </Helmet>
 
             <SEO
-                title="Kitchen & Grocery - Agentic AI at Home"
+                title="Operation: Kitchen Sync - Agentic AI at Home"
                 description="End 'what's for dinner?' forever. Automated meal planning and grocery lists."
                 canonical="/part2/chapter2"
             />
@@ -388,12 +340,30 @@ For each suggestion, tell me:
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
-                        {/* Progress Bar with Part indicator */}
-                        <ChapterProgress
-                            current={5}
-                            total={16}
-                            part={2}
-                            partTitle="Daily Operations"
+                        {/* MISSION BRIEFING */}
+                        <MissionBriefing
+                            title="OPERATION: KITCHEN SYNC"
+                            missionNumber={5}
+                            duration="9 min"
+                            briefing="The kitchen is where families come together—or fall apart into hangry chaos. Every 'what's for dinner?' drains energy you could spend actually enjoying the meal. Your objective: Deploy a two-agent team to automate the decision-making and logistics of feeding your family."
+                            objectives={[
+                                "Calculate Food Chaos",
+                                "Deploy Meal Planning Agent",
+                                "Deploy Grocery List Agent"
+                            ]}
+                        />
+
+                        {/* OBJECTIVES */}
+                        <ObjectivesChecklist
+                            operationId="op_5"
+                            primaryObjectives={[
+                                { id: "chaos_calc", label: "Calculate Food Chaos" },
+                                { id: "meal_agent", label: "Deploy Meal Planning Agent" },
+                                { id: "grocery_agent", label: "Deploy Grocery List Agent" }
+                            ]}
+                            bonusObjectives={[
+                                { id: "leftover_agent", label: "Deploy Leftover Transformer" }
+                            ]}
                         />
 
                         {/* Author Credibility */}
@@ -407,44 +377,10 @@ For each suggestion, tell me:
                             chapterNumber={5}
                         />
 
-                        {/* Header */}
-                        <m.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-6"
-                        >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 5</div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                Kitchen & Grocery
-                            </h1>
-                            <p className="text-xl text-slate-400 mb-4">
-                                End "what's for dinner?" forever—and save $200/month doing it
-                            </p>
-
-                            {/* Reading time + Speed Run toggle */}
-                            <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={14} />
-                                        <span>9 min read</span>
-                                    </div>
-                                    <span>•</span>
-                                    <span className="text-orange-400">20 min to set up both agents</span>
-                                </div>
-                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                            </div>
-                        </m.div>
-
-                        {/* TL;DR Card */}
-                        <TLDRCard
-                            stats={[
-                                { value: '$290', label: 'saved/month' },
-                                { value: '2', label: 'agents working together' },
-                                { value: '0', label: '"what\'s for dinner?"' },
-                            ]}
-                            primaryCTA="Calculate My Food Chaos"
-                            onCTAClick={scrollToCalculator}
-                        />
+                        {/* Speed Run Toggle */}
+                        <div className="flex justify-end mb-6">
+                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                        </div>
 
                         <PasswordGate partNumber={2} chapterNumber={5}>
                             {/* CAPTAIN EFFICIENCY - OPENER */}
@@ -515,6 +451,14 @@ For each suggestion, tell me:
                                 variant="bonus"
                             />
 
+                            {/* CARD UNLOCK - Meal Planner Agent */}
+                            <AgentCardUnlock
+                                card={mealPlannerCard}
+                                onUnlock={handleCardUnlock}
+                                onComplete={() => console.log('Card added to deck')}
+                                autoReveal={false}
+                            />
+
                             {/* CASE STUDY */}
                             {!speedRun && (
                                 <CaseStudyCard
@@ -544,17 +488,21 @@ For each suggestion, tell me:
                                 </Suspense>
                             )}
 
-                            {/* CHAPTER COMPLETE */}
-                            <ChapterComplete
-                                achievements={[
-                                    'Calculated your food chaos cost (time + money)',
-                                    'Built your family taste profile',
-                                    'Set up Meal Planning Agent',
-                                    'Set up Grocery List Agent',
-                                    'Bonus: Leftover Transformer prompt',
-                                ]}
-                                nextChapter="/part2/chapter3"
-                                nextTitle="Household Management"
+                            {/* MISSION COMPLETE */}
+                            <MissionComplete
+                                operationId="op_5"
+                                operationName="KITCHEN SYNC"
+                                operationNumber={5}
+                                nextOperationPath="/part2/chapter3"
+                                nextOperationName="HOUSEHOLD MANAGEMENT"
+                                rewards={{
+                                    xp: 250,
+                                    cards: ['Meal Planning Agent'],
+                                    achievements: ['kitchen_sync']
+                                }}
+                                stats={{
+                                    objectivesCompleted: "3/3",
+                                }}
                             />
 
                             {/* Bottom Navigation */}
