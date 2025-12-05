@@ -1,205 +1,85 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { m } from 'framer-motion';
 import {
-    LayoutDashboard, CheckCircle, Circle, ArrowRight,
-    Zap, Coffee, UtensilsCrossed, Home, Activity, Shield, Database,
-    Calculator
+    Home, Settings, LogOut, Shield, Trophy,
+    Sparkles, ChevronRight, Bell
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import CaptainHero from '../components/CaptainHero';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { api } from '../services/api';
 
-const Dashboard = () => {
-    usePageTitle('Dashboard');
-    const navigate = useNavigate();
-    const [progress, setProgress] = useState({
-        part1: true, // Always unlocked
-        part2: false,
-        part3: false,
-        part4: false,
-        part5: false
-    });
+// Dashboard Components
+import HeroStatusBar from '../components/dashboard/HeroStatusBar';
+import QuestMap from '../components/dashboard/QuestMap';
+import ChallengeArena from '../components/dashboard/ChallengeArena';
+import QuestLog from '../components/dashboard/QuestLog';
+import LevelUpCelebration from '../components/dashboard/LevelUpCelebration';
 
-    const [agents, setAgents] = useState([
-        { id: 'morning', name: 'Morning Agent', status: 'NOT_STARTED', icon: Coffee, link: '/part2#chapter-4' },
-        { id: 'kitchen', name: 'Kitchen Agent', status: 'NOT_STARTED', icon: UtensilsCrossed, link: '/part2#chapter-5' },
-        { id: 'household', name: 'Household Agent', status: 'NOT_STARTED', icon: Home, link: '/part2#chapter-6' },
-        { id: 'digital', name: 'Digital Agent', status: 'LOCKED', icon: Activity, link: '/part3' },
-        { id: 'recovery', name: 'Recovery Agent', status: 'LOCKED', icon: Shield, link: '/part4' },
-        { id: 'secondbrain', name: 'Second Brain', status: 'LOCKED', icon: Database, link: '/part4' },
-    ]);
+// ============================================
+// ACHIEVEMENTS DATA
+// ============================================
+const ACHIEVEMENTS = [
+    { id: 'first_quest', name: 'First Steps', description: 'Complete your first chapter', icon: '🎯', condition: (c) => c.length >= 1 },
+    { id: 'five_quests', name: 'Adventurer', description: 'Complete 5 chapters', icon: '⚔️', condition: (c) => c.length >= 5 },
+    { id: 'ten_quests', name: 'Veteran', description: 'Complete 10 chapters', icon: '🛡️', condition: (c) => c.length >= 10 },
+    { id: 'all_quests', name: 'Grand Master', description: 'Complete all 16 chapters', icon: '👑', condition: (c) => c.length >= 16 },
+    { id: 'first_game', name: 'Challenger', description: 'Play your first game', icon: '🎮', condition: (_, g) => g.length >= 1 },
+    { id: 'all_games', name: 'Arena Champion', description: 'Play all games', icon: '🏆', condition: (_, g) => g.length >= 5 },
+    { id: 'streak_3', name: 'On Fire', description: '3-day streak', icon: '🔥', condition: (_, __, s) => s >= 3 },
+    { id: 'streak_7', name: 'Unstoppable', description: '7-day streak', icon: '💫', condition: (_, __, s) => s >= 7 },
+];
 
-    useEffect(() => {
-        // Auth Check
-        const token = localStorage.getItem('token');
-        if (!token) {
-            navigate('/login');
-            return;
-        }
-
-        // Check local storage for progress
-        const p2 = sessionStorage.getItem('auth_Part 2') === 'true';
-        const p3 = sessionStorage.getItem('auth_Part 3') === 'true';
-        // ... extend for other parts
-
-        setProgress(prev => ({
-            ...prev,
-            part2: p2,
-            part3: p3
-        }));
-
-        // Update agent status based on progress (simplified logic for now)
-        if (p2) {
-            setAgents(prev => prev.map(a =>
-                ['morning', 'kitchen', 'household'].includes(a.id)
-                    ? { ...a, status: 'BUILDING' }
-                    : a
-            ));
-        }
-    }, []);
-
-    const getStatusColor = (status) => {
-        switch (status) {
-            case 'DEPLOYED': return 'text-green-400 bg-green-900/20 border-green-500/50';
-            case 'BUILDING': return 'text-yellow-400 bg-yellow-900/20 border-yellow-500/50';
-            case 'NOT_STARTED': return 'text-slate-400 bg-slate-800/50 border-slate-600';
-            case 'LOCKED': return 'text-slate-600 bg-slate-900/50 border-slate-800';
-            default: return 'text-slate-400';
-        }
-    };
-
-    return (
-        <WebbookLayout>
-            <div className="min-h-screen bg-[#0f0f1a] text-white pt-24 pb-24 px-6">
-                <div className="max-w-6xl mx-auto">
-
-                    {/* Header */}
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
-                        <div>
-                            <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
-                                <LayoutDashboard className="text-cyan-400" />
-                                Command Center
-                            </h1>
-                            <p className="text-slate-400">System Status: <span className="text-green-400 font-mono">ONLINE</span></p>
-                        </div>
-                        <CaptainHero
-                            size="sm"
-                            message="Welcome back, Commander. Ready to deploy some agents?"
-                        />
-                    </div>
-
-                    {/* Progress Overview */}
-                    <section className="mb-12">
-                        <h2 className="text-xl font-bold mb-6 text-slate-200">System Implementation Progress</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                            {[
-                                { id: 1, name: 'Foundations', active: progress.part1 },
-                                { id: 2, name: 'Daily Ops', active: progress.part2 },
-                                { id: 3, name: 'Digital Life', active: progress.part3 },
-                                { id: 4, name: 'Health', active: progress.part4 },
-                                { id: 5, name: 'Life OS', active: progress.part5 },
-                            ].map((part) => (
-                                <div key={part.id} className={`p-4 rounded-xl border ${part.active ? 'bg-cyan-900/20 border-cyan-500/50' : 'bg-slate-800/30 border-slate-600 opacity-50'}`}>
-                                    <div className="flex justify-between items-center mb-2">
-                                        <span className="text-xs font-mono text-slate-400">PART 0{part.id}</span>
-                                        {part.active ? <CheckCircle size={16} className="text-cyan-400" /> : <Circle size={16} className="text-slate-600" />}
-                                    </div>
-                                    <div className={`font-bold ${part.active ? 'text-white' : 'text-slate-400'}`}>{part.name}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {/* Agent Roster */}
-                        <div className="md:col-span-2">
-                            <h2 className="text-xl font-bold mb-6 text-slate-200">Agent Roster</h2>
-                            <div className="grid sm:grid-cols-2 gap-4">
-                                {agents.map((agent) => {
-                                    const Icon = agent.icon;
-                                    return (
-                                        <Link
-                                            to={agent.link}
-                                            key={agent.id}
-                                            className={`p-4 rounded-xl border transition-all hover:scale-[1.02] ${getStatusColor(agent.status)}`}
-                                        >
-                                            <div className="flex items-start justify-between mb-3">
-                                                <div className="p-2 rounded-lg bg-black/20">
-                                                    <Icon size={24} />
-                                                </div>
-                                                <span className="text-xs font-bold px-2 py-1 rounded-full bg-black/20">
-                                                    {agent.status.replace('_', ' ')}
-                                                </span>
-                                            </div>
-                                            <h3 className="font-bold text-lg mb-1">{agent.name}</h3>
-                                            <div className="text-xs opacity-70 flex items-center gap-1">
-                                                {agent.status === 'LOCKED' ? 'Requires Clearance' : 'Tap to Configure'}
-                                                {agent.status !== 'LOCKED' && <ArrowRight size={12} />}
-                                            </div>
-                                        </Link>
-                                    );
-                                })}
-                            </div>
-                        </div>
-
-                        {/* Quick Tools */}
-                        <div>
-                            <h2 className="text-xl font-bold mb-6 text-slate-200">Quick Tools</h2>
-                            <div className="space-y-4">
-                                <Link to="/#calculator" className="block p-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-600 hover:border-cyan-500/50 rounded-xl transition-all group">
-                                    <div className="flex items-center gap-3">
-                                        <div className="bg-cyan-900/30 p-2 rounded-lg text-cyan-400 group-hover:text-cyan-300">
-                                            <Calculator size={20} />
-                                        </div>
-                                        <div>
-                                            <div className="font-bold text-slate-200">Time Calculator</div>
-                                            <div className="text-xs text-slate-400">Audit your weekly hours</div>
-                                        </div>
-                                    </div>
-                                </Link>
-
-                                <Link to="/part1#diagnostic" className="block p-4 bg-slate-800/50 hover:bg-slate-800 border border-slate-600 hover:border-purple-500/50 rounded-xl transition-all group">
-                                    <div className="flex items-center gap-3">
-                                        <div className="bg-purple-900/30 p-2 rounded-lg text-purple-400 group-hover:text-purple-300">
-                                            <Activity size={20} />
-                                        </div>
-                                        <div>
-                                            <div className="font-bold text-slate-200">Infection Diagnostic</div>
-                                            <div className="text-xs text-slate-400">Check your "busy" levels</div>
-                                        </div>
-                                    </div>
-                                </Link>
-
-                                <div className="p-4 bg-gradient-to-br from-green-900/20 to-emerald-900/20 border border-green-500/30 rounded-xl">
-                                    <h3 className="font-bold text-green-400 mb-2 flex items-center gap-2">
-                                        <Zap size={16} /> Pro Tip
-                                    </h3>
-                                    <p className="text-sm text-slate-300">
-                                        "Don't try to build everything at once. Focus on the Morning Agent first. It buys you the time to build the rest."
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* System Configuration (Password Change) */}
-                            <div className="mt-8">
-                                <h2 className="text-xl font-bold mb-6 text-slate-200">System Configuration</h2>
-                                <ChangePasswordForm />
-                            </div>
-                        </div>
-                    </div>
-
+// ============================================
+// QUICK ACTION CARDS
+// ============================================
+const QuickAction = ({ icon: Icon, title, subtitle, to, color }) => (
+    <Link to={to}>
+        <m.div
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className={`p-4 rounded-xl border border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/50 cursor-pointer group transition-colors`}
+        >
+            <div className="flex items-center gap-3">
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center`}>
+                    <Icon className="text-white" size={20} />
                 </div>
+                <div>
+                    <div className="text-white font-medium group-hover:text-cyan-400 transition-colors">{title}</div>
+                    <div className="text-xs text-slate-400">{subtitle}</div>
+                </div>
+                <ChevronRight className="text-slate-600 ml-auto group-hover:text-cyan-400 transition-colors" size={16} />
             </div>
-        </WebbookLayout>
-    );
-};
+        </m.div>
+    </Link>
+);
 
+// ============================================
+// ACHIEVEMENT BADGE
+// ============================================
+const AchievementBadge = ({ achievement, unlocked }) => (
+    <m.div
+        whileHover={{ scale: 1.05 }}
+        className={`p-3 rounded-xl text-center transition-all ${unlocked
+                ? 'bg-gradient-to-br from-yellow-900/30 to-orange-900/20 border border-yellow-500/30'
+                : 'bg-slate-800/30 border border-slate-700/30 opacity-50 grayscale'
+            }`}
+    >
+        <div className="text-2xl mb-1">{achievement.icon}</div>
+        <div className={`text-xs font-bold ${unlocked ? 'text-yellow-400' : 'text-slate-500'}`}>
+            {achievement.name}
+        </div>
+    </m.div>
+);
+
+// ============================================
+// CHANGE PASSWORD FORM
+// ============================================
 const ChangePasswordForm = () => {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
-    const [status, setStatus] = useState('IDLE'); // IDLE, LOADING, SUCCESS, ERROR
+    const [status, setStatus] = useState('IDLE');
     const [message, setMessage] = useState('');
 
     const handleSubmit = async (e) => {
@@ -209,7 +89,6 @@ const ChangePasswordForm = () => {
 
         try {
             const data = await api.changePassword(currentPassword, newPassword);
-
             if (data.success) {
                 setStatus('SUCCESS');
                 setMessage('Password updated successfully.');
@@ -226,48 +105,196 @@ const ChangePasswordForm = () => {
     };
 
     return (
-        <div className="p-6 bg-slate-800/30 border border-slate-600 rounded-xl">
-            <h3 className="font-bold text-slate-200 mb-4 flex items-center gap-2">
-                <Shield size={16} className="text-cyan-400" /> Security Settings
-            </h3>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label className="block text-xs text-slate-400 mb-1">Current Password</label>
-                    <input
-                        type="password"
-                        value={currentPassword}
-                        onChange={(e) => setCurrentPassword(e.target.value)}
-                        className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
-                        required
-                    />
-                </div>
-                <div>
-                    <label className="block text-xs text-slate-400 mb-1">New Password</label>
-                    <input
-                        type="password"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none transition-colors"
-                        required
-                    />
-                </div>
-
+        <div className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-4">
+            <h4 className="text-white font-bold text-sm mb-3 flex items-center gap-2">
+                <Shield size={14} className="text-cyan-400" />
+                Change Password
+            </h4>
+            <form onSubmit={handleSubmit} className="space-y-3">
+                <input
+                    type="password"
+                    placeholder="Current password"
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none"
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="New password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white focus:border-cyan-500 outline-none"
+                    required
+                />
                 {message && (
                     <div className={`text-xs p-2 rounded ${status === 'SUCCESS' ? 'bg-green-900/20 text-green-400' : 'bg-red-900/20 text-red-400'}`}>
                         {message}
                     </div>
                 )}
-
                 <button
                     type="submit"
                     disabled={status === 'LOADING'}
-                    className="w-full bg-slate-700 hover:bg-slate-600 text-white text-sm font-bold py-2 rounded-lg transition-colors disabled:opacity-50"
+                    className="w-full py-2 bg-slate-700 hover:bg-slate-600 text-white text-sm font-bold rounded-lg transition-colors disabled:opacity-50"
                 >
                     {status === 'LOADING' ? 'Updating...' : 'Update Password'}
                 </button>
             </form>
         </div>
+    );
+};
+
+// ============================================
+// MAIN DASHBOARD COMPONENT
+// ============================================
+const Dashboard = () => {
+    usePageTitle('Quest Dashboard');
+    const navigate = useNavigate();
+
+    const [showLevelUp, setShowLevelUp] = useState(false);
+    const [newRank, setNewRank] = useState(null);
+    const [completedChapters, setCompletedChapters] = useState([]);
+    const [completedGames, setCompletedGames] = useState([]);
+    const [streak, setStreak] = useState(0);
+    const [showSettings, setShowSettings] = useState(false);
+
+    // Auth check
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+        }
+    }, [navigate]);
+
+    // Load progress
+    useEffect(() => {
+        setCompletedChapters(JSON.parse(localStorage.getItem('completed_chapters') || '[]'));
+        setCompletedGames(JSON.parse(localStorage.getItem('completed_games') || '[]'));
+        setStreak(parseInt(localStorage.getItem('daily_streak') || '0'));
+    }, []);
+
+    const handleLevelUp = (rank) => {
+        setNewRank(rank);
+        setShowLevelUp(true);
+    };
+
+    const unlockedAchievements = ACHIEVEMENTS.filter(a =>
+        a.condition(completedChapters, completedGames, streak)
+    );
+
+    return (
+        <WebbookLayout>
+            <Helmet>
+                <title>Quest Dashboard | Agentic AI at Home</title>
+                <meta name="description" content="Track your progress in mastering AI agents. Complete quests, earn XP, and level up your rank." />
+            </Helmet>
+
+            {/* Level Up Celebration */}
+            <LevelUpCelebration
+                isOpen={showLevelUp}
+                onClose={() => setShowLevelUp(false)}
+                newRank={newRank}
+            />
+
+            <div className="min-h-screen bg-[#0f0f1a] text-white pt-20 pb-24 px-4 md:px-6">
+                <div className="max-w-7xl mx-auto">
+
+                    {/* Hero Status Bar */}
+                    <HeroStatusBar onLevelUp={handleLevelUp} />
+
+                    {/* Main Grid */}
+                    <div className="grid lg:grid-cols-3 gap-6">
+
+                        {/* Left Column - Quest Map & Arena */}
+                        <div className="lg:col-span-2 space-y-6">
+                            <QuestMap />
+                            <ChallengeArena />
+                        </div>
+
+                        {/* Right Column - Quest Log & Extras */}
+                        <div className="space-y-6">
+                            <QuestLog />
+
+                            {/* Achievements */}
+                            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-5">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-2">
+                                        <Trophy className="text-yellow-400" size={20} />
+                                        <h3 className="text-white font-bold">Achievements</h3>
+                                    </div>
+                                    <span className="text-xs text-slate-400">
+                                        {unlockedAchievements.length}/{ACHIEVEMENTS.length}
+                                    </span>
+                                </div>
+                                <div className="grid grid-cols-4 gap-2">
+                                    {ACHIEVEMENTS.slice(0, 8).map((achievement) => (
+                                        <AchievementBadge
+                                            key={achievement.id}
+                                            achievement={achievement}
+                                            unlocked={unlockedAchievements.some(a => a.id === achievement.id)}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Quick Actions */}
+                            <div className="space-y-3">
+                                <h3 className="text-white font-bold text-sm flex items-center gap-2">
+                                    <Sparkles size={14} className="text-purple-400" />
+                                    Quick Actions
+                                </h3>
+                                <QuickAction
+                                    icon={Home}
+                                    title="Return to Camp"
+                                    subtitle="Back to home page"
+                                    to="/"
+                                    color="from-emerald-500 to-cyan-500"
+                                />
+                                <QuickAction
+                                    icon={Trophy}
+                                    title="Agent Deck"
+                                    subtitle="View your collected cards"
+                                    to="/deck"
+                                    color="from-purple-500 to-pink-500"
+                                />
+                            </div>
+
+                            {/* Settings Toggle */}
+                            <button
+                                onClick={() => setShowSettings(!showSettings)}
+                                className="w-full flex items-center justify-between p-3 bg-slate-800/30 hover:bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm transition-colors"
+                            >
+                                <span className="flex items-center gap-2 text-slate-300">
+                                    <Settings size={16} />
+                                    Settings
+                                </span>
+                                <ChevronRight className={`text-slate-500 transition-transform ${showSettings ? 'rotate-90' : ''}`} size={16} />
+                            </button>
+
+                            {showSettings && (
+                                <m.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="space-y-3"
+                                >
+                                    <ChangePasswordForm />
+                                    <button
+                                        onClick={() => {
+                                            localStorage.removeItem('token');
+                                            navigate('/login');
+                                        }}
+                                        className="w-full flex items-center justify-center gap-2 p-3 bg-red-900/20 hover:bg-red-900/30 border border-red-500/30 rounded-xl text-red-400 text-sm font-medium transition-colors"
+                                    >
+                                        <LogOut size={16} />
+                                        Log Out
+                                    </button>
+                                </m.div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </WebbookLayout>
     );
 };
 
