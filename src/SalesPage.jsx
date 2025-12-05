@@ -485,36 +485,36 @@ export default function SalesPage() {
           </div>
         </section>
 
-        {/* IRON-CLAD GUARANTEE SECTION */}
-        <section className="py-20 px-6 bg-gradient-to-br from-slate-900 via-green-900/10 to-slate-900 border-y border-green-500/20">
+        {/* EXPLORER'S GUARANTEE SECTION */}
+        <section className="py-20 px-6 bg-[#0f0f1a] border-y border-green-500/30 bg-grid-pattern">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-slate-800/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-green-500/30 relative overflow-hidden">
+            <div className="tactical-card rounded-xl p-8 md:p-12 border-green-500/40 relative overflow-hidden">
               {/* Decorative glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
 
               <div className="relative z-10">
                 <div className="flex flex-col md:flex-row items-center gap-8">
                   {/* Left: Shield Icon */}
                   <div className="flex-shrink-0">
-                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center border-4 border-green-500/40">
+                    <div className="w-24 h-24 bg-green-900/30 rounded-lg flex items-center justify-center border-2 border-green-500/50">
                       <Shield size={48} className="text-green-400" />
                     </div>
                   </div>
 
                   {/* Right: Copy */}
                   <div className="flex-1 text-center md:text-left">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                      Our Iron-Clad 30-Day Guarantee
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-mono">
+                      Explorer's 30-Day Guarantee
                     </h2>
                     <p className="text-lg text-slate-200 leading-relaxed mb-6">
-                      Try the <span className="font-bold text-green-400">complete system</span> for 30 days.
-                      If you don't save at least <span className="font-bold text-white">5 hours in Week 1</span>,
+                      Try the <span className="font-bold text-green-400">complete expedition</span> for 30 days.
+                      If you don't save at least <span className="font-bold text-amber-400">5 hours in Week 1</span>,
                       email us and we'll refund <span className="font-bold text-white">100%</span>.
                       No hoops. No fine print. No questions asked.
                     </p>
 
-                    <div className="bg-green-900/20 border border-green-500/30 rounded-xl p-4 mb-4">
-                      <p className="text-green-300 font-bold text-center">
+                    <div className="tactical-card p-4 mb-4 border-green-500/30 rounded-lg">
+                      <p className="text-green-400 font-bold text-center font-mono">
                         "That's how confident we are this works."
                       </p>
                       <p className="text-slate-400 text-sm text-center mt-1">— Cpt. E</p>
@@ -527,7 +527,7 @@ export default function SalesPage() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Check size={16} className="text-green-400" />
-                        <span>Keep all bonuses either way</span>
+                        <span>Keep all Companions either way</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Check size={16} className="text-green-400" />
@@ -545,44 +545,47 @@ export default function SalesPage() {
         <section className="py-24 px-6 bg-[#0f0f1a]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">HOW WE STACK UP</h2>
-              <p className="text-slate-400">Most courses teach prompts. We build you a staff.</p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/20 border border-amber-500/30 text-amber-400 text-sm font-mono font-bold mb-6">
+                📊 TACTICAL COMPARISON
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-mono">HOW WE STACK UP</h2>
+              <p className="text-slate-400">Most courses teach prompts. We build you an expedition crew.</p>
             </div>
 
             {/* Desktop Table */}
-            <div className="hidden md:block overflow-x-auto">
+            <div className="hidden md:block overflow-x-auto tactical-card rounded-xl p-1">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-700">
-                    <th className="text-left py-4 px-6 text-slate-400 font-normal text-sm uppercase tracking-wide">Feature</th>
-                    <th className="text-center py-4 px-6 text-slate-400 font-normal text-sm uppercase tracking-wide">Other AI Courses</th>
-                    <th className="text-center py-4 px-6 bg-cyan-900/10 border-l border-r border-cyan-500/30">
-                      <div className="text-cyan-400 font-bold text-base">Agentic AI at Home</div>
-                      <div className="text-xs text-slate-400 mt-1">This System</div>
+                  <tr className="border-b border-teal-500/30">
+                    <th className="text-left py-4 px-6 text-slate-400 font-mono font-normal text-sm uppercase tracking-wide">Feature</th>
+                    <th className="text-center py-4 px-6 text-slate-400 font-mono font-normal text-sm uppercase tracking-wide">Other Courses</th>
+                    <th className="text-center py-4 px-6 bg-amber-900/10 border-l border-r border-amber-500/30">
+                      <div className="text-amber-400 font-bold text-base font-mono">Frontier Command</div>
+                      <div className="text-xs text-slate-400 mt-1">This Expedition</div>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
                     { feature: 'No coding required', others: '❌', ours: '✅' },
-                    { feature: 'Recovery-aware scheduling', others: '❌', ours: '✅' },
-                    { feature: 'Second Brain integration', others: '❌', ours: '✅' },
+                    { feature: 'Recovery Companion', others: '❌', ours: '✅' },
+                    { feature: 'Second Brain Integration', others: '❌', ours: '✅' },
                     { feature: 'Real-world tested (50+ hr weeks)', others: '❌', ours: '✅' },
-                    { feature: 'Multi-agent workflows', others: '❌', ours: '✅' },
+                    { feature: 'Multi-Companion workflows', others: '❌', ours: '✅' },
                     { feature: 'Privacy-first approach', others: '⚠️', ours: '✅' },
-                    { feature: 'Interactive tools & calculators', others: '❌', ours: '✅' },
+                    { feature: 'Interactive tools & challenges', others: '❌', ours: '✅' },
                     { feature: 'Price', others: '$199-499', ours: '$40', highlight: true }
                   ].map((row, i) => (
-                    <tr key={i} className={`border-b border-slate-800 hover:bg-slate-800/30 transition-colors ${row.highlight ? 'bg-green-900/10' : ''}`}>
-                      <td className="py-4 px-6 text-slate-200 font-medium">{row.feature}</td>
+                    <tr key={i} className={`border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors ${row.highlight ? 'bg-green-900/10' : ''}`}>
+                      <td className="py-4 px-6 text-slate-200 font-medium font-mono text-sm">{row.feature}</td>
                       <td className="py-4 px-6 text-center text-2xl">
                         {row.others === '❌' && <span className="text-red-400">❌</span>}
                         {row.others === '⚠️' && <span className="text-yellow-400">⚠️</span>}
                         {row.others.startsWith('$') && <span className="text-red-400 line-through text-lg">{row.others}</span>}
                       </td>
-                      <td className="py-4 px-6 text-center bg-cyan-900/5 border-l border-r border-cyan-500/20">
+                      <td className="py-4 px-6 text-center bg-amber-900/5 border-l border-r border-amber-500/20">
                         {row.ours === '✅' && <span className="text-green-400 text-2xl">✓</span>}
-                        {row.ours.startsWith('$') && <span className="text-green-400 font-bold text-lg">{row.ours}</span>}
+                        {row.ours.startsWith('$') && <span className="text-green-400 font-bold text-lg font-mono">{row.ours}</span>}
                       </td>
                     </tr>
                   ))}
@@ -1085,36 +1088,36 @@ export default function SalesPage() {
         </section>
 
         {/* FOOTER */}
-        <footer className="py-12 text-center border-t border-slate-800/50 bg-[#0f0f1a]">
+        <footer className="py-12 text-center border-t border-cyan-500/20 bg-[#0f0f1a] bg-grid-pattern">
           {/* Trust Badges Row */}
           <div className="flex flex-wrap items-center justify-center gap-6 mb-8 px-4">
-            <div className="flex items-center gap-2 text-slate-400 text-sm">
-              <Shield size={16} className="text-green-400" />
-              <span>256-bit SSL Secure</span>
+            <div className="flex items-center gap-2 text-slate-400 text-sm font-mono">
+              <Shield size={16} className="text-cyan-400" />
+              <span>256-bit SSL</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-400 text-sm">
+            <div className="flex items-center gap-2 text-slate-400 text-sm font-mono">
               <Check size={16} className="text-green-400" />
-              <span>30-Day Money-Back</span>
+              <span>30-Day Guarantee</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-400 text-sm">
-              <CreditCard size={16} className="text-purple-400" />
+            <div className="flex items-center gap-2 text-slate-400 text-sm font-mono">
+              <CreditCard size={16} className="text-amber-400" />
               <span>Stripe Encrypted</span>
             </div>
-            <div className="flex items-center gap-2 text-slate-400 text-sm">
+            <div className="flex items-center gap-2 text-slate-400 text-sm font-mono">
               <Coins size={16} className="text-green-400" />
-              <span>Crypto Accepted</span>
+              <span>ERG Accepted</span>
             </div>
           </div>
 
           <div className="flex justify-center mb-6">
             <CaptainHero
               size="sm"
-              message="I'll be waiting on the other side."
+              message="I'll be waiting on the other side of the frontier."
               loading="lazy"
             />
           </div>
-          <p className="text-slate-400 text-sm">
-            © 2025 Agentic AI at Home. All systems nominal.
+          <p className="text-slate-400 text-sm font-mono">
+            © 2025 Frontier Command. All systems nominal.
           </p>
         </footer>
 
