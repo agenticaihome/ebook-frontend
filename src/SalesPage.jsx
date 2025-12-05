@@ -21,11 +21,22 @@ const CountdownTimer = React.lazy(() => import('./components/CountdownTimer'));
 
 export default function SalesPage() {
   const [showCryptoModal, setShowCryptoModal] = useState(false);
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
   const navigate = useNavigate();
   const isPerformanceMode = usePerformanceMode();
 
   // Track scroll depth for engagement insights
   useScrollTracking();
+
+  // Show sticky CTA after scrolling 50% of page
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      setShowStickyCTA(scrollPercent > 30);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handlePaymentClick = () => {
     navigate('/payment-guide');
@@ -108,9 +119,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight"
               >
-                <span className="block text-white mb-2">Master AI Agents</span>
-                <span className="block text-white mb-2">On Your Epic Quest</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 block mb-3">To Reclaim Your Time</span>
+                <span className="block text-white mb-2">Your Quest:</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 block mb-2">Reclaim 10 Hours/Week</span>
+                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium">In 16 Interactive Missions</span>
               </m.h1>
 
               <m.div
@@ -119,11 +130,11 @@ export default function SalesPage() {
                 transition={{ delay: 0.15 }}
                 className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 font-medium"
               >
-                <span className="block sm:inline">🗡️ 16 Quests</span>
+                <span className="block sm:inline">🤖 Build Your AI Personal Staff</span>
                 <span className="hidden sm:inline"> • </span>
-                <span className="block sm:inline">🎲 5 Skill Games</span>
+                <span className="block sm:inline">🎮 Gamified Learning</span>
                 <span className="hidden sm:inline"> • </span>
-                <span className="block sm:inline">👑 Level Up IRL</span>
+                <span className="block sm:inline">💻 No Coding Required</span>
               </m.div>
 
               <m.p
@@ -147,16 +158,49 @@ export default function SalesPage() {
                   className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-900/50 flex items-center justify-center gap-2 group"
                 >
                   <span className="text-xl">⚔️</span>
-                  Begin Your Quest
-                  <span className="text-sm opacity-75">(Free)</span>
+                  Start Chapter 1 Free
                 </Link>
-                <Link
-                  to="/dashboard"
-                  className="bg-slate-800/80 hover:bg-slate-700 border border-slate-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2"
-                >
-                  <span className="text-xl">🗺️</span> View Quest Map
-                </Link>
+                <div className="text-center sm:text-left text-sm text-slate-400 flex items-center justify-center gap-2">
+                  <span className="text-green-400">✓</span> No credit card required
+                </div>
               </m.div>
+            </div>
+          </div>
+        </section>
+
+        {/* SOUND FAMILIAR SECTION */}
+        <section className="py-16 px-6 bg-gradient-to-b from-[#0f0f1a] to-slate-900/50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white">Sound Familiar?</h2>
+              <p className="text-slate-400">The daily chaos that drains your energy</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                { emoji: '📧', text: "You spend Sunday nights dreading Monday's inbox" },
+                { emoji: '📅', text: "Your calendar is full of meetings you didn't choose" },
+                { emoji: '📋', text: "You've tried productivity systems that lasted 3 days" },
+                { emoji: '🧠', text: "You're the family admin AND work harder than everyone" },
+                { emoji: '🔄', text: "Same tasks, every week, forever" },
+                { emoji: '😴', text: "Too exhausted to enjoy the time you do have" },
+              ].map((item, i) => (
+                <m.div
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-3 p-4 bg-slate-800/40 rounded-xl border border-slate-700/50"
+                >
+                  <span className="text-2xl">{item.emoji}</span>
+                  <span className="text-slate-300">{item.text}</span>
+                </m.div>
+              ))}
+            </div>
+            <div className="text-center mt-10">
+              <p className="text-xl text-slate-200 font-medium">
+                What if AI could handle most of this... <span className="text-yellow-400">automatically?</span>
+              </p>
             </div>
           </div>
         </section>
@@ -275,6 +319,64 @@ export default function SalesPage() {
                   <li className="flex gap-2"><Check size={16} className="text-green-500" /> Goal Hierarchy alignment</li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* WHY RPG FORMAT SECTION */}
+        <section className="py-20 px-6 bg-[#0f0f1a]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-900/20 border border-pink-500/30 text-pink-400 text-sm font-bold mb-6">
+                🎮 WHY THE GAME FORMAT?
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">This Isn't a Gimmick. It's Strategy.</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                Most courses are boring, and boring courses don't get finished. We designed this as a quest because...
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  emoji: '🧠',
+                  title: 'Games Are Addictive for a Reason',
+                  desc: 'We used that psychology for your benefit, not against you'
+                },
+                {
+                  emoji: '📊',
+                  title: 'XP Shows REAL Progress',
+                  desc: 'Not just pages read — actual skills you can measure'
+                },
+                {
+                  emoji: '🎯',
+                  title: 'Quests = Clear Goals',
+                  desc: 'Specific, completable missions — not endless "best practices"'
+                },
+                {
+                  emoji: '🏆',
+                  title: 'You Actually Finish',
+                  desc: 'Boss battles at each milestone keep you engaged until real results'
+                },
+              ].map((item, i) => (
+                <m.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="p-6 bg-slate-800/30 rounded-xl border border-slate-700/50"
+                >
+                  <span className="text-3xl mb-3 block">{item.emoji}</span>
+                  <h3 className="font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-slate-400 text-sm">{item.desc}</p>
+                </m.div>
+              ))}
+            </div>
+            <div className="text-center mt-10">
+              <p className="text-slate-300 italic">
+                "We don't make it fun because learning should be easy. We make it fun so you actually <span className="text-yellow-400 font-bold">do</span> it."
+              </p>
+              <p className="text-sm text-slate-500 mt-2">— Captain Efficiency</p>
             </div>
           </div>
         </section>
@@ -438,6 +540,87 @@ export default function SalesPage() {
           </div>
         </section>
 
+        {/* WHY NOT JUST USE CHATGPT SECTION */}
+        <section className="py-20 px-6 bg-slate-900/50 border-y border-slate-800/50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/20 border border-blue-500/30 text-blue-400 text-sm font-bold mb-6">
+                🤖 THE REAL QUESTION
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">"Can't I Just Use ChatGPT for Free?"</h2>
+              <p className="text-slate-400">You could. Here's why most people don't get results that way.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* ChatGPT Column */}
+              <div className="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-lg bg-slate-700 flex items-center justify-center">
+                    <span className="text-xl">💬</span>
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-300">You + ChatGPT</div>
+                    <div className="text-xs text-slate-500">Raw potential, no structure</div>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    '"Write me a prompt"',
+                    'Forgets everything daily',
+                    'One conversation at a time',
+                    'You drive every interaction',
+                    'Trial and error learning',
+                    'Endless YouTube rabbit holes',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-slate-400 text-sm">
+                      <span className="text-red-400">✗</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* This System Column */}
+              <div className="bg-gradient-to-br from-cyan-900/20 to-purple-900/20 rounded-2xl p-6 border border-cyan-500/30">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center">
+                    <span className="text-xl">⚔️</span>
+                  </div>
+                  <div>
+                    <div className="font-bold text-white">You + This System</div>
+                    <div className="text-xs text-cyan-400">Structured path to results</div>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {[
+                    'Pre-built agents ready to deploy',
+                    'Memory that persists forever',
+                    'Multiple agents working in parallel',
+                    'Agents that reach out TO you',
+                    'Proven blueprints, not guesswork',
+                    '16 focused missions, no fluff',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-2 text-slate-200 text-sm">
+                      <span className="text-green-400">✓</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="text-center mt-10">
+              <p className="text-slate-400 text-sm mb-4">
+                ChatGPT is a tool. <span className="text-white font-medium">This is the blueprint for using it.</span>
+              </p>
+              <Link
+                to="/part1"
+                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium"
+              >
+                Try Chapter 1 free and see the difference →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* TRANSFORMATION SECTION */}
         <section className="py-24 px-6 bg-[#0f0f1a] border-y border-slate-800/50">
           <div className="max-w-7xl mx-auto">
@@ -523,43 +706,70 @@ export default function SalesPage() {
                 ⭐ HALL OF HEROES
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">FELLOW ADVENTURERS SPEAK</h2>
-              <p className="text-slate-400">Not hype. Just heroes who completed the quest.</p>
+              <p className="text-slate-400">Real results from people who completed the quest</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Testimonial 1 */}
               <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-cyan-500/30 transition-all">
-                <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                <p className="text-slate-300 mb-4 italic">
-                  "I'm saving 8 hours a week with the Morning + Kitchen agents alone. This paid for itself in week 1."
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
+                  <div className="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
+                    +8 hrs/week
+                  </div>
+                </div>
+                <p className="text-slate-300 mb-4">
+                  "The Morning + Kitchen agents <span className="text-cyan-400 font-medium">saved me 8 hours in the first week</span>.
+                  I meal prep on autopilot now. ROI was instant."
                 </p>
-                <div className="text-sm text-slate-400">
-                  <div className="font-bold text-slate-400">Sarah T.</div>
-                  <div>Product Manager</div>
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-700/50">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold">S</div>
+                  <div className="text-sm">
+                    <div className="font-bold text-white">Sarah T.</div>
+                    <div className="text-slate-400">Product Manager • Completed Part 3</div>
+                  </div>
                 </div>
               </div>
 
               {/* Testimonial 2 */}
               <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-purple-500/30 transition-all">
-                <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                <p className="text-slate-300 mb-4 italic">
-                  "Finally, a course that doesn't just teach prompts. This is a complete operating system for life."
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
+                  <div className="bg-purple-500/20 text-purple-400 text-xs font-bold px-3 py-1 rounded-full">
+                    Inbox Zero Daily
+                  </div>
+                </div>
+                <p className="text-slate-300 mb-4">
+                  "Finally, a course that doesn't just teach prompts. <span className="text-purple-400 font-medium">I hit inbox zero every day now</span> —
+                  something I haven't done in 5 years."
                 </p>
-                <div className="text-sm text-slate-400">
-                  <div className="font-bold text-slate-400">Marcus L.</div>
-                  <div>Software Engineer</div>
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-700/50">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-bold">M</div>
+                  <div className="text-sm">
+                    <div className="font-bold text-white">Marcus L.</div>
+                    <div className="text-slate-400">Software Engineer • Completed All 16</div>
+                  </div>
                 </div>
               </div>
 
               {/* Testimonial 3 */}
               <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-green-500/30 transition-all">
-                <div className="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                <p className="text-slate-300 mb-4 italic">
-                  "The Recovery Agent alone changed my life. I'm sleeping better and getting more done. Paradox solved."
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
+                  <div className="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
+                    +2 hrs sleep
+                  </div>
+                </div>
+                <p className="text-slate-300 mb-4">
+                  "The Recovery Agent changed everything. <span className="text-green-400 font-medium">I'm sleeping 2 more hours</span> and
+                  somehow getting more done. The paradox is real."
                 </p>
-                <div className="text-sm text-slate-400">
-                  <div className="font-bold text-slate-400">Dr. Chen</div>
-                  <div>Medical Resident</div>
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-700/50">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">C</div>
+                  <div className="text-sm">
+                    <div className="font-bold text-white">Dr. Chen</div>
+                    <div className="text-slate-400">Medical Resident • Completed Part 4</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -567,17 +777,45 @@ export default function SalesPage() {
         </section>
 
         {/* CREATOR SECTION */}
-        <section className="py-16 px-6 text-center bg-[#0f0f1a] border-y border-slate-800/50">
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">WHO DEPLOYED ME?</h3>
-            <h2 className="text-3xl font-bold mb-6">The Doctor of Digital Systems (DDS)</h2>
-            <p className="text-slate-400 leading-relaxed mb-8">
-              Endodontic resident working 50+ hour weeks.
-              He didn't build this system for fun. He built it to survive.
-              <br /><br />
-              "I needed a way to be a high-performing doctor and a present human being without burning out.
-              Prompts weren't enough. I needed agents."
-            </p>
+        <section className="py-16 px-6 bg-[#0f0f1a] border-y border-slate-800/50">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-600 text-slate-300 text-sm font-bold mb-6">
+                👤 MEET YOUR GUIDE
+              </div>
+              <h2 className="text-3xl font-bold mb-2">Built by Someone Who Needed It</h2>
+            </div>
+            <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/50">
+              <div className="flex flex-col md:flex-row gap-6 items-center">
+                {/* Avatar placeholder */}
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-4xl flex-shrink-0">
+                  🦷
+                </div>
+                <div className="text-center md:text-left">
+                  <h3 className="text-xl font-bold text-white mb-1">The DDS (Doctor of Digital Systems)</h3>
+                  <p className="text-cyan-400 text-sm mb-4">Endodontist • 50+ hour weeks • AI automation nerd</p>
+                  <p className="text-slate-300 leading-relaxed">
+                    "I didn't build this for fun. I built it to survive residency while still being present for my family.
+                    <span className="text-slate-400"> Productivity apps failed me. ChatGPT prompts weren't enough.</span>
+                    <span className="text-yellow-400 font-medium"> I needed agents that work while I sleep.</span>"
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-700/50">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">16</div>
+                  <div className="text-xs text-slate-400">Chapters Written</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">10+</div>
+                  <div className="text-xs text-slate-400">Hours/Week Saved</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">0</div>
+                  <div className="text-xs text-slate-400">Coding Required</div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -768,6 +1006,22 @@ export default function SalesPage() {
         <CryptoExplainerModal isOpen={showCryptoModal} onClose={() => setShowCryptoModal(false)} />
         <RecentPurchases />
       </Suspense>
+
+      {/* Sticky Floating CTA */}
+      <m.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: showStickyCTA ? 0 : 100, opacity: showStickyCTA ? 1 : 0 }}
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
+      >
+        <Link
+          to="/part1"
+          className="flex items-center gap-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 px-6 py-3 rounded-full font-bold shadow-lg shadow-orange-900/50 transition-all hover:scale-105"
+        >
+          <span className="text-lg">⚔️</span>
+          <span>Start Free</span>
+          <span className="bg-white/20 px-2 py-0.5 rounded-full text-xs">Chapter 1</span>
+        </Link>
+      </m.div>
     </WebbookLayout>
   );
 }
