@@ -104,43 +104,43 @@ const WebbookLayout = ({ children }) => {
 
     const chapters = [
         {
-            id: 'part1', title: 'Part 1: Diagnosis', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
+            id: 'part1', title: 'Part 1: Foundations', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
             subChapters: [
-                { title: 'Op 1: Wake-Up Call', id: 'chapter1', path: '/part1/chapter1' },
-                { title: 'Op 2: Basic Training', id: 'chapter2', path: '/part1/chapter2' },
-                { title: 'Op 3: Privacy & Security', id: 'chapter3', path: '/part1/chapter3' }
+                { title: '1: Wake-Up Call', id: 'chapter1', path: '/part1/chapter1' },
+                { title: '2: Your AI Toolkit', id: 'chapter2', path: '/part1/chapter2' },
+                { title: '3: Privacy & Control', id: 'chapter3', path: '/part1/chapter3' }
             ]
         },
         {
-            id: 'part2', title: 'Part 2: Getting Started', path: '/part2/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
+            id: 'part2', title: 'Part 2: Daily Life', path: '/part2/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Op 4: Morning Routines', id: 'chapter1', path: '/part2/chapter1' },
-                { title: 'Op 5: Kitchen & Grocery', id: 'chapter2', path: '/part2/chapter2' },
-                { title: 'Op 6: Household Management', id: 'chapter3', path: '/part2/chapter3' }
+                { title: '4: Morning Routines', id: 'chapter1', path: '/part2/chapter1' },
+                { title: '5: Kitchen & Grocery', id: 'chapter2', path: '/part2/chapter2' },
+                { title: '6: Household Management', id: 'chapter3', path: '/part2/chapter3' }
             ]
         },
         {
-            id: 'part3', title: 'Part 3: Work & Productivity', path: '/part3/chapter1', icon: <Shield size={18} />, progress: 0, locked: true,
+            id: 'part3', title: 'Part 3: Work & Focus', path: '/part3/chapter1', icon: <Shield size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Op 7: Deep Work', id: 'chapter1', path: '/part3/chapter1' },
-                { title: 'Op 8: Email Triage', id: 'chapter2', path: '/part3/chapter2' },
-                { title: 'Op 9: Meeting Intelligence', id: 'chapter3', path: '/part3/chapter3' }
+                { title: '7: Deep Work', id: 'chapter1', path: '/part3/chapter1' },
+                { title: '8: Email Triage', id: 'chapter2', path: '/part3/chapter2' },
+                { title: '9: Meeting Intelligence', id: 'chapter3', path: '/part3/chapter3' }
             ]
         },
         {
             id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4/chapter1', icon: <BookOpen size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Op 10: Sleep Optimization', id: 'chapter1', path: '/part4/chapter1' },
-                { title: 'Op 11: Nutrition Systems', id: 'chapter2', path: '/part4/chapter2' },
-                { title: 'Op 12: Fitness Tracking', id: 'chapter3', path: '/part4/chapter3' }
+                { title: '10: Sleep Optimization', id: 'chapter1', path: '/part4/chapter1' },
+                { title: '11: Nutrition Systems', id: 'chapter2', path: '/part4/chapter2' },
+                { title: '12: Fitness Tracking', id: 'chapter3', path: '/part4/chapter3' }
             ]
         },
         {
             id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: 'Op 13: Advanced Automation', id: 'chapter1', path: '/part5/chapter1' },
-                { title: 'Op 14: Family Dashboard', id: 'chapter2', path: '/part5/chapter2' },
-                { title: 'Op 15: Legacy & Ethics', id: 'chapter3', path: '/part5/chapter3' }
+                { title: '13: Advanced Automation', id: 'chapter1', path: '/part5/chapter1' },
+                { title: '14: Family Dashboard', id: 'chapter2', path: '/part5/chapter2' },
+                { title: '15: Your Life System', id: 'chapter3', path: '/part5/chapter3' }
             ]
         },
     ];
@@ -235,7 +235,7 @@ const WebbookLayout = ({ children }) => {
                 <div className="p-6 border-b border-slate-600 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 font-bold text-cyan-400" aria-label="Go to Home">
                         <Shield size={24} />
-                        <span>Agentic AI Home</span>
+                        <span>AI Frontier Adventure</span>
                     </Link>
                     <button
                         onClick={() => setIsSidebarOpen(false)}

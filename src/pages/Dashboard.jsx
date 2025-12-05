@@ -196,8 +196,8 @@ const Dashboard = () => {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Quest Dashboard | Agentic AI at Home</title>
-                <meta name="description" content="Your Frontier Command center - track expeditions, earn Discovery Points, and conquer new territories on your AI journey." />
+                <title>Adventure Dashboard | AI Frontier Adventure</title>
+                <meta name="description" content="Your adventure hub - track discoveries, earn points, and learn new AI skills on your journey." />
             </Helmet>
 
             {/* Welcome Modal - First Time Visitors */}
@@ -232,11 +232,11 @@ const Dashboard = () => {
                             {/* Welcome Message */}
                             <div className="text-center mb-6">
                                 <h2 className="text-2xl font-bold text-white mb-2">
-                                    Welcome, Explorer! 🧭
+                                    Welcome! 🧭
                                 </h2>
                                 <p className="text-slate-300 text-sm leading-relaxed">
-                                    I'm Captain Efficiency, your scout companion! This is your <span className="text-cyan-400 font-medium">Frontier Command</span> —
-                                    your base for charting the AI frontier.
+                                    I'm Captain Efficiency, your friendly guide! This is your <span className="text-cyan-400 font-medium">Adventure Dashboard</span> —
+                                    your home base for exploring AI.
                                 </p>
                             </div>
 
@@ -245,22 +245,22 @@ const Dashboard = () => {
                                 <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
                                     <Map className="text-cyan-400 flex-shrink-0 mt-0.5" size={18} />
                                     <div>
-                                        <p className="text-white text-sm font-medium">Territory Map</p>
-                                        <p className="text-slate-400 text-xs">Explore 16 expeditions across 5 territories</p>
+                                        <p className="text-white text-sm font-medium">Discovery Map</p>
+                                        <p className="text-slate-400 text-xs">Explore 15 discoveries across 5 areas</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
                                     <Trophy className="text-yellow-400 flex-shrink-0 mt-0.5" size={18} />
                                     <div>
-                                        <p className="text-white text-sm font-medium">Earn Discovery Points</p>
-                                        <p className="text-slate-400 text-xs">Complete expeditions to rank up</p>
+                                        <p className="text-white text-sm font-medium">Earn Progress Points</p>
+                                        <p className="text-slate-400 text-xs">Complete discoveries to level up</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
                                     <Gamepad2 className="text-purple-400 flex-shrink-0 mt-0.5" size={18} />
                                     <div>
-                                        <p className="text-white text-sm font-medium">Frontier Challenges</p>
-                                        <p className="text-slate-400 text-xs">Unlock mini-games after each territory</p>
+                                        <p className="text-white text-sm font-medium">Fun Challenges</p>
+                                        <p className="text-slate-400 text-xs">Unlock mini-games as you learn</p>
                                     </div>
                                 </div>
                             </div>
@@ -271,7 +271,7 @@ const Dashboard = () => {
                                 onClick={handleCloseWelcome}
                                 className="block w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-center font-bold rounded-xl transition-all shadow-lg shadow-cyan-500/25"
                             >
-                                Begin First Expedition →
+                                Start Your First Discovery →
                             </Link>
 
                             {/* Skip */}
@@ -279,7 +279,7 @@ const Dashboard = () => {
                                 onClick={handleCloseWelcome}
                                 className="block w-full mt-3 py-2 text-slate-400 hover:text-white text-sm text-center transition-colors"
                             >
-                                Explore Base Camp First
+                                Explore Dashboard First
                             </button>
                         </m.div>
                     </m.div>
