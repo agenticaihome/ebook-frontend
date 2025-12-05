@@ -11,6 +11,9 @@ import {
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import { TechnologyTimeline } from '../../components/common/HonestAIFraming';
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
 
 // Lazy load interactive components
 const ToolRecommendationQuiz = React.lazy(() => import('../../components/ToolRecommendationQuiz'));
@@ -24,22 +27,6 @@ const SpeedRunContext = createContext(false);
 // ============================================
 // REUSABLE COMPONENTS (matching Chapter 1)
 // ============================================
-
-// Progress bar showing chapter position
-const ChapterProgress = ({ current, total }) => (
-    <div className="flex items-center gap-3 mb-6">
-        <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-            <m.div
-                initial={{ width: 0 }}
-                animate={{ width: `${(current / total) * 100}%` }}
-                className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
-            />
-        </div>
-        <span className="text-slate-400 text-sm font-mono">
-            {current}/{total}
-        </span>
-    </div>
-);
 
 // Author credibility - builds trust fast
 const AuthorCredibility = () => (
@@ -181,38 +168,6 @@ const QuickWin = ({ title, prompt, setupTime }) => {
         </div>
     );
 };
-
-// Chapter Complete Box
-const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-        <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                <CheckCircle className="text-green-400" size={24} />
-            </div>
-            <div>
-                <span className="text-green-400 font-bold block">Chapter 2 Complete</span>
-                <span className="text-slate-400 text-sm">You're 12% of the way there</span>
-            </div>
-        </div>
-
-        <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-            <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
-            <ul className="space-y-2">
-                {achievements.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                        {item}
-                    </li>
-                ))}
-            </ul>
-        </div>
-
-        <button className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
-            Continue to Chapter {nextChapter}: {nextTitle}
-            <ArrowRight size={18} />
-        </button>
-    </div>
-);
 
 // ============================================
 // CHAPTER 2 SPECIFIC COMPONENTS
@@ -549,7 +504,7 @@ const Chapter2 = () => {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 2: Building Your AI Team | Agentic AI at Home</title>
+                <title>Operation: Basic Training | Agentic AI at Home</title>
                 <meta name="description" content="How to create and manage your first AI agents for maximum efficiency" />
             </Helmet>
 
@@ -557,8 +512,25 @@ const Chapter2 = () => {
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
-                        {/* Progress Bar */}
-                        <ChapterProgress current={2} total={16} />
+                        {/* Mission Briefing */}
+                        <MissionBriefing
+                            title="OPERATION: BASIC TRAINING"
+                            missionNumber={2}
+                            duration="7 min"
+                            briefing="RECRUIT. You cannot fight this war alone. Your objective: Assemble your squad. Identify the four critical roles (Brain, Memory, Hands, Nerves) and select your primary AI partner. Failure to delegate results in mission failure."
+                        />
+
+                        {/* Objectives */}
+                        <ObjectivesChecklist
+                            primaryObjectives={[
+                                "Understand the 4-Role Framework",
+                                "Select your 'Brain' (AI Model)",
+                                "Complete the Task Killer Protocol"
+                            ]}
+                            bonusObjectives={[
+                                "Create your first 'Agent: [Task Name]' prompt"
+                            ]}
+                        />
 
                         {/* Author Credibility */}
                         <AuthorCredibility />
@@ -570,34 +542,6 @@ const Chapter2 = () => {
                             partNumber={1}
                             chapterNumber={2}
                         />
-
-                        {/* Header */}
-                        <m.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-6"
-                        >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 2</div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                Building Your AI Team
-                            </h1>
-                            <p className="text-xl text-slate-400 mb-4">
-                                The 4 roles that will delete that task you named
-                            </p>
-
-                            {/* Reading time + Speed Run toggle */}
-                            <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={14} />
-                                        <span>7 min read</span>
-                                    </div>
-                                    <span>•</span>
-                                    <span className="text-green-400">20 min to implement</span>
-                                </div>
-                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                            </div>
-                        </m.div>
 
                         {/* TL;DR Card */}
                         <TLDRCard
@@ -780,44 +724,12 @@ const Chapter2 = () => {
                             </Suspense>
                         )}
 
-                        {/* CHAPTER COMPLETE */}
-                        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm mb-8">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                                    <CheckCircle className="text-green-400" size={24} />
-                                </div>
-                                <div>
-                                    <span className="text-green-400 font-bold block">Chapter 2 Complete</span>
-                                    <span className="text-slate-400 text-sm">You're 12% of the way there</span>
-                                </div>
-                            </div>
-
-                            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                                <p className="text-white font-bold text-sm mb-3">What you accomplished:</p>
-                                <ul className="space-y-2">
-                                    <li className="flex items-center gap-2 text-sm text-slate-300">
-                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                        The 4-role framework (Brain, Memory, Hands, Nerves)
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-slate-300">
-                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                        Picked your AI "Brain" tool
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-slate-300">
-                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                        Set up your first agent to handle a recurring task
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <button
-                                onClick={() => navigate('/part1/chapter3')}
-                                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
-                            >
-                                Continue to Chapter 3: Privacy & Security
-                                <ArrowRight size={18} />
-                            </button>
-                        </div>
+                        {/* MISSION COMPLETE */}
+                        <MissionComplete
+                            operationId="op_2"
+                            nextOperationPath="/part1/chapter3"
+                            rewards={{ xp: 150, cards: [] }}
+                        />
 
                         {/* Bottom Navigation */}
                         <ChapterNavigation

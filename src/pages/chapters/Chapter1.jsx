@@ -4,6 +4,9 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import HowThisWorks from '../../components/common/HowThisWorks';
 import { FutureProofBanner, WhereWeAre } from '../../components/common/HonestAIFraming';
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
 
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
@@ -25,22 +28,6 @@ const SpeedRunContext = createContext(false);
 // ============================================
 // REUSABLE COMPONENTS
 // ============================================
-
-// Progress bar showing chapter position
-const ChapterProgress = ({ current, total }) => (
-    <div className="flex items-center gap-3 mb-6">
-        <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-            <m.div
-                initial={{ width: 0 }}
-                animate={{ width: `${(current / total) * 100}%` }}
-                className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
-            />
-        </div>
-        <span className="text-slate-400 text-sm font-mono">
-            {current}/{total}
-        </span>
-    </div>
-);
 
 // Author credibility - builds trust fast
 const AuthorCredibility = () => (
@@ -393,38 +380,6 @@ const QuickWin = ({ title, prompt, setupTime }) => {
     );
 };
 
-// Chapter Complete Box
-const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-        <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                <CheckCircle className="text-green-400" size={24} />
-            </div>
-            <div>
-                <span className="text-green-400 font-bold block">Chapter 1 Complete</span>
-                <span className="text-slate-400 text-sm">You're 6% of the way there</span>
-            </div>
-        </div>
-
-        <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-            <p className="text-white font-bold text-sm mb-3">What you now understand:</p>
-            <ul className="space-y-2">
-                {achievements.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                        {item}
-                    </li>
-                ))}
-            </ul>
-        </div>
-
-        <button className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
-            Continue to Chapter {nextChapter}: {nextTitle}
-            <ArrowRight size={18} />
-        </button>
-    </div>
-);
-
 // ============================================
 // CHAPTER 1 MAIN COMPONENT
 // ============================================
@@ -440,16 +395,34 @@ const Chapter1 = () => {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 1: The Everything-Manager | Agentic AI at Home</title>
-                <meta name="description" content="Understanding the mental load of modern life and how AI agents can help you regain control of your time and sanity." />
+                <title>Operation: Wake-Up Call | Agentic AI at Home</title>
+                <meta name="description" content="Recognize the battlefield and identify the enemy (Decision Fatigue). Prepare to deploy your first agent." />
             </Helmet>
 
             <SpeedRunContext.Provider value={speedRun}>
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
-                        {/* Progress Bar */}
-                        <ChapterProgress current={1} total={16} />
+                        {/* Mission Briefing */}
+                        <MissionBriefing
+                            title="OPERATION: WAKE-UP CALL"
+                            missionNumber={1}
+                            duration="6 min"
+                            briefing="ATTENTION, OPERATOR. Your mental capacity is under siege. Intelligence reports 35,000 decisions per day are draining your combat effectiveness. Your objective: Recognize the battlefield and identify the enemy (Decision Fatigue). Prepare to deploy your first agent."
+                        />
+
+                        {/* Objectives */}
+                        <ObjectivesChecklist
+                            primaryObjectives={[
+                                "Read the mission intel",
+                                "Understand the difference between Chatbots and Agents",
+                                "Identify one task to automate"
+                            ]}
+                            bonusObjectives={[
+                                "Complete the Quick Win prompt",
+                                "Share your commitment"
+                            ]}
+                        />
 
                         {/* Author Credibility */}
                         <AuthorCredibility />
@@ -461,30 +434,6 @@ const Chapter1 = () => {
                             partNumber={1}
                             chapterNumber={1}
                         />
-
-                        {/* Header */}
-                        <m.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-6"
-                        >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 1</div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                The Everything-Manager
-                            </h1>
-                            <p className="text-xl text-slate-400 mb-4">
-                                Why you're drowning in decisions—and how agents change that
-                            </p>
-
-                            {/* Reading time + Speed Run toggle */}
-                            <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-2 text-slate-400 text-sm">
-                                    <Clock size={14} />
-                                    <span>6 min read</span>
-                                </div>
-                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                            </div>
-                        </m.div>
 
                         {/* Future-Proof Banner */}
                         <FutureProofBanner />
@@ -838,52 +787,12 @@ Then show me what tomorrow's briefing would look like.`}
                             </Suspense>
                         )}
 
-                        {/* CHAPTER COMPLETE */}
-                        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm mb-8">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                                    <CheckCircle className="text-green-400" size={24} />
-                                </div>
-                                <div>
-                                    <span className="text-green-400 font-bold block">Chapter 1 Complete</span>
-                                    <span className="text-slate-400 text-sm">You're 6% of the way there</span>
-                                </div>
-                            </div>
-
-                            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                                <p className="text-white font-bold text-sm mb-3">What you now understand:</p>
-                                <ul className="space-y-2">
-                                    <li className="flex items-center gap-2 text-sm text-slate-300">
-                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                        The difference between chatbots and agents
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-slate-300">
-                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                        Why mental load is measurable (and fixable)
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-slate-300">
-                                        <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                                        The Observe → Plan → Act → Report loop
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-slate-300 bg-green-900/10 rounded-lg p-2 -mx-2">
-                                        <Zap size={14} className="text-green-400 flex-shrink-0" />
-                                        <span><strong className="text-white">Practical:</strong> ONE copy-paste prompt ready to use in 10 minutes</span>
-                                    </li>
-                                    <li className="flex items-center gap-2 text-sm text-slate-300 bg-green-900/10 rounded-lg p-2 -mx-2">
-                                        <Target size={14} className="text-green-400 flex-shrink-0" />
-                                        <span><strong className="text-white">Action:</strong> The task you'll delete in Chapter 2</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <button
-                                onClick={() => navigate('/part1/chapter2')}
-                                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
-                            >
-                                Continue to Chapter 2: Building Your AI Team
-                                <ArrowRight size={18} />
-                            </button>
-                        </div>
+                        {/* MISSION COMPLETE */}
+                        <MissionComplete
+                            operationId="op_1"
+                            nextOperationPath="/part1/chapter2"
+                            rewards={{ xp: 100, cards: [] }}
+                        />
 
                         {/* Bottom Navigation */}
                         <ChapterNavigation
