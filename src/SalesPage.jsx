@@ -45,19 +45,19 @@ export default function SalesPage() {
   return (
     <WebbookLayout>
       <SEO
-        title="Agentic AI at Home - Reclaim 10 Hours/Week"
-        description="Build a 'Household Staff' of AI agents and workflows that handle email, calendar, meal planning, and home tasks. Stop drowning in to-do lists."
+        title="AI Frontier Adventure - Reclaim 10 Hours/Week"
+        description="Build a team of AI helpers that handle email, calendar, meal planning, and daily tasks. Stop drowning in to-do lists."
         canonical="/"
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "Agentic AI at Home",
-            "description": "A comprehensive guide to building autonomous AI agents for household management.",
+            "name": "AI Frontier Adventure",
+            "description": "A fun, interactive experience that teaches you to use AI tools for daily life automation.",
             "image": "https://agenticaihome.com/assets/captain-efficiency-flying.png",
             "brand": {
               "@type": "Brand",
-              "name": "Agentic AI at Home"
+              "name": "AI Frontier Adventure"
             },
             "offers": {
               "@type": "Offer",
@@ -69,7 +69,7 @@ export default function SalesPage() {
           {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Agentic AI at Home",
+            "name": "AI Frontier Adventure",
             "url": "https://agenticaihome.com",
             "logo": "https://agenticaihome.com/assets/logo.png"
           }
@@ -560,7 +560,7 @@ export default function SalesPage() {
                     <th className="text-left py-4 px-6 text-slate-400 font-mono font-normal text-sm uppercase tracking-wide">Feature</th>
                     <th className="text-center py-4 px-6 text-slate-400 font-mono font-normal text-sm uppercase tracking-wide">Other Courses</th>
                     <th className="text-center py-4 px-6 bg-amber-900/10 border-l border-r border-amber-500/30">
-                      <div className="text-amber-400 font-bold text-base font-mono">Frontier Command</div>
+                      <div className="text-amber-400 font-bold text-base font-mono">AI Frontier Adventure</div>
                       <div className="text-xs text-slate-400 mt-1">This Expedition</div>
                     </th>
                   </tr>
