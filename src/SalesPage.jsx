@@ -35,7 +35,7 @@ export default function SalesPage() {
     <WebbookLayout>
       <SEO
         title="Agentic AI at Home - Reclaim 10 Hours/Week"
-        description="Build a 'Household Staff' of autonomous AI agents that handle email, calendar, meal planning, and home tasks. Stop drowning in to-do lists."
+        description="Build a 'Household Staff' of AI agents and workflows that handle email, calendar, meal planning, and home tasks. Stop drowning in to-do lists."
         canonical="/"
         schema={[
           {
@@ -130,7 +130,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                The interactive webbook that teaches anyone how to build a "Personal Staff" of autonomous AI agents. No coding required.
+                The interactive webbook that teaches anyone how to build a "Personal Staff" of AI agents and workflows. No coding required.
                 <br /><br />
                 Stop drowning in admin. Start deploying agents.
               </m.p>
@@ -170,7 +170,7 @@ export default function SalesPage() {
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">YOUR MISSION: 5 PARTS TO FULL EFFICIENCY</h2>
               <p className="text-slate-400 max-w-2xl mx-auto mb-4">
-                A systematic progression from basic tools to a fully autonomous Life Operating System.
+                A systematic progression from basic tools to a complete, AI-powered Life Operating System.
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
                 <span className="text-green-400 font-bold text-sm">✓ Part 1 is FREE</span>
@@ -230,7 +230,7 @@ export default function SalesPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-slate-100">Recovery-Aware Agent</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
-                  "When your schedule implodes, your AI automatically adjusts your calendar and recovery plan."
+                  "When your schedule implodes, your AI helps you instantly replan your calendar and recovery."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
                   <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Sleep/Energy tracking</li>
@@ -258,12 +258,12 @@ export default function SalesPage() {
                 <div className="bg-green-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400 border border-green-500/20">
                   <Zap size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-100">Life Autopilot</h3>
+                <h3 className="text-xl font-bold mb-4 text-slate-100">Life Strategy System</h3>
                 <p className="text-slate-400 leading-relaxed mb-4">
-                  "Not just automation — a strategic brain that coordinates everything toward your goals."
+                  "Not just automation — a strategic brain that helps you coordinate everything toward your goals."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
-                  <li className="flex gap-2"><Check size={16} className="text-green-500" /> Multi-agent coordination</li>
+                  <li className="flex gap-2"><Check size={16} className="text-green-500" /> Multi-agent workflows</li>
                   <li className="flex gap-2"><Check size={16} className="text-green-500" /> Goal Hierarchy alignment</li>
                 </ul>
               </div>
@@ -354,7 +354,7 @@ export default function SalesPage() {
                     { feature: 'Recovery-aware scheduling', others: '❌', ours: '✅' },
                     { feature: 'Second Brain integration', others: '❌', ours: '✅' },
                     { feature: 'Real-world tested (50+ hr weeks)', others: '❌', ours: '✅' },
-                    { feature: 'Multi-agent coordination', others: '❌', ours: '✅' },
+                    { feature: 'Multi-agent workflows', others: '❌', ours: '✅' },
                     { feature: 'Privacy-first approach', others: '⚠️', ours: '✅' },
                     { feature: 'Interactive tools & calculators', others: '❌', ours: '✅' },
                     { feature: 'Price', others: '$199-499', ours: '$40', highlight: true }
@@ -480,7 +480,7 @@ export default function SalesPage() {
                 <ul className="space-y-4">
                   {[
                     "7-8 hours/week recovered (Minimum)",
-                    "Inbox Zero maintained daily",
+                    "Inbox Zero made achievable daily",
                     "Mental Load offloaded to 'Second Brain'",
                     "Sleep & Energy protected by 'Recovery Agent'"
                   ].map((item, i) => (
