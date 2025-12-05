@@ -10,6 +10,7 @@ import {
 
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import { TechnologyTimeline } from '../../components/common/HonestAIFraming';
 
 // Lazy load interactive components
 const ToolRecommendationQuiz = React.lazy(() => import('../../components/ToolRecommendationQuiz'));
@@ -608,6 +609,9 @@ const Chapter2 = () => {
                             primaryCTA="Find My Tools"
                             onCTAClick={scrollToQuiz}
                         />
+
+                        {/* Technology Timeline - Honest framing for Chapter 2 */}
+                        {!speedRun && <TechnologyTimeline />}
 
                         {/* CAPTAIN EFFICIENCY - OPENER */}
                         {!speedRun && (

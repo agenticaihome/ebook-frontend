@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import HowThisWorks from '../../components/common/HowThisWorks';
+import { FutureProofBanner, WhereWeAre } from '../../components/common/HonestAIFraming';
 
 import React, { useState, Suspense, createContext, useContext } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
@@ -485,6 +486,9 @@ const Chapter1 = () => {
                             </div>
                         </m.div>
 
+                        {/* Future-Proof Banner */}
+                        <FutureProofBanner />
+
                         {/* TL;DR Card */}
                         <TLDRCard
                             stats={[
@@ -498,6 +502,9 @@ const Chapter1 = () => {
 
                         {/* How This Works - Early clarification for non-tech readers */}
                         <HowThisWorks />
+
+                        {/* Where We Are - Honest framing about AI agents */}
+                        <WhereWeAre />
                         {!speedRun && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                 <CaptainHero
