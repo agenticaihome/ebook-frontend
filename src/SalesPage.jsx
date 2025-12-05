@@ -110,7 +110,7 @@ export default function SalesPage() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
                 </span>
-                🎮 YOUR QUEST AWAITS
+                🧭 YOUR EXPEDITION AWAITS
               </m.div>
 
               <m.h1
@@ -119,9 +119,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight"
               >
-                <span className="block text-white mb-2">Your Quest:</span>
+                <span className="block text-white mb-2">Your Journey:</span>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 block mb-2">Reclaim 10 Hours/Week</span>
-                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium">In 16 Interactive Missions</span>
+                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium">In 16 Frontier Expeditions</span>
               </m.h1>
 
               <m.div
@@ -143,8 +143,8 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                Join Captain Efficiency on an interactive adventure to build your own "AI Personal Staff."
-                No coding required. Just you, your guide, and 16 missions to automation mastery.
+                Join Captain Efficiency, your scout companion, on an expedition to chart the AI frontier.
+                No coding required. Just you, your guide, and 16 expeditions to automation mastery.
               </m.p>
 
               <m.div
@@ -157,8 +157,8 @@ export default function SalesPage() {
                   to="/part1"
                   className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-900/50 flex items-center justify-center gap-2 group"
                 >
-                  <span className="text-xl">⚔️</span>
-                  Start Chapter 1 Free
+                  <span className="text-xl">🧭</span>
+                  Begin First Expedition Free
                 </Link>
                 <div className="text-center sm:text-left text-sm text-slate-400 flex items-center justify-center gap-2">
                   <span className="text-green-400">✓</span> No credit card required
@@ -215,25 +215,25 @@ export default function SalesPage() {
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
-                🗺️ THE ADVENTURE MAP
+                🗺️ THE FRONTIER MAP
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">5 REGIONS TO CONQUER</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">5 TERRITORIES TO EXPLORE</h2>
               <p className="text-slate-400 max-w-2xl mx-auto mb-4">
-                Each region unlocks new powers. Complete quests, earn XP, and level up your rank.
+                Each territory unlocks new abilities. Complete expeditions, earn Discovery Points, and rank up.
               </p>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 backdrop-blur-sm">
-                <span className="text-green-400 font-bold text-sm">✓ Region 1 is FREE to explore</span>
-                <span className="text-slate-400 text-xs">• Regions 2-5 unlock with full access</span>
+                <span className="text-green-400 font-bold text-sm">✓ Base Camp (Territory 1) is FREE</span>
+                <span className="text-slate-400 text-xs">• Territories 2-5 unlock with full access</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
               {[
-                { id: '01', title: 'THE FOUNDATIONS', desc: '3 Starter Quests', icon: <Terminal />, status: 'FREE', link: '/part1', emoji: '🏕️' },
-                { id: '02', title: 'THE HOME FRONT', desc: '3 Domestic Missions', icon: <Zap />, status: 'LOCKED', emoji: '🏠' },
-                { id: '03', title: 'DIGITAL FRONTIER', desc: '3 Tech Quests', icon: <Activity />, status: 'LOCKED', emoji: '💻' },
-                { id: '04', title: 'THE STRONGHOLD', desc: '3 Power Quests', icon: <Shield />, status: 'LOCKED', emoji: '💪' },
-                { id: '05', title: 'GRAND COMMAND', desc: '4 Master Quests', icon: <Database />, status: 'LOCKED', emoji: '🚀' }
+                { id: '01', title: 'BASE CAMP', desc: '3 Starter Expeditions', icon: <Terminal />, status: 'FREE', link: '/part1', emoji: '🏕️' },
+                { id: '02', title: 'HOMESTEAD VALLEY', desc: '3 Domestic Expeditions', icon: <Zap />, status: 'LOCKED', emoji: '🏠' },
+                { id: '03', title: 'DIGITAL FRONTIER', desc: '3 Tech Expeditions', icon: <Activity />, status: 'LOCKED', emoji: '💻' },
+                { id: '04', title: 'WELLNESS MOUNTAINS', desc: '3 Health Expeditions', icon: <Shield />, status: 'LOCKED', emoji: '💪' },
+                { id: '05', title: 'GRAND COMMAND', desc: '4 Master Expeditions', icon: <Database />, status: 'LOCKED', emoji: '🚀' }
               ].map((part, index) => (
                 <Link
                   to={part.link || '#pricing'}
@@ -247,7 +247,7 @@ export default function SalesPage() {
                         : 'bg-slate-800/40 border-slate-600/50 hover:border-slate-600 cursor-not-allowed opacity-75'}
                   `}
                 >
-                  <div className="text-xs font-mono text-slate-400 mb-2">PART {part.id}</div>
+                  <div className="text-xs font-mono text-slate-400 mb-2">TERRITORY {part.id}</div>
                   <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-600'}`}>
                     {part.icon}
                   </div>
@@ -339,23 +339,23 @@ export default function SalesPage() {
               {[
                 {
                   emoji: '🧠',
-                  title: 'Games Are Addictive for a Reason',
-                  desc: 'We used that psychology for your benefit, not against you'
+                  title: 'Exploration Is Addictive',
+                  desc: 'We use discovery psychology for your benefit, not against you'
                 },
                 {
                   emoji: '📊',
-                  title: 'XP Shows REAL Progress',
-                  desc: 'Not just pages read — actual skills you can measure'
+                  title: 'Discovery Points Show REAL Progress',
+                  desc: 'Not just pages read — actual territories you\'ve conquered'
                 },
                 {
                   emoji: '🎯',
-                  title: 'Quests = Clear Goals',
-                  desc: 'Specific, completable missions — not endless "best practices"'
+                  title: 'Expeditions = Clear Goals',
+                  desc: 'Specific, completable journeys — not endless "best practices"'
                 },
                 {
                   emoji: '🏆',
                   title: 'You Actually Finish',
-                  desc: 'Boss battles at each milestone keep you engaged until real results'
+                  desc: 'Frontier challenges at each territory keep you engaged until real results'
                 },
               ].map((item, i) => (
                 <m.div
@@ -597,7 +597,7 @@ export default function SalesPage() {
                     'Multiple agents working in parallel',
                     'Agents that reach out TO you',
                     'Proven blueprints, not guesswork',
-                    '16 focused missions, no fluff',
+                    '16 focused expeditions, no fluff',
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-2 text-slate-200 text-sm">
                       <span className="text-green-400">✓</span> {item}
@@ -615,7 +615,7 @@ export default function SalesPage() {
                 to="/part1"
                 className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium"
               >
-                Try Chapter 1 free and see the difference →
+                Try Expedition 1 free and see the difference →
               </Link>
             </div>
           </div>
@@ -649,7 +649,7 @@ export default function SalesPage() {
                 challenge="Test Drive Your First AI Agent (Free)"
                 estimatedTime="5 min"
                 steps={[
-                  "Go to Part 1 (100% free, no email required)",
+                  "Go to Territory 1 (100% free, no email required)",
                   "Take the AI Experience Quiz to see where you are",
                   "Use the Mental Load Calculator to quantify your chaos",
                   "See Captain Efficiency's recommendations",
