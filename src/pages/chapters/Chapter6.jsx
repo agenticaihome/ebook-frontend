@@ -6,7 +6,6 @@ import { m, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
-
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, Home, Wrench, Package,
@@ -15,6 +14,12 @@ import {
     Star, Trophy, Rocket, Sun, Moon, CloudSnow, Flower2, Target,
     CheckCircle2, XCircle, Timer, RotateCcw, Lightbulb
 } from 'lucide-react';
+
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 
 // Lazy load interactive components
 const HouseholdChaosCalculator = React.lazy(() => import('../../components/HouseholdChaosCalculator'));
@@ -26,30 +31,8 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const SpeedRunContext = createContext(false);
 
 // ============================================
-// REUSABLE COMPONENTS (matching previous chapters)
+// REUSABLE COMPONENTS
 // ============================================
-
-const ChapterProgress = ({ current, total, part, partTitle }) => (
-    <div className="mb-6">
-        {part && (
-            <div className="text-orange-400 font-bold text-sm mb-2 uppercase tracking-wider">
-                Part {part}: {partTitle}
-            </div>
-        )}
-        <div className="flex items-center gap-3">
-            <div className="flex-1 h-1 bg-slate-800 rounded-full overflow-hidden">
-                <m.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
-                />
-            </div>
-            <span className="text-slate-400 text-sm font-mono">
-                {current}/{total}
-            </span>
-        </div>
-    </div>
-);
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
@@ -77,31 +60,6 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
         {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
     </button>
-);
-
-const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
-    <m.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
-    >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-wrap justify-center md:justify-start gap-6">
-                {stats.map((stat, i) => (
-                    <div key={i} className="text-center">
-                        <div className="text-3xl font-bold text-white">{stat.value}</div>
-                        <div className="text-sm text-slate-400">{stat.label}</div>
-                    </div>
-                ))}
-            </div>
-            <button
-                onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
-            >
-                {primaryCTA} <ArrowRight size={18} />
-            </button>
-        </div>
-    </m.div>
 );
 
 const ShareableQuote = ({ quote, chapter }) => {
@@ -754,169 +712,128 @@ const Part2Celebration = () => {
     );
 };
 
-// Chapter Complete (custom for Part end)
-const ChapterCompleteWithPartEnd = ({ achievements, nextChapter, nextTitle, nextPart }) => {
-    const navigate = useNavigate();
-
-    return (
-        <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
-            <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <CheckCircle className="text-green-400" size={24} />
-                </div>
-                <div>
-                    <span className="text-green-400 font-bold block">Chapter 6 Complete</span>
-                    <span className="text-slate-400 text-sm">Part 2 finished — 37% of the way there</span>
-                </div>
-            </div>
-
-            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                <p className="text-white font-bold text-sm mb-3">Your Household Command Center includes:</p>
-                <ul className="space-y-2">
-                    {achievements.map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-slate-300">
-                            <CheckCircle size={14} className="text-green-400 flex-shrink-0" />
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="bg-orange-900/20 rounded-xl p-4 border border-orange-500/30 mb-6">
-                <div className="flex items-center gap-2 text-orange-400 font-bold mb-1">
-                    <Rocket size={16} />
-                    Next: Part 3 — Digital Operations
-                </div>
-                <p className="text-slate-400 text-sm">
-                    Email triage, calendar defense, admin automation. Where the hours really add up.
-                </p>
-            </div>
-
-            <button
-                onClick={() => navigate(nextChapter)}
-                className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all"
-            >
-                Continue to Part {nextPart}, Chapter {typeof nextChapter === 'string' && nextChapter.includes('chapter') ? nextChapter.split('chapter')[1] : nextChapter}: {nextTitle}
-                <ArrowRight size={18} />
-            </button>
-        </div>
-    );
-};
-
 // ============================================
 // CHAPTER 6 MAIN COMPONENT
 // ============================================
 
 const Chapter6 = () => {
     const [speedRun, setSpeedRun] = useState(false);
+    const [cardUnlocked, setCardUnlocked] = useState(false);
     const navigate = useNavigate();
+
+    // Household Manager Agent card data
+    const householdManagerCard = {
+        id: 'household_manager',
+        name: 'Household Manager Agent',
+        rarity: 'epic',
+        category: 'Household',
+        timeSaved: '4 hrs/mo',
+        moneySaved: '$500+/yr',
+        complexity: 4,
+        powerLevel: 80,
+        prompt: `You are my Household Manager Agent. Your job is to track maintenance, cleaning, and supplies so I don't have to.
+
+MY HOME PROFILE:
+- Type: [House/Apartment]
+- Size: [Sq ft]
+- Residents: [Number]
+- Pets: [Number/Type]
+
+RESPONSIBILITIES:
+1. Create a seasonal maintenance calendar
+2. Build a cleaning schedule (Daily/Weekly/Monthly)
+3. Monitor supply levels and add to grocery list
+4. Remind me of critical tasks (HVAC, filters, smoke detectors)
+
+Ask me for the specific details of my home to build the initial database.`,
+    };
+
+    const handleCardUnlock = (cardId) => {
+        setCardUnlocked(true);
+        // Save to localStorage
+        const unlockedCards = JSON.parse(localStorage.getItem('unlocked_cards') || '[]');
+        if (!unlockedCards.includes(cardId)) {
+            unlockedCards.push(cardId);
+            localStorage.setItem('unlocked_cards', JSON.stringify(unlockedCards));
+        }
+    };
 
     const scrollToCalculator = () => {
         document.getElementById('household-calculator')?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const cleaningAgentPrompt = `You are my Household Cleaning Agent. Your job is to keep my home clean without me having to remember everything.
-
-MY CLEANING SCHEDULE:
-[Paste your Room Schedule Builder output here]
-
-MY HOUSEHOLD:
-- Home type: [House/Apartment/Condo]
-- Bedrooms: [X]
-- Bathrooms: [X]
-- People living here: [X adults, X kids, X pets]
-- Biggest cleaning challenges: [e.g., pet hair, kids' messes, dust]
-
-YOUR RESPONSIBILITIES:
-1. Create a daily/weekly checklist
-2. Remind me of seasonal tasks (e.g., change filters)
-3. Suggest "burst cleaning" sessions when I'm overwhelmed
-4. Help me delegate tasks to other family members
-
-Ask me for any missing details, then generate my first weekly plan.`;
-
-    const maintenanceAgentPrompt = `You are my Home Maintenance Agent. Your job is to prevent expensive repairs by keeping everything running smoothly.
+    const cleaningPrompt = `You are my Cleaning Schedule Agent. Create a realistic cleaning routine for my home.
 
 MY HOME:
-- Age: [Approximate year built]
-- Key systems: [HVAC, Water Heater, Sump Pump, etc.]
-- Last major repairs: [Any recent work done]
+[Paste your Room Schedule Builder output here]
 
-YOUR RESPONSIBILITIES:
-1. Track maintenance schedules for all systems
-2. Remind me to schedule service appointments
-3. Help me troubleshoot simple issues before calling a pro
-4. Keep a log of all maintenance performed
+CONSTRAINTS:
+- I have about 30 mins/day for cleaning on weekdays.
+- I can do 1-2 hours on weekends.
+- I want to avoid "marathon cleaning" sessions.
 
-Generate a 12-month maintenance calendar for my home based on standard recommendations.`;
+OUTPUT:
+1. A daily checklist (morning/evening)
+2. A weekly schedule (e.g., "Monday: Bathrooms", "Tuesday: Floors")
+3. A monthly rotation for deep cleaning tasks
 
-    const supplyAgentPrompt = `You are my Supply Manager Agent. Your job is to ensure we never run out of essentials.
+Format this as a checklist I can print or import into a task manager.`;
 
-MY HOUSEHOLD SUPPLIES TO TRACK:
+    const maintenancePrompt = `You are my Home Maintenance Agent. Build a preventive maintenance calendar for my specific home.
 
-CLEANING:
-- All-purpose cleaner
-- Dish soap
-- Laundry detergent
-- Dishwasher pods
-- Toilet cleaner
-- Glass cleaner
-- Sponges/scrubbers
-- Trash bags (kitchen & small)
+MY HOME DETAILS:
+- Age of home: [Year]
+- HVAC system: [Type/Age]
+- Appliances: [List major ones]
+- Outdoor areas: [Lawn, deck, pool, etc.]
 
-PAPER GOODS:
-- Paper towels
-- Toilet paper
-- Tissues
-- Napkins
-
-PERSONAL CARE:
-- Shampoo/conditioner
-- Body wash
-- Toothpaste
-- [Add your items]
-
-OTHER:
-- Light bulbs
-- Batteries (AA, AAA, 9V)
-- Air fresheners
-- [Add your items]
-
-MY PREFERENCES:
-- Preferred store: [Target/Costco/Amazon/etc.]
-- Budget consciousness: [Price-sensitive/Brand-loyal/Mix]
-- Bulk buying: [Yes, have storage / No, limited space]
-
-YOUR RESPONSIBILITIES:
-1. Monthly check-in: "What's running low?"
-2. Suggest restock list before my regular shopping trip
-3. Track approximate usage rates
-4. Alert me to good deals if I mention price sensitivity
-
-Ask me about my household size and preferences to estimate usage.`;
+Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
+1. Essential maintenance tasks
+2. Estimated cost if DIY vs. Professional
+3. "Red flags" to watch out for
+4. A shopping list for supplies needed for each season`;
 
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 6: Household Management | Agentic AI at Home</title>
-                <meta name="description" content="Master household management with AI-powered prompts and systems" />
+                <title>Operation: Home Base | Agentic AI at Home</title>
+                <meta name="description" content="Automate household chores, maintenance, and supplies." />
             </Helmet>
 
             <SEO
-                title="Household Management - Agentic AI at Home"
-                description="Automate your home operations. Cleaning, maintenance, and supplies."
+                title="Operation: Home Base - Agentic AI at Home"
+                description="The Invisible Load is real. Automate cleaning, maintenance, and supplies."
                 canonical="/part2/chapter3"
             />
             <SpeedRunContext.Provider value={speedRun}>
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
-                        {/* Progress Bar with Part indicator */}
-                        <ChapterProgress
-                            current={6}
-                            total={16}
-                            part={2}
-                            partTitle="Daily Operations"
+                        {/* MISSION BRIEFING */}
+                        <MissionBriefing
+                            title="OPERATION: HOME BASE"
+                            missionNumber={6}
+                            duration="12 min"
+                            briefing="Your home should be a sanctuary, not a source of stress. But the 'Invisible Load' of maintenance, cleaning, and logistics constantly drains your mental battery. Your objective: Establish a Command Center that manages the house for you, turning 'remembering' into 'automated reminding'."
+                            objectives={[
+                                "Calculate Household Chaos",
+                                "Build Cleaning Schedule",
+                                "Establish Maintenance Calendar",
+                                "Launch Command Center"
+                            ]}
+                        />
+
+                        {/* OBJECTIVES */}
+                        <ObjectivesChecklist
+                            operationId="op_6"
+                            primaryObjectives={[
+                                { id: "chaos_calc", label: "Calculate Household Chaos" },
+                                { id: "cleaning_schedule", label: "Build Cleaning Schedule" },
+                                { id: "maintenance_cal", label: "Establish Maintenance Calendar" }
+                            ]}
+                            bonusObjectives={[
+                                { id: "command_center", label: "Launch Command Center Dashboard" }
+                            ]}
                         />
 
                         {/* Author Credibility */}
@@ -930,44 +847,10 @@ Ask me about my household size and preferences to estimate usage.`;
                             chapterNumber={6}
                         />
 
-                        {/* Header */}
-                        <m.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-6"
-                        >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 6</div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                Household Management
-                            </h1>
-                            <p className="text-xl text-slate-400 mb-4">
-                                Your home, running itself—cleaning, maintenance, supplies, all of it
-                            </p>
-
-                            {/* Reading time + Speed Run toggle */}
-                            <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-400 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={14} />
-                                        <span>10 min read</span>
-                                    </div>
-                                    <span>•</span>
-                                    <span className="text-cyan-400">20 min to build your system</span>
-                                </div>
-                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                            </div>
-                        </m.div>
-
-                        {/* TL;DR Card */}
-                        <TLDRCard
-                            stats={[
-                                { value: '4', label: 'pillars of home ops' },
-                                { value: '3', label: 'agents deployed' },
-                                { value: '0', label: 'forgotten chores' },
-                            ]}
-                            primaryCTA="Build My Schedule"
-                            onCTAClick={() => document.getElementById('schedule-builder')?.scrollIntoView({ behavior: 'smooth' })}
-                        />
+                        {/* Speed Run Toggle */}
+                        <div className="flex justify-end mb-6">
+                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                        </div>
 
                         <PasswordGate partNumber={2} chapterNumber={6}>
                             {/* CAPTAIN EFFICIENCY - OPENER */}
@@ -976,7 +859,7 @@ Ask me about my household size and preferences to estimate usage.`;
                                     <CaptainHero
                                         size="md"
                                         pose="default"
-                                        message="We've handled your morning and your meals. Now for the big one: the house itself. It's the silent energy drain—the mental load of remembering filters, lightbulbs, and deep cleaning. Today, we build a 'Command Center' that does the remembering for you. Let's turn your home into a well-oiled machine."
+                                        message="Welcome to the final operation of Part 2. We've conquered mornings and meals. Now, we take the hill: the house itself. The 'Invisible Load'—all those tiny things you have to remember—is about to become visible, manageable, and largely automated. Let's build your Household Command Center."
                                     />
                                 </Suspense>
                             )}
@@ -998,90 +881,97 @@ Ask me about my household size and preferences to estimate usage.`;
                                 </m.div>
                             )}
 
-                            {/* VISUAL: The Invisible Load */}
+                            {/* INVISIBLE LOAD VISUAL */}
                             {!speedRun && <InvisibleLoadVisual />}
 
-                            {/* FRAMEWORK: The 4 Pillars */}
-                            <FourPillarsFramework />
+                            {/* ★ TOOL FIRST: Household Chaos Calculator ★ */}
+                            <section id="household-calculator" className="mb-10">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
+                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Household Chaos</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                </div>
 
-                            {/* ★ TOOL 1: Room Schedule Builder ★ */}
-                            <section id="schedule-builder" className="mb-10">
-                                <RoomScheduleBuilder />
+                                <Suspense fallback={
+                                    <div className="h-64 flex items-center justify-center text-slate-400 bg-slate-800/50 rounded-xl animate-pulse">
+                                        Loading calculator...
+                                    </div>
+                                }>
+                                    <HouseholdChaosCalculator />
+                                </Suspense>
                             </section>
+
+                            {/* THE 4 PILLARS */}
+                            {!speedRun && <FourPillarsFramework />}
+
+                            {/* INTERACTIVE: ROOM SCHEDULE BUILDER */}
+                            <RoomScheduleBuilder />
 
                             {/* PROMPT 1: CLEANING AGENT */}
                             <QuickWin
-                                title="Agent 1: The Cleaning Manager"
+                                title="Agent 1: The Cleaning Scheduler"
                                 setupTime="10 min"
-                                prompt={cleaningAgentPrompt}
+                                prompt={cleaningPrompt}
                             />
 
-                            {/* VISUAL: Maintenance Calendar */}
-                            <MaintenanceCalendar />
+                            {/* VISUAL: MAINTENANCE CALENDAR */}
+                            {!speedRun && <MaintenanceCalendar />}
 
                             {/* PROMPT 2: MAINTENANCE AGENT */}
                             <QuickWin
-                                title="Agent 2: The Maintenance Tracker"
-                                setupTime="5 min"
-                                prompt={maintenanceAgentPrompt}
+                                title="Agent 2: The Maintenance Manager"
+                                setupTime="15 min"
+                                prompt={maintenancePrompt}
                                 variant="secondary"
-                            />
-
-                            {/* PROMPT 3: SUPPLY AGENT */}
-                            <QuickWin
-                                title="Agent 3: The Supply Manager"
-                                setupTime="5 min"
-                                prompt={supplyAgentPrompt}
-                                variant="tertiary"
                             />
 
                             {/* DASHBOARD PREVIEW */}
                             {!speedRun && <CommandCenterDashboard />}
 
+                            {/* CARD UNLOCK - Household Manager Agent */}
+                            <AgentCardUnlock
+                                card={householdManagerCard}
+                                onUnlock={handleCardUnlock}
+                                onComplete={() => console.log('Card added to deck')}
+                                autoReveal={false}
+                            />
+
                             {/* CASE STUDY */}
                             {!speedRun && (
                                 <CaseStudyCard
-                                    name="The Chen Family"
-                                    role="New homeowners, both working full-time"
-                                    problem="Spent every Saturday cleaning, fixing things, and running to the hardware store. Zero relaxation."
-                                    result="Saturdays are now 100% free. The 'Cleaning Manager' assigns 15-min daily tasks, so the mess never piles up."
-                                    timeframe="4 weeks"
-                                    quote="We didn't realize how much the 'invisible load' was weighing us down until it was gone. Our house runs on autopilot now."
+                                    name="Sarah & Mike"
+                                    role="New homeowners"
+                                    problem="Overwhelmed by maintenance. Forgot HVAC filters for 2 years. Constant cleaning battles."
+                                    result="Automated reminders for everything. 'Cleaning Saturday' reduced to 90 mins. Saved $400 on a potential HVAC repair."
+                                    timeframe="3 months"
+                                    quote="Our house used to run us. Now we run the house. The mental space I have now that I'm not constantly scanning for 'what needs to be done' is priceless."
                                 />
                             )}
 
                             {/* SHAREABLE QUOTE */}
                             <ShareableQuote
-                                quote="A home shouldn't be a second job. It should be the place you rest from your first one."
+                                quote="A home is a machine for living. Like any machine, it needs an operating system. You just built yours."
                                 chapter={6}
                             />
-
-                            {/* CAPTAIN EFFICIENCY - CLOSER */}
-                            {!speedRun && (
-                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                                    <CaptainHero
-                                        size="md"
-                                        pose="celebrating"
-                                        message="Look at what you've built! Morning Brief, Meal Planning, and now a full Household Command Center. You have effectively 'outsourced' the mental load of running your home to your AI agents. Take a moment to celebrate. You've just reclaimed hours of your life, every single week."
-                                    />
-                                </Suspense>
-                            )}
 
                             {/* PART 2 CELEBRATION */}
                             <Part2Celebration />
 
-                            {/* CHAPTER COMPLETE */}
-                            <ChapterCompleteWithPartEnd
-                                achievements={[
-                                    'Built Room-by-Room Cleaning Schedule',
-                                    'Set up Cleaning Manager Agent',
-                                    'Set up Maintenance Tracker Agent',
-                                    'Set up Supply Manager Agent',
-                                    'Completed Part 2: Daily Operations',
-                                ]}
-                                nextChapter="/part3/chapter1"
-                                nextTitle="Email & Communications"
-                                nextPart={3}
+                            {/* MISSION COMPLETE */}
+                            <MissionComplete
+                                operationId="op_6"
+                                operationName="HOME BASE"
+                                operationNumber={6}
+                                nextOperationPath="/part3/chapter1"
+                                nextOperationName="INBOX ZERO"
+                                rewards={{
+                                    xp: 300,
+                                    cards: ['Household Manager Agent'],
+                                    achievements: ['home_base_secured', 'part_2_complete']
+                                }}
+                                stats={{
+                                    objectivesCompleted: "4/4",
+                                }}
                             />
 
                             {/* Bottom Navigation */}
