@@ -143,8 +143,9 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
               >
-                Join Captain Efficiency, your scout companion, on an expedition to chart the AI frontier.
-                No coding required. Just you, your guide, and 16 expeditions to automation mastery.
+                Your first companion is already here. Meet Captain Efficiency, your scout guide
+                who'll show you how to recruit a whole team of AI helpers.
+                No coding. Just exploration and discovery.
               </m.p>
 
               <m.div
@@ -376,7 +377,7 @@ export default function SalesPage() {
               <p className="text-slate-300 italic">
                 "We don't make it fun because learning should be easy. We make it fun so you actually <span className="text-yellow-400 font-bold">do</span> it."
               </p>
-              <p className="text-sm text-slate-500 mt-2">— Captain Efficiency</p>
+              <p className="text-sm text-slate-500 mt-2">— Cpt. E</p>
             </div>
           </div>
         </section>
@@ -413,7 +414,7 @@ export default function SalesPage() {
                       <p className="text-green-300 font-bold text-center">
                         "That's how confident we are this works."
                       </p>
-                      <p className="text-slate-400 text-sm text-center mt-1">— Captain Efficiency</p>
+                      <p className="text-slate-400 text-sm text-center mt-1">— Cpt. E</p>
                     </div>
 
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm text-slate-300">
@@ -652,7 +653,7 @@ export default function SalesPage() {
                   "Go to Territory 1 (100% free, no email required)",
                   "Take the AI Experience Quiz to see where you are",
                   "Use the Mental Load Calculator to quantify your chaos",
-                  "See Captain Efficiency's recommendations",
+                  "See Cpt. E's recommendations",
                   "Decide if this system is for you"
                 ]}
               />
@@ -684,7 +685,7 @@ export default function SalesPage() {
                   <p className="text-slate-400 italic text-sm">
                     "These are real results from the DDS system. Your results begin when you unlock the system."
                   </p>
-                  <div className="mt-2 text-cyan-400 font-bold text-sm">— Captain Efficiency</div>
+                  <div className="mt-2 text-cyan-400 font-bold text-sm">— Cpt. E</div>
                 </div>
               </div>
               <div className="flex justify-center">
