@@ -342,75 +342,75 @@ export default function SalesPage() {
         <section className="py-24 px-6 bg-[#0f0f1a]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-400 text-sm font-bold mb-6">
-                ⚡ POWER-UPS UNLOCKED
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/20 border border-amber-500/30 text-amber-400 text-sm font-mono font-bold mb-6">
+                ⚡ COMPANION ABILITIES
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">YOUR LEGENDARY ABILITIES</h2>
-              <p className="text-slate-400">Most courses give you a sword. We give you an army.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">YOUR LEGENDARY TOOLKIT</h2>
+              <p className="text-slate-400">Most courses give you a sword. We give you an entire expedition crew.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6">
               {/* Feature 1 */}
-              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-600/50 hover:border-cyan-500/50 transition-all hover:bg-slate-800/50">
-                <div className="bg-cyan-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-cyan-400 border border-cyan-500/20">
+              <div className="tactical-card p-8 rounded-xl hover:border-cyan-500/50 transition-all group">
+                <div className="bg-cyan-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-cyan-400 border border-cyan-500/30">
                   <Activity size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-100">Recovery-Aware Agent</h3>
-                <p className="text-slate-400 leading-relaxed mb-4">
+                <h3 className="text-xl font-bold mb-4 text-cyan-400 font-mono">Recovery Companion</h3>
+                <p className="text-slate-300 leading-relaxed mb-4">
                   "When your schedule implodes, your AI helps you instantly replan your calendar and recovery."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
-                  <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Sleep/Energy tracking</li>
-                  <li className="flex gap-2"><Check size={16} className="text-cyan-500" /> Red/Yellow/Green day protocols</li>
+                  <li className="flex gap-2"><Check size={16} className="text-cyan-400" /> Sleep/Energy tracking</li>
+                  <li className="flex gap-2"><Check size={16} className="text-cyan-400" /> Red/Yellow/Green protocols</li>
                 </ul>
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-600/50 hover:border-purple-500/50 transition-all hover:bg-slate-800/50">
-                <div className="bg-purple-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-purple-400 border border-purple-500/20">
+              <div className="tactical-card p-8 rounded-xl hover:border-amber-500/50 transition-all group">
+                <div className="bg-amber-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-amber-400 border border-amber-500/30">
                   <Database size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-100">Second Brain Agent</h3>
-                <p className="text-slate-400 leading-relaxed mb-4">
-                  "Upload 50 case files → searchable database indexed by diagnosis, treatment, and outcome."
+                <h3 className="text-xl font-bold mb-4 text-amber-400 font-mono">Second Brain Companion</h3>
+                <p className="text-slate-300 leading-relaxed mb-4">
+                  "Upload 50 documents → searchable database indexed by topic, date, and relevance."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
-                  <li className="flex gap-2"><Check size={16} className="text-purple-500" /> Instant document retrieval</li>
-                  <li className="flex gap-2"><Check size={16} className="text-purple-500" /> Study systems for exams</li>
+                  <li className="flex gap-2"><Check size={16} className="text-amber-400" /> Instant document retrieval</li>
+                  <li className="flex gap-2"><Check size={16} className="text-amber-400" /> Study systems for learning</li>
                 </ul>
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-slate-800/30 backdrop-blur-md p-8 rounded-2xl border border-slate-600/50 hover:border-green-500/50 transition-all hover:bg-slate-800/50">
-                <div className="bg-green-900/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-green-400 border border-green-500/20">
+              <div className="tactical-card p-8 rounded-xl hover:border-green-500/50 transition-all group">
+                <div className="bg-green-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-green-400 border border-green-500/30">
                   <Zap size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-100">Life Strategy System</h3>
-                <p className="text-slate-400 leading-relaxed mb-4">
-                  "Not just automation — a strategic brain that helps you coordinate everything toward your goals."
+                <h3 className="text-xl font-bold mb-4 text-green-400 font-mono">Strategy Companion</h3>
+                <p className="text-slate-300 leading-relaxed mb-4">
+                  "Not just automation — a strategic brain that coordinates everything toward your goals."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
-                  <li className="flex gap-2"><Check size={16} className="text-green-500" /> Multi-agent workflows</li>
-                  <li className="flex gap-2"><Check size={16} className="text-green-500" /> Goal Hierarchy alignment</li>
+                  <li className="flex gap-2"><Check size={16} className="text-green-400" /> Multi-companion workflows</li>
+                  <li className="flex gap-2"><Check size={16} className="text-green-400" /> Goal Hierarchy alignment</li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* WHY RPG FORMAT SECTION */}
-        <section className="py-20 px-6 bg-[#0f0f1a]">
+        {/* WHY EXPEDITION FORMAT SECTION */}
+        <section className="py-20 px-6 bg-[#0f0f1a] bg-grid-pattern">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-900/20 border border-pink-500/30 text-pink-400 text-sm font-bold mb-6">
-                🎮 WHY THE GAME FORMAT?
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/20 border border-amber-500/30 text-amber-400 text-sm font-mono font-bold mb-6">
+                🎮 WHY THE EXPEDITION FORMAT?
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">This Isn't a Gimmick. It's Strategy.</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 font-mono">This Isn't a Gimmick. It's Strategy.</h2>
               <p className="text-slate-400 max-w-2xl mx-auto">
-                Most courses are boring, and boring courses don't get finished. We designed this as a quest because...
+                Most courses are boring, and boring courses don't get finished. We designed this as an expedition because...
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4">
               {[
                 {
                   emoji: '🧠',
@@ -439,11 +439,11 @@ export default function SalesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="p-6 bg-slate-800/30 rounded-xl border border-slate-700/50"
+                  className="tactical-card p-6 rounded-lg"
                 >
                   <span className="text-3xl mb-3 block">{item.emoji}</span>
-                  <h3 className="font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-slate-400 text-sm">{item.desc}</p>
+                  <h3 className="font-bold text-amber-400 mb-2 font-mono">{item.title}</h3>
+                  <p className="text-slate-300 text-sm">{item.desc}</p>
                 </m.div>
               ))}
             </div>
@@ -1058,22 +1058,26 @@ export default function SalesPage() {
         </section>
 
         {/* FAQ SECTION */}
-        <section className="py-24 px-6 bg-[#0f0f1a] border-t border-slate-800/50">
+        <section className="py-24 px-6 bg-[#0f0f1a] border-t border-slate-800/50 bg-grid-pattern">
           <div className="max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-600 text-slate-300 text-sm font-bold mb-6 mx-auto flex justify-center">
-              📜 QUEST GUIDE
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-400 text-sm font-mono font-bold mb-6 mx-auto flex justify-center">
+              🧭 EXPEDITION GUIDE
             </div>
-            <h2 className="text-3xl font-bold mb-12 text-center">COMMON QUESTIONS</h2>
-            <div className="space-y-8">
+            <h2 className="text-3xl font-bold mb-12 text-center font-mono">COMMON QUESTIONS</h2>
+            <div className="space-y-4">
               {[
-                { q: "Do I need to know how to code?", a: "No. The course teaches you how to use no-code tools and natural language to build your agents." },
-                { q: "Is my data secure?", a: "Yes. Part 1 is entirely dedicated to privacy, security, and choosing local-first tools where possible." },
-                { q: "What if I use Android/Windows?", a: "The system is platform-agnostic. We use tools that work on all major operating systems." },
-                { q: "How much time does it take to set up?", a: "You can build your first agent (Morning Agent) in about 30 minutes. The full system is built progressively over 30 days." }
+                { q: "Do I need to know how to code?", a: "No. All expeditions use no-code tools and natural language. If you can type a message, you can build a Companion." },
+                { q: "Is my data secure?", a: "Absolutely. Territory 1 is entirely dedicated to privacy, security, and choosing local-first tools. Your data stays yours." },
+                { q: "What if I use Android/Windows?", a: "The system is platform-agnostic. All tools work on Mac, Windows, Linux, iOS, and Android." },
+                { q: "How much time does it take?", a: "Your first Companion (Morning Agent) takes about 30 minutes. The full expedition unfolds over 30 days at your own pace." },
+                { q: "What AI tools do I need?", a: "We cover free and paid options. You can start with just ChatGPT (free tier), but we also teach Claude, Gemini, and local models for privacy." },
+                { q: "What are 'Companions' exactly?", a: "Companions are AI agents you build to handle specific life tasks—like a Morning Companion for routines, or a Kitchen Companion for meal planning. Think of them as your digital staff." },
+                { q: "Can I track my progress?", a: "Yes! You earn Discovery Points (DP) for completing expeditions, unlock ranks from Newcomer to Commander, and can see your progress on the Territory Map." },
+                { q: "Is there a community?", a: "We're building a Discord for explorers to share setups, troubleshoot, and celebrate wins. Early access for purchasers coming soon." }
               ].map((faq, i) => (
-                <div key={i} className="bg-slate-800/30 backdrop-blur-sm p-6 rounded-xl border border-slate-600/50 hover:bg-slate-800/50 transition-colors">
-                  <h3 className="font-bold text-lg mb-2 text-slate-200">{faq.q}</h3>
-                  <p className="text-slate-400">{faq.a}</p>
+                <div key={i} className="tactical-card p-6 rounded-lg hover:border-amber-500/30 transition-all">
+                  <h3 className="font-bold text-lg mb-2 text-amber-400 font-mono">{faq.q}</h3>
+                  <p className="text-slate-300">{faq.a}</p>
                 </div>
               ))}
             </div>
