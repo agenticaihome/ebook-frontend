@@ -62,8 +62,8 @@ const AchievementBadge = ({ achievement, unlocked }) => (
     <m.div
         whileHover={{ scale: 1.05 }}
         className={`p-3 rounded-xl text-center transition-all ${unlocked
-                ? 'bg-gradient-to-br from-yellow-900/30 to-orange-900/20 border border-yellow-500/30'
-                : 'bg-slate-800/30 border border-slate-700/30 opacity-50 grayscale'
+            ? 'bg-gradient-to-br from-yellow-900/30 to-orange-900/20 border border-yellow-500/30'
+            : 'bg-slate-800/30 border border-slate-700/30 opacity-50 grayscale'
             }`}
     >
         <div className="text-2xl mb-1">{achievement.icon}</div>
@@ -157,14 +157,13 @@ const Dashboard = () => {
     const [completedGames, setCompletedGames] = useState([]);
     const [streak, setStreak] = useState(0);
     const [showSettings, setShowSettings] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // Auth check
+    // Check login status (but don't redirect - dashboard is public)
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (!token) {
-            navigate('/login');
-        }
-    }, [navigate]);
+        setIsLoggedIn(!!token);
+    }, []);
 
     // Load progress
     useEffect(() => {
@@ -260,35 +259,49 @@ const Dashboard = () => {
                             </div>
 
                             {/* Settings Toggle */}
-                            <button
-                                onClick={() => setShowSettings(!showSettings)}
-                                className="w-full flex items-center justify-between p-3 bg-slate-800/30 hover:bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm transition-colors"
-                            >
-                                <span className="flex items-center gap-2 text-slate-300">
-                                    <Settings size={16} />
-                                    Settings
-                                </span>
-                                <ChevronRight className={`text-slate-500 transition-transform ${showSettings ? 'rotate-90' : ''}`} size={16} />
-                            </button>
-
-                            {showSettings && (
-                                <m.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    className="space-y-3"
-                                >
-                                    <ChangePasswordForm />
+                            {isLoggedIn ? (
+                                <>
                                     <button
-                                        onClick={() => {
-                                            localStorage.removeItem('token');
-                                            navigate('/login');
-                                        }}
-                                        className="w-full flex items-center justify-center gap-2 p-3 bg-red-900/20 hover:bg-red-900/30 border border-red-500/30 rounded-xl text-red-400 text-sm font-medium transition-colors"
+                                        onClick={() => setShowSettings(!showSettings)}
+                                        className="w-full flex items-center justify-between p-3 bg-slate-800/30 hover:bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm transition-colors"
                                     >
-                                        <LogOut size={16} />
-                                        Log Out
+                                        <span className="flex items-center gap-2 text-slate-300">
+                                            <Settings size={16} />
+                                            Settings
+                                        </span>
+                                        <ChevronRight className={`text-slate-500 transition-transform ${showSettings ? 'rotate-90' : ''}`} size={16} />
                                     </button>
-                                </m.div>
+
+                                    {showSettings && (
+                                        <m.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            className="space-y-3"
+                                        >
+                                            <ChangePasswordForm />
+                                            <button
+                                                onClick={() => {
+                                                    localStorage.removeItem('token');
+                                                    navigate('/login');
+                                                }}
+                                                className="w-full flex items-center justify-center gap-2 p-3 bg-red-900/20 hover:bg-red-900/30 border border-red-500/30 rounded-xl text-red-400 text-sm font-medium transition-colors"
+                                            >
+                                                <LogOut size={16} />
+                                                Log Out
+                                            </button>
+                                        </m.div>
+                                    )}
+                                </>
+                            ) : (
+                                <Link to="/login">
+                                    <m.button
+                                        whileHover={{ scale: 1.01 }}
+                                        whileTap={{ scale: 0.99 }}
+                                        className="w-full flex items-center justify-center gap-2 p-3 bg-cyan-600 hover:bg-cyan-500 rounded-xl text-white text-sm font-bold transition-colors"
+                                    >
+                                        Sign In to Save Progress
+                                    </m.button>
+                                </Link>
                             )}
                         </div>
                     </div>
