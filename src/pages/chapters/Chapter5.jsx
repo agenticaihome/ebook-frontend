@@ -617,6 +617,11 @@ Two AI companions working together can eliminate both problems: one plans the me
                                 </p>
                             </NewbieBox>
 
+                            {/* QUICK ACCESS TO ALL AI TOOLS */}
+                            <section className="mb-10">
+                                <AIToolLinks />
+                            </section>
+
                             {/* Before/After */}
                             <BeforeAfter
                                 before={[

@@ -866,6 +866,11 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                             {/* INVISIBLE LOAD VISUAL */}
                             {!blitzMode && <InvisibleLoadVisual />}
 
+                            {/* QUICK ACCESS TO ALL AI TOOLS */}
+                            <section className="mb-10">
+                                <AIToolLinks />
+                            </section>
+
                             {/* ★ TOOL FIRST: Household Chaos Calculator ★ */}
                             <section id="household-calculator" className="mb-10">
                                 <div className="flex items-center gap-2 mb-4">

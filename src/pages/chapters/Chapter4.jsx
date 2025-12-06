@@ -740,6 +740,11 @@ The Morning Brief takes 30 seconds to read but saves 30+ minutes of context-swit
 One quick look. Full clarity. No anxiety.`}
                         />
 
+                        {/* QUICK ACCESS TO ALL AI TOOLS */}
+                        <section className="mb-10">
+                            <AIToolLinks />
+                        </section>
+
                         <PasswordGate partNumber={2} chapterNumber={4}>
                             {/* CAPTAIN EFFICIENCY - Welcome */}
                             {!blitzMode && (

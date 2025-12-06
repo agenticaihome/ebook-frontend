@@ -794,6 +794,11 @@ const Chapter3 = () => {
                             onCTAClick={scrollToAudit}
                         />
 
+                        {/* QUICK ACCESS TO ALL AI TOOLS */}
+                        <section className="mb-10">
+                            <AIToolLinks />
+                        </section>
+
                         {/* CAPTAIN EFFICIENCY - OPENER */}
                         {!blitzMode && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
