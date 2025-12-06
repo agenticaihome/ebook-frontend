@@ -95,7 +95,7 @@ const BlitzModeToggle = ({ enabled, onToggle }) => (
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Blitz Mode: ON' : 'Blitz Mode: OFF'}
+        {enabled ? 'Professional Mode: ON' : 'Professional Mode: OFF'}
     </button>
 );
 
@@ -737,7 +737,7 @@ const Chapter2 = () => {
                             </Suspense>
                         )}
 
-                        {/* Blitz Mode Notice */}
+                        {/* Professional Mode Notice */}
                         {blitzMode && (
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
@@ -746,10 +746,10 @@ const Chapter2 = () => {
                             >
                                 <div className="flex items-center gap-2 text-teal-400">
                                     <Zap size={18} />
-                                    <span className="font-bold">Blitz Mode Active</span>
+                                    <span className="font-bold">Professional Mode Active</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">
-                                    Showing only essential frameworks and prompts. Toggle off for full intel.
+                                    Showing only essential frameworks and prompts. Toggle off for full content.
                                 </p>
                             </motion.div>
                         )}

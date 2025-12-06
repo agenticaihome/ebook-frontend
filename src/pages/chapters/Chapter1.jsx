@@ -44,7 +44,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Blitz Mode: ON' : 'Blitz Mode: OFF'}
+        {enabled ? 'Professional Mode: ON' : 'Professional Mode: OFF'}
     </button>
 );
 
@@ -360,7 +360,7 @@ The tools are coming. You're learning how to lead them.`}
                             </Suspense>
                         )}
 
-                        {/* Blitz Mode Notice */}
+                        {/* Professional Mode Notice */}
                         {speedRun && (
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
@@ -369,10 +369,10 @@ The tools are coming. You're learning how to lead them.`}
                             >
                                 <div className="flex items-center gap-2 text-teal-400">
                                     <Zap size={18} />
-                                    <span className="font-bold">Blitz Mode Active</span>
+                                    <span className="font-bold">Professional Mode Active</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">
-                                    Showing only essential intel and Companion unlocks. Toggle off for full expedition experience.
+                                    Showing only essential content and prompts. Toggle off for full experience with stories and examples.
                                 </p>
                             </motion.div>
                         )}
