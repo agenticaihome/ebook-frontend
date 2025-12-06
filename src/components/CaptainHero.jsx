@@ -112,6 +112,10 @@ const CaptainHero = ({
                         alt="Captain Efficiency"
                         className="relative z-10 w-full h-full object-contain mix-blend-normal"
                         loading={loading}
+                        width={size === 'lg' ? 256 : size === 'md' ? 192 : 128}
+                        height={size === 'lg' ? 256 : size === 'md' ? 192 : 128}
+                        fetchpriority={loading === 'eager' ? 'high' : 'low'}
+                        decoding={loading === 'eager' ? 'sync' : 'async'}
                         style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))' }}
                     />
                 )}

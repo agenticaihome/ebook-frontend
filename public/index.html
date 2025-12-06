@@ -8,11 +8,18 @@
   <meta http-equiv="Content-Security-Policy"
     content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://ebook-backend-production-8f68.up.railway.app https://api.ergoplatform.com https://api.stripe.com https://www.google-analytics.com; img-src 'self' data: https://agenticaihome.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com;">
 
-  <!-- Fonts & Preloads -->
+  <!-- DNS Prefetch & Preconnect for Third Parties -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts with display=swap for FOUT instead of FOIT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/assets/captain-pointing-transparent.webp" type="image/webp">
+
+  <!-- Critical LCP Image Preloads -->
+  <link rel="preload" as="image" href="/assets/captain-pointing-transparent.webp" type="image/webp"
+    fetchpriority="high">
 
   <!-- Primary Meta Tags -->
   <title>Agentic AI at Home - Reclaim 10 Hours/Week with AI Agents</title>
@@ -41,8 +48,8 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDYN0E69MT"></script>
+  <!-- Google tag (gtag.js) - Deferred to avoid render-blocking -->
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-QDYN0E69MT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
