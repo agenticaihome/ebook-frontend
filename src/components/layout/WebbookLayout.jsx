@@ -171,6 +171,14 @@ const WebbookLayout = ({ children }) => {
                 Skip to content
             </a>
 
+            {/* Scroll Progress Indicator */}
+            <div className="fixed top-0 left-0 right-0 z-[100] h-1 bg-slate-900/50">
+                <div
+                    className="h-full bg-gradient-to-r from-amber-500 to-orange-500 shadow-lg shadow-amber-500/30 transition-all duration-150 ease-out"
+                    style={{ width: `${Math.min(scrollProgress * 100, 100)}%` }}
+                />
+            </div>
+
             {/* Sidebar Navigation */}
             <m.aside
                 initial={{ width: 280 }}
