@@ -15,6 +15,7 @@ import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+import AIToolLinks from '../../components/AIToolLinks';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -71,7 +72,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
+        {enabled ? 'Professional Mode: ON' : 'Professional Mode: OFF'}
     </button>
 );
 
@@ -1095,12 +1096,12 @@ Keep responses brief - I'm probably multitasking!`}
                         />
 
                     </PasswordGate>
-                <ChapterNavigation
-                    previousChapter="/part5/chapter1"
-                    nextChapter="/part5/chapter3"
-                    partNumber={5}
-                    chapterNumber={2}
-                />
+                    <ChapterNavigation
+                        previousChapter="/part5/chapter1"
+                        nextChapter="/part5/chapter3"
+                        partNumber={5}
+                        chapterNumber={2}
+                    />
 
 
 

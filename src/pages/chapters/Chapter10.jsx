@@ -15,6 +15,7 @@ import {
 // Lazy load interactive components
 const HealthAuditCalculator = React.lazy(() => import('../../components/HealthAuditCalculator'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+import AIToolLinks from '../../components/AIToolLinks';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -71,7 +72,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
+        {enabled ? 'Professional Mode: ON' : 'Professional Mode: OFF'}
     </button>
 );
 

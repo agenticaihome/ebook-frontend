@@ -19,6 +19,7 @@ import MissionBriefing from '../../components/gamification/MissionBriefing';
 import MissionComplete from '../../components/gamification/MissionComplete';
 import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
+import AIToolLinks from '../../components/AIToolLinks';
 
 // Lazy load interactive components
 const EmailVolumeCalculator = React.lazy(() => import('../../components/EmailVolumeCalculator'));
@@ -57,7 +58,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
+        {enabled ? 'Professional Mode: ON' : 'Professional Mode: OFF'}
     </button>
 );
 

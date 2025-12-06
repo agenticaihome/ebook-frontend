@@ -13,6 +13,7 @@ import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+import AIToolLinks from '../../components/AIToolLinks';
 
 // ============================================
 // REUSABLE COMPONENTS
