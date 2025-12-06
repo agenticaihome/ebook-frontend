@@ -666,7 +666,7 @@ const Chapter2 = () => {
                         'Execute the 20-Minute Task Elimination Protocol',
                     ]}
                     rewards={{
-                        xp: 100,
+                        dp: 100,
                         cards: 2,
                         cardNames: ['Task Delegate Agent', 'AI Stack Advisor']
                     }}

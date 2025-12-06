@@ -928,6 +928,11 @@ OUTPUT FORMAT:
                                 />
                             )}
 
+                            {/* QUICK ACCESS TO ALL AI TOOLS */}
+                            <section className="mb-10">
+                                <AIToolLinks />
+                            </section>
+
                             {/* SHAREABLE QUOTE */}
                             <ShareableQuote
                                 quote="Your inbox is a to-do list created by other people. Don't let them dictate your day."
@@ -942,7 +947,7 @@ OUTPUT FORMAT:
                                 nextOperationPath="/part3/chapter2"
                                 nextOperationName="CALENDAR DEFENSE"
                                 rewards={{
-                                    xp: 350,
+                                    dp: 350,
                                     cards: ['Email Triage Agent'],
                                     achievements: ['inbox_zero_hero']
                                 }}
