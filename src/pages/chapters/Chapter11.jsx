@@ -18,6 +18,13 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
 import FAQSection, { chapter11FAQs } from '../../components/FAQSection';
 
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import IntelReport from '../../components/gamification/IntelReport';
+
 // ============================================
 // SPEED RUN CONTEXT
 // ============================================
@@ -91,7 +98,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -107,7 +114,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-500 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -839,6 +846,9 @@ Help me build a network that gives more than it takes.`;
                             </div>
                         </motion.div>
 
+                        {/* FUTURE-PROOF BANNER */}
+                        <FutureProofBanner />
+
                         {/* TL;DR Card */}
                         <TLDRCard
                             stats={[
@@ -862,6 +872,22 @@ Help me build a network that gives more than it takes.`;
                                 </Suspense>
                             )}
 
+                            {/* INTEL REPORT */}
+                            {!speedRun && (
+                                <IntelReport
+                                    title="THE RELATIONSHIP REALITY"
+                                    classification="LEVEL 11"
+                                    defaultExpanded={false}
+                                    content={`This chapter is personal, Explorer.
+
+We're not "optimizing" relationships—that's missing the point entirely. But we ARE being intentional about the people who matter most.
+
+Your AI agent can't love people for you. But it CAN remind you about important dates, help you maintain traditions, and ensure the relationships that matter don't fade from neglect.
+
+This isn't about efficiency. It's about presence.`}
+                                />
+                            )}
+
                             {/* Speed Run Notice */}
                             {speedRun && (
                                 <motion.div
@@ -871,10 +897,10 @@ Help me build a network that gives more than it takes.`;
                                 >
                                     <div className="flex items-center gap-2 text-rose-400">
                                         <Zap size={18} />
-                                        <span className="font-bold">Speed Run Mode</span>
+                                        <span className="font-bold">Professional Mode Active</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts. Toggle off for relationship mapping tools.
+                                        Showing only essential prompts. Toggle off for full expedition experience.
                                     </p>
                                 </motion.div>
                             )}
