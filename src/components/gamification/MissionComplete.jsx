@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Trophy, Star, Zap, ArrowRight, Award, Clock, Target,
@@ -113,6 +114,7 @@ const MissionComplete = ({
 }) => {
     const [stage, setStage] = useState('celebrating'); // 'celebrating', 'rewards', 'ready'
     const [showConfetti, setShowConfetti] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Progress through stages
@@ -141,7 +143,7 @@ const MissionComplete = ({
     const handleContinue = () => {
         onContinue?.();
         if (nextOperationPath) {
-            window.location.href = nextOperationPath;
+            navigate(nextOperationPath);
         }
     };
 
