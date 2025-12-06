@@ -465,6 +465,9 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
                     <Target size={16} />
                     Remember the task you logged in Discovery 1? Let's delegate it now.
                 </p>
+                <p className="text-yellow-300/70 text-xs mt-2 italic">
+                    Didn't write one down? No problem! Try: "Remember to water plants every Sunday" or "Check kids' school calendar each morning"
+                </p>
             </div>
 
             <div className="space-y-4">

@@ -87,6 +87,29 @@ const FAQSection = ({ title = "Common Questions", faqs, className = '' }) => {
 export default FAQSection;
 
 // Pre-built FAQ sets for each chapter
+export const chapter3FAQs = [
+    {
+        question: "Should I actually be worried about AI privacy?",
+        answer: "For personal use (meal planning, morning briefs, schedules), risk is low. The data you share isn't valuable to hackers. But avoid sharing: passwords, financial account numbers, Social Security numbers, or truly sensitive business secrets. The 3-Tier system helps you decide what's safe."
+    },
+    {
+        question: "What's the absolute minimum I need to do?",
+        answer: "One 30-second step: Turn off chat history/training in your AI tool's settings. That's it. This prevents your conversations from training future models. The Privacy Lockdown section shows you exactly where to click for each tool."
+    },
+    {
+        question: "Is it safe to use my real name and location?",
+        answer: "First names and general locations (city-level) are fine for personal use. Avoid: full home addresses, phone numbers, or any info that could be used for identity theft. 'I live in Austin and my name is Sarah' is safe. 'My SSN is 123-45-6789' is not."
+    },
+    {
+        question: "What if I already shared sensitive info?",
+        answer: "Don't panic. Delete that conversation, clear your chat history, and move forward with better habits. Most AI tools don't permanently store individual conversations once you've opted out of training. The risk is low but not zero."
+    },
+    {
+        question: "Which AI tool is most private?",
+        answer: "Claude (Anthropic) currently has the strongest privacy defaults—it doesn't train on your data by default. ChatGPT requires you to opt out. Gemini is tied to your Google account. But ALL cloud AI tools process your data on their servers. For truly sensitive work, consider local AI tools (not covered in this guide)."
+    }
+];
+
 export const chapter4FAQs = [
     {
         question: "What if I don't wake up with my phone nearby?",

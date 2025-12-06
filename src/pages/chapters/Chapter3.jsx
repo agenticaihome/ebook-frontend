@@ -21,6 +21,7 @@ import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter3FAQs } from '../../components/FAQSection';
 
 // Lazy load interactive components
 const PrivacyAssessment = React.lazy(() => import('../../components/PrivacyAssessment'));
@@ -963,6 +964,13 @@ const Chapter3 = () => {
                                 />
                             </Suspense>
                         )}
+
+                        {/* FAQ SECTION */}
+                        <FAQSection
+                            title="Privacy & Security Questions"
+                            faqs={chapter3FAQs}
+                            className="mb-10"
+                        />
 
                         {/* MISSION COMPLETE */}
                         <MissionComplete
