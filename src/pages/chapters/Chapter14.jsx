@@ -18,6 +18,10 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
 import FAQSection, { chapter14FAQs } from '../../components/FAQSection';
 
+// Game Components
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import IntelReport from '../../components/gamification/IntelReport';
+
 // ============================================
 // SPEED RUN CONTEXT
 // ============================================
@@ -107,7 +111,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-500 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -255,7 +259,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
         </div>
 
         <button className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
-            Continue to Chapter {nextChapter}: {nextTitle}
+            Continue to Discovery {nextChapter}: {nextTitle}
             <ArrowRight size={18} />
         </button>
     </div>
