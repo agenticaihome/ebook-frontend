@@ -50,21 +50,6 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
     </div>
 );
 
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
-
 const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
@@ -107,7 +92,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -212,7 +197,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
                 <CheckCircle className="text-green-400" size={24} />
             </div>
             <div>
-                <span className="text-green-400 font-bold block">Chapter 13 Complete</span>
+                <span className="text-green-400 font-bold block">Discovery 13 Complete</span>
                 <span className="text-slate-400 text-sm">You're 81% of the way there!</span>
             </div>
         </div>
@@ -237,7 +222,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
 );
 
 // ============================================
-// CHAPTER 13 SPECIFIC COMPONENTS
+// Discovery 13 SPECIFIC COMPONENTS
 // ============================================
 
 // Part 5 Intro Banner
@@ -712,7 +697,7 @@ const WeeklyReviewFramework = () => {
 };
 
 // ============================================
-// CHAPTER 13 MAIN COMPONENT
+// Discovery 13 MAIN COMPONENT
 // ============================================
 
 const Chapter13 = () => {
@@ -886,7 +871,7 @@ Help me continuously improve my Life Operating System.`;
     return (
         <>
             <Helmet>
-                <title>Chapter 13: Your Life OS | Agentic AI at Home</title>
+                <title>Discovery 13: Your Life OS | The Agentic AI Adventure</title>
                 <meta name="description" content="Bringing it all together into a complete life operating system" />
             </Helmet>
 
@@ -914,7 +899,7 @@ Help me continuously improve my Life Operating System.`;
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-6"
                         >
-                            <div className="text-teal-400 font-mono text-sm mb-2">Chapter 13</div>
+                            <div className="text-teal-400 font-mono text-sm mb-2">Discovery 13</div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                 Life Operating System
                             </h1>

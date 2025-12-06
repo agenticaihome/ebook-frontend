@@ -35,20 +35,6 @@ const SpeedRunContext = createContext(false);
 // REUSABLE COMPONENTS
 // ============================================
 
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
 
 const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
@@ -67,7 +53,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -192,12 +178,12 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
 );
 
 // ============================================
-// CHAPTER 7 SPECIFIC COMPONENTS
+// Discovery 7 SPECIFIC COMPONENTS
 // ============================================
 
 // Part 3 Intro Banner
 const Part3Intro = () => (
-    <m.div
+    <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-purple-900/40 via-indigo-900/30 to-purple-900/40 rounded-2xl p-6 border border-purple-500/40 backdrop-blur-sm mb-8 relative overflow-hidden"
@@ -219,7 +205,7 @@ const Part3Intro = () => (
                 </p>
             </div>
         </div>
-    </m.div>
+    </motion.div>
 );
 
 // Inbox Anxiety Visual
@@ -245,22 +231,22 @@ const InboxAnxietyVisual = () => {
     return (
         <div className="relative bg-gradient-to-br from-red-900/20 via-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-red-500/30 backdrop-blur-sm mb-8 overflow-hidden">
             {/* Animated notification badge */}
-            <m.div
+            <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 className="absolute top-4 right-4"
             >
                 <div className="relative">
                     <Mail className="text-slate-500" size={32} />
-                    <m.div
+                    <motion.div
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ repeat: Infinity, duration: 2 }}
                         className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center"
                     >
                         {notificationCount}
-                    </m.div>
+                    </motion.div>
                 </div>
-            </m.div>
+            </motion.div>
 
             <div className="max-w-lg">
                 <h2 className="text-2xl font-bold text-white mb-4">
@@ -269,7 +255,7 @@ const InboxAnxietyVisual = () => {
 
                 <div className="space-y-2 mb-6">
                     {anxietyTriggers.map((trigger, i) => (
-                        <m.div
+                        <motion.div
                             key={i}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -285,7 +271,7 @@ const InboxAnxietyVisual = () => {
                                         'bg-blue-500'
                                 }`} />
                             <span className="text-slate-300 text-sm">{trigger.text}</span>
-                        </m.div>
+                        </motion.div>
                     ))}
                 </div>
 
@@ -320,7 +306,7 @@ const EmailStatsImpact = () => {
     return (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {stats.map((stat, i) => (
-                <m.div
+                <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -331,7 +317,7 @@ const EmailStatsImpact = () => {
                         {stat.value}<span className="text-xl">{stat.unit}</span>
                     </div>
                     <div className="text-slate-400 text-xs mt-1">{stat.label}</div>
-                </m.div>
+                </motion.div>
             ))}
         </div>
     );
@@ -397,7 +383,7 @@ const TriageMatrix = () => {
 
             <div className="grid grid-cols-2 gap-4">
                 {quadrants.map((q, i) => (
-                    <m.div
+                    <motion.div
                         key={i}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -417,7 +403,7 @@ const TriageMatrix = () => {
                                 </li>
                             ))}
                         </ul>
-                    </m.div>
+                    </motion.div>
                 ))}
             </div>
 
@@ -572,7 +558,7 @@ const UnsubscribeBlitz = () => {
             </div>
 
             {completedCount === categories.length && (
-                <m.div
+                <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="p-4 bg-green-900/30 rounded-xl border border-green-500/40 text-center"
@@ -580,7 +566,7 @@ const UnsubscribeBlitz = () => {
                     <MailCheck className="text-green-400 mx-auto mb-2" size={24} />
                     <p className="text-green-400 font-bold">Unsubscribe blitz complete!</p>
                     <p className="text-slate-400 text-sm">You'll receive ~{estimatedSaved} fewer emails per week.</p>
-                </m.div>
+                </motion.div>
             )}
         </div>
     );
@@ -641,7 +627,7 @@ const EmailBoundariesCard = () => {
 };
 
 // ============================================
-// CHAPTER 7 MAIN COMPONENT
+// Discovery 7 MAIN COMPONENT
 // ============================================
 
 const Chapter7 = () => {
@@ -771,12 +757,12 @@ OUTPUT FORMAT:
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Operation: Inbox Zero | Agentic AI at Home</title>
+                <title>EXPEDITION: Inbox Zero | The Agentic AI Adventure</title>
                 <meta name="description" content="Reclaim your attention from the email onslaught." />
             </Helmet>
 
             <SEO
-                title="Operation: Inbox Zero - Agentic AI at Home"
+                title="EXPEDITION: Inbox Zero - The Agentic AI Adventure"
                 description="Stop drowning in email. Use AI to triage, draft, and manage your inbox."
                 canonical="/part3/chapter1"
             />
@@ -789,7 +775,7 @@ OUTPUT FORMAT:
 
                         {/* MISSION BRIEFING */}
                         <MissionBriefing
-                            title="OPERATION: INBOX ZERO"
+                            title="EXPEDITION: INBOX ZERO"
                             missionNumber={7}
                             duration="15 min"
                             briefing="Email is the 'to-do list that other people write for you.' It's a constant stream of demands on your attention. Your objective: Deploy an AI-powered triage system that filters the noise, drafts the responses, and protects your focus."
@@ -815,7 +801,7 @@ OUTPUT FORMAT:
                         />
 
                         {/* Author Credibility */}
-                        
+
 
                         {/* Chapter Navigation */}
                         <ChapterNavigation
@@ -844,7 +830,7 @@ OUTPUT FORMAT:
 
                             {/* Speed Run Notice */}
                             {speedRun && (
-                                <m.div
+                                <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
@@ -856,7 +842,7 @@ OUTPUT FORMAT:
                                     <p className="text-slate-400 text-sm mt-1">
                                         Showing only the essential prompts and tools. Toggle off to see the full chapter.
                                     </p>
-                                </m.div>
+                                </motion.div>
                             )}
 
                             {/* INBOX ANXIETY VISUAL */}

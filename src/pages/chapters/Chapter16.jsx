@@ -42,23 +42,8 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
     </div>
 );
 
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
-
 // ============================================
-// CHAPTER 16 SPECIFIC COMPONENTS
+// Discovery 16 SPECIFIC COMPONENTS
 // ============================================
 
 // Confetti Animation Component
@@ -487,7 +472,7 @@ const FutureVision = () => {
 const CallToAction = () => {
     const [copied, setCopied] = useState(false);
 
-    const shareText = "I just completed Agentic AI at Home and built a Life Operating System with 20+ AI agents. 7-8 hours saved weekly, $350/month in savings. The future is here. 🚀";
+    const shareText = "I just completed The Agentic AI Adventure and built a Life Operating System with 20+ AI agents. 7-8 hours saved weekly, $350/month in savings. The future is here. 🚀";
 
     const handleCopy = () => {
         navigator.clipboard.writeText(shareText);
@@ -550,7 +535,7 @@ const FinalCelebration = () => (
         </h2>
 
         <p className="text-xl text-slate-300 mb-6 max-w-2xl mx-auto">
-            You've completed <span className="text-yellow-400 font-bold">Agentic AI at Home</span>.
+            You've completed <span className="text-yellow-400 font-bold">The Agentic AI Adventure</span>.
             You're no longer just surviving the chaos—you're <span className="text-green-400 font-bold">thriving</span> because of a system.
         </p>
 
@@ -576,7 +561,7 @@ const FinalCelebration = () => (
 );
 
 // ============================================
-// CHAPTER 16 MAIN COMPONENT
+// Discovery 16 MAIN COMPONENT
 // ============================================
 
 const Chapter16 = () => {
@@ -590,7 +575,7 @@ const Chapter16 = () => {
     return (
         <>
             <Helmet>
-                <title>Chapter 16: Your New Life | Agentic AI at Home</title>
+                <title>Discovery 16: Your New Life | The Agentic AI Adventure</title>
                 <meta name="description" content="The grand finale. See your transformation: 7-8 hours saved weekly, $350/month in savings, 20+ agents working for you. Your new life begins now." />
             </Helmet>
 

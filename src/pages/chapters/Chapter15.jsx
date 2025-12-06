@@ -48,21 +48,6 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
     </div>
 );
 
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
-
 const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
@@ -105,7 +90,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -242,7 +227,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle, isFinalChapter 
                 <CheckCircle className="text-green-400" size={24} />
             </div>
             <div>
-                <span className="text-green-400 font-bold block">Chapter 15 Complete</span>
+                <span className="text-green-400 font-bold block">Discovery 15 Complete</span>
                 <span className="text-slate-400 text-sm">You're 93% of the way there!</span>
             </div>
         </div>
@@ -267,7 +252,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle, isFinalChapter 
 );
 
 // ============================================
-// CHAPTER 15 SPECIFIC COMPONENTS
+// Discovery 15 SPECIFIC COMPONENTS
 // ============================================
 
 // Common Problems Visual
@@ -652,7 +637,7 @@ const WhenToStartFresh = () => {
 };
 
 // ============================================
-// CHAPTER 15 MAIN COMPONENT
+// Discovery 15 MAIN COMPONENT
 // ============================================
 
 const Chapter15 = () => {
@@ -665,7 +650,7 @@ const Chapter15 = () => {
     return (
         <SpeedRunContext.Provider value={speedRun}>
             <Helmet>
-                <title>Chapter 15: Troubleshooting | Agentic AI at Home</title>
+                <title>Discovery 15: Troubleshooting | The Agentic AI Adventure</title>
                 <meta name="description" content="Fix common agent problems, run diagnostics, and maintain your Life Operating System for peak performance." />
             </Helmet>
 
@@ -689,7 +674,7 @@ const Chapter15 = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="mb-6"
                     >
-                        <div className="text-orange-400 font-mono text-sm mb-2">Chapter 15</div>
+                        <div className="text-orange-400 font-mono text-sm mb-2">Discovery 15</div>
                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                             Troubleshooting
                         </h1>

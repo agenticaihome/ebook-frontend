@@ -50,21 +50,6 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
     </div>
 );
 
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
-
 const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
@@ -107,7 +92,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -208,7 +193,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
                 <CheckCircle className="text-green-400" size={24} />
             </div>
             <div>
-                <span className="text-green-400 font-bold block">Chapter 8 Complete</span>
+                <span className="text-green-400 font-bold block">Discovery 8 Complete</span>
                 <span className="text-slate-400 text-sm">You're 50% of the way there!</span>
             </div>
         </div>
@@ -233,7 +218,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
 );
 
 // ============================================
-// CHAPTER 8 SPECIFIC COMPONENTS
+// Discovery 8 SPECIFIC COMPONENTS
 // ============================================
 
 // Calendar Autopsy Visual - Shows a horrifying meeting-filled week
@@ -752,7 +737,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
 );
 
 // ============================================
-// CHAPTER 8 MAIN COMPONENT
+// Discovery 8 MAIN COMPONENT
 // ============================================
 
 const Chapter8 = () => {
@@ -863,7 +848,7 @@ Help me enter each week with my calendar under control.`;
     return (
         <>
             <Helmet>
-                <title>Chapter 8: Calendar Defense | Agentic AI at Home</title>
+                <title>Discovery 8: Calendar Defense | The Agentic AI Adventure</title>
                 <meta name="description" content="Protect your time from meeting creep and reclaim your schedule" />
             </Helmet>
 
@@ -888,7 +873,7 @@ Help me enter each week with my calendar under control.`;
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-6"
                         >
-                            <div className="text-teal-400 font-mono text-sm mb-2">Chapter 8</div>
+                            <div className="text-teal-400 font-mono text-sm mb-2">Discovery 8</div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                 Calendar Defense
                             </h1>
