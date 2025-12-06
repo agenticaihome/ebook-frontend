@@ -936,7 +936,24 @@ Help me continuously improve my Life Operating System.`;
                             onCTAClick={scrollToDashboard}
                         />
 
+                        {/* FUTURE PROOF BANNER */}
+                        <FutureProofBanner />
+
                         <PasswordGate partNumber={5}>
+                            {/* INTEL REPORT */}
+                            {!speedRun && (
+                                <IntelReport
+                                    classification="PRIORITY"
+                                    title="YOUR AGENT ARMY STATUS"
+                                    items={[
+                                        "20+ specialized agents deployed across life domains",
+                                        "Each agent powerful alone, exponentially stronger connected",
+                                        "The Conductor Agent connects everything into one system",
+                                        "Result: Life Operating System that runs itself"
+                                    ]}
+                                />
+                            )}
+
                             {/* CAPTAIN EFFICIENCY - OPENER */}
                             {!speedRun && (
                                 <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
@@ -957,10 +974,10 @@ Help me continuously improve my Life Operating System.`;
                                 >
                                     <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
-                                        <span className="font-bold">Speed Run Mode</span>
+                                        <span className="font-bold">Professional Mode Active</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the master prompts. Toggle off for the full integration experience.
+                                        Showing only the master prompts. Toggle off for full expedition experience.
                                     </p>
                                 </motion.div>
                             )}

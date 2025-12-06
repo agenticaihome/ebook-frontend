@@ -900,197 +900,216 @@ OUTPUT FORMAT:
 Help me prepare effectively without cramming or burning out.`;
 
     return (
-        <SpeedRunContext.Provider value={speedRun}>
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+        <PasswordGate partNumber={4}>
+            <SpeedRunContext.Provider value={speedRun}>
+                <div className="min-h-screen bg-[#0f0f1a]">
+                    <div className="max-w-4xl mx-auto px-6 py-12">
 
-                    {/* Progress Bar with Part indicator */}
-                    <ChapterProgress
-                        current={12}
-                        total={16}
-                        part={4}
-                        partTitle="Life Systems"
-                    />
+                        {/* Progress Bar with Part indicator */}
+                        <ChapterProgress
+                            current={12}
+                            total={16}
+                            part={4}
+                            partTitle="Life Systems"
+                        />
 
-                    {/* Author Credibility */}
+                        {/* Author Credibility */}
 
 
-                    {/* Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
-                    >
-                        <div className="text-rose-400 font-mono text-sm mb-2">Discovery 12</div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                            Learning & Growth
-                        </h1>
-                        <p className="text-xl text-slate-400 mb-4">
-                            Grow without grinding. Learn without burning out.
-                        </p>
-
-                        {/* Reading time + Speed Run toggle */}
-                        <div className="flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Clock size={14} />
-                                    <span>11 min read</span>
-                                </div>
-                                <span>•</span>
-                                <span className="text-rose-400">15 min to build your learning system</span>
-                            </div>
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
-                        </div>
-                    </motion.div>
-
-                    {/* TL;DR Card */}
-                    <TLDRCard
-                        stats={[
-                            { value: '3', label: 'energy-matched modes' },
-                            { value: '∞', label: 'sustainable growth' },
-                            { value: '0', label: 'abandoned courses' },
-                        ]}
-                        primaryCTA="Audit My Learning"
-                        onCTAClick={scrollToCalculator}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - OPENER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="default"
-                                message="Final chapter of Part 4—and maybe the most honest one. Let's talk about all those Udemy courses gathering digital dust. The books half-read. The skills half-learned. You don't lack ambition. You lack a system that respects your actual energy, your actual schedule, your actual life. Today we build Recovery-Aware Learning—growth that happens because of your system, not despite your exhaustion."
-                            />
-                        </Suspense>
-                    )}
-
-                    {/* Speed Run Notice */}
-                    {speedRun && (
+                        {/* Header */}
                         <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="bg-rose-900/30 rounded-xl p-4 border border-rose-500/40 backdrop-blur-sm mb-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mb-6"
                         >
-                            <div className="flex items-center gap-2 text-rose-400">
-                                <Zap size={18} />
-                                <span className="font-bold">Speed Run Mode</span>
-                            </div>
-                            <p className="text-slate-400 text-sm mt-1">
-                                Showing only the essential prompts. Toggle off for the full learning system.
+                            <div className="text-rose-400 font-mono text-sm mb-2">Discovery 12</div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                                Learning & Growth
+                            </h1>
+                            <p className="text-xl text-slate-400 mb-4">
+                                Grow without grinding. Learn without burning out.
                             </p>
-                        </motion.div>
-                    )}
 
-                    {/* ★ LEARNING GRAVEYARD ★ */}
-                    {!speedRun && <LearningGraveyardVisual />}
-
-                    {/* LEARNING CALCULATOR */}
-                    <section id="learning-calculator" className="mb-10">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-rose-500/50" />
-                            <span className="text-rose-400 font-bold uppercase text-sm tracking-wider">Your Learning Audit</span>
-                            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-rose-500/50" />
-                        </div>
-
-                        <Suspense fallback={
-                            <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                Loading learning audit...
+                            {/* Reading time + Speed Run toggle */}
+                            <div className="flex items-center justify-between flex-wrap gap-4">
+                                <div className="flex items-center gap-4 text-slate-500 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={14} />
+                                        <span>11 min read</span>
+                                    </div>
+                                    <span>•</span>
+                                    <span className="text-rose-400">15 min to build your learning system</span>
+                                </div>
+                                <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                             </div>
-                        }>
-                            <LearningAuditCalculator />
-                        </Suspense>
-                    </section>
+                        </motion.div>
 
-                    {/* RECOVERY-AWARE LEARNING FRAMEWORK */}
-                    {!speedRun && <RecoveryAwareLearning />}
+                        {/* TL;DR Card */}
+                        <TLDRCard
+                            stats={[
+                                { value: '3', label: 'energy-matched modes' },
+                                { value: '∞', label: 'sustainable growth' },
+                                { value: '0', label: 'abandoned courses' },
+                            ]}
+                            primaryCTA="Audit My Learning"
+                            onCTAClick={scrollToCalculator}
+                        />
 
-                    {/* AGENT 1: RECOVERY-AWARE LEARNER */}
-                    <QuickWin
-                        title="Agent 1: The Recovery-Aware Learner"
-                        setupTime="10 min"
-                        prompt={recoveryAwareLearnerPrompt}
-                        variant="default"
-                    />
+                        {/* FUTURE PROOF BANNER */}
+                        <FutureProofBanner />
 
-                    {/* MICRO-LEARNING SCHEDULE */}
-                    {!speedRun && <MicroLearningSchedule />}
+                        {/* CAPTAIN EFFICIENCY - OPENER */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="default"
+                                    message="Final chapter of Part 4—and maybe the most honest one. Let's talk about all those Udemy courses gathering digital dust. The books half-read. The skills half-learned. You don't lack ambition. You lack a system that respects your actual energy, your actual schedule, your actual life. Today we build Recovery-Aware Learning—growth that happens because of your system, not despite your exhaustion."
+                                />
+                            </Suspense>
+                        )}
 
-                    {/* SECOND BRAIN PREVIEW */}
-                    {!speedRun && <SecondBrainPreview />}
-
-                    {/* AGENT 2: SECOND BRAIN */}
-                    <QuickWin
-                        title="Agent 2: The Second Brain"
-                        setupTime="10 min"
-                        prompt={secondBrainAgentPrompt}
-                        variant="secondary"
-                    />
-
-                    {/* ENDO BOARDS CASE STUDY */}
-                    {!speedRun && <EndoBoardsCaseStudy />}
-
-                    {/* AGENT 3: STUDY SESSION */}
-                    <QuickWin
-                        title="Agent 3: The Study Session Coach"
-                        setupTime="10 min"
-                        prompt={studySessionAgentPrompt}
-                        variant="tertiary"
-                    />
-
-                    {/* SHAREABLE QUOTE */}
-                    <ShareableQuote
-                        quote="The goal isn't to study more. It's to study smarter—matching effort to energy, using proven retention techniques, and building sustainable habits."
-                        chapter={12}
-                    />
-
-                    {/* CAPTAIN EFFICIENCY - CLOSER */}
-                    {!speedRun && (
-                        <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                            <CaptainHero
-                                size="md"
-                                pose="celebrating"
-                                message="PART 4 IS COMPLETE! You've built systems for the three pillars of a full life: your health, your relationships, and your growth. The agents will keep you healthy, connected, and learning—without adding to your overwhelm. But we're not done yet. Part 5 is where it all comes together. We'll integrate every agent into your Life Operating System. The finale is coming. 🚀"
+                        {/* INTEL REPORT */}
+                        {!speedRun && (
+                            <IntelReport
+                                classification="PRIORITY"
+                                title="THE LEARNING GRAVEYARD PROBLEM"
+                                items={[
+                                    "47 Udemy courses purchased, 3 completed (6.4% completion rate)",
+                                    "Average attention span: 12 minutes before distraction hits",
+                                    "Knowledge retention without spaced repetition: 10% after 7 days",
+                                    "Solution: Recovery-Aware Learning that adapts to your actual energy"
+                                ]}
                             />
-                        </Suspense>
-                    )}
+                        )}
 
-                    {/* ★ PART 4 CELEBRATION ★ */}
-                    {!speedRun && <Part4Celebration />}
+                        {/* Speed Run Notice */}
+                        {speedRun && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="bg-rose-900/30 rounded-xl p-4 border border-rose-500/40 backdrop-blur-sm mb-8"
+                            >
+                                <div className="flex items-center gap-2 text-rose-400">
+                                    <Zap size={18} />
+                                    <span className="font-bold">Professional Mode Active</span>
+                                </div>
+                                <p className="text-slate-400 text-sm mt-1">
+                                    Showing only the essential prompts. Toggle off for full expedition experience.
+                                </p>
+                            </motion.div>
+                        )}
 
-                    {/* CHAPTER COMPLETE */}
-                    {/* QUICK ACCESS TO ALL AI TOOLS */}
-                    <section className="mb-10">
-                        <AIToolLinks />
-                    </section>
+                        {/* ★ LEARNING GRAVEYARD ★ */}
+                        {!speedRun && <LearningGraveyardVisual />}
 
-                    {/* FAQ SECTION */}
-                    <section className="mb-10">
-                        <FAQSection faqs={chapter12FAQs} title="Learning FAQ" />
-                    </section>
+                        {/* LEARNING CALCULATOR */}
+                        <section id="learning-calculator" className="mb-10">
+                            <div className="flex items-center gap-2 mb-4">
+                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-rose-500/50" />
+                                <span className="text-rose-400 font-bold uppercase text-sm tracking-wider">Your Learning Audit</span>
+                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-rose-500/50" />
+                            </div>
 
-                    <ChapterCompleteWithPartEnd
-                        achievements={[
-                            'Recovery-Aware Learning Agent (energy-matched study)',
-                            'Second Brain Agent (capture & connect insights)',
-                            'Study Session Coach (exam/certification prep)',
-                            'Micro-learning schedule built',
-                            'Learning graveyard acknowledged (no more guilt!)',
-                        ]}
-                        nextChapter={13}
-                        nextTitle="Life Operating System"
-                    />
+                            <Suspense fallback={
+                                <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
+                                    Loading learning audit...
+                                </div>
+                            }>
+                                <LearningAuditCalculator />
+                            </Suspense>
+                        </section>
 
+                        {/* RECOVERY-AWARE LEARNING FRAMEWORK */}
+                        {!speedRun && <RecoveryAwareLearning />}
+
+                        {/* AGENT 1: RECOVERY-AWARE LEARNER */}
+                        <QuickWin
+                            title="Agent 1: The Recovery-Aware Learner"
+                            setupTime="10 min"
+                            prompt={recoveryAwareLearnerPrompt}
+                            variant="default"
+                        />
+
+                        {/* MICRO-LEARNING SCHEDULE */}
+                        {!speedRun && <MicroLearningSchedule />}
+
+                        {/* SECOND BRAIN PREVIEW */}
+                        {!speedRun && <SecondBrainPreview />}
+
+                        {/* AGENT 2: SECOND BRAIN */}
+                        <QuickWin
+                            title="Agent 2: The Second Brain"
+                            setupTime="10 min"
+                            prompt={secondBrainAgentPrompt}
+                            variant="secondary"
+                        />
+
+                        {/* ENDO BOARDS CASE STUDY */}
+                        {!speedRun && <EndoBoardsCaseStudy />}
+
+                        {/* AGENT 3: STUDY SESSION */}
+                        <QuickWin
+                            title="Agent 3: The Study Session Coach"
+                            setupTime="10 min"
+                            prompt={studySessionAgentPrompt}
+                            variant="tertiary"
+                        />
+
+                        {/* SHAREABLE QUOTE */}
+                        <ShareableQuote
+                            quote="The goal isn't to study more. It's to study smarter—matching effort to energy, using proven retention techniques, and building sustainable habits."
+                            chapter={12}
+                        />
+
+                        {/* CAPTAIN EFFICIENCY - CLOSER */}
+                        {!speedRun && (
+                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                <CaptainHero
+                                    size="md"
+                                    pose="celebrating"
+                                    message="PART 4 IS COMPLETE! You've built systems for the three pillars of a full life: your health, your relationships, and your growth. The agents will keep you healthy, connected, and learning—without adding to your overwhelm. But we're not done yet. Part 5 is where it all comes together. We'll integrate every agent into your Life Operating System. The finale is coming. 🚀"
+                                />
+                            </Suspense>
+                        )}
+
+                        {/* ★ PART 4 CELEBRATION ★ */}
+                        {!speedRun && <Part4Celebration />}
+
+                        {/* CHAPTER COMPLETE */}
+                        {/* QUICK ACCESS TO ALL AI TOOLS */}
+                        <section className="mb-10">
+                            <AIToolLinks />
+                        </section>
+
+                        {/* FAQ SECTION */}
+                        <section className="mb-10">
+                            <FAQSection faqs={chapter12FAQs} title="Learning FAQ" />
+                        </section>
+
+                        <ChapterCompleteWithPartEnd
+                            achievements={[
+                                'Recovery-Aware Learning Agent (energy-matched study)',
+                                'Second Brain Agent (capture & connect insights)',
+                                'Study Session Coach (exam/certification prep)',
+                                'Micro-learning schedule built',
+                                'Learning graveyard acknowledged (no more guilt!)',
+                            ]}
+                            nextChapter={13}
+                            nextTitle="Life Operating System"
+                        />
+
+                    </div>
                 </div>
-            </div>
 
-            <ChapterNavigation
-                previousChapter="/part4/chapter2"
-                nextChapter="/part5/chapter1"
-                partNumber={4}
-                chapterNumber={3}
-            />
-        </SpeedRunContext.Provider>
+                <ChapterNavigation
+                    previousChapter="/part4/chapter2"
+                    nextChapter="/part5/chapter1"
+                    partNumber={4}
+                    chapterNumber={3}
+                />
+            </SpeedRunContext.Provider>
+        </PasswordGate>
     );
 };
 

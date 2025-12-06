@@ -711,7 +711,24 @@ const Chapter15 = () => {
                         onCTAClick={scrollToProblems}
                     />
 
+                    {/* FUTURE PROOF BANNER */}
+                    <FutureProofBanner />
+
                     <PasswordGate partNumber={5}>
+                        {/* INTEL REPORT */}
+                        {!speedRun && (
+                            <IntelReport
+                                classification="MAINTENANCE"
+                                title="SYSTEM DIAGNOSTICS"
+                                items={[
+                                    "Every system needs occasional maintenance",
+                                    "6 common problems with proven solutions",
+                                    "4-step diagnostic process for any issue",
+                                    "Self-sufficient troubleshooting = freedom"
+                                ]}
+                            />
+                        )}
+
                         {/* CAPTAIN EFFICIENCY - OPENER */}
                         {!speedRun && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
@@ -732,10 +749,10 @@ const Chapter15 = () => {
                             >
                                 <div className="flex items-center gap-2 text-orange-400">
                                     <Zap size={18} />
-                                    <span className="font-bold">Speed Run Mode</span>
+                                    <span className="font-bold">Professional Mode Active</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">
-                                    Showing essential fixes only. Toggle off for interactive diagnostics.
+                                    Showing essential fixes only. Toggle off for full expedition experience.
                                 </p>
                             </motion.div>
                         )}

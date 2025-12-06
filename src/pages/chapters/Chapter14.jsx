@@ -924,7 +924,24 @@ const Chapter14 = () => {
                         onCTAClick={scrollToFramework}
                     />
 
+                    {/* FUTURE PROOF BANNER */}
+                    <FutureProofBanner />
+
                     <PasswordGate partNumber={5}>
+                        {/* INTEL REPORT */}
+                        {!speedRun && (
+                            <IntelReport
+                                classification="ADVANCED"
+                                title="POWER USER UPGRADE"
+                                items={[
+                                    "CRAFT framework for building perfect prompts every time",
+                                    "Custom agent creation from scratch",
+                                    "Multi-agent chains for complex workflows",
+                                    "Prompt engineering secrets that 10x your results"
+                                ]}
+                            />
+                        )}
+
                         {/* CAPTAIN EFFICIENCY - OPENER */}
                         {!speedRun && (
                             <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
@@ -945,10 +962,10 @@ const Chapter14 = () => {
                             >
                                 <div className="flex items-center gap-2 text-teal-400">
                                     <Zap size={18} />
-                                    <span className="font-bold">Speed Run Mode</span>
+                                    <span className="font-bold">Professional Mode Active</span>
                                 </div>
                                 <p className="text-slate-400 text-sm mt-1">
-                                    Showing key techniques only. Toggle off for interactive builders and examples.
+                                    Showing key techniques only. Toggle off for full expedition experience.
                                 </p>
                             </motion.div>
                         )}
