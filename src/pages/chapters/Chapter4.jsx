@@ -21,6 +21,7 @@ import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter4FAQs } from '../../components/FAQSection';
 import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components
@@ -970,6 +971,13 @@ One quick look. Full clarity. No anxiety.`}
                                     />
                                 </Suspense>
                             )}
+
+                            {/* FAQ SECTION */}
+                            <FAQSection
+                                title="Morning Routine Questions"
+                                faqs={chapter4FAQs}
+                                className="mb-10"
+                            />
 
                             {/* MISSION COMPLETE */}
                             <MissionComplete

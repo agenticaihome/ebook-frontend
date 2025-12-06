@@ -21,6 +21,7 @@ import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter5FAQs } from '../../components/FAQSection';
 import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components
@@ -740,6 +741,13 @@ Two AI companions working together can eliminate both problems: one plans the me
                                     />
                                 </Suspense>
                             )}
+
+                            {/* FAQ SECTION */}
+                            <FAQSection
+                                title="Kitchen & Meal Planning Questions"
+                                faqs={chapter5FAQs}
+                                className="mb-10"
+                            />
 
                             {/* MISSION COMPLETE */}
                             <MissionComplete

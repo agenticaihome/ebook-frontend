@@ -6,6 +6,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter6FAQs } from '../../components/FAQSection';
 import {
     Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
     Sparkles, Share2, Copy, Eye, EyeOff, Home, Wrench, Package,
@@ -943,6 +944,13 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
 
                             {/* PART 2 CELEBRATION */}
                             <Part2Celebration />
+
+                            {/* FAQ SECTION */}
+                            <FAQSection
+                                title="Household Management Questions"
+                                faqs={chapter6FAQs}
+                                className="mb-10"
+                            />
 
                             {/* MISSION COMPLETE */}
                             <MissionComplete
