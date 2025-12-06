@@ -20,6 +20,7 @@ import MissionComplete from '../../components/gamification/MissionComplete';
 import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter7FAQs } from '../../components/FAQSection';
 
 // Lazy load interactive components
 const EmailVolumeCalculator = React.lazy(() => import('../../components/EmailVolumeCalculator'));
@@ -931,6 +932,11 @@ OUTPUT FORMAT:
                             {/* QUICK ACCESS TO ALL AI TOOLS */}
                             <section className="mb-10">
                                 <AIToolLinks />
+                            </section>
+
+                            {/* FAQ SECTION */}
+                            <section className="mb-10">
+                                <FAQSection faqs={chapter7FAQs} title="Email FAQ" />
                             </section>
 
                             {/* SHAREABLE QUOTE */}

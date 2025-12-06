@@ -18,6 +18,7 @@ import {
 const AdminInventoryCalculator = React.lazy(() => import('../../components/AdminInventoryCalculator'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter9FAQs } from '../../components/FAQSection';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -1089,6 +1090,16 @@ Help me get through paperwork without the dread.`;
 
                             {/* ★ PART 3 CELEBRATION ★ */}
                             {!speedRun && <Part3Celebration />}
+
+                            {/* QUICK ACCESS TO ALL AI TOOLS */}
+                            <section className="mb-10">
+                                <AIToolLinks />
+                            </section>
+
+                            {/* FAQ SECTION */}
+                            <section className="mb-10">
+                                <FAQSection faqs={chapter9FAQs} title="Admin FAQ" />
+                            </section>
 
                             {/* CHAPTER COMPLETE */}
                             <ChapterCompleteWithPartEnd

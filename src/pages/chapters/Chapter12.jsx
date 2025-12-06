@@ -17,6 +17,7 @@ import {
 const LearningAuditCalculator = React.lazy(() => import('../../components/LearningAuditCalculator'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter12FAQs } from '../../components/FAQSection';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -1069,6 +1070,16 @@ Help me prepare effectively without cramming or burning out.`;
                     {!speedRun && <Part4Celebration />}
 
                     {/* CHAPTER COMPLETE */}
+                    {/* QUICK ACCESS TO ALL AI TOOLS */}
+                    <section className="mb-10">
+                        <AIToolLinks />
+                    </section>
+
+                    {/* FAQ SECTION */}
+                    <section className="mb-10">
+                        <FAQSection faqs={chapter12FAQs} title="Learning FAQ" />
+                    </section>
+
                     <ChapterCompleteWithPartEnd
                         achievements={[
                             'Recovery-Aware Learning Agent (energy-matched study)',

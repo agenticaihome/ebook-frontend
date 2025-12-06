@@ -16,6 +16,7 @@ import {
 const HealthAuditCalculator = React.lazy(() => import('../../components/HealthAuditCalculator'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter10FAQs } from '../../components/FAQSection';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -1027,6 +1028,16 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                                     />
                                 </Suspense>
                             )}
+
+                            {/* QUICK ACCESS TO ALL AI TOOLS */}
+                            <section className="mb-10">
+                                <AIToolLinks />
+                            </section>
+
+                            {/* FAQ SECTION */}
+                            <section className="mb-10">
+                                <FAQSection faqs={chapter10FAQs} title="Health FAQ" />
+                            </section>
 
                             {/* CHAPTER COMPLETE */}
                             <ChapterComplete

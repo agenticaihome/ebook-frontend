@@ -168,9 +168,196 @@ export const chapter6FAQs = [
     {
         question: "What if I live alone?",
         answer: "Even better! No family coordination needed. Your companion tracks everything from cleaning schedules to seasonal maintenance to 'when did I last change that?' questions. It's your external brain."
-    },
-    {
-        question: "How do I share this with my partner?",
-        answer: "Three options: (1) Share the AI chat with them, (2) Export to a shared app like Cozi, or (3) Send them weekly summaries. Most couples find option 2 or 3 works best—AI stays behind the scenes."
     }
 ];
+
+export const chapter7FAQs = [
+    {
+        question: "What if I need to check email more than twice a day for my job?",
+        answer: "Adjust to your reality! The key isn't a specific number—it's INTENTIONAL windows vs. reactive checking. Even 4 scheduled email blocks (9am, 12pm, 3pm, 5pm) is better than 50 random peeks. Tell your AI: 'My job requires more email. Suggest a realistic schedule.'"
+    },
+    {
+        question: "Won't people get annoyed if I don't respond immediately?",
+        answer: "Studies show: response expectations are often in YOUR head. Most emails don't need same-hour replies. Add an email signature: 'I check email at [times]. For urgent matters, text me.' You'll train people AND reduce anxiety."
+    },
+    {
+        question: "My inbox is already at 10,000+ emails. Where do I start?",
+        answer: "Don't organize the past—just stop the bleeding. Archive everything older than 30 days. Declare email bankruptcy. Then apply triage to NEW emails only. Your AI helps you stay at inbox zero GOING FORWARD, not dig through history."
+    },
+    {
+        question: "What about really urgent emails I might miss?",
+        answer: "Set up VIP filters for truly urgent senders (boss, key clients, family). Most email apps let these bypass your normal schedule with notifications. Everything else can wait for your scheduled windows."
+    }
+];
+
+export const chapter8FAQs = [
+    {
+        question: "My boss schedules meetings. I can't say no.",
+        answer: "You can't decline, but you CAN influence. Try: 'I have a conflict at 2pm—is 10am possible?' Block focus time BEFORE meetings land. Leaders respect proactive time management more than you think."
+    },
+    {
+        question: "Isn't blocking focus time just meeting avoidance?",
+        answer: "Focus time is where real work happens. Meetings discuss work; focus time DOES work. Your Calendar Defense Agent helps you protect productive time while still being collaborative. It's not avoidance—it's balance."
+    },
+    {
+        question: "What if my whole team has a meetings-heavy culture?",
+        answer: "Start by protecting just ONE 90-minute block, 3x/week. As your output improves, you gain credibility to protect more. Lead by example—often others are waiting for someone to push back first."
+    },
+    {
+        question: "How do I decline gracefully?",
+        answer: "The chapter includes 5 copy-paste decline templates. The key: be helpful, not defensive. Offer alternatives: 'Can't make 3pm, but I can join for the first 30 min' or 'Could you send notes after?'"
+    }
+];
+
+export const chapter9FAQs = [
+    {
+        question: "I don't have that many recurring admin tasks.",
+        answer: "You might be surprised! Car registration, insurance renewals, domain renewals, prescription refills, license renewals, tax deadlines, open enrollment... The inventory tool helps you realize what's actually lurking."
+    },
+    {
+        question: "Can't I just use a calendar for reminders?",
+        answer: "You can! But AI adds context, multi-reminder sequences (30 days, 7 days, 3 days), and tracks related tasks. 'Passport expires in 60 days' + 'You need photos, forms, and an appointment' is more helpful than a single calendar ping."
+    },
+    {
+        question: "What about subscriptions I genuinely need?",
+        answer: "Keep them! The Subscription Audit isn't about canceling everything—it's about DECIDING consciously. Many people pay for services they forgot about. The goal is intentional spending, not extreme frugality."
+    },
+    {
+        question: "How does this work with my partner's admin stuff?",
+        answer: "Two options: (1) Share one AI companion for household admin, or (2) Each person tracks their responsibilities separately. Most couples do a hybrid—shared for household, separate for personal."
+    }
+];
+
+export const chapter10FAQs = [
+    {
+        question: "Isn't tracking health obsessive?",
+        answer: "There's a difference between obsessive tracking and gentle reminders. Your Health Agent isn't counting every calorie—it's making sure you don't miss your annual physical or run out of medication. Light touch, high impact."
+    },
+    {
+        question: "I hate going to the doctor.",
+        answer: "Fair! But preventive care catches problems early. Your AI makes it EASIER, not harder. It handles the scheduling anxiety, reminds you far in advance, and tracks what's due so you decide when you're ready."
+    },
+    {
+        question: "My health is fine, I don't need this.",
+        answer: "Healthy people benefit most from prevention! This chapter is less about fixing problems and more about maintaining what's working. Annual checkups, medication timing, hydration reminders—simple stuff that keeps you healthy."
+    },
+    {
+        question: "What if I'm managing a chronic condition?",
+        answer: "AI companions excel at chronic condition management: tracking symptoms, medication timing, appointment scheduling, and noticing patterns. Tell your companion about your condition and it becomes a specialized health assistant."
+    }
+];
+
+export const chapter11FAQs = [
+    {
+        question: "This seems cold—putting friends in 'circles.'",
+        answer: "It's not about ranking people by value. It's recognizing that your BEST friend needs different attention than a college acquaintance. The circles ensure everyone gets appropriate attention instead of no one getting enough."
+    },
+    {
+        question: "What if I'm introverted and don't want to reach out more?",
+        answer: "Quality over quantity! An introvert's inner circle might be 3 people, not 7. The system adapts to YOU. Even one thoughtful message per month is better than guilty silence. Small gestures, big impact."
+    },
+    {
+        question: "Won't people think it's weird if I suddenly start reaching out?",
+        answer: "People love being thought of! 'Hey, saw this and thought of you' or 'Been meaning to catch up' is universally appreciated. No one thinks it's weird—they think it's kind."
+    },
+    {
+        question: "I already have friends, I don't need to 'manage' relationships.",
+        answer: "Great! This is about keeping them. Friendships fade not from lack of love but from life getting busy. Your AI just makes sure important people don't slip through the cracks while you're juggling everything else."
+    }
+];
+
+export const chapter12FAQs = [
+    {
+        question: "I don't have time to learn new things.",
+        answer: "You have time—just scattered. 15 minutes while waiting for coffee. Audiobooks during commute. One article at lunch. Your Learning Agent finds micro-learning opportunities you're already missing."
+    },
+    {
+        question: "How is this different from just watching YouTube tutorials?",
+        answer: "Unstructured learning is forgettable. Your AI creates learning PATHS with spaced repetition, application exercises, and progress tracking. It's the difference between watching a video and actually retaining the skill."
+    },
+    {
+        question: "What if I don't know what I want to learn?",
+        answer: "Perfect! Tell your AI your goals: 'I want to be better at my job' or 'I want to be a more interesting person.' It suggests relevant skills and learning paths based on YOUR situation."
+    },
+    {
+        question: "Isn't AI learning making us dumber?",
+        answer: "AI handles the logistics (what to learn, when to review, tracking progress) so you can focus on actual LEARNING. It's like having a personal tutor. The thinking is still yours—the scheduling isn't."
+    }
+];
+
+export const chapter13FAQs = [
+    {
+        question: "Do I really need to integrate everything?",
+        answer: "Not necessarily! Start with 2-3 agents that solve your biggest pain points. The Life OS grows organically. Integration is about reducing duplication, not maximizing complexity."
+    },
+    {
+        question: "How do I avoid everything breaking if one agent fails?",
+        answer: "Good agents are loosely coupled. If your Meal Agent breaks, your Calendar Agent still works. The Conductor oversees everything but individual agents are independent. Start simple, add redundancy later."
+    },
+    {
+        question: "This seems like it could become overwhelming.",
+        answer: "That's why we build incrementally! Each chapter adds ONE system. By now you have 12+ agents, but you built them one at a time. Complexity grows gradually, not all at once."
+    },
+    {
+        question: "What if I want to use different AI tools for different things?",
+        answer: "Totally fine! Use Claude for writing, ChatGPT for research, Gemini for scheduling. The prompts work across tools. Your Conductor can even coordinate outputs from multiple AIs."
+    }
+];
+
+export const chapter14FAQs = [
+    {
+        question: "When should I use advanced prompting vs. simple prompts?",
+        answer: "Simple works 80% of the time. Use CRAFT framework when: output quality matters, task is complex, or you're getting poor results. Don't over-engineer routine requests."
+    },
+    {
+        question: "My AI gives different answers each time. Is that normal?",
+        answer: "Yes! AI is probabilistic. For consistency: be more specific, provide examples of desired output, and use lower 'temperature' settings if available. Some variation is normal and even useful."
+    },
+    {
+        question: "How do I know if I'm prompting well?",
+        answer: "Good prompts get good results on the first try. If you're constantly clarifying, your prompt needs work. The CRAFT framework helps: Context, Role, Action, Format, Tone."
+    },
+    {
+        question: "Should I share my prompts with others?",
+        answer: "Absolutely! Prompts aren't secret sauce—sharing helps everyone. Many people customize prompts from this guide. Join communities where people share and iterate on prompts together."
+    }
+];
+
+export const chapter15FAQs = [
+    {
+        question: "What if my AI stops working like it used to?",
+        answer: "AI models update regularly. If behavior changes: re-test your prompts, check for new settings, and refresh your instructions. Sometimes a simple 'Please follow these instructions exactly' helps."
+    },
+    {
+        question: "My agent is being lazy / giving short answers.",
+        answer: "Try: 'Please provide a thorough, detailed response' or split complex tasks into steps. Sometimes AIs take shortcuts when they shouldn't. Clear expectations fix most issues."
+    },
+    {
+        question: "How do I know if the AI is making mistakes?",
+        answer: "Spot-check important outputs! Verify facts, dates, and calculations. AI is powerful but not perfect. Trust but verify—especially for anything health, legal, or financial."
+    },
+    {
+        question: "What if I get overwhelmed managing all these agents?",
+        answer: "Pull back! You don't need every agent. Start with 2-3 that solve your biggest problems. Add more only when the first ones are running smoothly. Simplify, then expand."
+    }
+];
+
+export const chapter16FAQs = [
+    {
+        question: "What should I do first now that I've finished the book?",
+        answer: "Review your 3 highest-impact agents and make sure they're running consistently. Most value comes from routine, not novelty. Master what you have before adding more."
+    },
+    {
+        question: "How do I keep this going long-term?",
+        answer: "Weekly 15-minute review: What's working? What needs adjustment? Which agent needs a refresh? Small maintenance prevents system decay. Your Weekly Review Agent helps with this."
+    },
+    {
+        question: "Should I share this with family/friends?",
+        answer: "If it's helped you, absolutely share it! Many readers teach these systems to their partners, parents, or colleagues. Each person can customize agents to their own needs."
+    },
+    {
+        question: "What's next for AI at home?",
+        answer: "AI evolves fast! Follow updates, experiment with new features, and stay curious. The foundations you've built will make adopting new capabilities much easier. You're now AI-fluent."
+    }
+];
+

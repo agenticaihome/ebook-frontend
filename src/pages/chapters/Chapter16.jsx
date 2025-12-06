@@ -14,6 +14,7 @@ import PasswordGate from '../../components/common/PasswordGate';
 // Lazy load interactive components
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter16FAQs } from '../../components/FAQSection';
 
 // ============================================
 // REUSABLE COMPONENTS
@@ -666,6 +667,16 @@ const Chapter16 = () => {
                                 message="This isn't goodbye—it's the beginning. Your agents will keep working. Your system will keep evolving. And you? You'll keep getting better at this. Remember: the goal was never to be perfect. It was to have a system that handles the chaos so YOU can focus on what matters. Mission accomplished. Now go live your new life. I'll be here if you need me. 💜"
                             />
                         </Suspense>
+
+                        {/* QUICK ACCESS TO ALL AI TOOLS */}
+                        <section className="mb-10">
+                            <AIToolLinks />
+                        </section>
+
+                        {/* FAQ SECTION */}
+                        <section className="mb-10">
+                            <FAQSection faqs={chapter16FAQs} title="Final Questions" />
+                        </section>
 
                         {/* FINAL CELEBRATION */}
                         <FinalCelebration />

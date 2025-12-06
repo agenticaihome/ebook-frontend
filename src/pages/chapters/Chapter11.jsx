@@ -16,6 +16,7 @@ import {
 const RelationshipAuditCalculator = React.lazy(() => import('../../components/RelationshipAuditCalculator'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter11FAQs } from '../../components/FAQSection';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -977,6 +978,16 @@ Help me build a network that gives more than it takes.`;
                                     />
                                 </Suspense>
                             )}
+
+                            {/* QUICK ACCESS TO ALL AI TOOLS */}
+                            <section className="mb-10">
+                                <AIToolLinks />
+                            </section>
+
+                            {/* FAQ SECTION */}
+                            <section className="mb-10">
+                                <FAQSection faqs={chapter11FAQs} title="Relationships FAQ" />
+                            </section>
 
                             {/* CHAPTER COMPLETE */}
                             <ChapterComplete

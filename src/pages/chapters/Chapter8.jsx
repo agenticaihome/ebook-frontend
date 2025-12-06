@@ -17,6 +17,7 @@ import {
 const MeetingAuditCalculator = React.lazy(() => import('../../components/MeetingAuditCalculator'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter8FAQs } from '../../components/FAQSection';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -1033,6 +1034,16 @@ Help me enter each week with my calendar under control.`;
                                     />
                                 </Suspense>
                             )}
+
+                            {/* QUICK ACCESS TO ALL AI TOOLS */}
+                            <section className="mb-10">
+                                <AIToolLinks />
+                            </section>
+
+                            {/* FAQ SECTION */}
+                            <section className="mb-10">
+                                <FAQSection faqs={chapter8FAQs} title="Calendar FAQ" />
+                            </section>
 
                             {/* CHAPTER COMPLETE */}
                             <ChapterComplete

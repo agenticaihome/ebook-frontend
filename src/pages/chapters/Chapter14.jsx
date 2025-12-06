@@ -16,6 +16,7 @@ import PasswordGate from '../../components/common/PasswordGate';
 // Lazy load interactive components
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
+import FAQSection, { chapter14FAQs } from '../../components/FAQSection';
 
 // ============================================
 // SPEED RUN CONTEXT
@@ -1082,6 +1083,16 @@ Keep responses brief - I'm probably multitasking!`}
                         )}
 
                         {/* CHAPTER COMPLETE */}
+                        {/* QUICK ACCESS TO ALL AI TOOLS */}
+                        <section className="mb-10">
+                            <AIToolLinks />
+                        </section>
+
+                        {/* FAQ SECTION */}
+                        <section className="mb-10">
+                            <FAQSection faqs={chapter14FAQs} title="Advanced Prompting FAQ" />
+                        </section>
+
                         <ChapterComplete
                             achievements={[
                                 'CRAFT framework for perfect prompts',
