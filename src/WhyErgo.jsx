@@ -28,8 +28,8 @@ export default function WhyErgo() {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Why Ergo? - The Cypherpunk Vision, Continued</title>
-                <meta name="description" content="Ergo is what Bitcoin would be if Satoshi had 10 more years of cryptographic research. Fair launch. No VCs. Research-grade engineering. Financial tools for ordinary people." />
+                <title>Why We Chose Ergo - Honest Money for Ordinary People</title>
+                <meta name="description" content="We chose Ergo because it's built on fairness, honesty, and real decentralization. No VCs. No pre-mine. Just research-grade technology designed for people like you." />
             </Helmet>
             <div className="min-h-screen bg-[#0f0f1a] text-slate-300 font-sans selection:bg-green-500/30">
 
@@ -56,11 +56,13 @@ export default function WhyErgo() {
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
-                            The Cypherpunk Vision,<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Continued</span>
+                            Why We Chose <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Ergo</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                            What Bitcoin started, Ergo extends—with a decade more of cryptographic research and a commitment to fairness that never wavered.
+                        <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-4">
+                            Honest technology. Fair from day one. Built for people, not profit.
+                        </p>
+                        <p className="text-lg text-slate-500 max-w-xl mx-auto">
+                            In a world of hype and extraction, we chose the blockchain that kept its promises.
                         </p>
                     </div>
                 </section>
