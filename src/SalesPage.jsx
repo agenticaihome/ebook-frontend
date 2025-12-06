@@ -105,13 +105,13 @@ export default function SalesPage() {
               <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-900/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono mb-6 backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/40 text-amber-400 text-xs font-bold tracking-wide mb-6 backdrop-blur-sm"
               >
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
                 </span>
-                🧭 DISCOVER THE FRONTIER
+                🧭 THE AGENTIC AI ADVENTURE
               </m.div>
 
               <m.h1
@@ -120,9 +120,8 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight"
               >
-                <span className="block text-white mb-2">Your Journey:</span>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 block mb-2">Reclaim 10 Hours/Week</span>
-                <span className="block text-slate-300 text-2xl sm:text-3xl md:text-4xl font-medium font-mono">15 Discoveries That Change Everything</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 block">Reclaim 10+ Hours</span>
+                <span className="block text-white">Every Single Week</span>
               </m.h1>
 
               <m.div
@@ -142,11 +141,9 @@ export default function SalesPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-xl text-slate-300 mb-8 leading-relaxed max-w-lg mx-auto md:mx-0"
+                className="text-lg text-slate-400 mb-8 leading-relaxed max-w-md mx-auto md:mx-0"
               >
-                Your first AI friend is already here. Meet Captain Efficiency, your friendly guide
-                who'll introduce you to a whole team of helpful AI tools.
-                No tech skills required — just curiosity.
+                15 bite-sized discoveries. No tech jargon. Just practical AI skills that give you back your time.
               </m.p>
 
               <m.div
@@ -157,10 +154,10 @@ export default function SalesPage() {
               >
                 <Link
                   to="/part1"
-                  className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-900 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-orange-900/50 flex items-center justify-center gap-2 group"
+                  className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 flex items-center justify-center gap-3 ring-2 ring-amber-400/20 hover:ring-amber-400/50"
                 >
-                  <span className="text-xl">🧭</span>
-                  Start Your Discovery — Free
+                  <span className="text-2xl">🧭</span>
+                  Start Free Adventure
                 </Link>
                 <div className="text-center sm:text-left text-sm text-slate-400 flex items-center justify-center gap-2">
                   <span className="text-green-400">✓</span> No credit card required
