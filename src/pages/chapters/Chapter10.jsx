@@ -18,6 +18,13 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
 import FAQSection, { chapter10FAQs } from '../../components/FAQSection';
 
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import IntelReport from '../../components/gamification/IntelReport';
+
 // ============================================
 // SPEED RUN CONTEXT
 // ============================================
@@ -91,7 +98,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -107,7 +114,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-500 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -889,6 +896,9 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                             </div>
                         </motion.div>
 
+                        {/* FUTURE-PROOF BANNER */}
+                        <FutureProofBanner />
+
                         {/* TL;DR Card */}
                         <TLDRCard
                             stats={[
@@ -912,6 +922,22 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                                 </Suspense>
                             )}
 
+                            {/* INTEL REPORT */}
+                            {!speedRun && (
+                                <IntelReport
+                                    title="THE HEALTH REALITY"
+                                    classification="LEVEL 10"
+                                    defaultExpanded={false}
+                                    content={`This chapter is different, Explorer.
+
+We're not optimizing productivity here—we're building a gentle safety net for your wellbeing.
+
+Your AI agent can't exercise for you or drink water on your behalf. But it CAN remind you about that annual physical, track when prescriptions run out, and nudge you to take breaks.
+
+No guilt trips. No fitness influencer energy. Just simple systems that have your back when life gets busy.`}
+                                />
+                            )}
+
                             {/* Speed Run Notice */}
                             {speedRun && (
                                 <motion.div
@@ -921,10 +947,10 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                                 >
                                     <div className="flex items-center gap-2 text-rose-400">
                                         <Zap size={18} />
-                                        <span className="font-bold">Speed Run Mode</span>
+                                        <span className="font-bold">Professional Mode Active</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts. Toggle off for interactive health tools.
+                                        Showing only essential prompts. Toggle off for full expedition experience.
                                     </p>
                                 </motion.div>
                             )}
