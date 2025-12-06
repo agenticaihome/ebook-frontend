@@ -12,17 +12,18 @@ const ERGO_LINKS = {
     website: 'https://ergoplatform.org',
     docs: 'https://docs.ergoplatform.com',
     github: 'https://github.com/ergoplatform',
-    telegram: 'https://t.me/Ergo_Chats',
+    telegram: 'https://t.me/ergoplatform',
     discord: 'https://discord.gg/ergo-platform-668903786361651200',
     reddit: 'https://reddit.com/r/ergonauts',
-    twitter: 'https://twitter.com/erloplatform',
+    twitter: 'https://x.com/Ergo_Platform',
     explorer: 'https://explorer.ergoplatform.com',
     sigmaverse: 'https://sigmaverse.io',
     nautilus: 'https://chromewebstore.google.com/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai',
     ergoWallet: 'https://ergoplatform.org/en/get-erg/#Wallets',
-    mining: 'https://docs.ergoplatform.com/mining/',
+    mining: 'https://ergonaut.space/en/Guides/Mining',
     getErg: 'https://ergoplatform.org/en/get-erg/',
 };
+
 
 export default function WhyErgo() {
     return (
