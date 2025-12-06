@@ -6,9 +6,9 @@ import { Rocket, Sparkles } from 'lucide-react';
  * FutureProofBanner - Positioned near top of operations
  * Honest framing that feels like insider knowledge, not a disclaimer
  */
-const FutureProofBanner = ({ 
+const FutureProofBanner = ({
     variant = 'default',
-    children 
+    children
 }) => {
     const variants = {
         default: {
@@ -29,7 +29,7 @@ const FutureProofBanner = ({
         },
     };
 
-    const v = variants[variant];
+    const v = variants[variant] || variants.default;
 
     return (
         <motion.div
@@ -62,7 +62,7 @@ const FutureProofBanner = ({
                 {/* Icon */}
                 <div className="flex-shrink-0">
                     <motion.div
-                        animate={{ 
+                        animate={{
                             y: [0, -3, 0],
                             rotate: [0, 5, -5, 0],
                         }}
@@ -85,9 +85,9 @@ const FutureProofBanner = ({
                     ) : (
                         <p className={`text-sm ${v.textColor} leading-relaxed`}>
                             <span className={`font-bold ${v.accentColor}`}>FUTURE-PROOF EDITION:</span>{' '}
-                            The prompts you learn here work today with ChatGPT and Claude. 
+                            The prompts you learn here work today with ChatGPT and Claude.
                             When fully autonomous agents arrive{' '}
-                            <span className={`font-medium ${v.accentColor}`}>(soon)</span>, 
+                            <span className={`font-medium ${v.accentColor}`}>(soon)</span>,
                             you'll already know exactly how to use them.
                         </p>
                     )}
