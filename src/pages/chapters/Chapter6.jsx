@@ -1,8 +1,7 @@
 import React, { useState, Suspense, createContext, useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import SEO from '../../components/SEO';
 import { useNavigate } from 'react-router-dom';
-import { m, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
@@ -19,6 +18,8 @@ import {
 import MissionBriefing from '../../components/gamification/MissionBriefing';
 import MissionComplete from '../../components/gamification/MissionComplete';
 import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import IntelReport from '../../components/gamification/IntelReport';
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 
 // Lazy load interactive components
@@ -26,39 +27,24 @@ const HouseholdChaosCalculator = React.lazy(() => import('../../components/House
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
 // ============================================
-// SPEED RUN CONTEXT
+// BLITZ MODE CONTEXT
 // ============================================
-const SpeedRunContext = createContext(false);
+const BlitzModeContext = createContext(false);
 
 // ============================================
 // REUSABLE COMPONENTS
 // ============================================
 
-const AuthorCredibility = () => (
-    <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            DDS
-        </div>
-        <div className="flex-1">
-            <p className="text-slate-300 text-sm">
-                Written by a dad working <span className="text-white font-medium">50+ hour weeks</span> with{' '}
-                <span className="text-white font-medium">2 kids under 3</span>.
-                These systems kept me sane.
-            </p>
-        </div>
-    </div>
-);
-
-const SpeedRunToggle = ({ enabled, onToggle }) => (
+const BlitzModeToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
         {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Speed Run: ON' : 'Speed Run: OFF'}
+        {enabled ? 'Blitz Mode: ON' : 'Blitz Mode: OFF'}
     </button>
 );
 
@@ -66,23 +52,23 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — Agentic AI at Home, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -215,7 +201,7 @@ const InvisibleLoadVisual = () => {
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden min-h-[300px]">
             <div className="absolute inset-0 overflow-hidden">
                 {thoughts.map((thought, i) => (
-                    <m.div
+                    <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{
@@ -236,7 +222,7 @@ const InvisibleLoadVisual = () => {
                         }}
                     >
                         "{thought}"
-                    </m.div>
+                    </motion.div>
                 ))}
             </div>
 
@@ -260,7 +246,7 @@ const FourPillarsFramework = () => {
         {
             name: 'CLEANING',
             icon: Sparkles,
-            color: 'cyan',
+            color: 'teal',
             description: 'Daily, weekly, monthly, deep clean schedules',
             examples: ['Daily dishes', 'Weekly vacuuming', 'Monthly fridge clean', 'Quarterly deep clean'],
         },
@@ -288,7 +274,7 @@ const FourPillarsFramework = () => {
     ];
 
     const colors = {
-        cyan: { bg: 'from-cyan-900/40 to-cyan-900/20', border: 'border-cyan-500/40', text: 'text-cyan-400', icon: 'bg-cyan-500/20' },
+        teal: { bg: 'from-teal-900/40 to-teal-900/20', border: 'border-teal-500/40', text: 'text-teal-400', icon: 'bg-teal-500/20' },
         orange: { bg: 'from-orange-900/40 to-orange-900/20', border: 'border-orange-500/40', text: 'text-orange-400', icon: 'bg-orange-500/20' },
         green: { bg: 'from-green-900/40 to-green-900/20', border: 'border-green-500/40', text: 'text-green-400', icon: 'bg-green-500/20' },
         purple: { bg: 'from-purple-900/40 to-purple-900/20', border: 'border-purple-500/40', text: 'text-purple-400', icon: 'bg-purple-500/20' },
@@ -305,7 +291,7 @@ const FourPillarsFramework = () => {
                 {pillars.map((pillar, i) => {
                     const c = colors[pillar.color];
                     return (
-                        <m.div
+                        <motion.div
                             key={pillar.name}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -328,7 +314,7 @@ const FourPillarsFramework = () => {
                                     </div>
                                 </div>
                             </div>
-                        </m.div>
+                        </motion.div>
                     );
                 })}
             </div>
@@ -393,8 +379,8 @@ const RoomScheduleBuilder = () => {
     return (
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                    <ClipboardList className="text-cyan-400" size={20} />
+                <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <ClipboardList className="text-teal-400" size={20} />
                 </div>
                 <div>
                     <h3 className="text-white font-bold text-lg">Room-by-Room Schedule Builder</h3>
@@ -421,7 +407,7 @@ const RoomScheduleBuilder = () => {
                                         <button
                                             onClick={() => toggleRoom(room, f)}
                                             className={`w-8 h-8 rounded-lg transition-all ${freq[f]
-                                                ? 'bg-cyan-500 text-white'
+                                                ? 'bg-teal-500 text-white'
                                                 : 'bg-slate-800 text-slate-600 hover:bg-slate-700'
                                                 }`}
                                         >
@@ -439,7 +425,7 @@ const RoomScheduleBuilder = () => {
                 onClick={handleCopy}
                 className={`w-full mt-4 py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${copied
                     ? 'bg-green-500 text-white'
-                    : 'bg-cyan-500 hover:bg-cyan-400 text-slate-900'
+                    : 'bg-teal-500 hover:bg-teal-400 text-slate-900'
                     }`}
             >
                 {copied ? <CheckCircle size={18} /> : <Copy size={18} />}
@@ -522,14 +508,14 @@ const CommandCenterDashboard = () => {
     return (
         <div className="mb-10">
             <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
-                <Home className="text-cyan-400" />
+                <Home className="text-teal-400" />
                 Your Household Command Center
             </h2>
             <p className="text-slate-400 mb-6">
                 This is what you've built across Part 2. All your daily operations, working together.
             </p>
 
-            <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl p-6 border border-cyan-500/30 backdrop-blur-sm">
+            <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl p-6 border border-teal-500/30 backdrop-blur-sm">
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
                     {/* Morning Brief Status */}
                     <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-600">
@@ -570,7 +556,7 @@ const CommandCenterDashboard = () => {
 
                 {/* Upcoming Section */}
                 <div className="bg-slate-900/30 rounded-xl p-4">
-                    <h4 className="text-cyan-400 font-bold text-sm mb-3 uppercase tracking-wider">Coming Up</h4>
+                    <h4 className="text-teal-400 font-bold text-sm mb-3 uppercase tracking-wider">Coming Up</h4>
                     <div className="space-y-2">
                         {[
                             { task: 'Grocery shopping', time: 'Tomorrow', icon: Package },
@@ -615,7 +601,7 @@ const Part2Celebration = () => {
     ];
 
     return (
-        <m.div
+        <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-gradient-to-br from-yellow-900/30 via-orange-900/20 to-red-900/20 rounded-2xl p-8 border-2 border-yellow-500/50 backdrop-blur-sm mb-8 relative overflow-hidden"
@@ -624,7 +610,7 @@ const Part2Celebration = () => {
             {celebrated && (
                 <div className="absolute inset-0 pointer-events-none">
                     {[...Array(20)].map((_, i) => (
-                        <m.div
+                        <motion.div
                             key={i}
                             initial={{ opacity: 1, y: 0 }}
                             animate={{
@@ -640,21 +626,21 @@ const Part2Celebration = () => {
                             }}
                         >
                             {['🎉', '⭐', '🏆', '✨', '🚀'][i % 5]}
-                        </m.div>
+                        </motion.div>
                     ))}
                 </div>
             )}
 
             <div className="relative z-10">
                 <div className="text-center mb-6">
-                    <m.div
+                    <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', delay: 0.2 }}
                         className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-yellow-500/20 mb-4"
                     >
                         <Trophy className="text-yellow-400" size={40} />
-                    </m.div>
+                    </motion.div>
                     <h2 className="text-3xl font-bold text-white mb-2">
                         🎉 PART 2 COMPLETE! 🎉
                     </h2>
@@ -665,7 +651,7 @@ const Part2Celebration = () => {
 
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
                     {achievements.map((item, i) => (
-                        <m.div
+                        <motion.div
                             key={item.chapter}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -676,7 +662,7 @@ const Part2Celebration = () => {
                             <div className="text-white font-bold text-sm">Ch {item.chapter}</div>
                             <div className="text-slate-400 text-xs mb-2">{item.title}</div>
                             <div className="text-green-400 font-bold text-sm">{item.result}</div>
-                        </m.div>
+                        </motion.div>
                     ))}
                 </div>
 
@@ -693,7 +679,7 @@ const Part2Celebration = () => {
                         </div>
                         <div className="h-12 w-px bg-slate-700" />
                         <div>
-                            <div className="text-3xl font-bold text-cyan-400">∞</div>
+                            <div className="text-3xl font-bold text-teal-400">∞</div>
                             <div className="text-slate-400 text-xs">Mental load lifted</div>
                         </div>
                     </div>
@@ -708,7 +694,7 @@ const Part2Celebration = () => {
                     </p>
                 </div>
             </div>
-        </m.div>
+        </motion.div>
     );
 };
 
@@ -717,7 +703,7 @@ const Part2Celebration = () => {
 // ============================================
 
 const Chapter6 = () => {
-    const [speedRun, setSpeedRun] = useState(false);
+    const [blitzMode, setBlitzMode] = useState(false);
     const [cardUnlocked, setCardUnlocked] = useState(false);
     const navigate = useNavigate();
 
@@ -796,16 +782,11 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Operation: Home Base | Agentic AI at Home</title>
-                <meta name="description" content="Automate household chores, maintenance, and supplies." />
+                <title>Discovery 6: Home Base | The Agentic AI Adventure</title>
+                <meta name="description" content="Automate household chores, maintenance, and supplies. Build your Command Center." />
             </Helmet>
 
-            <SEO
-                title="Operation: Home Base - Agentic AI at Home"
-                description="The Invisible Load is real. Automate cleaning, maintenance, and supplies."
-                canonical="/part2/chapter3"
-            />
-            <SpeedRunContext.Provider value={speedRun}>
+            <BlitzModeContext.Provider value={blitzMode}>
                 <div className="min-h-screen bg-[#0f0f1a]">
                     <div className="max-w-4xl mx-auto px-6 py-12">
 
@@ -849,12 +830,12 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
 
                         {/* Speed Run Toggle */}
                         <div className="flex justify-end mb-6">
-                            <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
+                            <BlitzModeToggle enabled={blitzMode} onToggle={() => setBlitzMode(!blitzMode)} />
                         </div>
 
                         <PasswordGate partNumber={2} chapterNumber={6}>
                             {/* CAPTAIN EFFICIENCY - OPENER */}
-                            {!speedRun && (
+                            {!blitzMode && (
                                 <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                                     <CaptainHero
                                         size="md"
@@ -864,25 +845,25 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                                 </Suspense>
                             )}
 
-                            {/* Speed Run Notice */}
-                            {speedRun && (
-                                <m.div
+                            {/* Blitz Mode Notice */}
+                            {blitzMode && (
+                                <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
-                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                    className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                                 >
-                                    <div className="flex items-center gap-2 text-cyan-400">
+                                    <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
-                                        <span className="font-bold">Speed Run Mode</span>
+                                        <span className="font-bold">Blitz Mode Active</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts and tools. Toggle off to see the full chapter.
+                                        Showing only essential prompts and tools. Toggle off for full expedition.
                                     </p>
-                                </m.div>
+                                </motion.div>
                             )}
 
                             {/* INVISIBLE LOAD VISUAL */}
-                            {!speedRun && <InvisibleLoadVisual />}
+                            {!blitzMode && <InvisibleLoadVisual />}
 
                             {/* ★ TOOL FIRST: Household Chaos Calculator ★ */}
                             <section id="household-calculator" className="mb-10">
@@ -902,7 +883,7 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                             </section>
 
                             {/* THE 4 PILLARS */}
-                            {!speedRun && <FourPillarsFramework />}
+                            {!blitzMode && <FourPillarsFramework />}
 
                             {/* INTERACTIVE: ROOM SCHEDULE BUILDER */}
                             <RoomScheduleBuilder />
@@ -915,7 +896,7 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                             />
 
                             {/* VISUAL: MAINTENANCE CALENDAR */}
-                            {!speedRun && <MaintenanceCalendar />}
+                            {!blitzMode && <MaintenanceCalendar />}
 
                             {/* PROMPT 2: MAINTENANCE AGENT */}
                             <QuickWin
@@ -965,7 +946,7 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                                 nextOperationPath="/part3/chapter1"
                                 nextOperationName="INBOX ZERO"
                                 rewards={{
-                                    xp: 300,
+                                    dp: 300,
                                     cards: ['Household Manager Agent'],
                                     achievements: ['home_base_secured', 'part_2_complete']
                                 }}
@@ -983,10 +964,10 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                             />
                         </PasswordGate>
 
-                    </div>
-                </div>
-            </SpeedRunContext.Provider>
-        </WebbookLayout>
+                    </div >
+                </div >
+            </BlitzModeContext.Provider >
+        </WebbookLayout >
     );
 };
 
