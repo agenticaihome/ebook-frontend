@@ -19,6 +19,8 @@ import MissionBriefing from '../../components/gamification/MissionBriefing';
 import MissionComplete from '../../components/gamification/MissionComplete';
 import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import IntelReport from '../../components/gamification/IntelReport';
 import AIToolLinks from '../../components/AIToolLinks';
 import FAQSection, { chapter7FAQs } from '../../components/FAQSection';
 
@@ -53,7 +55,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -69,7 +71,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-400 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-400 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -787,34 +789,43 @@ OUTPUT FORMAT:
                             ]}
                         />
 
-                        {/* OBJECTIVES */}
-                        <ObjectivesChecklist
-                            operationId="op_7"
-                            primaryObjectives={[
-                                { id: "email_calc", label: "Calculate Email Volume" },
-                                { id: "triage_agent", label: "Deploy Triage Agent" },
-                                { id: "unsubscribe", label: "Execute Unsubscribe Blitz" }
-                            ]}
-                            bonusObjectives={[
-                                { id: "boundaries", label: "Establish Email Boundaries" }
-                            ]}
-                        />
+                        {/* FUTURE-PROOF BANNER */}
+                        <FutureProofBanner />
 
-                        {/* Author Credibility */}
-
-
-                        {/* Chapter Navigation */}
-                        <ChapterNavigation
-                            previousChapter="/part2/chapter3"
-                            nextChapter="/part3/chapter2"
-                            partNumber={3}
-                            chapterNumber={1}
-                        />
-
-                        {/* Speed Run Toggle */}
+                        {/* SPEED RUN TOGGLE */}
                         <div className="flex justify-end mb-6">
                             <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                         </div>
+
+                        {/* OBJECTIVES */}
+                        <ObjectivesChecklist
+                            operationId="exp_7"
+                            primaryObjectives={[
+                                { id: "email_calc", label: "Calculate your email load" },
+                                { id: "triage_agent", label: "Deploy your triage agent" },
+                                { id: "unsubscribe", label: "Execute unsubscribe blitz" }
+                            ]}
+                            bonusObjectives={[
+                                { id: "boundaries", label: "Establish email boundaries" },
+                                { id: "templates", label: "Set up response templates" }
+                            ]}
+                        />
+
+                        {/* INTEL REPORT */}
+                        {!speedRun && (
+                            <IntelReport
+                                title="THE EMAIL REALITY"
+                                classification="LEVEL 7"
+                                defaultExpanded={false}
+                                content={`Let's be honest about email and AI, Explorer.
+
+Email isn't going away. AI won't magically make it disappear. What AI CAN do is help you process it faster, draft responses more efficiently, and triage ruthlessly.
+
+The goal isn't "Inbox Zero" as a badge of honor—it's "Inbox Zen": a state where your inbox serves you instead of owning you.
+
+You'll still need to make decisions. But your AI agent will handle the grunt work, leaving your mental energy for what matters.`}
+                            />
+                        )}
 
                         <PasswordGate partNumber={3} chapterNumber={1}>
                             {/* CAPTAIN EFFICIENCY - OPENER */}
@@ -837,10 +848,10 @@ OUTPUT FORMAT:
                                 >
                                     <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
-                                        <span className="font-bold">Speed Run Mode</span>
+                                        <span className="font-bold">Professional Mode Active</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts and tools. Toggle off to see the full chapter.
+                                        Showing only essential prompts and tools. Toggle off for full expedition experience.
                                     </p>
                                 </motion.div>
                             )}
@@ -931,9 +942,20 @@ OUTPUT FORMAT:
                                 chapter={7}
                             />
 
+                            {/* CAPTAIN EFFICIENCY - CLOSER */}
+                            {!speedRun && (
+                                <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
+                                    <CaptainHero
+                                        size="md"
+                                        pose="celebrating"
+                                        message="Outstanding work, Explorer! You've just deployed your Email Triage Agent and taken control of your inbox. No more drowning in notifications—you now have a system that filters the noise and surfaces what matters. Your digital operations just leveled up! 🚀"
+                                    />
+                                </Suspense>
+                            )}
+
                             {/* MISSION COMPLETE */}
                             <MissionComplete
-                                operationId="op_7"
+                                operationId="exp_7"
                                 operationName="INBOX ZERO"
                                 operationNumber={7}
                                 nextOperationPath="/part3/chapter2"
