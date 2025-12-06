@@ -12,9 +12,9 @@ import {
 } from 'react-share';
 
 export default function TimeBackCalculator() {
-    const [emailHours, setEmailHours] = useState(5);
-    const [choreHours, setChoreHours] = useState(4);
-    const [planningHours, setPlanningHours] = useState(3);
+    const [emailHours, setEmailHours] = useState(0);
+    const [choreHours, setChoreHours] = useState(0);
+    const [planningHours, setPlanningHours] = useState(0);
     const [isUnlocked, setIsUnlocked] = useState(false);
     const { playChime } = useSound();
 
