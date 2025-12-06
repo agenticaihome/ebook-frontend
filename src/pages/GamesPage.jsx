@@ -54,7 +54,7 @@ const GamesPage = () => {
             title: 'Deep Work Dive',
             description: '🔥 FREE TO PLAY! Flappy Bird meets productivity. Tap to surge, dodge distractions. Can you survive 30?',
             icon: Zap,
-            color: 'from-blue-500 to-cyan-400',
+            color: 'from-blue-500 to-teal-400',
             component: DeepWorkDive,
             difficulty: 'Hard',
             playtime: '~1 min',
@@ -67,7 +67,7 @@ const GamesPage = () => {
             title: 'Inbox Defense',
             description: 'Train your triage instincts. Every email is someone else\'s agenda—learn to spot what\'s actually yours.',
             icon: Mail,
-            color: 'from-cyan-500 to-blue-500',
+            color: 'from-teal-500 to-blue-500',
             component: AgentTriageGame,
             difficulty: 'Beginner',
             playtime: '~2 min',
@@ -91,7 +91,7 @@ const GamesPage = () => {
             title: 'Focus Blitz',
             description: 'NEW! Zap incoming distractions with focus beams. 60 seconds of pure attention defense.',
             icon: Zap,
-            color: 'from-cyan-500 to-blue-600',
+            color: 'from-teal-500 to-blue-600',
             component: FocusFury,
             difficulty: 'Intermediate',
             playtime: '~1 min',
@@ -163,12 +163,12 @@ const GamesPage = () => {
                             <div className="flex items-center justify-between mb-8">
                                 <button
                                     onClick={() => setActiveGame(null)}
-                                    className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-600 rounded-xl hover:bg-slate-700 hover:border-cyan-500/50 transition-all text-slate-300 hover:text-white"
+                                    className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-600 rounded-xl hover:bg-slate-700 hover:border-teal-500/50 transition-all text-slate-300 hover:text-white"
                                 >
                                     <ArrowLeft size={20} />
                                     <span>Back to Hub</span>
                                 </button>
-                                <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+                                <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">
                                     {games.find(g => g.id === activeGame)?.title}
                                 </h1>
                                 <div className="w-[120px]"></div> {/* Spacer for centering */}
@@ -176,12 +176,12 @@ const GamesPage = () => {
                         ) : (
                             <>
                                 <div className="flex justify-center mb-6">
-                                    <div className="p-4 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-2xl shadow-lg shadow-purple-500/20 inline-block">
+                                    <div className="p-4 bg-gradient-to-br from-teal-500 to-purple-600 rounded-2xl shadow-lg shadow-purple-500/20 inline-block">
                                         <Gamepad2 size={40} className="text-white" />
                                     </div>
                                 </div>
                                 <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">
                                         Agent Training Center
                                     </span>
                                 </h1>
@@ -196,7 +196,7 @@ const GamesPage = () => {
                                         <span>Compete for Global Rank</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <BarChart2 size={16} className="text-cyan-500" />
+                                        <BarChart2 size={16} className="text-teal-500" />
                                         <span>Track Your Progress</span>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@ const GamesPage = () => {
                             >
                                 <Suspense fallback={
                                     <div className="h-96 flex items-center justify-center">
-                                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-500"></div>
+                                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-500"></div>
                                     </div>
                                 }>
                                     {(() => {
@@ -242,7 +242,7 @@ const GamesPage = () => {
                                         <m.div
                                             key={game.id}
                                             whileHover={unlocked ? { y: -5 } : {}}
-                                            className={`group relative bg-slate-800/40 border border-slate-600 rounded-3xl overflow-hidden transition-all shadow-lg backdrop-blur-sm flex flex-col ${unlocked ? 'hover:border-cyan-500/50 hover:shadow-cyan-500/10 cursor-pointer' : 'opacity-75'}`}
+                                            className={`group relative bg-slate-800/40 border border-slate-600 rounded-3xl overflow-hidden transition-all shadow-lg backdrop-blur-sm flex flex-col ${unlocked ? 'hover:border-teal-500/50 hover:shadow-teal-500/10 cursor-pointer' : 'opacity-75'}`}
                                             onClick={() => unlocked && handleGameClick(game)}
                                         >
                                             {/* Background Gradient */}
@@ -256,14 +256,14 @@ const GamesPage = () => {
                                                     </div>
                                                     <h3 className="text-xl font-bold text-white mb-2">Locked</h3>
                                                     <p className="text-slate-300 text-sm mb-4">
-                                                        Complete <strong className="text-cyan-400">Part {game.unlockCondition}</strong> to unlock this simulation.
+                                                        Complete <strong className="text-teal-400">Part {game.unlockCondition}</strong> to unlock this simulation.
                                                     </p>
                                                     <button
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             navigate(`/part${game.unlockCondition}`);
                                                         }}
-                                                        className="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-cyan-400 border border-slate-600 hover:border-cyan-500/50 transition-all flex items-center gap-2 font-medium"
+                                                        className="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-teal-400 border border-slate-600 hover:border-teal-500/50 transition-all flex items-center gap-2 font-medium"
                                                     >
                                                         <Lock size={12} />
                                                         Enter Password
@@ -277,7 +277,7 @@ const GamesPage = () => {
                                                 {/* FREE Badge */}
                                                 {game.isFeatured && (
                                                     <div className="absolute top-4 right-4 z-20">
-                                                        <span className="px-3 py-1 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 text-white text-xs font-bold shadow-lg">
+                                                        <span className="px-3 py-1 rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-bold shadow-lg">
                                                             ✨ FREE
                                                         </span>
                                                     </div>
@@ -290,14 +290,14 @@ const GamesPage = () => {
                                                     </div>
                                                     <div className="flex flex-col items-end">
                                                         <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Personal Best</div>
-                                                        <div className="font-mono text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                                                        <div className="font-mono text-2xl font-bold text-white group-hover:text-teal-400 transition-colors">
                                                             {highScores[game.id] > 0 ? highScores[game.id].toLocaleString() : '--'}
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 {/* Title & Desc */}
-                                                <h3 className={`text-2xl font-bold text-white mb-3 ${unlocked ? 'group-hover:text-cyan-400' : ''} transition-colors`}>
+                                                <h3 className={`text-2xl font-bold text-white mb-3 ${unlocked ? 'group-hover:text-teal-400' : ''} transition-colors`}>
                                                     {game.title}
                                                 </h3>
                                                 <p className="text-slate-400 leading-relaxed mb-6 flex-1">
@@ -327,7 +327,7 @@ const GamesPage = () => {
                                                     <button
                                                         disabled={!unlocked}
                                                         className={`px-4 py-3 rounded-xl font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2 ${unlocked
-                                                            ? `bg-gradient-to-r ${game.color} text-white shadow-cyan-900/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98]`
+                                                            ? `bg-gradient-to-r ${game.color} text-white shadow-teal-900/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]`
                                                             : 'bg-slate-700 text-slate-400 cursor-not-allowed'
                                                             }`}
                                                     >

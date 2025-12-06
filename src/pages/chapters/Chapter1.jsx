@@ -37,7 +37,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -75,7 +75,7 @@ const StoryHook = ({ hook, fullStory }) => {
 
             <button
                 onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-2 text-cyan-400 text-sm mt-4 hover:text-cyan-300 transition-colors"
+                className="flex items-center gap-2 text-teal-400 text-sm mt-4 hover:text-teal-300 transition-colors"
             >
                 {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                 {expanded ? 'Show less' : 'Read the full story'}
@@ -95,11 +95,11 @@ const ShareableQuote = ({ quote, chapter }) => {
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
@@ -169,7 +169,7 @@ const StatCard = ({ value, label, color = 'red' }) => {
     const colors = {
         red: 'bg-red-900/20 border-red-500/30 text-red-400',
         green: 'bg-green-900/20 border-green-500/30 text-green-400',
-        cyan: 'bg-cyan-900/20 border-cyan-500/30 text-cyan-400',
+        cyan: 'bg-teal-900/20 border-teal-500/30 text-teal-400',
         purple: 'bg-purple-900/20 border-purple-500/30 text-purple-400',
     };
 
@@ -363,9 +363,9 @@ The tools are coming. You're learning how to lead them.`}
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
-                                className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                             >
-                                <div className="flex items-center gap-2 text-cyan-400">
+                                <div className="flex items-center gap-2 text-teal-400">
                                     <Zap size={18} />
                                     <span className="font-bold">Blitz Mode Active</span>
                                 </div>
@@ -382,7 +382,7 @@ The tools are coming. You're learning how to lead them.`}
                                     <strong className="text-white">Sarah didn't remember falling asleep.</strong>{' '}
                                     She remembered her laptop at 11:47 PM. Then—alarm. 5:47 AM. Presentation in 48 minutes.
                                     Wrong calendar day. <em>Again.</em>{' '}
-                                    <span className="text-cyan-400 font-medium">
+                                    <span className="text-teal-400 font-medium">
                                         "Something has to break. I just hope it's not me."
                                     </span>
                                 </>
@@ -395,7 +395,7 @@ The tools are coming. You're learning how to lead them.`}
                                     <p className="text-slate-300 mb-4">
                                         While scanning emails, she started the coffee maker. No filter. She didn't notice until brown water pooled across the counter.
                                     </p>
-                                    <div className="bg-cyan-900/20 rounded-lg p-4 border-l-4 border-cyan-500/50 my-4">
+                                    <div className="bg-teal-900/20 rounded-lg p-4 border-l-4 border-teal-500/50 my-4">
                                         <p className="text-slate-300 mb-2">
                                             <strong className="text-white">Three months later:</strong> Sarah woke to one notification. Weather, calendar, bills—summarized in 30 seconds.
                                         </p>
@@ -488,7 +488,7 @@ The tools are coming. You're learning how to lead them.`}
                         {/* ANALYSIS: Chatbot vs AI Helper */}
                         <section className="mb-10">
                             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                                <Target className="text-cyan-400" size={24} />
+                                <Target className="text-teal-400" size={24} />
                                 THE KEY DIFFERENCE
                             </h2>
 
@@ -508,9 +508,9 @@ The tools are coming. You're learning how to lead them.`}
                                     </div>
                                 </div>
 
-                                <div className="bg-cyan-900/20 rounded-xl p-5 border border-cyan-500/30">
+                                <div className="bg-teal-900/20 rounded-xl p-5 border border-teal-500/30">
                                     <div className="text-3xl mb-3">🤖</div>
-                                    <h3 className="text-cyan-400 font-bold text-lg mb-2">Agent</h3>
+                                    <h3 className="text-teal-400 font-bold text-lg mb-2">Agent</h3>
                                     <p className="text-slate-300 text-sm mb-3">
                                         A team member who knows your playbook.
                                     </p>
@@ -521,14 +521,14 @@ The tools are coming. You're learning how to lead them.`}
                                 </div>
                             </div>
 
-                            <div className="bg-cyan-900/30 rounded-xl p-6 border border-cyan-500/40">
+                            <div className="bg-teal-900/30 rounded-xl p-6 border border-teal-500/40">
                                 <div className="flex items-start gap-4">
-                                    <Lightbulb className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
+                                    <Lightbulb className="text-teal-400 flex-shrink-0 mt-1" size={24} />
                                     <div>
                                         <p className="text-white font-bold mb-2">The shift in one sentence:</p>
                                         <p className="text-slate-300">
                                             Chatbots answer questions.{' '}
-                                            <strong className="text-cyan-400">Agents eliminate the need to ask.</strong>
+                                            <strong className="text-teal-400">Agents eliminate the need to ask.</strong>
                                         </p>
                                     </div>
                                 </div>
@@ -562,9 +562,9 @@ The tools are coming. You're learning how to lead them.`}
                         {!speedRun && (
                             <section id="experience-quiz" className="mb-10">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Field Assessment</span>
-                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-teal-500/50" />
+                                    <span className="text-teal-400 font-bold uppercase text-sm tracking-wider">Field Assessment</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-teal-500/50" />
                                 </div>
 
                                 <Suspense fallback={

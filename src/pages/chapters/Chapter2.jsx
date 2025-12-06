@@ -89,7 +89,7 @@ const BlitzModeToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -127,7 +127,7 @@ const StoryHook = ({ hook, fullStory }) => {
 
             <button
                 onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-2 text-cyan-400 text-sm mt-4 hover:text-cyan-300 transition-colors"
+                className="flex items-center gap-2 text-teal-400 text-sm mt-4 hover:text-teal-300 transition-colors"
             >
                 {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                 {expanded ? 'Show less' : 'Read the full briefing'}
@@ -147,11 +147,11 @@ const ShareableQuote = ({ quote, operation }) => {
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
@@ -226,7 +226,7 @@ const RoleCard = ({ emoji, title, subtitle, description, examples, color, isFirs
     const colors = {
         green: { bg: 'from-green-900/40 to-green-900/20', border: 'border-green-500/40', text: 'text-green-400' },
         orange: { bg: 'from-orange-900/40 to-orange-900/20', border: 'border-orange-500/40', text: 'text-orange-400' },
-        cyan: { bg: 'from-cyan-900/40 to-cyan-900/20', border: 'border-cyan-500/40', text: 'text-cyan-400' },
+        cyan: { bg: 'from-teal-900/40 to-teal-900/20', border: 'border-teal-500/40', text: 'text-teal-400' },
         purple: { bg: 'from-purple-900/40 to-purple-900/20', border: 'border-purple-500/40', text: 'text-purple-400' },
     };
 
@@ -276,7 +276,7 @@ const DecisionTree = () => {
     return (
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
             <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                <Crosshair className="text-cyan-400" size={20} />
+                <Crosshair className="text-teal-400" size={20} />
                 Choose Your Brain
             </h3>
 
@@ -293,7 +293,7 @@ const DecisionTree = () => {
                         <button
                             key={option.id}
                             onClick={() => setAnswer(option.id)}
-                            className="w-full flex items-center gap-3 bg-slate-900/50 hover:bg-slate-900 border border-slate-700 hover:border-cyan-500/50 rounded-xl p-4 text-left transition-all"
+                            className="w-full flex items-center gap-3 bg-slate-900/50 hover:bg-slate-900 border border-slate-700 hover:border-teal-500/50 rounded-xl p-4 text-left transition-all"
                         >
                             <span className="text-xl">{option.emoji}</span>
                             <span className="text-slate-200">{option.label}</span>
@@ -306,8 +306,8 @@ const DecisionTree = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center"
                 >
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-cyan-500/20 mb-4">
-                        <CheckCircle className="text-cyan-400" size={32} />
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-500/20 mb-4">
+                        <CheckCircle className="text-teal-400" size={32} />
                     </div>
                     <h4 className="text-2xl font-bold text-white mb-2">
                         Target Acquired: {recommendations[answer].name}
@@ -317,7 +317,7 @@ const DecisionTree = () => {
                     </p>
                     <button
                         onClick={() => setAnswer(null)}
-                        className="text-cyan-400 text-sm hover:text-cyan-300 transition-colors"
+                        className="text-teal-400 text-sm hover:text-teal-300 transition-colors"
                     >
                         ← Reassess
                     </button>
@@ -329,7 +329,7 @@ const DecisionTree = () => {
 
 // Minimum Viable Stack Visual
 const MinimumViableStack = () => (
-    <div className="bg-gradient-to-br from-green-900/20 to-cyan-900/20 rounded-2xl p-6 border border-green-500/40 backdrop-blur-sm mb-8">
+    <div className="bg-gradient-to-br from-green-900/20 to-teal-900/20 rounded-2xl p-6 border border-green-500/40 backdrop-blur-sm mb-8">
         <div className="flex items-center justify-between mb-4">
             <h3 className="text-white font-bold text-lg flex items-center gap-2">
                 <Shield className="text-green-400" size={20} />
@@ -351,7 +351,7 @@ const MinimumViableStack = () => (
                     <div className="flex items-center gap-3">
                         <span className="text-lg">{item.role.split(' ')[0]}</span>
                         <div>
-                            <span className="text-cyan-400 font-bold text-xs">{item.role.split(' ')[1]}</span>
+                            <span className="text-teal-400 font-bold text-xs">{item.role.split(' ')[1]}</span>
                             <span className="text-slate-300 text-sm ml-2">{item.tool}</span>
                         </div>
                     </div>
@@ -366,7 +366,7 @@ const MinimumViableStack = () => (
                 <div className="text-xs text-slate-400">/month</div>
             </div>
             <div className="text-center">
-                <div className="text-2xl font-bold text-cyan-400">30 min</div>
+                <div className="text-2xl font-bold text-teal-400">30 min</div>
                 <div className="text-xs text-slate-400">setup + tuning</div>
             </div>
             <div className="text-center">
@@ -516,7 +516,7 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
             <div className="mt-6 p-4 bg-slate-900/50 rounded-xl">
                 <div className="flex items-center justify-between mb-2">
                     <span className="text-slate-400 text-sm">Protocol Progress</span>
-                    <span className="text-cyan-400 font-bold">{completedSteps.length}/{steps.length}</span>
+                    <span className="text-teal-400 font-bold">{completedSteps.length}/{steps.length}</span>
                 </div>
                 <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
                     <motion.div
@@ -555,7 +555,7 @@ Save this as "Agent: [Task Name]" so we can use it again.`,
 const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
     <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm mb-8">
         <div className="flex items-center gap-2 mb-1">
-            <span className="text-cyan-400 font-bold uppercase text-xs tracking-wider">Field Report</span>
+            <span className="text-teal-400 font-bold uppercase text-xs tracking-wider">Field Report</span>
         </div>
         <div className="flex items-center gap-2 mb-3">
             <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-sm">
@@ -578,7 +578,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
         </div>
 
-        <p className="text-slate-400 text-sm italic border-l-2 border-cyan-500/50 pl-3">
+        <p className="text-slate-400 text-sm italic border-l-2 border-teal-500/50 pl-3">
             "{quote}"
         </p>
     </div>
@@ -685,7 +685,7 @@ const Chapter2 = () => {
                             className="mb-6"
                         >
                             <div className="flex items-center gap-3 mb-2">
-                                <span className="text-cyan-400 font-mono text-sm">OPERATION 2</span>
+                                <span className="text-teal-400 font-mono text-sm">OPERATION 2</span>
                                 <span className="text-slate-600">•</span>
                                 <span className="text-slate-500 text-sm">Part I: Daily Ops</span>
                             </div>
@@ -738,9 +738,9 @@ const Chapter2 = () => {
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
-                                className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                             >
-                                <div className="flex items-center gap-2 text-cyan-400">
+                                <div className="flex items-center gap-2 text-teal-400">
                                     <Zap size={18} />
                                     <span className="font-bold">Blitz Mode Active</span>
                                 </div>
@@ -753,9 +753,9 @@ const Chapter2 = () => {
                         {/* ★ QUIZ FIRST - PATTERN INTERRUPT ★ */}
                         <section id="tool-quiz" className="mb-10">
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Recon Assessment</span>
-                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-teal-500/50" />
+                                <span className="text-teal-400 font-bold uppercase text-sm tracking-wider">Recon Assessment</span>
+                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-teal-500/50" />
                             </div>
 
                             <Suspense fallback={
@@ -770,7 +770,7 @@ const Chapter2 = () => {
                         {/* THE 4-ROLE FRAMEWORK */}
                         <section className="mb-10">
                             <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                                <Users className="text-cyan-400" size={24} />
+                                <Users className="text-teal-400" size={24} />
                                 The 4-Role Framework
                             </h2>
                             <p className="text-slate-400 mb-6">
@@ -817,7 +817,7 @@ const Chapter2 = () => {
                             {!blitzMode && (
                                 <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm">
                                     <h3 className="text-white font-bold mb-3 flex items-center gap-2">
-                                        <Target className="text-cyan-400" size={18} />
+                                        <Target className="text-teal-400" size={18} />
                                         Mission Assignment
                                     </h3>
                                     <p className="text-slate-400 text-sm mb-4">
@@ -831,7 +831,7 @@ const Chapter2 = () => {
                                             { role: 'NERVES', examples: '"When X happens, do Y" (deploy in Operation 13)' },
                                         ].map((item, i) => (
                                             <div key={i} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
-                                                <span className="text-cyan-400 font-bold text-xs min-w-[60px]">{item.role}</span>
+                                                <span className="text-teal-400 font-bold text-xs min-w-[60px]">{item.role}</span>
                                                 <span className="text-slate-300">{item.examples}</span>
                                             </div>
                                         ))}

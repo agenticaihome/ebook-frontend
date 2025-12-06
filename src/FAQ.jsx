@@ -114,7 +114,7 @@ export default function FAQ() {
                     <div className="flex flex-wrap justify-center gap-3">
                         <button
                             onClick={() => setActiveCategory('all')}
-                            className={`px-4 py-2 rounded-full text-sm font-medium font-mono transition-all ${activeCategory === 'all'
+                            className={`px-5 py-3 rounded-full text-sm font-medium font-mono transition-all min-h-[44px] ${activeCategory === 'all'
                                 ? 'bg-amber-600 text-white shadow-lg shadow-amber-500/25'
                                 : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-teal-500/30'
                                 }`}
@@ -125,7 +125,7 @@ export default function FAQ() {
                             <button
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat.id)}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium font-mono transition-all ${activeCategory === cat.id
+                                className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium font-mono transition-all min-h-[44px] ${activeCategory === cat.id
                                     ? 'bg-amber-600 text-white shadow-lg shadow-amber-500/25'
                                     : 'bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white border border-teal-500/30'
                                     }`}
@@ -154,12 +154,12 @@ export default function FAQ() {
                                 >
                                     <button
                                         onClick={() => toggleQuestion(item.id)}
-                                        className="w-full text-left p-6 flex items-start justify-between gap-4"
+                                        className="w-full text-left p-6 flex items-start justify-between gap-4 min-h-[60px]"
                                     >
                                         <div className="flex items-start gap-4">
-                                            <div className={`mt-1 p-2 rounded-lg transition-colors ${expandedId === item.id ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-800 text-slate-500 group-hover:text-teal-400'
+                                            <div className={`mt-1 p-3 rounded-lg transition-colors ${expandedId === item.id ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-800 text-slate-500 group-hover:text-teal-400'
                                                 }`}>
-                                                <HelpCircle size={20} />
+                                                <HelpCircle size={22} />
                                             </div>
                                             <div>
                                                 <h3 className={`text-lg font-semibold font-mono transition-colors ${expandedId === item.id ? 'text-amber-400' : 'text-slate-200 group-hover:text-amber-400'

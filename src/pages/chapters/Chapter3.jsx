@@ -85,7 +85,7 @@ const BlitzModeToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -105,11 +105,11 @@ const ShareableQuote = ({ quote, operation }) => {
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
@@ -211,7 +211,7 @@ const ProvocativeHook = () => (
             ))}
         </div>
 
-        <p className="text-cyan-400 font-medium mt-6">
+        <p className="text-teal-400 font-medium mt-6">
             Let's find out—and establish your security perimeter.
         </p>
     </div>
@@ -261,7 +261,7 @@ const DataTierVisual = () => {
     return (
         <div className="mb-8">
             <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                <Radio className="text-cyan-400" size={24} />
+                <Radio className="text-teal-400" size={24} />
                 Threat Assessment: 3-Tier Data Model
             </h2>
             <p className="text-slate-400 mb-6">
@@ -425,8 +425,8 @@ const ToolPrivacyTable = () => {
                 ))}
             </div>
 
-            <div className="mt-4 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30">
-                <p className="text-cyan-400 text-sm flex items-start gap-2">
+            <div className="mt-4 p-4 bg-teal-900/20 rounded-xl border border-teal-500/30">
+                <p className="text-teal-400 text-sm flex items-start gap-2">
                     <Info size={16} className="flex-shrink-0 mt-0.5" />
                     <span>
                         <strong>Tactical recommendation:</strong> If privacy is a priority, Claude is currently the most
@@ -491,7 +491,7 @@ const PrivacyLockdown = ({ onComplete }) => {
     const completedCount = Object.values(completed).filter(Boolean).length;
 
     return (
-        <div className="bg-gradient-to-br from-teal-900/20 to-cyan-900/20 rounded-2xl p-6 border-2 border-teal-500/50 backdrop-blur-sm mb-8">
+        <div className="bg-gradient-to-br from-teal-900/20 to-teal-900/20 rounded-2xl p-6 border-2 border-teal-500/50 backdrop-blur-sm mb-8">
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
@@ -528,7 +528,7 @@ const PrivacyLockdown = ({ onComplete }) => {
                             <div className="flex-1">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <span className="text-cyan-400 text-xs font-bold">{step.tool}</span>
+                                        <span className="text-teal-400 text-xs font-bold">{step.tool}</span>
                                         <h4 className={`font-medium ${completed[step.id] ? 'text-slate-500 line-through' : 'text-white'}`}>
                                             {step.action}
                                         </h4>
@@ -626,7 +626,7 @@ const RedFlagsChecklist = () => {
 const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
     <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm mb-8">
         <div className="flex items-center gap-2 mb-1">
-            <span className="text-cyan-400 font-bold uppercase text-xs tracking-wider">Field Report</span>
+            <span className="text-teal-400 font-bold uppercase text-xs tracking-wider">Field Report</span>
         </div>
         <div className="flex items-center gap-2 mb-3">
             <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-sm">
@@ -649,7 +649,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
         </div>
 
-        <p className="text-slate-400 text-sm italic border-l-2 border-cyan-500/50 pl-3">
+        <p className="text-slate-400 text-sm italic border-l-2 border-teal-500/50 pl-3">
             "{quote}"
         </p>
     </div>
@@ -809,9 +809,9 @@ const Chapter3 = () => {
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
-                                className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                             >
-                                <div className="flex items-center gap-2 text-cyan-400">
+                                <div className="flex items-center gap-2 text-teal-400">
                                     <Zap size={18} />
                                     <span className="font-bold">Blitz Mode Active</span>
                                 </div>
@@ -827,9 +827,9 @@ const Chapter3 = () => {
                         {/* PRIVACY AUDIT TOOL */}
                         <section id="privacy-audit" className="mb-10">
                             <div className="flex items-center gap-2 mb-4">
-                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Security Audit</span>
-                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-teal-500/50" />
+                                <span className="text-teal-400 font-bold uppercase text-sm tracking-wider">Security Audit</span>
+                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-teal-500/50" />
                             </div>
 
                             <Suspense fallback={
@@ -898,7 +898,7 @@ const Chapter3 = () => {
                         {!blitzMode && (
                             <section className="mb-10">
                                 <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                                    <FileText className="text-cyan-400" size={24} />
+                                    <FileText className="text-teal-400" size={24} />
                                     Your Agent Constitution
                                 </h2>
                                 <p className="text-slate-400 mb-6">
