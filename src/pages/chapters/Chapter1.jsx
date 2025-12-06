@@ -487,6 +487,9 @@ The tools are coming. You're learning how to lead them.`}
                             </p>
                         </NewbieBox>
 
+                        {/* TOTAL BEGINNER GUIDE - Expandable step-by-step */}
+                        <TotalBeginnerGuide className="mb-8" />
+
                         {/* ANALYSIS: Chatbot vs AI Helper */}
                         <section className="mb-10">
                             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">

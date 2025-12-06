@@ -848,6 +848,11 @@ const Chapter2 = () => {
                             </section>
                         )}
 
+                        {/* QUICK ACCESS TO ALL AI TOOLS */}
+                        <section className="mb-10">
+                            <AIToolLinks />
+                        </section>
+
                         {/* CARD UNLOCK 1 - AI Stack Advisor */}
                         <AgentCardUnlock
                             card={aiStackAdvisorCard}
