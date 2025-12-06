@@ -20,6 +20,13 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
 import FAQSection, { chapter9FAQs } from '../../components/FAQSection';
 
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import IntelReport from '../../components/gamification/IntelReport';
+
 // ============================================
 // SPEED RUN CONTEXT
 // ============================================
@@ -93,7 +100,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -109,7 +116,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-500 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -951,6 +958,9 @@ Help me get through paperwork without the dread.`;
                             </div>
                         </motion.div>
 
+                        {/* FUTURE-PROOF BANNER */}
+                        <FutureProofBanner />
+
                         {/* TL;DR Card */}
                         <TLDRCard
                             stats={[
@@ -974,6 +984,22 @@ Help me get through paperwork without the dread.`;
                                 </Suspense>
                             )}
 
+                            {/* INTEL REPORT */}
+                            {!speedRun && (
+                                <IntelReport
+                                    title="THE ADMIN REALITY"
+                                    classification="LEVEL 9"
+                                    defaultExpanded={false}
+                                    content={`Let's talk about the "life admin" that eats your time, Explorer.
+
+Bills, renewals, paperwork, subscriptions—individually small, collectively massive. Death by a thousand paper cuts.
+
+Your AI agent can't pay your bills for you (yet). But it CAN help you build systems: reminders before due dates, checklists you actually use, and automation for the repetitive stuff.
+
+The goal: Never be surprised by a deadline. Never pay a late fee. Never forget a renewal.`}
+                                />
+                            )}
+
                             {/* Speed Run Notice */}
                             {speedRun && (
                                 <motion.div
@@ -983,10 +1009,10 @@ Help me get through paperwork without the dread.`;
                                 >
                                     <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
-                                        <span className="font-bold">Speed Run Mode</span>
+                                        <span className="font-bold">Professional Mode Active</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts. Toggle off for full inventory tools.
+                                        Showing only essential prompts. Toggle off for full expedition experience.
                                     </p>
                                 </motion.div>
                             )}
