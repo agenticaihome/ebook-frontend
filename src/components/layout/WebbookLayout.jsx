@@ -179,11 +179,36 @@ const WebbookLayout = ({ children }) => {
                 />
             </div>
 
+            {/* Mobile Backdrop Overlay */}
+            <AnimatePresence>
+                {isSidebarOpen && (
+                    <m.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden"
+                        onClick={() => setIsSidebarOpen(false)}
+                        aria-hidden="true"
+                    />
+                )}
+            </AnimatePresence>
+
             {/* Sidebar Navigation */}
             <m.aside
-                initial={{ width: 280 }}
-                animate={{ width: isSidebarOpen ? 280 : 0 }}
-                className="fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-amber-500/20 shadow-2xl overflow-hidden flex flex-col transition-all duration-300 ease-in-out"
+                initial={{ x: -280, opacity: 0 }}
+                animate={{
+                    x: isSidebarOpen ? 0 : -280,
+                    opacity: isSidebarOpen ? 1 : 0,
+                    width: 280
+                }}
+                transition={{
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 30,
+                    opacity: { duration: 0.2 }
+                }}
+                className="fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-amber-500/20 shadow-2xl overflow-hidden flex flex-col"
                 aria-label="Main Navigation"
             >
                 {/* HEADER - Amber themed with compass */}
