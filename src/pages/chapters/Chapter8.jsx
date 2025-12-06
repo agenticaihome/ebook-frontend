@@ -19,6 +19,13 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
 import FAQSection, { chapter8FAQs } from '../../components/FAQSection';
 
+// Game Components
+import MissionBriefing from '../../components/gamification/MissionBriefing';
+import MissionComplete from '../../components/gamification/MissionComplete';
+import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import IntelReport from '../../components/gamification/IntelReport';
+
 // ============================================
 // SPEED RUN CONTEXT
 // ============================================
@@ -92,7 +99,7 @@ const ShareableQuote = ({ quote, chapter }) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Chapter ${chapter}`);
+        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${chapter}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -108,7 +115,7 @@ const ShareableQuote = ({ quote, chapter }) => {
                     {quote}
                 </p>
                 <div className="flex items-center justify-between">
-                    <span className="text-slate-500 text-sm">— Chapter {chapter}</span>
+                    <span className="text-slate-500 text-sm">— Discovery {chapter}</span>
                     <div className="flex gap-2">
                         <button
                             onClick={handleCopy}
@@ -211,7 +218,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
         </div>
 
         <button className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
-            Continue to Chapter {nextChapter}: {nextTitle}
+            Continue to Discovery {nextChapter}: {nextTitle}
             <ArrowRight size={18} />
         </button>
     </div>
@@ -895,6 +902,9 @@ Help me enter each week with my calendar under control.`;
                             </div>
                         </motion.div>
 
+                        {/* FUTURE-PROOF BANNER */}
+                        <FutureProofBanner />
+
                         {/* TL;DR Card */}
                         <TLDRCard
                             stats={[
@@ -918,6 +928,22 @@ Help me enter each week with my calendar under control.`;
                                 </Suspense>
                             )}
 
+                            {/* INTEL REPORT */}
+                            {!speedRun && (
+                                <IntelReport
+                                    title="THE MEETING REALITY"
+                                    classification="LEVEL 8"
+                                    defaultExpanded={false}
+                                    content={`Here's the uncomfortable truth about meetings, Explorer.
+
+Most meetings exist because of habit, not necessity. "We've always had this meeting" is not a valid reason to spend an hour of your life.
+
+Your AI agent won't magically attend meetings for you—not yet. But it WILL help you evaluate which ones deserve your time, prep efficiently when you do attend, and gracefully decline when you shouldn't.
+
+The goal: fewer, better meetings. Protected focus time. And templates to say no without damaging relationships.`}
+                                />
+                            )}
+
                             {/* Speed Run Notice */}
                             {speedRun && (
                                 <motion.div
@@ -927,10 +953,10 @@ Help me enter each week with my calendar under control.`;
                                 >
                                     <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
-                                        <span className="font-bold">Speed Run Mode</span>
+                                        <span className="font-bold">Professional Mode Active</span>
                                     </div>
                                     <p className="text-slate-400 text-sm mt-1">
-                                        Showing only the essential prompts and frameworks. Toggle off for full context.
+                                        Showing only essential prompts and frameworks. Toggle off for full expedition experience.
                                     </p>
                                 </motion.div>
                             )}
