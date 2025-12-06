@@ -16,6 +16,10 @@ const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 import AIToolLinks from '../../components/AIToolLinks';
 import FAQSection, { chapter16FAQs } from '../../components/FAQSection';
 
+// Game Components
+import FutureProofBanner from '../../components/gamification/FutureProofBanner';
+import IntelReport from '../../components/gamification/IntelReport';
+
 // ============================================
 // REUSABLE COMPONENTS
 // ============================================
@@ -98,20 +102,20 @@ const EpicHeader = () => (
             className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 px-6 py-2 rounded-full border border-yellow-500/30 mb-6"
         >
             <Crown className="text-yellow-400" size={20} />
-            <span className="text-yellow-400 font-bold">THE FINALE</span>
+            <span className="text-yellow-400 font-bold">THE END OF THE BEGINNING</span>
             <Crown className="text-yellow-400" size={20} />
         </motion.div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Your New Life
+                Conclusion
             </span>
         </h1>
 
         <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto">
-            You started overwhelmed. You're ending in control.
+            You started overwhelmed. You're ending empowered.
             <br />
-            <span className="text-white font-medium">Let's see how far you've come.</span>
+            <span className="text-white font-medium">This isn't goodbye—it's the beginning of everything.</span>
         </p>
     </motion.div>
 );
@@ -472,7 +476,7 @@ const FutureVision = () => {
 const CallToAction = () => {
     const [copied, setCopied] = useState(false);
 
-    const shareText = "I just completed The Agentic AI Adventure and built a Life Operating System with 20+ AI agents. 7-8 hours saved weekly, $350/month in savings. The future is here. 🚀";
+    const shareText = "I just completed The Agentic AI Adventure and built a Life Operating System with 20+ AI agents. If you're feeling overwhelmed by life's chaos, this course shows you exactly how to automate the mundane so you can focus on what matters. 🚀";
 
     const handleCopy = () => {
         navigator.clipboard.writeText(shareText);
@@ -481,36 +485,53 @@ const CallToAction = () => {
     };
 
     return (
-        <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 rounded-2xl p-8 border border-purple-500/40 backdrop-blur-sm mb-8">
-            <div className="text-center mb-6">
-                <Gift className="text-purple-400 mx-auto mb-3" size={40} />
-                <h2 className="text-2xl font-bold text-white mb-2">Share the Transformation</h2>
-                <p className="text-slate-400">Help someone else escape the overwhelm</p>
+        <div className="mb-8">
+            {/* Share with Friends */}
+            <div className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 rounded-2xl p-8 border border-purple-500/40 backdrop-blur-sm mb-6">
+                <div className="text-center mb-6">
+                    <Gift className="text-purple-400 mx-auto mb-3" size={40} />
+                    <h2 className="text-2xl font-bold text-white mb-2">Share With Someone Who Needs This</h2>
+                    <p className="text-slate-400">Know someone drowning in emails, calendar chaos, or the mental load of life? Send them this adventure.</p>
+                </div>
+
+                <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
+                    <p className="text-slate-300 text-sm italic">"{shareText}"</p>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-3">
+                    <button
+                        onClick={handleCopy}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${copied
+                            ? 'bg-green-500/20 text-green-400 border border-green-500/50'
+                            : 'bg-slate-700 text-white hover:bg-slate-600'
+                            }`}
+                    >
+                        {copied ? <CheckCircle size={16} /> : <Copy size={16} />}
+                        {copied ? 'Copied!' : 'Copy Message'}
+                    </button>
+                    <button className="flex items-center gap-2 bg-[#1DA1F2]/20 text-[#1DA1F2] px-4 py-2 rounded-lg border border-[#1DA1F2]/50 hover:bg-[#1DA1F2]/30 transition-all">
+                        <Twitter size={16} />
+                        Tweet It
+                    </button>
+                    <button className="flex items-center gap-2 bg-[#0A66C2]/20 text-[#0A66C2] px-4 py-2 rounded-lg border border-[#0A66C2]/50 hover:bg-[#0A66C2]/30 transition-all">
+                        <Linkedin size={16} />
+                        Share
+                    </button>
+                </div>
             </div>
 
-            <div className="bg-slate-900/50 rounded-xl p-4 mb-6">
-                <p className="text-slate-300 text-sm italic">"{shareText}"</p>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3">
-                <button
-                    onClick={handleCopy}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${copied
-                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-                        : 'bg-slate-700 text-white hover:bg-slate-600'
-                        }`}
-                >
-                    {copied ? <CheckCircle size={16} /> : <Copy size={16} />}
-                    {copied ? 'Copied!' : 'Copy'}
-                </button>
-                <button className="flex items-center gap-2 bg-[#1DA1F2]/20 text-[#1DA1F2] px-4 py-2 rounded-lg border border-[#1DA1F2]/50 hover:bg-[#1DA1F2]/30 transition-all">
-                    <Twitter size={16} />
-                    Tweet
-                </button>
-                <button className="flex items-center gap-2 bg-[#0A66C2]/20 text-[#0A66C2] px-4 py-2 rounded-lg border border-[#0A66C2]/50 hover:bg-[#0A66C2]/30 transition-all">
-                    <Linkedin size={16} />
-                    Share
-                </button>
+            {/* Let Us Know */}
+            <div className="bg-gradient-to-r from-teal-900/30 to-blue-900/30 rounded-2xl p-6 border border-teal-500/30">
+                <div className="text-center">
+                    <MessageCircle className="text-teal-400 mx-auto mb-3" size={32} />
+                    <h3 className="text-xl font-bold text-white mb-2">Did This Help You?</h3>
+                    <p className="text-slate-400 text-sm mb-4">
+                        We'd love to hear your story! Reach out via social media or email to let us know if you enjoyed the adventure and how it's changed your life.
+                    </p>
+                    <p className="text-teal-400 text-sm font-medium">
+                        Your feedback helps us make this better for future explorers. 💜
+                    </p>
+                </div>
             </div>
         </div>
     );
@@ -531,17 +552,17 @@ const FinalCelebration = () => (
         </motion.div>
 
         <h2 className="text-3xl font-bold text-white mb-4">
-            🎉 Congratulations! 🎉
+            🎉 Congratulations, Explorer! 🎉
         </h2>
 
         <p className="text-xl text-slate-300 mb-6 max-w-2xl mx-auto">
             You've completed <span className="text-yellow-400 font-bold">The Agentic AI Adventure</span>.
-            You're no longer just surviving the chaos—you're <span className="text-green-400 font-bold">thriving</span> because of a system.
+            You're no longer just surviving the chaos—you're <span className="text-green-400 font-bold">orchestrating a life</span> that works for you.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4 mb-6">
             <div className="bg-slate-900/50 px-4 py-2 rounded-lg">
-                <span className="text-slate-400 text-sm">Chapters Completed</span>
+                <span className="text-slate-400 text-sm">Discoveries Completed</span>
                 <div className="text-2xl font-bold text-white">16/16</div>
             </div>
             <div className="bg-slate-900/50 px-4 py-2 rounded-lg">
@@ -555,7 +576,7 @@ const FinalCelebration = () => (
         </div>
 
         <p className="text-slate-400 italic">
-            "You didn't just read a book. You built a system. You changed your life."
+            "You didn't just learn about AI. You built with it. You grew because of it. And now? Life runs on YOUR terms."
         </p>
     </motion.div>
 );
@@ -575,8 +596,8 @@ const Chapter16 = () => {
     return (
         <>
             <Helmet>
-                <title>Discovery 16: Your New Life | The Agentic AI Adventure</title>
-                <meta name="description" content="The grand finale. See your transformation: 7-8 hours saved weekly, $350/month in savings, 20+ agents working for you. Your new life begins now." />
+                <title>Conclusion | The Agentic AI Adventure</title>
+                <meta name="description" content="The conclusion of your journey. You've built a Life Operating System with 20+ AI agents. Celebrate how far you've come and embrace what's next." />
             </Helmet>
 
             {showConfetti && <Confetti />}
@@ -604,9 +625,29 @@ const Chapter16 = () => {
                             <CaptainHero
                                 size="lg"
                                 pose="celebrating"
-                                message="Look at you. You started this journey overwhelmed, drowning in tasks, wondering how other people seem to have it together. And now? You have a Life Operating System. Twenty-plus agents working around the clock. Meals planned. Emails handled. Calendar protected. Health tracked. Relationships nurtured. Growth happening. You didn't just read about AI. You BUILT with it. You TRANSFORMED with it. I couldn't be prouder."
+                                message="*wipes a tear* Look at you, Explorer. When we started this journey, you were drowning—buried under emails, juggling a hundred mental tabs, wondering if life would always feel this chaotic. And now? You've built something extraordinary. A Life Operating System with 20+ agents working around the clock. Not because you read about AI or watched videos about productivity. Because you DID the work. You built the prompts. You created the systems. You transformed your life with your own hands. I've guided many explorers, but watching you go from overwhelmed to orchestrator? That's the good stuff. That's why I do this. 🎉"
                             />
                         </Suspense>
+
+                        {/* REFLECTIVE INTEL REPORT */}
+                        <IntelReport
+                            title="WHAT YOU'VE ACTUALLY BUILT"
+                            classification="FINAL DEBRIEF"
+                            defaultExpanded={true}
+                            content={`Let's be real about what happened here, Explorer.
+
+You didn't just learn some tips and tricks. You fundamentally changed how you operate.
+
+• Your mornings now have structure instead of scramble.
+• Your inbox serves YOU instead of controlling you.
+• Your calendar protects focus instead of fragmenting it.
+• Your home runs itself instead of running you ragged.
+• Your relationships thrive because you never forget what matters.
+• Your health is tracked because the system has your back.
+• And your mind? Finally free to think big thoughts instead of managing small tasks.
+
+This isn't just about AI. This is about reclaiming your life. You built the infrastructure. Now you get to live in it.`}
+                        />
 
                         {/* BEFORE / AFTER */}
                         <TransformationVisual />
@@ -649,7 +690,17 @@ const Chapter16 = () => {
                             <CaptainHero
                                 size="md"
                                 pose="waving"
-                                message="This isn't goodbye—it's the beginning. Your agents will keep working. Your system will keep evolving. And you? You'll keep getting better at this. Remember: the goal was never to be perfect. It was to have a system that handles the chaos so YOU can focus on what matters. Mission accomplished. Now go live your new life. I'll be here if you need me. 💜"
+                                message="*salutes* Explorer, this is where I step back—but I'm never really gone. Your agents will keep working while you sleep. Your systems will keep evolving as you grow. And when life throws something new at you? You'll know exactly how to build an agent for that too.
+
+Remember: perfection was never the mission. The mission was freedom—freedom from the mental tax of managing everything manually. Freedom to be present with the people you love. Freedom to focus on work that actually matters.
+
+Mission accomplished.
+
+Now go live that life you built. I'll be here whenever you need a refresher, a new agent, or just a reminder of how far you've come.
+
+It's been an honor, Explorer. Truly. 💜
+
+*flies off into the sunset, leaving a trail of sparkles*"
                             />
                         </Suspense>
 
