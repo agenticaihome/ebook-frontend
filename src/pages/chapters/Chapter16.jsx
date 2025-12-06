@@ -23,7 +23,7 @@ import FAQSection, { chapter16FAQs } from '../../components/FAQSection';
 const ChapterProgress = ({ current, total, part, partTitle }) => (
     <div className="mb-6">
         {part && (
-            <div className="text-cyan-400 font-bold text-sm mb-2 uppercase tracking-wider">
+            <div className="text-teal-400 font-bold text-sm mb-2 uppercase tracking-wider">
                 Part {part}: {partTitle}
             </div>
         )}
@@ -32,7 +32,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                 <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500"
+                    className="h-full bg-gradient-to-r from-teal-500 via-purple-500 to-pink-500"
                 />
             </div>
             <span className="text-slate-500 text-sm font-mono">
@@ -44,7 +44,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
             DDS
         </div>
         <div className="flex-1">
@@ -118,7 +118,7 @@ const EpicHeader = () => (
         </motion.div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Your New Life
             </span>
         </h1>
@@ -227,7 +227,7 @@ const ImpactResults = () => {
             unit: 'hours',
             label: 'saved weekly',
             subtext: '364+ hours per year',
-            color: 'cyan',
+            color: 'teal',
             icon: Clock,
         },
         {
@@ -257,7 +257,7 @@ const ImpactResults = () => {
     ];
 
     const colorClasses = {
-        cyan: 'from-cyan-500/20 to-cyan-500/5 border-cyan-500/40 text-cyan-400',
+        teal: 'from-teal-500/20 to-teal-500/5 border-teal-500/40 text-teal-400',
         green: 'from-green-500/20 to-green-500/5 border-green-500/40 text-green-400',
         purple: 'from-purple-500/20 to-purple-500/5 border-purple-500/40 text-purple-400',
         pink: 'from-pink-500/20 to-pink-500/5 border-pink-500/40 text-pink-400',
@@ -299,7 +299,7 @@ const JourneyRecap = () => {
             part: 1,
             title: 'Foundations',
             chapters: ['The Overwhelm', 'The Agent Mindset', 'Your First Agent'],
-            color: 'cyan',
+            color: 'teal',
             achievement: 'Understood the vision',
         },
         {
@@ -333,7 +333,7 @@ const JourneyRecap = () => {
     ];
 
     const colorClasses = {
-        cyan: 'border-cyan-500/40 text-cyan-400',
+        teal: 'border-teal-500/40 text-teal-400',
         orange: 'border-orange-500/40 text-orange-400',
         purple: 'border-purple-500/40 text-purple-400',
         rose: 'border-rose-500/40 text-rose-400',
@@ -381,7 +381,7 @@ const AgentArmySummary = () => {
         {
             category: 'Daily Operations',
             agents: ['Morning Brief', 'Meal Planner', 'Grocery List', 'Cleaning Coordinator', 'Maintenance Manager', 'Supplies Tracker'],
-            color: 'cyan',
+            color: 'teal',
         },
         {
             category: 'Digital Systems',
@@ -401,7 +401,7 @@ const AgentArmySummary = () => {
     ];
 
     const colorClasses = {
-        cyan: 'bg-cyan-500/20 border-cyan-500/40',
+        teal: 'bg-teal-500/20 border-teal-500/40',
         purple: 'bg-purple-500/20 border-purple-500/40',
         rose: 'bg-rose-500/20 border-rose-500/40',
         yellow: 'bg-yellow-500/20 border-yellow-500/40',
@@ -473,7 +473,7 @@ const FutureVision = () => {
                         transition={{ delay: i * 0.1 }}
                         className="bg-slate-900/50 rounded-xl p-5 border border-slate-700 text-center"
                     >
-                        <future.icon className="text-cyan-400 mx-auto mb-3" size={28} />
+                        <future.icon className="text-teal-400 mx-auto mb-3" size={28} />
                         <h4 className="text-white font-bold mb-2">{future.timeframe}</h4>
                         <p className="text-slate-400 text-sm">{future.description}</p>
                     </motion.div>
@@ -608,7 +608,7 @@ const Chapter16 = () => {
                     />
 
                     {/* Author Credibility */}
-                    <AuthorCredibility />
+
 
                     {/* EPIC HEADER */}
                     <EpicHeader />
@@ -641,14 +641,14 @@ const Chapter16 = () => {
                         {/* SHAREABLE QUOTE */}
                         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
-                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-3xl" />
+                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-teal-500/10 rounded-full blur-3xl" />
 
                             <div className="relative text-center">
                                 <div className="text-6xl text-purple-500/30 font-serif leading-none mb-2">"</div>
                                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-4">
                                     You didn't just learn about AI.
                                     <br />
-                                    <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                                    <span className="bg-gradient-to-r from-teal-400 to-purple-400 bg-clip-text text-transparent">
                                         You built a new life with it.
                                     </span>
                                 </p>

@@ -2,7 +2,7 @@ import React, { useState, Suspense, createContext, useContext, useEffect } from 
 import { Helmet } from 'react-helmet-async';
 import SEO from '../../components/SEO';
 import { useNavigate } from 'react-router-dom';
-import { m, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import PasswordGate from '../../components/common/PasswordGate';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
@@ -37,7 +37,7 @@ const SpeedRunContext = createContext(false);
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
             DDS
         </div>
         <div className="flex-1">
@@ -54,7 +54,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -74,11 +74,11 @@ const ShareableQuote = ({ quote, chapter }) => {
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
@@ -118,7 +118,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     const variants = {
         default: 'from-green-900/30 to-emerald-900/20 border-green-500/40',
         secondary: 'from-purple-900/30 to-indigo-900/20 border-purple-500/40',
-        tertiary: 'from-blue-900/30 to-cyan-900/20 border-blue-500/40',
+        tertiary: 'from-blue-900/30 to-teal-900/20 border-blue-500/40',
         bonus: 'from-yellow-900/30 to-orange-900/20 border-yellow-500/40',
     };
 
@@ -185,7 +185,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
         </div>
 
-        <p className="text-slate-400 text-sm italic border-l-2 border-cyan-500/50 pl-3">
+        <p className="text-slate-400 text-sm italic border-l-2 border-teal-500/50 pl-3">
             "{quote}"
         </p>
     </div>
@@ -294,7 +294,7 @@ const InboxAnxietyVisual = () => {
                     A task undefined. Mental weight you carry all day.
                 </p>
 
-                <p className="text-cyan-400 font-bold">
+                <p className="text-teal-400 font-bold">
                     It's time for your inbox to work for YOU.
                 </p>
             </div>
@@ -815,7 +815,7 @@ OUTPUT FORMAT:
                         />
 
                         {/* Author Credibility */}
-                        <AuthorCredibility />
+                        
 
                         {/* Chapter Navigation */}
                         <ChapterNavigation
@@ -847,9 +847,9 @@ OUTPUT FORMAT:
                                 <m.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
-                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                    className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                                 >
-                                    <div className="flex items-center gap-2 text-cyan-400">
+                                    <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
                                         <span className="font-bold">Speed Run Mode</span>
                                     </div>
@@ -865,9 +865,9 @@ OUTPUT FORMAT:
                             {/* ★ TOOL FIRST: Email Volume Calculator ★ */}
                             <section id="email-calculator" className="mb-10">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Calculate Your Email Load</span>
-                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-teal-500/50" />
+                                    <span className="text-teal-400 font-bold uppercase text-sm tracking-wider">Calculate Your Email Load</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-teal-500/50" />
                                 </div>
 
                                 <Suspense fallback={

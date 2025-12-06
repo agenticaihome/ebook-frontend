@@ -31,7 +31,7 @@ const SpeedRunContext = createContext(false);
 const ChapterProgress = ({ current, total, part, partTitle }) => (
     <div className="mb-6">
         {part && (
-            <div className="text-cyan-400 font-bold text-sm mb-2 uppercase tracking-wider">
+            <div className="text-teal-400 font-bold text-sm mb-2 uppercase tracking-wider">
                 Part {part}: {partTitle}
             </div>
         )}
@@ -40,7 +40,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                 <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
+                    className="h-full bg-gradient-to-r from-teal-500 to-purple-500"
                 />
             </div>
             <span className="text-slate-500 text-sm font-mono">
@@ -52,7 +52,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
             DDS
         </div>
         <div className="flex-1">
@@ -69,7 +69,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -82,7 +82,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
+        className="bg-gradient-to-r from-teal-900/40 to-purple-900/40 rounded-2xl p-6 border border-teal-500/30 mb-8"
     >
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-wrap justify-center md:justify-start gap-6">
@@ -95,7 +95,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
             </div>
             <button
                 onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
+                className="flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
             >
                 {primaryCTA} <ArrowRight size={18} />
             </button>
@@ -114,11 +114,11 @@ const ShareableQuote = ({ quote, chapter }) => {
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
@@ -158,7 +158,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     const variants = {
         default: 'from-green-900/30 to-emerald-900/20 border-green-500/40',
         secondary: 'from-purple-900/30 to-indigo-900/20 border-purple-500/40',
-        tertiary: 'from-blue-900/30 to-cyan-900/20 border-blue-500/40',
+        tertiary: 'from-blue-900/30 to-teal-900/20 border-blue-500/40',
         master: 'from-yellow-900/30 via-orange-900/20 to-red-900/20 border-yellow-500/40',
     };
 
@@ -206,7 +206,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
 };
 
 const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
+    <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
         <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
                 <CheckCircle className="text-green-400" size={24} />
@@ -229,7 +229,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
             </ul>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
+        <button className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
             Continue to Chapter {nextChapter}: {nextTitle}
             <ArrowRight size={18} />
         </button>
@@ -245,22 +245,22 @@ const Part5Intro = () => (
     <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 via-purple-900/30 to-cyan-900/40 rounded-2xl p-6 border border-cyan-500/40 backdrop-blur-sm mb-8 relative overflow-hidden"
+        className="bg-gradient-to-r from-teal-900/40 via-purple-900/30 to-teal-900/40 rounded-2xl p-6 border border-teal-500/40 backdrop-blur-sm mb-8 relative overflow-hidden"
     >
-        <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-40 h-40 bg-teal-500/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/20 rounded-full blur-3xl" />
 
         <div className="relative flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
-                <Crown className="text-cyan-400" size={28} />
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500/20 to-purple-500/20 flex items-center justify-center">
+                <Crown className="text-teal-400" size={28} />
             </div>
             <div>
-                <div className="text-cyan-400 font-bold uppercase text-sm tracking-wider mb-1">
+                <div className="text-teal-400 font-bold uppercase text-sm tracking-wider mb-1">
                     Entering Part 5
                 </div>
                 <h2 className="text-2xl font-bold text-white">Integration & Mastery</h2>
                 <p className="text-slate-400 text-sm mt-1">
-                    Everything you've built is about to become <span className="text-cyan-400">one powerful system</span>.
+                    Everything you've built is about to become <span className="text-teal-400">one powerful system</span>.
                 </p>
             </div>
         </div>
@@ -276,9 +276,9 @@ const AgentArmyVisual = () => {
         { name: 'Morning Brief', chapter: 4, icon: Sun, color: 'orange', domain: 'Daily' },
         { name: 'Meal Planner', chapter: 5, icon: Utensils, color: 'green', domain: 'Daily' },
         { name: 'Grocery List', chapter: 5, icon: ShoppingCart, color: 'green', domain: 'Daily' },
-        { name: 'Cleaning Coordinator', chapter: 6, icon: Home, color: 'cyan', domain: 'Daily' },
-        { name: 'Maintenance Manager', chapter: 6, icon: Settings, color: 'cyan', domain: 'Daily' },
-        { name: 'Supplies Tracker', chapter: 6, icon: FileText, color: 'cyan', domain: 'Daily' },
+        { name: 'Cleaning Coordinator', chapter: 6, icon: Home, color: 'teal', domain: 'Daily' },
+        { name: 'Maintenance Manager', chapter: 6, icon: Settings, color: 'teal', domain: 'Daily' },
+        { name: 'Supplies Tracker', chapter: 6, icon: FileText, color: 'teal', domain: 'Daily' },
         // Part 3: Digital Operations
         { name: 'Email Triage', chapter: 7, icon: Mail, color: 'purple', domain: 'Digital' },
         { name: 'Email Drafter', chapter: 7, icon: FileText, color: 'purple', domain: 'Digital' },
@@ -300,7 +300,7 @@ const AgentArmyVisual = () => {
     const colors = {
         orange: 'bg-orange-500/20 border-orange-500/50 text-orange-400',
         green: 'bg-green-500/20 border-green-500/50 text-green-400',
-        cyan: 'bg-cyan-500/20 border-cyan-500/50 text-cyan-400',
+        teal: 'bg-teal-500/20 border-teal-500/50 text-teal-400',
         purple: 'bg-purple-500/20 border-purple-500/50 text-purple-400',
         blue: 'bg-blue-500/20 border-blue-500/50 text-blue-400',
         indigo: 'bg-indigo-500/20 border-indigo-500/50 text-indigo-400',
@@ -344,7 +344,7 @@ const AgentArmyVisual = () => {
                         <p className="text-slate-400 text-sm">20+ agents, built and ready</p>
                     </div>
                     <div className="text-right">
-                        <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+                        <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">
                             {agents.length}
                         </div>
                         <div className="text-slate-500 text-xs">Active Agents</div>
@@ -380,7 +380,7 @@ const AgentArmyVisual = () => {
 
                 <div className="p-4 bg-slate-900/50 rounded-xl">
                     <p className="text-slate-300 text-sm">
-                        <span className="text-cyan-400 font-bold">Each agent is powerful alone.</span> But when they
+                        <span className="text-teal-400 font-bold">Each agent is powerful alone.</span> But when they
                         work together—sharing information, triggering each other, covering blind spots—they become
                         your <span className="text-white font-bold">Life Operating System</span>.
                     </p>
@@ -410,8 +410,8 @@ const DayInTheLifeTimeline = () => {
     return (
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                    <Clock className="text-cyan-400" size={20} />
+                <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <Clock className="text-teal-400" size={20} />
                 </div>
                 <div>
                     <h2 className="text-2xl font-bold text-white">A Day in Your Life OS</h2>
@@ -436,17 +436,17 @@ const DayInTheLifeTimeline = () => {
                         >
                             {/* Timeline dot */}
                             <div className={`absolute left-2 top-2 w-5 h-5 rounded-full border-2 transition-all ${activeHour === item.hour
-                                ? 'bg-cyan-500 border-cyan-400 scale-125'
+                                ? 'bg-teal-500 border-teal-400 scale-125'
                                 : 'bg-slate-800 border-slate-600'
                                 }`} />
 
                             <div className={`bg-slate-900/50 rounded-xl p-4 border transition-all ${activeHour === item.hour
-                                ? 'border-cyan-500/50'
+                                ? 'border-teal-500/50'
                                 : 'border-slate-700'
                                 }`}>
                                 <div className="flex items-center justify-between mb-2">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-cyan-400 font-mono text-sm">{item.time}</span>
+                                        <span className="text-teal-400 font-mono text-sm">{item.time}</span>
                                         <span className="text-white font-medium">{item.label}</span>
                                     </div>
                                     <div className="flex gap-1">
@@ -472,8 +472,8 @@ const DayInTheLifeTimeline = () => {
                 </div>
             </div>
 
-            <div className="mt-4 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30">
-                <p className="text-cyan-400 text-sm">
+            <div className="mt-4 p-4 bg-teal-900/20 rounded-xl border border-teal-500/30">
+                <p className="text-teal-400 text-sm">
                     <strong>Notice:</strong> You're not managing 20 agents. They're managing your day.
                     The right information surfaces when you need it—one prompt away.
                 </p>
@@ -518,15 +518,15 @@ const LifeOSDashboard = () => {
     };
 
     return (
-        <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl p-6 border border-cyan-500/30 backdrop-blur-sm mb-8 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 rounded-2xl p-6 border border-teal-500/30 backdrop-blur-sm mb-8 relative overflow-hidden">
             {/* Glow effect */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-64 h-32 bg-teal-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
                 <div className="text-center mb-6">
-                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 px-4 py-2 rounded-full border border-cyan-500/30 mb-3">
-                        <Cpu className="text-cyan-400" size={16} />
-                        <span className="text-cyan-400 font-bold text-sm">LIFE OPERATING SYSTEM</span>
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500/20 to-purple-500/20 px-4 py-2 rounded-full border border-teal-500/30 mb-3">
+                        <Cpu className="text-teal-400" size={16} />
+                        <span className="text-teal-400 font-bold text-sm">LIFE OPERATING SYSTEM</span>
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                     </div>
                     <h2 className="text-2xl font-bold text-white">Your Command Center</h2>
@@ -572,7 +572,7 @@ const LifeOSDashboard = () => {
                             <div className="text-slate-500 text-xs">Automation Rate</div>
                         </div>
                         <div>
-                            <div className="text-2xl font-bold text-cyan-400">7h</div>
+                            <div className="text-2xl font-bold text-teal-400">7h</div>
                             <div className="text-slate-500 text-xs">Saved Weekly</div>
                         </div>
                         <div>
@@ -677,7 +677,7 @@ const WeeklyReviewFramework = () => {
     };
 
     return (
-        <div className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl p-6 border border-blue-500/40 backdrop-blur-sm mb-8">
+        <div className="bg-gradient-to-br from-blue-900/20 to-teal-900/20 rounded-2xl p-6 border border-blue-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
                     <RefreshCw className="text-blue-400" size={20} />
@@ -906,7 +906,7 @@ Help me continuously improve my Life Operating System.`;
                         {!speedRun && <Part5Intro />}
 
                         {/* Author Credibility */}
-                        <AuthorCredibility />
+
 
                         {/* Header */}
                         <motion.div
@@ -914,7 +914,7 @@ Help me continuously improve my Life Operating System.`;
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-6"
                         >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 13</div>
+                            <div className="text-teal-400 font-mono text-sm mb-2">Chapter 13</div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                 Life Operating System
                             </h1>
@@ -930,7 +930,7 @@ Help me continuously improve my Life Operating System.`;
                                         <span>12 min read</span>
                                     </div>
                                     <span>•</span>
-                                    <span className="text-cyan-400">15 min to connect your agents</span>
+                                    <span className="text-teal-400">15 min to connect your agents</span>
                                 </div>
                                 <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
                             </div>
@@ -964,9 +964,9 @@ Help me continuously improve my Life Operating System.`;
                                 <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
-                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                    className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                                 >
-                                    <div className="flex items-center gap-2 text-cyan-400">
+                                    <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
                                         <span className="font-bold">Speed Run Mode</span>
                                     </div>

@@ -820,7 +820,7 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                         />
 
                         {/* Author Credibility */}
-                        <AuthorCredibility />
+                        
 
                         {/* Chapter Navigation */}
                         <ChapterNavigation

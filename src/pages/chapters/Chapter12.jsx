@@ -158,7 +158,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     const variants = {
         default: 'from-green-900/30 to-emerald-900/20 border-green-500/40',
         secondary: 'from-rose-900/30 to-pink-900/20 border-rose-500/40',
-        tertiary: 'from-blue-900/30 to-cyan-900/20 border-blue-500/40',
+        tertiary: 'from-blue-900/30 to-teal-900/20 border-blue-500/40',
         bonus: 'from-yellow-900/30 to-orange-900/20 border-yellow-500/40',
     };
 
@@ -264,7 +264,7 @@ const LearningGraveyardVisual = () => {
                         <span className="text-rose-400 font-bold">Sound familiar?</span> You don't lack the desire to grow.
                         You lack a system that works with your actual life—your energy, your schedule, your reality.
                     </p>
-                    <p className="text-cyan-400 text-sm mt-2 font-medium">
+                    <p className="text-teal-400 text-sm mt-2 font-medium">
                         Time to build a Recovery-Aware Learning system.
                     </p>
                 </div>
@@ -359,8 +359,8 @@ const RecoveryAwareLearning = () => {
                 ))}
             </div>
 
-            <div className="mt-4 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30">
-                <p className="text-cyan-400 text-sm">
+            <div className="mt-4 p-4 bg-teal-900/20 rounded-xl border border-teal-500/30">
+                <p className="text-teal-400 text-sm">
                     <strong>The key insight:</strong> Forcing deep study when you're exhausted builds resentment, not knowledge.
                     Your Learning Agent matches content to your current energy level.
                 </p>
@@ -434,15 +434,15 @@ const SecondBrainPreview = () => {
 
 // Real Case Study: Endo Boards Example
 const EndoBoardsCaseStudy = () => (
-    <div className="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-2xl p-6 border border-cyan-500/40 backdrop-blur-sm mb-8 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-teal-900/20 to-blue-900/20 rounded-2xl p-6 border border-teal-500/40 backdrop-blur-sm mb-8 relative overflow-hidden">
         <div className="absolute top-4 right-4 text-4xl opacity-20">🦷</div>
 
         <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                <GraduationCap className="text-cyan-400" size={20} />
+            <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                <GraduationCap className="text-teal-400" size={20} />
             </div>
             <div>
-                <span className="text-cyan-400 text-xs font-bold uppercase">Real Example</span>
+                <span className="text-teal-400 text-xs font-bold uppercase">Real Example</span>
                 <h3 className="text-white font-bold text-lg">Board Exam Preparation</h3>
             </div>
         </div>
@@ -494,8 +494,8 @@ const EndoBoardsCaseStudy = () => (
                 </div>
 
                 <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="text-cyan-400 text-xs">4</span>
+                    <div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-teal-400 text-xs">4</span>
                     </div>
                     <div>
                         <span className="text-white font-medium">The Result</span>
@@ -508,8 +508,8 @@ const EndoBoardsCaseStudy = () => (
             </div>
         </div>
 
-        <div className="p-4 bg-cyan-900/30 rounded-xl border border-cyan-500/30">
-            <p className="text-cyan-400 text-sm">
+        <div className="p-4 bg-teal-900/30 rounded-xl border border-teal-500/30">
+            <p className="text-teal-400 text-sm">
                 <strong>The lesson:</strong> The goal isn't to study MORE. It's to study SMARTER—matching
                 effort to energy, using proven retention techniques, and building sustainable habits.
             </p>
@@ -710,14 +710,14 @@ const Part4Celebration = () => {
                         </div>
                         <div className="h-12 w-px bg-slate-700" />
                         <div>
-                            <div className="text-3xl font-bold text-cyan-400">YOU</div>
+                            <div className="text-3xl font-bold text-teal-400">YOU</div>
                             <div className="text-slate-400 text-xs">Taken care of</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="mt-6 text-center">
-                    <p className="text-cyan-400 font-bold">
+                    <p className="text-teal-400 font-bold">
                         Next: Part 5 — Integration & Mastery
                     </p>
                     <p className="text-slate-500 text-sm mt-1">
@@ -754,8 +754,8 @@ const ChapterCompleteWithPartEnd = ({ achievements, nextChapter, nextTitle }) =>
             </ul>
         </div>
 
-        <div className="bg-cyan-900/20 rounded-xl p-4 border border-cyan-500/30 mb-6">
-            <div className="flex items-center gap-2 text-cyan-400 font-bold mb-1">
+        <div className="bg-teal-900/20 rounded-xl p-4 border border-teal-500/30 mb-6">
+            <div className="flex items-center gap-2 text-teal-400 font-bold mb-1">
                 <Rocket size={16} />
                 Next: Part 5 — Integration & Mastery
             </div>
@@ -924,7 +924,7 @@ Help me prepare effectively without cramming or burning out.`;
                     />
 
                     {/* Author Credibility */}
-                    <AuthorCredibility />
+
 
                     {/* Header */}
                     <motion.div

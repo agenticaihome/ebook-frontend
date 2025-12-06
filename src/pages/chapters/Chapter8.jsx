@@ -40,7 +40,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                 <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
+                    className="h-full bg-gradient-to-r from-teal-500 to-purple-500"
                 />
             </div>
             <span className="text-slate-500 text-sm font-mono">
@@ -52,7 +52,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
             DDS
         </div>
         <div className="flex-1">
@@ -69,7 +69,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -82,7 +82,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
+        className="bg-gradient-to-r from-teal-900/40 to-purple-900/40 rounded-2xl p-6 border border-teal-500/30 mb-8"
     >
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-wrap justify-center md:justify-start gap-6">
@@ -95,7 +95,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
             </div>
             <button
                 onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
+                className="flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
             >
                 {primaryCTA} <ArrowRight size={18} />
             </button>
@@ -114,11 +114,11 @@ const ShareableQuote = ({ quote, chapter }) => {
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
@@ -158,7 +158,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     const variants = {
         default: 'from-green-900/30 to-emerald-900/20 border-green-500/40',
         secondary: 'from-purple-900/30 to-indigo-900/20 border-purple-500/40',
-        tertiary: 'from-blue-900/30 to-cyan-900/20 border-blue-500/40',
+        tertiary: 'from-blue-900/30 to-teal-900/20 border-blue-500/40',
         bonus: 'from-yellow-900/30 to-orange-900/20 border-yellow-500/40',
     };
 
@@ -202,7 +202,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
 };
 
 const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
+    <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
         <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
                 <CheckCircle className="text-green-400" size={24} />
@@ -225,7 +225,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
             </ul>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
+        <button className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
             Continue to Chapter {nextChapter}: {nextTitle}
             <ArrowRight size={18} />
         </button>
@@ -442,8 +442,8 @@ const MeetingWorthinessTest = () => {
     return (
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                    <HelpCircle className="text-cyan-400" size={20} />
+                <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <HelpCircle className="text-teal-400" size={20} />
                 </div>
                 <div>
                     <h3 className="text-white font-bold text-lg">The Meeting Worthiness Test</h3>
@@ -458,7 +458,7 @@ const MeetingWorthinessTest = () => {
                         {steps.map((_, i) => (
                             <div
                                 key={i}
-                                className={`h-1 flex-1 rounded-full ${i <= currentStep ? 'bg-cyan-500' : 'bg-slate-700'}`}
+                                className={`h-1 flex-1 rounded-full ${i <= currentStep ? 'bg-teal-500' : 'bg-slate-700'}`}
                             />
                         ))}
                     </div>
@@ -562,8 +562,8 @@ const TimeBlockingFramework = () => {
                 ))}
             </div>
 
-            <div className="mt-4 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30">
-                <p className="text-cyan-400 text-sm flex items-start gap-2">
+            <div className="mt-4 p-4 bg-teal-900/20 rounded-xl border border-teal-500/30">
+                <p className="text-teal-400 text-sm flex items-start gap-2">
                     <Shield size={16} className="flex-shrink-0 mt-0.5" />
                     <span>
                         <strong>Key insight:</strong> The 🧠 blocks are non-negotiable. Your agent will help defend them.
@@ -745,7 +745,7 @@ const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
             </div>
         </div>
 
-        <p className="text-slate-400 text-sm italic border-l-2 border-cyan-500/50 pl-3">
+        <p className="text-slate-400 text-sm italic border-l-2 border-teal-500/50 pl-3">
             "{quote}"
         </p>
     </div>
@@ -880,7 +880,7 @@ Help me enter each week with my calendar under control.`;
                         />
 
                         {/* Author Credibility */}
-                        <AuthorCredibility />
+
 
                         {/* Header */}
                         <motion.div
@@ -888,7 +888,7 @@ Help me enter each week with my calendar under control.`;
                             animate={{ opacity: 1, y: 0 }}
                             className="mb-6"
                         >
-                            <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 8</div>
+                            <div className="text-teal-400 font-mono text-sm mb-2">Chapter 8</div>
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                 Calendar Defense
                             </h1>
@@ -938,9 +938,9 @@ Help me enter each week with my calendar under control.`;
                                 <motion.div
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
-                                    className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                    className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                                 >
-                                    <div className="flex items-center gap-2 text-cyan-400">
+                                    <div className="flex items-center gap-2 text-teal-400">
                                         <Zap size={18} />
                                         <span className="font-bold">Speed Run Mode</span>
                                     </div>
@@ -956,9 +956,9 @@ Help me enter each week with my calendar under control.`;
                             {/* MEETING AUDIT CALCULATOR */}
                             <section id="meeting-calculator" className="mb-10">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-cyan-500/50" />
-                                    <span className="text-cyan-400 font-bold uppercase text-sm tracking-wider">Audit Your Calendar</span>
-                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-cyan-500/50" />
+                                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-teal-500/50" />
+                                    <span className="text-teal-400 font-bold uppercase text-sm tracking-wider">Audit Your Calendar</span>
+                                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-teal-500/50" />
                                 </div>
 
                                 <Suspense fallback={

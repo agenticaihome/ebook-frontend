@@ -30,7 +30,7 @@ const SpeedRunContext = createContext(false);
 const ChapterProgress = ({ current, total, part, partTitle }) => (
     <div className="mb-6">
         {part && (
-            <div className="text-cyan-400 font-bold text-sm mb-2 uppercase tracking-wider">
+            <div className="text-teal-400 font-bold text-sm mb-2 uppercase tracking-wider">
                 Part {part}: {partTitle}
             </div>
         )}
@@ -39,7 +39,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                 <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
+                    className="h-full bg-gradient-to-r from-teal-500 to-purple-500"
                 />
             </div>
             <span className="text-slate-500 text-sm font-mono">
@@ -51,7 +51,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
             DDS
         </div>
         <div className="flex-1">
@@ -68,7 +68,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -81,7 +81,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-gradient-to-r from-cyan-900/40 to-purple-900/40 rounded-2xl p-6 border border-cyan-500/30 mb-8"
+        className="bg-gradient-to-r from-teal-900/40 to-purple-900/40 rounded-2xl p-6 border border-teal-500/30 mb-8"
     >
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex flex-wrap justify-center md:justify-start gap-6">
@@ -94,7 +94,7 @@ const TLDRCard = ({ stats, primaryCTA, onCTAClick }) => (
             </div>
             <button
                 onClick={onCTAClick}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
+                className="flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-3 rounded-xl transition-all whitespace-nowrap"
             >
                 {primaryCTA} <ArrowRight size={18} />
             </button>
@@ -113,11 +113,11 @@ const ShareableQuote = ({ quote, chapter }) => {
 
     return (
         <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
 
             <div className="relative">
-                <div className="text-6xl text-cyan-500/30 font-serif leading-none mb-2">"</div>
+                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
                 <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
                     {quote}
                 </p>
@@ -246,7 +246,7 @@ const QuickWin = ({ title, description, prompt, variant = 'default' }) => {
 };
 
 const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
+    <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
         <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
                 <CheckCircle className="text-green-400" size={24} />
@@ -269,7 +269,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
             </ul>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
+        <button className="w-full flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-slate-900 font-bold px-6 py-4 rounded-xl transition-all">
             Continue to Chapter {nextChapter}: {nextTitle}
             <ArrowRight size={18} />
         </button>
@@ -282,7 +282,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle }) => (
 
 // Skill Level Indicator
 const SkillLevelBadge = () => (
-    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 px-4 py-2 rounded-full border border-purple-500/30 mb-6">
+    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-teal-500/20 px-4 py-2 rounded-full border border-purple-500/30 mb-6">
         <Zap className="text-purple-400" size={16} />
         <span className="text-purple-400 font-bold text-sm">ADVANCED LEVEL</span>
         <div className="flex gap-1">
@@ -340,8 +340,8 @@ Tone: Professional but warm`,
     return (
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                    <TrendingUp className="text-cyan-400" size={20} />
+                <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <TrendingUp className="text-teal-400" size={20} />
                 </div>
                 <div>
                     <h2 className="text-xl font-bold text-white">Prompt Transformation</h2>
@@ -356,7 +356,7 @@ Tone: Professional but warm`,
                         key={i}
                         onClick={() => setActiveExample(i)}
                         className={`px-4 py-2 rounded-lg text-sm transition-all ${activeExample === i
-                            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
                             : 'bg-slate-800/50 text-slate-500 hover:text-slate-300'
                             }`}
                     >
@@ -383,8 +383,8 @@ Tone: Professional but warm`,
                 </div>
             </div>
 
-            <div className="mt-4 bg-cyan-900/20 rounded-lg p-3 border border-cyan-500/30">
-                <p className="text-cyan-400 text-sm font-medium">
+            <div className="mt-4 bg-teal-900/20 rounded-lg p-3 border border-teal-500/30">
+                <p className="text-teal-400 text-sm font-medium">
                     Result: {examples[activeExample].improvement}
                 </p>
             </div>
@@ -400,7 +400,7 @@ const CRAFTFramework = () => {
         {
             letter: 'C',
             name: 'Context',
-            color: 'cyan',
+            color: 'teal',
             description: 'Set the scene. Who is the agent? What\'s the situation?',
             example: '"You are my personal finance advisor. I\'m a 35-year-old with two kids, saving for retirement and college."',
             tip: 'More context = more relevant responses',
@@ -440,7 +440,7 @@ const CRAFTFramework = () => {
     ];
 
     const colorClasses = {
-        cyan: 'from-cyan-500/20 to-cyan-500/5 border-cyan-500/40 text-cyan-400',
+        teal: 'from-teal-500/20 to-teal-500/5 border-teal-500/40 text-teal-400',
         purple: 'from-purple-500/20 to-purple-500/5 border-purple-500/40 text-purple-400',
         green: 'from-green-500/20 to-green-500/5 border-green-500/40 text-green-400',
         orange: 'from-orange-500/20 to-orange-500/5 border-orange-500/40 text-orange-400',
@@ -448,7 +448,7 @@ const CRAFTFramework = () => {
     };
 
     const bgColors = {
-        cyan: 'bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 border border-cyan-500/40',
+        teal: 'bg-gradient-to-br from-teal-500/20 to-teal-500/5 border border-teal-500/40',
         purple: 'bg-gradient-to-br from-purple-500/20 to-purple-500/5 border border-purple-500/40',
         green: 'bg-gradient-to-br from-green-500/20 to-green-500/5 border border-green-500/40',
         orange: 'bg-gradient-to-br from-orange-500/20 to-orange-500/5 border border-orange-500/40',
@@ -456,7 +456,7 @@ const CRAFTFramework = () => {
     };
 
     const textColors = {
-        cyan: 'text-cyan-400',
+        teal: 'text-teal-400',
         purple: 'text-purple-400',
         green: 'text-green-400',
         orange: 'text-orange-400',
@@ -742,9 +742,9 @@ const VoiceMobileIntegration = () => {
         {
             name: 'Voice Commands',
             icon: Mic,
-            colorClass: 'bg-cyan-500/20',
-            iconColor: 'text-cyan-400',
-            borderColor: 'border-cyan-500/40',
+            colorClass: 'bg-teal-500/20',
+            iconColor: 'text-teal-400',
+            borderColor: 'border-teal-500/40',
             examples: [
                 '"Hey, add milk to my grocery list"',
                 '"What\'s on my calendar today?"',
@@ -894,7 +894,7 @@ const Chapter14 = () => {
                     <SkillLevelBadge />
 
                     {/* Author Credibility */}
-                    <AuthorCredibility />
+
 
                     {/* Header */}
                     <motion.div
@@ -902,7 +902,7 @@ const Chapter14 = () => {
                         animate={{ opacity: 1, y: 0 }}
                         className="mb-6"
                     >
-                        <div className="text-cyan-400 font-mono text-sm mb-2">Chapter 14</div>
+                        <div className="text-teal-400 font-mono text-sm mb-2">Chapter 14</div>
                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                             Advanced Techniques
                         </h1>
@@ -952,9 +952,9 @@ const Chapter14 = () => {
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
-                                className="bg-cyan-900/30 rounded-xl p-4 border border-cyan-500/40 backdrop-blur-sm mb-8"
+                                className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
                             >
-                                <div className="flex items-center gap-2 text-cyan-400">
+                                <div className="flex items-center gap-2 text-teal-400">
                                     <Zap size={18} />
                                     <span className="font-bold">Speed Run Mode</span>
                                 </div>

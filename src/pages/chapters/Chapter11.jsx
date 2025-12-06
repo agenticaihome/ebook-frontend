@@ -157,7 +157,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     const variants = {
         default: 'from-green-900/30 to-emerald-900/20 border-green-500/40',
         secondary: 'from-rose-900/30 to-pink-900/20 border-rose-500/40',
-        tertiary: 'from-blue-900/30 to-cyan-900/20 border-blue-500/40',
+        tertiary: 'from-blue-900/30 to-teal-900/20 border-blue-500/40',
         bonus: 'from-yellow-900/30 to-orange-900/20 border-yellow-500/40',
     };
 
@@ -330,7 +330,7 @@ const RelationshipFadeVisual = () => {
                         Life just got busy. These connections faded not from lack of love, but from lack of
                         a <span className="text-white">system</span>.
                     </p>
-                    <p className="text-cyan-400 text-sm mt-2 font-medium">
+                    <p className="text-teal-400 text-sm mt-2 font-medium">
                         Your Connection Agent will make sure the people who matter never slip away.
                     </p>
                 </div>
@@ -414,8 +414,8 @@ const RelationshipCircles = () => {
                 ))}
             </div>
 
-            <div className="mt-4 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/30">
-                <p className="text-cyan-400 text-sm">
+            <div className="mt-4 p-4 bg-teal-900/20 rounded-xl border border-teal-500/30">
+                <p className="text-teal-400 text-sm">
                     <strong>The magic:</strong> Your agent reminds you to reach out at the right frequency.
                     Weekly for inner circle, monthly for close, quarterly for maintain, yearly for reconnect.
                 </p>
@@ -824,7 +824,7 @@ Help me build a network that gives more than it takes.`;
                         />
 
                         {/* Author Credibility */}
-                        <AuthorCredibility />
+
 
                         {/* Header */}
                         <motion.div

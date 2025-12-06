@@ -157,7 +157,7 @@ const QuickWin = ({ title, prompt, setupTime, variant = 'default' }) => {
     const variants = {
         default: 'from-green-900/30 to-emerald-900/20 border-green-500/40',
         secondary: 'from-rose-900/30 to-pink-900/20 border-rose-500/40',
-        tertiary: 'from-blue-900/30 to-cyan-900/20 border-blue-500/40',
+        tertiary: 'from-blue-900/30 to-teal-900/20 border-blue-500/40',
         bonus: 'from-yellow-900/30 to-orange-900/20 border-yellow-500/40',
     };
 
@@ -436,7 +436,7 @@ const AnnualHealthCalendar = () => {
     ];
 
     return (
-        <div className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl p-6 border border-blue-500/40 backdrop-blur-sm mb-8">
+        <div className="bg-gradient-to-br from-blue-900/20 to-teal-900/20 rounded-2xl p-6 border border-blue-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
                     <Calendar className="text-blue-400" size={20} />
@@ -874,7 +874,7 @@ Help me notice patterns before they become problems. Be supportive, not judgment
                         {!speedRun && <Part4Intro />}
 
                         {/* Author Credibility */}
-                        <AuthorCredibility />
+
 
                         {/* Header */}
                         <motion.div

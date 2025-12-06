@@ -29,7 +29,7 @@ const SpeedRunContext = createContext(false);
 const ChapterProgress = ({ current, total, part, partTitle }) => (
     <div className="mb-6">
         {part && (
-            <div className="text-cyan-400 font-bold text-sm mb-2 uppercase tracking-wider">
+            <div className="text-teal-400 font-bold text-sm mb-2 uppercase tracking-wider">
                 Part {part}: {partTitle}
             </div>
         )}
@@ -38,7 +38,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
                 <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${(current / total) * 100}%` }}
-                    className="h-full bg-gradient-to-r from-cyan-500 to-purple-500"
+                    className="h-full bg-gradient-to-r from-teal-500 to-purple-500"
                 />
             </div>
             <span className="text-slate-500 text-sm font-mono">
@@ -50,7 +50,7 @@ const ChapterProgress = ({ current, total, part, partTitle }) => (
 
 const AuthorCredibility = () => (
     <div className="flex items-center gap-3 bg-gradient-to-r from-slate-900/30 to-slate-800/20 rounded-lg px-4 py-3 mb-6 border border-slate-500/40 backdrop-blur-sm">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
             DDS
         </div>
         <div className="flex-1">
@@ -67,7 +67,7 @@ const SpeedRunToggle = ({ enabled, onToggle }) => (
     <button
         onClick={onToggle}
         className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
             : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
             }`}
     >
@@ -236,7 +236,7 @@ const QuickWin = ({ title, description, prompt, variant = 'default' }) => {
 };
 
 const ChapterComplete = ({ achievements, nextChapter, nextTitle, isFinalChapter = false }) => (
-    <div className="bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
+    <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-8 border border-green-500/40 backdrop-blur-sm">
         <div className="flex items-center gap-3 mb-4">
             <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
                 <CheckCircle className="text-green-400" size={24} />
@@ -259,7 +259,7 @@ const ChapterComplete = ({ achievements, nextChapter, nextTitle, isFinalChapter 
             </ul>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold px-6 py-4 rounded-xl transition-all">
+        <button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-teal-500 to-purple-500 hover:from-teal-400 hover:to-purple-400 text-white font-bold px-6 py-4 rounded-xl transition-all">
             {isFinalChapter ? '🎉 Complete the Journey' : `Continue to Chapter ${nextChapter}: ${nextTitle}`}
             <ArrowRight size={18} />
         </button>
@@ -467,8 +467,8 @@ const DiagnosticFlowchart = () => {
     return (
         <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-6 border border-slate-500/40 backdrop-blur-sm mb-8">
             <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                    <Search className="text-cyan-400" size={20} />
+                <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
+                    <Search className="text-teal-400" size={20} />
                 </div>
                 <div>
                     <h2 className="text-xl font-bold text-white">Diagnostic Flowchart</h2>
@@ -482,7 +482,7 @@ const DiagnosticFlowchart = () => {
                         <CheckCircle2 className="text-green-400 mx-auto mb-3" size={48} />
                         <h3 className="text-green-400 font-bold text-xl mb-2">All Systems Go!</h3>
                         <p className="text-slate-400 mb-4">Your agent is working properly. If issues persist, try the System Health Check below.</p>
-                        <button onClick={reset} className="text-cyan-400 hover:text-cyan-300 text-sm">
+                        <button onClick={reset} className="text-teal-400 hover:text-teal-300 text-sm">
                             ↺ Run diagnostic again
                         </button>
                     </div>
@@ -495,17 +495,17 @@ const DiagnosticFlowchart = () => {
                             <span className="text-green-400 font-bold text-sm">→ Fix:</span>
                             <p className="text-slate-300 text-sm mt-1">{steps[noIndex].noAction}</p>
                         </div>
-                        <button onClick={reset} className="text-cyan-400 hover:text-cyan-300 text-sm">
+                        <button onClick={reset} className="text-teal-400 hover:text-teal-300 text-sm">
                             ↺ Start over
                         </button>
                     </div>
                 ) : (
                     <div>
                         <div className="flex items-center gap-2 mb-4">
-                            <span className="text-cyan-400 font-mono text-sm">Step {currentStep + 1}/4</span>
+                            <span className="text-teal-400 font-mono text-sm">Step {currentStep + 1}/4</span>
                             <div className="flex-1 h-1 bg-slate-700 rounded-full">
                                 <div
-                                    className="h-full bg-cyan-500 rounded-full transition-all"
+                                    className="h-full bg-teal-500 rounded-full transition-all"
                                     style={{ width: `${((currentStep + 1) / 4) * 100}%` }}
                                 />
                             </div>
@@ -681,7 +681,7 @@ const Chapter15 = () => {
                     />
 
                     {/* Author Credibility */}
-                    <AuthorCredibility />
+
 
                     {/* Header */}
                     <motion.div
