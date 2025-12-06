@@ -154,7 +154,7 @@ export default function SalesPage() {
               >
                 <Link
                   to="/part1"
-                  className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 flex items-center justify-center gap-3 ring-2 ring-amber-400/20 hover:ring-amber-400/50"
+                  className="btn-shine press-scale bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-105 flex items-center justify-center gap-3 ring-2 ring-amber-400/20 hover:ring-amber-400/50"
                 >
                   <span className="text-2xl">🧭</span>
                   Start Free Adventure
@@ -448,7 +448,7 @@ export default function SalesPage() {
               <p className="text-slate-300 italic">
                 "We don't make it fun because learning should be easy. We make it fun so you actually <span className="text-yellow-400 font-bold">do</span> it."
               </p>
-              <p className="text-sm text-slate-500 mt-2">— Cpt. E</p>
+              <p className="text-sm text-slate-500 mt-2">— Captain Efficiency</p>
             </div>
 
             {/* Frontier Testimonial */}
@@ -756,7 +756,7 @@ export default function SalesPage() {
                   "Go to Territory 1 (100% free, no email required)",
                   "Take the AI Experience Quiz to see where you are",
                   "Use the Mental Load Calculator to quantify your chaos",
-                  "See Cpt. E's recommendations",
+                  "See Captain Efficiency's recommendations",
                   "Decide if this system is for you"
                 ]}
               />
@@ -788,7 +788,7 @@ export default function SalesPage() {
                   <p className="text-slate-400 italic text-sm">
                     "These are real results from the DDS system. Your results begin when you unlock the system."
                   </p>
-                  <div className="mt-2 text-teal-400 font-bold text-sm">— Cpt. E</div>
+                  <div className="mt-2 text-teal-400 font-bold text-sm">— Captain Efficiency</div>
                 </div>
               </div>
               <div className="flex justify-center">
