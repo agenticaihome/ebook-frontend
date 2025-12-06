@@ -44,7 +44,7 @@ registerRoute(
 
         return true;
     },
-    createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
+    createHandlerBoundToURL('/index.html')
 );
 
 // Cache images with StaleWhileRevalidate strategy
