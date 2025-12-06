@@ -20,6 +20,7 @@ import IntelReport from '../../components/gamification/IntelReport';
 import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import AIToolLinks from '../../components/AIToolLinks';
 import PasswordGate from '../../components/common/PasswordGate';
 
 // Lazy load interactive components

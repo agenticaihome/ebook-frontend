@@ -18,6 +18,8 @@ import IntelReport from '../../components/gamification/IntelReport';
 import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import AIToolLinks from '../../components/AIToolLinks';
+import TotalBeginnerGuide from '../../components/TotalBeginnerGuide';
 
 // Lazy load heavy components
 const AIExperienceQuiz = React.lazy(() => import('../../components/AIExperienceQuiz'));
@@ -478,10 +480,10 @@ The tools are coming. You're learning how to lead them.`}
                         {/* NEWBIE EXPLAINER */}
                         <NewbieBox title="New to AI? Start here.">
                             <p className="mb-2">
-                                You've probably heard of ChatGPT, Claude, or Gemini. Those are <strong className="text-white">chatbots</strong>—you ask, they answer.
+                                You've probably heard of ChatGPT, Claude, Gemini, Copilot, or Grok. These are <strong className="text-white">AI chatbots</strong>—you ask, they answer.
                             </p>
                             <p>
-                                An <strong className="text-white">AI helper</strong> is different. It's a chatbot with a mission, context about YOUR life, and permission to help without being asked every time.
+                                An <strong className="text-white">AI agent</strong> is different. It's a chatbot with a mission, context about YOUR life, and permission to help without being asked every time.
                             </p>
                         </NewbieBox>
 
@@ -533,6 +535,11 @@ The tools are coming. You're learning how to lead them.`}
                                     </div>
                                 </div>
                             </div>
+                        </section>
+
+                        {/* AI TOOL SELECTION */}
+                        <section className="mb-10">
+                            <AIToolLinks className="mb-6" />
                         </section>
 
                         {/* Deep Dive */}

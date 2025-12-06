@@ -19,6 +19,7 @@ import IntelReport from '../../components/gamification/IntelReport';
 import FutureProofBanner from '../../components/gamification/FutureProofBanner';
 import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
 import ChapterNavigation from '../../components/common/ChapterNavigation';
+import AIToolLinks from '../../components/AIToolLinks';
 
 // Lazy load interactive components
 const ToolRecommendationQuiz = React.lazy(() => import('../../components/ToolRecommendationQuiz'));
