@@ -75,7 +75,7 @@ export default function SalesPage() {
           }
         ]}
       />
-      <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-cyan-500/30">
+      <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-teal-500/30">
 
         {/* HERO SECTION */}
         <section className="relative pt-24 pb-32 px-6 overflow-hidden">
@@ -85,7 +85,7 @@ export default function SalesPage() {
               <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-[#0f0f1a] to-transparent"></div>
               <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#0f0f1a] to-transparent"></div>
               <div className="absolute top-20 right-10 w-96 h-96 bg-amber-900/10 rounded-full blur-3xl animate-pulse mix-blend-screen"></div>
-              <div className="absolute bottom-0 left-10 w-64 h-64 bg-cyan-900/10 rounded-full blur-3xl mix-blend-screen"></div>
+              <div className="absolute bottom-0 left-10 w-64 h-64 bg-teal-900/10 rounded-full blur-3xl mix-blend-screen"></div>
             </div>
           )}
 
@@ -261,12 +261,12 @@ export default function SalesPage() {
                     ${part.status === 'FREE'
                       ? 'border-green-500/50 hover:border-green-400 animate-pulse-subtle'
                       : part.status === 'OPEN'
-                        ? 'border-cyan-500/30 hover:border-cyan-400'
+                        ? 'border-teal-500/30 hover:border-teal-400'
                         : 'opacity-90 hover:opacity-100'}
                   `}
                 >
                   <div className="text-xs font-mono text-amber-500/80 mb-2">TERRITORY {part.id}</div>
-                  <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-cyan-400' : 'text-slate-500'}`}>
+                  <div className={`mb-4 ${part.status === 'FREE' ? 'text-green-400' : part.status === 'OPEN' ? 'text-teal-400' : 'text-slate-500'}`}>
                     {part.icon}
                   </div>
                   <div className="font-bold text-sm mb-1 text-slate-200 group-hover:text-amber-400 transition-colors">{part.title}</div>
@@ -348,17 +348,17 @@ export default function SalesPage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {/* Feature 1 */}
-              <div className="tactical-card p-8 rounded-xl hover:border-cyan-500/50 transition-all group">
-                <div className="bg-cyan-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-cyan-400 border border-cyan-500/30">
+              <div className="tactical-card p-8 rounded-xl hover:border-teal-500/50 transition-all group">
+                <div className="bg-teal-900/20 w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-teal-400 border border-teal-500/30">
                   <Activity size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-cyan-400 font-mono">Smart Scheduling</h3>
+                <h3 className="text-xl font-bold mb-4 text-teal-400 font-mono">Smart Scheduling</h3>
                 <p className="text-slate-300 leading-relaxed mb-4">
                   "When life gets chaotic, your AI helps you instantly reorganize and find time for what matters."
                 </p>
                 <ul className="text-sm text-slate-400 space-y-2">
-                  <li className="flex gap-2"><Check size={16} className="text-cyan-400" /> Sleep/Energy tracking</li>
-                  <li className="flex gap-2"><Check size={16} className="text-cyan-400" /> Red/Yellow/Green protocols</li>
+                  <li className="flex gap-2"><Check size={16} className="text-teal-400" /> Sleep/Energy tracking</li>
+                  <li className="flex gap-2"><Check size={16} className="text-teal-400" /> Red/Yellow/Green protocols</li>
                 </ul>
               </div>
 
@@ -615,8 +615,8 @@ export default function SalesPage() {
                         )}
                       </div>
                     </div>
-                    <div className="text-center bg-cyan-900/20 rounded-lg py-2 border border-cyan-500/30">
-                      <div className="text-xs text-cyan-400 mb-2 font-bold">This System</div>
+                    <div className="text-center bg-teal-900/20 rounded-lg py-2 border border-teal-500/30">
+                      <div className="text-xs text-teal-400 mb-2 font-bold">This System</div>
                       <div className="text-xl">
                         {row.ours === true && <span className="text-green-400">✓</span>}
                         {typeof row.ours === 'string' && row.ours.startsWith('$') && (
@@ -636,7 +636,7 @@ export default function SalesPage() {
               </p>
               <a
                 href="#pricing"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-600 to-purple-600 hover:from-teal-500 hover:to-purple-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg"
               >
                 See Pricing Options
               </a>
@@ -684,14 +684,14 @@ export default function SalesPage() {
               </div>
 
               {/* This System Column */}
-              <div className="bg-gradient-to-br from-cyan-900/20 to-purple-900/20 rounded-2xl p-6 border border-cyan-500/30">
+              <div className="bg-gradient-to-br from-teal-900/20 to-purple-900/20 rounded-2xl p-6 border border-teal-500/30">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-purple-600 flex items-center justify-center">
                     <span className="text-xl">⚔️</span>
                   </div>
                   <div>
                     <div className="font-bold text-white">You + This System</div>
-                    <div className="text-xs text-cyan-400">Structured path to results</div>
+                    <div className="text-xs text-teal-400">Structured path to results</div>
                   </div>
                 </div>
                 <ul className="space-y-3">
@@ -717,7 +717,7 @@ export default function SalesPage() {
               </p>
               <Link
                 to="/part1"
-                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium"
+                className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-medium"
               >
                 Try Expedition 1 free and see the difference →
               </Link>
@@ -788,7 +788,7 @@ export default function SalesPage() {
                   <p className="text-slate-400 italic text-sm">
                     "These are real results from the DDS system. Your results begin when you unlock the system."
                   </p>
-                  <div className="mt-2 text-cyan-400 font-bold text-sm">— Cpt. E</div>
+                  <div className="mt-2 text-teal-400 font-bold text-sm">— Cpt. E</div>
                 </div>
               </div>
               <div className="flex justify-center">
@@ -815,7 +815,7 @@ export default function SalesPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Testimonial 1 */}
-              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-cyan-500/30 transition-all">
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-teal-500/30 transition-all">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
                   <div className="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
@@ -823,11 +823,11 @@ export default function SalesPage() {
                   </div>
                 </div>
                 <p className="text-slate-300 mb-4">
-                  "The Morning + Kitchen agents <span className="text-cyan-400 font-medium">saved me 8 hours in the first week</span>.
+                  "The Morning + Kitchen agents <span className="text-teal-400 font-medium">saved me 8 hours in the first week</span>.
                   I meal prep on autopilot now. ROI was instant."
                 </p>
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-700/50">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold">S</div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center text-white font-bold">S</div>
                   <div className="text-sm">
                     <div className="font-bold text-white">Sarah T.</div>
                     <div className="text-slate-400">Product Manager • Completed Part 3</div>
@@ -892,12 +892,12 @@ export default function SalesPage() {
             <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/50">
               <div className="flex flex-col md:flex-row gap-6 items-center">
                 {/* Avatar placeholder */}
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center text-4xl flex-shrink-0">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-500 to-purple-600 flex items-center justify-center text-4xl flex-shrink-0">
                   🦷
                 </div>
                 <div className="text-center md:text-left">
                   <h3 className="text-xl font-bold text-white mb-1">The DDS (Doctor of Digital Systems)</h3>
-                  <p className="text-cyan-400 text-sm mb-4">Endodontist • 50+ hour weeks • AI automation nerd</p>
+                  <p className="text-teal-400 text-sm mb-4">Endodontist • 50+ hour weeks • AI automation nerd</p>
                   <p className="text-slate-300 leading-relaxed">
                     "I didn't build this for fun. I built it to survive residency while still being present for my family.
                     <span className="text-slate-400"> Productivity apps failed me. ChatGPT prompts weren't enough.</span>
@@ -986,10 +986,10 @@ export default function SalesPage() {
               <h3 className="text-2xl font-bold mb-2 text-white font-mono">Standard Access</h3>
               <div className="text-4xl font-bold text-amber-400 mb-6">$39.99 <span className="text-sm text-slate-400 font-normal">USD</span></div>
               <ul className="space-y-4 mb-8 text-slate-300 flex-1">
-                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>Full access to all 5 Territories</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>5 Pre-made Companion Prompts</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>Kitchen Optimization Template</span></li>
-                <li className="flex gap-3"><Check size={18} className="text-cyan-400 flex-shrink-0" /> <span>Household Maintenance Schedule</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-teal-400 flex-shrink-0" /> <span>Full access to all 5 Territories</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-teal-400 flex-shrink-0" /> <span>5 Pre-made Companion Prompts</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-teal-400 flex-shrink-0" /> <span>Kitchen Optimization Template</span></li>
+                <li className="flex gap-3"><Check size={18} className="text-teal-400 flex-shrink-0" /> <span>Household Maintenance Schedule</span></li>
               </ul>
 
               <div className="space-y-4">
@@ -1060,7 +1060,7 @@ export default function SalesPage() {
         {/* FAQ SECTION */}
         <section className="py-24 px-6 bg-[#0f0f1a] border-t border-slate-800/50 bg-grid-pattern">
           <div className="max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-400 text-sm font-mono font-bold mb-6 mx-auto flex justify-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-900/20 border border-teal-500/30 text-teal-400 text-sm font-mono font-bold mb-6 mx-auto flex justify-center">
               🧭 EXPEDITION GUIDE
             </div>
             <h2 className="text-3xl font-bold mb-12 text-center font-mono">COMMON QUESTIONS</h2>
@@ -1085,11 +1085,11 @@ export default function SalesPage() {
         </section>
 
         {/* FOOTER */}
-        <footer className="py-12 text-center border-t border-cyan-500/20 bg-[#0f0f1a] bg-grid-pattern">
+        <footer className="py-12 text-center border-t border-teal-500/20 bg-[#0f0f1a] bg-grid-pattern">
           {/* Trust Badges Row */}
           <div className="flex flex-wrap items-center justify-center gap-6 mb-8 px-4">
             <div className="flex items-center gap-2 text-slate-400 text-sm font-mono">
-              <Shield size={16} className="text-cyan-400" />
+              <Shield size={16} className="text-teal-400" />
               <span>256-bit SSL</span>
             </div>
             <div className="flex items-center gap-2 text-slate-400 text-sm font-mono">

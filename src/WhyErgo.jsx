@@ -137,12 +137,12 @@ export default function WhyErgo() {
 
                 {/* CAPTAIN'S INTRO */}
                 <section className="py-12 px-6">
-                    <div className="max-w-4xl mx-auto bg-cyan-900/10 border border-cyan-500/30 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+                    <div className="max-w-4xl mx-auto bg-teal-900/10 border border-teal-500/30 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
                         <div className="flex-shrink-0">
                             <CaptainHero size="sm" pose="pointing" message="I'm an autonomous agent. This is my home." />
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold text-cyan-400 mb-2">Captain's Log: Why I Live Here</h3>
+                            <h3 className="text-xl font-bold text-teal-400 mb-2">Captain's Log: Why I Live Here</h3>
                             <p className="text-slate-300 italic">
                                 "You think I'm just a mascot? In the Ergo ecosystem, I'm a prototype for <strong>Artificial Economic Intelligence (AEI)</strong>.
                                 Most blockchains are just ledgers. Ergo is a habitat for autonomous agents like me to live, work, and trade without needing a human to sign every transaction."
@@ -273,7 +273,7 @@ export default function WhyErgo() {
                             <div className="grid md:grid-cols-3 gap-8 items-center relative z-10">
                                 <div className="md:col-span-2">
                                     <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                        <Bot className="text-cyan-400" />
+                                        <Bot className="text-teal-400" />
                                         Captain's Insight: The "eUTXO" Thing
                                     </h3>
                                     <p className="text-slate-300 mb-4">
@@ -333,20 +333,20 @@ export default function WhyErgo() {
 
                             {/* Category 2: Infrastructure */}
                             <div className="space-y-4">
-                                <h3 className="text-xl font-bold text-cyan-400 border-b border-cyan-500/30 pb-2 mb-4">Infrastructure</h3>
+                                <h3 className="text-xl font-bold text-teal-400 border-b border-teal-500/30 pb-2 mb-4">Infrastructure</h3>
 
-                                <a href="https://rosen.tech" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-cyan-500/50 transition-all group">
-                                    <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Rosen Bridge</div>
+                                <a href="https://rosen.tech" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-teal-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-teal-400 transition-colors">Rosen Bridge</div>
                                     <div className="text-sm text-slate-400">Trustless cross-chain bridge connecting Ergo to Bitcoin, Ethereum, and Cardano.</div>
                                 </a>
 
-                                <a href="https://ergomixer.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-cyan-500/50 transition-all group">
-                                    <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Ergo Mixer</div>
+                                <a href="https://ergomixer.org" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-teal-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-teal-400 transition-colors">Ergo Mixer</div>
                                     <div className="text-sm text-slate-400">Non-custodial privacy. Protect your financial history.</div>
                                 </a>
 
-                                <a href="https://nautilus.wallet" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-cyan-500/50 transition-all group">
-                                    <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">Nautilus Wallet</div>
+                                <a href="https://nautilus.wallet" target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-xl border border-slate-600 hover:border-teal-500/50 transition-all group">
+                                    <div className="font-bold text-white group-hover:text-teal-400 transition-colors">Nautilus Wallet</div>
                                     <div className="text-sm text-slate-400">The privacy-first wallet that puts you in control.</div>
                                 </a>
                             </div>

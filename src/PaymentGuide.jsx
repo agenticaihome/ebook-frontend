@@ -42,7 +42,7 @@ export default function PaymentGuide() {
 
     return (
         <WebbookLayout>
-            <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-cyan-500/30">
+            <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-teal-500/30">
 
                 {/* HERO SECTION */}
                 <section className="py-16 px-6 border-b border-slate-800 bg-[#131320]">
@@ -53,7 +53,7 @@ export default function PaymentGuide() {
                             className="text-center mb-12"
                         >
                             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                                Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Payment Method</span>
+                                Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">Payment Method</span>
                             </h1>
                             <p className="text-xl text-slate-400 max-w-2xl mx-auto">
                                 Two ways to unlock full access. Both include everything. Pick what works for you.
@@ -68,7 +68,7 @@ export default function PaymentGuide() {
                                 </div>
                                 <div>
                                     <h3 className="text-white font-bold mb-2 flex items-center gap-2">
-                                        <Sparkles className="text-cyan-400" size={20} />
+                                        <Sparkles className="text-teal-400" size={20} />
                                         Captain's Insight
                                     </h3>
                                     <p className="text-slate-400 text-sm">
@@ -291,7 +291,7 @@ export default function PaymentGuide() {
                         </p>
                         <Link
                             to="/faq"
-                            className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
+                            className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-semibold transition-colors"
                         >
                             Check out our FAQ
                             <ArrowRight size={18} />
