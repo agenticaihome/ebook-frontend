@@ -838,7 +838,7 @@ const DeepWorkDive = ({ onBack }) => {
                             >
                                 <div className="animate-float animate-glow mb-4">
                                     <img
-                                        src="/assets/captain-efficiency-flying.png"
+                                        src="/assets/captain-efficiency-flying.webp"
                                         alt="Captain Efficiency"
                                         className="w-24 h-24 sm:w-28 sm:h-28 mx-auto object-contain"
                                         draggable="false"

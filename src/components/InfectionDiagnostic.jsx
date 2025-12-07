@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import html2canvas from 'html2canvas';
+// html2canvas loaded dynamically when needed (saves ~400KB from initial bundle)
 import { useSound } from '../context/SoundContext';
 import { AlertTriangle, CheckCircle, Clock, ArrowRight, Share2, Download, X } from 'lucide-react';
 
@@ -213,6 +213,8 @@ const InfectionDiagnostic = () => {
 
     const downloadResults = async () => {
         if (resultsRef.current) {
+            // Dynamic import - only loads when user clicks download
+            const html2canvas = (await import('html2canvas')).default;
             const canvas = await html2canvas(resultsRef.current, {
                 backgroundColor: '#ffffff',
                 scale: 2

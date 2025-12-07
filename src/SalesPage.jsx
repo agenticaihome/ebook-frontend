@@ -109,8 +109,10 @@ export default function SalesPage() {
                 className="flex items-center gap-3 mb-4 justify-center md:justify-start"
               >
                 <img
-                  src="/assets/logo-new.png"
+                  src="/assets/logo-new.webp"
                   alt="Agentic AI Home"
+                  width="56"
+                  height="56"
                   className="w-12 h-12 md:w-14 md:h-14 rounded-xl"
                 />
                 <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-teal-400 to-orange-400 bg-clip-text text-transparent">

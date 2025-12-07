@@ -215,8 +215,10 @@ const WebbookLayout = ({ children }) => {
                 <div className="p-5 border-b border-amber-500/20 bg-gradient-to-r from-slate-900 to-slate-900/80">
                     <Link to="/" className="flex items-center gap-3 font-bold" aria-label="Go to Home">
                         <img
-                            src="/assets/logo-new.png"
+                            src="/assets/logo-new.webp"
                             alt="Agentic AI Home"
+                            width="40"
+                            height="40"
                             className="w-10 h-10 rounded-lg shadow-lg shadow-amber-500/20"
                         />
                         <div>
@@ -417,8 +419,10 @@ const WebbookLayout = ({ children }) => {
                         {/* Mobile Logo - Only visible when sidebar is closed on mobile */}
                         <div className="flex items-center gap-2 md:hidden">
                             <img
-                                src="/assets/logo-new.png"
+                                src="/assets/logo-new.webp"
                                 alt="Agentic AI Home"
+                                width="32"
+                                height="32"
                                 className="w-8 h-8 object-contain"
                             />
                         </div>

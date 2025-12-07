@@ -333,8 +333,10 @@ const Dashboard = () => {
                             <div className="flex justify-center mb-6">
                                 <div className="relative w-24 h-24">
                                     <img
-                                        src="/assets/logo-new.png"
+                                        src="/assets/logo-new.webp"
                                         alt="Agentic AI Home"
+                                        width="96"
+                                        height="96"
                                         className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(20,184,166,0.3)]"
                                     />
                                 </div>

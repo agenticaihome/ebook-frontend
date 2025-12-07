@@ -37,8 +37,10 @@ const SplashPage = () => {
                     >
                         <div className="relative inline-block">
                             <img
-                                src="/assets/logo-new.png"
+                                src="/assets/logo-new.webp"
                                 alt="Agentic AI Home"
+                                width="176"
+                                height="176"
                                 className="w-28 h-28 md:w-44 md:h-44 mx-auto mb-4 md:mb-6 drop-shadow-[0_0_50px_rgba(20,184,166,0.4)]"
                             />
                             {/* Glow ring */}
