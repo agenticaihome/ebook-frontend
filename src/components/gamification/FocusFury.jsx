@@ -3,6 +3,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Play, RotateCcw, Trophy, Share2, ArrowLeft, Zap } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
+import { useGameAudio } from '../../hooks/useGameAudio';
 
 // ===================
 // CSS CAPTAIN EFFICIENCY COMPONENT
@@ -135,6 +136,9 @@ const CaptainEfficiency = ({ size = 60, isDefending = false, isFiring = false })
 };
 
 const FocusFury = ({ onBack }) => {
+    // Audio hook
+    const { playSound, SoundToggle } = useGameAudio();
+
     // ===================
     // GAME STATE
     // ===================
@@ -301,6 +305,7 @@ const FocusFury = ({ onBack }) => {
         setIsFiring(true);
         setTimeout(() => setIsFiring(false), 100);
         triggerHaptic(5);
+        playSound('zap');
 
         const beam = {
             id: Date.now() + Math.random(),
@@ -343,6 +348,7 @@ const FocusFury = ({ onBack }) => {
             }, 1500);
 
             triggerFlash('cyan');
+            playSound('score', { debounce: 40 });
 
             // Spawn particles
             for (let i = 0; i < 6; i++) {
@@ -361,6 +367,7 @@ const FocusFury = ({ onBack }) => {
             // Combo milestone effects
             if (comboRef.current === 10 || comboRef.current === 25 || comboRef.current === 50) {
                 triggerScreenShake();
+                playSound('frenzy');
                 confetti({
                     particleCount: 40 + comboRef.current,
                     spread: 60,
@@ -423,7 +430,10 @@ const FocusFury = ({ onBack }) => {
         const newLevel = timerRef.current > 50 ? 1 : timerRef.current > 40 ? 2 : timerRef.current > 25 ? 3 : timerRef.current > 10 ? 4 : 5;
         if (newLevel !== difficultyLevel) {
             setDifficultyLevel(newLevel);
-            if (newLevel > 1) triggerHaptic([20, 30, 20]);
+            if (newLevel > 1) {
+                triggerHaptic([20, 30, 20]);
+                playSound('frenzy'); // Level up sound
+            }
         }
 
         // Spawn distractions
@@ -539,8 +549,9 @@ const FocusFury = ({ onBack }) => {
         lastTimeRef.current = performance.now();
         lastSpawnRef.current = performance.now();
 
+        playSound('start');
         animationFrameRef.current = requestAnimationFrame(gameLoop);
-    }, [gameLoop]);
+    }, [gameLoop, playSound]);
 
     // ===================
     // END GAME
@@ -558,6 +569,9 @@ const FocusFury = ({ onBack }) => {
         if (wasOverwhelmed) {
             triggerScreenShake();
             triggerFlash('red');
+            playSound('fail');
+        } else {
+            playSound('score'); // Survived the timer!
         }
 
         const finalKills = killsRef.current;
@@ -575,6 +589,9 @@ const FocusFury = ({ onBack }) => {
                     colors: ['#fbbf24', '#06b6d4', '#a855f7', '#22c55e'],
                 });
             }, 200);
+            playSound('highScore');
+        } else if (!wasOverwhelmed) {
+            playSound('gameOver');
         }
 
         api.submitScore?.('focusfury', finalKills)?.catch(console.error);
@@ -677,6 +694,7 @@ const FocusFury = ({ onBack }) => {
                             <div className="text-[10px] text-slate-400">COMBO</div>
                         </div>
                     </div>
+                    <SoundToggle className="absolute top-3 right-3 pointer-events-auto" />
                 </div>
             )}
 

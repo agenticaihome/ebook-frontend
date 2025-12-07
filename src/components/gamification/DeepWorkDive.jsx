@@ -9,8 +9,12 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Play, Trophy, ArrowLeft, RotateCcw, Share2 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { api } from '../../services/api';
+import { useGameAudio } from '../../hooks/useGameAudio';
 
 const DeepWorkDive = ({ onBack }) => {
+    // Audio hook
+    const { playSound, SoundToggle } = useGameAudio();
+
     // ===================
     // STATE
     // ===================
@@ -232,19 +236,21 @@ const DeepWorkDive = ({ onBack }) => {
         setTimeout(() => setFlashColor(null), 60);
     };
 
-    const triggerPassedEffect = () => {
+    const triggerPassedEffect = useCallback(() => {
         setPassedEffect(Date.now());
         triggerHaptic(5);
+        playSound('pass');
         setTimeout(() => setPassedEffect(null), 300);
-    };
+    }, [playSound]);
 
-    const triggerNearMiss = () => {
+    const triggerNearMiss = useCallback(() => {
         if (!nearMiss) {
             setNearMiss(true);
             triggerHaptic([8, 15, 8]);
+            playSound('nearMiss');
             setTimeout(() => setNearMiss(false), 350);
         }
-    };
+    }, [nearMiss, playSound]);
 
     // ===================
     // SPAWN OBSTACLE
@@ -350,6 +356,9 @@ const DeepWorkDive = ({ onBack }) => {
                 origin: { y: 0.6 },
                 colors: ["#06b6d4", "#3b82f6", "#fbbf24", "#a855f7"],
             });
+            playSound('highScore');
+        } else {
+            playSound('fail');
         }
 
         // Submit score to global leaderboard
@@ -358,7 +367,7 @@ const DeepWorkDive = ({ onBack }) => {
                 console.error('Failed to submit score:', err);
             });
         }
-    }, [bestScore]);
+    }, [bestScore, playSound]);
 
     // ===================
     // GAME LOOP
@@ -423,6 +432,7 @@ const DeepWorkDive = ({ onBack }) => {
                             difficultyRef.current = newDiff;
                             setDifficultyLevel(newDiff);
                             triggerHaptic([15, 30, 15]);
+                            playSound('frenzy'); // Level up sound
                         }
 
                         if ([3, 7, 15, 25, 35, 50].includes(scoreRef.current)) {
@@ -501,8 +511,9 @@ const DeepWorkDive = ({ onBack }) => {
         if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
         }
+        playSound('start');
         animationFrameRef.current = requestAnimationFrame(gameLoop);
-    }, [gameLoop]);
+    }, [gameLoop, playSound]);
 
     // ===================
     // JUMP / INTERACTION
@@ -515,10 +526,11 @@ const DeepWorkDive = ({ onBack }) => {
 
         triggerFlash("cyan");
         triggerHaptic(6);
+        playSound('jump');
 
         const settings = getDifficultySettings(difficultyRef.current);
         velocityRef.current = settings.jumpVelocity;
-    }, [startGame, getDifficultySettings]);
+    }, [startGame, getDifficultySettings, playSound]);
 
     const handleInteraction = useCallback(
         (e) => {
@@ -689,6 +701,8 @@ const DeepWorkDive = ({ onBack }) => {
                         >
                             {score}
                         </m.div>
+
+                        <SoundToggle className="absolute top-3 right-3 pointer-events-auto" />
                     </div>
                 </div>
             )}
