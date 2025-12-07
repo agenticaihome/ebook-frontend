@@ -11,8 +11,9 @@ import { Toaster, toast } from 'react-hot-toast';
 import { routeConfig } from './config/routes';
 import { initGA, logPageView } from './utils/analytics';
 
-// Eager load SalesPage
+// Eager load SalesPage and SplashPage
 import SalesPage from './SalesPage';
+import SplashPage from './pages/SplashPage';
 
 
 // Lazy load ClaimAccessPage
@@ -66,7 +67,7 @@ const AnimatedRoutes = () => {
     }
 
     // Track last visited route for resume functionality
-    if (location.pathname !== '/' && location.pathname !== '/success' && !location.pathname.includes('widget')) {
+    if (location.pathname !== '/' && location.pathname !== '/welcome' && location.pathname !== '/success' && !location.pathname.includes('widget')) {
       localStorage.setItem('last_visited_route', location.pathname);
     }
   }, [location]);
@@ -100,7 +101,8 @@ const AnimatedRoutes = () => {
       <MotionConfig reducedMotion="user">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageTransition><SalesPage /></PageTransition>} />
+            <Route path="/" element={<PageTransition><SplashPage /></PageTransition>} />
+            <Route path="/welcome" element={<PageTransition><SalesPage /></PageTransition>} />
 
             {/* Part Redirects - redirect to first chapter of each part */}
             <Route path="/part1" element={<Navigate to="/part1/chapter1" replace />} />
