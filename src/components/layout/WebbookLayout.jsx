@@ -211,15 +211,17 @@ const WebbookLayout = ({ children }) => {
                 className="fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-amber-500/20 shadow-2xl overflow-hidden flex flex-col"
                 aria-label="Main Navigation"
             >
-                {/* HEADER - Amber themed with compass */}
+                {/* HEADER - Brand Logo */}
                 <div className="p-5 border-b border-amber-500/20 bg-gradient-to-r from-slate-900 to-slate-900/80">
                     <Link to="/" className="flex items-center gap-3 font-bold" aria-label="Go to Home">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
-                            <span className="text-lg">🧭</span>
-                        </div>
+                        <img
+                            src="/assets/logo.png"
+                            alt="Agentic AI Home"
+                            className="w-10 h-10 rounded-lg shadow-lg shadow-amber-500/20"
+                        />
                         <div>
                             <span className="text-white text-sm font-bold block">Agentic AI</span>
-                            <span className="text-amber-400 text-xs">Adventure</span>
+                            <span className="text-amber-400 text-xs">Home</span>
                         </div>
                     </Link>
                     <button

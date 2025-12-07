@@ -45,19 +45,19 @@ export default function SalesPage() {
   return (
     <WebbookLayout>
       <SEO
-        title="The Agentic AI Adventure - Reclaim 10 Hours/Week"
-        description="Build a team of AI helpers that handle email, calendar, meal planning, and daily tasks. Stop drowning in to-do lists."
+        title="Agentic AI Home - Build Your AI Team to Reclaim 10+ Hours/Week"
+        description="Agentic AI Home teaches you to build AI agents that handle email, calendar, meal planning, and daily tasks. No coding required. Stop drowning in to-do lists."
         canonical="/"
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "The Agentic AI Adventure",
-            "description": "A fun, interactive experience that teaches you to use AI tools for daily life automation.",
-            "image": "https://agenticaihome.com/assets/captain-efficiency-flying.png",
+            "name": "Agentic AI Home - The Agentic AI Adventure",
+            "description": "A fun, interactive experience that teaches you to build AI agents for daily life automation. No coding required.",
+            "image": "https://agenticaihome.com/assets/logo.png",
             "brand": {
               "@type": "Brand",
-              "name": "The Agentic AI Adventure"
+              "name": "Agentic AI Home"
             },
             "offers": {
               "@type": "Offer",
@@ -69,7 +69,7 @@ export default function SalesPage() {
           {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "The Agentic AI Adventure",
+            "name": "Agentic AI Home",
             "url": "https://agenticaihome.com",
             "logo": "https://agenticaihome.com/assets/logo.png"
           }
@@ -102,6 +102,22 @@ export default function SalesPage() {
 
             {/* Right: Copy */}
             <div className="order-1 md:order-2 text-center md:text-left">
+              {/* Brand Logo */}
+              <m.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-3 mb-4 justify-center md:justify-start"
+              >
+                <img
+                  src="/assets/logo.png"
+                  alt="Agentic AI Home"
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl"
+                />
+                <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-teal-400 to-orange-400 bg-clip-text text-transparent">
+                  Agentic AI Home
+                </span>
+              </m.div>
+
               <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -182,6 +198,70 @@ export default function SalesPage() {
                   <span className="text-amber-400 font-bold">Join 50+ curious minds</span> already discovering the frontier
                 </span>
               </m.div>
+            </div>
+          </div>
+        </section>
+
+        {/* WHAT IS AGENTIC AI SECTION */}
+        <section className="py-16 px-6 bg-gradient-to-b from-slate-900/50 to-[#0f0f1a]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-900/20 border border-teal-500/30 text-teal-400 text-sm font-bold mb-6">
+                🤖 NEW TO AI?
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">What is "Agentic AI"?</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                You've heard of ChatGPT. But there's a difference between AI that <span className="text-slate-300">answers questions</span> and AI that <span className="text-teal-400 font-bold">takes action</span>.
+              </p>
+            </div>
+
+            {/* Comparison Cards */}
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
+              {/* Chatbot */}
+              <div className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50">
+                <div className="text-3xl mb-4">💬</div>
+                <h3 className="text-xl font-bold text-slate-300 mb-2">Regular Chatbot</h3>
+                <p className="text-slate-400 text-sm mb-4">Answers when you ask</p>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  <li className="flex items-center gap-2">
+                    <span className="text-slate-500">•</span> You ask a question
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-slate-500">•</span> It gives an answer
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-slate-500">•</span> You do the work
+                  </li>
+                </ul>
+              </div>
+
+              {/* Agent */}
+              <div className="bg-gradient-to-br from-teal-900/30 to-orange-900/20 rounded-2xl p-6 border border-teal-500/40">
+                <div className="text-3xl mb-4">🤖</div>
+                <h3 className="text-xl font-bold text-teal-400 mb-2">Agentic AI</h3>
+                <p className="text-teal-400/80 text-sm mb-4">Works on your behalf</p>
+                <ul className="space-y-2 text-sm text-slate-300">
+                  <li className="flex items-center gap-2">
+                    <span className="text-teal-400">✓</span> Knows your preferences
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-teal-400">✓</span> Takes action proactively
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-teal-400">✓</span> Works while you sleep
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* One-liner definition */}
+            <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-700 text-center">
+              <p className="text-lg text-white">
+                <span className="text-teal-400 font-bold">"Agentic"</span> = AI that <span className="text-orange-400 font-bold">DOES things</span>, not just <span className="text-slate-400">says things</span>.
+              </p>
+              <p className="text-slate-400 text-sm mt-2">
+                Think personal assistant, not search engine.
+              </p>
             </div>
           </div>
         </section>
@@ -918,6 +998,49 @@ export default function SalesPage() {
                   <div className="text-2xl font-bold text-white">0</div>
                   <div className="text-xs text-slate-400">Coding Required</div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ABOUT AGENTIC AI HOME SECTION */}
+        <section className="py-16 px-6 bg-gradient-to-b from-[#0f0f1a] to-slate-900/30">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <img
+                src="/assets/logo.png"
+                alt="Agentic AI Home Logo"
+                className="w-20 h-20 md:w-24 md:h-24 rounded-2xl"
+              />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+              Welcome to <span className="text-teal-400">Agentic AI</span> <span className="text-orange-400">Home</span>
+            </h2>
+            <p className="text-slate-300 mb-6 leading-relaxed">
+              We're on a mission to bring the power of AI agents into everyday life—
+              not for tech experts, but for <span className="text-white font-medium">busy parents</span>,
+              <span className="text-white font-medium">overwhelmed professionals</span>, and
+              <span className="text-white font-medium">anyone drowning in to-do lists</span>.
+            </p>
+            <p className="text-slate-400 mb-8">
+              Our mascot <span className="text-teal-400 font-bold">Captain E</span> (Captain Efficiency)
+              guides you through each discovery, making AI feel approachable, not intimidating.
+            </p>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                <div className="text-2xl mb-2">🏠</div>
+                <div className="text-white font-bold">Home</div>
+                <div className="text-slate-400 text-xs">For everyday life</div>
+              </div>
+              <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                <div className="text-2xl mb-2">🤖</div>
+                <div className="text-white font-bold">Agentic</div>
+                <div className="text-slate-400 text-xs">AI that takes action</div>
+              </div>
+              <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                <div className="text-2xl mb-2">💡</div>
+                <div className="text-white font-bold">Simple</div>
+                <div className="text-slate-400 text-xs">No coding needed</div>
               </div>
             </div>
           </div>
