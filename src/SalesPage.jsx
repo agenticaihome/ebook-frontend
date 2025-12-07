@@ -1101,7 +1101,7 @@ export default function SalesPage() {
 
                 {/* Story */}
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl font-bold text-white mb-2">Hey, I'm Nathan</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">Hey, I'm Nathan <span className="text-amber-400 text-lg font-mono">DDS</span></h3>
                   <p className="text-teal-400 text-sm mb-6">Army veteran • Endodontic resident • Husband • Father of 2 under 3</p>
 
                   <div className="space-y-4 text-slate-300 leading-relaxed">
