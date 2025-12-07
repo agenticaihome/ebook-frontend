@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { m } from 'framer-motion';
-import { Activity, TrendingUp, AlertCircle, Award, Lock } from 'lucide-react';
+import { Activity, TrendingUp, AlertCircle, Award, Lock, Share2 } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 
 const STORAGE_KEY = 'mentalLoadCalculator';
@@ -305,9 +305,31 @@ const MentalLoadCalculator = () => {
                         </div>
                     </div>
 
+                    {/* SOCIAL SHARE - VIRAL MOMENT */}
+                    <div className="mt-6 bg-gradient-to-r from-cyan-900/30 to-purple-900/30 rounded-xl p-4 border border-cyan-500/30">
+                        <div className="flex items-center justify-between flex-wrap gap-3">
+                            <div className="flex items-center gap-2">
+                                <Share2 className="text-cyan-400" size={18} />
+                                <span className="text-slate-300 text-sm">Share your results!</span>
+                            </div>
+                            <button
+                                onClick={() => {
+                                    const text = `My efficiency score: ${results.score}%! I could reclaim ${results.recoverable} hrs/week with AI agents. Taking the Agentic AI Adventure 🚀 #AgenticAI #Productivity`;
+                                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://agenticaihome.com`, '_blank');
+                                }}
+                                className="flex items-center gap-2 bg-black hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium text-sm transition-all"
+                            >
+                                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white" aria-hidden="true">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                                Share Score
+                            </button>
+                        </div>
+                    </div>
+
                     <button
                         onClick={() => setShowResults(false)}
-                        className="mt-6 w-full text-cyan-400 hover:text-cyan-300 font-medium"
+                        className="mt-4 w-full text-cyan-400 hover:text-cyan-300 font-medium"
                     >
                         Recalculate
                     </button>

@@ -196,6 +196,27 @@ const TransformationVisual = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* SHARE TRANSFORMATION - VIRAL MOMENT */}
+                {showAfter && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-6 text-center"
+                    >
+                        <button
+                            onClick={() => {
+                                const text = `I just completed The Agentic AI Adventure! 🎉\n\n😰 BEFORE: 44 emails, double-booked, mental overload\n😌 AFTER: 3 emails, focus protected, system handles it\n\nBuilt 20+ AI agents to reclaim 10+ hours/week. #AgenticAI`;
+                                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=https://agenticaihome.com`, '_blank');
+                            }}
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-green-500/20"
+                        >
+                            <Share2 size={18} />
+                            Share My Transformation
+                        </button>
+                        <p className="text-slate-500 text-xs mt-2">📱 This is a great moment to screenshot!</p>
+                    </motion.div>
+                )}
             </motion.div>
         </div>
     );
