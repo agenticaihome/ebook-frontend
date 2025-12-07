@@ -400,32 +400,107 @@ const Dashboard = () => {
             <div className="min-h-screen bg-[#0f0f1a] text-white pt-20 pb-24 px-4 md:px-6">
                 <div className="max-w-7xl mx-auto">
 
-                    {/* Desktop View (Grid Layout) - Hidden on Mobile */}
-                    <div className="hidden lg:grid lg:grid-cols-3 gap-6">
-                        {/* Left Column - Quest Map & Arena */}
-                        <div className="lg:col-span-2 space-y-6">
-                            <HeroStatusBar onLevelUp={handleLevelUp} />
-                            <QuestMap />
-                            <ChallengeArena />
+                    {/* Desktop View - Clean & Simple */}
+                    <div className="hidden lg:block space-y-8">
+
+                        {/* Hero Header - Clear Welcome */}
+                        <div className="text-center py-8 border-b border-slate-800">
+                            <h1 className="text-4xl font-bold text-white mb-2">
+                                Welcome to Your Dashboard 👋
+                            </h1>
+                            <p className="text-lg text-slate-400">
+                                Track your progress, play games, and level up your AI skills.
+                            </p>
                         </div>
 
-                        {/* Right Column - Quest Log & Extras */}
-                        <div className="space-y-6">
-                            <QuestLog />
+                        {/* Main Grid - 2 Columns for Clarity */}
+                        <div className="grid lg:grid-cols-2 gap-8">
 
+                            {/* Left: Your Progress */}
+                            <div className="space-y-6">
+                                <h2 className="text-xl font-bold text-white flex items-center gap-3">
+                                    <span className="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center text-white text-sm">📊</span>
+                                    Your Progress
+                                </h2>
+                                <HeroStatusBar onLevelUp={handleLevelUp} />
+                                <QuestMap />
+                            </div>
+
+                            {/* Right: What to Do Next */}
+                            <div className="space-y-6">
+                                <h2 className="text-xl font-bold text-white flex items-center gap-3">
+                                    <span className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center text-white text-sm">🎯</span>
+                                    What to Do Next
+                                </h2>
+
+                                {/* Big Obvious Action Buttons */}
+                                <div className="grid gap-4">
+                                    <Link to="/part1/chapter1" className="block">
+                                        <div className="p-6 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl hover:from-teal-500 hover:to-cyan-500 transition-all shadow-lg group">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center text-3xl">
+                                                    📖
+                                                </div>
+                                                <div>
+                                                    <div className="text-xl font-bold text-white">Continue Reading</div>
+                                                    <div className="text-teal-100">Pick up where you left off</div>
+                                                </div>
+                                                <ChevronRight className="ml-auto text-white/70 group-hover:translate-x-1 transition-transform" size={28} />
+                                            </div>
+                                        </div>
+                                    </Link>
+
+                                    <Link to="/games" className="block">
+                                        <div className="p-6 bg-gradient-to-r from-orange-600 to-orange-500 rounded-2xl hover:from-orange-500 hover:to-orange-400 transition-all shadow-lg group">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center text-3xl">
+                                                    🎮
+                                                </div>
+                                                <div>
+                                                    <div className="text-xl font-bold text-white">Play Games</div>
+                                                    <div className="text-orange-100">Train your skills and compete</div>
+                                                </div>
+                                                <ChevronRight className="ml-auto text-white/70 group-hover:translate-x-1 transition-transform" size={28} />
+                                            </div>
+                                        </div>
+                                    </Link>
+
+                                    <Link to="/hall-of-fame" className="block">
+                                        <div className="p-6 bg-gradient-to-r from-yellow-600 to-amber-500 rounded-2xl hover:from-yellow-500 hover:to-amber-400 transition-all shadow-lg group">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center text-3xl">
+                                                    🏆
+                                                </div>
+                                                <div>
+                                                    <div className="text-xl font-bold text-white">Hall of Fame</div>
+                                                    <div className="text-yellow-100">See the all-time top players</div>
+                                                </div>
+                                                <ChevronRight className="ml-auto text-white/70 group-hover:translate-x-1 transition-transform" size={28} />
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+
+                                {/* Quest Log - Collapsed for Simplicity */}
+                                <QuestLog />
+                            </div>
+                        </div>
+
+                        {/* Bottom Section - Achievements & Account */}
+                        <div className="grid lg:grid-cols-2 gap-8 pt-4">
                             {/* Achievements */}
-                            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-5">
+                            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6">
                                 <div className="flex items-center justify-between mb-4">
-                                    <div className="flex items-center gap-2">
-                                        <Trophy className="text-yellow-400" size={20} />
-                                        <h3 className="text-white font-bold">Achievements</h3>
-                                    </div>
-                                    <span className="text-xs text-slate-400">
-                                        {unlockedAchievements.length}/{ACHIEVEMENTS.length}
+                                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                                        <Trophy className="text-yellow-400" size={22} />
+                                        Your Achievements
+                                    </h3>
+                                    <span className="text-sm text-slate-400">
+                                        {unlockedAchievements.length} of {ACHIEVEMENTS.length}
                                     </span>
                                 </div>
-                                <div className="grid grid-cols-4 gap-2">
-                                    {ACHIEVEMENTS.slice(0, 8).map((achievement) => (
+                                <div className="grid grid-cols-4 gap-3">
+                                    {ACHIEVEMENTS.map((achievement) => (
                                         <AchievementBadge
                                             key={achievement.id}
                                             achievement={achievement}
@@ -435,73 +510,34 @@ const Dashboard = () => {
                                 </div>
                             </div>
 
-                            {/* Quick Actions */}
-                            <div className="space-y-3">
-                                <h3 className="text-white font-bold text-sm flex items-center gap-2">
-                                    <Sparkles size={14} className="text-purple-400" />
-                                    Quick Actions
+                            {/* Account Section */}
+                            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6">
+                                <h3 className="text-lg font-bold text-white flex items-center gap-2 mb-4">
+                                    <Settings className="text-slate-400" size={22} />
+                                    Account
                                 </h3>
-                                <QuickAction
-                                    icon={Home}
-                                    title="Return to Camp"
-                                    subtitle="Back to home page"
-                                    to="/"
-                                    color="from-emerald-500 to-teal-500"
-                                />
-                                <QuickAction
-                                    icon={Trophy}
-                                    title="Agent Deck"
-                                    subtitle="View your collected cards"
-                                    to="/deck"
-                                    color="from-purple-500 to-pink-500"
-                                />
-                            </div>
-
-                            {/* Settings Toggle */}
-                            {isLoggedIn ? (
-                                <>
-                                    <button
-                                        onClick={() => setShowSettings(!showSettings)}
-                                        className="w-full flex items-center justify-between p-3 bg-slate-800/30 hover:bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm transition-colors"
-                                    >
-                                        <span className="flex items-center gap-2 text-slate-300">
-                                            <Settings size={16} />
-                                            Settings
-                                        </span>
-                                        <ChevronRight className={`text-slate-500 transition-transform ${showSettings ? 'rotate-90' : ''}`} size={16} />
-                                    </button>
-
-                                    {showSettings && (
-                                        <m.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            className="space-y-3"
+                                {isLoggedIn ? (
+                                    <div className="space-y-4">
+                                        <ChangePasswordForm />
+                                        <button
+                                            onClick={() => {
+                                                localStorage.removeItem('token');
+                                                navigate('/login');
+                                            }}
+                                            className="w-full flex items-center justify-center gap-2 p-3 bg-red-900/20 hover:bg-red-900/30 border border-red-500/30 rounded-xl text-red-400 font-medium transition-colors"
                                         >
-                                            <ChangePasswordForm />
-                                            <button
-                                                onClick={() => {
-                                                    localStorage.removeItem('token');
-                                                    navigate('/login');
-                                                }}
-                                                className="w-full flex items-center justify-center gap-2 p-3 bg-red-900/20 hover:bg-red-900/30 border border-red-500/30 rounded-xl text-red-400 text-sm font-medium transition-colors"
-                                            >
-                                                <LogOut size={16} />
-                                                Log Out
-                                            </button>
-                                        </m.div>
-                                    )}
-                                </>
-                            ) : (
-                                <Link to="/login">
-                                    <m.button
-                                        whileHover={{ scale: 1.01 }}
-                                        whileTap={{ scale: 0.99 }}
-                                        className="w-full flex items-center justify-center gap-2 p-3 bg-teal-600 hover:bg-teal-500 rounded-xl text-white text-sm font-bold transition-colors"
-                                    >
-                                        Sign In to Save Progress
-                                    </m.button>
-                                </Link>
-                            )}
+                                            <LogOut size={18} />
+                                            Log Out
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <Link to="/login">
+                                        <button className="w-full flex items-center justify-center gap-2 p-4 bg-teal-600 hover:bg-teal-500 rounded-xl text-white font-bold text-lg transition-colors">
+                                            Sign In to Save Progress
+                                        </button>
+                                    </Link>
+                                )}
+                            </div>
                         </div>
                     </div>
 
@@ -518,8 +554,8 @@ const Dashboard = () => {
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === tab.id
-                                            ? 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white shadow-lg'
-                                            : 'text-slate-400 hover:text-white'
+                                        ? 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white shadow-lg'
+                                        : 'text-slate-400 hover:text-white'
                                         }`}
                                 >
                                     <tab.icon size={16} />
