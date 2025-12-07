@@ -175,7 +175,7 @@ const SplashPage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.1 }}
-                        className="mt-8"
+                        className="mt-8 flex flex-col items-center gap-3"
                     >
                         <Link
                             to="/dashboard"
@@ -183,6 +183,24 @@ const SplashPage = () => {
                         >
                             Already started? Continue your mission →
                         </Link>
+
+                        {/* Extra options row */}
+                        <div className="flex items-center gap-6 mt-2">
+                            <Link
+                                to="/sales"
+                                className="text-slate-500 hover:text-orange-400 text-sm transition-colors flex items-center gap-1.5"
+                            >
+                                <Sparkles size={14} />
+                                View Sales Page
+                            </Link>
+                            <span className="text-slate-700">|</span>
+                            <Link
+                                to="/games"
+                                className="text-slate-500 hover:text-purple-400 text-sm transition-colors flex items-center gap-1.5"
+                            >
+                                🎮 Games Hub
+                            </Link>
+                        </div>
                     </motion.div>
                 </div>
 

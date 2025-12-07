@@ -177,6 +177,8 @@ const Dashboard = () => {
         const hasSeenWelcome = localStorage.getItem('dashboard_welcomed');
         if (!hasSeenWelcome) {
             setShowWelcome(true);
+            // Scroll to top so modal is visible
+            window.scrollTo(0, 0);
         }
     }, []);
 
