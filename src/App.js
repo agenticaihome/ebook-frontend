@@ -15,6 +15,7 @@ import { initGA, logPageView } from './utils/analytics';
 // Eager load SalesPage and SplashPage
 import SalesPage from './SalesPage';
 import SplashPage from './pages/SplashPage';
+import OnboardingPage from './pages/OnboardingPage';
 
 
 // Lazy load ClaimAccessPage
@@ -99,7 +100,9 @@ const AnimatedRoutes = () => {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><SplashPage /></PageTransition>} />
+            <Route path="/start" element={<PageTransition><OnboardingPage /></PageTransition>} />
             <Route path="/welcome" element={<PageTransition><SalesPage /></PageTransition>} />
+            <Route path="/pricing" element={<PageTransition><SalesPage /></PageTransition>} />
 
             {/* Part Redirects - redirect to first chapter of each part */}
             <Route path="/part1" element={<Navigate to="/part1/chapter1" replace />} />

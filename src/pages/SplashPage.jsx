@@ -136,7 +136,7 @@ const SplashPage = () => {
                         className="mb-6"
                     >
                         <Link
-                            to="/welcome"
+                            to="/start"
                             className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 bg-[length:200%_100%] hover:bg-right text-white px-10 md:px-14 py-5 md:py-6 rounded-2xl font-bold text-xl md:text-2xl transition-all duration-500 shadow-2xl shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-105 border border-teal-400/50"
                         >
                             <span>Enter the Adventure</span>
