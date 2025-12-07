@@ -12,7 +12,7 @@ const SEO = ({
 }) => {
     const siteUrl = 'https://agenticaihome.com';
     const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
-    const fullImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : `${siteUrl}/assets/social-share.jpg`;
+    const fullImage = image ? (image.startsWith('http') ? image : `${siteUrl}${image}`) : `${siteUrl}/og/homepage.png`;
 
     return (
         <Helmet>
