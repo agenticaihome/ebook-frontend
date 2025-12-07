@@ -142,6 +142,99 @@ const OnboardingPage = () => {
                     </div>
                 </section>
 
+                {/* SECTION 2B: Who This Is For */}
+                <section className="py-16 px-6">
+                    <div className="max-w-5xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-10"
+                        >
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-4">
+                                🌍 THIS IS FOR EVERYONE
+                            </div>
+                            <h2 className="text-2xl md:text-3xl font-bold">Curious, Skeptical, or Already Using AI?</h2>
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-3 gap-4">
+                            {[
+                                { emoji: '🤔', title: 'AI Curious', desc: 'Heard the hype but unsure where to start? This is your zero-jargon intro.' },
+                                { emoji: '😰', title: 'AI Skeptics', desc: 'Worried or overwhelmed? Learn to use AI responsibly.' },
+                                { emoji: '🚀', title: 'AI Enthusiasts', desc: 'Already using ChatGPT? Go deeper with real systems.' },
+                                { emoji: '👶', title: 'Complete Beginners', desc: 'Never touched AI? Perfect. We start from zero.' },
+                                { emoji: '👨‍👩‍👧‍👦', title: 'Busy Humans', desc: 'Parents, students, professionals—AI gives you back time.' },
+                                { emoji: '🔮', title: 'Future-Proofers', desc: 'AI is changing everything. Learn it now.' },
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.05 }}
+                                    className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50"
+                                >
+                                    <span className="text-2xl mb-2 block">{item.emoji}</span>
+                                    <h3 className="text-sm font-bold text-white mb-1">{item.title}</h3>
+                                    <p className="text-slate-400 text-xs">{item.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* SECTION 2C: Why AI Feels Like Magic */}
+                <section className="py-16 px-6 bg-gradient-to-b from-cyan-900/5 to-transparent">
+                    <div className="max-w-3xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-slate-800/50 rounded-2xl p-8 border border-cyan-500/20"
+                        >
+                            <div className="text-center mb-6">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold mb-3">
+                                    ✨ THE MAGIC MOMENT
+                                </div>
+                                <h2 className="text-xl md:text-2xl font-bold">Why AI Feels Like Having Superpowers</h2>
+                            </div>
+
+                            <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+                                <p>
+                                    <span className="text-cyan-400 font-bold">That first time your AI handles a task for you...</span>
+                                    <span className="text-slate-400"> it changes something.</span>
+                                </p>
+                                <p>
+                                    You wake up to a <span className="text-white font-medium">perfectly organized inbox</span>.
+                                    Your grocery list appears <span className="text-white font-medium">before you think about it</span>.
+                                </p>
+                                <p>
+                                    This isn't sci-fi. This is <span className="text-amber-400 font-bold">what AI can do for you right now</span>.
+                                </p>
+                            </div>
+
+                            {/* Emotional Journey */}
+                            <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-700/50">
+                                <div className="text-center">
+                                    <div className="text-2xl mb-1">😰</div>
+                                    <div className="text-xs text-slate-500">Before</div>
+                                    <div className="text-sm text-slate-300">Overwhelmed</div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-2xl mb-1">😌</div>
+                                    <div className="text-xs text-slate-500">After Setup</div>
+                                    <div className="text-sm text-slate-300">Calm</div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-2xl mb-1">🚀</div>
+                                    <div className="text-xs text-slate-500">Long-term</div>
+                                    <div className="text-sm text-slate-300">In Control</div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
                 {/* SECTION 3: How It Works */}
                 <section className="py-20 px-6">
                     <div className="max-w-5xl mx-auto">
