@@ -14,6 +14,11 @@ const MobileBottomNav = () => {
         return location.pathname.startsWith(path);
     };
 
+    // Don't show mobile nav on splash page
+    if (location.pathname === '/') {
+        return null;
+    }
+
     return (
         <>
             {/* Tools Menu */}
