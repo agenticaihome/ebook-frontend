@@ -95,7 +95,7 @@ export default function SalesPage() {
               <CaptainHero
                 size="lg"
                 className="scale-100 md:scale-110"
-                message="Hey! Curious about AI but not sure where to start? I've mapped out 15 easy discoveries that'll save you hours every week. Ready to explore?"
+                message="Hey! Curious about AI but not sure where to start? I've mapped out 16 easy chapters that'll save you hours every week. Ready to explore?"
                 videoSrc="/assets/captain-waving-cyan.mp4?v=cyan"
               />
             </div>
@@ -138,7 +138,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.1 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 leading-tight"
               >
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 block">Reclaim 10+ Hours</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 block">Save 5+ Hours</span>
                 <span className="block text-white">Every Single Week</span>
               </m.h1>
 
@@ -161,7 +161,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-lg text-slate-400 mb-8 leading-relaxed max-w-md mx-auto md:mx-0"
               >
-                15 bite-sized discoveries. No tech jargon. Just practical AI skills that give you back your time.
+                16 bite-sized chapters. No tech jargon. Just practical AI skills that give you back your time.
               </m.p>
 
               <m.div
