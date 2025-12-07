@@ -153,19 +153,19 @@ const SplashPage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.9 }}
-                        className="flex items-center justify-center gap-3"
+                        className="flex items-center justify-center gap-4"
                     >
                         <div className="flex -space-x-2">
                             {[...Array(4)].map((_, i) => (
-                                <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 border-2 border-slate-900 flex items-center justify-center text-xs text-white font-bold">
+                                <div key={i} className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 border-2 border-slate-800 flex items-center justify-center text-sm text-white font-bold shadow-lg shadow-black/20">
                                     {['P', 'M', 'J', 'S'][i]}
                                 </div>
                             ))}
                         </div>
                         <div className="flex items-center gap-2">
-                            <Users size={16} className="text-slate-500" />
-                            <span className="text-slate-400 text-sm">
-                                Join <span className="text-white font-semibold">500+ busy parents & professionals</span>
+                            <Users size={16} className="text-slate-400" />
+                            <span className="text-slate-300 text-sm">
+                                <span className="text-white font-semibold">500+ busy professionals</span> reclaiming their time
                             </span>
                         </div>
                     </motion.div>
@@ -175,28 +175,28 @@ const SplashPage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.1 }}
-                        className="mt-8 flex flex-col items-center gap-3"
+                        className="mt-10 flex flex-col items-center gap-4"
                     >
                         <Link
                             to="/dashboard"
-                            className="text-slate-500 hover:text-teal-400 text-sm transition-colors inline-flex items-center gap-2"
+                            className="text-slate-400 hover:text-teal-400 text-base transition-colors inline-flex items-center gap-2 font-medium"
                         >
                             Already started? Continue your mission →
                         </Link>
 
                         {/* Extra options row */}
-                        <div className="flex items-center gap-6 mt-2">
+                        <div className="flex items-center gap-6">
                             <Link
                                 to="/sales"
-                                className="text-slate-500 hover:text-orange-400 text-sm transition-colors flex items-center gap-1.5"
+                                className="text-slate-400 hover:text-orange-400 text-base transition-colors flex items-center gap-2 font-medium"
                             >
-                                <Sparkles size={14} />
-                                View Sales Page
+                                <Sparkles size={16} />
+                                Sales Page
                             </Link>
-                            <span className="text-slate-700">|</span>
+                            <span className="text-slate-600">•</span>
                             <Link
                                 to="/games"
-                                className="text-slate-500 hover:text-purple-400 text-sm transition-colors flex items-center gap-1.5"
+                                className="text-slate-400 hover:text-purple-400 text-base transition-colors flex items-center gap-2 font-medium"
                             >
                                 🎮 Games Hub
                             </Link>

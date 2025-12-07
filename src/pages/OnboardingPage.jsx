@@ -173,11 +173,11 @@ const OnboardingPage = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.05 }}
-                                    className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50"
+                                    className="bg-slate-800/40 rounded-xl p-5 border border-slate-700/50 hover:border-slate-600/80 transition-all"
                                 >
-                                    <span className="text-2xl mb-2 block">{item.emoji}</span>
-                                    <h3 className="text-sm font-bold text-white mb-1">{item.title}</h3>
-                                    <p className="text-slate-400 text-xs">{item.desc}</p>
+                                    <span className="text-3xl mb-3 block">{item.emoji}</span>
+                                    <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -251,10 +251,10 @@ const OnboardingPage = () => {
 
                         <div className="grid md:grid-cols-4 gap-4">
                             {[
-                                { step: 1, icon: <BookOpen />, title: "Read", desc: "Short, fun chapters", color: "teal" },
-                                { step: 2, icon: <Rocket />, title: "Deploy", desc: "Build small AI agents", color: "purple" },
-                                { step: 3, icon: <Heart />, title: "Feel", desc: "Stress drops, time returns", color: "pink" },
-                                { step: 4, icon: <Sparkles />, title: "Unlock", desc: "Deeper missions await", color: "amber" },
+                                { step: 1, icon: <BookOpen />, title: "Read", desc: "Short, fun chapters", color: "#14b8a6" },
+                                { step: 2, icon: <Rocket />, title: "Deploy", desc: "Build small AI agents", color: "#a855f7" },
+                                { step: 3, icon: <Heart />, title: "Feel", desc: "Stress drops, time returns", color: "#ec4899" },
+                                { step: 4, icon: <Sparkles />, title: "Unlock", desc: "Deeper missions await", color: "#f59e0b" },
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
@@ -264,8 +264,11 @@ const OnboardingPage = () => {
                                     transition={{ delay: i * 0.1 }}
                                     className="relative"
                                 >
-                                    <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 text-center h-full">
-                                        <div className={`w-12 h-12 mx-auto mb-4 rounded-xl bg-${item.color}-500/20 flex items-center justify-center text-${item.color}-400`}>
+                                    <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 text-center h-full hover:border-slate-600 transition-all">
+                                        <div
+                                            className="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center"
+                                            style={{ backgroundColor: `${item.color}20`, color: item.color }}
+                                        >
                                             {item.icon}
                                         </div>
                                         <div className="text-xs text-slate-500 mb-1">Step {item.step}</div>
@@ -420,7 +423,7 @@ const OnboardingPage = () => {
                         <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
                             <div className="flex items-center gap-2">
                                 <Shield size={16} className="text-green-400" />
-                                Built using real systems The DDS uses daily
+                                Built using real systems the DDS uses daily
                             </div>
                             <div className="flex items-center gap-2">
                                 <Zap size={16} className="text-amber-400" />

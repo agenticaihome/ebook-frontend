@@ -220,7 +220,7 @@ export default function SalesPage() {
             {/* Comparison Cards */}
             <div className="grid md:grid-cols-2 gap-6 mb-10">
               {/* Chatbot */}
-              <div className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50">
+              <div className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 hover:border-slate-600 transition-all">
                 <div className="text-3xl mb-4">💬</div>
                 <h3 className="text-xl font-bold text-slate-300 mb-2">Regular Chatbot</h3>
                 <p className="text-slate-400 text-sm mb-4">Answers when you ask</p>
@@ -238,7 +238,7 @@ export default function SalesPage() {
               </div>
 
               {/* Agent */}
-              <div className="bg-gradient-to-br from-teal-900/30 to-orange-900/20 rounded-2xl p-6 border border-teal-500/40">
+              <div className="bg-gradient-to-br from-teal-900/30 to-orange-900/20 rounded-2xl p-6 border border-teal-500/40 hover:border-teal-400/60 hover:-translate-y-1 transition-all shadow-lg shadow-teal-500/5">
                 <div className="text-3xl mb-4">🤖</div>
                 <h3 className="text-xl font-bold text-teal-400 mb-2">Agentic AI</h3>
                 <p className="text-teal-400/80 text-sm mb-4">Works on your behalf</p>
@@ -389,11 +389,11 @@ export default function SalesPage() {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {[
-                  { emoji: '🧠', name: 'Brain', desc: 'Thinks & plans', color: 'purple' },
-                  { emoji: '💾', name: 'Memory', desc: 'Never forgets', color: 'cyan' },
-                  { emoji: '🤲', name: 'Hands', desc: 'Takes action', color: 'green' },
-                  { emoji: '⚡', name: 'Nerves', desc: 'Connects all', color: 'amber' },
-                  { emoji: '🛡️', name: 'Guard', desc: 'Protects you', color: 'red' },
+                  { emoji: '🧠', name: 'Brain', desc: 'Thinks & plans', bgColor: 'rgba(147, 51, 234, 0.1)', borderColor: 'rgba(147, 51, 234, 0.3)', hoverBorder: 'rgba(147, 51, 234, 0.5)' },
+                  { emoji: '💾', name: 'Memory', desc: 'Never forgets', bgColor: 'rgba(6, 182, 212, 0.1)', borderColor: 'rgba(6, 182, 212, 0.3)', hoverBorder: 'rgba(6, 182, 212, 0.5)' },
+                  { emoji: '🤲', name: 'Hands', desc: 'Takes action', bgColor: 'rgba(34, 197, 94, 0.1)', borderColor: 'rgba(34, 197, 94, 0.3)', hoverBorder: 'rgba(34, 197, 94, 0.5)' },
+                  { emoji: '⚡', name: 'Nerves', desc: 'Connects all', bgColor: 'rgba(245, 158, 11, 0.1)', borderColor: 'rgba(245, 158, 11, 0.3)', hoverBorder: 'rgba(245, 158, 11, 0.5)' },
+                  { emoji: '🛡️', name: 'Guard', desc: 'Protects you', bgColor: 'rgba(239, 68, 68, 0.1)', borderColor: 'rgba(239, 68, 68, 0.3)', hoverBorder: 'rgba(239, 68, 68, 0.5)' },
                 ].map((companion, i) => (
                   <m.div
                     key={i}
@@ -401,11 +401,13 @@ export default function SalesPage() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className={`p-4 rounded-xl border text-center bg-${companion.color}-900/10 border-${companion.color}-500/30 hover:border-${companion.color}-400/50 transition-all backdrop-blur-sm`}
+                    className="p-4 rounded-xl border text-center backdrop-blur-sm transition-all hover:-translate-y-1 cursor-default"
                     style={{
-                      background: `rgba(var(--${companion.color}-900), 0.1)`,
-                      borderColor: `rgba(var(--${companion.color}-500), 0.3)`
+                      background: companion.bgColor,
+                      borderColor: companion.borderColor,
                     }}
+                    onMouseEnter={(e) => e.currentTarget.style.borderColor = companion.hoverBorder}
+                    onMouseLeave={(e) => e.currentTarget.style.borderColor = companion.borderColor}
                   >
                     <div className="text-3xl mb-2">{companion.emoji}</div>
                     <div className="font-bold text-white text-sm">{companion.name}</div>
@@ -897,7 +899,7 @@ export default function SalesPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {/* Testimonial 1 */}
-              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-teal-500/30 transition-all">
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-teal-500/30 transition-all hover:-translate-y-1">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
                   <div className="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
@@ -918,7 +920,7 @@ export default function SalesPage() {
               </div>
 
               {/* Testimonial 2 */}
-              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-purple-500/30 transition-all">
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-purple-500/30 transition-all hover:-translate-y-1">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
                   <div className="bg-purple-500/20 text-purple-400 text-xs font-bold px-3 py-1 rounded-full">
@@ -939,7 +941,7 @@ export default function SalesPage() {
               </div>
 
               {/* Testimonial 3 */}
-              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-green-500/30 transition-all">
+              <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/50 hover:border-green-500/30 transition-all hover:-translate-y-1">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-yellow-400">⭐⭐⭐⭐⭐</div>
                   <div className="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
