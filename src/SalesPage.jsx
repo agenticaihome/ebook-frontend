@@ -54,7 +54,7 @@ export default function SalesPage() {
             "@type": "Product",
             "name": "Agentic AI Home - The Agentic AI Adventure",
             "description": "A fun, interactive experience that teaches you to build AI agents for daily life automation. No coding required.",
-            "image": "https://agenticaihome.com/assets/logo.png",
+            "image": "https://agenticaihome.com/assets/logo-new.png",
             "brand": {
               "@type": "Brand",
               "name": "Agentic AI Home"
@@ -71,7 +71,7 @@ export default function SalesPage() {
             "@type": "Organization",
             "name": "Agentic AI Home",
             "url": "https://agenticaihome.com",
-            "logo": "https://agenticaihome.com/assets/logo.png"
+            "logo": "https://agenticaihome.com/assets/logo-new.png"
           }
         ]}
       />
@@ -109,7 +109,7 @@ export default function SalesPage() {
                 className="flex items-center gap-3 mb-4 justify-center md:justify-start"
               >
                 <img
-                  src="/assets/logo.png"
+                  src="/assets/logo-new.png"
                   alt="Agentic AI Home"
                   className="w-12 h-12 md:w-14 md:h-14 rounded-xl"
                 />

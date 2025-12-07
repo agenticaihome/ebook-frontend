@@ -215,7 +215,7 @@ const WebbookLayout = ({ children }) => {
                 <div className="p-5 border-b border-amber-500/20 bg-gradient-to-r from-slate-900 to-slate-900/80">
                     <Link to="/" className="flex items-center gap-3 font-bold" aria-label="Go to Home">
                         <img
-                            src="/assets/logo.png"
+                            src="/assets/logo-new.png"
                             alt="Agentic AI Home"
                             className="w-10 h-10 rounded-lg shadow-lg shadow-amber-500/20"
                         />
