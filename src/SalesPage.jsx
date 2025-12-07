@@ -1003,49 +1003,6 @@ export default function SalesPage() {
           </div>
         </section>
 
-        {/* ABOUT AGENTIC AI HOME SECTION */}
-        <section className="py-16 px-6 bg-gradient-to-b from-[#0f0f1a] to-slate-900/30">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <img
-                src="/assets/logo.png"
-                alt="Agentic AI Home Logo"
-                className="w-20 h-20 md:w-24 md:h-24 rounded-2xl"
-              />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-              Welcome to <span className="text-teal-400">Agentic AI</span> <span className="text-orange-400">Home</span>
-            </h2>
-            <p className="text-slate-300 mb-6 leading-relaxed">
-              We're on a mission to bring the power of AI agents into everyday life—
-              not for tech experts, but for <span className="text-white font-medium">busy parents</span>,
-              <span className="text-white font-medium">overwhelmed professionals</span>, and
-              <span className="text-white font-medium">anyone drowning in to-do lists</span>.
-            </p>
-            <p className="text-slate-400 mb-8">
-              Our mascot <span className="text-teal-400 font-bold">Captain E</span> (Captain Efficiency)
-              guides you through each discovery, making AI feel approachable, not intimidating.
-            </p>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                <div className="text-2xl mb-2">🏠</div>
-                <div className="text-white font-bold">Home</div>
-                <div className="text-slate-400 text-xs">For everyday life</div>
-              </div>
-              <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                <div className="text-2xl mb-2">🤖</div>
-                <div className="text-white font-bold">Agentic</div>
-                <div className="text-slate-400 text-xs">AI that takes action</div>
-              </div>
-              <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                <div className="text-2xl mb-2">💡</div>
-                <div className="text-white font-bold">Simple</div>
-                <div className="text-slate-400 text-xs">No coding needed</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* SNEAK PEEK SECTION */}
         <section className="py-16 px-6 bg-[#0f0f1a]">
           <div className="max-w-4xl mx-auto text-center">
