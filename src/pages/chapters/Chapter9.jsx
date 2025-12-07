@@ -1112,6 +1112,24 @@ The goal: Never be surprised by a deadline. Never pay a late fee. Never forget a
                                 <FAQSection faqs={chapter9FAQs} title="Admin FAQ" />
                             </section>
 
+                            {/* PART 4 PREVIEW - TRANSITION HOOK */}
+                            <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/20 rounded-2xl p-6 border border-purple-500/40 mb-8">
+                                <div className="text-center">
+                                    <div className="inline-flex items-center gap-2 bg-purple-500/20 px-4 py-2 rounded-full border border-purple-500/30 mb-4">
+                                        <span className="text-purple-400 font-bold text-sm">🚀 PART 4: LIFE SYSTEMS</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-2">Work Optimized. Now Let's Optimize YOU.</h3>
+                                    <p className="text-slate-300 text-sm mb-4">
+                                        Email handled. Calendar defended. Part 4 is about <span className="text-purple-400 font-medium">the rest of your life</span>: your health, your relationships, and your growth.
+                                    </p>
+                                    <div className="flex flex-wrap justify-center gap-2 text-xs">
+                                        <span className="bg-slate-800/50 text-purple-400 px-3 py-1 rounded-full">❤️ Health Tracking</span>
+                                        <span className="bg-slate-800/50 text-purple-400 px-3 py-1 rounded-full">🤝 Connection Agent</span>
+                                        <span className="bg-slate-800/50 text-purple-400 px-3 py-1 rounded-full">📚 Learning Coach</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* CHAPTER COMPLETE */}
                             <ChapterCompleteWithPartEnd
                                 achievements={[

@@ -972,6 +972,24 @@ const Chapter3 = () => {
                             className="mb-10"
                         />
 
+                        {/* PART 2 PREVIEW - TRANSITION HOOK */}
+                        <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/20 rounded-2xl p-6 border border-green-500/40 mb-8">
+                            <div className="text-center">
+                                <div className="inline-flex items-center gap-2 bg-green-500/20 px-4 py-2 rounded-full border border-green-500/30 mb-4">
+                                    <span className="text-green-400 font-bold text-sm">🚀 PART 2 AWAITS</span>
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-2">Foundation Secured. Now Let's Automate Your Life.</h3>
+                                <p className="text-slate-300 text-sm mb-4">
+                                    You've built your privacy fortress. In Part 2, we deploy agents that handle the <span className="text-green-400 font-medium">daily chaos</span>: meals, groceries, and household management.
+                                </p>
+                                <div className="flex flex-wrap justify-center gap-2 text-xs">
+                                    <span className="bg-slate-800/50 text-green-400 px-3 py-1 rounded-full">🍳 Kitchen Sync</span>
+                                    <span className="bg-slate-800/50 text-green-400 px-3 py-1 rounded-full">🛒 Grocery Genius</span>
+                                    <span className="bg-slate-800/50 text-green-400 px-3 py-1 rounded-full">🏠 Household HQ</span>
+                                </div>
+                            </div>
+                        </div>
+
                         {/* MISSION COMPLETE */}
                         <MissionComplete
                             operationId="exp_3"

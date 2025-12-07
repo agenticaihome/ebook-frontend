@@ -1087,6 +1087,24 @@ Help me prepare effectively without cramming or burning out.`;
                             <FAQSection faqs={chapter12FAQs} title="Learning FAQ" />
                         </section>
 
+                        {/* PART 5 PREVIEW - TRANSITION HOOK */}
+                        <div className="bg-gradient-to-br from-amber-900/30 to-orange-900/20 rounded-2xl p-6 border border-amber-500/40 mb-8">
+                            <div className="text-center">
+                                <div className="inline-flex items-center gap-2 bg-amber-500/20 px-4 py-2 rounded-full border border-amber-500/30 mb-4">
+                                    <span className="text-amber-400 font-bold text-sm">🚀 PART 5: THE FINALE</span>
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-2">All Systems Go. Time to Build Your Life OS.</h3>
+                                <p className="text-slate-300 text-sm mb-4">
+                                    You have 20+ agents. Part 5 connects them into <span className="text-amber-400 font-medium">one seamless system</span>—your personal Life Operating System.
+                                </p>
+                                <div className="flex flex-wrap justify-center gap-2 text-xs">
+                                    <span className="bg-slate-800/50 text-amber-400 px-3 py-1 rounded-full">🎯 Conductor Agent</span>
+                                    <span className="bg-slate-800/50 text-amber-400 px-3 py-1 rounded-full">⚡ Advanced Workflows</span>
+                                    <span className="bg-slate-800/50 text-amber-400 px-3 py-1 rounded-full">🏆 System Mastery</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <ChapterCompleteWithPartEnd
                             achievements={[
                                 'Recovery-Aware Learning Agent (energy-matched study)',

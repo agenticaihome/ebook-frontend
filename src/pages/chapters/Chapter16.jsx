@@ -472,6 +472,127 @@ const FutureVision = () => {
     );
 };
 
+// Continue Your Journey - Purchase CTA
+const ContinueYourJourney = () => {
+    const partPreviews = [
+        {
+            part: 2,
+            title: 'Daily Life',
+            agents: ['Kitchen Sync', 'Grocery Genius', 'Household Command'],
+            color: 'from-green-600 to-emerald-600'
+        },
+        {
+            part: 3,
+            title: 'Work & Focus',
+            agents: ['Email Triage', 'Calendar Defense', 'Meeting Intel'],
+            color: 'from-blue-600 to-cyan-600'
+        },
+        {
+            part: 4,
+            title: 'Health & Wellness',
+            agents: ['Health Coordinator', 'Connection Agent', 'Learning Coach'],
+            color: 'from-purple-600 to-pink-600'
+        },
+        {
+            part: 5,
+            title: 'Life OS',
+            agents: ['Conductor Agent', 'Advanced Workflows', 'System Mastery'],
+            color: 'from-amber-600 to-orange-600'
+        },
+    ];
+
+    return (
+        <div className="mb-12">
+            <div className="bg-gradient-to-br from-amber-900/30 to-orange-900/30 rounded-2xl p-8 border border-amber-500/40 backdrop-blur-sm relative overflow-hidden">
+                {/* Decorative glow */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl" />
+
+                <div className="relative z-10">
+                    <div className="text-center mb-8">
+                        <div className="inline-flex items-center gap-2 bg-amber-500/20 px-4 py-2 rounded-full border border-amber-500/30 mb-4">
+                            <Rocket className="text-amber-400" size={18} />
+                            <span className="text-amber-400 font-bold text-sm">CONTINUE YOUR ADVENTURE</span>
+                        </div>
+                        <h2 className="text-3xl font-bold text-white mb-3">
+                            Ready to Build Your Full Life Operating System?
+                        </h2>
+                        <p className="text-slate-300 max-w-2xl mx-auto">
+                            You've completed Part 1. The foundation is set. But the <span className="text-amber-400 font-medium">real magic</span> happens when you connect ALL your agents into one seamless system.
+                        </p>
+                    </div>
+
+                    {/* Parts Preview */}
+                    <div className="grid md:grid-cols-4 gap-4 mb-8">
+                        {partPreviews.map((part, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50 hover:border-slate-600 transition-colors"
+                            >
+                                <div className={`inline-block px-2 py-1 rounded text-xs font-bold text-white bg-gradient-to-r ${part.color} mb-2`}>
+                                    Part {part.part}
+                                </div>
+                                <h4 className="text-white font-bold text-sm mb-2">{part.title}</h4>
+                                <div className="space-y-1">
+                                    {part.agents.map((agent, j) => (
+                                        <p key={j} className="text-slate-400 text-xs flex items-center gap-1">
+                                            <CheckCircle className="text-green-400" size={10} /> {agent}
+                                        </p>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Social Proof */}
+                    <div className="bg-slate-900/50 rounded-xl p-4 mb-6 text-center">
+                        <div className="flex items-center justify-center gap-4 mb-2">
+                            <div className="flex -space-x-2">
+                                {['🧑‍💻', '👩‍💼', '👨‍🔬', '👩‍🏫', '👨‍⚕️'].map((emoji, i) => (
+                                    <span key={i} className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-sm border-2 border-slate-800">
+                                        {emoji}
+                                    </span>
+                                ))}
+                            </div>
+                            <p className="text-slate-300 text-sm">
+                                <span className="text-amber-400 font-bold">50+ explorers</span> already building their Life OS
+                            </p>
+                        </div>
+                        <p className="text-slate-400 text-xs italic">
+                            "Parts 2-5 took me from saving 2 hours/week to saving 10+. The system compounds." — Marcus T.
+                        </p>
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a
+                            href="/payment-guide"
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50"
+                        >
+                            <Rocket size={20} />
+                            Unlock Parts 2-5
+                            <ArrowRight size={20} />
+                        </a>
+                        <div className="text-center">
+                            <div className="text-2xl font-bold text-white">$39.99</div>
+                            <div className="text-xs text-slate-400">One-time purchase • Lifetime access</div>
+                        </div>
+                    </div>
+
+                    {/* Captain E Nudge */}
+                    <div className="mt-6 bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                        <p className="text-slate-300 text-sm text-center italic">
+                            <span className="text-teal-400 font-bold">Captain E says:</span> "Explorer, Part 1 was the tutorial. Parts 2-5 are where you become unstoppable. I've seen it happen hundreds of times. Trust the system." 🚀
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 // Call to Action
 const CallToAction = () => {
     const [copied, setCopied] = useState(false);
@@ -681,6 +802,9 @@ This isn't just about AI. This is about reclaiming your life. You built the infr
                                 <span className="text-slate-500 text-sm">— The Doctor of Digital Systems</span>
                             </div>
                         </div>
+
+                        {/* CONTINUE YOUR JOURNEY - PURCHASE CTA */}
+                        <ContinueYourJourney />
 
                         {/* CALL TO ACTION */}
                         <CallToAction />

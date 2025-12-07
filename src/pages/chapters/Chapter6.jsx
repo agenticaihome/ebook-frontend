@@ -820,7 +820,7 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                         />
 
                         {/* Author Credibility */}
-                        
+
 
                         {/* Chapter Navigation */}
                         <ChapterNavigation
@@ -951,6 +951,24 @@ Create a seasonal calendar (Spring, Summer, Fall, Winter) with:
                                 faqs={chapter6FAQs}
                                 className="mb-10"
                             />
+
+                            {/* PART 3 PREVIEW - TRANSITION HOOK */}
+                            <div className="bg-gradient-to-br from-blue-900/30 to-cyan-900/20 rounded-2xl p-6 border border-blue-500/40 mb-8">
+                                <div className="text-center">
+                                    <div className="inline-flex items-center gap-2 bg-blue-500/20 px-4 py-2 rounded-full border border-blue-500/30 mb-4">
+                                        <span className="text-blue-400 font-bold text-sm">🚀 PART 3: WORK & FOCUS</span>
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-2">Home Handled. Now Let's Conquer Work.</h3>
+                                    <p className="text-slate-300 text-sm mb-4">
+                                        Your home runs itself. Part 3 tackles your <span className="text-blue-400 font-medium">professional chaos</span>: inbox overflow, calendar wars, and admin avalanche.
+                                    </p>
+                                    <div className="flex flex-wrap justify-center gap-2 text-xs">
+                                        <span className="bg-slate-800/50 text-blue-400 px-3 py-1 rounded-full">📧 Email Triage</span>
+                                        <span className="bg-slate-800/50 text-blue-400 px-3 py-1 rounded-full">📅 Calendar Defense</span>
+                                        <span className="bg-slate-800/50 text-blue-400 px-3 py-1 rounded-full">📋 Admin Automation</span>
+                                    </div>
+                                </div>
+                            </div>
 
                             {/* MISSION COMPLETE */}
                             <MissionComplete

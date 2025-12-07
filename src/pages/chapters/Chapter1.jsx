@@ -310,6 +310,51 @@ Then show me what tomorrow's briefing would look like.`,
                         {/* FUTURE-PROOF BANNER - Honest framing */}
                         <FutureProofBanner />
 
+                        {/* WHAT IS AGENTIC AI - Definition with facts */}
+                        <div className="bg-gradient-to-br from-teal-900/30 to-cyan-900/20 rounded-2xl p-6 border border-teal-500/40 mb-8">
+                            <div className="flex items-start gap-4 mb-4">
+                                <div className="bg-teal-500/20 p-3 rounded-xl">
+                                    <Sparkles className="text-teal-400" size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-1">What is "Agentic AI"?</h3>
+                                    <p className="text-teal-400 text-sm font-medium">The #1 question new readers ask</p>
+                                </div>
+                            </div>
+
+                            <div className="bg-slate-900/50 rounded-xl p-4 mb-4">
+                                <p className="text-lg text-white font-medium mb-2">
+                                    <span className="text-teal-400 font-bold">"Agentic"</span> = AI that <span className="text-orange-400 font-bold">DOES things</span>, not just <span className="text-slate-400">says things</span>.
+                                </p>
+                                <p className="text-slate-400 text-sm">
+                                    Think personal assistant, not search engine. Agentic AI can plan, execute, and adapt tasks on your behalf—with minimal hand-holding.
+                                </p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-3 mb-4">
+                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
+                                    <div className="text-2xl font-bold text-teal-400">$48B</div>
+                                    <div className="text-xs text-slate-400">Agentic AI market by 2030 (from $2.9B in 2024)</div>
+                                </div>
+                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
+                                    <div className="text-2xl font-bold text-orange-400">51%</div>
+                                    <div className="text-xs text-slate-400">of professionals already using AI agents in 2024</div>
+                                </div>
+                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
+                                    <div className="text-2xl font-bold text-green-400">25-40%</div>
+                                    <div className="text-xs text-slate-400">time saved on routine tasks with agentic AI</div>
+                                </div>
+                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
+                                    <div className="text-2xl font-bold text-purple-400">2024</div>
+                                    <div className="text-xs text-slate-400">Andrew Ng popularized the term "agentic"</div>
+                                </div>
+                            </div>
+
+                            <p className="text-slate-300 text-sm">
+                                <span className="text-white font-medium">Bottom line:</span> Regular chatbots answer questions. <span className="text-teal-400 font-medium">Agentic AI takes action</span>—managing your email, planning meals, booking appointments, and more.
+                            </p>
+                        </div>
+
                         {/* BLITZ MODE TOGGLE */}
                         <div className="flex justify-end mb-6">
                             <SpeedRunToggle enabled={speedRun} onToggle={() => setSpeedRun(!speedRun)} />
