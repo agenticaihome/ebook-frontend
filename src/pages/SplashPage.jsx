@@ -67,35 +67,7 @@ const SplashPage = () => {
                         </p>
                     </motion.div>
 
-                    {/* Captain E Animation - With Glow Blending */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.5 }}
-                        className="mb-10 relative"
-                        style={{
-                            filter: 'drop-shadow(0 0 20px rgba(6, 182, 212, 0.4)) drop-shadow(0 0 40px rgba(6, 182, 212, 0.2))'
-                        }}
-                    >
-                        {/* Multi-layer radial glow effect */}
-                        <div className="absolute inset-0 bg-gradient-radial from-cyan-400/50 via-cyan-500/30 to-transparent rounded-full blur-3xl scale-150 animate-pulse" />
-                        <div className="absolute inset-0 bg-gradient-radial from-orange-400/30 via-orange-500/20 to-transparent rounded-full blur-3xl scale-[1.8]" />
 
-                        <video
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="relative z-10 w-40 h-40 md:w-48 md:h-48 mx-auto mix-blend-lighten"
-                            style={{
-                                filter: 'drop-shadow(0 0 15px rgba(6, 182, 212, 0.5)) contrast(1.1) brightness(1.1)',
-                                maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
-                                WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)'
-                            }}
-                        >
-                            <source src="/assets/captain-waving.mp4" type="video/mp4" />
-                        </video>
-                    </motion.div>
 
                     {/* Primary CTA - More Prominent */}
                     <motion.div
