@@ -700,7 +700,7 @@ export default function SalesPage() {
                     </h2>
                     <p className="text-lg text-slate-200 leading-relaxed mb-6">
                       We want you to succeed. Try <span className="font-bold text-green-400">everything</span> for 30 days.
-                      If you don't save at least <span className="font-bold text-amber-400">5 hours in Week 1</span>,
+                      If you're not saving at least <span className="font-bold text-amber-400">5 hours per week</span> by the end of the course,
                       email us for a <span className="font-bold text-white">full refund</span>.
                       No hoops. No fine print. No questions asked.
                     </p>
