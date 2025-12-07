@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { Rocket, Sparkles, Play } from 'lucide-react';
+import { Rocket, Sparkles, Play, Users, Code, Twitter, Linkedin } from 'lucide-react';
 
 const SplashPage = () => {
     return (
@@ -57,17 +57,20 @@ const SplashPage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
-                        className="mb-10"
+                        className="mb-8"
                     >
                         <p className="text-2xl md:text-3xl text-white font-medium mb-3 leading-tight">
                             Learn to build your <span className="text-teal-400">AI agent team</span>
                         </p>
-                        <p className="text-slate-400 text-lg">
+                        <p className="text-slate-400 text-lg mb-4">
                             and reclaim <span className="text-amber-400 font-bold">10+ hours</span> every week
                         </p>
+
+                        {/* Content Preview */}
+                        <p className="text-slate-500 text-sm">
+                            16 chapters • Email, Calendar, Meal Planning & More
+                        </p>
                     </motion.div>
-
-
 
                     {/* Primary CTA - More Prominent */}
                     <motion.div
@@ -84,13 +87,24 @@ const SplashPage = () => {
                             <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
                         </Link>
 
-                        <div className="flex items-center justify-center gap-4 mt-6 text-sm">
+                        <div className="flex items-center justify-center gap-4 mt-6 text-sm flex-wrap">
                             <span className="flex items-center gap-1 text-green-400">
                                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                                 Free to start
                             </span>
                             <span className="text-slate-500">•</span>
-                            <span className="text-slate-400">No sign-up required</span>
+                            <span className="flex items-center gap-1 text-slate-400">
+                                <Code size={14} />
+                                No coding required
+                            </span>
+                        </div>
+
+                        {/* Social Proof */}
+                        <div className="flex items-center justify-center gap-2 mt-4">
+                            <Users size={16} className="text-slate-500" />
+                            <span className="text-slate-500 text-sm">
+                                Trusted by <span className="text-white font-medium">50+ explorers</span>
+                            </span>
                         </div>
                     </motion.div>
 
@@ -111,16 +125,36 @@ const SplashPage = () => {
                     </motion.div>
                 </motion.div>
 
-                {/* Footer */}
+                {/* Footer with Socials */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
                     className="absolute bottom-8 text-center"
                 >
-                    <p className="text-slate-500 text-sm">
+                    <p className="text-slate-500 text-sm mb-3">
                         Guided by <span className="text-orange-400 font-medium">Captain Efficiency</span> • Your AI Efficiency Coach
                     </p>
+                    <div className="flex items-center justify-center gap-4">
+                        <a
+                            href="https://x.com/agenticaihome"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-600 hover:text-teal-400 transition-colors"
+                            aria-label="Follow on X/Twitter"
+                        >
+                            <Twitter size={18} />
+                        </a>
+                        <a
+                            href="https://linkedin.com/company/agenticaihome"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-600 hover:text-teal-400 transition-colors"
+                            aria-label="Follow on LinkedIn"
+                        >
+                            <Linkedin size={18} />
+                        </a>
+                    </div>
                 </motion.div>
             </div>
         </>
@@ -128,4 +162,5 @@ const SplashPage = () => {
 };
 
 export default SplashPage;
+
 
