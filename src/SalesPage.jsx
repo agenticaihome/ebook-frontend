@@ -310,22 +310,22 @@ export default function SalesPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
-                🎯 IS THIS FOR YOU?
+                🌍 THIS IS FOR EVERYONE
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Built For People Who Are <span className="text-purple-400">Tired of Doing Everything</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Whether You're <span className="text-purple-400">Curious, Skeptical, or Already Using AI</span></h2>
               <p className="text-slate-400 max-w-2xl mx-auto">
-                You don't need more willpower. You need systems doing work for you.
+                AI isn't just for tech people. It's for anyone who wants to do less busywork and more living.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {[
-                { emoji: '👨‍👩‍👧‍👦', title: 'Busy Parents', desc: 'Juggling kids, work, and a household that runs on chaos? Your AI handles the invisible workload.', color: 'teal' },
-                { emoji: '🎓', title: 'Students', desc: 'Drowning in deadlines and assignments? Build a second brain that organizes everything.', color: 'purple' },
-                { emoji: '🧠', title: 'ADHD Minds', desc: 'Need external systems because internal ones don\'t stick? AI becomes your reliable co-pilot.', color: 'amber' },
-                { emoji: '💼', title: 'Professionals', desc: '50+ hour weeks? Inbox out of control? Automate the repetitive so you can focus on impact.', color: 'blue' },
-                { emoji: '🎨', title: 'Creators', desc: 'More ideas than time? Let AI handle admin so you can create without friction.', color: 'pink' },
-                { emoji: '🔥', title: 'Anyone Overwhelmed', desc: 'If your to-do list never ends and you\'re exhausted by 3pm... this is for you.', color: 'orange' },
+                { emoji: '🤔', title: 'AI Curious', desc: 'Heard the hype but unsure where to start? This is your friendly, zero-jargon introduction to practical AI.', color: 'teal' },
+                { emoji: '😰', title: 'AI Skeptics', desc: 'Worried about AI or overwhelmed by the noise? Learn to use it responsibly, respecting its power.', color: 'amber' },
+                { emoji: '🚀', title: 'AI Enthusiasts', desc: 'Already using ChatGPT? Go deeper. Build actual systems that work while you sleep.', color: 'cyan' },
+                { emoji: '👶', title: 'Complete Beginners', desc: 'Never touched AI? Perfect. We start from zero with Captain Efficiency guiding every step.', color: 'green' },
+                { emoji: '👨‍👩‍👧‍👦', title: 'Busy Humans', desc: 'Parents, students, professionals—anyone drowning in tasks. AI gives you back your time.', color: 'purple' },
+                { emoji: '🔮', title: 'Future-Proofers', desc: 'AI is changing everything. Learn it now, or get left behind. Your choice.', color: 'orange' },
               ].map((item, i) => (
                 <m.div
                   key={i}
@@ -342,13 +342,20 @@ export default function SalesPage() {
               ))}
             </div>
 
+            {/* Universal Message */}
+            <div className="mt-10 p-6 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-2xl border border-purple-500/20 text-center">
+              <p className="text-xl text-white font-medium">
+                <span className="text-purple-400">Bottom line:</span> If you're human and have tasks... this is for you.
+              </p>
+            </div>
+
             {/* CTA */}
-            <div className="text-center mt-12">
+            <div className="text-center mt-10">
               <Link
                 to="/part1"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-purple-500/20"
               >
-                <span>🧭</span> See If This Fits You (Free)
+                <span>🧭</span> Start Your Free Adventure
               </Link>
             </div>
           </div>
