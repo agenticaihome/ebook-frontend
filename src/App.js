@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate, Navig
 import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-motion';
 import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
+import ErrorBoundary from './components/common/ErrorBoundary';
 
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
@@ -23,12 +24,7 @@ const GamesPage = lazy(() => import('./pages/GamesPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AgentWallet = lazy(() => import('./pages/AgentWallet'));
 
-// Loading component
-const Loading = () => (
-  <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center">
-    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-cyan-500"></div>
-  </div>
-);
+import Loading from './components/common/Loading';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -212,7 +208,9 @@ function App() {
         <SoundProvider>
           <UserProvider>
             <Suspense fallback={<Loading />}>
-              <AnimatedRoutes />
+              <ErrorBoundary>
+                <AnimatedRoutes />
+              </ErrorBoundary>
               <MobileBottomNav />
               <Toaster
                 toastOptions={{

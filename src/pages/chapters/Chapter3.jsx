@@ -1011,7 +1011,6 @@ const Chapter3 = () => {
                         {/* Bottom Navigation */}
                         <ChapterNavigation
                             previousChapter="/part1/chapter2"
-                            nextChapter="/part2/chapter1"
                             partNumber={1}
                             chapterNumber={3}
                         />

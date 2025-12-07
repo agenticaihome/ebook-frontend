@@ -819,7 +819,7 @@ export default function SalesPage() {
         </section>
 
         {/* CALCULATOR SECTION */}
-        <section className="py-24 px-6 bg-[#0f0f1a]">
+        <section id="calculator" className="py-24 px-6 bg-[#0f0f1a]">
           <div className="max-w-4xl mx-auto">
             <Suspense fallback={<div className="h-64 flex items-center justify-center text-slate-400">Loading calculator...</div>}>
               <TimeBackCalculator />
