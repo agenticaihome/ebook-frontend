@@ -1060,6 +1060,88 @@ export default function SalesPage() {
           <ProductWalkthrough />
         </Suspense>
 
+        {/* EMOTIONAL BREAKTHROUGH SECTION - Psychology-Enhanced Pre-CTA */}
+        <section className="py-20 px-6 bg-gradient-to-b from-[#0f0f1a] via-teal-900/5 to-[#0f0f1a] relative overflow-hidden">
+          {/* Ambient glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+          <div className="max-w-3xl mx-auto relative z-10">
+            <m.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              {/* Soft badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-900/20 border border-teal-500/20 text-teal-400 text-sm font-medium mb-8">
+                <Heart size={14} /> A Message Before You Decide
+              </div>
+
+              {/* Identity-Based Headline */}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                Become the Person Who Finally Has{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
+                  Enough Time
+                </span>
+              </h2>
+
+              {/* Subheadline */}
+              <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                It starts with one small step. And you're already taking it.
+              </p>
+
+              {/* Main Emotional Paragraph */}
+              <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-slate-700/50 text-left">
+                <p className="text-slate-300 leading-relaxed text-base md:text-lg space-y-4">
+                  <span className="block mb-4">
+                    If you've ever felt like AI is "too complicated" or "not for people like me" — you're
+                    not alone. Most people feel that way.
+                  </span>
+                  <span className="block mb-4">
+                    But here's what nobody tells you: <span className="text-white font-medium">the people
+                      thriving with AI right now aren't geniuses</span>. They're just people who started.
+                    They got comfortable being a beginner again.
+                  </span>
+                  <span className="block mb-4">
+                    And on the other side of that discomfort? There's a version of you who isn't drowning
+                    in tasks. Who has <span className="text-teal-400 font-medium">systems</span>. Who has
+                    <span className="text-teal-400 font-medium"> space</span>. Who finally has
+                    <span className="text-teal-400 font-medium"> energy left</span> at the end of the day.
+                  </span>
+                  <span className="block mb-4">
+                    That's not a fantasy — it's what happens when you stop doing everything manually and
+                    start letting AI handle the repetitive stuff.
+                  </span>
+                  <span className="block">
+                    <span className="text-amber-400 font-medium">The DDS</span> built this guide because
+                    he was exactly where you are — overwhelmed, skeptical, wondering if it was too late.
+                    <span className="text-white font-medium"> It's not.</span> This is designed to meet
+                    you where you are and give you one small win, then another, until you're the one
+                    helping others figure it out.
+                  </span>
+                </p>
+
+                {/* Closing Line */}
+                <div className="mt-8 pt-6 border-t border-slate-700/50 text-center">
+                  <p className="text-xl md:text-2xl font-medium text-white italic">
+                    "You're one decision away from becoming who you were meant to be."
+                  </p>
+                </div>
+              </div>
+
+              {/* Gentle scroll prompt */}
+              <m.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="mt-10 text-slate-500 text-sm"
+              >
+                ↓ See your options below
+              </m.div>
+            </m.div>
+          </div>
+        </section>
+
         {/* PRICING SECTION */}
         <section id="pricing" className="py-24 px-6 bg-[#0f0f1a] relative">
           {/* Background Glows */}
