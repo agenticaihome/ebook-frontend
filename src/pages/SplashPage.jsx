@@ -81,7 +81,7 @@ const SplashPage = () => {
                                 filter: 'drop-shadow(0 0 40px rgba(251, 146, 60, 0.4))'
                             }}
                         >
-                            <source src="/assets/captain-waving.webm" type="video/webm" />
+                            <source src="/assets/captain-waving.mp4" type="video/mp4" />
                         </video>
                     </motion.div>
 
