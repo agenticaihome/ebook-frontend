@@ -403,17 +403,27 @@ const WebbookLayout = ({ children }) => {
                 <PreLaunchBanner />
                 {/* Top Bar */}
                 <header className="sticky top-0 z-30 bg-slate-900/80 backdrop-blur-lg border-b border-slate-600/50 h-16 flex items-center px-4 justify-between transition-all duration-300">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 overflow-hidden">
                         {!isSidebarOpen && (
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400"
+                                className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400 flex-shrink-0"
                                 aria-label="Open Sidebar"
                             >
                                 <Menu size={24} />
                             </button>
                         )}
-                        <h1 className="font-semibold text-slate-200 truncate">
+
+                        {/* Mobile Logo - Only visible when sidebar is closed on mobile */}
+                        <div className="flex items-center gap-2 md:hidden">
+                            <img
+                                src="/assets/logo-new.png"
+                                alt="Agentic AI Home"
+                                className="w-8 h-8 object-contain"
+                            />
+                        </div>
+
+                        <h1 className="font-semibold text-slate-200 truncate text-sm md:text-base">
                             {chapters.find(c => c.path === location.pathname)?.title || ''}
                         </h1>
                     </div>

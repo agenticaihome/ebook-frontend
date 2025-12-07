@@ -159,6 +159,7 @@ const Dashboard = () => {
     const [showSettings, setShowSettings] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showWelcome, setShowWelcome] = useState(false);
+    const [activeTab, setActiveTab] = useState('overview'); // overview, quests, profile
 
     // Check login status (but don't redirect - dashboard is public)
     useEffect(() => {
@@ -193,6 +194,117 @@ const Dashboard = () => {
         a.condition(completedChapters, completedGames, streak)
     );
 
+    // Tab content renderer for mobile
+    const renderMobileContent = () => {
+        switch (activeTab) {
+            case 'quests':
+                return <QuestLog />;
+            case 'profile':
+                return (
+                    <div className="space-y-6">
+                        {/* Achievements */}
+                        <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-5">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="flex items-center gap-2">
+                                    <Trophy className="text-yellow-400" size={20} />
+                                    <h3 className="text-white font-bold">Achievements</h3>
+                                </div>
+                                <span className="text-xs text-slate-400">
+                                    {unlockedAchievements.length}/{ACHIEVEMENTS.length}
+                                </span>
+                            </div>
+                            <div className="grid grid-cols-4 gap-2">
+                                {ACHIEVEMENTS.slice(0, 8).map((achievement) => (
+                                    <AchievementBadge
+                                        key={achievement.id}
+                                        achievement={achievement}
+                                        unlocked={unlockedAchievements.some(a => a.id === achievement.id)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Quick Actions */}
+                        <div className="space-y-3">
+                            <h3 className="text-white font-bold text-sm flex items-center gap-2">
+                                <Sparkles size={14} className="text-purple-400" />
+                                Quick Actions
+                            </h3>
+                            <QuickAction
+                                icon={Home}
+                                title="Return to Camp"
+                                subtitle="Back to home page"
+                                to="/"
+                                color="from-emerald-500 to-teal-500"
+                            />
+                            <QuickAction
+                                icon={Trophy}
+                                title="Agent Deck"
+                                subtitle="View your collected cards"
+                                to="/deck"
+                                color="from-purple-500 to-pink-500"
+                            />
+                        </div>
+
+                        {/* Settings Toggle */}
+                        {isLoggedIn ? (
+                            <>
+                                <button
+                                    onClick={() => setShowSettings(!showSettings)}
+                                    className="w-full flex items-center justify-between p-3 bg-slate-800/30 hover:bg-slate-800/50 border border-slate-700/50 rounded-xl text-sm transition-colors"
+                                >
+                                    <span className="flex items-center gap-2 text-slate-300">
+                                        <Settings size={16} />
+                                        Settings
+                                    </span>
+                                    <ChevronRight className={`text-slate-500 transition-transform ${showSettings ? 'rotate-90' : ''}`} size={16} />
+                                </button>
+
+                                {showSettings && (
+                                    <m.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        className="space-y-3"
+                                    >
+                                        <ChangePasswordForm />
+                                        <button
+                                            onClick={() => {
+                                                localStorage.removeItem('token');
+                                                navigate('/login');
+                                            }}
+                                            className="w-full flex items-center justify-center gap-2 p-3 bg-red-900/20 hover:bg-red-900/30 border border-red-500/30 rounded-xl text-red-400 text-sm font-medium transition-colors"
+                                        >
+                                            <LogOut size={16} />
+                                            Log Out
+                                        </button>
+                                    </m.div>
+                                )}
+                            </>
+                        ) : (
+                            <Link to="/login">
+                                <m.button
+                                    whileHover={{ scale: 1.01 }}
+                                    whileTap={{ scale: 0.99 }}
+                                    className="w-full flex items-center justify-center gap-2 p-3 bg-teal-600 hover:bg-teal-500 rounded-xl text-white text-sm font-bold transition-colors"
+                                >
+                                    Sign In to Save Progress
+                                </m.button>
+                            </Link>
+                        )}
+                    </div>
+                );
+            case 'overview':
+            default:
+                return (
+                    <div className="space-y-6">
+                        <HeroStatusBar onLevelUp={handleLevelUp} />
+                        <QuestMap />
+                        <ChallengeArena />
+                    </div>
+                );
+        }
+    };
+
     return (
         <WebbookLayout>
             <Helmet>
@@ -217,26 +329,25 @@ const Dashboard = () => {
                             className="relative max-w-md w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-teal-500/30 rounded-2xl p-6 shadow-2xl shadow-teal-500/10"
                             onClick={e => e.stopPropagation()}
                         >
-                            {/* Captain Efficiency - Scout Companion */}
-                            <div className="flex justify-center mb-4">
-                                <div className="relative w-20 h-20">
+                            {/* Brand Logo - Updated */}
+                            <div className="flex justify-center mb-6">
+                                <div className="relative w-24 h-24">
                                     <img
-                                        src="/assets/images/captain-e-transparent.png"
-                                        alt="Captain Efficiency, your scout companion"
-                                        className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+                                        src="/assets/logo-new.png"
+                                        alt="Agentic AI Home"
+                                        className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(20,184,166,0.3)]"
                                     />
-                                    <div className="absolute inset-0 bg-teal-400/20 blur-xl rounded-full" />
                                 </div>
                             </div>
 
                             {/* Welcome Message */}
                             <div className="text-center mb-6">
                                 <h2 className="text-2xl font-bold text-white mb-2">
-                                    Welcome! 🧭
+                                    Welcome, Explorer! 🧭
                                 </h2>
                                 <p className="text-slate-300 text-sm leading-relaxed">
-                                    I'm Captain Efficiency, your friendly guide! This is your <span className="text-teal-400 font-medium">Adventure Dashboard</span> —
-                                    your home base for exploring AI.
+                                    I'm <span className="text-orange-400 font-medium">Captain Efficiency</span>. This is your <span className="text-teal-400 font-medium">Adventure Dashboard</span> —
+                                    your command center for mastering AI.
                                 </p>
                             </div>
 
@@ -253,14 +364,7 @@ const Dashboard = () => {
                                     <Trophy className="text-yellow-400 flex-shrink-0 mt-0.5" size={18} />
                                     <div>
                                         <p className="text-white text-sm font-medium">Earn Progress Points</p>
-                                        <p className="text-slate-400 text-xs">Complete discoveries to level up</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                                    <Gamepad2 className="text-purple-400 flex-shrink-0 mt-0.5" size={18} />
-                                    <div>
-                                        <p className="text-white text-sm font-medium">Fun Challenges</p>
-                                        <p className="text-slate-400 text-xs">Unlock mini-games as you learn</p>
+                                        <p className="text-slate-400 text-xs">Complete chapter discoveries to level up</p>
                                     </div>
                                 </div>
                             </div>
@@ -296,14 +400,11 @@ const Dashboard = () => {
             <div className="min-h-screen bg-[#0f0f1a] text-white pt-20 pb-24 px-4 md:px-6">
                 <div className="max-w-7xl mx-auto">
 
-                    {/* Hero Status Bar */}
-                    <HeroStatusBar onLevelUp={handleLevelUp} />
-
-                    {/* Main Grid */}
-                    <div className="grid lg:grid-cols-3 gap-6">
-
+                    {/* Desktop View (Grid Layout) - Hidden on Mobile */}
+                    <div className="hidden lg:grid lg:grid-cols-3 gap-6">
                         {/* Left Column - Quest Map & Arena */}
                         <div className="lg:col-span-2 space-y-6">
+                            <HeroStatusBar onLevelUp={handleLevelUp} />
                             <QuestMap />
                             <ChallengeArena />
                         </div>
@@ -403,6 +504,44 @@ const Dashboard = () => {
                             )}
                         </div>
                     </div>
+
+                    {/* Mobile View (Tabbed Layout) - Hidden on Desktop */}
+                    <div className="lg:hidden">
+                        {/* Tab Headers */}
+                        <div className="sticky top-20 z-20 flex bg-slate-800/95 backdrop-blur-md p-1 rounded-xl mb-6 border border-slate-700/50 shadow-xl">
+                            {[
+                                { id: 'overview', label: 'Overview', icon: Map },
+                                { id: 'quests', label: 'Quests', icon: Gamepad2 },
+                                { id: 'profile', label: 'Profile', icon: Trophy },
+                            ].map((tab) => (
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveTab(tab.id)}
+                                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === tab.id
+                                            ? 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white shadow-lg'
+                                            : 'text-slate-400 hover:text-white'
+                                        }`}
+                                >
+                                    <tab.icon size={16} />
+                                    {tab.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Tab Content */}
+                        <AnimatePresence mode="wait">
+                            <m.div
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                {renderMobileContent()}
+                            </m.div>
+                        </AnimatePresence>
+                    </div>
+
                 </div>
             </div>
         </WebbookLayout>
