@@ -28,7 +28,7 @@ const SplashPage = () => {
                     transition={{ duration: 0.6 }}
                     className="relative z-10 text-center max-w-xl"
                 >
-                    {/* Logo - LARGER */}
+                    {/* Logo - New Design */}
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
@@ -37,7 +37,7 @@ const SplashPage = () => {
                     >
                         <div className="relative inline-block">
                             <img
-                                src="/assets/logo.png"
+                                src="/assets/logo-new.png"
                                 alt="Agentic AI Home"
                                 className="w-36 h-36 md:w-44 md:h-44 mx-auto mb-6 drop-shadow-[0_0_50px_rgba(20,184,166,0.4)]"
                             />
@@ -47,6 +47,9 @@ const SplashPage = () => {
                         <h1 className="text-3xl md:text-4xl font-bold text-white">
                             Agentic AI <span className="text-teal-400">Home</span>
                         </h1>
+                        <p className="text-white text-lg mt-2 font-medium">
+                            Featuring <span className="text-orange-400">Captain Efficiency</span>
+                        </p>
                     </motion.div>
 
                     {/* Tagline - Enhanced */}
@@ -144,7 +147,7 @@ const SplashPage = () => {
                     className="absolute bottom-8 text-center"
                 >
                     <p className="text-slate-500 text-sm">
-                        Guided by <span className="text-orange-400 font-medium">Captain E</span> • Your AI Efficiency Coach
+                        Guided by <span className="text-orange-400 font-medium">Captain Efficiency</span> • Your AI Efficiency Coach
                     </p>
                 </motion.div>
             </div>
