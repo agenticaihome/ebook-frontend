@@ -59,8 +59,9 @@ const SplashPage = () => {
                                 loop
                                 muted
                                 playsInline
-                                className="relative w-full h-full object-cover rounded-full"
+                                className="relative w-full h-full object-cover rounded-full video-fade"
                                 poster="/assets/captain-pointing-transparent.webp"
+                                onPlaying={(e) => e.target.classList.add('video-playing')}
                             >
                                 <source src="/assets/captain-splash-hero.mp4" type="video/mp4" />
                                 {/* Fallback to image */}

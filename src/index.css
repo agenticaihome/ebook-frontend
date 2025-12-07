@@ -215,3 +215,17 @@ code {
   transform: translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+/* ============================================ */
+/* VIDEO FADE-IN - Smooth poster to video      */
+/* ============================================ */
+
+/* Video starts transparent, fades in on play */
+video.video-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+video.video-fade.video-playing {
+  opacity: 1;
+}

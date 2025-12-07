@@ -3,8 +3,12 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft, Flame, Star } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
+import { useGameAudio } from '../../hooks/useGameAudio';
 
 const CaptainClickChallenge = ({ onBack }) => {
+    // Audio hook
+    const { playSound, SoundToggle } = useGameAudio();
+
     // Game state
     const [gameState, setGameState] = useState('idle'); // idle, playing, finished
     const [score, setScore] = useState(0);
@@ -147,9 +151,11 @@ const CaptainClickChallenge = ({ onBack }) => {
             points = 5;
             setCriticalHit(true);
             triggerHaptic([20, 30, 20]);
+            playSound('critical');
             setTimeout(() => setCriticalHit(false), 250);
         } else {
             triggerHaptic(8);
+            playSound('tap');
         }
 
         // Apply multipliers
@@ -158,6 +164,7 @@ const CaptainClickChallenge = ({ onBack }) => {
 
         // Update score
         setScore(prev => prev + points);
+        playSound('score', { debounce: 50 });
 
         // Update combo
         setCombo(prev => {
@@ -168,6 +175,7 @@ const CaptainClickChallenge = ({ onBack }) => {
             if (newCombo >= 5 && !frenzyMode) {
                 setFrenzyMode(true);
                 triggerHaptic([30, 20, 30, 20, 50]);
+                playSound('frenzy');
                 addClickEffect(50, 30, '🔥 FRENZY MODE!', 'text-orange-400', 'text-3xl');
             }
 
@@ -214,6 +222,7 @@ const CaptainClickChallenge = ({ onBack }) => {
             setCombo(0);
             setFrenzyMode(false);
             triggerFlash('red');
+            playSound('wrong');
             triggerHaptic(50);
 
             // Calculate click position for effect
@@ -238,6 +247,7 @@ const CaptainClickChallenge = ({ onBack }) => {
         // Show collection effect
         addClickEffect(powerUp.x, powerUp.y, `${powerUp.emoji} ${powerUp.label}!`, 'text-cyan-300', 'text-xl');
         triggerHaptic([15, 30, 15]);
+        playSound('powerUp');
 
         // Apply power-up effect based on TYPE (not id!)
         setActivePowerUp(powerUp.type);
@@ -267,6 +277,9 @@ const CaptainClickChallenge = ({ onBack }) => {
     // ===================
     const startGame = useCallback(() => {
         if (gameState === 'playing') return;
+
+        // Play start sound
+        playSound('start');
 
         // Reset state
         setGameState('playing');
@@ -364,6 +377,7 @@ const CaptainClickChallenge = ({ onBack }) => {
         if (finalScore > highScore) {
             setIsNewHighScore(true);
             setHighScore(finalScore);
+            playSound('highScore');
             try {
                 localStorage.setItem('captainClickHighScore', finalScore.toString());
             } catch { }
@@ -378,12 +392,15 @@ const CaptainClickChallenge = ({ onBack }) => {
                 });
             }, 200);
         } else if (finalScore >= 40) {
+            playSound('gameOver');
             confetti({
                 particleCount: 80,
                 spread: 70,
                 origin: { y: 0.6 },
                 colors: ['#06b6d4', '#3b82f6']
             });
+        } else {
+            playSound('gameOver');
         }
 
         // Submit score
@@ -476,23 +493,26 @@ const CaptainClickChallenge = ({ onBack }) => {
                         </div>
                     </div>
 
-                    {/* Combo Meter */}
-                    <div className="flex flex-col items-end">
-                        <div className="flex items-center gap-1 mb-1">
-                            {frenzyMode && <Flame className="w-4 h-4 text-orange-500 animate-pulse" />}
-                            <span className={`text-[10px] sm:text-xs font-bold uppercase ${frenzyMode ? 'text-orange-400' : 'text-slate-400'}`}>
-                                {frenzyMode ? 'FRENZY x2!' : `Combo ${combo}`}
-                            </span>
-                        </div>
-                        <div className="w-20 sm:w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                            <m.div
-                                className={`h-full rounded-full ${frenzyMode
-                                    ? 'bg-gradient-to-r from-orange-500 to-yellow-400'
-                                    : 'bg-gradient-to-r from-cyan-500 to-cyan-400'
-                                    }`}
-                                animate={{ width: `${comboPercent}%` }}
-                                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                            />
+                    {/* Sound Toggle & Combo Meter */}
+                    <div className="flex items-center gap-3">
+                        <SoundToggle />
+                        <div className="flex flex-col items-end">
+                            <div className="flex items-center gap-1 mb-1">
+                                {frenzyMode && <Flame className="w-4 h-4 text-orange-500 animate-pulse" />}
+                                <span className={`text-[10px] sm:text-xs font-bold uppercase ${frenzyMode ? 'text-orange-400' : 'text-slate-400'}`}>
+                                    {frenzyMode ? 'FRENZY x2!' : `Combo ${combo}`}
+                                </span>
+                            </div>
+                            <div className="w-20 sm:w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                <m.div
+                                    className={`h-full rounded-full ${frenzyMode
+                                        ? 'bg-gradient-to-r from-orange-500 to-yellow-400'
+                                        : 'bg-gradient-to-r from-cyan-500 to-cyan-400'
+                                        }`}
+                                    animate={{ width: `${comboPercent}%` }}
+                                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
