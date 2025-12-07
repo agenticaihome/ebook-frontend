@@ -3,11 +3,9 @@ import {
     TwitterShareButton,
     LinkedinShareButton,
     FacebookShareButton,
-    RedditShareButton,
     TwitterIcon,
     LinkedinIcon,
-    FacebookIcon,
-    RedditIcon
+    FacebookIcon
 } from 'react-share';
 import { Share2 } from 'lucide-react';
 
@@ -37,10 +35,6 @@ const SocialShare = ({ url = "https://agenticaihome.com", title, hashtags = ["Ag
                 <FacebookShareButton url={url} quote={title} hashtag={`#${hashtags[0]}`} className="hover:opacity-80 transition-opacity">
                     <FacebookIcon size={40} round />
                 </FacebookShareButton>
-
-                <RedditShareButton url={url} title={title} className="hover:opacity-80 transition-opacity">
-                    <RedditIcon size={40} round />
-                </RedditShareButton>
             </div>
         </div>
     );

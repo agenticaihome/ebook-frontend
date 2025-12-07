@@ -14,7 +14,6 @@ const ERGO_LINKS = {
     github: 'https://github.com/ergoplatform',
     telegram: 'https://t.me/ergoplatform',
     discord: 'https://discord.gg/ergo-platform-668903786361651200',
-    reddit: 'https://reddit.com/r/ergonauts',
     twitter: 'https://x.com/Ergo_Platform',
     explorer: 'https://explorer.ergoplatform.com',
     sigmaverse: 'https://sigmaverse.io',
@@ -507,7 +506,6 @@ export default function WhyErgo() {
                                 <ul className="space-y-2 text-slate-400">
                                     <li><a href={ERGO_LINKS.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Telegram <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.discord} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Discord <ExternalLink size={12} /></a></li>
-                                    <li><a href={ERGO_LINKS.reddit} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Reddit <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Twitter/X <ExternalLink size={12} /></a></li>
                                 </ul>
                             </div>
