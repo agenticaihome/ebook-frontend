@@ -197,7 +197,7 @@ export default function SalesPage() {
                   ))}
                 </div>
                 <span>
-                  <span className="text-amber-400 font-bold">Join 50+ curious minds</span> already discovering the frontier
+                  <span className="text-amber-400 font-bold">Join 500+ busy professionals</span> reclaiming their time
                 </span>
               </m.div>
             </div>
@@ -301,6 +301,112 @@ export default function SalesPage() {
               <p className="text-xl text-slate-200 font-medium">
                 What if friendly AI could handle this for you... <span className="text-yellow-400">so you can focus on what matters?</span>
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* WHO THIS IS FOR SECTION */}
+        <section className="py-20 px-6 bg-gradient-to-b from-slate-900/50 to-[#0f0f1a]">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
+                🎯 IS THIS FOR YOU?
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Built For People Who Are <span className="text-purple-400">Tired of Doing Everything</span></h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                You don't need more willpower. You need systems doing work for you.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { emoji: '👨‍👩‍👧‍👦', title: 'Busy Parents', desc: 'Juggling kids, work, and a household that runs on chaos? Your AI handles the invisible workload.', color: 'teal' },
+                { emoji: '🎓', title: 'Students', desc: 'Drowning in deadlines and assignments? Build a second brain that organizes everything.', color: 'purple' },
+                { emoji: '🧠', title: 'ADHD Minds', desc: 'Need external systems because internal ones don\'t stick? AI becomes your reliable co-pilot.', color: 'amber' },
+                { emoji: '💼', title: 'Professionals', desc: '50+ hour weeks? Inbox out of control? Automate the repetitive so you can focus on impact.', color: 'blue' },
+                { emoji: '🎨', title: 'Creators', desc: 'More ideas than time? Let AI handle admin so you can create without friction.', color: 'pink' },
+                { emoji: '🔥', title: 'Anyone Overwhelmed', desc: 'If your to-do list never ends and you\'re exhausted by 3pm... this is for you.', color: 'orange' },
+              ].map((item, i) => (
+                <m.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 hover:border-purple-500/30 transition-all"
+                >
+                  <span className="text-3xl mb-4 block">{item.emoji}</span>
+                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-slate-400 text-sm">{item.desc}</p>
+                </m.div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-12">
+              <Link
+                to="/part1"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-purple-500/20"
+              >
+                <span>🧭</span> See If This Fits You (Free)
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* WHY AI IS MAGICAL SECTION */}
+        <section className="py-20 px-6 bg-[#0f0f1a]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-400 text-sm font-bold mb-6">
+                ✨ THE MAGIC MOMENT
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why AI Feels Like <span className="text-cyan-400">Having Superpowers</span></h2>
+            </div>
+
+            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-8 border border-cyan-500/20">
+              <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+                <p>
+                  <span className="text-cyan-400 font-bold">That first time your AI handles a full task for you...</span>
+                  <span className="text-slate-400"> it changes something.</span>
+                </p>
+                <p>
+                  You wake up to a <span className="text-white font-medium">perfectly organized inbox</span>.
+                  Your grocery list appears <span className="text-white font-medium">before you think about it</span>.
+                  Your schedule adjusts itself <span className="text-white font-medium">when life happens</span>.
+                </p>
+                <p>
+                  This isn't sci-fi. This is <span className="text-amber-400 font-bold">what AI can do for you right now</span>—
+                  if you know how to set it up.
+                </p>
+              </div>
+
+              {/* Emotional Journey */}
+              <div className="grid md:grid-cols-3 gap-6 mt-10 pt-8 border-t border-slate-700/50">
+                <div className="text-center">
+                  <div className="text-4xl mb-3">😰</div>
+                  <div className="text-xs text-slate-400 uppercase font-bold mb-1">Before</div>
+                  <div className="text-slate-300">Overwhelmed</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl mb-3">😌</div>
+                  <div className="text-xs text-slate-400 uppercase font-bold mb-1">After Setup</div>
+                  <div className="text-slate-300">Calm</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl mb-3">🚀</div>
+                  <div className="text-xs text-slate-400 uppercase font-bold mb-1">Long-term</div>
+                  <div className="text-slate-300">In Control</div>
+                </div>
+              </div>
+
+              {/* Quote */}
+              <div className="mt-8 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/20 text-center">
+                <p className="text-cyan-400 italic">
+                  "Watching tasks happen without you is like discovering you have an invisible team working 24/7."
+                </p>
+                <p className="text-slate-500 text-sm mt-2">— Every single person who sets up their first AI agent</p>
+              </div>
             </div>
           </div>
         </section>
@@ -963,42 +1069,81 @@ export default function SalesPage() {
         </section>
 
         {/* CREATOR SECTION */}
-        <section className="py-16 px-6 bg-[#0f0f1a] border-y border-slate-800/50">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 border border-slate-600 text-slate-300 text-sm font-bold mb-6">
-                👤 MEET YOUR GUIDE
+        <section className="py-20 px-6 bg-[#0f0f1a] border-y border-slate-800/50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/20 border border-amber-500/30 text-amber-400 text-sm font-bold mb-6">
+                👤 WHY I BUILT THIS
               </div>
-              <h2 className="text-3xl font-bold mb-2">Built by Someone Who Needed It</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">From Overwhelmed to Optimized</h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">This isn't a side project. It's the system that saved my sanity.</p>
             </div>
-            <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/50">
-              <div className="flex flex-col md:flex-row gap-6 items-center">
-                {/* Avatar placeholder */}
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-500 to-purple-600 flex items-center justify-center text-4xl flex-shrink-0">
-                  🦷
+
+            <div className="bg-gradient-to-br from-slate-800/40 to-slate-900/60 rounded-2xl p-8 md:p-10 border border-slate-700/50">
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                {/* Avatar */}
+                <div className="flex-shrink-0 mx-auto md:mx-0">
+                  <div className="w-28 h-28 rounded-2xl bg-gradient-to-br from-teal-500 to-orange-500 flex items-center justify-center text-5xl shadow-xl shadow-teal-500/20">
+                    🦷
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2 justify-center">
+                    <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">🎖️ Army Vet</span>
+                    <span className="px-2 py-1 bg-teal-500/20 text-teal-400 text-xs rounded-full">🦷 Endo Resident</span>
+                  </div>
                 </div>
-                <div className="text-center md:text-left">
-                  <h3 className="text-xl font-bold text-white mb-1">The DDS (Doctor of Digital Systems)</h3>
-                  <p className="text-teal-400 text-sm mb-4">Endodontist • 50+ hour weeks • AI automation nerd</p>
-                  <p className="text-slate-300 leading-relaxed">
-                    "I didn't build this for fun. I built it to survive residency while still being present for my family.
-                    <span className="text-slate-400"> Productivity apps failed me. ChatGPT prompts weren't enough.</span>
-                    <span className="text-yellow-400 font-medium"> I needed agents that work while I sleep.</span>"
-                  </p>
+
+                {/* Story */}
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl font-bold text-white mb-2">Hey, I'm Nathan</h3>
+                  <p className="text-teal-400 text-sm mb-6">Army veteran • Endodontic resident • Husband • Father of 2 under 3</p>
+
+                  <div className="space-y-4 text-slate-300 leading-relaxed">
+                    <p>
+                      Picture this: <span className="text-white font-medium">50+ hour weeks</span> in residency.
+                      Two toddlers at home who don't care about your schedule.
+                      A wife who deserves more than a zombie husband.
+                      <span className="text-slate-400"> Sound familiar?</span>
+                    </p>
+                    <p>
+                      I tried every productivity app. Every system. Every hack.
+                      <span className="text-red-400"> Nothing stuck.</span> Then I discovered what AI could <em>really</em> do—not just answer questions,
+                      but <span className="text-teal-400 font-bold">take action on my behalf</span>.
+                    </p>
+                    <p className="text-lg">
+                      <span className="text-amber-400 font-bold">AI is the greatest tool humanity has ever created.</span>
+                      <span className="text-slate-400"> But most people use it like a search engine.
+                        I built this course to show you how to use it as a </span>
+                      <span className="text-white font-medium">personal operations team</span>.
+                    </p>
+                  </div>
+
+                  {/* Quote */}
+                  <div className="mt-6 p-4 bg-slate-900/50 rounded-xl border-l-4 border-amber-500">
+                    <p className="text-white italic">
+                      "If I can make this work with 2 kids under 3 and 60-hour weeks...
+                      <span className="text-amber-400 font-bold">you can too.</span>"
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-700/50">
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-700/50">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">16</div>
+                  <div className="text-3xl font-bold text-white">16</div>
                   <div className="text-xs text-slate-400">Chapters Written</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">10+</div>
-                  <div className="text-xs text-slate-400">Hours/Week Saved</div>
+                  <div className="text-3xl font-bold text-teal-400">10+</div>
+                  <div className="text-xs text-slate-400">Hrs/Week Saved</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">0</div>
+                  <div className="text-3xl font-bold text-green-400">0</div>
                   <div className="text-xs text-slate-400">Coding Required</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-amber-400">∞</div>
+                  <div className="text-xs text-slate-400">Potential Unlocked</div>
                 </div>
               </div>
             </div>
@@ -1026,35 +1171,42 @@ export default function SalesPage() {
           {/* Background Glows */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl max-h-[500px] bg-purple-900/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-          <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
-              🏪 THE ADVENTURER'S GUILD
+          <div className="max-w-4xl mx-auto text-center mb-12 relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-900/20 border border-green-500/30 text-green-400 text-sm font-bold mb-6">
+              💰 WHY THIS IS A STEAL
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Path</h2>
-            <p className="text-slate-400 mb-8">Cheaper than one month of that meal kit service you forgot to pause.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Less Than a Dinner Out</h2>
+            <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
+              Similar courses cost 10-20x more. And they're not nearly as fun or practical.
+            </p>
 
-            {/* Urgency Timer */}
-            <Suspense fallback={null}>
-              <div className="bg-gradient-to-r from-red-900/20 to-orange-900/20 border border-red-500/30 rounded-xl p-6 mb-8 text-center max-w-2xl mx-auto">
-                <div className="text-red-400 font-bold text-lg mb-3">
-                  ⏰ Early Bird Pricing Ends In:
-                </div>
-                <CountdownTimer targetDate="2025-12-15T23:59:59" />
-                <p className="text-sm text-slate-300 mt-4">
-                  Price increases to <span className="font-bold text-white">$59</span> after December 15th
-                </p>
+            {/* Value Comparison */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-3xl mx-auto">
+              <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                <div className="text-red-400 line-through text-lg font-bold">$300/mo</div>
+                <div className="text-xs text-slate-500">AI Coaching</div>
               </div>
-            </Suspense>
+              <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                <div className="text-red-400 line-through text-lg font-bold">$500+</div>
+                <div className="text-xs text-slate-500">Productivity Courses</div>
+              </div>
+              <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
+                <div className="text-red-400 line-through text-lg font-bold">$1,000+</div>
+                <div className="text-xs text-slate-500">Automation Workshops</div>
+              </div>
+              <div className="bg-green-900/30 rounded-xl p-4 border border-green-500/40">
+                <div className="text-green-400 text-lg font-bold">$39.99</div>
+                <div className="text-xs text-green-400/80">This Adventure</div>
+              </div>
+            </div>
 
-            {/* Value Anchor */}
-            <div className="inline-flex items-center gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-600 mb-8">
-              <div className="text-right border-r border-slate-600 pr-4">
-                <div className="text-xs text-slate-400 uppercase font-bold">Human Assistant</div>
-                <div className="text-red-400 font-mono line-through">$30/hour</div>
-              </div>
-              <div className="text-left pl-2">
-                <div className="text-xs text-slate-400 uppercase font-bold">AI Agent System</div>
-                <div className="text-green-400 font-mono font-bold">$39 (One-time)</div>
+            {/* What You Get */}
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700 max-w-2xl mx-auto mb-8">
+              <div className="grid grid-cols-2 gap-4 text-sm text-slate-300">
+                <div className="flex items-center gap-2"><Check size={16} className="text-green-400" /> No subscription</div>
+                <div className="flex items-center gap-2"><Check size={16} className="text-green-400" /> No hidden fees</div>
+                <div className="flex items-center gap-2"><Check size={16} className="text-green-400" /> Lifetime access</div>
+                <div className="flex items-center gap-2"><Check size={16} className="text-green-400" /> Free updates</div>
               </div>
             </div>
           </div>
@@ -1273,7 +1425,7 @@ export default function SalesPage() {
           </div>
         </footer>
 
-      </div>
+      </div >
 
       <Suspense fallback={null}>
         <CryptoExplainerModal isOpen={showCryptoModal} onClose={() => setShowCryptoModal(false)} />
@@ -1295,6 +1447,6 @@ export default function SalesPage() {
           <span className="bg-white/20 px-2 py-0.5 rounded-full text-xs">Discovery 1</span>
         </Link>
       </m.div>
-    </WebbookLayout>
+    </WebbookLayout >
   );
 }
