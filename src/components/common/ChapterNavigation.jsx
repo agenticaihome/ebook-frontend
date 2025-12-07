@@ -1,59 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Home } from 'lucide-react';
-import PrefetchLink from '../layout/PrefetchLink';
+import { ArrowLeft, Home } from 'lucide-react';
 
-const ChapterNavigation = ({ previousChapter, nextChapter, partNumber, chapterNumber }) => {
-    const isLoggedIn = !!localStorage.getItem('token');
-    const [isLoading, setIsLoading] = useState(false);
-
-    const handleNavClick = () => setIsLoading(true);
-
+/**
+ * ChapterNavigation - Simple navigation for Previous chapter and Home
+ * Note: "Next Chapter" is handled by MissionComplete component above this
+ */
+const ChapterNavigation = ({ previousChapter }) => {
     return (
-        <div className="flex justify-between items-center py-8 px-6 border-t border-slate-800 mt-12 max-w-4xl mx-auto flex-wrap gap-4">
+        <div className="flex justify-between items-center py-8 px-6 border-t border-slate-800 mt-12 max-w-4xl mx-auto">
+            {/* Previous Chapter Button */}
             {previousChapter ? (
-                <PrefetchLink
+                <Link
                     to={previousChapter}
-                    onClick={handleNavClick}
-                    className={`flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-all font-medium group focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${isLoading ? 'opacity-50 cursor-wait' : ''}`}
+                    className="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-all font-medium group"
                 >
                     <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                    <span>Previous Expedition</span>
-                </PrefetchLink>
+                    <span>Previous Discovery</span>
+                </Link>
             ) : (
                 <div />
             )}
 
-            {/* Back to Main Page Button */}
+            {/* Home Button - Always visible, centered */}
             <Link
                 to="/"
-                className="flex items-center gap-2 px-4 py-2 text-slate-400 hover:text-cyan-400 transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-lg"
+                className="flex items-center gap-2 px-6 py-3 bg-slate-800/50 hover:bg-slate-700 border border-slate-600 text-slate-300 hover:text-white rounded-lg transition-all font-medium"
             >
-                <Home size={16} />
-                <span>Base Camp</span>
+                <Home size={18} />
+                <span>Back to Home</span>
             </Link>
 
-            {nextChapter ? (
-                <PrefetchLink
-                    to={nextChapter}
-                    onClick={handleNavClick}
-                    className={`flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-all font-medium shadow-lg shadow-amber-900/30 group focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${isLoading ? 'opacity-50 cursor-wait' : ''}`}
-                >
-                    <span>{isLoading ? 'Loading...' : 'Next Expedition'}</span>
-                    {!isLoading && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
-                </PrefetchLink>
-            ) : (
-                <Link
-                    to={isLoggedIn ? "/dashboard" : "/payment-guide"}
-                    onClick={handleNavClick}
-                    className={`flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-500 text-white rounded-lg transition-all font-medium shadow-lg shadow-green-900/30 group focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${isLoading ? 'opacity-50 cursor-wait' : ''}`}
-                >
-                    <span>{isLoading ? 'Loading...' : (isLoggedIn ? `Complete Territory ${partNumber}` : 'Unlock Next Territory')}</span>
-                    {!isLoading && <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
-                </Link>
-            )}
+            {/* Empty space for layout balance */}
+            {previousChapter ? <div className="w-[180px]" /> : <div />}
         </div>
     );
 };
 
 export default ChapterNavigation;
+
