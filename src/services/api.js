@@ -222,8 +222,19 @@ export const api = {
     return handleResponse(response);
   },
 
+  // All-time leaderboard (for Hall of Fame)
   getLeaderboard: async (gameId) => {
     const response = await fetch(`${API_URL}/leaderboard/global/${gameId}`, {
+      method: 'GET',
+      headers: getHeaders(),
+      credentials: 'include',
+    });
+    return handleResponse(response);
+  },
+
+  // Monthly leaderboard (for in-game display, resets each month)
+  getMonthlyLeaderboard: async (gameId) => {
+    const response = await fetch(`${API_URL}/leaderboard/monthly/${gameId}`, {
       method: 'GET',
       headers: getHeaders(),
       credentials: 'include',

@@ -35,13 +35,6 @@ export const routeConfig = {
     part5chapter3: createRoute(() => import('../pages/chapters/Chapter15')),
     part5chapter4: createRoute(() => import('../pages/chapters/Chapter16')),
 
-    // Legacy Part pages (kept for compatibility, will redirect)
-    // part1: createRoute(() => import('../pages/Part1')),
-    // part2: createRoute(() => import('../pages/Part2')),
-    // part3: createRoute(() => import('../pages/Part3')),
-    // part4: createRoute(() => import('../pages/Part4')),
-    // part5: createRoute(() => import('../pages/Part5')),
-
     success: createRoute(() => import('../pages/SuccessPage')),
     createAccount: createRoute(() => import('../pages/CreateAccountPage')),
     login: createRoute(() => import('../LoginPage')),
@@ -51,6 +44,8 @@ export const routeConfig = {
     paymentGuide: createRoute(() => import('../PaymentGuide')),
     ergoGuide: createRoute(() => import('../ErgoGuide')),
     faq: createRoute(() => import('../FAQ')),
+    games: createRoute(() => import('../pages/GamesPage')),
+    hallOfFame: createRoute(() => import('../pages/HallOfFame')),
 
     notFound: createRoute(() => import('../pages/NotFoundPage')),
     // Tools

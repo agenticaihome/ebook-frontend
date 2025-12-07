@@ -185,12 +185,26 @@ const GamesPage = () => {
                                         Agent Training Center
                                     </span>
                                 </h1>
-                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
+                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-6">
                                     Sharpen your agentic skills. Unlock new simulations as you progress through the book.
                                 </p>
 
-                                {/* Global Stats / Ticker could go here */}
-                                <div className="flex justify-center gap-8 text-sm text-slate-400 mb-12">
+                                {/* Daily Challenge Banner */}
+                                <m.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/40 px-6 py-3 rounded-2xl mb-6"
+                                >
+                                    <span className="text-2xl">🌟</span>
+                                    <div className="text-left">
+                                        <div className="text-yellow-400 font-bold text-sm">DAILY CHALLENGE ACTIVE</div>
+                                        <div className="text-yellow-300/70 text-xs">All scores count 2X toward monthly leaderboard!</div>
+                                    </div>
+                                    <span className="px-3 py-1 bg-yellow-500 text-black font-black text-sm rounded-full">2X</span>
+                                </m.div>
+
+                                {/* Global Stats / Ticker */}
+                                <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-sm text-slate-400 mb-12">
                                     <div className="flex items-center gap-2">
                                         <Trophy size={16} className="text-yellow-500" />
                                         <span>Compete for Global Rank</span>
@@ -199,6 +213,13 @@ const GamesPage = () => {
                                         <BarChart2 size={16} className="text-teal-500" />
                                         <span>Track Your Progress</span>
                                     </div>
+                                    <a
+                                        href="/hall-of-fame"
+                                        className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition-colors"
+                                    >
+                                        <Trophy size={16} />
+                                        <span className="underline underline-offset-2">Hall of Fame</span>
+                                    </a>
                                 </div>
                             </>
                         )}

@@ -21,6 +21,7 @@ import SplashPage from './pages/SplashPage';
 const ClaimAccessPage = lazy(() => import('./pages/ClaimAccessPage'));
 const GameLandingPage = lazy(() => import('./pages/GameLandingPage'));
 const GamesPage = lazy(() => import('./pages/GamesPage'));
+const HallOfFame = lazy(() => import('./pages/HallOfFame'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AgentWallet = lazy(() => import('./pages/AgentWallet'));
 
@@ -163,6 +164,13 @@ const AnimatedRoutes = () => {
             <Route path="/games" element={
               <Suspense fallback={<Loading />}>
                 <PageTransition><GamesPage /></PageTransition>
+              </Suspense>
+            } />
+
+            {/* Hall of Fame - All-Time Leaderboards */}
+            <Route path="/hall-of-fame" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><HallOfFame /></PageTransition>
               </Suspense>
             } />
 

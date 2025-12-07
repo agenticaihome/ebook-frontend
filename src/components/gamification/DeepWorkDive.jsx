@@ -8,6 +8,7 @@ import React, {
 import { m, AnimatePresence } from 'framer-motion';
 import { Play, Trophy, ArrowLeft, RotateCcw, Share2 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { api } from '../../services/api';
 
 const DeepWorkDive = ({ onBack }) => {
     // ===================
@@ -348,6 +349,13 @@ const DeepWorkDive = ({ onBack }) => {
                 spread: 90,
                 origin: { y: 0.6 },
                 colors: ["#06b6d4", "#3b82f6", "#fbbf24", "#a855f7"],
+            });
+        }
+
+        // Submit score to global leaderboard
+        if (finalScore > 0) {
+            api.submitScore?.('deepwork', finalScore)?.catch(err => {
+                console.error('Failed to submit score:', err);
             });
         }
     }, [bestScore]);
