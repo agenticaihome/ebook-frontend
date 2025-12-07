@@ -995,7 +995,7 @@ const Chapter3 = () => {
                             operationId="exp_3"
                             operationName="SECURITY PERIMETER"
                             operationNumber={3}
-                            nextOperationPath="/part1/chapter4"
+                            nextOperationPath="/part2/chapter1"
                             nextOperationName="MORNING ROUTINE"
                             rewards={{
                                 dp: 100,
