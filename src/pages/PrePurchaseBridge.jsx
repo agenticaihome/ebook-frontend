@@ -403,47 +403,20 @@ const PrePurchaseBridge = () => {
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
 
-                        {/* CRYPTO OPTION - Double Future-Proofing */}
-                        <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-5 border-2 border-green-500/40 text-center">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/20 text-green-400 text-sm font-bold mb-3">
-                                🎓 SMART SAVER'S CHOICE
-                            </div>
-                            <h3 className="text-white font-bold text-xl mb-2">
-                                Save 50% + Learn a Future Skill
-                            </h3>
-                            <div className="bg-black/30 rounded-xl p-4 mb-4 text-left">
-                                <div className="space-y-2 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-green-400">✓</span>
-                                        <span className="text-white"><strong>Save 50%</strong> — pay just $19.99</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-green-400">✓</span>
-                                        <span className="text-white"><strong>Learn AI</strong> — the skill everyone needs</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-green-400">✓</span>
-                                        <span className="text-white"><strong>Learn Crypto</strong> — another future skill</span>
-                                    </div>
-                                </div>
-                                <p className="text-slate-400 text-xs mt-3 text-center">
-                                    You'll need both skills eventually. Pay less to learn more.
-                                </p>
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                                <Link
-                                    to="/why-ergo"
-                                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-sm font-medium transition-colors"
-                                >
-                                    Why Crypto? →
-                                </Link>
-                                <Link
-                                    to="/pay-ergo"
-                                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white font-bold transition-all shadow-lg shadow-green-500/20"
-                                >
-                                    🎓 Pay $19.99 & Learn Both →
-                                </Link>
-                            </div>
+                        {/* CRYPTO OPTION - Simplified */}
+                        <div className="text-center pt-4 border-t border-slate-700/50">
+                            <p className="text-slate-400 text-sm mb-2">
+                                💡 Want to save 50%?
+                            </p>
+                            <Link
+                                to="/pay-ergo"
+                                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 text-sm font-medium transition-colors"
+                            >
+                                Pay $19.99 with crypto →
+                            </Link>
+                            <p className="text-slate-500 text-xs mt-1">
+                                (Bonus: Learn a future skill while you save)
+                            </p>
                         </div>
                     </motion.section>
 

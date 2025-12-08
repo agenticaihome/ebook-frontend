@@ -63,7 +63,7 @@ Set this up now.`;
                     >
                         <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            <span className="text-slate-300 text-sm font-medium">Chapter 1 of 10 • Free</span>
+                            <span className="text-slate-300 text-sm font-medium">Chapter 1 of 10 • ~5 min • Free</span>
                         </div>
                     </motion.div>
 
@@ -301,7 +301,7 @@ Set this up now.`;
                             to="/part1/chapter2"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-teal-500/20"
                         >
-                            Continue to Chapter 2
+                            ?? Nice! On to Chapter 2
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">
