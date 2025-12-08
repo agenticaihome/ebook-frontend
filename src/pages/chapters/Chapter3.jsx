@@ -324,7 +324,7 @@ Let me dump my dates now.`;
                     {/* CTA - UPGRADE */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }} className="mb-10">
                         <Link
-                            to="/onboarding"
+                            to="/unlock"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-pink-500/20"
                         >
                             See What's Next
