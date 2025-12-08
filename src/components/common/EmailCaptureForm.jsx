@@ -42,13 +42,26 @@ const EmailCaptureForm = ({
 
             if (response.ok && data.success) {
                 setStatus('success');
-                // Track in GA4 if available
+                // Track in GA4 with detailed event parameters
                 if (typeof gtag !== 'undefined') {
-                    gtag('event', 'subscribe', { source });
+                    gtag('event', 'email_subscribe', {
+                        event_category: 'engagement',
+                        event_label: source,
+                        email_source: source,
+                        page_location: window.location.pathname
+                    });
                 }
             } else {
                 setStatus('error');
                 setErrorMessage(data.error || 'Something went wrong. Please try again.');
+                // Track failed attempts for debugging
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'subscribe_error', {
+                        event_category: 'error',
+                        event_label: source,
+                        error_message: data.error || 'unknown'
+                    });
+                }
             }
         } catch (err) {
             setStatus('error');
