@@ -486,7 +486,7 @@ const PrePurchaseBridge = () => {
                             </div>
                             <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
                                 <p className="text-white font-medium text-sm mb-1">What if I get stuck?</p>
-                                <p className="text-slate-400 text-xs">Each chapter has troubleshooting tips. Plus, you can email us anytime—we actually respond.</p>
+                                <p className="text-slate-400 text-xs">Each chapter has troubleshooting tips. Plus, email us at <a href="mailto:support@agenticaihome.com" className="text-teal-400 hover:underline">support@agenticaihome.com</a> — we actually respond!</p>
                             </div>
                             <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
                                 <p className="text-white font-medium text-sm mb-1">Can I get a refund?</p>

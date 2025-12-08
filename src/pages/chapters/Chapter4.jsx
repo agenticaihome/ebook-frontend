@@ -262,7 +262,7 @@ Start by asking what email I use.`;
                                 to="/part2/chapter5"
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-400 hover:to-teal-400 text-white font-bold rounded-xl transition-all"
                             >
-                                ?? Awesome! On to Chapter 5
+                                🎉 Awesome! On to Chapter 5
                                 <ArrowRight size={18} />
                             </Link>
                         </div>

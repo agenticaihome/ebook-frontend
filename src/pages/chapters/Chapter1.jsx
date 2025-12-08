@@ -309,7 +309,7 @@ Set this up now.`;
                             to="/part1/chapter2"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-teal-500/20"
                         >
-                            ?? Nice! On to Chapter 2
+                            🎉 Nice! On to Chapter 2
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">

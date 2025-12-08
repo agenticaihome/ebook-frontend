@@ -227,7 +227,7 @@ export default function FAQ() {
                             Our expedition support team is ready to help. Send us a signal and we'll respond within 24 hours.
                         </p>
                         <a
-                            href="mailto:support@agenticai.home"
+                            href="mailto:support@agenticaihome.com"
                             className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-bold font-mono hover:from-amber-600 hover:to-orange-700 transition-all shadow-lg shadow-amber-500/25"
                         >
                             <Mail size={20} />

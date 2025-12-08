@@ -286,7 +286,7 @@ Real food, not fancy stuff. Set this up now.`;
                             to="/part1/chapter3"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-orange-500/20"
                         >
-                            ?? Great! On to Chapter 3
+                            🎉 Great! On to Chapter 3
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">
