@@ -4,6 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, Calendar, Gift, CreditCard, Heart, HelpCircle, MessageSquare, Bell, Lock, Share2, Twitter } from 'lucide-react';
+import EmailCaptureForm from '../../components/common/EmailCaptureForm';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -319,6 +320,18 @@ Let me dump my dates now.`;
                                 </button>
                             </div>
                         </div>
+                    </motion.section>
+
+                    {/* EMAIL CAPTURE - Peak motivation after free content */}
+                    <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.93 }} className="mb-6">
+                        <EmailCaptureForm
+                            source="chapter3_end"
+                            headline="📬 Not ready to continue?"
+                            subheadline="Get a free AI Starter Checklist + weekly tips from Captain Efficiency"
+                            buttonText="Send Me Tips"
+                            successMessage="Awesome! Check your inbox."
+                            compact={false}
+                        />
                     </motion.section>
 
                     {/* CTA - UPGRADE */}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Sparkles, Zap, Clock, Users, ArrowRight, Shield } from 'lucide-react';
+import EmailCaptureForm from '../components/common/EmailCaptureForm';
 
 const SplashPage = () => {
     return (
@@ -196,6 +197,23 @@ const SplashPage = () => {
                         >
                             Already a member? Sign in →
                         </Link>
+                    </motion.div>
+
+                    {/* Email Capture for hesitant visitors */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.3 }}
+                        className="mt-10 w-full max-w-md"
+                    >
+                        <EmailCaptureForm
+                            source="splash_page"
+                            headline="📬 Not ready to start yet?"
+                            subheadline="Get a free AI Starter Checklist + weekly tips"
+                            buttonText="Send Me Tips"
+                            successMessage="Check your inbox!"
+                            compact={false}
+                        />
                     </motion.div>
                 </div>
 
