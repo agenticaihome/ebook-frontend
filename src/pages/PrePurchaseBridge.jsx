@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {
     CheckCircle, Lock, ArrowRight, Shield, Clock, Zap,
     Mail, DollarSign, Dumbbell, Briefcase, Settings, Users, Crown,
-    ChevronDown, Sparkles, Flame, Star, Gamepad2
+    ChevronDown, Sparkles, Flame, Star, Gamepad2, Wrench
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 
@@ -74,7 +74,7 @@ const PrePurchaseBridge = () => {
                     <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="mb-6">
                         <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/30">
                             <Flame className="text-amber-400" size={18} />
-                            <span className="text-amber-400 font-bold text-sm">🔥 Launch pricing ends Dec 31 — 50% off</span>
+                            <span className="text-amber-400 font-bold text-sm">🔥 Launch week special — 50% off ends soon!</span>
                         </div>
                     </motion.div>
 
@@ -169,26 +169,70 @@ const PrePurchaseBridge = () => {
                         </div>
                     </motion.section>
 
-                    {/* VALUE PROPS */}
+                    {/* BONUS: TOOLS HUB */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.48 }} className="mb-8">
+                        <div className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-2xl p-5 border border-cyan-500/30">
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="p-2 bg-cyan-500/20 rounded-xl">
+                                    <Wrench className="text-cyan-400" size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-bold">🛠️ Bonus: 10+ Interactive Tools</h3>
+                                    <p className="text-cyan-300 text-xs">Assess your chaos before building agents</p>
+                                </div>
+                                <span className="ml-auto text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full font-bold">INCLUDED</span>
+                            </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>🌅</span><span>Morning Chaos</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>📧</span><span>Email Chaos</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>🧠</span><span>Mental Load</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>💰</span><span>Financial Health</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>📅</span><span>Calendar Health</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-cyan-400 bg-cyan-500/10 px-3 py-2 rounded-lg">
+                                    <span>+5</span><span>more tools</span>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* CONSOLIDATED VALUE BOX */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-8">
-                        <div className="bg-gradient-to-r from-purple-900/30 to-teal-900/30 rounded-2xl p-6 border border-purple-500/30">
-                            <h3 className="text-white font-bold mb-4">What You Get</h3>
+                        <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-6 border-2 border-green-500/40">
+                            <h3 className="text-white font-bold mb-4 text-lg text-center">✨ What You Get for $39.99</h3>
                             <div className="grid grid-cols-2 gap-4 text-sm">
-                                <div className="flex items-center gap-2 text-slate-300">
-                                    <Clock className="text-teal-400" size={16} />
-                                    <span>10+ hours/week saved</span>
+                                <div className="flex items-center gap-2 text-white">
+                                    <CheckCircle className="text-green-400" size={18} />
+                                    <span><strong>10</strong> chapters (7 more)</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-slate-300">
-                                    <Zap className="text-amber-400" size={16} />
-                                    <span>Zero coding required</span>
+                                <div className="flex items-center gap-2 text-white">
+                                    <CheckCircle className="text-green-400" size={18} />
+                                    <span><strong>5</strong> training games</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-slate-300">
-                                    <Shield className="text-green-400" size={16} />
-                                    <span>30-day money-back</span>
+                                <div className="flex items-center gap-2 text-white">
+                                    <CheckCircle className="text-green-400" size={18} />
+                                    <span><strong>10+</strong> interactive tools</span>
                                 </div>
-                                <div className="flex items-center gap-2 text-slate-300">
-                                    <CheckCircle className="text-purple-400" size={16} />
-                                    <span>Lifetime access</span>
+                                <div className="flex items-center gap-2 text-white">
+                                    <CheckCircle className="text-green-400" size={18} />
+                                    <span><strong>Lifetime</strong> access</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-white">
+                                    <Clock className="text-teal-400" size={18} />
+                                    <span><strong>10+ hours</strong>/week saved</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-white">
+                                    <Shield className="text-green-400" size={18} />
+                                    <span><strong>30-day</strong> money-back</span>
                                 </div>
                             </div>
                         </div>
