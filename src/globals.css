@@ -39,13 +39,13 @@
   --text-h2: clamp(1.25rem, 2vw, 2rem);
   /* 20-32px */
 
-  /* Body: Paragraphs, content */
-  --text-body: 1rem;
-  /* 16px */
+  /* Body: Paragraphs, content - INCREASED for accessibility */
+  --text-body: 1.125rem;
+  /* 18px - optimized for seniors and readability */
 
-  /* Small: Captions, labels, fine print */
-  --text-small: 0.875rem;
-  /* 14px */
+  /* Small: Captions, labels, fine print - INCREASED */
+  --text-small: 1rem;
+  /* 16px - was 14px, now readable for all ages */
 
   /* Spacing System */
   --space-xs: 4px;

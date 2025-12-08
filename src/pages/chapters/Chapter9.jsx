@@ -110,7 +110,7 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                             </div>
                             <button onClick={handleCopy}
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white'}`}>
-                                {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy This Prompt</>}
+                                {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy These Instructions</>}
                             </button>
                         </div>
                     </motion.section>

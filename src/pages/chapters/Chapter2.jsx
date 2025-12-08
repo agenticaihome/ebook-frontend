@@ -143,7 +143,7 @@ Real food, not fancy stuff. Set this up now.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-sm">2</div>
-                            <h3 className="text-white font-bold">Copy this prompt and paste it</h3>
+                            <h3 className="text-white font-bold">Copy These Instructions and paste it</h3>
                         </div>
 
                         <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-5 border border-orange-500/30">
@@ -161,7 +161,7 @@ Real food, not fancy stuff. Set this up now.`;
                                 {copied ? (
                                     <><CheckCircle size={22} /> Copied! Now paste it in your AI</>
                                 ) : (
-                                    <><Copy size={22} /> Copy This Prompt</>
+                                    <><Copy size={22} /> Copy These Instructions</>
                                 )}
                             </button>
                         </div>

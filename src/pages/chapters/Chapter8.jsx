@@ -109,7 +109,7 @@ Then design a simple agent prompt I can use.`;
                             </div>
                             <button onClick={handleCopy}
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white'}`}>
-                                {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy This Prompt</>}
+                                {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy These Instructions</>}
                             </button>
                         </div>
                     </motion.section>

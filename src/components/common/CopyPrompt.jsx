@@ -15,7 +15,7 @@ import { Copy, Check } from 'lucide-react';
  */
 const CopyPrompt = ({
     prompt,
-    title = "Copy This Prompt",
+    title = "Copy These Instructions",
     whatItDoes,
     howToCustomize,
     variables = []
@@ -58,7 +58,7 @@ const CopyPrompt = ({
                     ) : (
                         <>
                             <Copy size={18} />
-                            Copy Prompt
+                            Copy Instructions
                         </>
                     )}
                 </button>
