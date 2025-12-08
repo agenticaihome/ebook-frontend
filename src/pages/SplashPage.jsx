@@ -191,7 +191,7 @@ const SplashPage = () => {
                                 className="text-slate-400 hover:text-orange-400 text-base transition-colors flex items-center gap-2 font-medium"
                             >
                                 <Sparkles size={16} />
-                                Learn More
+                                See What's Included
                             </Link>
                             <span className="text-slate-600">•</span>
                             <Link

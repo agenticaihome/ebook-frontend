@@ -86,26 +86,26 @@ const OnboardingPage = () => {
                             </p>
                         </motion.div>
 
-                        {/* Scroll Indicator */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1.5 }}
                             className="mt-8"
                         >
-                            <motion.div
+                            <motion.button
+                                onClick={() => document.getElementById('section-big-picture')?.scrollIntoView({ behavior: 'smooth' })}
                                 animate={{ y: [0, 8, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity }}
-                                className="text-slate-500 text-sm"
+                                className="text-slate-500 text-sm hover:text-teal-400 transition-colors cursor-pointer"
                             >
                                 Scroll to begin ↓
-                            </motion.div>
+                            </motion.button>
                         </motion.div>
                     </motion.div>
                 </section>
 
                 {/* SECTION 2: The Big Picture */}
-                <section className="py-20 px-6 bg-slate-900/50">
+                <section id="section-big-picture" className="py-20 px-6 bg-slate-900/50">
                     <div className="max-w-4xl mx-auto text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -388,14 +388,14 @@ const OnboardingPage = () => {
                                     </div>
                                 </Link>
 
-                                {/* Games Hub */}
+                                {/* Games Hub - Secondary option */}
                                 <Link to="/games" className="group block">
-                                    <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-purple-500/50 transition-all hover:-translate-y-1">
-                                        <div className="text-4xl mb-3">🎮</div>
-                                        <h3 className="text-xl font-bold text-white mb-2">Games Hub</h3>
-                                        <p className="text-slate-400 text-sm mb-4">Play fun mini-games while learning AI concepts.</p>
-                                        <div className="flex items-center justify-center gap-2 text-purple-400 font-bold">
-                                            Explore Games <Gamepad2 size={18} />
+                                    <div className="bg-slate-800/30 rounded-2xl p-5 border border-slate-700/50 hover:border-purple-500/30 transition-all hover:-translate-y-1">
+                                        <div className="text-3xl mb-2">🎮</div>
+                                        <h3 className="text-lg font-bold text-white mb-1">Games Hub</h3>
+                                        <p className="text-slate-500 text-xs mb-3">Learn AI through fun mini-games</p>
+                                        <div className="flex items-center justify-center gap-2 text-purple-400 text-sm font-medium">
+                                            Explore Games <Gamepad2 size={14} />
                                         </div>
                                     </div>
                                 </Link>
@@ -407,7 +407,7 @@ const OnboardingPage = () => {
                                     Already started? Go to Dashboard →
                                 </Link>
                                 <Link to="/welcome" className="text-slate-500 hover:text-orange-400 transition-colors">
-                                    Learn More →
+                                    See What's Included →
                                 </Link>
                                 <Link to="/pricing" className="text-slate-500 hover:text-amber-400 transition-colors">
                                     View Pricing & Features →
@@ -436,6 +436,19 @@ const OnboardingPage = () => {
                         </div>
                     </div>
                 </section>
+
+                {/* STICKY MOBILE CTA - Fixed bottom bar */}
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-950 via-slate-950/95 to-transparent md:hidden z-50">
+                    <Link
+                        to="/part1/chapter1"
+                        className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-teal-500/30"
+                    >
+                        Start Learning Free <ArrowRight size={20} />
+                    </Link>
+                </div>
+
+                {/* Bottom spacer for sticky CTA on mobile */}
+                <div className="h-20 md:hidden" />
             </div>
         </>
     );
