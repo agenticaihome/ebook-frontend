@@ -3,38 +3,37 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Clock, Zap, ExternalLink } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Clock, Zap, ExternalLink, Bell } from 'lucide-react';
 
 // Lazy load Captain
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
 // ============================================
-// ULTRA-MINIMAL CHAPTER 1 - TRUTHFUL VERSION
-// Goal: Captain welcome + 1 honest prompt + platform links
+// CHAPTER 1 - THE REAL DEAL
+// ChatGPT CAN schedule, notify, and act as an agent
 // ============================================
 
-// AI Platform links - direct to chat/new conversation
 const AI_PLATFORMS = [
-    { name: 'ChatGPT', url: 'https://chat.openai.com/', color: 'from-green-500 to-emerald-600', free: true },
-    { name: 'Claude', url: 'https://claude.ai/', color: 'from-orange-500 to-amber-600', free: true },
-    { name: 'Gemini', url: 'https://gemini.google.com/', color: 'from-blue-500 to-indigo-600', free: true },
-    { name: 'Copilot', url: 'https://copilot.microsoft.com/', color: 'from-cyan-500 to-blue-600', free: true },
-    { name: 'Meta AI', url: 'https://www.meta.ai/', color: 'from-blue-600 to-purple-600', free: true },
+    { name: 'ChatGPT', url: 'https://chat.openai.com/', color: 'from-green-500 to-emerald-600', recommended: true },
+    { name: 'Claude', url: 'https://claude.ai/', color: 'from-orange-500 to-amber-600' },
+    { name: 'Gemini', url: 'https://gemini.google.com/', color: 'from-blue-500 to-indigo-600' },
+    { name: 'Copilot', url: 'https://copilot.microsoft.com/', color: 'from-cyan-500 to-blue-600' },
+    { name: 'Meta AI', url: 'https://www.meta.ai/', color: 'from-blue-600 to-purple-600' },
 ];
 
 const Chapter1 = () => {
     const [copied, setCopied] = useState(false);
     const [showMore, setShowMore] = useState(false);
 
-    // PROMPT - ChatGPT can get live weather now
-    const quickWinPrompt = `I want to simplify my mornings.
+    // THE REAL PROMPT - This actually works
+    const quickWinPrompt = `I want you to be my Morning Briefing Agent.
 
-Ask me 3 quick questions about my morning routine. Then create a personalized "Morning Brief" that includes:
+Every morning at 7am, send me a notification with:
 - Today's weather for my location
-- My top 3 priorities for the day
-- One thing I commonly forget
+- My top 3 priorities
+- One thing I might forget
 
-Keep it short and practical. Remember my preferences so we can do this every morning.`;
+First, ask me a few questions to personalize this. Then set up the daily schedule.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(quickWinPrompt);
@@ -45,14 +44,14 @@ Keep it short and practical. Remember my preferences so we can do this every mor
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 1: Your First AI Win | Agentic AI Home</title>
-                <meta name="description" content="Get your first AI win in under 2 minutes. Captain Efficiency shows you how." />
+                <title>Chapter 1: Create Your First AI Agent | Agentic AI Home</title>
+                <meta name="description" content="Set up a real AI agent that sends you daily notifications. Takes 2 minutes." />
             </Helmet>
 
             <div className="min-h-screen bg-[#0f0f1a]">
                 <div className="max-w-3xl mx-auto px-6 py-12">
 
-                    {/* HONEST SOCIAL PROOF - Based on real data */}
+                    {/* CHAPTER BADGE */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -66,7 +65,7 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                         </div>
                     </motion.div>
 
-                    {/* CAPTAIN WELCOME - First thing they see */}
+                    {/* CAPTAIN WELCOME */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -76,29 +75,24 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                             <CaptainHero
                                 size="lg"
                                 pose="default"
-                                message="Hey! I'm Captain Efficiency. In the next 2 minutes, you'll have your first useful AI conversation. No tricks, no hype—just copy the prompt below, paste it into any AI, and see what happens. Ready?"
+                                message="In the next 2 minutes, you're going to create a REAL AI agent that sends you a notification every morning. Not a toy—an actual automated assistant. Let's do this."
                             />
                         </Suspense>
                     </motion.div>
 
-                    {/* VALUE PROPS - Honest */}
+                    {/* WHAT YOU'RE ABOUT TO DO */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
-                        className="flex flex-wrap justify-center gap-4 mb-10 text-sm"
+                        className="bg-gradient-to-r from-green-900/30 to-emerald-900/20 rounded-xl p-4 mb-8 border border-green-500/30"
                     >
-                        <div className="flex items-center gap-2 text-slate-400">
-                            <Clock size={16} className="text-teal-400" />
-                            <span><span className="text-white font-bold">2 min</span> to try</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-slate-400">
-                            <Zap size={16} className="text-amber-400" />
-                            <span><span className="text-white font-bold">Zero</span> signup if you have an AI</span>
-                        </div>
-                        <div className="flex items-center gap-2 text-slate-400">
-                            <Sparkles size={16} className="text-purple-400" />
-                            <span><span className="text-white font-bold">All free</span> AI tools work</span>
+                        <div className="flex items-center gap-3">
+                            <Bell className="text-green-400" size={24} />
+                            <div>
+                                <p className="text-white font-bold">What you're creating:</p>
+                                <p className="text-green-400 text-sm">An AI agent that notifies you every morning at 7am with weather, priorities & reminders</p>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -111,7 +105,7 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                     >
                         <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
                             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">
-                                Step 1: Pick Your AI (all free)
+                                Step 1: Open Your AI (ChatGPT recommended for scheduling)
                             </h3>
                             <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                                 {AI_PLATFORMS.map((platform) => (
@@ -120,16 +114,18 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                                         href={platform.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`flex items-center justify-center gap-2 px-3 py-3 rounded-lg bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:opacity-90 transition-opacity`}
+                                        className={`relative flex items-center justify-center gap-2 px-3 py-3 rounded-lg bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:opacity-90 transition-opacity`}
                                     >
+                                        {platform.recommended && (
+                                            <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs px-2 py-0.5 rounded-full font-bold">
+                                                Best
+                                            </span>
+                                        )}
                                         {platform.name}
                                         <ExternalLink size={12} />
                                     </a>
                                 ))}
                             </div>
-                            <p className="text-slate-500 text-xs text-center mt-3">
-                                Don't have an account? Any of these takes 30 seconds to sign up.
-                            </p>
                         </div>
                     </motion.section>
 
@@ -142,28 +138,26 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                     >
                         <div className="bg-gradient-to-br from-teal-900/30 to-cyan-900/20 rounded-2xl p-6 md:p-8 border-2 border-teal-500/50">
                             <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">
-                                Step 2: Copy & Paste This Prompt
+                                Step 2: Copy & Paste This
                             </h3>
 
-                            {/* The Prompt */}
                             <div className="bg-slate-900/80 rounded-xl p-4 mb-4 border border-slate-700">
                                 <pre className="text-slate-300 text-sm whitespace-pre-wrap font-mono leading-relaxed">
                                     {quickWinPrompt}
                                 </pre>
                             </div>
 
-                            {/* Copy Button */}
                             <button
                                 onClick={handleCopy}
                                 className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-lg transition-all ${copied
-                                    ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-                                    : 'bg-teal-500 hover:bg-teal-400 text-white'
+                                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
+                                        : 'bg-teal-500 hover:bg-teal-400 text-white'
                                     }`}
                             >
                                 {copied ? (
                                     <>
                                         <CheckCircle size={20} />
-                                        Copied! Now paste it in your AI
+                                        Copied! Now paste it in ChatGPT
                                     </>
                                 ) : (
                                     <>
@@ -175,7 +169,7 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                         </div>
                     </motion.section>
 
-                    {/* WHAT TO EXPECT - Honest */}
+                    {/* WHAT HAPPENS NEXT */}
                     <motion.section
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -183,32 +177,44 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                         className="mb-8"
                     >
                         <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/50">
-                            <h3 className="text-lg font-bold text-white mb-3">What will happen?</h3>
-                            <ul className="space-y-2 text-slate-300 text-sm">
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-teal-400 mt-0.5 flex-shrink-0" />
-                                    <span>The AI will ask you 3 questions about your morning</span>
+                            <h3 className="text-lg font-bold text-white mb-3">What happens next:</h3>
+                            <ul className="space-y-3 text-slate-300 text-sm">
+                                <li className="flex items-start gap-3">
+                                    <span className="bg-teal-500/20 text-teal-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+                                    <span>ChatGPT asks you a few questions about your routine</span>
                                 </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-teal-400 mt-0.5 flex-shrink-0" />
-                                    <span>You'll answer in plain English (no special format needed)</span>
+                                <li className="flex items-start gap-3">
+                                    <span className="bg-teal-500/20 text-teal-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+                                    <span>It sets up a <strong className="text-white">scheduled task</strong> to run every morning</span>
                                 </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-teal-400 mt-0.5 flex-shrink-0" />
-                                    <span>It creates a personalized Morning Brief template for you</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-teal-400 mt-0.5 flex-shrink-0" />
-                                    <span>The AI remembers your preferences for next time</span>
+                                <li className="flex items-start gap-3">
+                                    <span className="bg-teal-500/20 text-teal-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+                                    <span>Tomorrow at 7am, you get a <strong className="text-white">push notification</strong> with your briefing</span>
                                 </li>
                             </ul>
 
-                            <div className="mt-4 p-3 bg-amber-900/20 rounded-lg border border-amber-500/30">
-                                <p className="text-amber-400 text-xs">
-                                    <strong>Heads up:</strong> This is just your first taste. Right now you're having a conversation.
-                                    In later chapters, we'll turn this into an automated system that runs without you.
+                            <div className="mt-4 p-3 bg-green-900/20 rounded-lg border border-green-500/30">
+                                <p className="text-green-400 text-sm font-bold flex items-center gap-2">
+                                    <Bell size={14} />
+                                    Pro tip: Enable ChatGPT notifications on your phone to get the morning alert
                                 </p>
                             </div>
+                        </div>
+                    </motion.section>
+
+                    {/* THIS IS REAL */}
+                    <motion.section
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.7 }}
+                        className="mb-8"
+                    >
+                        <div className="bg-amber-900/20 rounded-xl p-6 border border-amber-500/30">
+                            <h3 className="text-amber-400 font-bold mb-2">Yes, this is real automation.</h3>
+                            <p className="text-slate-300 text-sm">
+                                ChatGPT can now run scheduled tasks, send notifications, and act as a true background agent.
+                                You just created something that will work for you <strong className="text-white">every single day</strong> without you doing anything.
+                            </p>
                         </div>
                     </motion.section>
 
@@ -227,11 +233,11 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">
-                            Next: Delegate a real task to AI
+                            Next: Create agents for email, calendar & more
                         </p>
                     </motion.section>
 
-                    {/* WANT MORE? - Collapsible */}
+                    {/* WANT MORE? */}
                     <motion.section
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -242,7 +248,7 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                             className="w-full flex items-center justify-center gap-2 py-3 text-slate-400 hover:text-white transition-colors text-sm"
                         >
                             <ChevronDown size={16} className={`transition-transform ${showMore ? 'rotate-180' : ''}`} />
-                            {showMore ? 'Hide' : 'What is "Agentic AI" anyway?'}
+                            {showMore ? 'Hide' : 'What else can AI agents do?'}
                         </button>
 
                         {showMore && (
@@ -252,20 +258,23 @@ Keep it short and practical. Remember my preferences so we can do this every mor
                                 className="mt-4 space-y-4"
                             >
                                 <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                                    <h4 className="text-lg font-bold text-white mb-3">The simple version:</h4>
-                                    <p className="text-slate-300 mb-4">
-                                        <span className="text-teal-400 font-bold">Regular AI:</span> You ask a question, it answers. Done.
-                                    </p>
-                                    <p className="text-slate-300">
-                                        <span className="text-orange-400 font-bold">Agentic AI:</span> It remembers your preferences, takes action on your behalf, and gets smarter the more you use it. Like a personal assistant that learns.
-                                    </p>
-                                </div>
-
-                                <div className="bg-amber-900/20 rounded-xl p-4 border border-amber-500/30">
-                                    <p className="text-amber-400 font-bold text-sm mb-1">Where we're heading:</p>
-                                    <p className="text-slate-300 text-sm">
-                                        By Chapter 16, you'll have AI handling email, calendar, reminders, and more—automatically.
-                                    </p>
+                                    <h4 className="text-lg font-bold text-white mb-4">Agents you can create:</h4>
+                                    <div className="grid grid-cols-2 gap-3 text-sm">
+                                        {[
+                                            '📧 Email Sorter Agent',
+                                            '📅 Calendar Manager',
+                                            '💰 Finance Tracker',
+                                            '🏋️ Fitness Coach',
+                                            '📚 Study Buddy',
+                                            '🛒 Grocery Planner',
+                                            '👨‍👩‍👧 Family Scheduler',
+                                            '📈 Stock Watcher',
+                                        ].map((agent, i) => (
+                                            <div key={i} className="bg-slate-900/50 rounded-lg p-3 text-slate-300">
+                                                {agent}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </motion.div>
                         )}
