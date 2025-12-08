@@ -26,6 +26,7 @@ const HallOfFame = lazy(() => import('./pages/HallOfFame'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AgentWallet = lazy(() => import('./pages/AgentWallet'));
 const PrePurchaseBridge = lazy(() => import('./pages/PrePurchaseBridge'));
+const ToolsPage = lazy(() => import('./pages/ToolsPage'));
 
 import Loading from './components/common/Loading';
 
@@ -141,6 +142,11 @@ const AnimatedRoutes = () => {
             <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
             <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
             <Route path="/dashboard" element={<PageTransition><routeConfig.dashboard.Component /></PageTransition>} />
+            <Route path="/tools" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><ToolsPage /></PageTransition>
+              </Suspense>
+            } />
             <Route path="/chaos-quiz-widget" element={<routeConfig.infectionDiagnostic.Component />} />
             <Route path="/login" element={<PageTransition><routeConfig.login.Component /></PageTransition>} />
             <Route path="/pay-ergo" element={<PageTransition><routeConfig.ergoPayment.Component /></PageTransition>} />

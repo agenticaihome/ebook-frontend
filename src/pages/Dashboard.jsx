@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { m } from 'framer-motion';
-import { BookOpen, Gamepad2, Trophy, Settings, LogOut, ChevronRight, CheckCircle } from 'lucide-react';
+import { BookOpen, Gamepad2, Trophy, Settings, LogOut, ChevronRight, CheckCircle, Wrench } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import WelcomeModal from '../components/common/WelcomeModal';
 
@@ -213,9 +213,9 @@ const Dashboard = () => {
                             color="bg-gradient-to-br from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500"
                         />
                         <SmallButton
-                            to="/part1/chapter1"
-                            icon={BookOpen}
-                            title="All Chapters"
+                            to="/tools"
+                            icon={Wrench}
+                            title="Tools"
                             color="bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500"
                         />
                         <SmallButton
@@ -284,8 +284,8 @@ const Dashboard = () => {
                                 return (
                                     <Link key={num} to={CHAPTER_ROUTES[num]}>
                                         <div className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${isComplete
-                                                ? 'bg-green-900/20 border border-green-500/30'
-                                                : 'bg-slate-700/30 hover:bg-slate-700/50 border border-transparent'
+                                            ? 'bg-green-900/20 border border-green-500/30'
+                                            : 'bg-slate-700/30 hover:bg-slate-700/50 border border-transparent'
                                             }`}>
                                             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${isComplete ? 'bg-green-500 text-white' : 'bg-slate-600 text-slate-300'
                                                 }`}>
