@@ -121,6 +121,31 @@ const PrePurchaseBridge = () => {
                         <p className="text-slate-400 text-lg">
                             That's more than 90% of people who "use AI."
                         </p>
+
+                        {/* SHARE BUTTONS - Viral Loop (Zuckerberg) */}
+                        <div className="flex items-center justify-center gap-3 mt-4">
+                            <span className="text-slate-500 text-sm">Share your progress:</span>
+                            <a
+                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("🎉 Just built 3 AI agents in 15 minutes! Check out @AgenticAIHome")}&url=${encodeURIComponent("https://agenticaihome.com")}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition-colors"
+                            >
+                                𝕏 Share
+                            </a>
+                            <button
+                                onClick={() => { navigator.clipboard.writeText('https://agenticaihome.com'); alert('Link copied!'); }}
+                                className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition-colors"
+                            >
+                                📋 Copy Link
+                            </button>
+                        </div>
+
+                        {/* TRUST BADGE - Guarantee visible early (Bezos) */}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 mt-4 rounded-full bg-green-500/10 border border-green-500/30">
+                            <Shield className="text-green-400" size={16} />
+                            <span className="text-green-400 text-sm font-medium">30-Day Money-Back Guarantee</span>
+                        </div>
                     </motion.div>
 
                     {/* URGENCY BANNER */}
@@ -444,6 +469,25 @@ const PrePurchaseBridge = () => {
                             <div className="flex items-center gap-1">
                                 <CheckCircle size={14} />
                                 <span>500+ happy users</span>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* MINI-FAQ - Objection Handler (Gates) */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }} className="mt-8">
+                        <h3 className="text-white font-bold text-center mb-4">Quick Questions</h3>
+                        <div className="space-y-3">
+                            <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                                <p className="text-white font-medium text-sm mb-1">Is this for beginners?</p>
+                                <p className="text-slate-400 text-xs">Yes! You don't need any coding or AI experience. Just copy the prompts and paste them into ChatGPT (free) or any AI tool.</p>
+                            </div>
+                            <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                                <p className="text-white font-medium text-sm mb-1">What if I get stuck?</p>
+                                <p className="text-slate-400 text-xs">Each chapter has troubleshooting tips. Plus, you can email us anytime—we actually respond.</p>
+                            </div>
+                            <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
+                                <p className="text-white font-medium text-sm mb-1">Can I get a refund?</p>
+                                <p className="text-slate-400 text-xs">100%. If you don't love it within 30 days, email us and we'll refund you—no questions asked.</p>
                             </div>
                         </div>
                     </motion.section>
