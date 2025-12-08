@@ -9,6 +9,7 @@ import {
 import WebbookLayout from '../components/layout/WebbookLayout';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { api } from '../services/api';
+import WelcomeModal from '../components/common/WelcomeModal';
 
 // Dashboard Components
 import HeroStatusBar from '../components/dashboard/HeroStatusBar';
@@ -173,18 +174,20 @@ const Dashboard = () => {
         setCompletedGames(JSON.parse(localStorage.getItem('completed_games') || '[]'));
         setStreak(parseInt(localStorage.getItem('daily_streak') || '0'));
 
-        // Show welcome modal on first dashboard visit
-        const hasSeenWelcome = localStorage.getItem('dashboard_welcomed');
-        if (!hasSeenWelcome) {
+        // Show welcome modal for purchasers who haven't seen it
+        const hasSeenWelcome = localStorage.getItem('welcome_modal_seen');
+        const isPurchaser = localStorage.getItem('unlocked_part_2') === 'true' ||
+            localStorage.getItem('beta_access') === 'true' ||
+            localStorage.getItem('token');
+        if (!hasSeenWelcome && isPurchaser) {
             setShowWelcome(true);
-            // Scroll to top so modal is visible
             window.scrollTo(0, 0);
         }
     }, []);
 
     const handleCloseWelcome = () => {
         setShowWelcome(false);
-        localStorage.setItem('dashboard_welcomed', 'true');
+        // welcome_modal_seen is set inside WelcomeModal component
     };
 
     const handleLevelUp = (rank) => {
@@ -314,85 +317,8 @@ const Dashboard = () => {
                 <meta name="description" content="Your adventure hub - track discoveries, earn points, and learn new AI skills on your journey." />
             </Helmet>
 
-            {/* Welcome Modal - First Time Visitors */}
-            <AnimatePresence>
-                {showWelcome && (
-                    <m.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-                        onClick={handleCloseWelcome}
-                    >
-                        <m.div
-                            initial={{ scale: 0.9, y: 20 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.9, y: 20 }}
-                            className="relative max-w-md w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-teal-500/30 rounded-2xl p-6 shadow-2xl shadow-teal-500/10"
-                            onClick={e => e.stopPropagation()}
-                        >
-                            {/* Brand Logo - Updated */}
-                            <div className="flex justify-center mb-6">
-                                <div className="relative w-24 h-24">
-                                    <img
-                                        src="/assets/logo-new.webp"
-                                        alt="Agentic AI Home"
-                                        width="96"
-                                        height="96"
-                                        className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(20,184,166,0.3)]"
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Welcome Message */}
-                            <div className="text-center mb-6">
-                                <h2 className="text-2xl font-bold text-white mb-2">
-                                    Welcome, Explorer! 🧭
-                                </h2>
-                                <p className="text-slate-300 text-sm leading-relaxed">
-                                    I'm <span className="text-orange-400 font-medium">Captain Efficiency</span>. This is your <span className="text-teal-400 font-medium">Adventure Dashboard</span> —
-                                    your command center for mastering AI.
-                                </p>
-                            </div>
-
-                            {/* Quick Guide */}
-                            <div className="space-y-3 mb-6">
-                                <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                                    <Map className="text-teal-400 flex-shrink-0 mt-0.5" size={18} />
-                                    <div>
-                                        <p className="text-white text-sm font-medium">Discovery Map</p>
-                                        <p className="text-slate-400 text-xs">Explore 15 discoveries across 5 areas</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-                                    <Trophy className="text-yellow-400 flex-shrink-0 mt-0.5" size={18} />
-                                    <div>
-                                        <p className="text-white text-sm font-medium">Earn Progress Points</p>
-                                        <p className="text-slate-400 text-xs">Complete chapter discoveries to level up</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* CTA */}
-                            <Link
-                                to="/part1/chapter1"
-                                onClick={handleCloseWelcome}
-                                className="block w-full py-3 px-4 bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white text-center font-bold rounded-xl transition-all shadow-lg shadow-teal-500/25"
-                            >
-                                Start Your First Discovery →
-                            </Link>
-
-                            {/* Skip */}
-                            <button
-                                onClick={handleCloseWelcome}
-                                className="block w-full mt-3 py-2 text-slate-400 hover:text-white text-sm text-center transition-colors"
-                            >
-                                Explore Dashboard First
-                            </button>
-                        </m.div>
-                    </m.div>
-                )}
-            </AnimatePresence>
+            {/* Welcome Modal - Post-Purchase Celebration */}
+            <WelcomeModal isOpen={showWelcome} onClose={handleCloseWelcome} />
 
             {/* Level Up Celebration */}
             <LevelUpCelebration
