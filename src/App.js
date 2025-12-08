@@ -25,6 +25,7 @@ const GamesPage = lazy(() => import('./pages/GamesPage'));
 const HallOfFame = lazy(() => import('./pages/HallOfFame'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AgentWallet = lazy(() => import('./pages/AgentWallet'));
+const PrePurchaseBridge = lazy(() => import('./pages/PrePurchaseBridge'));
 
 import Loading from './components/common/Loading';
 
@@ -153,6 +154,13 @@ const AnimatedRoutes = () => {
             <Route path="/claim-access" element={
               <Suspense fallback={<Loading />}>
                 <PageTransition><ClaimAccessPage /></PageTransition>
+              </Suspense>
+            } />
+
+            {/* Pre-Purchase Bridge - Between free chapters and paywall */}
+            <Route path="/unlock" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><PrePurchaseBridge /></PageTransition>
               </Suspense>
             } />
 

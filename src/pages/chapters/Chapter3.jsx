@@ -323,17 +323,17 @@ Let me dump my dates now.`;
                         </div>
                     </motion.section>
 
-                    {/* CTA - PAYWALL CHAPTER */}
+                    {/* CTA - UPGRADE */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }} className="mb-10">
                         <Link
-                            to="/part2/chapter4"
+                            to="/unlock"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-pink-500/20"
                         >
-                            Continue to Chapter 4
-                            <Lock size={20} className="opacity-70" />
+                            See What's Next
+                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">
-                            Next: Email Triage Agent (Premium)
+                            7 more agents waiting for you
                         </p>
                     </motion.section>
 
