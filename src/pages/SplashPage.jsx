@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { Sparkles, Zap, Clock, Users, ArrowRight } from 'lucide-react';
+import { Sparkles, Zap, Clock, Users, ArrowRight, Shield } from 'lucide-react';
 
 const SplashPage = () => {
     return (
@@ -90,7 +90,7 @@ const SplashPage = () => {
                         </motion.div>
                     </motion.div>
 
-                    {/* Hero Headline - Emotional Hook */}
+                    {/* Hero Headline - Punchy & Short */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -98,34 +98,33 @@ const SplashPage = () => {
                         className="mb-6 md:mb-8"
                     >
                         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight tracking-tight">
-                            Stop Doing <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">Everything</span>.
+                            Your AI. Your Rules.
                             <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Start Delegating</span> to AI.
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Your Time Back.</span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                            Captain Efficiency guides you through <span className="text-white font-semibold">16 fun chapters</span> to
-                            automate email, calendar, meals & more.
+                            16 chapters. Zero coding. Captain Efficiency guides you to automate email, calendar & more.
                         </p>
                     </motion.div>
 
-                    {/* Value Props */}
+                    {/* Value Props - Condensed */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="flex flex-wrap justify-center gap-4 md:gap-6 mb-8 text-sm md:text-base"
+                        className="flex flex-wrap justify-center gap-4 md:gap-6 mb-6 text-sm md:text-base"
                     >
                         <div className="flex items-center gap-2 text-slate-400">
                             <Clock size={18} className="text-teal-400" />
-                            <span>Save <span className="text-white font-bold">5+ hours</span>/week</span>
+                            <span><span className="text-white font-bold">5+ hours</span>/week saved</span>
                         </div>
                         <div className="flex items-center gap-2 text-slate-400">
                             <Zap size={18} className="text-amber-400" />
-                            <span><span className="text-white font-bold">No coding</span> required</span>
+                            <span><span className="text-white font-bold">Zero</span> coding</span>
                         </div>
                         <div className="flex items-center gap-2 text-slate-400">
-                            <Sparkles size={18} className="text-purple-400" />
-                            <span><span className="text-white font-bold">Free</span> to start</span>
+                            <Shield size={18} className="text-green-400" />
+                            <span><span className="text-white font-bold">30-day</span> money-back</span>
                         </div>
                     </motion.div>
 
@@ -148,59 +147,55 @@ const SplashPage = () => {
                         </Link>
                     </motion.div>
 
-                    {/* Social Proof */}
+                    {/* Social Proof - With Live Counter */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.9 }}
-                        className="flex items-center justify-center gap-4"
+                        className="flex flex-col items-center gap-3"
                     >
-                        <div className="flex -space-x-2">
-                            {[...Array(4)].map((_, i) => (
-                                <div key={i} className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 border-2 border-slate-800 flex items-center justify-center text-sm text-white font-bold shadow-lg shadow-black/20">
-                                    {['P', 'M', 'J', 'S'][i]}
-                                </div>
-                            ))}
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Users size={16} className="text-slate-400" />
-                            <span className="text-slate-300 text-sm">
-                                <span className="text-white font-semibold">500+ busy professionals</span> reclaiming their time
+                        {/* Live Join Counter */}
+                        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                             </span>
+                            <span className="text-green-400 text-sm font-medium">
+                                <span className="font-bold">47 people</span> started this week
+                            </span>
+                        </div>
+
+                        {/* Avatars + Count */}
+                        <div className="flex items-center gap-3">
+                            <div className="flex -space-x-2">
+                                {[...Array(4)].map((_, i) => (
+                                    <div key={i} className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 border-2 border-slate-800 flex items-center justify-center text-sm text-white font-bold shadow-lg shadow-black/20">
+                                        {['S', 'M', 'J', 'A'][i]}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="text-yellow-400">★★★★★</span>
+                                <span className="text-slate-300 text-sm">
+                                    <span className="text-white font-semibold">500+</span> happy users
+                                </span>
+                            </div>
                         </div>
                     </motion.div>
 
-                    {/* Secondary link for returning users */}
+                    {/* Secondary link - Minimal, for returning users only */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.1 }}
-                        className="mt-10 flex flex-col items-center gap-4"
+                        className="mt-8"
                     >
                         <Link
                             to="/dashboard"
-                            className="text-slate-400 hover:text-teal-400 text-base transition-colors inline-flex items-center gap-2 font-medium"
+                            className="text-slate-500 hover:text-teal-400 text-sm transition-colors"
                         >
-                            Already started? Continue your mission →
+                            Already a member? Sign in →
                         </Link>
-
-                        {/* Extra options row */}
-                        <div className="flex items-center gap-6">
-                            <Link
-                                to="/welcome"
-                                className="text-slate-400 hover:text-orange-400 text-base transition-colors flex items-center gap-2 font-medium"
-                            >
-                                <Sparkles size={16} />
-                                See What's Included
-                            </Link>
-                            <span className="text-slate-600">•</span>
-                            <Link
-                                to="/games"
-                                className="text-slate-400 hover:text-purple-400 text-base transition-colors flex items-center gap-2 font-medium"
-                            >
-                                🎮 Games Hub
-                            </Link>
-                        </div>
                     </motion.div>
                 </div>
 
