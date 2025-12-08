@@ -122,12 +122,18 @@ const PrePurchaseBridge = () => {
                             That's more than 90% of people who "use AI."
                         </p>
 
-                        {/* SHARE BUTTONS - Enhanced Viral Loop */}
-                        <div className="mt-6 p-4 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl border border-purple-500/30">
-                            <p className="text-white font-bold text-sm mb-3 text-center">🚀 Know someone who needs this?</p>
+                        {/* SHARE BUTTONS - Referral Discount Mechanic */}
+                        <div className="mt-6 p-5 bg-gradient-to-r from-amber-900/30 to-orange-900/30 rounded-2xl border-2 border-amber-500/40">
+                            <div className="flex items-center justify-center gap-2 mb-3">
+                                <span className="text-2xl">🎁</span>
+                                <p className="text-white font-bold text-lg">Share & Save $5</p>
+                            </div>
+                            <p className="text-amber-200 text-sm text-center mb-4">
+                                Share with a friend → When they sign up, you BOTH get $5 off!
+                            </p>
                             <div className="flex flex-wrap items-center justify-center gap-2">
                                 <a
-                                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("🤯 Just built 3 AI helpers in 15 minutes — they handle my morning briefings, meal planning & reminders automatically!\n\nNo coding needed. If I can do this, anyone can.")}&url=${encodeURIComponent("https://agenticaihome.com")}&hashtags=AI,productivity`}
+                                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("🤯 Just built 3 AI helpers in 15 minutes — they handle my morning briefings, meal planning & reminders automatically!\n\nNo coding needed. If I can do this, anyone can. Use my link for $5 off:")}&url=${encodeURIComponent("https://agenticaihome.com?ref=twitter")}&hashtags=AI,productivity`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black hover:bg-gray-900 text-white text-sm font-medium transition-colors"
@@ -136,7 +142,7 @@ const PrePurchaseBridge = () => {
                                     Share on X
                                 </a>
                                 <a
-                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://agenticaihome.com")}&quote=${encodeURIComponent("Just built 3 AI helpers in 15 minutes! No coding needed 🤖")}`}
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://agenticaihome.com?ref=facebook")}&quote=${encodeURIComponent("Just built 3 AI helpers in 15 minutes! No coding needed 🤖 Get $5 off with my link!")}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1877F2] hover:bg-[#166FE5] text-white text-sm font-medium transition-colors"
@@ -146,15 +152,15 @@ const PrePurchaseBridge = () => {
                                 </a>
                                 <button
                                     onClick={() => {
-                                        navigator.clipboard.writeText('Check this out — I just built 3 AI helpers in 15 minutes! No coding needed: https://agenticaihome.com');
-                                        alert('Message copied! Paste it anywhere.');
+                                        navigator.clipboard.writeText('Check this out — I just built 3 AI helpers in 15 minutes! No coding needed. Get $5 off with my link: https://agenticaihome.com?ref=friend');
+                                        alert('✅ Referral link copied! Send it to a friend and you BOTH save $5.');
                                     }}
-                                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium transition-colors"
+                                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-sm font-medium transition-colors"
                                 >
-                                    📋 Copy Message
+                                    🔗 Copy Referral Link
                                 </button>
                             </div>
-                            <p className="text-slate-400 text-xs text-center mt-2">Help a friend escape the chaos ✨</p>
+                            <p className="text-amber-400/70 text-xs text-center mt-3">3 friends = Full course FREE 🎉</p>
                         </div>
 
                         {/* EMAIL CAPTURE - Moved Higher */}
@@ -192,6 +198,15 @@ const PrePurchaseBridge = () => {
                             <Flame className="text-amber-400" size={18} />
                             <span className="text-amber-400 font-bold text-sm">🔥 Launch week special — 50% off ends soon!</span>
                         </div>
+                    </motion.div>
+
+                    {/* BEFORE/AFTER VISUAL - Emotional Impact */}
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.18 }} className="mb-8">
+                        <img
+                            src="/assets/before-after.png"
+                            alt="Before: Drowning in tasks. After: AI agents handle it"
+                            className="w-full max-w-2xl mx-auto rounded-2xl border border-slate-700/50 shadow-2xl"
+                        />
                     </motion.div>
 
                     {/* CAPTAIN */}
