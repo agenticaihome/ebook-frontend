@@ -32,9 +32,7 @@ Every day when I wake up, send me:
 - 3 things happening today
 - One reminder I'll thank you for
 
-Quick setup: just answer 3 questions and you're set for life.
-
-Let's go.`;
+Set this up now.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -88,7 +86,7 @@ Let's go.`;
                             <CaptainHero
                                 size="md"
                                 pose="default"
-                                message="I'm Captain Efficiency. This is the first agent you'll create—it'll check in with you every morning so you never start the day lost. Takes about 3 minutes to set up, and tomorrow you'll wake up to your first notification."
+                                message="Most people wake up, check their phone for 20 minutes, and still don't know what matters today. Let's fix that in 3 minutes."
                             />
                         </Suspense>
                     </motion.div>

@@ -27,18 +27,10 @@ const Chapter2 = () => {
 
     const goldPrompt = `Be my Meal Planning Agent.
 
-Every Sunday at 10am, ask me:
-- What's already in my fridge that needs using up?
-- Any meals I'm craving this week?
-- Budget for groceries?
+Every Sunday at 10am, ask me what's in my fridge and my budget.
+Then give me 5 easy dinners + a shopping list I can screenshot.
 
-Then give me:
-- 5 simple dinner ideas for the week
-- A complete shopping list I can screenshot
-
-Keep meals easy - 30 min or less. Real food, not fancy chef stuff.
-
-Let's set this up now.`;
+Real food, not fancy stuff. Set this up now.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -84,7 +76,7 @@ Let's set this up now.`;
                             <CaptainHero
                                 size="md"
                                 pose="default"
-                                message="You've got your morning agent. Now let's tackle the question that causes stress in every household: 'What are we eating?' This agent checks in every Sunday and does the thinking for you."
+                                message="'What's for dinner?' The question that ruins 6pm every single day. Your AI will answer it once a week so you never have to think about it again."
                             />
                         </Suspense>
                     </motion.div>

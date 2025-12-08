@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, Calendar, Gift, CreditCard, Heart, HelpCircle, MessageSquare, Bell, Lock } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, Calendar, Gift, CreditCard, Heart, HelpCircle, MessageSquare, Bell, Lock, Share2, Twitter } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -27,16 +27,11 @@ const Chapter3 = () => {
 
     const goldPrompt = `Be my Important Dates Agent.
 
-I'm going to tell you all the dates I need to remember:
-- Birthdays
-- Anniversaries
-- Bill due dates
-- Appointments
+Remember my birthdays, anniversaries, and bill due dates.
+Remind me 3 days before each one.
+For birthdays, suggest a gift idea.
 
-For each one, remind me 3 days before with a notification.
-For birthdays, also suggest a thoughtful gift idea.
-
-Let me dump all my important dates now.`;
+Let me dump my dates now.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -82,7 +77,7 @@ Let me dump all my important dates now.`;
                             <CaptainHero
                                 size="md"
                                 pose="default"
-                                message="This one's personal. Forgetting someone's birthday feels terrible. Missing a bill costs money. Let's make sure that never happens again. Dump all your important dates into your AI once, and it'll remind you forever."
+                                message="Don't be THAT person who texts 'happy belated.' Dump all your important dates into your AI once, and never embarrass yourself again."
                             />
                         </Suspense>
                     </motion.div>
@@ -166,8 +161,8 @@ Let me dump all my important dates now.`;
                             <button
                                 onClick={handleCopy}
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied
-                                        ? 'bg-green-500 text-white'
-                                        : 'bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white'
+                                    ? 'bg-green-500 text-white'
+                                    : 'bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white'
                                     }`}
                             >
                                 {copied ? (
@@ -293,10 +288,37 @@ Let me dump all my important dates now.`;
                                 <div>
                                     <p className="text-green-400 font-bold mb-1">You've completed the free chapters!</p>
                                     <p className="text-slate-300 text-sm">
-                                        You now have 3 agents working for you: morning briefings, meal planning, and important dates.
-                                        Chapter 4+ covers email, money, fitness, work tasks, and building custom agents.
+                                        You now have 3 agents working for you. That's more than 90% of people who "use AI."
                                     </p>
                                 </div>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* SHARE SECTION - VIRAL LOOP */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.92 }} className="mb-6">
+                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700/50">
+                            <p className="text-white font-bold mb-3">Know someone who forgets birthdays? 👀</p>
+                            <div className="flex flex-wrap gap-3">
+                                <a
+                                    href="https://twitter.com/intent/tweet?text=I%20just%20created%20an%20AI%20agent%20that%20reminds%20me%20of%20birthdays%20and%20suggests%20gifts.%20Game%20changer.%20%F0%9F%A4%96&url=https://agenticaihome.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 bg-black hover:bg-slate-900 text-white rounded-lg text-sm font-medium transition-colors"
+                                >
+                                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                                    Share on X
+                                </a>
+                                <button
+                                    onClick={() => {
+                                        navigator.clipboard.writeText('I just set up 3 AI agents for free: morning briefings, meal planning, and birthday reminders. Check it out: agenticaihome.com');
+                                        alert('Link copied!');
+                                    }}
+                                    className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm font-medium transition-colors"
+                                >
+                                    <Share2 size={16} />
+                                    Copy Link
+                                </button>
                             </div>
                         </div>
                     </motion.section>
