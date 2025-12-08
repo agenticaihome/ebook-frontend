@@ -305,6 +305,109 @@ export default function SalesPage() {
           </div>
         </section>
 
+        {/* WHO THIS IS FOR SECTION */}
+        <section className="py-20 px-6 bg-gradient-to-b from-slate-900/50 to-[#0f0f1a]">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/20 border border-purple-500/30 text-purple-400 text-sm font-bold mb-6">
+                🌍 BUILT FOR EVERYONE
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Curious, Skeptical, or <span className="text-purple-400">Already Using AI?</span></h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                AI isn't just for tech people. It's for anyone who wants to do less busywork and more living.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { emoji: '🤔', title: 'AI Curious', desc: 'Heard the hype but unsure where to start? This is your friendly, zero-jargon introduction to practical AI.' },
+                { emoji: '😰', title: 'AI Skeptics', desc: 'Worried about AI or overwhelmed by the noise? Learn to use it responsibly, respecting its power.' },
+                { emoji: '🚀', title: 'AI Enthusiasts', desc: 'Already using ChatGPT? Go deeper. Build actual systems that work while you sleep.' },
+                { emoji: '👶', title: 'Complete Beginners', desc: 'Never touched AI? Perfect. We start from zero with Captain Efficiency guiding every step.' },
+                { emoji: '👨‍👩‍👧‍👦', title: 'Busy Humans', desc: 'Parents, students, professionals—anyone drowning in tasks. AI gives you back your time.' },
+                { emoji: '🔮', title: 'Future-Proofers', desc: 'AI is changing everything. Learn it now, or get left behind. Your choice.' },
+              ].map((item, i) => (
+                <m.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 hover:border-purple-500/30 transition-all"
+                >
+                  <span className="text-3xl mb-4 block">{item.emoji}</span>
+                  <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-slate-400 text-sm">{item.desc}</p>
+                </m.div>
+              ))}
+            </div>
+
+            {/* Universal Message */}
+            <div className="mt-10 p-6 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-2xl border border-purple-500/20 text-center">
+              <p className="text-xl text-white font-medium">
+                <span className="text-purple-400">Bottom line:</span> If you're human and have tasks... this is for you.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* WHY AI IS MAGICAL SECTION */}
+        <section className="py-20 px-6 bg-[#0f0f1a]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-900/20 border border-cyan-500/30 text-cyan-400 text-sm font-bold mb-6">
+                ✨ YOUR MAGIC MOMENT
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Why AI Feels Like <span className="text-cyan-400">Having Superpowers</span></h2>
+            </div>
+
+            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-8 border border-cyan-500/20">
+              <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
+                <p>
+                  <span className="text-cyan-400 font-bold">That first time your AI handles a full task for you...</span>
+                  <span className="text-slate-400"> it changes something.</span>
+                </p>
+                <p>
+                  You wake up to a <span className="text-white font-medium">perfectly organized inbox</span>.
+                  Your grocery list appears <span className="text-white font-medium">before you think about it</span>.
+                  Your schedule adjusts itself <span className="text-white font-medium">when life happens</span>.
+                </p>
+                <p>
+                  This isn't sci-fi. This is <span className="text-amber-400 font-bold">what AI can do for you right now</span>—
+                  if you know how to set it up.
+                </p>
+              </div>
+
+              {/* Emotional Journey */}
+              <div className="grid md:grid-cols-3 gap-6 mt-10 pt-8 border-t border-slate-700/50">
+                <div className="text-center">
+                  <div className="text-4xl mb-3">😰</div>
+                  <div className="text-xs text-slate-400 uppercase font-bold mb-1">Before</div>
+                  <div className="text-slate-300">Overwhelmed</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl mb-3">😌</div>
+                  <div className="text-xs text-slate-400 uppercase font-bold mb-1">After Setup</div>
+                  <div className="text-slate-300">Calm</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl mb-3">🚀</div>
+                  <div className="text-xs text-slate-400 uppercase font-bold mb-1">Long-term</div>
+                  <div className="text-slate-300">In Control</div>
+                </div>
+              </div>
+
+              {/* Quote */}
+              <div className="mt-8 p-4 bg-cyan-900/20 rounded-xl border border-cyan-500/20 text-center">
+                <p className="text-cyan-400 italic">
+                  "Watching tasks happen without you is like discovering you have an invisible team working 24/7."
+                </p>
+                <p className="text-slate-500 text-sm mt-2">— Every single person who sets up their first AI agent</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* COURSE OVERVIEW SECTION */}
         <section id="course-overview" className="py-24 bg-[#0f0f1a] relative">
           {/* Ambient Background */}
