@@ -260,5 +260,16 @@ export const api = {
     } catch (error) {
       return null;
     }
+  },
+
+  // Email Subscription
+  subscribe: async (email, source = 'unlock_page') => {
+    const response = await fetch(`${API_URL}/subscribe`, {
+      method: 'POST',
+      headers: getHeaders(),
+      credentials: 'include',
+      body: JSON.stringify({ email, source }),
+    });
+    return handleResponse(response);
   }
 };

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -8,6 +8,7 @@ import {
     ChevronDown, Sparkles, Flame, Star, Gamepad2, Wrench
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
+import { api } from '../services/api';
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 
@@ -18,6 +19,23 @@ const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 // ============================================
 
 const PrePurchaseBridge = () => {
+    const [email, setEmail] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [subscribed, setSubscribed] = useState(false);
+
+    const handleSubscribe = async (e) => {
+        e.preventDefault();
+        if (!email || isSubmitting) return;
+        setIsSubmitting(true);
+        try {
+            await api.subscribe(email, 'unlock_page');
+            setSubscribed(true);
+        } catch (err) {
+            alert('Oops! Something went wrong. Try again or email us at support@agenticaihome.com');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const completedAgents = [
         { name: 'Morning Agent', chapter: 1, icon: '☀️', result: 'Daily briefings' },
@@ -165,24 +183,37 @@ const PrePurchaseBridge = () => {
 
                         {/* EMAIL CAPTURE - Moved Higher */}
                         <div className="mt-4 p-4 bg-slate-800/50 rounded-2xl border border-slate-700/50">
-                            <p className="text-white font-medium text-sm mb-1 text-center">📬 Not ready to buy yet?</p>
-                            <p className="text-slate-400 text-xs mb-3 text-center">
-                                Get a free "AI Starter Checklist" + weekly tips from Captain Efficiency
-                            </p>
-                            <form className="flex flex-col sm:flex-row gap-2 max-w-sm mx-auto" onSubmit={(e) => { e.preventDefault(); alert('✅ You\'re in! Check your inbox.'); }}>
-                                <input
-                                    type="email"
-                                    placeholder="your@email.com"
-                                    className="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-600 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
-                                    required
-                                />
-                                <button
-                                    type="submit"
-                                    className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-medium text-sm transition-colors whitespace-nowrap"
-                                >
-                                    Send Free Checklist
-                                </button>
-                            </form>
+                            {subscribed ? (
+                                <div className="text-center py-2">
+                                    <p className="text-green-400 font-bold text-sm">✅ You're in!</p>
+                                    <p className="text-slate-400 text-xs">Check your inbox for the AI Starter Checklist</p>
+                                </div>
+                            ) : (
+                                <>
+                                    <p className="text-white font-medium text-sm mb-1 text-center">📬 Not ready to buy yet?</p>
+                                    <p className="text-slate-400 text-xs mb-3 text-center">
+                                        Get a free "AI Starter Checklist" + weekly tips from Captain Efficiency
+                                    </p>
+                                    <form className="flex flex-col sm:flex-row gap-2 max-w-sm mx-auto" onSubmit={handleSubscribe}>
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder="your@email.com"
+                                            className="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-600 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                            required
+                                            disabled={isSubmitting}
+                                        />
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-medium text-sm transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            {isSubmitting ? 'Sending...' : 'Send Free Checklist'}
+                                        </button>
+                                    </form>
+                                </>
+                            )}
                         </div>
 
                         {/* TRUST BADGE - Guarantee visible early (Bezos) */}
