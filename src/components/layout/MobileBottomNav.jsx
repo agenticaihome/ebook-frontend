@@ -26,7 +26,7 @@ const MobileBottomNav = () => {
                 <div className="fixed bottom-20 left-4 right-4 bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-2xl z-50 animate-in slide-in-from-bottom-5 fade-in duration-200">
                     <div className="grid grid-cols-2 gap-4">
                         <Link
-                            to="/welcome#calculator"
+                            to="/tools"
                             onClick={() => setShowTools(false)}
                             className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >

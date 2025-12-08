@@ -24,16 +24,8 @@ export const routeConfig = {
     part3chapter2: createRoute(() => import('../pages/chapters/Chapter8')),
     part3chapter3: createRoute(() => import('../pages/chapters/Chapter9')),
 
-    // Part 4 Chapters (Password protected)
+    // Part 4 Chapter (Password protected)
     part4chapter1: createRoute(() => import('../pages/chapters/Chapter10')),
-    part4chapter2: createRoute(() => import('../pages/chapters/Chapter11')),
-    part4chapter3: createRoute(() => import('../pages/chapters/Chapter12')),
-
-    // Part 5 Chapters (Password protected)
-    part5chapter1: createRoute(() => import('../pages/chapters/Chapter13')),
-    part5chapter2: createRoute(() => import('../pages/chapters/Chapter14')),
-    part5chapter3: createRoute(() => import('../pages/chapters/Chapter15')),
-    part5chapter4: createRoute(() => import('../pages/chapters/Chapter16')),
 
     success: createRoute(() => import('../pages/SuccessPage')),
     createAccount: createRoute(() => import('../pages/CreateAccountPage')),

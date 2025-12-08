@@ -406,12 +406,6 @@ const OnboardingPage = () => {
                                 <Link to="/dashboard" className="text-slate-500 hover:text-white transition-colors">
                                     Already started? Go to Dashboard →
                                 </Link>
-                                <Link to="/welcome" className="text-slate-500 hover:text-orange-400 transition-colors">
-                                    See What's Included →
-                                </Link>
-                                <Link to="/pricing" className="text-slate-500 hover:text-amber-400 transition-colors">
-                                    View Pricing & Features →
-                                </Link>
                             </div>
                         </motion.div>
                     </div>

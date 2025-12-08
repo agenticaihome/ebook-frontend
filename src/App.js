@@ -12,8 +12,7 @@ import { Toaster, toast } from 'react-hot-toast';
 import { routeConfig } from './config/routes';
 import { initGA, logPageView } from './utils/analytics';
 
-// Eager load SalesPage and SplashPage
-import SalesPage from './SalesPage';
+// Eager load SplashPage
 import SplashPage from './pages/SplashPage';
 import OnboardingPage from './pages/OnboardingPage';
 
@@ -103,8 +102,6 @@ const AnimatedRoutes = () => {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><SplashPage /></PageTransition>} />
             <Route path="/start" element={<Navigate to="/part1/chapter1" replace />} />
-            <Route path="/welcome" element={<PageTransition><SalesPage /></PageTransition>} />
-            <Route path="/pricing" element={<PageTransition><SalesPage /></PageTransition>} />
             <Route path="/onboarding" element={<PageTransition><OnboardingPage /></PageTransition>} />
 
             {/* Part Redirects - redirect to first chapter of each part */}
@@ -112,7 +109,6 @@ const AnimatedRoutes = () => {
             <Route path="/part2" element={<Navigate to="/part2/chapter1" replace />} />
             <Route path="/part3" element={<Navigate to="/part3/chapter1" replace />} />
             <Route path="/part4" element={<Navigate to="/part4/chapter1" replace />} />
-            <Route path="/part5" element={<Navigate to="/part5/chapter1" replace />} />
 
             {/* Part 1 Chapters */}
             <Route path="/part1/chapter1" element={<PageTransition><routeConfig.part1chapter1.Component /></PageTransition>} />
@@ -131,14 +127,6 @@ const AnimatedRoutes = () => {
 
             {/* Part 4 Chapters */}
             <Route path="/part4/chapter1" element={<PageTransition><routeConfig.part4chapter1.Component /></PageTransition>} />
-            <Route path="/part4/chapter2" element={<PageTransition><routeConfig.part4chapter2.Component /></PageTransition>} />
-            <Route path="/part4/chapter3" element={<PageTransition><routeConfig.part4chapter3.Component /></PageTransition>} />
-
-            {/* Part 5 Chapters */}
-            <Route path="/part5/chapter1" element={<PageTransition><routeConfig.part5chapter1.Component /></PageTransition>} />
-            <Route path="/part5/chapter2" element={<PageTransition><routeConfig.part5chapter2.Component /></PageTransition>} />
-            <Route path="/part5/chapter3" element={<PageTransition><routeConfig.part5chapter3.Component /></PageTransition>} />
-            <Route path="/part5/chapter4" element={<PageTransition><routeConfig.part5chapter4.Component /></PageTransition>} />
 
             <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
             <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />

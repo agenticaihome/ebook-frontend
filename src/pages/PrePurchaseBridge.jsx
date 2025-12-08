@@ -65,7 +65,7 @@ const PrePurchaseBridge = () => {
                             }>
                                 <CaptainHero
                                     message="You did it! Now let me show you what's possible..."
-                                    size="medium"
+                                    size="sm"
                                 />
                             </Suspense>
                         </div>
@@ -401,14 +401,6 @@ const PrePurchaseBridge = () => {
                         >
                             Unlock All 10 Chapters
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-
-                        <Link
-                            to="/welcome"
-                            className="flex items-center justify-center gap-2 w-full text-slate-400 hover:text-white py-3 text-sm transition-colors"
-                        >
-                            <ChevronDown size={16} />
-                            See everything that's included
                         </Link>
 
                         {/* CRYPTO OPTION - Double Future-Proofing */}
