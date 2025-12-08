@@ -8,7 +8,6 @@ import {
     ChevronDown, Sparkles, Flame, Star, Gamepad2, Wrench
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import { api } from '../services/api';
 
 const CaptainHero = React.lazy(() => import('../components/CaptainHero'));
 
@@ -28,8 +27,21 @@ const PrePurchaseBridge = () => {
         if (!email || isSubmitting) return;
         setIsSubmitting(true);
         try {
-            await api.subscribe(email, 'unlock_page');
-            setSubscribed(true);
+            const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                ? 'http://localhost:8080/api'
+                : 'https://ebook-backend-production-8f68.up.railway.app/api';
+
+            const response = await fetch(`${API_URL}/subscribe`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ email, source: 'unlock_page' }),
+            });
+            if (response.ok) {
+                setSubscribed(true);
+            } else {
+                throw new Error('Failed');
+            }
         } catch (err) {
             alert('Oops! Something went wrong. Try again or email us at support@agenticaihome.com');
         } finally {
