@@ -26,15 +26,15 @@ const Chapter1 = () => {
     const [copied, setCopied] = useState(false);
     const [showMore, setShowMore] = useState(false);
 
-    // HONEST PROMPT - doesn't claim AI can get live weather
+    // PROMPT - ChatGPT can get live weather now
     const quickWinPrompt = `I want to simplify my mornings.
 
-Ask me 3 quick questions about my typical morning routine. Then create a "Morning Brief Template" I can save and reuse, including:
-- A reminder to check weather for my area
-- Space for my top 3 priorities
+Ask me 3 quick questions about my morning routine. Then create a personalized "Morning Brief" that includes:
+- Today's weather for my location
+- My top 3 priorities for the day
 - One thing I commonly forget
 
-Keep it short and practical. Remember my answers so we can improve this over time.`;
+Keep it short and practical. Remember my preferences so we can do this every morning.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(quickWinPrompt);
@@ -156,8 +156,8 @@ Keep it short and practical. Remember my answers so we can improve this over tim
                             <button
                                 onClick={handleCopy}
                                 className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-lg transition-all ${copied
-                                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-                                        : 'bg-teal-500 hover:bg-teal-400 text-white'
+                                    ? 'bg-green-500/20 text-green-400 border border-green-500/50'
+                                    : 'bg-teal-500 hover:bg-teal-400 text-white'
                                     }`}
                             >
                                 {copied ? (
