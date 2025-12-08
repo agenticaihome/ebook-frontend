@@ -53,11 +53,9 @@ const WebbookLayout = ({ children }) => {
 
     // Badge Definitions
     const badges = {
-        '/part1': { id: 'part1_complete', title: 'Privacy Architect', description: 'You have secured your digital perimeter. The foundation is laid.' },
-        '/part2': { id: 'part2_complete', title: 'Automation Rookie', description: 'Your first agents are deployed. The morning chaos is tamed.' },
-        '/part3': { id: 'part3_complete', title: 'Deep Work Defender', description: 'You have reclaimed your focus from the distraction economy.' },
-        '/part4': { id: 'part4_complete', title: 'Bio-Hacker', description: 'Health and productivity are now synced. You are optimizing the machine.' },
-        '/part5': { id: 'part5_complete', title: 'System Architect', description: 'You have built a fully autonomous life system. Welcome to the future.' }
+        '/part1': { id: 'free_complete', title: 'First Steps', description: 'You completed the free agents. Welcome to the AI life!' },
+        '/part2': { id: 'premium_complete', title: 'Productivity Pro', description: 'Your daily agents are deployed. Time savings unlocked.' },
+        '/part3': { id: 'advanced_complete', title: 'Agent Architect', description: 'You built your complete agent army. Welcome to the future.' }
     };
 
     useEffect(() => {
@@ -89,43 +87,28 @@ const WebbookLayout = ({ children }) => {
 
     const chapters = [
         {
-            id: 'part1', title: 'Part 1: Foundations', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
+            id: 'free', title: 'Free Agents', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
             subChapters: [
-                { title: '1: Wake-Up Call', id: 'chapter1', path: '/part1/chapter1' },
-                { title: '2: Your AI Toolkit', id: 'chapter2', path: '/part1/chapter2' },
-                { title: '3: Privacy & Control', id: 'chapter3', path: '/part1/chapter3' }
+                { title: '1: Morning Agent', id: 'chapter1', path: '/part1/chapter1' },
+                { title: '2: Meal Planning Agent', id: 'chapter2', path: '/part1/chapter2' },
+                { title: '3: Important Dates Agent', id: 'chapter3', path: '/part1/chapter3' }
             ]
         },
         {
-            id: 'part2', title: 'Part 2: Daily Life', path: '/part2/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
+            id: 'premium', title: 'Premium Agents', path: '/part2/chapter4', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: '4: Morning Routines', id: 'chapter1', path: '/part2/chapter1' },
-                { title: '5: Kitchen & Grocery', id: 'chapter2', path: '/part2/chapter2' },
-                { title: '6: Household Management', id: 'chapter3', path: '/part2/chapter3' }
+                { title: '4: Email Triage Agent', id: 'chapter4', path: '/part2/chapter4' },
+                { title: '5: Money Check-In Agent', id: 'chapter5', path: '/part2/chapter5' },
+                { title: '6: Fitness Agent', id: 'chapter6', path: '/part2/chapter6' },
+                { title: '7: Work Task Agent', id: 'chapter7', path: '/part2/chapter7' }
             ]
         },
         {
-            id: 'part3', title: 'Part 3: Work & Focus', path: '/part3/chapter1', icon: <Shield size={18} />, progress: 0, locked: true,
+            id: 'advanced', title: 'Advanced Agents', path: '/part3/chapter8', icon: <Shield size={18} />, progress: 0, locked: true,
             subChapters: [
-                { title: '7: Deep Work', id: 'chapter1', path: '/part3/chapter1' },
-                { title: '8: Email Triage', id: 'chapter2', path: '/part3/chapter2' },
-                { title: '9: Meeting Intelligence', id: 'chapter3', path: '/part3/chapter3' }
-            ]
-        },
-        {
-            id: 'part4', title: 'Part 4: Health & Wellness', path: '/part4/chapter1', icon: <BookOpen size={18} />, progress: 0, locked: true,
-            subChapters: [
-                { title: '10: Sleep Optimization', id: 'chapter1', path: '/part4/chapter1' },
-                { title: '11: Nutrition Systems', id: 'chapter2', path: '/part4/chapter2' },
-                { title: '12: Fitness Tracking', id: 'chapter3', path: '/part4/chapter3' }
-            ]
-        },
-        {
-            id: 'part5', title: 'Part 5: Advanced Systems', path: '/part5/chapter1', icon: <Zap size={18} />, progress: 0, locked: true,
-            subChapters: [
-                { title: '13: Advanced Automation', id: 'chapter1', path: '/part5/chapter1' },
-                { title: '14: Family Dashboard', id: 'chapter2', path: '/part5/chapter2' },
-                { title: '15: Your Life System', id: 'chapter3', path: '/part5/chapter3' }
+                { title: '8: Custom Agent Builder', id: 'chapter8', path: '/part3/chapter8' },
+                { title: '9: Multi-Agent Coordination', id: 'chapter9', path: '/part3/chapter9' },
+                { title: '10: Your Agent Army', id: 'chapter10', path: '/part3/chapter10' }
             ]
         },
     ];
@@ -262,9 +245,9 @@ const WebbookLayout = ({ children }) => {
 
                     {/* Table of Contents Header */}
                     <div className="pt-4 pb-2 px-3 flex justify-between items-center">
-                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">📖 Discoveries</span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">🤖 Your Agents</span>
                         <span className="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full font-medium">
-                            {Math.round((Object.keys(userState?.progress || {}).length / 15) * 100)}%
+                            {Math.round((Object.keys(userState?.progress || {}).length / 10) * 100)}%
                         </span>
                     </div>
 

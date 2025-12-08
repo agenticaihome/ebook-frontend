@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {
     CheckCircle, Lock, ArrowRight, Shield, Clock, Zap,
     Mail, DollarSign, Dumbbell, Briefcase, Settings, Users, Crown,
-    ChevronDown, Sparkles, Flame, Star
+    ChevronDown, Sparkles, Flame, Star, Gamepad2
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 
@@ -130,6 +130,42 @@ const PrePurchaseBridge = () => {
                                     <span className="text-slate-500 text-xs">Ch {agent.chapter}</span>
                                 </div>
                             ))}
+                        </div>
+                    </motion.section>
+
+                    {/* BONUS: GAMES HUB */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }} className="mb-8">
+                        <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl p-5 border border-purple-500/30">
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="p-2 bg-purple-500/20 rounded-xl">
+                                    <Gamepad2 className="text-purple-400" size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="text-white font-bold">🎮 Bonus: 5 Training Games</h3>
+                                    <p className="text-purple-300 text-xs">Sharpen your AI skills while having fun</p>
+                                </div>
+                                <span className="ml-auto text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full font-bold">INCLUDED</span>
+                            </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>🌊</span><span>Deep Work Dive</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>📧</span><span>Inbox Defense</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>📅</span><span>Calendar Defense</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>⚡</span><span>Focus Blitz</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-slate-300 bg-slate-800/50 px-3 py-2 rounded-lg">
+                                    <span>🖱️</span><span>Captain Click</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-purple-400 bg-purple-500/10 px-3 py-2 rounded-lg">
+                                    <span>🏆</span><span>Leaderboards</span>
+                                </div>
+                            </div>
                         </div>
                     </motion.section>
 
