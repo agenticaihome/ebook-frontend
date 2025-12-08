@@ -87,28 +87,38 @@ const WebbookLayout = ({ children }) => {
 
     const chapters = [
         {
-            id: 'free', title: 'Free Agents', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
+            id: 'free', title: 'Free Preview', path: '/part1/chapter1', icon: <BookOpen size={18} />, progress: 0,
             subChapters: [
-                { title: '1: Morning Agent', id: 'chapter1', path: '/part1/chapter1' },
+                { title: '1: Morning Agent', id: 'chapter1', path: '/part1/chapter1' }
+            ]
+        },
+        {
+            id: 'part1', title: 'Part 1: Getting Started', path: '/part1/chapter2', icon: <Zap size={18} />, progress: 0, locked: true,
+            subChapters: [
                 { title: '2: Meal Planning Agent', id: 'chapter2', path: '/part1/chapter2' },
                 { title: '3: Important Dates Agent', id: 'chapter3', path: '/part1/chapter3' }
             ]
         },
         {
-            id: 'premium', title: 'Premium Agents', path: '/part2/chapter4', icon: <Zap size={18} />, progress: 0, locked: true,
+            id: 'part2', title: 'Part 2: Level Up', path: '/part2/chapter4', icon: <Zap size={18} />, progress: 0, locked: true,
             subChapters: [
                 { title: '4: Email Triage Agent', id: 'chapter4', path: '/part2/chapter4' },
                 { title: '5: Money Check-In Agent', id: 'chapter5', path: '/part2/chapter5' },
-                { title: '6: Fitness Agent', id: 'chapter6', path: '/part2/chapter6' },
-                { title: '7: Work Task Agent', id: 'chapter7', path: '/part2/chapter7' }
+                { title: '6: Fitness Agent', id: 'chapter6', path: '/part2/chapter6' }
             ]
         },
         {
-            id: 'advanced', title: 'Advanced Agents', path: '/part3/chapter8', icon: <Shield size={18} />, progress: 0, locked: true,
+            id: 'part3', title: 'Part 3: Power User', path: '/part3/chapter7', icon: <Shield size={18} />, progress: 0, locked: true,
             subChapters: [
+                { title: '7: Work Task Agent', id: 'chapter7', path: '/part3/chapter7' },
                 { title: '8: Custom Agent Builder', id: 'chapter8', path: '/part3/chapter8' },
-                { title: '9: Multi-Agent Coordination', id: 'chapter9', path: '/part3/chapter9' },
-                { title: '10: Your Agent Army', id: 'chapter10', path: '/part3/chapter10' }
+                { title: '9: Multi-Agent Systems', id: 'chapter9', path: '/part3/chapter9' }
+            ]
+        },
+        {
+            id: 'part4', title: 'Part 4: Grand Finale', path: '/part4/chapter10', icon: <Shield size={18} />, progress: 0, locked: true,
+            subChapters: [
+                { title: '10: Your Agent Army', id: 'chapter10', path: '/part4/chapter10' }
             ]
         },
     ];

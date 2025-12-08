@@ -57,8 +57,8 @@ Let me dump my dates now.`;
                     {/* BADGE */}
                     <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center mb-6">
                         <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/30">
-                            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            <span className="text-slate-300 text-sm font-medium">Chapter 3 of 10 • Free</span>
+                            <span className="w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
+                            <span className="text-slate-300 text-sm font-medium">Chapter 3 of 10 • Premium</span>
                         </div>
                     </motion.div>
 
@@ -279,13 +279,13 @@ Let me dump my dates now.`;
                         </div>
                     </motion.section>
 
-                    {/* FREE CHAPTERS COMPLETE */}
+                    {/* PART 1 COMPLETE */}
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="mb-6">
                         <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-xl p-5 border border-green-500/30">
                             <div className="flex items-start gap-3">
                                 <CheckCircle className="text-green-400 flex-shrink-0 mt-0.5" size={24} />
                                 <div>
-                                    <p className="text-green-400 font-bold mb-1">You've completed the free chapters!</p>
+                                    <p className="text-green-400 font-bold mb-1">Part 1 Complete! 🎉</p>
                                     <p className="text-slate-300 text-sm">
                                         You now have 3 agents working for you. That's more than 90% of people who "use AI."
                                     </p>
@@ -310,7 +310,7 @@ Let me dump my dates now.`;
                                 </a>
                                 <button
                                     onClick={() => {
-                                        navigator.clipboard.writeText('I just set up 3 AI agents for free: morning briefings, meal planning, and birthday reminders. Check it out: agenticaihome.com');
+                                        navigator.clipboard.writeText('I just set up 3 AI agents: morning briefings, meal planning, and birthday reminders. Check it out: agenticaihome.com');
                                         alert('Link copied!');
                                     }}
                                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm font-medium transition-colors"

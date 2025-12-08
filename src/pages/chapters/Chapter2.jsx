@@ -55,8 +55,8 @@ Real food, not fancy stuff. Set this up now.`;
                     {/* BADGE */}
                     <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center mb-6">
                         <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/30">
-                            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            <span className="text-slate-300 text-sm font-medium">Chapter 2 of 10 • Free</span>
+                            <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+                            <span className="text-slate-300 text-sm font-medium">Chapter 2 of 10 • Premium</span>
                         </div>
                     </motion.div>
 

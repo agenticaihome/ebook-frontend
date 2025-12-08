@@ -303,17 +303,27 @@ Set this up now.`;
                         )}
                     </motion.section>
 
-                    {/* NEXT */}
+                    {/* NEXT - Jobs/Bezos Exclusivity Framing */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mb-10">
+                        <div className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 rounded-2xl p-6 border border-amber-500/30 text-center mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4">
+                                <CheckCircle size={16} />
+                                Chapter 1 Complete!
+                            </div>
+                            <h3 className="text-white font-bold text-xl mb-2">You just built your first AI agent. 🎉</h3>
+                            <p className="text-slate-400 text-sm mb-4">
+                                Most people never get past this point. You're already ahead.
+                            </p>
+                        </div>
                         <Link
-                            to="/part1/chapter2"
-                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-teal-500/20"
+                            to="/unlock"
+                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-amber-500/20"
                         >
-                            🎉 Nice! On to Chapter 2
+                            🚀 Unlock All 10 Chapters
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">
-                            Next: Create a Meal Planning Agent
+                            Build your complete agent army: Email, Finances, Fitness & more
                         </p>
                     </motion.section>
 
