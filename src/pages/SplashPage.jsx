@@ -9,7 +9,7 @@ const SplashPage = () => {
         <>
             <Helmet>
                 <title>Agentic AI Home - Stop Doing Everything. Start Delegating to AI.</title>
-                <meta name="description" content="Captain Efficiency guides you through 16 chapters to automate your life. Reclaim 5+ hours every week with AI agents." />
+                <meta name="description" content="Captain Efficiency guides you through 10 chapters to automate your life. Reclaim 5+ hours every week with AI agents." />
             </Helmet>
 
             <div className="min-h-screen bg-gradient-to-br from-slate-950 via-[#0a1628] to-slate-950 flex flex-col items-center justify-between px-4 py-6 md:py-10 relative overflow-hidden">
@@ -103,7 +103,7 @@ const SplashPage = () => {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Your Time Back.</span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                            16 chapters. Zero coding. Captain Efficiency guides you to automate email, calendar & more.
+                            10 chapters. Zero coding. Captain Efficiency guides you to automate email, calendar & more.
                         </p>
                     </motion.div>
 
