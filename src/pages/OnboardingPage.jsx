@@ -406,8 +406,8 @@ const OnboardingPage = () => {
                                 <Link to="/dashboard" className="text-slate-500 hover:text-white transition-colors">
                                     Already started? Go to Dashboard →
                                 </Link>
-                                <Link to="/sales" className="text-slate-500 hover:text-orange-400 transition-colors">
-                                    View Sales Page →
+                                <Link to="/welcome" className="text-slate-500 hover:text-orange-400 transition-colors">
+                                    Learn More →
                                 </Link>
                                 <Link to="/pricing" className="text-slate-500 hover:text-amber-400 transition-colors">
                                     View Pricing & Features →

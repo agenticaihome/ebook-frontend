@@ -140,7 +140,7 @@ const SplashPage = () => {
                             to="/start"
                             className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 bg-[length:200%_100%] hover:bg-right text-white px-10 md:px-14 py-5 md:py-6 rounded-2xl font-bold text-xl md:text-2xl transition-all duration-500 shadow-2xl shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-105 border border-teal-400/50"
                         >
-                            <span>Enter the Adventure</span>
+                            <span>Start Learning Free</span>
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
 
                             {/* Glow pulse */}
@@ -187,11 +187,11 @@ const SplashPage = () => {
                         {/* Extra options row */}
                         <div className="flex items-center gap-6">
                             <Link
-                                to="/sales"
+                                to="/welcome"
                                 className="text-slate-400 hover:text-orange-400 text-base transition-colors flex items-center gap-2 font-medium"
                             >
                                 <Sparkles size={16} />
-                                Sales Page
+                                Learn More
                             </Link>
                             <span className="text-slate-600">•</span>
                             <Link
