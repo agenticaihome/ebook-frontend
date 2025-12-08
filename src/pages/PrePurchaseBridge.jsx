@@ -519,7 +519,7 @@ const PrePurchaseBridge = () => {
                 </div>
 
                 {/* MOBILE STICKY CTA */}
-                <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a0a12] via-[#0a0a12] to-transparent md:hidden z-50">
+                <div className="fixed bottom-0 left-0 right-0 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] bg-gradient-to-t from-[#0a0a12] via-[#0a0a12] to-transparent md:hidden z-50">
                     <Link
                         to="/payment-guide"
                         className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-purple-500/30"
