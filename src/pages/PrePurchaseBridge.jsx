@@ -51,6 +51,50 @@ const PrePurchaseBridge = () => {
 
                 <div className="relative max-w-3xl mx-auto px-6 py-10">
 
+                    {/* CAPTAIN HERO - Emotional Hook */}
+                    <motion.section
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-center mb-10"
+                    >
+                        {/* Captain Video */}
+                        <div className="relative w-28 h-28 md:w-36 md:h-36 mx-auto mb-6">
+                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-500/30 to-orange-500/30 blur-2xl animate-pulse" />
+                            <Suspense fallback={
+                                <div className="w-full h-full rounded-full bg-slate-800 animate-pulse" />
+                            }>
+                                <CaptainHero
+                                    message="You did it! Now let me show you what's possible..."
+                                    size="medium"
+                                />
+                            </Suspense>
+                        </div>
+
+                        {/* Vision Statement */}
+                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                            Imagine Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Whole Life</span> Automated
+                        </h2>
+                        <p className="text-slate-400 text-lg max-w-xl mx-auto mb-6">
+                            You've automated 3 things. Now picture never worrying about emails, money, fitness, or forgetting anything—ever again.
+                        </p>
+
+                        {/* Quick Vision Cards */}
+                        <div className="grid grid-cols-3 gap-3 text-center mb-8">
+                            <div className="bg-slate-800/50 rounded-xl p-3 border border-slate-700/50">
+                                <div className="text-2xl mb-1">📧</div>
+                                <p className="text-xs text-slate-400">Inbox Zero</p>
+                            </div>
+                            <div className="bg-slate-800/50 rounded-xl p-3 border border-slate-700/50">
+                                <div className="text-2xl mb-1">💰</div>
+                                <p className="text-xs text-slate-400">Money Tracked</p>
+                            </div>
+                            <div className="bg-slate-800/50 rounded-xl p-3 border border-slate-700/50">
+                                <div className="text-2xl mb-1">💪</div>
+                                <p className="text-xs text-slate-400">Fitness Sorted</p>
+                            </div>
+                        </div>
+                    </motion.section>
+
                     {/* CELEBRATION HEADER */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
