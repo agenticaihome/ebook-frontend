@@ -76,8 +76,11 @@ Set this up now.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400"> Morning Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">
+                        <p className="text-slate-400 text-lg mb-2">
                             An AI that sends you a personalized briefing every morning.
+                        </p>
+                        <p className="text-slate-500 text-sm">
+                            💡 "Agent" just means an AI helper that does tasks for you. Nothing technical!
                         </p>
                     </motion.div>
 
@@ -183,6 +186,11 @@ Set this up now.`;
                                     <><Copy size={22} /> Copy These Instructions</>
                                 )}
                             </button>
+
+                            {/* Reassurance for hesitant users */}
+                            <p className="text-center text-slate-500 text-xs mt-2">
+                                🛡️ Don't worry — you can't break anything. Just paste and chat!
+                            </p>
 
                             {/* See Example Output */}
                             <button
