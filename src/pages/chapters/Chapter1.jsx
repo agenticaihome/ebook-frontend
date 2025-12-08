@@ -64,7 +64,7 @@ Let's go.`;
                     >
                         <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            <span className="text-slate-300 text-sm font-medium">Chapter 1 of 16 • Free</span>
+                            <span className="text-slate-300 text-sm font-medium">Chapter 1 of 10 • Free</span>
                         </div>
                     </motion.div>
 
@@ -176,8 +176,8 @@ Let's go.`;
                             <button
                                 onClick={handleCopy}
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied
-                                        ? 'bg-green-500 text-white'
-                                        : 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white'
+                                    ? 'bg-green-500 text-white'
+                                    : 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white'
                                     }`}
                             >
                                 {copied ? (

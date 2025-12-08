@@ -64,7 +64,7 @@ Let's set this up now.`;
                     <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center mb-6">
                         <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/30">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                            <span className="text-slate-300 text-sm font-medium">Chapter 2 of 16 • Free</span>
+                            <span className="text-slate-300 text-sm font-medium">Chapter 2 of 10 • Free</span>
                         </div>
                     </motion.div>
 
@@ -164,8 +164,8 @@ Let's set this up now.`;
                             <button
                                 onClick={handleCopy}
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied
-                                        ? 'bg-green-500 text-white'
-                                        : 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white'
+                                    ? 'bg-green-500 text-white'
+                                    : 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white'
                                     }`}
                             >
                                 {copied ? (

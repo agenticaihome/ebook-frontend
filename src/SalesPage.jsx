@@ -95,7 +95,7 @@ export default function SalesPage() {
               <CaptainHero
                 size="lg"
                 className="scale-100 md:scale-110"
-                message="Hey! Curious about AI but not sure where to start? I've mapped out 16 easy chapters that'll save you hours every week. Ready to explore?"
+                message="Hey! Curious about AI but not sure where to start? I've mapped out 10 easy chapters that'll save you hours every week. Ready to explore?"
                 videoSrc="/assets/captain-waving-cyan.mp4?v=cyan"
               />
             </div>
@@ -161,7 +161,7 @@ export default function SalesPage() {
                 transition={{ delay: 0.2 }}
                 className="text-lg text-slate-400 mb-8 leading-relaxed max-w-md mx-auto md:mx-0"
               >
-                16 bite-sized chapters. No tech jargon. Just practical AI skills that give you back your time.
+                10 bite-sized chapters. No tech jargon. Just practical AI skills that give you back your time.
               </m.p>
 
               <m.div
@@ -785,7 +785,7 @@ export default function SalesPage() {
                     'Multiple agents working in parallel',
                     'Agents that reach out TO you',
                     'Proven blueprints, not guesswork',
-                    '16 focused expeditions, no fluff',
+                    '10 focused chapters, no fluff',
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-2 text-slate-200 text-sm">
                       <span className="text-green-400">✓</span> {item}
@@ -935,7 +935,7 @@ export default function SalesPage() {
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-bold">M</div>
                   <div className="text-sm">
                     <div className="font-bold text-white">Marcus L.</div>
-                    <div className="text-slate-400">Software Engineer • Completed All 16</div>
+                    <div className="text-slate-400">Software Engineer • Completed All 10</div>
                   </div>
                 </div>
               </div>
@@ -1026,8 +1026,8 @@ export default function SalesPage() {
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-700/50">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white">16</div>
-                  <div className="text-xs text-slate-400">Chapters Written</div>
+                  <div className="text-3xl font-bold text-white">10</div>
+                  <div className="text-xs text-slate-400">Chapters Total</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-teal-400">10+</div>

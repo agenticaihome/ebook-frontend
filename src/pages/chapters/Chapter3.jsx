@@ -1,1024 +1,323 @@
 import { Helmet } from 'react-helmet-async';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
+import React, { useState, Suspense } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, Calendar, Gift, CreditCard, Heart, HelpCircle, MessageSquare, Bell, Lock } from 'lucide-react';
 
-import React, { useState, Suspense, createContext, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-    Clock, ChevronDown, ChevronUp, Zap, CheckCircle, ArrowRight,
-    Shield, Sparkles, Share2, Copy, Eye, EyeOff, Lock, Unlock,
-    AlertTriangle, Target, Server, Cloud, Database, Smartphone,
-    FileText, Settings, XCircle, CheckCircle2, HelpCircle, Info,
-    ShieldAlert, ShieldCheck, Radio
-} from 'lucide-react';
-
-// Game Components
-import MissionBriefing from '../../components/gamification/MissionBriefing';
-import MissionComplete from '../../components/gamification/MissionComplete';
-import ObjectivesChecklist from '../../components/gamification/ObjectivesChecklist';
-import IntelReport from '../../components/gamification/IntelReport';
-import FutureProofBanner from '../../components/gamification/FutureProofBanner';
-import AgentCardUnlock from '../../components/gamification/AgentCardUnlock';
-import ChapterNavigation from '../../components/common/ChapterNavigation';
-import AIToolLinks from '../../components/AIToolLinks';
-import FAQSection, { chapter3FAQs } from '../../components/FAQSection';
-
-// Lazy load interactive components
-const PrivacyAssessment = React.lazy(() => import('../../components/PrivacyAssessment'));
-const AgentConstitutionBuilder = React.lazy(() => import('../../components/AgentConstitutionBuilder'));
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
 // ============================================
-// AGENT CARD DEFINITIONS
+// CHAPTER 3 - IMPORTANT DATES AGENT
+// Never forget a birthday, anniversary, or bill again
 // ============================================
 
-const privacyGuardCard = {
-    id: 'privacy_guard',
-    name: 'Privacy Guard Agent',
-    category: 'Daily Ops',
-    rarity: 'Rare',
-    power: 65,
-    description: 'Sets privacy boundaries for any AI conversation. Establishes ground rules before sharing sensitive information.',
-    emoji: '🛡️',
-    prompt: `Before we begin, here are my privacy rules:
-
-1. Never ask for passwords, SSN, or financial account numbers
-2. Don't store or reference personal info beyond this conversation
-3. If I accidentally share sensitive data, remind me to delete this chat
-4. Focus on helping me with [YOUR TASK], nothing more
-
-Acknowledge these rules, then let's proceed.`,
-    unlockMessage: "Your Privacy Guard is deployed. Use this prompt to establish boundaries in any AI conversation."
-};
-
-const dataAuditorCard = {
-    id: 'data_auditor',
-    name: 'Data Auditor Agent',
-    category: 'Daily Ops',
-    rarity: 'Epic',
-    power: 72,
-    description: 'Helps you audit what data you\'ve shared and where it might be stored. Creates a personal data inventory.',
-    emoji: '🔍',
-    prompt: `Help me audit my data exposure across AI tools. Ask me about:
-
-1. Which AI tools I use (ChatGPT, Claude, Gemini, Copilot, etc.)
-2. What types of information I've shared with each
-3. Whether I've checked the privacy settings on each
-
-Then create:
-- A summary of my potential data exposure
-- Specific settings I should check for each tool
-- A reminder system to periodically review my data
-
-Be honest about what's stored vs. what's deleted.`,
-    unlockMessage: "Data Auditor online. This agent helps you understand exactly where your information lives."
-};
-
-// ============================================
-// BLITZ MODE CONTEXT
-// ============================================
-const BlitzModeContext = createContext(false);
-
-// ============================================
-// REUSABLE COMPONENTS
-// ============================================
-
-const BlitzModeToggle = ({ enabled, onToggle }) => (
-    <button
-        onClick={onToggle}
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${enabled
-            ? 'bg-teal-500/20 text-teal-400 border border-teal-500/50'
-            : 'bg-slate-800/30 text-slate-400 border border-slate-500/40 hover:border-slate-400 backdrop-blur-sm'
-            }`}
-    >
-        {enabled ? <Eye size={16} /> : <EyeOff size={16} />}
-        {enabled ? 'Professional Mode: ON' : 'Professional Mode: OFF'}
-    </button>
-);
-
-const ShareableQuote = ({ quote, operation }) => {
-    const [copied, setCopied] = useState(false);
-
-    const handleCopy = () => {
-        navigator.clipboard.writeText(`"${quote}" — The Agentic AI Adventure, Discovery ${operation}`);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
-
-    return (
-        <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-3xl" />
-
-            <div className="relative">
-                <div className="text-6xl text-teal-500/30 font-serif leading-none mb-2">"</div>
-                <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-4 -mt-8 pl-8">
-                    {quote}
-                </p>
-                <div className="flex items-center justify-between">
-                    <span className="text-slate-400 text-sm">— Discovery {operation}</span>
-                    <div className="flex gap-2">
-                        <button
-                            onClick={handleCopy}
-                            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-all ${copied
-                                ? 'bg-green-500/20 text-green-400'
-                                : 'bg-slate-700/50 text-slate-400 hover:text-white'
-                                }`}
-                        >
-                            {copied ? <CheckCircle size={14} /> : <Copy size={14} />}
-                            {copied ? 'Copied!' : 'Copy'}
-                        </button>
-                        <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm bg-slate-700/50 text-slate-400 hover:text-white transition-all">
-                            <Share2 size={14} />
-                            Share
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const DeepDive = ({ title, children }) => {
-    const [expanded, setExpanded] = useState(false);
-    const blitzMode = useContext(BlitzModeContext);
-
-    if (blitzMode) return null;
-
-    return (
-        <div className="bg-purple-900/20 rounded-xl border border-purple-500/40 backdrop-blur-sm mb-6 overflow-hidden">
-            <button
-                onClick={() => setExpanded(!expanded)}
-                className="w-full flex items-center justify-between p-4 text-left hover:bg-purple-900/30 transition-colors"
-            >
-                <div className="flex items-center gap-2">
-                    <Server className="text-purple-400" size={18} />
-                    <span className="text-purple-400 font-medium text-sm">Intel Brief:</span>
-                    <span className="text-white font-medium">{title}</span>
-                </div>
-                {expanded ? <ChevronUp size={18} className="text-purple-400" /> : <ChevronDown size={18} className="text-purple-400" />}
-            </button>
-
-            <AnimatePresence>
-                {expanded && (
-                    <motion.div
-                        initial={{ height: 0 }}
-                        animate={{ height: 'auto' }}
-                        exit={{ height: 0 }}
-                        className="overflow-hidden"
-                    >
-                        <div className="p-4 pt-0 border-t border-purple-500/20">
-                            {children}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
-
-// ============================================
-// OPERATION 3 SPECIFIC COMPONENTS
-// ============================================
-
-// Honest Opening Hook
-const ProvocativeHook = () => (
-    <div className="relative bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl p-8 border border-slate-500/40 backdrop-blur-sm mb-8 overflow-hidden">
-        <div className="absolute top-0 right-0 w-40 h-40 bg-yellow-500/10 rounded-full blur-3xl" />
-
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            What does your AI know about you <span className="text-yellow-400">right now</span>?
-        </h2>
-
-        <div className="space-y-3 text-slate-300">
-            <p>
-                In Operation 2, you connected your first agent. Maybe you shared your calendar.
-                Your recurring task. Perhaps some personal context about your family.
-            </p>
-            <p className="text-white font-medium">
-                That information went somewhere. Do you know where?
-            </p>
-        </div>
-
-        <div className="mt-6 grid grid-cols-3 gap-4">
-            {[
-                { icon: Smartphone, label: 'Your device?', color: 'text-green-400' },
-                { icon: Cloud, label: 'Their servers?', color: 'text-yellow-400' },
-                { icon: Database, label: 'Training data?', color: 'text-red-400' },
-            ].map((item, i) => (
-                <div key={i} className="bg-slate-900/50 rounded-lg p-3 text-center">
-                    <item.icon className={`${item.color} mx-auto mb-2`} size={24} />
-                    <span className="text-slate-400 text-xs">{item.label}</span>
-                </div>
-            ))}
-        </div>
-
-        <p className="text-teal-400 font-medium mt-6">
-            Let's find out—and establish your security perimeter.
-        </p>
-    </div>
-);
-
-// HONEST 3-Tier Data Model Visual
-const DataTierVisual = () => {
-    const tiers = [
-        {
-            level: 1,
-            name: 'Local Only',
-            icon: Smartphone,
-            color: 'green',
-            description: 'Stays on your device. Never leaves.',
-            examples: 'Apple Notes (offline mode), local Obsidian vault, downloaded models',
-            risk: 'Lowest',
-            caveat: 'Truly local AI is limited in capability compared to cloud models.',
-        },
-        {
-            level: 2,
-            name: 'Cloud Processed',
-            icon: Cloud,
-            color: 'yellow',
-            description: 'Sent to servers for processing. May be stored for conversation history.',
-            examples: 'Claude, ChatGPT (with settings adjusted), most AI assistants',
-            risk: 'Medium',
-            caveat: 'Even with "history off," data passes through their servers temporarily.',
-        },
-        {
-            level: 3,
-            name: 'Training Eligible',
-            icon: Database,
-            color: 'red',
-            description: 'May be used to improve AI models (often the default setting).',
-            examples: 'ChatGPT default, Gemini default, free tiers of most services',
-            risk: 'Highest',
-            caveat: 'Your conversations could influence future model responses for all users.',
-        },
-    ];
-
-    const colors = {
-        green: { bg: 'from-green-900/40 to-green-900/20', border: 'border-green-500/40', text: 'text-green-400', badge: 'bg-green-500/20' },
-        yellow: { bg: 'from-yellow-900/40 to-yellow-900/20', border: 'border-yellow-500/40', text: 'text-yellow-400', badge: 'bg-yellow-500/20' },
-        red: { bg: 'from-red-900/40 to-red-900/20', border: 'border-red-500/40', text: 'text-red-400', badge: 'bg-red-500/20' },
-    };
-
-    return (
-        <div className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                <Radio className="text-teal-400" size={24} />
-                Threat Assessment: 3-Tier Data Model
-            </h2>
-            <p className="text-slate-400 mb-6">
-                Not all AI tools handle your data the same way. Here's the honest breakdown:
-            </p>
-
-            <div className="space-y-4">
-                {tiers.map((tier) => {
-                    const c = colors[tier.color];
-                    return (
-                        <motion.div
-                            key={tier.level}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: tier.level * 0.1 }}
-                            className={`bg-gradient-to-r ${c.bg} rounded-xl p-5 border ${c.border} backdrop-blur-sm`}
-                        >
-                            <div className="flex items-start gap-4">
-                                <div className={`w-12 h-12 rounded-xl ${c.badge} flex items-center justify-center`}>
-                                    <tier.icon className={c.text} size={24} />
-                                </div>
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-3 mb-1">
-                                        <h3 className={`font-bold ${c.text}`}>Tier {tier.level}: {tier.name}</h3>
-                                        <span className={`text-xs px-2 py-0.5 rounded-full ${c.badge} ${c.text}`}>
-                                            {tier.risk} Risk
-                                        </span>
-                                    </div>
-                                    <p className="text-slate-300 text-sm mb-2">{tier.description}</p>
-                                    <p className="text-slate-500 text-xs mb-2">
-                                        <span className="text-slate-400">Examples:</span> {tier.examples}
-                                    </p>
-                                    {/* HONEST CAVEAT */}
-                                    <p className="text-yellow-400/80 text-xs italic flex items-start gap-1">
-                                        <Info size={12} className="flex-shrink-0 mt-0.5" />
-                                        {tier.caveat}
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    );
-                })}
-            </div>
-
-            <div className="flex justify-center my-4">
-                <div className="flex flex-col items-center text-slate-600">
-                    <ChevronDown size={20} />
-                    <span className="text-xs">More exposure →</span>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-// HONEST Tool Privacy Comparison Table
-const ToolPrivacyTable = () => {
-    const tools = [
-        {
-            name: 'Claude',
-            company: 'Anthropic',
-            defaultTier: 2,
-            canOptOut: true,
-            historyControl: true,
-            notes: 'Doesn\'t train on conversations by default. Still processes on their servers.',
-            honestNote: 'Generally considered most privacy-friendly of major AI tools.',
-        },
-        {
-            name: 'ChatGPT',
-            company: 'OpenAI',
-            defaultTier: 3,
-            canOptOut: true,
-            historyControl: true,
-            notes: 'Trains on conversations by default. Must manually opt out.',
-            honestNote: 'Opt-out is buried in settings. Many users don\'t know it exists.',
-        },
-        {
-            name: 'Gemini',
-            company: 'Google',
-            defaultTier: 3,
-            canOptOut: true,
-            historyControl: true,
-            notes: 'Integrated with Google account. Activity may be stored.',
-            honestNote: 'Google already has extensive data. This adds to it.',
-        },
-        {
-            name: 'Copilot',
-            company: 'Microsoft',
-            defaultTier: 2,
-            canOptOut: true,
-            historyControl: true,
-            notes: 'Enterprise has stricter policies. Consumer version varies.',
-            honestNote: 'Privacy depends heavily on which version you use.',
-        },
-    ];
-
-    const getTierBadge = (tier) => {
-        const styles = {
-            1: 'bg-green-500/20 text-green-400',
-            2: 'bg-yellow-500/20 text-yellow-400',
-            3: 'bg-red-500/20 text-red-400',
-        };
-        const labels = { 1: 'Local', 2: 'Cloud', 3: 'Training' };
-        return <span className={`text-xs px-2 py-0.5 rounded-full ${styles[tier]}`}>{labels[tier]}</span>;
-    };
-
-    return (
-        <div className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                <ShieldAlert className="text-yellow-400" size={24} />
-                Intel: Tool Privacy Comparison
-            </h2>
-            <p className="text-slate-400 mb-4">
-                Here's how the major AI tools handle your data by default:
-            </p>
-
-            {/* HONEST DISCLAIMER */}
-            <div className="mb-6 p-4 bg-yellow-900/20 rounded-xl border border-yellow-500/30">
-                <p className="text-yellow-400 text-sm flex items-start gap-2">
-                    <AlertTriangle size={16} className="flex-shrink-0 mt-0.5" />
-                    <span>
-                        <strong>Honest note:</strong> Privacy policies change frequently. These are accurate as of late 2024,
-                        but you should verify current settings in each tool. Companies can update their terms at any time.
-                    </span>
-                </p>
-            </div>
-
-            <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-2xl border border-slate-500/40 backdrop-blur-sm overflow-hidden">
-                {/* Header */}
-                <div className="grid grid-cols-4 gap-4 p-4 border-b border-slate-700 bg-slate-900/50">
-                    <span className="text-slate-400 text-sm font-medium">Tool</span>
-                    <span className="text-slate-400 text-sm font-medium">Default Tier</span>
-                    <span className="text-slate-400 text-sm font-medium">Can Opt Out?</span>
-                    <span className="text-slate-400 text-sm font-medium">Notes</span>
-                </div>
-
-                {/* Rows */}
-                {tools.map((tool, i) => (
-                    <div
-                        key={tool.name}
-                        className={`grid grid-cols-4 gap-4 p-4 ${i !== tools.length - 1 ? 'border-b border-slate-800' : ''}`}
-                    >
-                        <div>
-                            <span className="text-white font-medium">{tool.name}</span>
-                            <span className="text-slate-500 text-xs block">{tool.company}</span>
-                        </div>
-                        <div className="flex items-center">
-                            {getTierBadge(tool.defaultTier)}
-                        </div>
-                        <div className="flex items-center">
-                            {tool.canOptOut ? (
-                                <CheckCircle2 className="text-green-400" size={18} />
-                            ) : (
-                                <XCircle className="text-red-400" size={18} />
-                            )}
-                        </div>
-                        <div>
-                            <p className="text-slate-400 text-sm">{tool.notes}</p>
-                            <p className="text-slate-500 text-xs mt-1 italic">{tool.honestNote}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div className="mt-4 p-4 bg-teal-900/20 rounded-xl border border-teal-500/30">
-                <p className="text-teal-400 text-sm flex items-start gap-2">
-                    <Info size={16} className="flex-shrink-0 mt-0.5" />
-                    <span>
-                        <strong>Tactical recommendation:</strong> If privacy is a priority, Claude is currently the most
-                        privacy-friendly major option. But no cloud AI is truly private—your data still passes through their servers.
-                    </span>
-                </p>
-            </div>
-        </div>
-    );
-};
-
-// 5-Minute Privacy Lockdown
-const PrivacyLockdown = ({ onComplete }) => {
-    const [completed, setCompleted] = useState({});
-
-    const steps = [
-        {
-            id: 'chatgpt',
-            tool: 'ChatGPT',
-            action: 'Disable training on your conversations',
-            path: 'Settings → Data Controls → "Improve the model for everyone" → OFF',
-            time: '30 sec',
-            honestNote: 'This stops future conversations from training, but doesn\'t delete past data.',
-        },
-        {
-            id: 'gemini',
-            tool: 'Gemini',
-            action: 'Turn off Gemini Apps Activity',
-            path: 'Google Account → Data & Privacy → Gemini Apps Activity → OFF',
-            time: '1 min',
-            honestNote: 'You may also want to review what Google already has stored.',
-        },
-        {
-            id: 'history',
-            tool: 'All tools',
-            action: 'Delete sensitive conversations',
-            path: 'Go through each tool and delete any chats containing passwords, SSNs, financial data, or health info',
-            time: '2-5 min',
-            honestNote: 'Deletion requests are honored, but data may persist in backups for a period.',
-        },
-        {
-            id: 'review',
-            tool: 'Your phone',
-            action: 'Review AI app permissions',
-            path: 'Settings → Apps → Check permissions for each AI app (microphone, contacts, photos)',
-            time: '1 min',
-            honestNote: 'Ask yourself: does this app really need access to my contacts?',
-        },
-    ];
-
-    const toggleStep = (id) => {
-        setCompleted(prev => {
-            const newCompleted = { ...prev, [id]: !prev[id] };
-            const completedCount = Object.values(newCompleted).filter(Boolean).length;
-            if (completedCount === steps.length && onComplete) {
-                setTimeout(() => onComplete(), 500);
-            }
-            return newCompleted;
-        });
-    };
-
-    const completedCount = Object.values(completed).filter(Boolean).length;
-
-    return (
-        <div className="bg-gradient-to-br from-teal-900/20 to-teal-900/20 rounded-2xl p-6 border-2 border-teal-500/50 backdrop-blur-sm mb-8">
-            <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center">
-                        <ShieldCheck className="text-teal-400" size={20} />
-                    </div>
-                    <div>
-                        <h3 className="text-xl font-bold text-white">5-Minute Security Lockdown</h3>
-                        <p className="text-slate-400 text-sm">Quick wins to establish your perimeter</p>
-                    </div>
-                </div>
-                <div className="text-right">
-                    <span className="text-2xl font-bold text-teal-400">{completedCount}/{steps.length}</span>
-                    <span className="text-slate-500 text-xs block">secured</span>
-                </div>
-            </div>
-
-            <div className="space-y-3">
-                {steps.map((step) => (
-                    <div
-                        key={step.id}
-                        onClick={() => toggleStep(step.id)}
-                        className={`bg-slate-900/50 rounded-xl p-4 border cursor-pointer transition-all ${completed[step.id]
-                            ? 'border-green-500/50 bg-green-900/10'
-                            : 'border-slate-700 hover:border-slate-600'
-                            }`}
-                    >
-                        <div className="flex items-start gap-4">
-                            <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${completed[step.id]
-                                ? 'bg-green-500 text-white'
-                                : 'bg-slate-700 text-slate-400'
-                                }`}>
-                                {completed[step.id] ? <CheckCircle size={14} /> : <span className="text-xs">○</span>}
-                            </div>
-                            <div className="flex-1">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <span className="text-teal-400 text-xs font-bold">{step.tool}</span>
-                                        <h4 className={`font-medium ${completed[step.id] ? 'text-slate-500 line-through' : 'text-white'}`}>
-                                            {step.action}
-                                        </h4>
-                                    </div>
-                                    <span className="text-slate-500 text-xs">{step.time}</span>
-                                </div>
-                                <p className="text-slate-400 text-sm mt-1">{step.path}</p>
-                                {/* HONEST NOTE */}
-                                <p className="text-yellow-400/70 text-xs mt-2 italic flex items-start gap-1">
-                                    <Info size={10} className="flex-shrink-0 mt-0.5" />
-                                    {step.honestNote}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {completedCount === steps.length && (
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-4 p-4 bg-green-900/30 rounded-xl border border-green-500/40 text-center"
-                >
-                    <CheckCircle className="text-green-400 mx-auto mb-2" size={24} />
-                    <p className="text-green-400 font-bold">Privacy settings configured!</p>
-                    <p className="text-slate-400 text-sm">You've taken more privacy precautions than most AI users.</p>
-                </motion.div>
-            )}
-        </div>
-    );
-};
-
-// Red Flags Checklist - HONEST VERSION
-const RedFlagsChecklist = () => {
-    const flags = [
-        {
-            flag: 'Tool asks for SSN, credit card, or passwords',
-            why: 'Legitimate AI tools never need this sensitive data to function',
-            action: 'Never share. If asked, stop using that tool immediately.',
-        },
-        {
-            flag: 'No clear privacy policy or vague data handling',
-            why: 'Reputable companies are transparent (though policies can be dense)',
-            action: 'Avoid or research before sharing anything sensitive.',
-        },
-        {
-            flag: '"Free" tools with no clear business model',
-            why: 'Running AI is expensive. If you\'re not paying, your data might be the product.',
-            action: 'Check terms carefully. Free often means data collection.',
-        },
-        {
-            flag: 'Requests access to contacts, photos, or full device',
-            why: 'Most AI assistants don\'t need your photo library or contact list',
-            action: 'Grant only necessary permissions. When in doubt, deny.',
-        },
-        {
-            flag: 'Can\'t delete your data or conversation history',
-            why: 'GDPR and CCPA require deletion rights. Tools without this are red flags.',
-            action: 'Use tools that offer clear data deletion options.',
-        },
-    ];
-
-    return (
-        <div className="mb-8">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
-                <AlertTriangle className="text-yellow-400" size={24} />
-                Threat Indicators
-            </h2>
-            <p className="text-slate-400 mb-6">
-                If you encounter any of these, reassess before proceeding:
-            </p>
-
-            <div className="space-y-3">
-                {flags.map((item, i) => (
-                    <div key={i} className="bg-red-900/10 rounded-xl p-4 border border-red-500/30">
-                        <div className="flex items-start gap-3">
-                            <XCircle className="text-red-400 flex-shrink-0 mt-0.5" size={18} />
-                            <div>
-                                <h4 className="text-white font-medium">{item.flag}</h4>
-                                <p className="text-slate-400 text-sm mt-1">{item.why}</p>
-                                <p className="text-yellow-400 text-sm mt-1">
-                                    <strong>Action:</strong> {item.action}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-};
-
-// Compact Case Study
-const CaseStudyCard = ({ name, role, problem, result, timeframe, quote }) => (
-    <div className="bg-gradient-to-br from-slate-900/30 to-slate-800/20 rounded-xl p-5 border border-slate-500/40 backdrop-blur-sm mb-8">
-        <div className="flex items-center gap-2 mb-1">
-            <span className="text-teal-400 font-bold uppercase text-xs tracking-wider">Field Report</span>
-        </div>
-        <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-sm">
-                {name.charAt(0)}
-            </div>
-            <div>
-                <span className="text-white font-medium">{name}</span>
-                <span className="text-slate-500 text-sm ml-2">{role}</span>
-            </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-4 mb-4">
-            <div className="bg-red-900/20 rounded-lg p-3 border border-red-500/20">
-                <span className="text-red-400 text-xs font-bold uppercase">Before Deployment</span>
-                <p className="text-slate-300 text-sm mt-1">{problem}</p>
-            </div>
-            <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/20">
-                <span className="text-green-400 text-xs font-bold uppercase">After {timeframe}</span>
-                <p className="text-slate-300 text-sm mt-1">{result}</p>
-            </div>
-        </div>
-
-        <p className="text-slate-400 text-sm italic border-l-2 border-teal-500/50 pl-3">
-            "{quote}"
-        </p>
-    </div>
-);
-
-// ============================================
-// CHAPTER 3 MAIN COMPONENT
-// ============================================
+const AI_PLATFORMS = [
+    { name: 'ChatGPT', url: 'https://chat.openai.com/', color: 'from-[#10a37f] to-[#1a7f5a]', recommended: true },
+    { name: 'Claude', url: 'https://claude.ai/', color: 'from-[#d97706] to-[#b45309]' },
+    { name: 'Gemini', url: 'https://gemini.google.com/', color: 'from-[#4285f4] to-[#1a73e8]' },
+    { name: 'Copilot', url: 'https://copilot.microsoft.com/', color: 'from-[#00bcf2] to-[#0078d4]' },
+    { name: 'Meta AI', url: 'https://www.meta.ai/', color: 'from-[#0668E1] to-[#7B35F5]' },
+];
 
 const Chapter3 = () => {
-    const navigate = useNavigate();
-    const [blitzMode, setBlitzMode] = useState(false);
-    const [showMissionBriefing, setShowMissionBriefing] = useState(true);
-    const [unlockedCards, setUnlockedCards] = useState([]);
-    const [lockdownComplete, setLockdownComplete] = useState(false);
+    const [copied, setCopied] = useState(false);
+    const [showTroubleshooting, setShowTroubleshooting] = useState(false);
+    const [showTips, setShowTips] = useState(false);
 
-    const handleCardUnlock = (cardId) => {
-        if (!unlockedCards.includes(cardId)) {
-            setUnlockedCards(prev => [...prev, cardId]);
-        }
+    const goldPrompt = `Be my Important Dates Agent.
+
+I'm going to tell you all the dates I need to remember:
+- Birthdays
+- Anniversaries
+- Bill due dates
+- Appointments
+
+For each one, remind me 3 days before with a notification.
+For birthdays, also suggest a thoughtful gift idea.
+
+Let me dump all my important dates now.`;
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText(goldPrompt);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
     };
-
-    const scrollToAudit = () => {
-        document.getElementById('privacy-audit')?.scrollIntoView({ behavior: 'smooth' });
-    };
-
-    // Mission objectives for this operation
-    const objectives = [
-        {
-            id: 'obj_1',
-            text: 'Understand the 3-tier data model',
-            type: 'primary',
-            completed: true,
-        },
-        {
-            id: 'obj_2',
-            text: 'Complete the 5-minute security lockdown',
-            type: 'primary',
-            completed: lockdownComplete,
-        },
-        {
-            id: 'obj_3',
-            text: 'Know the threat indicators (red flags)',
-            type: 'primary',
-            completed: true,
-        },
-        {
-            id: 'obj_bonus_1',
-            text: 'Take the Privacy Assessment',
-            type: 'bonus',
-            xpReward: 25,
-            completed: false,
-        },
-        {
-            id: 'obj_bonus_2',
-            text: 'Unlock both Agent Cards',
-            type: 'bonus',
-            xpReward: 50,
-            completed: unlockedCards.length >= 2,
-        },
-    ];
 
     return (
-        <BlitzModeContext.Provider value={blitzMode}>
-            <WebbookLayout>
-                <Helmet>
-                    <title>Discovery 3: Privacy & Control | The Agentic AI Adventure</title>
-                    <meta name="description" content="Understand where your data goes with AI tools and how to protect it. Establish smart boundaries." />
-                </Helmet>
+        <WebbookLayout>
+            <Helmet>
+                <title>Chapter 3: Important Dates Agent | Agentic AI Home</title>
+                <meta name="description" content="Never forget a birthday, anniversary, or bill again. Create an AI that remembers for you." />
+            </Helmet>
 
-                {/* MISSION BRIEFING MODAL */}
-                <MissionBriefing
-                    isOpen={showMissionBriefing}
-                    onClose={() => setShowMissionBriefing(false)}
-                    operationNumber={3}
-                    operationName="SECURITY PERIMETER"
-                    operationSubtitle="Establish Your Boundaries"
-                    objectives={[
-                        'Understand the 3-tier data model (Local → Cloud → Training)',
-                        'Execute 5-minute security lockdown protocol',
-                        'Learn threat indicators to watch for',
-                    ]}
-                    rewards={{
-                        dp: 100,
-                        cards: 2,
-                        cardNames: ['Privacy Guard Companion', 'Data Auditor Companion']
-                    }}
-                    intel="You gave AI tools access to personal information. Before building further, you need to understand where that data goes—and establish clear boundaries. This is your security briefing."
-                />
+            <div className="min-h-screen bg-[#0a0a12]">
+                <div className="fixed inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-1/4 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-[120px] animate-pulse" />
+                </div>
 
-                <div className="min-h-screen bg-[#0f0f1a]">
-                    <div className="max-w-4xl mx-auto px-6 py-12">
+                <div className="relative max-w-3xl mx-auto px-6 py-10">
 
-                        {/* OBJECTIVES SIDEBAR */}
-                        <ObjectivesChecklist
-                            objectives={objectives}
-                            operationNumber={3}
-                        />
+                    {/* BADGE */}
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center mb-6">
+                        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/30">
+                            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                            <span className="text-slate-300 text-sm font-medium">Chapter 3 of 10 • Free</span>
+                        </div>
+                    </motion.div>
 
-                        {/* OPERATION HEADER */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mb-6"
-                        >
-                            <div className="flex items-center gap-3 mb-2">
-                                <span className="text-amber-400 font-mono text-sm">EXPEDITION 3</span>
-                                <span className="text-slate-600">•</span>
-                                <span className="text-slate-500 text-sm">Territory I: Base Camp</span>
-                            </div>
-                            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                                SECURITY PERIMETER
-                            </h1>
-                            <p className="text-xl text-slate-400 mb-4">
-                                How to get all the benefits without giving up control
-                            </p>
+                    {/* HEADLINE */}
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
+                            Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400"> Important Dates Agent</span>
+                        </h1>
+                        <p className="text-slate-400 text-lg">
+                            Never forget a birthday, anniversary, or bill again.
+                        </p>
+                    </motion.div>
 
-                            {/* Reading time + Blitz Mode toggle */}
-                            <div className="flex items-center justify-between flex-wrap gap-4">
-                                <div className="flex items-center gap-4 text-slate-500 text-sm">
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={14} />
-                                        <span>5 min read</span>
+                    {/* CAPTAIN */}
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
+                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                            <CaptainHero
+                                size="md"
+                                pose="default"
+                                message="This one's personal. Forgetting someone's birthday feels terrible. Missing a bill costs money. Let's make sure that never happens again. Dump all your important dates into your AI once, and it'll remind you forever."
+                            />
+                        </Suspense>
+                    </motion.div>
+
+                    {/* WHAT YOU'LL GET */}
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mb-8">
+                        <div className="bg-slate-800/50 rounded-2xl p-5 border border-slate-700/50">
+                            <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+                                <Calendar className="text-pink-400" size={18} />
+                                What this agent does:
+                            </h3>
+                            <div className="space-y-3">
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <Gift className="text-pink-400 mt-1" size={18} />
+                                    <div>
+                                        <span className="text-white font-medium">Birthdays</span>
+                                        <p className="text-slate-400 text-sm">Reminds you 3 days before + suggests a gift based on what you've told it about the person</p>
                                     </div>
-                                    <span>•</span>
-                                    <span className="text-teal-400">5 min to secure</span>
                                 </div>
-                                <BlitzModeToggle enabled={blitzMode} onToggle={() => setBlitzMode(!blitzMode)} />
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <Heart className="text-red-400 mt-1" size={18} />
+                                    <div>
+                                        <span className="text-white font-medium">Anniversaries</span>
+                                        <p className="text-slate-400 text-sm">Wedding, dating, work anniversary—whatever matters to you</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <CreditCard className="text-green-400 mt-1" size={18} />
+                                    <div>
+                                        <span className="text-white font-medium">Bills & Payments</span>
+                                        <p className="text-slate-400 text-sm">Rent, utilities, subscriptions—never pay a late fee again</p>
+                                    </div>
+                                </div>
                             </div>
-                        </motion.div>
+                        </div>
+                    </motion.div>
 
-                        {/* INTEL REPORT */}
-                        <IntelReport
-                            classification="SECURITY"
-                            stats={[
-                                { value: '3', label: 'data tiers' },
-                                { value: '5 min', label: 'to secure' },
-                                { value: '100%', label: 'your control' },
-                            ]}
-                            primaryCTA="Start Security Audit"
-                            onCTAClick={scrollToAudit}
-                        />
+                    {/* STEP 1 */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mb-6">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-sm">1</div>
+                            <h3 className="text-white font-bold">Open your AI</h3>
+                            <span className="text-slate-500 text-sm">(same one you've been using)</span>
+                        </div>
 
-                        {/* QUICK ACCESS TO ALL AI TOOLS */}
-                        <section className="mb-10">
-                            <AIToolLinks />
-                        </section>
+                        <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50 mb-3">
+                            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                                {AI_PLATFORMS.map((platform) => (
+                                    <a
+                                        key={platform.name}
+                                        href={platform.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`relative flex items-center justify-center px-3 py-3 rounded-xl bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:scale-105 transition-all`}
+                                    >
+                                        {platform.recommended && (
+                                            <span className="absolute -top-2 -right-1 bg-amber-400 text-black text-[10px] px-2 py-0.5 rounded-full font-bold">BEST</span>
+                                        )}
+                                        <span className="flex items-center gap-1">
+                                            {platform.name}
+                                            <ExternalLink size={10} className="opacity-70" />
+                                        </span>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.section>
 
-                        {/* CAPTAIN EFFICIENCY - OPENER */}
-                        {!blitzMode && (
-                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                                <CaptainHero
-                                    size="md"
-                                    pose="default"
-                                    message="Before we build anything else, we need to talk about protection. You just gave an AI access to your calendar, maybe your email, your tasks. That's powerful—but power requires boundaries. This isn't fear-mongering; it's common sense. I won't let you build a system that puts your family's data at risk."
-                                />
-                            </Suspense>
-                        )}
+                    {/* STEP 2 */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-6">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-sm">2</div>
+                            <h3 className="text-white font-bold">Copy this prompt and paste it</h3>
+                        </div>
 
-                        {/* Professional Mode Notice */}
-                        {blitzMode && (
+                        <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-5 border border-pink-500/30">
+                            <div className="bg-slate-950 rounded-xl p-4 mb-4 border border-slate-800 font-mono">
+                                <pre className="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">{goldPrompt}</pre>
+                            </div>
+
+                            <button
+                                onClick={handleCopy}
+                                className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied
+                                        ? 'bg-green-500 text-white'
+                                        : 'bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white'
+                                    }`}
+                            >
+                                {copied ? (
+                                    <><CheckCircle size={22} /> Copied! Now paste it in your AI</>
+                                ) : (
+                                    <><Copy size={22} /> Copy This Prompt</>
+                                )}
+                            </button>
+                        </div>
+                    </motion.section>
+
+                    {/* STEP 3 */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-6">
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-sm">3</div>
+                            <h3 className="text-white font-bold">Dump ALL your important dates</h3>
+                        </div>
+
+                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700/50">
+                            <p className="text-slate-300 text-sm mb-4">Start telling it everything you need to remember:</p>
+                            <div className="bg-slate-900/50 rounded-lg p-4 text-sm text-slate-300 font-mono mb-4">
+                                <div className="mb-2">"Mom's birthday is March 15"</div>
+                                <div className="mb-2">"Wedding anniversary is June 22"</div>
+                                <div className="mb-2">"Rent is due on the 1st of every month"</div>
+                                <div className="mb-2">"Car insurance renews September 10"</div>
+                                <div>"Best friend Jake's birthday is November 3 - he loves golf"</div>
+                            </div>
+                            <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
+                                <p className="text-green-400 text-sm flex items-start gap-2">
+                                    <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
+                                    <span>It'll remember everything and remind you 3 days before each date.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* TIPS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="mb-6">
+                        <button
+                            onClick={() => setShowTips(!showTips)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-slate-800/30 rounded-xl border border-slate-700/50 text-left hover:bg-slate-800/50 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-slate-300 text-sm font-medium">
+                                <MessageSquare size={16} className="text-pink-400" />
+                                Make it even better
+                            </span>
+                            <ChevronDown size={16} className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showTips && (
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
-                                className="bg-teal-900/30 rounded-xl p-4 border border-teal-500/40 backdrop-blur-sm mb-8"
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-3"
                             >
-                                <div className="flex items-center gap-2 text-teal-400">
-                                    <Zap size={18} />
-                                    <span className="font-bold">Professional Mode Active</span>
+                                <p className="text-slate-400 text-sm">Say these things to get better results:</p>
+                                <div className="space-y-2">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-pink-400 text-sm font-mono">"For my wife's birthday, she loves spa stuff and hates jewelry"</p>
+                                        <p className="text-slate-500 text-xs mt-1">→ Gift suggestions will be personalized</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-pink-400 text-sm font-mono">"Remind me a week before rent, not 3 days"</p>
+                                        <p className="text-slate-500 text-xs mt-1">→ Customize timing for each date</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-pink-400 text-sm font-mono">"My budget for gifts is usually $50-100"</p>
+                                        <p className="text-slate-500 text-xs mt-1">→ Suggestions will match your budget</p>
+                                    </div>
                                 </div>
-                                <p className="text-slate-400 text-sm mt-1">
-                                    Showing only essential security actions. Toggle off for full content.
-                                </p>
                             </motion.div>
                         )}
+                    </motion.section>
 
-                        {/* ★ PROVOCATIVE OPENING HOOK ★ */}
-                        {!blitzMode && <ProvocativeHook />}
+                    {/* TROUBLESHOOTING */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="mb-8">
+                        <button
+                            onClick={() => setShowTroubleshooting(!showTroubleshooting)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-slate-800/30 rounded-xl border border-slate-700/50 text-left hover:bg-slate-800/50 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-slate-300 text-sm font-medium">
+                                <HelpCircle size={16} className="text-slate-400" />
+                                Not working? Common questions
+                            </span>
+                            <ChevronDown size={16} className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} />
+                        </button>
 
-                        {/* PRIVACY AUDIT TOOL */}
-                        <section id="privacy-audit" className="mb-10">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-teal-500/50" />
-                                <span className="text-teal-400 font-bold uppercase text-sm tracking-wider">Security Audit</span>
-                                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-teal-500/50" />
-                            </div>
-
-                            <Suspense fallback={
-                                <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                    Loading audit tool...
+                        {showTroubleshooting && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <div>
+                                    <p className="text-white font-bold text-sm mb-1">"Will it actually remind me on the date?"</p>
+                                    <p className="text-slate-400 text-sm">Yes, ChatGPT can send scheduled notifications. Make sure notifications are enabled on your phone.</p>
                                 </div>
-                            }>
-                                <PrivacyAssessment />
-                            </Suspense>
-                        </section>
-
-                        {/* 3-TIER DATA MODEL */}
-                        {!blitzMode && <DataTierVisual />}
-
-                        {/* TOOL PRIVACY COMPARISON */}
-                        {!blitzMode && <ToolPrivacyTable />}
-
-                        {/* CARD UNLOCK 1 - Data Auditor */}
-                        <AgentCardUnlock
-                            card={dataAuditorCard}
-                            onUnlock={handleCardUnlock}
-                            onComplete={() => console.log('Data Auditor added to deck')}
-                            autoReveal={false}
-                        />
-
-                        {/* 5-MINUTE PRIVACY LOCKDOWN */}
-                        <section className="mb-10">
-                            <PrivacyLockdown onComplete={() => setLockdownComplete(true)} />
-                        </section>
-
-                        {/* DEEP DIVE: How Data Actually Flows */}
-                        <DeepDive title="How your data actually flows (technical)">
-                            <div className="space-y-4 text-sm">
-                                <p className="text-slate-300">
-                                    When you send a message to an AI tool, here's what typically happens:
-                                </p>
-                                <div className="space-y-3">
-                                    {[
-                                        { step: '1', title: 'Encryption in transit', desc: 'Your message is encrypted (HTTPS/TLS) between your device and their servers. This is standard.' },
-                                        { step: '2', title: 'Processing', desc: 'The AI model processes your request on their servers. Your text exists in memory during processing.' },
-                                        { step: '3', title: 'Response generation', desc: 'The model generates a response and sends it back (also encrypted).' },
-                                        { step: '4', title: 'Storage decision', desc: 'Depending on your settings, the conversation may be stored for history, used for training, or discarded.' },
-                                    ].map((item) => (
-                                        <div key={item.step} className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
-                                            <span className="bg-purple-500/20 text-purple-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
-                                                {item.step}
-                                            </span>
-                                            <div>
-                                                <span className="text-white font-medium">{item.title}</span>
-                                                <p className="text-slate-400 text-xs mt-1">{item.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                <div>
+                                    <p className="text-white font-bold text-sm mb-1">"I have too many dates to type"</p>
+                                    <p className="text-slate-400 text-sm">Say: <span className="text-pink-400">"Let me give you dates in a list format"</span> - then paste them all at once.</p>
                                 </div>
-                                <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-500/30">
-                                    <p className="text-yellow-400 text-xs">
-                                        <strong>Honest note:</strong> Even with "history off," your data passes through their servers.
-                                        The only way to avoid this is to use locally-run AI models, which have capability limitations.
-                                        It's a tradeoff between privacy and functionality.
+                                <div>
+                                    <p className="text-white font-bold text-sm mb-1">"What about recurring bills?"</p>
+                                    <p className="text-slate-400 text-sm">Say: <span className="text-pink-400">"Remind me on the 1st of EVERY month for rent"</span> - it understands recurring dates.</p>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* AGENT COUNT */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-teal-900/30 via-pink-900/20 to-orange-900/30 rounded-xl p-4 border border-teal-500/30">
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 3</p>
+                            <p className="text-slate-400 text-sm">Morning Agent + Meal Planning Agent + Important Dates Agent</p>
+                        </div>
+                    </motion.section>
+
+                    {/* FREE CHAPTERS COMPLETE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-xl p-5 border border-green-500/30">
+                            <div className="flex items-start gap-3">
+                                <CheckCircle className="text-green-400 flex-shrink-0 mt-0.5" size={24} />
+                                <div>
+                                    <p className="text-green-400 font-bold mb-1">You've completed the free chapters!</p>
+                                    <p className="text-slate-300 text-sm">
+                                        You now have 3 agents working for you: morning briefings, meal planning, and important dates.
+                                        Chapter 4+ covers email, money, fitness, work tasks, and building custom agents.
                                     </p>
                                 </div>
                             </div>
-                        </DeepDive>
-
-                        {/* AGENT CONSTITUTION BUILDER */}
-                        {!blitzMode && (
-                            <section className="mb-10">
-                                <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-                                    <FileText className="text-teal-400" size={24} />
-                                    Your Agent Constitution
-                                </h2>
-                                <p className="text-slate-400 mb-6">
-                                    Define the boundaries your agents must respect. This becomes your permission framework.
-                                </p>
-
-                                <Suspense fallback={
-                                    <div className="h-64 flex items-center justify-center text-slate-500 bg-slate-800/50 rounded-xl animate-pulse">
-                                        Loading constitution builder...
-                                    </div>
-                                }>
-                                    <AgentConstitutionBuilder />
-                                </Suspense>
-                            </section>
-                        )}
-
-                        {/* RED FLAGS CHECKLIST */}
-                        {!blitzMode && <RedFlagsChecklist />}
-
-                        {/* CARD UNLOCK 2 - Privacy Guard */}
-                        <AgentCardUnlock
-                            card={privacyGuardCard}
-                            onUnlock={handleCardUnlock}
-                            onComplete={() => console.log('Privacy Guard added to deck')}
-                            autoReveal={false}
-                        />
-
-                        {/* CASE STUDY */}
-                        {!blitzMode && (
-                            <CaseStudyCard
-                                name="Jennifer"
-                                role="Healthcare administrator"
-                                problem="Worried about HIPAA compliance. Avoided AI tools entirely despite needing help with admin work."
-                                result="Uses Claude with strict boundaries. 40% faster on admin work, zero compliance issues."
-                                timeframe="1 month"
-                                quote="I realized privacy isn't about avoiding AI—it's about using it intentionally. Now I get the benefits without the risk."
-                            />
-                        )}
-
-                        {/* SHAREABLE QUOTE */}
-                        <ShareableQuote
-                            quote="Privacy isn't about hiding. It's about choosing what to share—and with whom."
-                            operation={3}
-                        />
-
-                        {/* FUTURE PROOF BANNER */}
-                        <FutureProofBanner currentOperation={3} />
-
-                        {/* CAPTAIN EFFICIENCY - CLOSER */}
-                        {!blitzMode && (
-                            <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
-                                <CaptainHero
-                                    size="md"
-                                    pose="celebrating"
-                                    message="You now have a privacy-first foundation. You know exactly what your tools collect, you've locked down the settings that matter, and you understand the tradeoffs. Every system we build from here respects YOUR boundaries. You're not just protected—you're informed. Now let's put this foundation to work. 🛡️"
-                                />
-                            </Suspense>
-                        )}
-
-                        {/* FAQ SECTION */}
-                        <FAQSection
-                            title="Privacy & Security Questions"
-                            faqs={chapter3FAQs}
-                            className="mb-10"
-                        />
-
-                        {/* PART 2 PREVIEW - TRANSITION HOOK */}
-                        <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/20 rounded-2xl p-6 border border-green-500/40 mb-8">
-                            <div className="text-center">
-                                <div className="inline-flex items-center gap-2 bg-green-500/20 px-4 py-2 rounded-full border border-green-500/30 mb-4">
-                                    <span className="text-green-400 font-bold text-sm">🚀 PART 2 AWAITS</span>
-                                </div>
-                                <h3 className="text-xl font-bold text-white mb-2">Foundation Secured. Now Let's Automate Your Life.</h3>
-                                <p className="text-slate-300 text-sm mb-4">
-                                    You've built your privacy fortress. In Part 2, we deploy agents that handle the <span className="text-green-400 font-medium">daily chaos</span>: meals, groceries, and household management.
-                                </p>
-                                <div className="flex flex-wrap justify-center gap-2 text-xs">
-                                    <span className="bg-slate-800/50 text-green-400 px-3 py-1 rounded-full">🍳 Kitchen Sync</span>
-                                    <span className="bg-slate-800/50 text-green-400 px-3 py-1 rounded-full">🛒 Grocery Genius</span>
-                                    <span className="bg-slate-800/50 text-green-400 px-3 py-1 rounded-full">🏠 Household HQ</span>
-                                </div>
-                            </div>
                         </div>
+                    </motion.section>
 
-                        {/* MISSION COMPLETE */}
-                        <MissionComplete
-                            operationId="exp_3"
-                            operationName="SECURITY PERIMETER"
-                            operationNumber={3}
-                            nextOperationPath="/part2/chapter1"
-                            nextOperationName="MORNING ROUTINE"
-                            rewards={{
-                                dp: 100,
-                                cards: ['Privacy Guard Companion', 'Data Auditor Companion'],
-                                achievements: ['perimeter_secured']
-                            }}
-                            stats={{
-                                objectivesCompleted: "3/3",
-                                settingsSecured: "4",
-                            }}
-                        />
+                    {/* CTA - PAYWALL CHAPTER */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }} className="mb-10">
+                        <Link
+                            to="/part2/chapter4"
+                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-pink-500/20"
+                        >
+                            Continue to Chapter 4
+                            <Lock size={20} className="opacity-70" />
+                        </Link>
+                        <p className="text-center text-slate-500 text-sm mt-3">
+                            Next: Email Triage Agent (Premium)
+                        </p>
+                    </motion.section>
 
-                        {/* Bottom Navigation */}
-                        <ChapterNavigation
-                            previousChapter="/part1/chapter2"
-                            partNumber={1}
-                            chapterNumber={3}
-                        />
-
-                    </div>
                 </div>
-            </WebbookLayout>
-        </BlitzModeContext.Provider>
+            </div>
+        </WebbookLayout>
     );
 };
 

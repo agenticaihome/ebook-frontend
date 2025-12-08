@@ -24,7 +24,7 @@ const ACHIEVEMENTS = [
     { id: 'first_quest', name: 'First Steps', description: 'Complete your first chapter', icon: '🎯', condition: (c) => c.length >= 1 },
     { id: 'five_quests', name: 'Adventurer', description: 'Complete 5 chapters', icon: '⚔️', condition: (c) => c.length >= 5 },
     { id: 'ten_quests', name: 'Veteran', description: 'Complete 10 chapters', icon: '🛡️', condition: (c) => c.length >= 10 },
-    { id: 'all_quests', name: 'Grand Master', description: 'Complete all 16 chapters', icon: '👑', condition: (c) => c.length >= 16 },
+    { id: 'all_quests', name: 'Grand Master', description: 'Complete all 10 chapters', icon: '👑', condition: (c) => c.length >= 10 },
     { id: 'first_game', name: 'Challenger', description: 'Play your first game', icon: '🎮', condition: (_, g) => g.length >= 1 },
     { id: 'all_games', name: 'Arena Champion', description: 'Play all games', icon: '🏆', condition: (_, g) => g.length >= 5 },
     { id: 'streak_3', name: 'On Fire', description: '3-day streak', icon: '🔥', condition: (_, __, s) => s >= 3 },
