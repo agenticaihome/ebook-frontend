@@ -102,9 +102,10 @@ const AnimatedRoutes = () => {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><SplashPage /></PageTransition>} />
-            <Route path="/start" element={<Navigate to="/part1/chapter1" replace />} />
+            <Route path="/start" element={<PageTransition><OnboardingPage /></PageTransition>} />
             <Route path="/welcome" element={<PageTransition><SalesPage /></PageTransition>} />
             <Route path="/pricing" element={<PageTransition><SalesPage /></PageTransition>} />
+            <Route path="/unlock" element={<PageTransition><SalesPage /></PageTransition>} />
 
             {/* Part Redirects - redirect to first chapter of each part */}
             <Route path="/part1" element={<Navigate to="/part1/chapter1" replace />} />
