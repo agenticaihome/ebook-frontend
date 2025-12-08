@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import {
     CheckCircle, Lock, ArrowRight, Shield, Clock, Zap,
     Mail, DollarSign, Dumbbell, Briefcase, Settings, Users, Crown,
-    ChevronDown, Sparkles
+    ChevronDown, Sparkles, Flame, Star
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 
@@ -68,6 +68,14 @@ const PrePurchaseBridge = () => {
                         <p className="text-slate-400 text-lg">
                             That's more than 90% of people who "use AI."
                         </p>
+                    </motion.div>
+
+                    {/* URGENCY BANNER */}
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="mb-6">
+                        <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/30">
+                            <Flame className="text-amber-400" size={18} />
+                            <span className="text-amber-400 font-bold text-sm">🔥 Launch pricing ends Dec 31 — 50% off</span>
+                        </div>
                     </motion.div>
 
                     {/* CAPTAIN */}
@@ -150,6 +158,35 @@ const PrePurchaseBridge = () => {
                         </div>
                     </motion.section>
 
+                    {/* SOCIAL PROOF + TESTIMONIAL */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="mb-8">
+                        {/* Live counter */}
+                        <div className="flex items-center justify-center gap-3 mb-4">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span className="text-green-400 text-sm font-medium"><span className="font-bold">47 people</span> unlocked this week</span>
+                        </div>
+
+                        {/* Testimonial */}
+                        <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                            <div className="flex items-center gap-1 mb-2">
+                                {[...Array(5)].map((_, i) => <Star key={i} size={14} className="text-yellow-400 fill-yellow-400" />)}
+                            </div>
+                            <p className="text-slate-300 text-sm italic mb-3">
+                                "I got inbox zero in 2 days. The email agent alone was worth it."
+                            </p>
+                            <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-xs font-bold">M</div>
+                                <div>
+                                    <div className="text-white text-sm font-medium">Marcus L.</div>
+                                    <div className="text-slate-500 text-xs">Software Engineer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.section>
+
                     {/* PRICING */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
                         <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 text-center">
@@ -181,14 +218,31 @@ const PrePurchaseBridge = () => {
                             See everything that's included
                         </Link>
 
-                        <div className="text-center pt-4 border-t border-slate-700/50">
-                            <p className="text-slate-500 text-xs mb-2">Or pay with crypto for 50% off ($19.99)</p>
-                            <Link
-                                to="/ergo-payment"
-                                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 text-sm font-medium"
-                            >
-                                Pay with Ergo (ERG) →
-                            </Link>
+                        {/* CRYPTO OPTION - Educational & Inviting */}
+                        <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-2xl p-5 border border-green-500/30 text-center">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold mb-3">
+                                💰 SAVE 50%
+                            </div>
+                            <h3 className="text-white font-bold text-lg mb-2">
+                                Want to pay just $19.99?
+                            </h3>
+                            <p className="text-slate-400 text-sm mb-4">
+                                Learn how to pay with cryptocurrency today. It's easier than you think — and you'll discover why crypto matters in the AI age.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                <Link
+                                    to="/why-ergo"
+                                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-sm font-medium transition-colors"
+                                >
+                                    Why Crypto? →
+                                </Link>
+                                <Link
+                                    to="/ergo-payment"
+                                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-green-600 hover:bg-green-500 text-white text-sm font-bold transition-colors"
+                                >
+                                    Pay with Ergo ($19.99) →
+                                </Link>
+                            </div>
                         </div>
                     </motion.section>
 
