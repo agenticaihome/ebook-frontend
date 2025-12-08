@@ -93,6 +93,15 @@ const PrePurchaseBridge = () => {
                                 <p className="text-xs text-slate-400">Fitness Sorted</p>
                             </div>
                         </div>
+
+                        {/* Early CTA for Eager Users */}
+                        <Link
+                            to="/payment-guide"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold transition-all shadow-lg shadow-teal-500/20"
+                        >
+                            Ready to unlock all 10? →
+                        </Link>
+                        <p className="text-slate-500 text-xs mt-2">or scroll to learn more ↓</p>
                     </motion.section>
 
                     {/* CELEBRATION HEADER */}
@@ -380,10 +389,10 @@ const PrePurchaseBridge = () => {
                         {/* CRYPTO OPTION - Double Future-Proofing */}
                         <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-5 border-2 border-green-500/40 text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/20 text-green-400 text-sm font-bold mb-3">
-                                🚀 BEST VALUE — Learn 2 skills for $19.99
+                                🎓 SMART SAVER'S CHOICE
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">
-                                Pay with Crypto = 650x ROI
+                                Save 50% + Learn a Future Skill
                             </h3>
                             <div className="bg-black/30 rounded-xl p-4 mb-4 text-left">
                                 <div className="space-y-2 text-sm">
@@ -439,6 +448,40 @@ const PrePurchaseBridge = () => {
                         </div>
                     </motion.section>
 
+                    {/* EMAIL CAPTURE FOR HESITATERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="mt-8 mb-10">
+                        <div className="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 text-center">
+                            <h3 className="text-white font-bold mb-2">Not ready yet?</h3>
+                            <p className="text-slate-400 text-sm mb-4">
+                                Get a reminder when you have more time. We'll send you one email—that's it.
+                            </p>
+                            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => { e.preventDefault(); alert('Email captured! (Demo)'); }}>
+                                <input
+                                    type="email"
+                                    placeholder="your@email.com"
+                                    className="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                    required
+                                />
+                                <button
+                                    type="submit"
+                                    className="px-6 py-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-medium transition-colors"
+                                >
+                                    Remind Me Later
+                                </button>
+                            </form>
+                        </div>
+                    </motion.section>
+
+                </div>
+
+                {/* MOBILE STICKY CTA */}
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#0a0a12] via-[#0a0a12] to-transparent md:hidden z-50">
+                    <Link
+                        to="/payment-guide"
+                        className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-purple-500/30"
+                    >
+                        Unlock All 10 Chapters →
+                    </Link>
                 </div>
             </div >
         </WebbookLayout >
