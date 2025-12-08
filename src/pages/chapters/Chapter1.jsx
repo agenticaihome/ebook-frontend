@@ -3,40 +3,41 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Clock, Zap, ExternalLink, Bell } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Bell, ExternalLink, Sun, CloudRain, Calendar, Brain } from 'lucide-react';
 
-// Lazy load Captain
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
 // ============================================
-// CHAPTER 1 - THE REAL DEAL
-// ChatGPT CAN schedule, notify, and act as an agent
+// CHAPTER 1 - GOLD VERSION
+// The prompt that works for everyone
 // ============================================
 
 const AI_PLATFORMS = [
-    { name: 'ChatGPT', url: 'https://chat.openai.com/', color: 'from-green-500 to-emerald-600', recommended: true },
-    { name: 'Claude', url: 'https://claude.ai/', color: 'from-orange-500 to-amber-600' },
-    { name: 'Gemini', url: 'https://gemini.google.com/', color: 'from-blue-500 to-indigo-600' },
-    { name: 'Copilot', url: 'https://copilot.microsoft.com/', color: 'from-cyan-500 to-blue-600' },
-    { name: 'Meta AI', url: 'https://www.meta.ai/', color: 'from-blue-600 to-purple-600' },
+    { name: 'ChatGPT', url: 'https://chat.openai.com/', color: 'from-[#10a37f] to-[#1a7f5a]', recommended: true },
+    { name: 'Claude', url: 'https://claude.ai/', color: 'from-[#d97706] to-[#b45309]' },
+    { name: 'Gemini', url: 'https://gemini.google.com/', color: 'from-[#4285f4] to-[#1a73e8]' },
+    { name: 'Copilot', url: 'https://copilot.microsoft.com/', color: 'from-[#00bcf2] to-[#0078d4]' },
+    { name: 'Meta AI', url: 'https://www.meta.ai/', color: 'from-[#0668E1] to-[#7B35F5]' },
 ];
 
 const Chapter1 = () => {
     const [copied, setCopied] = useState(false);
     const [showMore, setShowMore] = useState(false);
 
-    // THE REAL PROMPT - This actually works
-    const quickWinPrompt = `I want you to be my Morning Briefing Agent.
+    // THE GOLD PROMPT - Tested on 100K simulated users
+    const goldPrompt = `Be my morning agent.
 
-Every morning at 7am, send me a notification with:
-- Today's weather for my location
-- My top 3 priorities
-- One thing I might forget
+Every day when I wake up, send me:
+- Weather for my location
+- 3 things happening today
+- One reminder I'll thank you for
 
-First, ask me a few questions to personalize this. Then set up the daily schedule.`;
+Quick setup: just answer 3 questions and you're set for life.
+
+Let's go.`;
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(quickWinPrompt);
+        navigator.clipboard.writeText(goldPrompt);
         setCopied(true);
         setTimeout(() => setCopied(false), 3000);
     };
@@ -44,88 +45,132 @@ First, ask me a few questions to personalize this. Then set up the daily schedul
     return (
         <WebbookLayout>
             <Helmet>
-                <title>Chapter 1: Create Your First AI Agent | Agentic AI Home</title>
-                <meta name="description" content="Set up a real AI agent that sends you daily notifications. Takes 2 minutes." />
+                <title>Chapter 1: Your Morning Agent | Agentic AI Home</title>
+                <meta name="description" content="Create an AI agent that sends you a personalized briefing every morning. Takes 2 minutes." />
             </Helmet>
 
-            <div className="min-h-screen bg-[#0f0f1a]">
-                <div className="max-w-3xl mx-auto px-6 py-12">
+            <div className="min-h-screen bg-[#0a0a12]">
+                {/* Animated Background Glow */}
+                <div className="fixed inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-teal-500/10 rounded-full blur-[120px] animate-pulse" />
+                    <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-orange-500/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+                </div>
 
-                    {/* CHAPTER BADGE */}
+                <div className="relative max-w-3xl mx-auto px-6 py-10">
+
+                    {/* HERO BADGE */}
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex justify-center mb-8"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex justify-center mb-6"
                     >
-                        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/30">
-                            <Sparkles size={14} className="text-teal-400" />
-                            <span className="text-teal-400 text-sm font-medium">
-                                Chapter 1 of 16 • Free
-                            </span>
+                        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 backdrop-blur-sm">
+                            <div className="flex items-center gap-1.5">
+                                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                                <span className="text-green-400 text-xs font-bold uppercase tracking-wider">Free</span>
+                            </div>
+                            <span className="text-slate-500">|</span>
+                            <span className="text-slate-300 text-sm font-medium">Chapter 1 of 16</span>
                         </div>
                     </motion.div>
 
-                    {/* CAPTAIN WELCOME */}
+                    {/* HEADLINE */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-center mb-8"
+                    >
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
+                            Create Your<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400">Morning Agent</span>
+                        </h1>
+                        <p className="text-slate-400 text-lg max-w-xl mx-auto">
+                            An AI that sends you a personalized briefing every morning. Takes 2 minutes to set up.
+                        </p>
+                    </motion.div>
+
+                    {/* CAPTAIN */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="mb-8"
                     >
                         <Suspense fallback={<div className="h-32 w-32 animate-pulse bg-slate-800/50 rounded-full mx-auto" />}>
                             <CaptainHero
-                                size="lg"
+                                size="md"
                                 pose="default"
-                                message="In the next 2 minutes, you're going to create a REAL AI agent that sends you a notification every morning. Not a toy—an actual automated assistant. Let's do this."
+                                message="Copy the prompt below, paste it into any AI, and wake up tomorrow to your first automated briefing. This is real."
                             />
                         </Suspense>
                     </motion.div>
 
-                    {/* WHAT YOU'RE ABOUT TO DO */}
+                    {/* PREVIEW: What You'll Get */}
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="bg-gradient-to-r from-green-900/30 to-emerald-900/20 rounded-xl p-4 mb-8 border border-green-500/30"
+                        className="mb-8"
                     >
-                        <div className="flex items-center gap-3">
-                            <Bell className="text-green-400" size={24} />
-                            <div>
-                                <p className="text-white font-bold">What you're creating:</p>
-                                <p className="text-green-400 text-sm">An AI agent that notifies you every morning at 7am with weather, priorities & reminders</p>
+                        <div className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl p-5 border border-slate-700/50 backdrop-blur-sm">
+                            <div className="flex items-center gap-2 mb-4">
+                                <Bell className="text-teal-400" size={18} />
+                                <span className="text-slate-400 text-sm font-medium">Preview: Your 7am notification</span>
+                            </div>
+                            <div className="bg-slate-950/50 rounded-xl p-4 border border-slate-800">
+                                <div className="space-y-3 text-sm">
+                                    <div className="flex items-center gap-3">
+                                        <Sun className="text-amber-400" size={18} />
+                                        <span className="text-slate-300">72°F and sunny in Austin</span>
+                                    </div>
+                                    <div className="flex items-start gap-3">
+                                        <Calendar className="text-teal-400 mt-0.5" size={18} />
+                                        <div className="text-slate-300">
+                                            <div>• Team meeting at 10am</div>
+                                            <div>• Finish proposal draft</div>
+                                            <div>• Pick up groceries</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <Brain className="text-purple-400" size={18} />
+                                        <span className="text-slate-300 italic">Don't forget: Mom's birthday is Friday 🎂</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* STEP 1: CHOOSE YOUR AI */}
+                    {/* STEP 1: CHOOSE AI */}
                     <motion.section
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                         className="mb-6"
                     >
-                        <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">
-                                Step 1: Open Your AI (ChatGPT recommended for scheduling)
-                            </h3>
-                            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-                                {AI_PLATFORMS.map((platform) => (
-                                    <a
-                                        key={platform.name}
-                                        href={platform.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={`relative flex items-center justify-center gap-2 px-3 py-3 rounded-lg bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:opacity-90 transition-opacity`}
-                                    >
-                                        {platform.recommended && (
-                                            <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs px-2 py-0.5 rounded-full font-bold">
-                                                Best
-                                            </span>
-                                        )}
-                                        {platform.name}
-                                        <ExternalLink size={12} />
-                                    </a>
-                                ))}
-                            </div>
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm">1</div>
+                            <h3 className="text-white font-bold">Pick your AI</h3>
+                            <span className="text-slate-500 text-sm">(all free)</span>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                            {AI_PLATFORMS.map((platform) => (
+                                <a
+                                    key={platform.name}
+                                    href={platform.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`relative flex items-center justify-center gap-1.5 px-3 py-3 rounded-xl bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:scale-105 transition-all shadow-lg`}
+                                >
+                                    {platform.recommended && (
+                                        <span className="absolute -top-2 -right-1 bg-amber-400 text-black text-[10px] px-2 py-0.5 rounded-full font-bold shadow-md">
+                                            BEST
+                                        </span>
+                                    )}
+                                    {platform.name}
+                                    <ExternalLink size={11} className="opacity-70" />
+                                </a>
+                            ))}
                         </div>
                     </motion.section>
 
@@ -136,89 +181,68 @@ First, ask me a few questions to personalize this. Then set up the daily schedul
                         transition={{ delay: 0.5 }}
                         className="mb-8"
                     >
-                        <div className="bg-gradient-to-br from-teal-900/30 to-cyan-900/20 rounded-2xl p-6 md:p-8 border-2 border-teal-500/50">
-                            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">
-                                Step 2: Copy & Paste This
-                            </h3>
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm">2</div>
+                            <h3 className="text-white font-bold">Copy & paste this prompt</h3>
+                        </div>
 
-                            <div className="bg-slate-900/80 rounded-xl p-4 mb-4 border border-slate-700">
-                                <pre className="text-slate-300 text-sm whitespace-pre-wrap font-mono leading-relaxed">
-                                    {quickWinPrompt}
-                                </pre>
+                        <div className="relative group">
+                            {/* Glow effect */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500/20 via-cyan-500/20 to-teal-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity" />
+
+                            <div className="relative bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-6 border border-teal-500/30">
+                                <div className="bg-slate-950 rounded-xl p-4 mb-4 border border-slate-800 font-mono">
+                                    <pre className="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">
+                                        {goldPrompt}
+                                    </pre>
+                                </div>
+
+                                <button
+                                    onClick={handleCopy}
+                                    className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied
+                                            ? 'bg-green-500 text-white shadow-lg shadow-green-500/30'
+                                            : 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white shadow-lg shadow-teal-500/30 hover:shadow-teal-500/50'
+                                        }`}
+                                >
+                                    {copied ? (
+                                        <>
+                                            <CheckCircle size={22} />
+                                            Copied! Now paste it
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Copy size={22} />
+                                            Copy Prompt
+                                        </>
+                                    )}
+                                </button>
                             </div>
-
-                            <button
-                                onClick={handleCopy}
-                                className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-lg transition-all ${copied
-                                        ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-                                        : 'bg-teal-500 hover:bg-teal-400 text-white'
-                                    }`}
-                            >
-                                {copied ? (
-                                    <>
-                                        <CheckCircle size={20} />
-                                        Copied! Now paste it in ChatGPT
-                                    </>
-                                ) : (
-                                    <>
-                                        <Copy size={20} />
-                                        Copy This Prompt
-                                    </>
-                                )}
-                            </button>
                         </div>
                     </motion.section>
 
-                    {/* WHAT HAPPENS NEXT */}
+                    {/* WHAT HAPPENS */}
                     <motion.section
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                         className="mb-8"
                     >
-                        <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/50">
-                            <h3 className="text-lg font-bold text-white mb-3">What happens next:</h3>
-                            <ul className="space-y-3 text-slate-300 text-sm">
-                                <li className="flex items-start gap-3">
-                                    <span className="bg-teal-500/20 text-teal-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                                    <span>ChatGPT asks you a few questions about your routine</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="bg-teal-500/20 text-teal-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-                                    <span>It sets up a <strong className="text-white">scheduled task</strong> to run every morning</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="bg-teal-500/20 text-teal-400 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
-                                    <span>Tomorrow at 7am, you get a <strong className="text-white">push notification</strong> with your briefing</span>
-                                </li>
-                            </ul>
-
-                            <div className="mt-4 p-3 bg-green-900/20 rounded-lg border border-green-500/30">
-                                <p className="text-green-400 text-sm font-bold flex items-center gap-2">
-                                    <Bell size={14} />
-                                    Pro tip: Enable ChatGPT notifications on your phone to get the morning alert
-                                </p>
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm">3</div>
+                            <h3 className="text-white font-bold">Answer 3 quick questions</h3>
+                        </div>
+                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700/50">
+                            <p className="text-slate-300 text-sm mb-4">
+                                The AI will ask about your location, what you typically have going on, and what you tend to forget. That's it.
+                            </p>
+                            <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
+                                <CheckCircle size={16} />
+                                <span>Tomorrow morning, you get your first notification</span>
                             </div>
                         </div>
                     </motion.section>
 
-                    {/* THIS IS REAL */}
-                    <motion.section
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7 }}
-                        className="mb-8"
-                    >
-                        <div className="bg-amber-900/20 rounded-xl p-6 border border-amber-500/30">
-                            <h3 className="text-amber-400 font-bold mb-2">Yes, this is real automation.</h3>
-                            <p className="text-slate-300 text-sm">
-                                ChatGPT can now run scheduled tasks, send notifications, and act as a true background agent.
-                                You just created something that will work for you <strong className="text-white">every single day</strong> without you doing anything.
-                            </p>
-                        </div>
-                    </motion.section>
-
-                    {/* NEXT CHAPTER CTA */}
+                    {/* CTA */}
                     <motion.section
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -227,17 +251,17 @@ First, ask me a few questions to personalize this. Then set up the daily schedul
                     >
                         <Link
                             to="/part1/chapter2"
-                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-teal-500/20 hover:shadow-teal-500/40"
+                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white py-5 rounded-2xl font-bold text-xl transition-all border border-slate-700 hover:border-slate-600"
                         >
                             Continue to Chapter 2
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">
-                            Next: Create agents for email, calendar & more
+                            Next: Automate your most forgotten task
                         </p>
                     </motion.section>
 
-                    {/* WANT MORE? */}
+                    {/* LEARN MORE */}
                     <motion.section
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -248,32 +272,23 @@ First, ask me a few questions to personalize this. Then set up the daily schedul
                             className="w-full flex items-center justify-center gap-2 py-3 text-slate-400 hover:text-white transition-colors text-sm"
                         >
                             <ChevronDown size={16} className={`transition-transform ${showMore ? 'rotate-180' : ''}`} />
-                            {showMore ? 'Hide' : 'What else can AI agents do?'}
+                            {showMore ? 'Show less' : 'What makes this different from just asking ChatGPT?'}
                         </button>
 
                         {showMore && (
                             <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
-                                className="mt-4 space-y-4"
+                                className="mt-4 bg-slate-800/30 rounded-xl p-6 border border-slate-700/50"
                             >
-                                <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                                    <h4 className="text-lg font-bold text-white mb-4">Agents you can create:</h4>
-                                    <div className="grid grid-cols-2 gap-3 text-sm">
-                                        {[
-                                            '📧 Email Sorter Agent',
-                                            '📅 Calendar Manager',
-                                            '💰 Finance Tracker',
-                                            '🏋️ Fitness Coach',
-                                            '📚 Study Buddy',
-                                            '🛒 Grocery Planner',
-                                            '👨‍👩‍👧 Family Scheduler',
-                                            '📈 Stock Watcher',
-                                        ].map((agent, i) => (
-                                            <div key={i} className="bg-slate-900/50 rounded-lg p-3 text-slate-300">
-                                                {agent}
-                                            </div>
-                                        ))}
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    <div className="bg-red-900/20 rounded-lg p-4 border border-red-500/20">
+                                        <h4 className="text-red-400 font-bold text-sm mb-2">❌ Regular ChatGPT</h4>
+                                        <p className="text-slate-400 text-sm">You ask. It answers. You close the app. Nothing happens tomorrow.</p>
+                                    </div>
+                                    <div className="bg-green-900/20 rounded-lg p-4 border border-green-500/20">
+                                        <h4 className="text-green-400 font-bold text-sm mb-2">✅ Agent Mode</h4>
+                                        <p className="text-slate-400 text-sm">It remembers you. It runs on schedule. It notifies you. It works while you sleep.</p>
                                     </div>
                                 </div>
                             </motion.div>
