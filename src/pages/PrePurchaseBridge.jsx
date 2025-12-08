@@ -122,23 +122,61 @@ const PrePurchaseBridge = () => {
                             That's more than 90% of people who "use AI."
                         </p>
 
-                        {/* SHARE BUTTONS - Viral Loop (Zuckerberg) */}
-                        <div className="flex items-center justify-center gap-3 mt-4">
-                            <span className="text-slate-500 text-sm">Share your progress:</span>
-                            <a
-                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("🎉 Just built 3 AI agents in 15 minutes! Check out @AgenticAIHome")}&url=${encodeURIComponent("https://agenticaihome.com")}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition-colors"
-                            >
-                                𝕏 Share
-                            </a>
-                            <button
-                                onClick={() => { navigator.clipboard.writeText('https://agenticaihome.com'); alert('Link copied!'); }}
-                                className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition-colors"
-                            >
-                                📋 Copy Link
-                            </button>
+                        {/* SHARE BUTTONS - Enhanced Viral Loop */}
+                        <div className="mt-6 p-4 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-2xl border border-purple-500/30">
+                            <p className="text-white font-bold text-sm mb-3 text-center">🚀 Know someone who needs this?</p>
+                            <div className="flex flex-wrap items-center justify-center gap-2">
+                                <a
+                                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("🤯 Just built 3 AI helpers in 15 minutes — they handle my morning briefings, meal planning & reminders automatically!\n\nNo coding needed. If I can do this, anyone can.")}&url=${encodeURIComponent("https://agenticaihome.com")}&hashtags=AI,productivity`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black hover:bg-gray-900 text-white text-sm font-medium transition-colors"
+                                >
+                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                                    Share on X
+                                </a>
+                                <a
+                                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent("https://agenticaihome.com")}&quote=${encodeURIComponent("Just built 3 AI helpers in 15 minutes! No coding needed 🤖")}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1877F2] hover:bg-[#166FE5] text-white text-sm font-medium transition-colors"
+                                >
+                                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+                                    Share
+                                </a>
+                                <button
+                                    onClick={() => {
+                                        navigator.clipboard.writeText('Check this out — I just built 3 AI helpers in 15 minutes! No coding needed: https://agenticaihome.com');
+                                        alert('Message copied! Paste it anywhere.');
+                                    }}
+                                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-sm font-medium transition-colors"
+                                >
+                                    📋 Copy Message
+                                </button>
+                            </div>
+                            <p className="text-slate-400 text-xs text-center mt-2">Help a friend escape the chaos ✨</p>
+                        </div>
+
+                        {/* EMAIL CAPTURE - Moved Higher */}
+                        <div className="mt-4 p-4 bg-slate-800/50 rounded-2xl border border-slate-700/50">
+                            <p className="text-white font-medium text-sm mb-1 text-center">📬 Not ready to buy yet?</p>
+                            <p className="text-slate-400 text-xs mb-3 text-center">
+                                Get a free "AI Starter Checklist" + weekly tips from Captain Efficiency
+                            </p>
+                            <form className="flex flex-col sm:flex-row gap-2 max-w-sm mx-auto" onSubmit={(e) => { e.preventDefault(); alert('✅ You\'re in! Check your inbox.'); }}>
+                                <input
+                                    type="email"
+                                    placeholder="your@email.com"
+                                    className="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-600 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                    required
+                                />
+                                <button
+                                    type="submit"
+                                    className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-medium text-sm transition-colors whitespace-nowrap"
+                                >
+                                    Send Free Checklist
+                                </button>
+                            </form>
                         </div>
 
                         {/* TRUST BADGE - Guarantee visible early (Bezos) */}
@@ -454,30 +492,6 @@ const PrePurchaseBridge = () => {
                                 <p className="text-white font-medium text-sm mb-1">Can I get a refund?</p>
                                 <p className="text-slate-400 text-xs">100%. If you don't love it within 30 days, email us and we'll refund you—no questions asked.</p>
                             </div>
-                        </div>
-                    </motion.section>
-
-                    {/* EMAIL CAPTURE FOR HESITATERS */}
-                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="mt-8 mb-10">
-                        <div className="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 text-center">
-                            <h3 className="text-white font-bold mb-2">Not ready yet?</h3>
-                            <p className="text-slate-400 text-sm mb-4">
-                                Get a reminder when you have more time. We'll send you one email—that's it.
-                            </p>
-                            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onSubmit={(e) => { e.preventDefault(); alert('Email captured! (Demo)'); }}>
-                                <input
-                                    type="email"
-                                    placeholder="your@email.com"
-                                    className="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                                    required
-                                />
-                                <button
-                                    type="submit"
-                                    className="px-6 py-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-medium transition-colors"
-                                >
-                                    Remind Me Later
-                                </button>
-                            </form>
                         </div>
                     </motion.section>
 
