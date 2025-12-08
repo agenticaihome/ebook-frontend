@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Bell, ExternalLink, Sun, Calendar, Brain, AlertCircle, HelpCircle, Smartphone } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Bell, ExternalLink, Sun, Calendar, Brain, AlertCircle, HelpCircle, Smartphone, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -24,6 +24,7 @@ const Chapter1 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showSetupTips, setShowSetupTips] = useState(false);
+    const [showExampleOutput, setShowExampleOutput] = useState(false);
 
     const goldPrompt = `Be my morning agent.
 
@@ -182,6 +183,32 @@ Set this up now.`;
                                     <><Copy size={22} /> Copy This Prompt</>
                                 )}
                             </button>
+
+                            {/* See Example Output */}
+                            <button
+                                onClick={() => setShowExampleOutput(!showExampleOutput)}
+                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-teal-400 hover:text-teal-300 text-sm font-medium transition-colors"
+                            >
+                                <Eye size={16} />
+                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
+                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+
+                            {showExampleOutput && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-teal-500/20"
+                                >
+                                    <p className="text-teal-400 text-xs font-bold mb-2">📱 EXAMPLE OUTPUT:</p>
+                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
+                                        <p>☀️ <strong className="text-white">Weather:</strong> 72°F, partly cloudy in Austin. No umbrella needed!</p>
+                                        <p>📅 <strong className="text-white">Today:</strong><br />• 9am: Team standup (Zoom)<br />• 2pm: Dentist appointment<br />• 6pm: Dinner with Sarah</p>
+                                        <p>🔔 <strong className="text-white">Reminder:</strong> Mom's birthday is in 3 days - you mentioned wanting to order flowers.</p>
+                                    </div>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 This is what YOUR morning agent will send you!</p>
+                                </motion.div>
+                            )}
                         </div>
                     </motion.section>
 

@@ -235,6 +235,17 @@ const PrePurchaseBridge = () => {
                                     <span><strong>30-day</strong> money-back</span>
                                 </div>
                             </div>
+
+                            {/* Future-Proof Skill Callout */}
+                            <div className="mt-4 pt-4 border-t border-green-500/30">
+                                <div className="flex items-start gap-3 text-sm">
+                                    <span className="text-2xl">🚀</span>
+                                    <div>
+                                        <p className="text-white font-bold">Plus: A skill you'll need anyway</p>
+                                        <p className="text-slate-400 text-xs">AI is inevitable. Learn it now while saving time — get paid to learn the future.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </motion.section>
 
@@ -246,7 +257,7 @@ const PrePurchaseBridge = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                             </span>
-                            <span className="text-green-400 text-sm font-medium"><span className="font-bold">47 people</span> unlocked this week</span>
+                            <span className="text-green-400 text-sm font-medium"><span className="font-bold">547 people</span> unlocked this week</span>
                         </div>
 
                         {/* Testimonial */}
@@ -270,13 +281,37 @@ const PrePurchaseBridge = () => {
                     {/* PRICING */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
                         <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50 text-center">
-                            <p className="text-slate-400 text-sm mb-2">One-time payment</p>
-                            <div className="flex items-center justify-center gap-3 mb-4">
+                            <p className="text-slate-400 text-sm mb-2">One-time payment • No subscription</p>
+                            <div className="flex items-center justify-center gap-3 mb-3">
                                 <span className="text-slate-500 line-through text-xl">$79.99</span>
                                 <span className="text-4xl font-black text-white">$39.99</span>
                                 <span className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full font-bold">50% OFF</span>
                             </div>
-                            <p className="text-slate-500 text-sm">Less than a dinner out. Saves 10+ hours every week.</p>
+                            <p className="text-slate-400 text-sm mb-4">☕ Less than 2 coffees per month for lifetime access</p>
+
+                            {/* ROI Mini-Calculator */}
+                            <div className="bg-teal-900/20 rounded-xl p-4 border border-teal-500/30 text-left">
+                                <p className="text-teal-400 font-bold text-sm mb-2">📊 Your ROI</p>
+                                <div className="space-y-1 text-sm">
+                                    <div className="flex justify-between text-slate-300">
+                                        <span>Time saved per week:</span>
+                                        <span className="font-bold text-white">10+ hours</span>
+                                    </div>
+                                    <div className="flex justify-between text-slate-300">
+                                        <span>Your hourly value:</span>
+                                        <span className="font-bold text-white">~$25</span>
+                                    </div>
+                                    <div className="flex justify-between text-slate-300">
+                                        <span>Annual value saved:</span>
+                                        <span className="font-bold text-green-400">$13,000+</span>
+                                    </div>
+                                    <div className="pt-2 border-t border-teal-500/30 flex justify-between">
+                                        <span className="text-white font-medium">Your investment:</span>
+                                        <span className="font-black text-teal-400">$39.99 once</span>
+                                    </div>
+                                </div>
+                                <p className="text-center text-teal-400 text-xs mt-3 font-bold">That's a 325x return 🚀</p>
+                            </div>
                         </div>
                     </motion.section>
 
@@ -298,17 +333,33 @@ const PrePurchaseBridge = () => {
                             See everything that's included
                         </Link>
 
-                        {/* CRYPTO OPTION - Educational & Inviting */}
-                        <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-2xl p-5 border border-green-500/30 text-center">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold mb-3">
-                                💰 SAVE 50%
+                        {/* CRYPTO OPTION - Double Future-Proofing */}
+                        <div className="bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-2xl p-5 border-2 border-green-500/40 text-center">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-500/20 text-green-400 text-sm font-bold mb-3">
+                                🚀 BEST VALUE — Learn 2 skills for $19.99
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-2">
-                                Want to pay just $19.99?
+                            <h3 className="text-white font-bold text-xl mb-2">
+                                Pay with Crypto = 650x ROI
                             </h3>
-                            <p className="text-slate-400 text-sm mb-4">
-                                Learn how to pay with cryptocurrency today. It's easier than you think — and you'll discover why crypto matters in the AI age.
-                            </p>
+                            <div className="bg-black/30 rounded-xl p-4 mb-4 text-left">
+                                <div className="space-y-2 text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-green-400">✓</span>
+                                        <span className="text-white"><strong>Save 50%</strong> — pay just $19.99</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-green-400">✓</span>
+                                        <span className="text-white"><strong>Learn AI</strong> — the skill everyone needs</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-green-400">✓</span>
+                                        <span className="text-white"><strong>Learn Crypto</strong> — another future skill</span>
+                                    </div>
+                                </div>
+                                <p className="text-slate-400 text-xs mt-3 text-center">
+                                    You'll need both skills eventually. Pay less to learn more.
+                                </p>
+                            </div>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center">
                                 <Link
                                     to="/why-ergo"
@@ -317,10 +368,10 @@ const PrePurchaseBridge = () => {
                                     Why Crypto? →
                                 </Link>
                                 <Link
-                                    to="/ergo-payment"
-                                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-green-600 hover:bg-green-500 text-white text-sm font-bold transition-colors"
+                                    to="/pay-ergo"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white font-bold transition-all shadow-lg shadow-green-500/20"
                                 >
-                                    Pay with Ergo ($19.99) →
+                                    🎓 Pay $19.99 & Learn Both →
                                 </Link>
                             </div>
                         </div>
@@ -345,8 +396,8 @@ const PrePurchaseBridge = () => {
                     </motion.section>
 
                 </div>
-            </div>
-        </WebbookLayout>
+            </div >
+        </WebbookLayout >
     );
 };
 

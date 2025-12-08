@@ -161,7 +161,7 @@ const SplashPage = () => {
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                             </span>
                             <span className="text-green-400 text-sm font-medium">
-                                <span className="font-bold">47 people</span> started this week
+                                <span className="font-bold">547 people</span> started this week
                             </span>
                         </div>
 
