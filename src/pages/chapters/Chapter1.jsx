@@ -317,9 +317,9 @@ Set this up now.`;
                         </div>
                         <Link
                             to="/unlock"
-                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-amber-500/20"
+                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98]"
                         >
-                            🚀 Unlock All 10 Chapters
+                            🔓 Get Full Access
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">

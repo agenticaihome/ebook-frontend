@@ -233,9 +233,9 @@ const PrePurchaseBridge = () => {
                         {/* Main CTA */}
                         <Link
                             to="/payment-guide"
-                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02]"
+                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
                         >
-                            Unlock All 10 Chapters
+                            Get Full Access
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
 

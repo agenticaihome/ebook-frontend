@@ -336,15 +336,15 @@ const WebbookLayout = ({ children }) => {
                                     <div className="mx-2 my-3">
                                         <Link
                                             to="/unlock"
-                                            className="block bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-2 border-amber-500/40 hover:border-amber-400/60 rounded-xl p-3 transition-all group"
+                                            className="block bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-2 border-amber-500/40 hover:border-amber-400/60 rounded-xl p-3 transition-all hover:scale-[1.02] active:scale-[0.98] group"
                                         >
                                             <div className="flex items-center gap-2 mb-1">
                                                 <Unlock size={16} className="text-amber-400" />
-                                                <span className="text-amber-400 font-bold text-sm">Unlock 9 More Agents</span>
+                                                <span className="text-amber-400 font-bold text-sm">Get Full Access</span>
                                             </div>
                                             <div className="flex items-center justify-between">
-                                                <span className="text-slate-400 text-xs">One-time purchase</span>
-                                                <span className="text-white font-bold text-sm">$39.99 →</span>
+                                                <span className="text-slate-400 text-xs">9 more chapters</span>
+                                                <span className="text-white font-bold text-sm group-hover:translate-x-0.5 transition-transform">$39.99 →</span>
                                             </div>
                                         </Link>
                                     </div>
