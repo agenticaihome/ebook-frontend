@@ -1,111 +1,39 @@
 import React from 'react';
 import {
     BookOpen, CreditCard, User, HelpCircle, FileText,
-    Cpu, Zap, MessageCircle, CheckCircle, AlertTriangle, Mail, Shield,
-    Rocket, Bot, Gamepad2, Users, Wrench, Lightbulb, PenTool
+    Sparkles, Heart, Shield, Rocket, Bot, Gamepad2, Users, Wrench, PenTool
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const categories = [
-    { id: 'getting-started', name: 'Getting Started', icon: <Rocket size={18} /> },
-    { id: 'understanding', name: 'Understanding the Webbook', icon: <BookOpen size={18} /> },
-    { id: 'payment', name: 'Payment & Pricing', icon: <CreditCard size={18} /> },
-    { id: 'account', name: 'Account & Login', icon: <User size={18} /> },
-    { id: 'agents', name: 'The AI Agents', icon: <Bot size={18} /> },
-    { id: 'games', name: 'Games & Fun', icon: <Gamepad2 size={18} /> },
-    { id: 'privacy', name: 'Privacy & Safety', icon: <Shield size={18} /> },
-    { id: 'all-ages', name: 'For All Ages', icon: <Users size={18} /> },
-    { id: 'troubleshooting', name: 'Troubleshooting', icon: <Wrench size={18} /> },
-    { id: 'founder', name: 'Founder Story', icon: <PenTool size={18} /> },
-    { id: 'beginner', name: 'Beginner Reassurance', icon: <Lightbulb size={18} /> },
+    { id: 'what-is-this', name: 'A. What This Is', icon: <BookOpen size={18} /> },
+    { id: 'founder-story', name: 'B. Why It Exists', icon: <Heart size={18} /> },
+    { id: 'who-its-for', name: 'C. Who It\'s For', icon: <Users size={18} /> },
+    { id: 'getting-started', name: 'D. Getting Started', icon: <Rocket size={18} /> },
+    { id: 'chapters-missions', name: 'E. Chapters & Missions', icon: <FileText size={18} /> },
+    { id: 'ai-agents', name: 'F. AI Agents', icon: <Bot size={18} /> },
+    { id: 'games', name: 'G. Games', icon: <Gamepad2 size={18} /> },
+    { id: 'pricing', name: 'H. Pricing & Payments', icon: <CreditCard size={18} /> },
+    { id: 'account', name: 'I. Account Questions', icon: <User size={18} /> },
+    { id: 'troubleshooting', name: 'J. Troubleshooting', icon: <Wrench size={18} /> },
+    { id: 'privacy', name: 'K. Privacy & Safety', icon: <Shield size={18} /> },
+    { id: 'future-updates', name: 'L. Future Updates', icon: <Sparkles size={18} /> },
+    { id: 'heart', name: 'M. The Heart', icon: <PenTool size={18} /> },
 ];
 
 export const faqData = [
-    // ===== A. GETTING STARTED =====
+    // ===== A. WHAT THIS IS (The Webbook & Mission) =====
     {
-        id: 'how-to-start',
-        category: 'getting-started',
-        question: 'How do I start?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Click "Start Free" and begin with Chapter 1 — it's free, no payment needed.</p>
-                <p className="mb-4">The first chapter is completely free. You'll meet Captain Efficiency, learn what AI agents are, and decide if this is for you. No credit card. No commitment. Just click and start reading.</p>
-            </>
-        )
-    },
-    {
-        id: 'what-device',
-        category: 'getting-started',
-        question: 'What device do I need?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Any device with a web browser — phone, tablet, or computer.</p>
-                <p className="mb-4">This is a website, not an app. If you can check your email, you can use this. Works on iPhone, Android, iPad, Mac, Windows, Linux — anything with Chrome, Safari, Firefox, or Edge.</p>
-            </>
-        )
-    },
-    {
-        id: 'access-chapter-1',
-        category: 'getting-started',
-        question: 'How do I access Chapter 1 for free?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Visit the homepage and click "Start Free" — no account needed.</p>
-                <p className="mb-4">Chapter 1 is unlocked for everyone. You'll get a taste of the webbook before deciding if you want the full course.</p>
-                <ol className="list-decimal pl-5 space-y-1 mb-4">
-                    <li>Click "Start Free" on the welcome page</li>
-                    <li>Chapter 1 opens immediately</li>
-                    <li>Read at your own pace</li>
-                </ol>
-            </>
-        )
-    },
-    {
-        id: 'account-for-preview',
-        category: 'getting-started',
-        question: 'Do I need to create an account to preview?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No — the free preview requires no account.</p>
-                <p className="mb-4">Browse Chapter 1 freely. You only create an account when you decide to purchase full access. We don't collect your email until you choose to buy.</p>
-            </>
-        )
-    },
-    {
-        id: 'after-purchase',
-        category: 'getting-started',
-        question: 'What happens after I purchase?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">You create an account and get instant access to all 10 chapters.</p>
-                <p className="mb-4">After payment (Stripe or Ergo), you'll set a password, then all chapters unlock immediately. Your progress is saved, and you can log in from any device using your email.</p>
-            </>
-        )
-    },
-    {
-        id: 'where-login',
-        category: 'getting-started',
-        question: 'Where do I log in if I already purchased?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Click "Login" at the top of any page or go to /login.</p>
-                <p className="mb-4">Use the email you purchased with and the password you created. Forgot your password? Click "Claim Your Purchase" on the login page and enter your transaction ID.</p>
-            </>
-        )
-    },
-
-    // ===== B. UNDERSTANDING THE WEBBOOK =====
-    {
-        id: 'what-is-it',
-        category: 'understanding',
+        id: 'what-is-agentic-ai',
+        category: 'what-is-this',
         question: 'What exactly is "Agentic AI at Home"?',
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">An interactive webbook that teaches you to use AI helpers for everyday life.</p>
                 <p className="mb-4">Unlike chatbots that just answer questions, AI "agents" take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
-                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 4 Parts:</p>
+                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 16 chapters:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Start Here:</strong> Your first Morning Agent (Chapter 1)</li>
+                    <li><strong>Start Here:</strong> Your first Morning Agent</li>
                     <li><strong>Part 1:</strong> Foundations (Meal Planning, Important Dates)</li>
                     <li><strong>Part 2:</strong> Daily Systems (Inbox Zero, Finance, Health)</li>
                     <li><strong>Part 3:</strong> Deep Automation (Tasks, Building Custom Agents)</li>
@@ -115,47 +43,177 @@ export const faqData = [
         )
     },
     {
-        id: 'who-is-it-for',
-        category: 'understanding',
+        id: 'why-webbook',
+        category: 'what-is-this',
+        question: 'Why a "webbook" instead of a regular course?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Because reading a PDF or watching videos isn't the same as DOING.</p>
+                <p className="mb-4">This isn't passive learning. It's an interactive experience with:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>16 chapters you can read at your own pace</li>
+                    <li>Copy-ready templates you can use immediately</li>
+                    <li>Interactive quizzes and calculators</li>
+                    <li>Games that make learning fun</li>
+                    <li>Captain Efficiency — your friendly AI guide</li>
+                </ul>
+                <p>It's designed for active implementation, not passive consumption.</p>
+            </>
+        )
+    },
+    {
+        id: 'what-will-i-learn',
+        category: 'what-is-this',
+        question: 'What will I actually learn?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">How to build your own "Life Operating System" using AI agents.</p>
+                <p className="mb-4">By the end, you'll have:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>A Morning Agent that briefs you on your day</li>
+                    <li>A Meal Planner that handles weekly menus and groceries</li>
+                    <li>An Email Agent that triages your inbox</li>
+                    <li>A Finance Agent that tracks spending</li>
+                    <li>Custom agents for YOUR specific needs</li>
+                </ul>
+                <p>Most users save 5-10 hours per week once fully implemented.</p>
+            </>
+        )
+    },
+    {
+        id: 'what-makes-different',
+        category: 'what-is-this',
+        question: 'How is this different from other AI courses?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">We build a complete Life Operating System, not random hacks.</p>
+                <ol className="list-decimal pl-5 space-y-3 mb-4">
+                    <li><strong>Recovery-Aware:</strong> Schedules adapt to your actual energy levels</li>
+                    <li><strong>Second Brain Integration:</strong> All your knowledge becomes searchable</li>
+                    <li><strong>Life Operating System:</strong> All agents work together toward your goals</li>
+                </ol>
+                <p>Built by someone with 50+ hour clinical weeks and two kids under 3 — not a guru with unlimited time.</p>
+            </>
+        )
+    },
+
+    // ===== B. WHY IT EXISTS (The Real Founder Story) — CRITICAL =====
+    {
+        id: 'who-created-this',
+        category: 'founder-story',
+        question: 'Who made this? Is this a real person?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes! I'm a real person — a dad, dentist, and Army veteran who built this to survive my own chaos.</p>
+                <p className="mb-4">Here's my story:</p>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                    <li><strong>Endodontic Resident</strong> — 50+ hour clinical weeks</li>
+                    <li><strong>Dad of Two Under 3</strong> — a baby and a toddler when I started this</li>
+                    <li><strong>Army Veteran</strong> — 502nd Dental Company, Fort Hood</li>
+                    <li><strong>Learned to Code</strong> — with AI's help (I'm not a programmer!)</li>
+                </ul>
+                <p className="mb-4">I was drowning in life admin: meal planning, appointments, bills, household tasks, emails, board exam prep. Something had to give.</p>
+                <p>AI agents became my solution. Now I want to share what worked.</p>
+            </>
+        )
+    },
+    {
+        id: 'why-create-this',
+        category: 'founder-story',
+        question: 'Why did you create this?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Desperation, honestly. And then it worked so well I had to share it.</p>
+                <p className="mb-4">Picture this: dental residency (50+ hour weeks), two kids under 3, studying for board exams, trying to be a present husband and father. I was drowning in "life admin."</p>
+                <p className="mb-4">Then I discovered AI agents. Not just ChatGPT — but AI that takes ACTION. Plans meals. Manages my calendar. Drafts emails. Tracks finances.</p>
+                <p className="mb-4"><strong>Result?</strong> I got 7-8 hours back every week. Hours I now spend with my kids instead of meal planning at midnight.</p>
+                <p>That transformation was so powerful that I felt compelled to share it.</p>
+            </>
+        )
+    },
+    {
+        id: 'why-charge-money',
+        category: 'founder-story',
+        question: 'Why do you charge for this? Why not free?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Because my wife would actually kill me if I gave away months of late nights for free. 😂</p>
+                <p className="mb-4">Real talk:</p>
+                <ul className="list-disc pl-5 space-y-2 mb-4">
+                    <li><strong>Countless late nights</strong> after the kids went to bed</li>
+                    <li><strong>Weekends spent building</strong> instead of resting</li>
+                    <li><strong>Learning to code from scratch</strong> (with AI help!)</li>
+                    <li><strong>Server costs, domain, hosting</strong> — it adds up</li>
+                </ul>
+                <p className="mb-4">I made this for fun, out of genuine passion. But I also believe value deserves value.</p>
+                <p className="mb-4">At $39.99 (or $19.99 with crypto), if you save even 2 hours a week, you've made back your investment in the first month. That's math even I can do. 🦷</p>
+                <p className="text-slate-400 text-sm italic">Plus there's a 30-day money-back guarantee. So you're not risking anything.</p>
+            </>
+        )
+    },
+    {
+        id: 'is-this-your-job',
+        category: 'founder-story',
+        question: 'Is this your full-time job?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Nope! I'm still a practicing dentist and dental resident.</p>
+                <p className="mb-4">This is a passion project built during:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>Nap times</li>
+                    <li>After bedtime (both kids AND mine)</li>
+                    <li>Early mornings before clinic</li>
+                    <li>Weekends when I probably should've been resting</li>
+                </ul>
+                <p>It's a labor of love, not my main income. Which means everything here exists because I genuinely believe in it.</p>
+            </>
+        )
+    },
+    {
+        id: 'who-is-captain-efficiency',
+        category: 'founder-story',
+        question: 'Who is Captain Efficiency?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Your friendly AI guide and mascot throughout the webbook!</p>
+                <p className="mb-4">Captain Efficiency:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>Explains concepts in friendly language</li>
+                    <li>Cheers your progress</li>
+                    <li>Appears in games</li>
+                    <li>Makes learning feel less alone</li>
+                </ul>
+                <p>Think of Captain E as your productivity co-pilot — encouraging but never annoying.</p>
+            </>
+        )
+    },
+
+    // ===== C. WHO IT'S FOR (Everyone) =====
+    {
+        id: 'who-is-this-for',
+        category: 'who-its-for',
         question: 'Who is this for?',
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Anyone overwhelmed by the logistics of modern life.</p>
                 <ul className="list-none space-y-2 mb-6">
-                    <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Overwhelmed Professionals</strong> drowning in email and meetings</li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Busy Parents</strong> managing household logistics</li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Students</strong> juggling classes and life admin</li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Retirees</strong> who want less paperwork, more living</li>
-                    <li className="flex items-start gap-2"><CheckCircle className="text-green-400 w-5 h-5 flex-shrink-0" /> <strong>Entrepreneurs</strong> who can't afford a human assistant yet</li>
+                    <li className="flex items-start gap-2">✅ <strong>Overwhelmed Professionals</strong> drowning in email and meetings</li>
+                    <li className="flex items-start gap-2">✅ <strong>Busy Parents</strong> managing household logistics</li>
+                    <li className="flex items-start gap-2">✅ <strong>Students</strong> juggling classes and life admin</li>
+                    <li className="flex items-start gap-2">✅ <strong>Retirees</strong> who want less paperwork, more living</li>
+                    <li className="flex items-start gap-2">✅ <strong>Entrepreneurs</strong> who can't afford a human assistant yet</li>
                 </ul>
-                <p className="mb-4"><strong>NOT for:</strong> Enterprise AI solutions, learning to code AI, or people unwilling to spend 30 min/week on setup.</p>
+                <p><strong>NOT for:</strong> Enterprise AI solutions, learning to code AI, or people unwilling to spend 30 min/week on setup.</p>
             </>
         )
     },
     {
-        id: 'not-a-parent',
-        category: 'understanding',
-        question: "I'm not a parent. Is this still for me?",
+        id: 'not-tech-savvy',
+        category: 'who-its-for',
+        question: "I'm not tech-savvy. Can I still do this?",
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes! The core problem is universal: Life Admin Fatigue.</p>
-                <p className="mb-4">While originally tested by a parent, every template works for anyone:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Students:</strong> Use the "Second Brain" for exams</li>
-                    <li><strong>Entrepreneurs:</strong> Use the "Email Agent" for clients</li>
-                    <li><strong>Retirees:</strong> Use the "Health Agent" for appointments</li>
-                </ul>
-                <p>Any "family" reference can be swapped for "clients," "pets," or "projects."</p>
-            </>
-        )
-    },
-    {
-        id: 'technical-skills',
-        category: 'understanding',
-        question: 'Do I need tech skills?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No coding. If you can send an email, you can do this.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes! If you can send an email, you can do this.</p>
                 <p className="mb-4">You need to:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li>Send an email ✅</li>
@@ -168,12 +226,113 @@ export const faqData = [
         )
     },
     {
-        id: 'ai-tools-needed',
-        category: 'understanding',
+        id: 'not-a-parent',
+        category: 'who-its-for',
+        question: "I'm not a parent. Is this still for me?",
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Absolutely! The core problem is universal: Life Admin Fatigue.</p>
+                <p className="mb-4">While originally tested by a parent, every template works for anyone:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li><strong>Students:</strong> Use the "Second Brain" for exams</li>
+                    <li><strong>Entrepreneurs:</strong> Use the "Email Agent" for clients</li>
+                    <li><strong>Retirees:</strong> Use the "Health Agent" for appointments</li>
+                </ul>
+                <p>Any "family" reference can be swapped for "clients," "pets," or "projects."</p>
+            </>
+        )
+    },
+    {
+        id: 'seniors-ok',
+        category: 'who-its-for',
+        question: "I'm retired / a senior. Can I use this?",
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Absolutely! The course moves at your pace and starts from the basics.</p>
+                <p className="mb-4">Designed with beginners in mind:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>No assumed tech knowledge</li>
+                    <li>Step-by-step instructions</li>
+                    <li>Plenty of screenshots</li>
+                    <li>Lifetime access (no rush)</li>
+                    <li>Email support available</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 'kids-teens',
+        category: 'who-its-for',
+        question: "Can kids or teenagers use this?",
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes for teens (13+). Younger kids may need parent help.</p>
+                <p className="mb-4">The content is written for adults but is clean and appropriate:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>Teens can follow independently</li>
+                    <li>Kids 10-12 can participate with parent guidance</li>
+                    <li>Younger children can enjoy the games</li>
+                </ul>
+                <p>Great for families to learn together!</p>
+            </>
+        )
+    },
+    {
+        id: 'scared-of-ai',
+        category: 'who-its-for',
+        question: "I'm scared of AI. Should I still try this?",
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">This course might actually help with that fear!</p>
+                <p className="mb-4">Many people fear AI because they don't understand it. This course demystifies AI:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>What it actually is (and isn't)</li>
+                    <li>What it can do (and can't)</li>
+                    <li>How to use it safely</li>
+                    <li>How to stay in control</li>
+                </ul>
+                <p>Understanding often replaces fear.</p>
+            </>
+        )
+    },
+
+    // ===== D. GETTING STARTED =====
+    {
+        id: 'how-to-start',
+        category: 'getting-started',
+        question: 'How do I start?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Click "Start Free" and begin with Chapter 1 — no payment needed.</p>
+                <p className="mb-4">The first chapters are completely free. You'll meet Captain Efficiency, learn what AI agents are, and decide if this is for you.</p>
+                <ol className="list-decimal pl-5 space-y-1 mb-4">
+                    <li>Click "Start Free" on the welcome page</li>
+                    <li>Chapter 1 opens immediately</li>
+                    <li>Read at your own pace</li>
+                    <li>Decide if you want full access</li>
+                </ol>
+            </>
+        )
+    },
+    {
+        id: 'what-device',
+        category: 'getting-started',
+        question: 'What device do I need?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Any device with a web browser — phone, tablet, or computer.</p>
+                <p className="mb-4">This is a website, not an app. If you can check your email, you can use this.</p>
+                <p>Works on iPhone, Android, iPad, Mac, Windows, Linux — anything with Chrome, Safari, Firefox, or Edge.</p>
+            </>
+        )
+    },
+    {
+        id: 'what-ai-tools',
+        category: 'getting-started',
         question: 'What AI tools do I need?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Any major AI assistant (Claude, ChatGPT, Gemini, or Copilot) — free tiers work.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Any major AI assistant — Claude, ChatGPT, Gemini, or Copilot. Free tiers work.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Claude (Anthropic)</strong> — Recommended, especially for privacy</li>
                     <li><strong>ChatGPT (OpenAI)</strong> — Most popular, lots of integrations</li>
@@ -186,122 +345,239 @@ export const faqData = [
         )
     },
     {
-        id: 'time-to-complete',
-        category: 'understanding',
+        id: 'how-long-complete',
+        category: 'getting-started',
         question: 'How long does it take to complete?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">4-6 hours to read, 2-3 months to fully implement.</p>
                 <p className="mb-4 font-bold text-lg text-teal-400">4-6 hours total. Most people finish in a weekend or 2-3 evenings.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Chapter 1:</strong> 15 minutes (Morning Agent)</li>
-                    <li><strong>Part 1 (Ch 2-3):</strong> ~1 hour (Foundations)</li>
-                    <li><strong>Part 2 (Ch 4-6):</strong> ~2 hours (Daily Systems)</li>
-                    <li><strong>Part 3 & 4 (Ch 7-10):</strong> ~2-3 hours (Advanced)</li>
+                    <li><strong>Free Chapters:</strong> ~30 minutes</li>
+                    <li><strong>Part 1 (Foundations):</strong> ~1 hour</li>
+                    <li><strong>Part 2 (Daily Systems):</strong> ~2 hours</li>
+                    <li><strong>Part 3 & 4 (Advanced):</strong> ~2-3 hours</li>
                 </ul>
-                <p className="mb-4"><strong>Total:</strong> ~5-6 hours. You can binge it or take it one chapter at a time.</p>
                 <p>You have lifetime access — go at your pace.</p>
             </>
         )
     },
     {
-        id: 'results-expect',
-        category: 'understanding',
-        question: 'What results can I expect?',
+        id: 'account-needed',
+        category: 'getting-started',
+        question: 'Do I need an account to preview?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Most users save 5-10 hours per week once fully implemented.</p>
-                <div className="mb-4">
-                    <strong className="block text-green-400 mb-1">TIME SAVINGS:</strong>
-                    <ul className="list-disc pl-5 space-y-1">
-                        <li>Conservative: 5-7 hours/week</li>
-                        <li>Typical: 7-10 hours/week</li>
-                        <li>Full implementation: 10-15 hours/week</li>
-                    </ul>
-                </div>
-                <div className="mb-4">
-                    <strong className="block text-green-400 mb-1">SPECIFIC WINS:</strong>
-                    <ul className="list-disc pl-5 space-y-1">
-                        <li>Email: From 2+ hours daily → 30 minutes</li>
-                        <li>Meal planning: From 3+ hours weekly → 30 minutes</li>
-                        <li>Forgotten bills/appointments: Zero</li>
-                    </ul>
-                </div>
-            </>
-        )
-    },
-    {
-        id: 'different-from-others',
-        category: 'understanding',
-        question: 'How is this different from other AI courses?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">We build a recovery-aware Life Operating System, not just individual hacks.</p>
-                <ol className="list-decimal pl-5 space-y-3 mb-4">
-                    <li><strong>Recovery-Aware:</strong> Schedules adapt to your actual energy levels (bad sleep = lighter day)</li>
-                    <li><strong>Second Brain Integration:</strong> All your knowledge becomes searchable</li>
-                    <li><strong>Life Operating System:</strong> All agents work together toward your goals</li>
-                </ol>
-                <p>Built by someone with 50+ hour clinical weeks and two toddlers — not a guru with unlimited time.</p>
-            </>
-        )
-    },
-    {
-        id: 'format',
-        category: 'understanding',
-        question: 'What format is the course in?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">An interactive website with chapters, templates, quizzes, games, and a friendly AI guide.</p>
-                <div className="mb-4">
-                    <strong className="block text-green-400 mb-1">INCLUDES:</strong>
-                    <ul className="list-disc pl-5 space-y-1">
-                        <li>10 written chapters</li>
-                        <li>Interactive quizzes and calculators</li>
-                        <li>Copy-ready templates and prompts</li>
-                        <li>Captain Efficiency (your AI mascot guide)</li>
-                        <li>30-day action plan</li>
-                        <li>Games Hub for fun learning</li>
-                    </ul>
-                </div>
-                <p>NOT a static PDF or video course — it's designed for active implementation.</p>
-            </>
-        )
-    },
-    {
-        id: 'updates',
-        category: 'understanding',
-        question: 'Is the content updated?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes — lifetime access includes all future updates.</p>
-                <p className="mb-4">AI evolves rapidly, and the course evolves with it. When you purchase:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>All updates included</li>
-                    <li>Major tool changes reflected</li>
-                    <li>New capabilities added</li>
-                    <li>You'll be notified of significant updates</li>
-                </ul>
-                <p>The principles remain stable even as specific tools change.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">No — the free preview requires no account.</p>
+                <p className="mb-4">Browse the free chapters freely. You only create an account when you decide to purchase full access.</p>
+                <p>We don't collect your email until you choose to buy.</p>
             </>
         )
     },
 
-    // ===== C. PAYMENT & PRICING =====
+    // ===== E. CHAPTERS & MISSIONS =====
     {
-        id: 'cost',
-        category: 'payment',
+        id: 'how-many-chapters',
+        category: 'chapters-missions',
+        question: 'How many chapters are there?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">16 chapters organized into 4 Parts.</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li><strong>Part 1:</strong> Foundations — Getting started with AI agents</li>
+                    <li><strong>Part 2:</strong> Daily Systems — Email, finance, health automation</li>
+                    <li><strong>Part 3:</strong> Deep Automation — Custom agents and workflows</li>
+                    <li><strong>Part 4:</strong> Mastery — Connecting everything together</li>
+                </ul>
+                <p>Each chapter includes reading, actionable templates, and missions to complete.</p>
+            </>
+        )
+    },
+    {
+        id: 'what-are-missions',
+        category: 'chapters-missions',
+        question: 'What are "missions"?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Hands-on tasks that turn knowledge into action.</p>
+                <p className="mb-4">Instead of just reading about AI, missions have you actually DO things:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>Build your first AI agent</li>
+                    <li>Set up a meal planning system</li>
+                    <li>Create email templates</li>
+                    <li>Design your personal "Agent Army"</li>
+                </ul>
+                <p>Missions are where the real time savings happen.</p>
+            </>
+        )
+    },
+    {
+        id: 'which-chapters-free',
+        category: 'chapters-missions',
+        question: 'Which chapters are free?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">The first three chapters are completely free.</p>
+                <p className="mb-4">This gives you enough to:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>Meet Captain Efficiency</li>
+                    <li>Understand what AI agents are</li>
+                    <li>Build your first simple agent</li>
+                    <li>Decide if the full course is for you</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 'skip-chapters',
+        category: 'chapters-missions',
+        question: 'Can I skip chapters?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes! Once you have full access, you can jump to any chapter.</p>
+                <p className="mb-4">However, we recommend going in order the first time. Later chapters build on earlier concepts.</p>
+                <p>Think of it like a TV season — you CAN skip ahead, but you'll enjoy it more in order.</p>
+            </>
+        )
+    },
+
+    // ===== F. AI AGENTS =====
+    {
+        id: 'what-are-agents',
+        category: 'ai-agents',
+        question: 'What exactly are "AI agents"?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">AI helpers that take ACTION on your behalf, not just answer questions.</p>
+                <p className="mb-4">A regular chatbot says: "Here's a recipe idea."</p>
+                <p className="mb-4">An AI agent says: "Based on what's in your pantry, here's this week's meal plan, grocery list, and I've scheduled reminders for prep time."</p>
+                <p>Agents work <em>for</em> you, not just <em>with</em> you.</p>
+            </>
+        )
+    },
+    {
+        id: 'which-agents-learn',
+        category: 'ai-agents',
+        question: 'What agents will I learn to build?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">10 agents covering every area of daily life:</p>
+                <ol className="list-decimal pl-5 space-y-1 mb-4">
+                    <li><strong>Morning Agent</strong> — Daily briefings and priority setting</li>
+                    <li><strong>Meal Planner</strong> — Weekly menus and grocery lists</li>
+                    <li><strong>Important Dates Agent</strong> — Never forget a birthday</li>
+                    <li><strong>Email Triage Agent</strong> — Sort inbox and draft responses</li>
+                    <li><strong>Money Clarity Agent</strong> — Track spending and subscriptions</li>
+                    <li><strong>Workout Planner</strong> — Custom fitness plans</li>
+                    <li><strong>Task Prioritizer</strong> — Sort your to-do list</li>
+                    <li><strong>Custom Builder</strong> — Learn to build ANY agent</li>
+                    <li><strong>Teamwork Agent</strong> — Make agents talk to each other</li>
+                    <li><strong>Agent Army</strong> — Your complete automated system</li>
+                </ol>
+            </>
+        )
+    },
+    {
+        id: 'agents-safe',
+        category: 'ai-agents',
+        question: 'Are AI agents safe to use?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes, if you use them thoughtfully — and we teach you exactly how.</p>
+                <p className="mb-4">Throughout the course, we teach a "Privacy First" approach:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>What to share vs. protect</li>
+                    <li>Privacy tiers framework</li>
+                    <li>How to create an "Agent Constitution"</li>
+                    <li>Which tools are more privacy-respecting</li>
+                </ul>
+            </>
+        )
+    },
+    {
+        id: 'agents-access-data',
+        category: 'ai-agents',
+        question: 'Do agents have access to my bank/email automatically?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">No — you control exactly what they see.</p>
+                <p className="mb-4">Agents only know what you tell them. You can:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>Give summary info ("My budget is $500/week") without sharing accounts</li>
+                    <li>Use read-only access for some tools</li>
+                    <li>Keep sensitive data fully private</li>
+                </ul>
+                <p>The course teaches "80/20 privacy" — most benefits, minimal exposure.</p>
+            </>
+        )
+    },
+
+    // ===== G. THE GAMES =====
+    {
+        id: 'why-games',
+        category: 'games',
+        question: 'Why are there games in a learning course?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Games reinforce concepts through play — and they make learning fun!</p>
+                <p className="mb-4">Studies show we remember 10% of what we read but 90% of what we do. Games let you practice AI concepts in a low-stakes, enjoyable way.</p>
+                <p>Plus, they're just fun! Captain Efficiency believes learning should never be boring.</p>
+            </>
+        )
+    },
+    {
+        id: 'what-games',
+        category: 'games',
+        question: 'What games are included?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">A growing collection of fun mini-games:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li><strong>Captain Click Challenge</strong> — Test your speed and precision</li>
+                    <li><strong>Deep Work Dive</strong> — Practice focus and flow</li>
+                    <li>More games added over time!</li>
+                </ul>
+                <p>Each game relates to productivity and AI concepts from the course.</p>
+            </>
+        )
+    },
+    {
+        id: 'games-required',
+        category: 'games',
+        question: 'Are games required to complete the course?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">No — games are optional fun, not required.</p>
+                <p>You can complete all 16 chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
+            </>
+        )
+    },
+    {
+        id: 'games-kids',
+        category: 'games',
+        question: 'Can kids play the games?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes — games are family-friendly and safe.</p>
+                <p>All games are appropriate for all ages. No violence, no inappropriate content, no in-game purchases. Great for families learning together!</p>
+            </>
+        )
+    },
+
+    // ===== H. PRICING & PAYMENTS =====
+    {
+        id: 'how-much-cost',
+        category: 'pricing',
         question: 'How much does it cost?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">$39.99 with card, or $19.99 with Ergo cryptocurrency (50% off).</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">$39.99 with card, or $19.99 with Ergo cryptocurrency (50% off!).</p>
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div className="bg-slate-800 p-4 rounded-lg border border-slate-600">
                         <h4 className="font-bold text-white mb-2">STANDARD: $39.99</h4>
                         <ul className="text-sm text-slate-400 space-y-1">
                             <li>Pay with Credit/Debit Card</li>
                             <li>Instant access</li>
-                            <li>Processed securely via Stripe</li>
+                            <li>Processed via Stripe</li>
                         </ul>
                     </div>
                     <div className="bg-green-900/20 p-4 rounded-lg border border-green-500/30">
@@ -318,19 +594,8 @@ export const faqData = [
         )
     },
     {
-        id: 'pay-with-card',
-        category: 'payment',
-        question: 'How do I pay with a credit/debit card?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Click "Get Full Access," enter your email and card details, and you're in.</p>
-                <p className="mb-4">We use Stripe — the same secure payment processor used by Amazon, Shopify, and millions of businesses. Your card info goes directly to Stripe; we never see your full card number.</p>
-            </>
-        )
-    },
-    {
-        id: 'crypto-discount',
-        category: 'payment',
+        id: 'why-crypto-discount',
+        category: 'pricing',
         question: 'Why is there a 50% crypto discount?',
         answer: (
             <>
@@ -346,8 +611,8 @@ export const faqData = [
         )
     },
     {
-        id: 'how-to-pay-crypto',
-        category: 'payment',
+        id: 'never-used-crypto',
+        category: 'pricing',
         question: "I've never used crypto. Is it hard?",
         answer: (
             <>
@@ -358,58 +623,14 @@ export const faqData = [
                     <li>Buying ERG (via Banxa or CoinEx)</li>
                     <li>Sending payment (2 minutes)</li>
                 </ol>
-                <p className="mb-4">Every click is documented with screenshots. Is it worth 15-20 minutes to save $20? That's $60+/hour for your time.</p>
+                <p className="mb-4">Is it worth 15-20 minutes to save $20? That's $60+/hour for your time.</p>
                 <Link to="/ergo-guide" className="text-green-400 hover:underline font-bold">Check out the Complete Ergo Guide →</Link>
             </>
         )
     },
     {
-        id: 'what-is-ergo',
-        category: 'payment',
-        question: 'What is Ergo? Is it safe?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Ergo is a legitimate cryptocurrency launched in 2019 — blockchain has never been hacked.</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Built by academic researchers</li>
-                    <li>Fair launched (no VC backing)</li>
-                    <li>Proof-of-work secured (like Bitcoin)</li>
-                    <li>Operating securely for 5+ years</li>
-                </ul>
-                <Link to="/why-ergo" className="text-green-400 hover:underline font-bold">Read the full 'Why Ergo' explanation →</Link>
-            </>
-        )
-    },
-    {
-        id: 'other-crypto',
-        category: 'payment',
-        question: 'Can I pay with Bitcoin or other crypto?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Currently only ERG (Ergo) — Bitcoin fees would eat the discount.</p>
-                <p className="mb-4">Bitcoin fees can exceed $5-20 per transaction. We specifically support Ergo adoption. If you have Bitcoin, you can swap for ERG on exchanges like CoinEx.</p>
-            </>
-        )
-    },
-    {
-        id: 'payment-issues',
-        category: 'payment',
-        question: 'What if my crypto payment has issues?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Contact us with your Transaction ID — we'll fix it.</p>
-                <ul className="list-disc pl-5 space-y-2 mb-4">
-                    <li><strong>Not Detected:</strong> Wait 5-10 minutes (blockchains take time), check explorer, contact us with TX ID</li>
-                    <li><strong>Sent Wrong Amount:</strong> Too much = refund. Too little = send the rest</li>
-                    <li><strong>Wrong Address:</strong> Can't reverse, but contact us anyway</li>
-                </ul>
-                <p>We're not trying to keep your money. We want happy customers.</p>
-            </>
-        )
-    },
-    {
         id: 'refund-policy',
-        category: 'payment',
+        category: 'pricing',
         question: 'Is there a refund policy?',
         answer: (
             <>
@@ -426,7 +647,7 @@ export const faqData = [
     },
     {
         id: 'subscription',
-        category: 'payment',
+        category: 'pricing',
         question: 'Will I be charged monthly?',
         answer: (
             <>
@@ -436,7 +657,7 @@ export const faqData = [
         )
     },
 
-    // ===== D. ACCOUNT & LOGIN =====
+    // ===== I. ACCOUNT QUESTIONS =====
     {
         id: 'create-account',
         category: 'account',
@@ -450,7 +671,6 @@ export const faqData = [
                     <li>Choose a password</li>
                     <li>You're logged in immediately</li>
                 </ol>
-                <p>Confirmation email sent for future logins.</p>
             </>
         )
     },
@@ -467,30 +687,13 @@ export const faqData = [
         )
     },
     {
-        id: 'paid-no-access',
-        category: 'account',
-        question: "I paid but can't log in. What happened?",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Visit /claim-access and enter your transaction ID to find your account.</p>
-                <p className="mb-2">Common causes:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Closed browser before account creation</li>
-                    <li>Typo in email address</li>
-                    <li>Payment still processing (wait 5-10 minutes)</li>
-                </ul>
-                <p>The Claim Access page finds your payment and lets you set up your account.</p>
-            </>
-        )
-    },
-    {
         id: 'multiple-devices',
         category: 'account',
         question: 'Can I use the same account on multiple devices?',
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Yes — log in from any device with your email and password.</p>
-                <p>Your progress syncs automatically. Read on your phone, continue on your computer. No limits on devices.</p>
+                <p>Your progress syncs automatically. Read on your phone, continue on your computer.</p>
             </>
         )
     },
@@ -511,361 +714,21 @@ export const faqData = [
         )
     },
 
-    // ===== E. THE AI AGENTS =====
+    // ===== J. TROUBLESHOOTING =====
     {
-        id: 'what-are-agents',
-        category: 'agents',
-        question: 'What exactly are "AI agents"?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">AI helpers that take ACTION on your behalf, not just answer questions.</p>
-                <p className="mb-4">A regular chatbot says: "Here's a recipe idea."</p>
-                <p className="mb-4">An AI agent says: "Based on what's in your pantry, here's this week's meal plan, grocery list, and I've scheduled reminders for prep time."</p>
-                <p>Agents work <em>for</em> you, not just <em>with</em> you.</p>
-            </>
-        )
-    },
-    {
-        id: 'which-agents',
-        category: 'agents',
-        question: 'What agents will I learn to build?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">10 agents covering every area of daily life:</p>
-                <ol className="list-decimal pl-5 space-y-1 mb-4">
-                    <li><strong>Morning Agent</strong> — Daily briefings and priority setting</li>
-                    <li><strong>Meal Planner</strong> — Weekly menus and grocery lists</li>
-                    <li><strong>Important Dates Agent</strong> — Never forget a birthday or anniversary</li>
-                    <li><strong>Email Triage Agent</strong> — Sort inbox and draft responses</li>
-                    <li><strong>Money Clarity Agent</strong> — Track spending and subscriptions</li>
-                    <li><strong>Workout Planner</strong> — Custom fitness plans that adapt to you</li>
-                    <li><strong>Task Prioritizer</strong> — Sort your to-do list automatically</li>
-                    <li><strong>Custom Builder</strong> — Learn to build ANY agent you need</li>
-                    <li><strong>Teamwork Agent</strong> — Make agents talk to each other</li>
-                    <li><strong>Agent Army</strong> — Your complete automated system</li>
-                </ol>
-            </>
-        )
-    },
-    {
-        id: 'agents-replace-job',
-        category: 'agents',
-        question: 'Will AI agents replace my job?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No — these agents help with personal life admin, not job replacement.</p>
-                <p className="mb-4">This course teaches personal automation: managing your home, health, and time. It's about reclaiming hours lost to logistics — not replacing human work.</p>
-                <p>Think of it as a personal assistant, not a colleague replacement.</p>
-            </>
-        )
-    },
-    {
-        id: 'agents-safe',
-        category: 'agents',
-        question: 'Are AI agents safe to use?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes, if you use them thoughtfully — and we teach you exactly how.</p>
-                <p className="mb-4">Throughout the course, we teach a "Privacy First" approach. You'll learn:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>What to share vs. protect</li>
-                    <li>Privacy tiers framework</li>
-                    <li>How to create an "Agent Constitution" (rules for your AI)</li>
-                    <li>Which tools are more privacy-respecting</li>
-                </ul>
-            </>
-        )
-    },
-    {
-        id: 'agents-access',
-        category: 'agents',
-        question: 'Do agents have access to my bank/email automatically?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No — you control exactly what they see.</p>
-                <p className="mb-4">Agents only know what you tell them. You can:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Give summary info ("My budget is $500/week") without sharing accounts</li>
-                    <li>Use read-only access for some tools</li>
-                    <li>Keep sensitive data fully private</li>
-                </ul>
-                <p>The course teaches "80/20 privacy" — most benefits, minimal exposure.</p>
-            </>
-        )
-    },
-    {
-        id: 'customize-agents',
-        category: 'agents',
-        question: 'Can I customize the agents for my situation?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Absolutely — every template is designed for customization.</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Single, no kids? Remove family references</li>
-                    <li>Vegan? Tell the Kitchen Agent</li>
-                    <li>Night shift? Morning Agent becomes "Pre-Shift Agent"</li>
-                </ul>
-                <p>The frameworks adapt to YOU, not vice versa.</p>
-            </>
-        )
-    },
-
-    // ===== F. GAMES & FUN =====
-    {
-        id: 'why-games',
-        category: 'games',
-        question: 'Why are there games in a learning course?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Games reinforce concepts through play — and they make learning fun!</p>
-                <p className="mb-4">Studies show we remember 10% of what we read but 90% of what we do. Games let you practice AI concepts in a low-stakes, enjoyable way.</p>
-                <p>Plus, they're just fun! Captain Efficiency believes learning should never be boring.</p>
-            </>
-        )
-    },
-    {
-        id: 'what-games',
-        category: 'games',
-        question: 'What games are included?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">A growing collection including clicking challenges, focus games, and AI-themed mini-games.</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Captain Click Challenge</strong> — Test your speed and precision</li>
-                    <li><strong>Deep Work Dive</strong> — Practice focus and flow</li>
-                    <li>More games added over time</li>
-                </ul>
-                <p>Each game relates to productivity and AI concepts from the course.</p>
-            </>
-        )
-    },
-    {
-        id: 'games-required',
-        category: 'games',
-        question: 'Are the games required to complete the course?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No — games are optional fun, not required curriculum.</p>
-                <p>You can complete all 10 chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
-            </>
-        )
-    },
-    {
-        id: 'leaderboard',
-        category: 'games',
-        question: 'Is there a leaderboard?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes! Compete with other learners for high scores.</p>
-                <p className="mb-4">Each game has a leaderboard showing top performers. This is optional — you can play without comparing scores.</p>
-                <p>Some people love competition; others prefer solo play. Both are welcome.</p>
-            </>
-        )
-    },
-    {
-        id: 'games-kids',
-        category: 'games',
-        question: 'Can kids play the games?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes — games are family-friendly and safe.</p>
-                <p>All games are appropriate for all ages. No violence, no inappropriate content, no in-game purchases. Great for families learning together!</p>
-            </>
-        )
-    },
-
-    // ===== G. PRIVACY & SAFETY =====
-    {
-        id: 'info-safe',
-        category: 'privacy',
-        question: 'Is my information safe on this site?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes — we use industry-standard encryption and secure payment processing.</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>HTTPS encryption on all pages</li>
-                    <li>Stripe handles all card payments (PCI compliant)</li>
-                    <li>Ergo payments are blockchain-verified</li>
-                    <li>We don't store payment card details</li>
-                    <li>Your password is encrypted (we can't see it)</li>
-                </ul>
-            </>
-        )
-    },
-    {
-        id: 'what-data',
-        category: 'privacy',
-        question: 'What data do you collect about me?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Only what's needed: email, password, purchase history, and course progress.</p>
-                <p className="mb-2">We collect:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>✅ Email (to log you in)</li>
-                    <li>✅ Password (encrypted)</li>
-                    <li>✅ Purchase info (to verify access)</li>
-                    <li>✅ Progress (to save your place)</li>
-                </ul>
-                <p>We DON'T collect or sell personal data for advertising.</p>
-            </>
-        )
-    },
-    {
-        id: 'ai-access-safe',
-        category: 'privacy',
-        question: 'Is it safe to give AI access to my personal info?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes, if you do it thoughtfully — and Chapter 3 teaches you exactly how.</p>
-                <p className="mb-4">The course includes a complete privacy framework:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Privacy Tiers (what to share, what to protect)</li>
-                    <li>Agent Constitution (rules for your AI)</li>
-                    <li>Tool comparison (Claude is more private than ChatGPT)</li>
-                    <li>80/20 approach (most benefits, minimal exposure)</li>
-                </ul>
-            </>
-        )
-    },
-    {
-        id: 'kids-privacy',
-        category: 'privacy',
-        question: "What about my kids' privacy?",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Never share full names with photos, school names, locations, or medical info about minors.</p>
-                <p className="mb-2">Family Privacy Rules from the course:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>❌ Never: Kids' full names + photos</li>
-                    <li>❌ Never: School names or addresses</li>
-                    <li>❌ Never: Children's medical info</li>
-                    <li>✅ Safe: "I have two dependents"</li>
-                    <li>✅ Safe: "Pickup at 3pm"</li>
-                </ul>
-                <p>Your AI doesn't need names to help you plan activities.</p>
-            </>
-        )
-    },
-    {
-        id: 'sell-data',
-        category: 'privacy',
-        question: 'Do you sell my data?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No. Never. Period.</p>
-                <p>We don't sell, trade, or give your information to third parties. We don't run ads. We don't have marketing partnerships that use your data. Your information stays private.</p>
-            </>
-        )
-    },
-    {
-        id: 'simple-privacy',
-        category: 'privacy',
-        question: "What's your privacy policy in simple English?",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">We collect only what we need, we don't sell it, and we protect it.</p>
-                <ol className="list-decimal pl-5 space-y-1 mb-4">
-                    <li>We need your email to log you in</li>
-                    <li>We need payment info to sell you the course (handled by Stripe)</li>
-                    <li>We save your progress so you can continue later</li>
-                    <li>We never sell or share your personal data</li>
-                    <li>You can request deletion of your account anytime</li>
-                </ol>
-            </>
-        )
-    },
-
-    // ===== H. FOR ALL AGES =====
-    {
-        id: 'kid-friendly',
-        category: 'all-ages',
-        question: 'Is this kid-friendly?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes for teens (13+). Younger kids may need parent help.</p>
-                <p className="mb-4">The content is written for adults but is clean and appropriate:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Teens can follow independently</li>
-                    <li>Kids 10-12 can participate with parent guidance</li>
-                    <li>Younger children can enjoy the games</li>
-                </ul>
-            </>
-        )
-    },
-    {
-        id: 'seniors',
-        category: 'all-ages',
-        question: 'Can seniors use this?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Absolutely — the course moves at your pace and starts from the basics.</p>
-                <p className="mb-4">Designed with beginners in mind:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>No assumed tech knowledge</li>
-                    <li>Step-by-step instructions</li>
-                    <li>Plenty of screenshots</li>
-                    <li>Lifetime access (no rush)</li>
-                    <li>Email support available</li>
-                </ul>
-            </>
-        )
-    },
-    {
-        id: 'families',
-        category: 'all-ages',
-        question: 'Is this good for families to learn together?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Great for families — especially parent + teen learning together.</p>
-                <p className="mb-4">Many families use this as a bonding activity. Parents bring life experience; teens bring tech comfort. Together, you can build household systems that benefit everyone.</p>
-                <p>The Games Hub adds fun family competition!</p>
-            </>
-        )
-    },
-    {
-        id: 'non-english',
-        category: 'all-ages',
-        question: "My English isn't perfect. Will I understand?",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">We use simple, clear language — no technical jargon.</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Short sentences</li>
-                    <li>Common words</li>
-                    <li>Explanations for any technical terms</li>
-                    <li>Visual aids and examples</li>
-                </ul>
-                <p>If you face difficulty, email support — we're happy to clarify anything.</p>
-            </>
-        )
-    },
-    {
-        id: 'inappropriate',
-        category: 'all-ages',
-        question: 'Is there inappropriate content?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No — everything is safe for all ages.</p>
-                <p>No profanity, violence, sexual content, or anything inappropriate. This is a family-safe learning environment. Games are wholesome. Content is professional and friendly.</p>
-            </>
-        )
-    },
-
-    // ===== I. TROUBLESHOOTING =====
-    {
-        id: 'didnt-unlock',
+        id: 'paid-no-access',
         category: 'troubleshooting',
-        question: "Something didn't unlock after I paid. Help!",
+        question: "I paid but can't log in. What happened?",
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Visit /claim-access and enter your transaction ID.</p>
-                <p className="mb-2">Possible causes:</p>
+                <p className="mb-2">Common causes:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Browser closed before account creation</li>
-                    <li>Ergo payment still confirming (wait 5-10 minutes)</li>
-                    <li>Session expired</li>
+                    <li>Closed browser before account creation</li>
+                    <li>Typo in email address</li>
+                    <li>Payment still processing (wait 5-10 minutes)</li>
                 </ul>
-                <p className="mb-4"><strong>Solution:</strong> Go to /claim-access, enter your Stripe payment ID (starts with "pi_") or Ergo transaction ID. This finds your payment and unlocks your account.</p>
+                <p className="mb-4">The Claim Access page finds your payment and lets you set up your account.</p>
                 <Link to="/claim-access" className="text-teal-400 hover:underline font-bold">Go to Claim Access →</Link>
             </>
         )
@@ -889,23 +752,6 @@ export const faqData = [
         )
     },
     {
-        id: 'game-not-working',
-        category: 'troubleshooting',
-        question: "A game isn't working.",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Refresh the Games Hub page and try again.</p>
-                <p className="mb-4">Games require JavaScript enabled. If issues persist:</p>
-                <ol className="list-decimal pl-5 space-y-1 mb-4">
-                    <li>Refresh the page</li>
-                    <li>Make sure JavaScript is enabled</li>
-                    <li>Try Chrome or Firefox</li>
-                    <li>Report the issue via email with your device type and browser</li>
-                </ol>
-            </>
-        )
-    },
-    {
         id: 'progress-not-saving',
         category: 'troubleshooting',
         question: "My progress isn't saving.",
@@ -913,24 +759,7 @@ export const faqData = [
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Make sure you're logged in — progress only saves for authenticated users.</p>
                 <p className="mb-4">Check the top of the page — do you see your email? If not, you're not logged in.</p>
-                <p>Log in, and your progress will save going forward. If already logged in and progress still not saving, refresh and contact support.</p>
-            </>
-        )
-    },
-    {
-        id: 'ergo-disconnect',
-        category: 'troubleshooting',
-        question: 'I got disconnected during Ergo payment. What now?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">If your wallet shows the transaction completed, visit /claim-access with your TX ID.</p>
-                <p className="mb-2">Check your Ergo wallet history:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Transaction shows?</strong> → Go to /claim-access, paste your TX ID</li>
-                    <li><strong>No transaction?</strong> → Your ERG is still in your wallet. Try again</li>
-                    <li><strong>Transaction pending?</strong> → Wait 5-10 minutes for confirmation</li>
-                </ul>
-                <Link to="/claim-access" className="text-teal-400 hover:underline font-bold">Go to Claim Access →</Link>
+                <p>Log in, and your progress will save going forward.</p>
             </>
         )
     },
@@ -946,226 +775,189 @@ export const faqData = [
                     <li>What happened</li>
                     <li>What you expected to happen</li>
                     <li>Screenshot if possible</li>
-                    <li>Your device (phone/tablet/computer)</li>
-                    <li>Your browser (Chrome/Safari/Firefox/etc.)</li>
+                    <li>Your device and browser</li>
                 </ul>
                 <p>We take bugs seriously and fix them quickly.</p>
             </>
         )
     },
 
-    // ===== J. FOUNDER STORY =====
+    // ===== K. PRIVACY & SAFETY =====
     {
-        id: 'who-created',
-        category: 'founder',
-        question: 'Who is DDS?',
+        id: 'info-safe',
+        category: 'privacy',
+        question: 'Is my information safe on this site?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">A dentist, father of two toddlers, and Army veteran who built this to survive residency.</p>
-                <p className="mb-2">DDS = "Dad Deploying Systems" (and Doctor of Dental Surgery)</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes — we use industry-standard encryption and secure payment processing.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Endodontic resident (50+ hour clinical weeks)</li>
-                    <li>Father of two kids under two years old</li>
-                    <li>Army veteran (502nd Dental Company, Fort Hood)</li>
-                    <li>Systems thinker who applies clinical precision to productivity</li>
+                    <li>HTTPS encryption on all pages</li>
+                    <li>Stripe handles all card payments (PCI compliant)</li>
+                    <li>Ergo payments are blockchain-verified</li>
+                    <li>We don't store payment card details</li>
+                    <li>Your password is encrypted (we can't see it)</li>
                 </ul>
-                <p>This wasn't created by a productivity guru with unlimited time. It was built by someone who HAD to automate to survive.</p>
             </>
         )
     },
     {
-        id: 'what-inspired',
-        category: 'founder',
-        question: 'What inspired Agentic AI at Home?',
+        id: 'what-data-collect',
+        category: 'privacy',
+        question: 'What data do you collect about me?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Desperation — juggling residency, two toddlers, and staying sane required automation.</p>
-                <p className="mb-4">DDS was drowning in life admin: meal planning, appointments, bills, household tasks, email, studying for board exams.</p>
-                <p>AI agents became the solution. The results (7-8 hours saved/week) were so transformative that sharing the system became a mission.</p>
-            </>
-        )
-    },
-    {
-        id: 'who-is-captain',
-        category: 'founder',
-        question: 'Who is Captain Efficiency?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Your friendly AI guide and mascot throughout the webbook.</p>
-                <p className="mb-4">Captain Efficiency:</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Only what's needed: email, password, purchase history, and course progress.</p>
+                <p className="mb-2">We collect:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Explains concepts in friendly language</li>
-                    <li>Cheers your progress</li>
-                    <li>Appears in games</li>
-                    <li>Makes learning feel less alone</li>
+                    <li>✅ Email (to log you in)</li>
+                    <li>✅ Password (encrypted)</li>
+                    <li>✅ Purchase info (to verify access)</li>
+                    <li>✅ Progress (to save your place)</li>
                 </ul>
-                <p>Think of Captain E as your productivity co-pilot — encouraging but never annoying.</p>
+                <p>We DON'T collect or sell personal data for advertising.</p>
             </>
         )
     },
     {
-        id: 'why-adventure',
-        category: 'founder',
-        question: 'Why the "adventure" theme?',
+        id: 'sell-data',
+        category: 'privacy',
+        question: 'Do you sell my data?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Learning should be fun, not feel like homework.</p>
-                <p className="mb-4">We've all taken boring online courses. Here:</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">No. Never. Period.</p>
+                <p>We don't sell, trade, or give your information to third parties. We don't run ads. We don't have marketing partnerships that use your data.</p>
+            </>
+        )
+    },
+    {
+        id: 'ai-privacy-safe',
+        category: 'privacy',
+        question: 'Is it safe to give AI access to my personal info?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes, if you do it thoughtfully — and we teach you exactly how.</p>
+                <p className="mb-4">The course includes a complete privacy framework:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>"Chapters" become "Discoveries"</li>
-                    <li>"Homework" becomes "Missions"</li>
-                    <li>Progress feels like exploration, not obligation</li>
+                    <li>Privacy Tiers (what to share, what to protect)</li>
+                    <li>Agent Constitution (rules for your AI)</li>
+                    <li>Tool comparison (Claude is more private than ChatGPT)</li>
+                    <li>80/20 approach (most benefits, minimal exposure)</li>
                 </ul>
-                <p>The adventure theme makes the experience enjoyable while teaching real skills.</p>
-            </>
-        )
-    },
-    {
-        id: 'mission',
-        category: 'founder',
-        question: "What's the mission behind this project?",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">To help regular people reclaim time lost to life's bureaucracy.</p>
-                <p className="mb-4">Modern life is full of logistics that drain energy and time. AI can handle much of this, but most people don't know how to use it.</p>
-                <p>Our mission: Make AI helpers accessible to everyone — not just tech experts. Give people their time back.</p>
             </>
         )
     },
 
-    // ===== K. BEGINNER REASSURANCE =====
+    // ===== L. FUTURE UPDATES =====
     {
-        id: 'too-advanced',
-        category: 'beginner',
-        question: 'Is this too advanced for me?',
+        id: 'content-updated',
+        category: 'future-updates',
+        question: 'Is the content updated over time?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">No — we start from absolute zero and explain everything.</p>
-                <p className="mb-2">You don't need:</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Yes — lifetime access includes all future updates!</p>
+                <p className="mb-4">AI evolves rapidly, and the course evolves with it. When you purchase:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>❌ Coding skills</li>
-                    <li>❌ Tech background</li>
-                    <li>❌ Prior AI experience</li>
-                    <li>❌ A fancy computer</li>
+                    <li>All updates included</li>
+                    <li>Major tool changes reflected</li>
+                    <li>New capabilities added</li>
+                    <li>You'll be notified of significant updates</li>
                 </ul>
-                <p className="mb-2">You do need:</p>
+                <p>The principles remain stable even as specific tools change.</p>
+            </>
+        )
+    },
+    {
+        id: 'whats-coming',
+        category: 'future-updates',
+        question: "What's coming next?",
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">More chapters, more games, more agent templates!</p>
+                <p className="mb-4">On the roadmap:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>✅ Ability to follow instructions</li>
-                    <li>✅ Willingness to try something new</li>
-                    <li>✅ 30-60 minutes per week</li>
+                    <li>New agent templates as AI tools evolve</li>
+                    <li>Additional games in the Games Hub</li>
+                    <li>Community features (coming soon)</li>
+                    <li>Video walkthroughs (based on demand)</li>
                 </ul>
+                <p>Existing customers get all updates free.</p>
             </>
         )
     },
     {
-        id: 'dont-understand',
-        category: 'beginner',
-        question: "What if I don't understand something?",
+        id: 'pay-for-updates',
+        category: 'future-updates',
+        question: 'Will I have to pay for updates?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Re-read, check the FAQ, or email us for help.</p>
-                <p className="mb-4">Every chapter is designed for clarity. But if something confuses you:</p>
-                <ol className="list-decimal pl-5 space-y-1 mb-4">
-                    <li>Read it again slowly</li>
-                    <li>Check the "Common Questions" in each chapter</li>
-                    <li>Search the FAQ</li>
-                    <li>Email support — we genuinely want you to succeed</li>
-                </ol>
-            </>
-        )
-    },
-    {
-        id: 'own-pace',
-        category: 'beginner',
-        question: 'Can I go at my own pace?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes — lifetime access means no rushing.</p>
-                <p>There are no deadlines. No expiration dates. No "access ends in 30 days." Take a week per chapter, or binge it in a weekend. Pause for months and return. The course waits for you.</p>
-            </>
-        )
-    },
-    {
-        id: 'scared-of-ai',
-        category: 'beginner',
-        question: "I'm scared of AI. Should I still try this?",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">This course might actually help with that fear — we explain AI in friendly, clear terms.</p>
-                <p className="mb-4">Many people fear AI because they don't understand it. This course demystifies AI:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>What it actually is (and isn't)</li>
-                    <li>What it can do (and can't)</li>
-                    <li>How to use it safely</li>
-                    <li>How to stay in control</li>
-                </ul>
-                <p>Understanding often replaces fear.</p>
-            </>
-        )
-    },
-    {
-        id: 'mess-up',
-        category: 'beginner',
-        question: 'What if I mess something up?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Nothing you do in this course can break anything important.</p>
-                <p className="mb-4">You're learning with AI tools that:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>Can't access your bank without permission</li>
-                    <li>Can't send emails without you clicking send</li>
-                    <li>Store conversations in your account (deletable)</li>
-                    <li>Have no permanent consequences if you make mistakes</li>
-                </ul>
-                <p>Experiment freely. You can't break anything.</p>
-            </>
-        )
-    },
-    {
-        id: 'not-for-me',
-        category: 'beginner',
-        question: 'What if AI isn\'t for me?',
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">30-day refund policy — try it risk-free.</p>
-                <p>We believe this course benefits almost everyone. But if after honestly trying it, you realize AI helpers aren't for you, just request a refund within 30 days. No hard feelings.</p>
-            </>
-        )
-    },
-    {
-        id: 'too-old-young',
-        category: 'beginner',
-        question: "I'm worried I'm too old/young for this.",
-        answer: (
-            <>
-                <p className="mb-4 font-bold text-lg text-teal-400">If you can use email and follow instructions, age doesn't matter.</p>
-                <p className="mb-4">We've designed this for:</p>
-                <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>College students ✅</li>
-                    <li>Working adults ✅</li>
-                    <li>Parents of any age ✅</li>
-                    <li>Retirees ✅</li>
-                    <li>Teens (13+) ✅</li>
-                </ul>
-                <p>The only barrier is willingness to learn — not age.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">No — all updates are included in your one-time purchase.</p>
+                <p>This isn't a subscription model. When we add new chapters, games, or features, you get them automatically. No extra fees.</p>
             </>
         )
     },
 
-    // ===== SUPPORT =====
+    // ===== M. THE HEART OF THE PROJECT =====
     {
-        id: 'get-stuck',
-        category: 'troubleshooting',
-        question: 'What if I get stuck on something?',
+        id: 'why-really-doing-this',
+        category: 'heart',
+        question: 'Why are you really doing this?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Multiple support options available:</p>
-                <ol className="list-decimal pl-5 space-y-1 mb-4">
-                    <li><strong>FAQ & Troubleshooting:</strong> Check the guides first</li>
-                    <li><strong>Email Support:</strong> We respond within 24 hours (usually faster)</li>
-                    <li><strong>Course Content:</strong> Each chapter has "Common Mistakes" sections</li>
-                </ol>
-                <p>We want you to succeed. Don't struggle silently — reach out at <a href="mailto:support@agenticaihome.com" className="text-teal-400 hover:underline">support@agenticaihome.com</a></p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Because time is the only thing we can't get back.</p>
+                <p className="mb-4">We get one short life. I don't want to spend mine drowning in meal planning, email, and appointment scheduling. I want to spend it with my kids, my wife, doing work that matters.</p>
+                <p className="mb-4">AI agents gave me that time back. If I can help even one other overwhelmed person reclaim their hours — hours they can spend with the people they love — then this whole project is worth it.</p>
+                <p className="italic text-slate-400">That's it. That's the whole reason.</p>
+            </>
+        )
+    },
+    {
+        id: 'not-just-money',
+        category: 'heart',
+        question: "Is this just about making money?",
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">No — if it was, I'd be doing something else. 😅</p>
+                <p className="mb-4">Honest truth:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>I'm a dentist. I already have income.</li>
+                    <li>I spent months building this during nights and weekends.</li>
+                    <li>I learned to code from scratch with AI's help.</li>
+                    <li>There are easier ways to make money.</li>
+                </ul>
+                <p className="mb-4">I charge because value deserves value, and I need to cover costs. But money isn't the driving force.</p>
+                <p>The driving force is watching someone go from "I'm drowning" to "I finally have time for what matters."</p>
+            </>
+        )
+    },
+    {
+        id: 'what-success-looks-like',
+        category: 'heart',
+        question: "What does success look like to you?",
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">You getting your time back. That's it.</p>
+                <p className="mb-4">Success is:</p>
+                <ul className="list-disc pl-5 space-y-1 mb-4">
+                    <li>You finishing dinner prep 30 minutes faster</li>
+                    <li>You reaching inbox zero for the first time</li>
+                    <li>You spending that extra hour with your family</li>
+                    <li>You feeling less overwhelmed, more in control</li>
+                </ul>
+                <p>Every person who uses this and wins back time is a success story. That's what matters to me.</p>
+            </>
+        )
+    },
+    {
+        id: 'thank-you',
+        category: 'heart',
+        question: 'Any final message?',
+        answer: (
+            <>
+                <p className="mb-4 font-bold text-lg text-teal-400">Thank you for being here. Seriously.</p>
+                <p className="mb-4">Whether you buy the course or not, the fact that you're exploring ways to use AI thoughtfully means you're ahead of most people.</p>
+                <p className="mb-4">AI is changing everything. Those who learn to work WITH it will thrive. Those who ignore it will struggle.</p>
+                <p className="mb-4">You're choosing to learn. That's already a win.</p>
+                <p className="font-bold text-teal-400">Now go reclaim your time. Captain Efficiency and I are cheering for you! 🚀</p>
             </>
         )
     },
