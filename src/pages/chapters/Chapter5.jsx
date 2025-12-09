@@ -94,7 +94,7 @@ Then give me a quick 3-line money status.`;
                                 {AI_PLATFORMS.map((platform) => (
                                     <a key={platform.name} href={platform.url} target="_blank" rel="noopener noreferrer"
                                         className={`relative flex items-center justify-center gap-2 px-3 py-3 rounded-xl bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:scale-105 transition-all`}>
-                                        {platform.recommended && <span className="absolute -top-2 -right-1 bg-amber-400 text-black text-[10px] px-2 py-0.5 rounded-full font-bold">BEST</span>}
+                                        {platform.recommended && <span className="absolute -top-2 -right-1 bg-amber-400 text-black text-[10px] px-2 py-0.5 rounded-full font-bold">POPULAR</span>}
                                         {platform.logo}
                                         <span>{platform.name}</span>
                                     </a>

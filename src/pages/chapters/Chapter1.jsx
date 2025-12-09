@@ -150,7 +150,7 @@ Set this up now.`;
                                     >
                                         {platform.recommended && (
                                             <span className="absolute -top-2 -right-1 bg-amber-400 text-black text-[10px] px-2 py-0.5 rounded-full font-bold">
-                                                BEST
+                                                POPULAR
                                             </span>
                                         )}
                                         {platform.logo}
