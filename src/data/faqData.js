@@ -255,7 +255,7 @@ export const faqData = [
                 <div className="mb-4">
                     <strong className="block text-green-400 mb-1">INCLUDES:</strong>
                     <ul className="list-disc pl-5 space-y-1">
-                        <li>16 written chapters</li>
+                        <li>10 written chapters</li>
                         <li>Interactive quizzes and calculators</li>
                         <li>Copy-ready templates and prompts</li>
                         <li>Captain Efficiency (your AI mascot guide)</li>
