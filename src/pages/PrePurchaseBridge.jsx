@@ -51,11 +51,11 @@ const PrePurchaseBridge = () => {
 
     const completedAgents = [
         { name: 'Morning Agent', chapter: 1, icon: '☀️', result: 'Daily briefings' },
-        { name: 'Meal Planning Agent', chapter: 2, icon: '🍽️', result: 'Weekly meal plans' },
-        { name: 'Important Dates Agent', chapter: 3, icon: '🎂', result: 'Never forget birthdays' },
     ];
 
     const premiumAgents = [
+        { name: 'Meal Planning Agent', chapter: 2, icon: <Mail size={18} />, desc: 'Weekly meal plans made easy', color: 'text-orange-400' },
+        { name: 'Important Dates Agent', chapter: 3, icon: <Clock size={18} />, desc: 'Never forget birthdays again', color: 'text-pink-400' },
         { name: 'Email Triage Agent', chapter: 4, icon: <Mail size={18} />, desc: 'Inbox zero in 10 min/day', color: 'text-blue-400' },
         { name: 'Money Check-In Agent', chapter: 5, icon: <DollarSign size={18} />, desc: 'Weekly money snapshot', color: 'text-green-400' },
         { name: 'Fitness Agent', chapter: 6, icon: <Dumbbell size={18} />, desc: 'Workouts that fit your life', color: 'text-red-400' },
@@ -68,8 +68,8 @@ const PrePurchaseBridge = () => {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>You Built 3 Agents! | Agentic AI Home</title>
-                <meta name="description" content="You've completed the free chapters. See what's next in your AI journey." />
+                <title>Your First Agent Complete! | Agentic AI Home</title>
+                <meta name="description" content="You've built your first AI agent. See what's next in your journey to automate your life." />
             </Helmet>
 
             <div className="min-h-screen bg-[#0a0a12]">
@@ -142,14 +142,14 @@ const PrePurchaseBridge = () => {
                     >
                         <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-green-500/20 border border-green-500/40 mb-6">
                             <Sparkles className="text-green-400" size={18} />
-                            <span className="text-green-400 font-bold">Free Chapters Complete!</span>
+                            <span className="text-green-400 font-bold">Chapter 1 Complete!</span>
                         </div>
 
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-                            🎉 You Built <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">3 Real Agents</span>
+                            🎉 You Built <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">Your First Agent</span>
                         </h1>
                         <p className="text-slate-400 text-lg">
-                            That's more than 90% of people who "use AI."
+                            That's more than most people ever do. Ready to build your agent army?
                         </p>
 
                         {/* SHARE BUTTONS - Referral Discount Mechanic */}
@@ -289,7 +289,7 @@ const PrePurchaseBridge = () => {
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mb-8">
                         <h2 className="text-white font-bold mb-4 flex items-center gap-2">
                             <Lock className="text-purple-400" size={20} />
-                            7 More Agents Waiting
+                            9 More Agents Waiting
                         </h2>
                         <div className="space-y-3">
                             {premiumAgents.map((agent, i) => (
@@ -386,7 +386,7 @@ const PrePurchaseBridge = () => {
                             <div className="grid grid-cols-2 gap-4 text-sm">
                                 <div className="flex items-center gap-2 text-white">
                                     <CheckCircle className="text-green-400" size={18} />
-                                    <span><strong>10</strong> chapters (7 more)</span>
+                                    <span><strong>10</strong> chapters (9 more)</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-white">
                                     <CheckCircle className="text-green-400" size={18} />
