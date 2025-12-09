@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Zap, Home, HelpCircle, Lock, ChevronDown, ChevronRight, Gamepad2, Unlock, CheckCircle, BarChart3 } from 'lucide-react';
+import { Menu, X, BookOpen, Zap, HelpCircle, Lock, ChevronDown, ChevronRight, Gamepad2, Unlock, CheckCircle, BarChart3 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import PrefetchLink from './PrefetchLink';
@@ -242,30 +242,18 @@ const WebbookLayout = ({ children }) => {
                 </div>
 
                 <nav className="flex-1 overflow-y-auto p-3 space-y-1" aria-label="Chapter Navigation">
-                    {/* Home + Progress Row */}
-                    <div className="flex gap-2 mb-3">
-                        <PrefetchLink
-                            to="/"
-                            className={`flex-1 flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all text-sm ${location.pathname === '/'
-                                ? 'bg-slate-700 text-white'
-                                : 'text-slate-400 hover:bg-slate-800/70 hover:text-white'
-                                }`}
-                        >
-                            <Home size={16} />
-                            <span className="font-medium">Home</span>
-                        </PrefetchLink>
-                        <PrefetchLink
-                            to="/dashboard"
-                            className={`flex-1 flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all text-sm ${location.pathname === '/dashboard'
-                                ? 'bg-teal-600 text-white'
-                                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-700/50'
-                                }`}
-                        >
-                            <BarChart3 size={16} />
-                            <span className="font-medium">Progress</span>
-                            <span className="ml-auto text-xs bg-teal-500/20 text-teal-400 px-1.5 py-0.5 rounded font-bold">{progressPercent}%</span>
-                        </PrefetchLink>
-                    </div>
+                    {/* Progress Button - Full Width */}
+                    <PrefetchLink
+                        to="/dashboard"
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all mb-3 ${location.pathname === '/dashboard'
+                            ? 'bg-teal-600 text-white shadow-md'
+                            : 'bg-slate-800/50 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-700/50'
+                            }`}
+                    >
+                        <BarChart3 size={18} />
+                        <span className="font-bold">My Progress</span>
+                        <span className="ml-auto text-sm bg-teal-500/20 text-teal-400 px-2 py-0.5 rounded-lg font-bold">{progressPercent}%</span>
+                    </PrefetchLink>
 
                     {/* Course Section Header */}
                     <div className="pt-2 pb-2 px-2">
@@ -282,10 +270,10 @@ const WebbookLayout = ({ children }) => {
                             <div key={chapter.id} className="flex flex-col">
                                 {/* Chapter Header */}
                                 <div className={`flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all group ${isFreeSection
-                                        ? 'bg-green-900/30 border border-green-500/30 hover:bg-green-900/40'
-                                        : isActive
-                                            ? 'bg-teal-600/90 text-white shadow-md'
-                                            : 'text-slate-300 hover:bg-slate-800/70'
+                                    ? 'bg-green-900/30 border border-green-500/30 hover:bg-green-900/40'
+                                    : isActive
+                                        ? 'bg-teal-600/90 text-white shadow-md'
+                                        : 'text-slate-300 hover:bg-slate-800/70'
                                     }`}>
                                     <Link to={chapter.path} className="flex-1 flex items-center gap-3 focus:outline-none">
                                         <span className={`${isFreeSection ? 'text-green-400' : isActive ? 'text-teal-200' : 'text-slate-500'}`}>
@@ -324,8 +312,8 @@ const WebbookLayout = ({ children }) => {
                                                             key={sub.id}
                                                             to={sub.path}
                                                             className={`flex items-center gap-2 text-xs py-2 px-2 transition-colors rounded-lg ${isSubActive
-                                                                    ? 'text-teal-400 font-semibold bg-teal-900/30'
-                                                                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                                                ? 'text-teal-400 font-semibold bg-teal-900/30'
+                                                                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                                                                 }`}
                                                         >
                                                             {isCompleted ? (
