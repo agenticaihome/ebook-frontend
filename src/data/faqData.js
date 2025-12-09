@@ -31,13 +31,11 @@ export const faqData = [
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">An interactive webbook that teaches you to use AI helpers for everyday life.</p>
                 <p className="mb-4">Unlike chatbots that just answer questions, AI "agents" take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
-                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 16 chapters:</p>
+                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 3 parts:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Start Here:</strong> Your first Morning Agent</li>
-                    <li><strong>Part 1:</strong> Foundations (Meal Planning, Important Dates)</li>
-                    <li><strong>Part 2:</strong> Daily Systems (Inbox Zero, Finance, Health)</li>
-                    <li><strong>Part 3:</strong> Deep Automation (Tasks, Building Custom Agents)</li>
-                    <li><strong>Part 4:</strong> Mastery (Connecting everything together)</li>
+                    <li><strong>Part 1:</strong> Foundations (Morning Agent, Meal Planning, Dates)</li>
+                    <li><strong>Part 2:</strong> Daily Systems (Email Triage, Money Check-in, Fitness, Work Tasks)</li>
+                    <li><strong>Part 3:</strong> Mastery (Custom Builder, Multi-Agent Coordination, Full Army)</li>
                 </ul>
             </>
         )
@@ -51,7 +49,7 @@ export const faqData = [
                 <p className="mb-4 font-bold text-lg text-teal-400">Because reading a PDF or watching videos isn't the same as DOING.</p>
                 <p className="mb-4">This isn't passive learning. It's an interactive experience with:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>16 chapters you can read at your own pace</li>
+                    <li>10 chapters you can read at your own pace</li>
                     <li>Copy-ready templates you can use immediately</li>
                     <li>Interactive quizzes and calculators</li>
                     <li>Games that make learning fun</li>
@@ -71,9 +69,9 @@ export const faqData = [
                 <p className="mb-4">By the end, you'll have:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li>A Morning Agent that briefs you on your day</li>
-                    <li>A Meal Planner that handles weekly menus and groceries</li>
-                    <li>An Email Agent that triages your inbox</li>
-                    <li>A Finance Agent that tracks spending</li>
+                    <li>A Meal Planning Agent that handles weekly menus</li>
+                    <li>An Email Triage Agent that sorts your inbox</li>
+                    <li>A Money Check-In Agent that tracks spending</li>
                     <li>Custom agents for YOUR specific needs</li>
                 </ul>
                 <p>Most users save 5-10 hours per week once fully implemented.</p>
@@ -355,7 +353,7 @@ export const faqData = [
                     <li><strong>Free Chapters:</strong> ~30 minutes</li>
                     <li><strong>Part 1 (Foundations):</strong> ~1 hour</li>
                     <li><strong>Part 2 (Daily Systems):</strong> ~2 hours</li>
-                    <li><strong>Part 3 & 4 (Advanced):</strong> ~2-3 hours</li>
+                    <li><strong>Part 3 (Mastery):</strong> ~2-3 hours</li>
                 </ul>
                 <p>You have lifetime access — go at your pace.</p>
             </>
@@ -381,12 +379,11 @@ export const faqData = [
         question: 'How many chapters are there?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">16 chapters organized into 4 Parts.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">10 chapters organized into 3 Parts.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Part 1:</strong> Foundations — Getting started with AI agents</li>
-                    <li><strong>Part 2:</strong> Daily Systems — Email, finance, health automation</li>
-                    <li><strong>Part 3:</strong> Deep Automation — Custom agents and workflows</li>
-                    <li><strong>Part 4:</strong> Mastery — Connecting everything together</li>
+                    <li><strong>Part 1:</strong> Foundations — Getting started with your first agents</li>
+                    <li><strong>Part 2:</strong> Daily Systems — Email, finance, fitness, and work automation</li>
+                    <li><strong>Part 3:</strong> Mastery — Custom builders and multi-agent coordination</li>
                 </ul>
                 <p>Each chapter includes reading, actionable templates, and missions to complete.</p>
             </>
@@ -463,15 +460,15 @@ export const faqData = [
                 <p className="mb-4 font-bold text-lg text-teal-400">10 agents covering every area of daily life:</p>
                 <ol className="list-decimal pl-5 space-y-1 mb-4">
                     <li><strong>Morning Agent</strong> — Daily briefings and priority setting</li>
-                    <li><strong>Meal Planner</strong> — Weekly menus and grocery lists</li>
+                    <li><strong>Meal Planning Agent</strong> — Weekly menus and grocery lists</li>
                     <li><strong>Important Dates Agent</strong> — Never forget a birthday</li>
                     <li><strong>Email Triage Agent</strong> — Sort inbox and draft responses</li>
-                    <li><strong>Money Clarity Agent</strong> — Track spending and subscriptions</li>
-                    <li><strong>Workout Planner</strong> — Custom fitness plans</li>
-                    <li><strong>Task Prioritizer</strong> — Sort your to-do list</li>
-                    <li><strong>Custom Builder</strong> — Learn to build ANY agent</li>
-                    <li><strong>Teamwork Agent</strong> — Make agents talk to each other</li>
-                    <li><strong>Agent Army</strong> — Your complete automated system</li>
+                    <li><strong>Money Check-In Agent</strong> — Weekly financial clarity</li>
+                    <li><strong>Fitness Agent</strong> — Custom workout plans</li>
+                    <li><strong>Work Task Agent</strong> — Prioritize your to-do list</li>
+                    <li><strong>Custom Agent Builder</strong> — Learn to build ANY agent</li>
+                    <li><strong>Multi-Agent Coordination</strong> — Make agents talk to each other</li>
+                    <li><strong>Your Agent Army</strong> — Your complete automated system</li>
                 </ol>
             </>
         )
@@ -547,7 +544,7 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">No — games are optional fun, not required.</p>
-                <p>You can complete all 16 chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
+                <p>You can complete all 10 chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
             </>
         )
     },
