@@ -80,8 +80,17 @@ const LoginPage = () => {
                 {/* Glass Card */}
                 <div className="bg-slate-800/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-600/50 overflow-hidden">
 
-                    {/* Header with Captain */}
+                    {/* Header with Logo & Captain */}
                     <div className="p-8 text-center border-b border-slate-700/50 relative">
+                        {/* Logo */}
+                        <div className="flex justify-center mb-4">
+                            <img
+                                src="/assets/logo-new.png"
+                                alt="Agentic AI at Home"
+                                className="h-12 w-auto"
+                            />
+                        </div>
+
                         {/* Captain Hero */}
                         <div className="flex justify-center mb-4">
                             <div className="relative">
