@@ -1,104 +1,189 @@
 import React, { useState, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { X, Sparkles, Lightbulb } from 'lucide-react';
+import { X, Sparkles, Lightbulb, ArrowRight } from 'lucide-react';
+import { useLocation, Link } from 'react-router-dom';
 
-// Captain E's Productivity Tips - 20 unique insights
+// Captain E's insights - specific to book content
 const CAPTAIN_TIPS = [
-    "Automating your grocery list can save you 2 hours a week. That's 100+ hours a year!",
-    "Use AI to draft your emails. It reduces mental load by 40%.",
-    "A 5-minute daily planning session with AI prevents 2 hours of chaos.",
-    "Batch your low-energy tasks for the afternoon slump. Your future self will thank you.",
-    "Set up a morning automation routine. The first win of the day compounds.",
-    "Your calendar is a to-do list. If it's not scheduled, it's not happening.",
-    "Automate expense tracking: 10 minutes monthly beats 2 hours quarterly.",
-    "Use voice memos for quick captures. Transcribe later with AI. Your brain isn't a storage device.",
-    "Build a 'Second Brain' for recurring decisions. Document once, reference forever.",
-    "Red days = survival mode. Yellow days = essentials only. Green days = attack mode. Know your state.",
-    "Template your recurring emails. Why rewrite the same explanation 50 times a year?",
-    "Block 'No Meeting' days. Deep work requires uninterrupted time, not fragmented hours.",
-    "Automate your bill payments. Decision fatigue is real - eliminate the trivial choices.",
-    "Use AI to summarize long documents. Read the 500-word summary, not the 50-page report.",
-    "Meal prep on Sunday. Deciding what to eat 21 times a week is exhausting.",
-    "Set up auto-replies for common questions. Your time is too valuable for repetitive responses.",
-    "Track your energy levels, not just your time. Optimize for when you're naturally productive.",
-    "Create a shutdown ritual. Your brain needs a clear 'work is done' signal.",
-    "Automate your morning: coffee timer, lights, music. Remove 15 decisions before 8am.",
-    "Use AI agents for research. Let them filter 100 articles down to the 5 that matter."
+    // Chapter 1: Morning Agent
+    {
+        tip: "Your Morning Agent can save you 15 minutes every day. That's 90+ hours a year of clarity!",
+        chapter: 1,
+        cta: { text: "Build it in Chapter 1", link: "/part1/chapter1" }
+    },
+    // Chapter 2: Meal Planning
+    {
+        tip: "Stop the 'what's for dinner?' stress. Your Meal Planning Agent handles it in seconds.",
+        chapter: 2,
+        cta: { text: "Learn how in Chapter 2", link: "/part1/chapter2" }
+    },
+    // Chapter 3: Important Dates
+    {
+        tip: "Never forget a birthday again. The Important Dates Agent sends reminders automatically.",
+        chapter: 3,
+        cta: { text: "Set it up in Chapter 3", link: "/part1/chapter3" }
+    },
+    // Chapter 4: Email Triage
+    {
+        tip: "Inbox zero is possible. The Email Triage Agent sorts 100 emails in 10 minutes.",
+        chapter: 4,
+        cta: { text: "Unlock in Chapter 4", link: "/unlock" }
+    },
+    // Chapter 5: Money Check-In
+    {
+        tip: "Weekly money anxiety? Your Money Check-In Agent gives you a calm financial snapshot.",
+        chapter: 5,
+        cta: { text: "Build it in Chapter 5", link: "/unlock" }
+    },
+    // Chapter 6: Fitness
+    {
+        tip: "No more gym guilt. The Fitness Agent creates workouts that fit YOUR schedule.",
+        chapter: 6,
+        cta: { text: "Get fit in Chapter 6", link: "/unlock" }
+    },
+    // General productivity insights
+    {
+        tip: "AI isn't about replacing you — it's about giving you back the time to be human.",
+        chapter: null,
+        cta: null
+    },
+    {
+        tip: "Most people use ChatGPT once and forget. You're building systems. That's the difference.",
+        chapter: null,
+        cta: null
+    },
+    {
+        tip: "The best automation is invisible. It just works. That's what we're building here.",
+        chapter: null,
+        cta: null
+    },
+    {
+        tip: "5 minutes of setup today = 5 hours saved every week. The math always works out.",
+        chapter: null,
+        cta: null
+    },
+    // Motivation
+    {
+        tip: "You're already ahead. Most people talk about AI. You're actually using it.",
+        chapter: null,
+        cta: null
+    },
+    {
+        tip: "Each agent you build compounds. By Chapter 10, you'll have an entire army working for you.",
+        chapter: null,
+        cta: null
+    },
+];
+
+// Pages where we DON'T show Captain tips (sales/payment flows)
+const EXCLUDED_PATHS = [
+    '/unlock',
+    '/payment-guide',
+    '/pay-ergo',
+    '/ergo-guide',
+    '/login',
+    '/create-account',
+    '/success',
 ];
 
 const CaptainTips = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [tip, setTip] = useState('');
+    const [currentTip, setCurrentTip] = useState(null);
+    const location = useLocation();
 
     useEffect(() => {
-        // Show tip after 5 seconds
+        // Check if we've already shown a tip this session
+        const hasSeenTip = sessionStorage.getItem('captainTipShown');
+
+        // Don't show on excluded pages
+        const isExcludedPage = EXCLUDED_PATHS.some(path => location.pathname.includes(path));
+
+        // Don't show if already seen or on excluded page
+        if (hasSeenTip || isExcludedPage) {
+            return;
+        }
+
+        // Show tip after 20 seconds of reading
         const timer = setTimeout(() => {
             // Pick a random tip
             const randomTip = CAPTAIN_TIPS[Math.floor(Math.random() * CAPTAIN_TIPS.length)];
-            setTip(`Captain's Insight: ${randomTip}`);
+            setCurrentTip(randomTip);
             setIsVisible(true);
-        }, 5000);
+
+            // Mark as seen for this session
+            sessionStorage.setItem('captainTipShown', 'true');
+        }, 20000); // 20 seconds
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [location.pathname]);
 
     const closeTip = () => {
         setIsVisible(false);
     };
 
+    if (!currentTip) return null;
+
     return (
         <AnimatePresence>
             {isVisible && (
                 <m.div
-                    initial={{ opacity: 0, y: 50, x: 50 }}
-                    animate={{ opacity: 1, y: 0, x: 0 }}
-                    exit={{ opacity: 0, y: 50, scale: 0.9 }}
-                    className="fixed bottom-8 right-8 z-50 max-w-sm"
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 30, scale: 0.95 }}
+                    transition={{ type: "spring", damping: 20, stiffness: 300 }}
+                    className="fixed bottom-4 right-4 z-50 max-w-xs md:max-w-sm"
                 >
-                    <div className="relative bg-[#1a1a2e]/90 backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 shadow-2xl shadow-cyan-900/20">
-                        {/* Captain Avatar */}
-                        <div className="absolute -top-10 -left-6">
-                            <div className="relative">
-                                <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full p-1 shadow-lg ring-4 ring-[#0f0f1a]">
-                                    <img
-                                        src="/assets/captain-efficiency-dark-transparent.webp"
-                                        alt="Captain Efficiency"
-                                        className="w-full h-full object-contain rounded-full"
-                                    />
-                                </div>
-                                <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-[#0f0f1a] flex items-center justify-center">
-                                    <Sparkles size={12} className="text-white" />
-                                </div>
+                    <div className="relative bg-slate-900/95 backdrop-blur-xl border border-teal-500/40 rounded-2xl p-5 shadow-2xl shadow-teal-900/30">
+                        {/* Close button */}
+                        <button
+                            onClick={closeTip}
+                            className="absolute top-3 right-3 text-slate-500 hover:text-white transition-colors p-1"
+                            aria-label="Close"
+                        >
+                            <X size={16} />
+                        </button>
+
+                        {/* Header */}
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 p-0.5 shadow-lg">
+                                <img
+                                    src="/assets/captain-efficiency-dark-transparent.webp"
+                                    alt="Captain Efficiency"
+                                    className="w-full h-full object-contain rounded-full bg-slate-800"
+                                />
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <Lightbulb size={14} className="text-amber-400" />
+                                <span className="text-teal-400 font-bold text-xs uppercase tracking-wide">Captain's Insight</span>
                             </div>
                         </div>
 
-                        {/* Content */}
-                        <div className="ml-8 mt-2">
-                            <div className="flex justify-between items-start mb-2">
-                                <h3 className="text-cyan-400 font-bold text-sm uppercase tracking-wider flex items-center gap-2">
-                                    <Lightbulb size={14} />
-                                    Captain's Insight
-                                </h3>
-                                <button
-                                    onClick={closeTip}
-                                    className="text-slate-400 hover:text-white transition-colors"
-                                >
-                                    <X size={16} />
-                                </button>
-                            </div>
+                        {/* Tip Content */}
+                        <p className="text-slate-200 text-sm leading-relaxed mb-3">
+                            {currentTip.tip}
+                        </p>
 
-                            <p className="text-slate-200 text-sm leading-relaxed">
-                                {tip}
-                            </p>
+                        {/* CTA if available */}
+                        {currentTip.cta && (
+                            <Link
+                                to={currentTip.cta.link}
+                                onClick={closeTip}
+                                className="inline-flex items-center gap-1 text-teal-400 hover:text-teal-300 text-xs font-medium transition-colors"
+                            >
+                                {currentTip.cta.text}
+                                <ArrowRight size={12} />
+                            </Link>
+                        )}
 
-                            <div className="mt-4 flex justify-end">
-                                <button
-                                    onClick={closeTip}
-                                    className="text-xs text-cyan-400 hover:text-cyan-300 font-medium"
-                                >
-                                    Thanks, Captain!
-                                </button>
-                            </div>
+                        {/* Dismiss text */}
+                        <div className="mt-3 pt-3 border-t border-slate-700/50 flex justify-between items-center">
+                            <span className="text-slate-600 text-xs">💡 Tips appear once per visit</span>
+                            <button
+                                onClick={closeTip}
+                                className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
+                            >
+                                Got it!
+                            </button>
                         </div>
                     </div>
                 </m.div>
