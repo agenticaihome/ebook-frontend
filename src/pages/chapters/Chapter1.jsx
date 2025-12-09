@@ -323,7 +323,7 @@ Set this up now.`;
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <p className="text-center text-slate-500 text-sm mt-3">
-                            Build your complete agent army: Email, Finances, Fitness & more
+                            Reclaim 5+ hours every week — 10 agents, 10 chapters, lifetime access
                         </p>
                     </motion.section>
 
