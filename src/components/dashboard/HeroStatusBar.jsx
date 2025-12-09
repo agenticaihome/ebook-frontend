@@ -4,17 +4,17 @@ import { Flame, Star, Trophy, Sparkles, ChevronUp } from 'lucide-react';
 import { useUser } from '../../context/UserContext';
 
 // ============================================
-// RANK SYSTEM - FRONTIER COMMAND
+// RANK SYSTEM - LEARNING LEVELS
 // ============================================
 const RANKS = [
-    { name: 'Newcomer', minXP: 0, icon: '🧭', color: 'from-slate-400 to-slate-500' },
-    { name: 'Pathfinder', minXP: 200, icon: '🗺️', color: 'from-green-400 to-emerald-500' },
-    { name: 'Settler', minXP: 400, icon: '⛏️', color: 'from-teal-400 to-cyan-500' },
-    { name: 'Pioneer', minXP: 600, icon: '🏴', color: 'from-blue-400 to-indigo-500' },
-    { name: 'Homesteader', minXP: 850, icon: '💎', color: 'from-purple-400 to-violet-500' },
-    { name: 'Trailblazer', minXP: 1000, icon: '⭐', color: 'from-amber-400 to-orange-500' },
-    { name: 'Territory Captain', minXP: 1200, icon: '🔥', color: 'from-orange-400 to-red-500' },
-    { name: 'Frontier Commander', minXP: 1600, icon: '👑', color: 'from-yellow-400 to-amber-500' },
+    { name: 'Beginner', minXP: 0, icon: '📚', color: 'from-slate-400 to-slate-500' },
+    { name: 'Learner', minXP: 200, icon: '📖', color: 'from-green-400 to-emerald-500' },
+    { name: 'Builder', minXP: 400, icon: '🛠️', color: 'from-teal-400 to-cyan-500' },
+    { name: 'Practitioner', minXP: 600, icon: '⚡', color: 'from-blue-400 to-indigo-500' },
+    { name: 'Advanced', minXP: 850, icon: '💎', color: 'from-purple-400 to-violet-500' },
+    { name: 'Expert', minXP: 1000, icon: '⭐', color: 'from-amber-400 to-orange-500' },
+    { name: 'Master', minXP: 1200, icon: '🏆', color: 'from-orange-400 to-red-500' },
+    { name: 'AI Commander', minXP: 1600, icon: '👑', color: 'from-yellow-400 to-amber-500' },
 ];
 
 const getRank = (xp) => {
@@ -48,10 +48,10 @@ const XPProgressBar = ({ currentXP, maxXP = 1850 }) => {
         <div className="flex-1 max-w-md">
             <div className="flex items-center justify-between mb-1">
                 <span className="text-xs text-slate-400 font-medium">
-                    {nextRank ? `Exploring toward ${nextRank.name}` : 'FRONTIER MASTERED'}
+                    {nextRank ? `${nextRank.minXP - currentXP} XP to ${nextRank.name}` : 'MAX LEVEL'}
                 </span>
-                <span className="text-xs font-mono text-cyan-400">
-                    {currentXP.toLocaleString()} / {maxXP.toLocaleString()} DP
+                <span className="text-xs text-teal-400">
+                    {currentXP.toLocaleString()} / {maxXP.toLocaleString()} XP
                 </span>
             </div>
             <div className="h-3 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
@@ -92,17 +92,17 @@ const CaptainCompanion = ({ xp, streak }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const messages = useMemo(() => [
-        { condition: () => streak === 0, msg: "Welcome back, Explorer! Ready to chart new territory?" },
-        { condition: () => streak >= 7, msg: "🔥 A WEEK of exploration! Legendary dedication!" },
-        { condition: () => streak >= 3, msg: "Great expedition streak! The frontier awaits!" },
-        { condition: () => xp >= 1600, msg: "👑 Frontier Commander! You've conquered all territories!" },
-        { condition: () => xp >= 1200, msg: "🔥 Territory Captain! Almost at the summit!" },
-        { condition: () => xp >= 1000, msg: "⭐ Trailblazer status! Blazing new paths!" },
-        { condition: () => xp >= 850, msg: "💎 Homesteader achieved! Building your empire!" },
-        { condition: () => xp >= 600, msg: "🏴 Pioneer! Claiming new ground!" },
-        { condition: () => xp >= 400, msg: "⛏️ Settler! Establishing your base!" },
-        { condition: () => xp >= 200, msg: "🗺️ Pathfinder! The map is expanding!" },
-        { condition: () => true, msg: "New territories await, Explorer!" },
+        { condition: () => streak === 0, msg: "Welcome back! Ready to learn something new?" },
+        { condition: () => streak >= 7, msg: "🔥 A WEEK streak! Amazing dedication!" },
+        { condition: () => streak >= 3, msg: "Great learning streak! Keep it up!" },
+        { condition: () => xp >= 1600, msg: "👑 AI Commander! You've mastered all chapters!" },
+        { condition: () => xp >= 1200, msg: "🏆 Master! Almost at the top!" },
+        { condition: () => xp >= 1000, msg: "⭐ Expert status! Impressive progress!" },
+        { condition: () => xp >= 850, msg: "💎 Advanced level! Building your system!" },
+        { condition: () => xp >= 600, msg: "⚡ Practitioner! Making great progress!" },
+        { condition: () => xp >= 400, msg: "🛠️ Builder! Creating your agents!" },
+        { condition: () => xp >= 200, msg: "📖 Learner! Knowledge is growing!" },
+        { condition: () => true, msg: "New chapters await!" },
     ], [xp, streak]);
 
     useEffect(() => {
