@@ -6,6 +6,7 @@ import {
     Sparkles, Zap, Clock, ArrowRight, Check, BookOpen,
     Rocket, Heart, Shield, Gamepad2, Bot, ChevronRight
 } from 'lucide-react';
+import AgentEcosystem from '../components/common/AgentEcosystem';
 
 const OnboardingPage = () => {
     return (
@@ -75,14 +76,14 @@ const OnboardingPage = () => {
                             </div>
 
                             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-                                You're About to Get Your
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400"> TIME </span>
-                                Back.
+                                Drowning in Admin?
+                                <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400"> Get Your Life Back.</span>
                             </h1>
 
-                            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8">
-                                This isn't just a course. It's your personal journey to automate the boring stuff
-                                so you can focus on <span className="text-white font-semibold">what actually matters</span>.
+                            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+                                Stop meal planning at midnight. Stop stressing over emails.
+                                Build your own <span className="text-white font-bold">team of 10 AI agents</span> to handle it all for you.
                             </p>
                         </motion.div>
 
@@ -233,6 +234,32 @@ const OnboardingPage = () => {
                                 </div>
                             </div>
                         </motion.div>
+                    </div>
+                </section>
+
+                {/* SECTION 2D: The Agent Ecosystem (Jensen Huang Audit) */}
+                <section className="py-20 px-6 bg-slate-900/30 border-y border-slate-800/50">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                                Meet Your New <span className="text-teal-400">Agent Army</span>
+                            </h2>
+                            <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
+                                You are the CEO. They are your employees.
+                                <br />
+                                They work 24/7/365. They never complain. They don't need coffee.
+                            </p>
+                        </motion.div>
+
+                        <AgentEcosystem />
+
+                        <div className="mt-8 text-sm text-slate-500 italic">
+                            * You will build every single one of these from scratch.
+                        </div>
                     </div>
                 </section>
 

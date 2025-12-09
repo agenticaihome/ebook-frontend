@@ -13,7 +13,7 @@ const SplashPage = () => {
                 <meta name="description" content="Captain Efficiency guides you through 10 chapters to automate your life. Reclaim 5+ hours every week with AI agents." />
             </Helmet>
 
-            <div className="min-h-screen bg-gradient-to-br from-slate-950 via-[#0a1628] to-slate-950 flex flex-col items-center justify-between px-4 py-6 md:py-10 relative overflow-hidden">
+            <div className="min-h-screen bg-gradient-to-br from-slate-950 via-[#0a1628] to-slate-950 flex flex-col items-center justify-between px-4 py-12 md:py-20 relative overflow-hidden">
 
                 {/* Cinematic Background Effects */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -178,7 +178,7 @@ const SplashPage = () => {
                             <div className="flex items-center gap-2">
                                 <span className="text-yellow-400">★★★★★</span>
                                 <span className="text-slate-300 text-sm">
-                                    <span className="text-white font-semibold">500+</span> happy users
+                                    <span className="text-white font-semibold">500+</span> pioneers
                                 </span>
                             </div>
                         </div>
@@ -199,23 +199,25 @@ const SplashPage = () => {
                         </Link>
                     </motion.div>
 
-                    {/* Email Capture for hesitant visitors */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.3 }}
-                        className="mt-10 w-full max-w-md"
-                    >
-                        <EmailCaptureForm
-                            source="splash_page"
-                            headline="📬 Not ready to start yet?"
-                            subheadline="Get a free AI Starter Checklist + weekly tips"
-                            buttonText="Send Me Tips"
-                            successMessage="Check your inbox!"
-                            compact={false}
-                        />
-                    </motion.div>
+
                 </div>
+
+                {/* Email Capture - Moved to Footer/Bottom to declutter Hero */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                    className="relative z-10 w-full max-w-md mx-auto mb-8 px-4"
+                >
+                    <EmailCaptureForm
+                        source="splash_page"
+                        headline="📬 Not ready to start yet?"
+                        subheadline="Get a free AI Starter Checklist"
+                        buttonText="Send Tips"
+                        successMessage="Check inbox!"
+                        compact={true}
+                    />
+                </motion.div>
 
                 {/* Footer Socials - Colorful */}
                 <motion.div

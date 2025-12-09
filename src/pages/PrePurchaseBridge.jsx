@@ -75,190 +75,263 @@ const PrePurchaseBridge = () => {
                     <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-[80px]" />
                 </div>
 
-                <div className="relative max-w-2xl mx-auto px-5 py-8">
+                <div className="relative max-w-2xl mx-auto px-5 py-12 md:py-16">
 
-                    {/* ========== SECTION 1: CELEBRATION + HOOK (ATTENTION) ========== */}
+                    {/* ========== SECTION 1: GUARANTEE + HOOK (ATTENTION) ========== */}
                     <motion.section
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-center mb-8"
+                        className="text-center mb-12"
                     >
-                        {/* Success Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 border border-green-500/40 mb-4">
-                            <Sparkles className="text-green-400" size={16} />
-                            <span className="text-green-400 font-bold text-sm">Chapter 1 Complete!</span>
+                        {/* Trust Badge - TOP PRIORITIZATION (Bezos Audit) */}
+                        <div className="flex items-center justify-center gap-2 mb-6">
+                            <div className="flex items-center gap-1.5 px-3 py-1 bg-green-900/30 border border-green-500/30 rounded-full text-xs font-medium text-green-400">
+                                <Shield size={12} />
+                                30-Day Money-Back Guarantee
+                            </div>
+                            <div className="flex items-center gap-1.5 px-3 py-1 bg-amber-900/30 border border-amber-500/30 rounded-full text-xs font-medium text-amber-400">
+                                <Users size={12} />
+                                500+ Pioneers
+                            </div>
                         </div>
 
-                        {/* Emotional Hook */}
-                        <h1 className="text-2xl md:text-3xl font-black text-white mb-3">
-                            You Just Automated Your Mornings. 🎉
+                        {/* Emotional Hook (Blakely Audit) */}
+                        <h1 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+                            You Just Automated Your Mornings.<br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
+                                Now Automate Your Life.
+                            </span>
                         </h1>
-                        <p className="text-slate-400 text-lg mb-4">
-                            What if you could do that for <span className="text-white font-semibold">everything else</span>?
+
+                        <p className="text-slate-300 text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
+                            Unlock the full army of 10 agents to handle your emails, meals, money, and admin—forever.
                         </p>
 
-                        {/* Before/After Emotional Contrast */}
-                        <div className="grid grid-cols-2 gap-3 max-w-xs mx-auto">
-                            <div className="bg-red-900/20 rounded-xl p-3 border border-red-500/20">
-                                <div className="text-xl mb-1">😰</div>
-                                <div className="text-xs text-red-300">Before: Overwhelmed</div>
+                        {/* Price Anchor (Bezos Audit) */}
+                        <div className="mb-8 relative inline-block">
+                            <div className="absolute -top-3 -right-6 rotate-12 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse">
+                                ENDS SOON
                             </div>
-                            <div className="bg-green-900/20 rounded-xl p-3 border border-green-500/20">
-                                <div className="text-xl mb-1">😌</div>
-                                <div className="text-xs text-green-300">After: In control</div>
+                            <div className="text-amber-400 font-bold text-xs tracking-wider uppercase mb-1">Early Adopter Pricing</div>
+                            <div className="inline-flex items-baseline gap-2">
+                                <span className="text-4xl font-black text-white">$39.99</span>
+                                <span className="text-slate-500 line-through text-xl">$199</span>
+                            </div>
+                            <p className="text-slate-500 text-sm mt-1">One-time payment • Lifetime access</p>
+                        </div>
+
+                        {/* Primary CTA */}
+                        <Link
+                            to="/payment-guide"
+                            className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white px-8 py-4 rounded-2xl font-bold text-xl transition-all shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                        >
+                            <span className="relative z-10">Get Full Access</span>
+                            <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={24} />
+
+                            {/* Glow pulse */}
+                            <div className="absolute inset-0 rounded-2xl bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+
+                        <div className="mt-4 text-xs text-slate-500">
+                            Secure checkout • Instant access
+                        </div>
+                    </motion.section>
+
+                    {/* ========== SECTION 2: THE FOUNDER STORY (Chesky Audit) ========== */}
+                    <motion.section
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl p-6 md:p-8 border border-slate-700/50 relative overflow-hidden"
+                    >
+                        {/* Background decoration */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/5 rounded-full blur-[80px] pointer-events-none" />
+
+                        <div className="relative z-10">
+                            <h3 className="text-teal-400 font-bold text-sm tracking-wider uppercase mb-3">
+                                👋 FROM THE CREATOR (DDS)
+                            </h3>
+                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                                "My wife would kill me if I gave this away."
+                            </h2>
+
+                            <div className="space-y-4 text-slate-300 leading-relaxed text-lg">
+                                <p>
+                                    Hi, I'm just a normal guy—a <strong>dad of two toddlers</strong>, a dental resident working 60-hour weeks, and an Army vet.
+                                </p>
+                                <p>
+                                    I built this system out of survival. I was drowning in life admin—meal planning at midnight, missing birthdays, stressing over emails.
+                                    I used AI to build "agents" that gave me <strong>7 hours back every week</strong>.
+                                </p>
+                                <p>
+                                    I'm not a guru. I still practice dentistry. I charge $39.99 because I spent hundreds of late nights building this, and well... diapers aren't free! 😂
+                                </p>
+                                <p className="font-medium text-white">
+                                    But mostly, I want you to have the same freedom I found.
+                                </p>
+                            </div>
+
+                            <div className="mt-6 flex items-center gap-3">
+                                <div className="h-12 w-12 rounded-full bg-slate-700 border-2 border-slate-600 flex items-center justify-center text-xl">🦷</div>
+                                <div>
+                                    <div className="text-white font-bold">DDS</div>
+                                    <div className="text-xs text-slate-500">Creator of Agentic AI Home</div>
+                                </div>
                             </div>
                         </div>
                     </motion.section>
 
-                    {/* ========== SECTION 2: WHAT'S NEXT (INTEREST) ========== */}
+                    {/* ========== SECTION 3: WHAT YOU GET (Bezos/Jobs Audit) ========== */}
                     <motion.section
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="mb-8"
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-16"
                     >
-                        <h2 className="text-white font-bold mb-4 flex items-center gap-2 text-lg">
-                            <Lock className="text-purple-400" size={18} />
-                            9 More Agents Ready to Deploy
+                        <h2 className="text-white text-2xl font-bold text-center mb-8 flex items-center justify-center gap-2">
+                            <Lock className="text-purple-400" size={24} />
+                            The 9 Agents You're Missing
                         </h2>
 
-                        <div className="grid grid-cols-1 gap-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                             {premiumAgents.map((agent, i) => (
-                                <div key={i} className="flex items-center gap-3 bg-slate-800/40 rounded-lg px-4 py-3 border border-slate-700/50">
-                                    <div className={agent.color}>{agent.icon}</div>
-                                    <span className="text-white font-medium text-sm">{agent.name}</span>
-                                    <span className="text-slate-500 text-xs ml-auto">{agent.benefit}</span>
+                                <div key={i} className="flex items-center gap-3 bg-slate-800/30 hover:bg-slate-800/50 rounded-xl px-4 py-4 border border-slate-700/50 transition-colors group">
+                                    <div className={`${agent.color} bg-slate-900 p-2 rounded-lg group-hover:scale-110 transition-transform`}>
+                                        {agent.icon}
+                                    </div>
+                                    <div>
+                                        <div className="text-white font-bold text-sm">{agent.name}</div>
+                                        <div className="text-slate-500 text-xs">{agent.benefit}</div>
+                                    </div>
+                                    <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <Lock size={14} className="text-slate-600" />
+                                    </div>
                                 </div>
                             ))}
                         </div>
-                    </motion.section>
 
-                    {/* ========== SECTION 3: VALUE STACK (DESIRE) ========== */}
-                    <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="mb-8"
-                    >
-                        <div className="bg-gradient-to-br from-teal-900/30 to-slate-800/50 rounded-2xl p-5 border border-teal-500/30">
-                            <h3 className="text-white font-bold mb-4 text-center">✨ Everything You Get</h3>
-
-                            <div className="space-y-2 mb-4">
-                                {[
-                                    { text: '10 chapters (9 more to unlock)', icon: '📚' },
-                                    { text: '10 ready-to-use AI agents', icon: '🤖' },
-                                    { text: '5 training games + 10 tools', icon: '🎮' },
-                                    { text: 'Lifetime access (no subscription)', icon: '♾️' },
-                                    { text: '30-day money-back guarantee', icon: '🛡️' },
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3 text-sm">
-                                        <span>{item.icon}</span>
-                                        <span className="text-slate-200">{item.text}</span>
-                                        <CheckCircle className="text-green-400 ml-auto" size={16} />
+                        <div className="grid md:grid-cols-3 gap-4 text-left mt-8">
+                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                                <div className="flex items-center gap-1 mb-2">
+                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
+                                </div>
+                                <p className="text-slate-300 text-sm mb-3">"The Meal Planner alone saved me <span className="text-white font-bold">2 hours this Sunday</span>. It writes the list, I just shop."</p>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold text-xs">SJ</div>
+                                    <div>
+                                        <div className="text-white text-xs font-bold">Sarah J.</div>
+                                        <div className="text-slate-500 text-[10px]">Mom of 3</div>
                                     </div>
-                                ))}
+                                </div>
                             </div>
 
-                            {/* ROI Comparison */}
-                            <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
-                                <div className="text-xs text-slate-500 mb-2">Compare the value:</div>
-                                <div className="space-y-1 text-sm">
-                                    <div className="flex justify-between text-slate-400">
-                                        <span>Typical AI course</span>
-                                        <span className="line-through">$199-499</span>
+                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                                <div className="flex items-center gap-1 mb-2">
+                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
+                                </div>
+                                <p className="text-slate-300 text-sm mb-3">"Email Triage is a lifesaver. I used to spend an hour a day. Now it's <span className="text-white font-bold">10 minutes</span>."</p>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">MT</div>
+                                    <div>
+                                        <div className="text-white text-xs font-bold">Mike T.</div>
+                                        <div className="text-slate-500 text-[10px]">Small Biz Owner</div>
                                     </div>
-                                    <div className="flex justify-between text-slate-400">
-                                        <span>Productivity coaching</span>
-                                        <span className="line-through">$150/hr</span>
-                                    </div>
-                                    <div className="flex justify-between text-white font-bold pt-2 border-t border-slate-700">
-                                        <span>This entire system</span>
-                                        <span className="text-teal-400">$39.99 once</span>
+                                </div>
+                            </div>
+
+                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                                <div className="flex items-center gap-1 mb-2">
+                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
+                                </div>
+                                <p className="text-slate-300 text-sm mb-3">"I built the 'Never-Forget' agent in <span className="text-white font-bold">5 minutes</span>. My wife was impressed I remembered!"</p>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">DR</div>
+                                    <div>
+                                        <div className="text-white text-xs font-bold">David R.</div>
+                                        <div className="text-slate-500 text-[10px]">Student</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </motion.section>
 
-                    {/* ========== SECTION 4: SOCIAL PROOF ========== */}
+                    {/* ========== SECTION 4: VALUE STACK & ROI (Bezos Audit) ========== */}
                     <motion.section
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="mb-8"
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-16"
                     >
-                        <div className="bg-slate-800/40 rounded-xl p-4 border border-slate-700/50">
-                            <div className="flex gap-1 mb-2">
-                                {[...Array(5)].map((_, i) => <Star key={i} size={14} className="text-yellow-400 fill-yellow-400" />)}
-                            </div>
-                            <p className="text-slate-300 text-sm italic mb-3">
-                                "I got inbox zero in 2 days. The email agent alone was worth the entire price."
-                            </p>
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-xs font-bold">M</div>
-                                <div>
-                                    <div className="text-white text-sm font-medium">Marcus L.</div>
-                                    <div className="text-slate-500 text-xs">Software Engineer</div>
+                        <div className="bg-gradient-to-br from-teal-900/20 to-slate-900/50 rounded-3xl p-1 border border-teal-500/30">
+                            <div className="bg-[#0a0a12]/80 backdrop-blur-xl rounded-[22px] p-6 md:p-8">
+                                <h3 className="text-white font-bold text-xl text-center mb-6">✨ The Complete System</h3>
+
+                                <div className="space-y-4 mb-8">
+                                    {[
+                                        { text: 'All 10 Chapters (Lifetime Access)', icon: '📚' },
+                                        { text: '10 Ready-to-Copy Agent Templates', icon: '🤖' },
+                                        { text: '5 Training Games & Tools', icon: '🎮' },
+                                        { text: 'Future Updates Included', icon: '🚀' },
+                                        { text: '30-Day Money-Back Guarantee', icon: '🛡️' },
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex items-center gap-4 text-base">
+                                            <span className="text-2xl">{item.icon}</span>
+                                            <span className="text-slate-200 font-medium">{item.text}</span>
+                                            <CheckCircle className="text-teal-500 ml-auto shrink-0" size={20} />
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* ROI Block */}
+                                <div className="bg-slate-800/50 rounded-xl p-5 border border-slate-700/50">
+                                    <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-3">Compare The Value</div>
+                                    <div className="space-y-2 text-sm">
+                                        <div className="flex justify-between text-slate-400">
+                                            <span>Productivity Consultant</span>
+                                            <span className="line-through decoration-red-500/50">$200+/hour</span>
+                                        </div>
+                                        <div className="flex justify-between text-slate-400">
+                                            <span>Professional Course</span>
+                                            <span className="line-through decoration-red-500/50">$199-499</span>
+                                        </div>
+                                        <div className="flex justify-between items-center text-white font-bold pt-3 border-t border-slate-700 mt-2">
+                                            <span>Agentic AI Home</span>
+                                            <span className="text-2xl text-teal-400">$39.99</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        {/* Live counter */}
-                        <div className="flex items-center justify-center gap-2 mt-4">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            <span className="text-slate-400 text-sm"><span className="text-green-400 font-bold">547 people</span> joined this week</span>
-                        </div>
                     </motion.section>
 
-                    {/* ========== SECTION 5: PRICING + CTA (ACTION) ========== */}
+                    {/* ========== SECTION 5: FINAL CTA ========== */}
                     <motion.section
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="mb-8"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        className="mb-12 text-center"
                     >
-                        {/* Price Display */}
-                        <div className="text-center mb-4">
-                            <div className="flex items-center justify-center gap-3 mb-2">
-                                <span className="text-slate-500 line-through text-xl">$79.99</span>
-                                <span className="text-4xl font-black text-white">$39.99</span>
-                                <span className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full font-bold">50% OFF</span>
-                            </div>
-                            <p className="text-slate-500 text-sm">One-time payment • Lifetime access</p>
-                        </div>
+                        <h2 className="text-white font-bold text-2xl mb-6">
+                            Ready to Claim Your Freedom?
+                        </h2>
 
-                        {/* Main CTA */}
                         <Link
                             to="/payment-guide"
-                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-4 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                            className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-2xl font-black text-xl inline-flex items-center gap-2 transition-transform hover:scale-105"
                         >
-                            Get Full Access
-                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                            Get Instant Access <Zap size={20} className="text-teal-600 fill-teal-600" />
                         </Link>
 
-                        {/* Trust Badges */}
-                        <div className="flex items-center justify-center gap-4 mt-4 text-slate-500 text-xs">
-                            <div className="flex items-center gap-1">
-                                <Shield size={12} />
-                                <span>30-day refund</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                                <Lock size={12} />
-                                <span>Secure checkout</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                                <Zap size={12} />
-                                <span>Instant access</span>
-                            </div>
+                        <div className="flex justify-center gap-6 mt-6 text-sm text-slate-500">
+                            <span className="flex items-center gap-1"><Shield size={14} /> 30-Day Guarantee</span>
+                            <span className="flex items-center gap-1"><Lock size={14} /> Secure Checkout</span>
                         </div>
 
-                        {/* Crypto Option - Subtle */}
-                        <div className="text-center mt-4 pt-4 border-t border-slate-800">
-                            <Link to="/pay-ergo" className="text-green-400/70 hover:text-green-400 text-sm">
-                                💡 Pay $19.99 with crypto →
+                        {/* Crypto Option */}
+                        <div className="mt-8 pt-6 border-t border-slate-800/50">
+                            <Link to="/pay-ergo" className="inline-flex items-center gap-2 text-green-400/80 hover:text-green-400 text-sm font-medium transition-colors">
+                                <span className="p-1 bg-green-900/30 rounded text-xs">ERG</span>
+                                Pay $19.99 with Crypto (50% Off) →
                             </Link>
                         </div>
                     </motion.section>

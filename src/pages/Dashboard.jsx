@@ -5,6 +5,7 @@ import { m } from 'framer-motion';
 import { BookOpen, Gamepad2, Trophy, Settings, LogOut, ChevronRight, CheckCircle, Wrench } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import WelcomeModal from '../components/common/WelcomeModal';
+import ChapterBadge from '../components/gamification/ChapterBadge';
 
 // ============================================
 // GRANDMA DASHBOARD - Ultra Simple Version
@@ -140,18 +141,41 @@ const Dashboard = () => {
                 <div className="max-w-2xl mx-auto">
 
                     {/* ===================== */}
-                    {/* HEADER - Simple */}
+                    {/* HEADER - With Captain E Tip */}
                     {/* ===================== */}
-                    <div className="text-center mb-8">
-                        <h1 className="text-3xl md:text-4xl font-black text-white mb-3">
-                            Welcome Back! 👋
-                        </h1>
-                        <p className="text-xl text-slate-300">
-                            You've completed <span className="text-teal-400 font-bold">{completedCount} of 10</span> chapters.
-                            {completedCount === 0 && " Let's get started!"}
-                            {completedCount > 0 && completedCount < 10 && " Keep going!"}
-                            {allComplete && " 🎉 You finished everything!"}
-                        </p>
+                    <div className="flex flex-col items-center gap-4 mb-10 text-center">
+                        {/* DELIGHT: Floating Captain E Speech Bubble (Disney Audit) */}
+                        <m.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="relative"
+                        >
+                            <div className="bg-slate-800 border border-teal-500/30 rounded-2xl p-4 max-w-sm mx-auto shadow-lg shadow-teal-900/20 relative z-10">
+                                <p className="text-teal-300 font-medium text-sm mb-1">🫡 Captain's Orders:</p>
+                                <p className="text-white text-base">
+                                    {allComplete
+                                        ? "Mission accomplished, soldier! Review your troops below."
+                                        : completedCount === 0
+                                            ? "The journey of a thousand automated tasks starts here."
+                                            : "Consistency is key. One more chapter today?"}
+                                </p>
+                                {/* Triangle pointer */}
+                                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-800 border-b border-r border-teal-500/30 transform rotate-45"></div>
+                            </div>
+                        </m.div>
+
+                        <div className="mt-4">
+                            <h1 className="text-3xl md:text-5xl font-black text-white mb-3">
+                                Welcome Back! 👋
+                            </h1>
+                            <p className="text-xl text-slate-300">
+                                You've completed <span className="text-teal-400 font-bold">{completedCount} of 10</span> chapters.
+                                {completedCount === 0 && " Let's get started!"}
+                                {completedCount > 0 && completedCount < 10 && " Keep going!"}
+                                {allComplete && " 🎉 You finished everything!"}
+                            </p>
+                        </div>
                     </div>
 
                     {/* ===================== */}
@@ -283,22 +307,35 @@ const Dashboard = () => {
 
                                 return (
                                     <Link key={num} to={CHAPTER_ROUTES[num]}>
-                                        <div className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${isComplete
+                                        <div className={`flex items-center gap-4 p-3 rounded-xl transition-colors ${isComplete
                                             ? 'bg-green-900/20 border border-green-500/30'
-                                            : 'bg-slate-700/30 hover:bg-slate-700/50 border border-transparent'
+                                            : parseInt(num) === nextChapter?.number
+                                                ? 'bg-teal-900/20 border border-teal-500/40'
+                                                : 'bg-slate-700/30 border border-transparent opacity-60'
                                             }`}>
-                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${isComplete ? 'bg-green-500 text-white' : 'bg-slate-600 text-slate-300'
-                                                }`}>
-                                                {isComplete ? '✓' : num}
+
+                                            <div className="-my-2">
+                                                <ChapterBadge
+                                                    num={parseInt(num)}
+                                                    isComplete={isComplete}
+                                                    isLocked={!isComplete && parseInt(num) !== nextChapter?.number}
+                                                />
                                             </div>
+
                                             <div className="flex-1">
-                                                <div className="text-white font-medium">{title}</div>
-                                                <div className="text-xs text-slate-400">
-                                                    {isPremium ? 'Premium' : 'Free'}
+                                                <div className={`text-base font-bold ${isComplete ? 'text-white' : 'text-slate-300'}`}>
+                                                    {title}
+                                                </div>
+                                                <div className="text-xs text-slate-500">
+                                                    {isPremium ? 'Premium Mission' : 'Free Training'}
                                                 </div>
                                             </div>
+
                                             {isComplete && (
                                                 <span className="text-xs text-green-400 font-medium">Complete</span>
+                                            )}
+                                            {!isComplete && parseInt(num) === nextChapter?.number && (
+                                                <span className="text-xs text-teal-400 font-bold animate-pulse">Next Up</span>
                                             )}
                                         </div>
                                     </Link>
