@@ -367,11 +367,11 @@ const ErgoPaymentPage = () => {
             <div className="max-w-5xl mx-auto relative z-10">
                 {/* Back Button */}
                 <button
-                    onClick={() => navigate('/')}
+                    onClick={() => navigate('/payment-guide')}
                     className="mb-8 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group"
                 >
                     <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                    <span>Back to Home</span>
+                    <span>Back to Payment Options</span>
                 </button>
 
                 {/* Offline Warning */}
