@@ -103,13 +103,13 @@ export const faqData = [
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">An interactive webbook that teaches you to use AI helpers for everyday life.</p>
                 <p className="mb-4">Unlike chatbots that just answer questions, AI "agents" take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
-                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 10 chapters:</p>
+                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 4 Parts:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Part 1:</strong> Foundations (understanding AI, choosing tools, privacy)</li>
-                    <li><strong>Part 2:</strong> Daily Operations (morning routines, kitchen, household)</li>
-                    <li><strong>Part 3:</strong> Digital Life (email, calendar, personal finance)</li>
-                    <li><strong>Part 4:</strong> Health & Learning (recovery, wellbeing, knowledge)</li>
-                    <li><strong>Part 5:</strong> Advanced Systems (multi-agent coordination, Life OS)</li>
+                    <li><strong>Start Here:</strong> Your first Morning Agent (Chapter 1)</li>
+                    <li><strong>Part 1:</strong> Foundations (Meal Planning, Important Dates)</li>
+                    <li><strong>Part 2:</strong> Daily Systems (Inbox Zero, Finance, Health)</li>
+                    <li><strong>Part 3:</strong> Deep Automation (Tasks, Building Custom Agents)</li>
+                    <li><strong>Part 4:</strong> Mastery (Connecting everything together)</li>
                 </ul>
             </>
         )
@@ -192,13 +192,14 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">4-6 hours to read, 2-3 months to fully implement.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">4-6 hours total. Most people finish in a weekend or 2-3 evenings.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Week 1-2:</strong> Foundations + Morning/Kitchen agents (2-3 hours)</li>
-                    <li><strong>Week 3-4:</strong> Household + Email agents (2-3 hours)</li>
-                    <li><strong>Month 2:</strong> Calendar + Finance + Health (3-4 hours)</li>
-                    <li><strong>Month 3:</strong> Integration + Life OS (2-3 hours)</li>
+                    <li><strong>Chapter 1:</strong> 15 minutes (Morning Agent)</li>
+                    <li><strong>Part 1 (Ch 2-3):</strong> ~1 hour (Foundations)</li>
+                    <li><strong>Part 2 (Ch 4-6):</strong> ~2 hours (Daily Systems)</li>
+                    <li><strong>Part 3 & 4 (Ch 7-10):</strong> ~2-3 hours (Advanced)</li>
                 </ul>
-                <p className="mb-4"><strong>Total:</strong> 10-15 hours spread over months. After setup, maintenance is 30 min/week.</p>
+                <p className="mb-4"><strong>Total:</strong> ~5-6 hours. You can binge it or take it one chapter at a time.</p>
                 <p>You have lifetime access — go at your pace.</p>
             </>
         )
@@ -533,15 +534,15 @@ export const faqData = [
                 <p className="mb-4 font-bold text-lg text-teal-400">10 agents covering every area of daily life:</p>
                 <ol className="list-decimal pl-5 space-y-1 mb-4">
                     <li><strong>Morning Agent</strong> — Daily briefings and priority setting</li>
-                    <li><strong>Kitchen Agent</strong> — Meal planning, grocery lists, pantry</li>
-                    <li><strong>Household Agent</strong> — Maintenance schedules, seasonal tasks</li>
-                    <li><strong>Email Agent</strong> — Inbox triage, response drafts</li>
-                    <li><strong>Calendar Agent</strong> — Schedule optimization</li>
-                    <li><strong>Finance Agent</strong> — Bill tracking, budget monitoring</li>
-                    <li><strong>Health Agent</strong> — Appointments, medication tracking</li>
-                    <li><strong>Recovery Agent</strong> — Energy-aware scheduling</li>
-                    <li><strong>Second Brain Agent</strong> — Knowledge management</li>
-                    <li><strong>Life OS Agent</strong> — Coordination between all agents</li>
+                    <li><strong>Meal Planner</strong> — Weekly menus and grocery lists</li>
+                    <li><strong>Important Dates Agent</strong> — Never forget a birthday or anniversary</li>
+                    <li><strong>Email Triage Agent</strong> — Sort inbox and draft responses</li>
+                    <li><strong>Money Clarity Agent</strong> — Track spending and subscriptions</li>
+                    <li><strong>Workout Planner</strong> — Custom fitness plans that adapt to you</li>
+                    <li><strong>Task Prioritizer</strong> — Sort your to-do list automatically</li>
+                    <li><strong>Custom Builder</strong> — Learn to build ANY agent you need</li>
+                    <li><strong>Teamwork Agent</strong> — Make agents talk to each other</li>
+                    <li><strong>Agent Army</strong> — Your complete automated system</li>
                 </ol>
             </>
         )
@@ -565,7 +566,7 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Yes, if you use them thoughtfully — and we teach you exactly how.</p>
-                <p className="mb-4">Chapter 3 is entirely about privacy and control. You'll learn:</p>
+                <p className="mb-4">Throughout the course, we teach a "Privacy First" approach. You'll learn:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li>What to share vs. protect</li>
                     <li>Privacy tiers framework</li>
