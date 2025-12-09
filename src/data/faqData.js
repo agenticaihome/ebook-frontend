@@ -102,29 +102,26 @@ export const faqData = [
         question: 'Who made this? Is this a real person?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">I almost missed my son's first steps.</p>
-                <p className="mb-4">I was on the couch after a long shift — phone in one hand, grocery list in the other, calculating if we could afford diapers this week.</p>
-                <p className="mb-4">That's when he stood up. Three wobbly steps toward me.</p>
-                <p className="mb-6 font-semibold text-white">I caught the last two.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">I didn't set out to build this.</p>
+                <p className="mb-4">Like most people, I started using AI a couple years ago — summarizing research articles, studying for exams, sorting through mountains of data. It was helpful. But it was still just a tool.</p>
+                <p className="mb-4">Then I discovered <em>agents</em>.</p>
+                <p className="mb-4">Not chatbots. Not assistants you have to keep asking. <strong>Agents</strong> — AI that works <em>for</em> you while you live your life. Meal plans generated while you sleep. Emails sorted before you wake up. Calendars that manage themselves.</p>
+                <p className="mb-4">I started tinkering. Building. Testing. Breaking things. Rebuilding them. It took time. A lot of late nights. But piece by piece, I assembled an army of agents that now handle the invisible logistics that used to drain me.</p>
 
                 <hr className="border-slate-700 my-6" />
 
-                <p className="mb-4">I'm a dad of two under 3. A dental resident working 50+ hour weeks. An Army vet. And I was drowning.</p>
-                <p className="mb-4">Not in residency — I was good at residency. But at home? Meal planning at midnight. A calendar my wife stopped trusting. Endless unread emails. The quiet guilt of being <em>physically there</em> but <em>mentally gone</em>.</p>
-                <p className="mb-6">I was succeeding in residency. But at what cost?</p>
+                <p className="mb-4">And then something unexpected happened.</p>
+                <p className="mb-4">My life got... <strong className="text-teal-400">quieter</strong>.</p>
+                <p className="mb-4">Not boring — <em>peaceful</em>. The mental noise dimmed. I stopped thinking about grocery lists during dinner. I stopped waking up rehearsing my to-do list. I was finally present with my family — not just physically, but <em>mentally</em>.</p>
+                <p className="mb-6">That feeling is worth more than any productivity hack.</p>
 
                 <hr className="border-slate-700 my-6" />
 
-                <p className="mb-4">So I built AI helpers.</p>
-                <p className="mb-4">Not a side hustle — a survival mechanism. Digital assistants that now handle the life logistics I was failing at. Meal plans in 3 minutes. Emails sorted before I wake up. Birthdays I haven't missed since.</p>
-                <p className="mb-6"><strong className="text-teal-400">I got 7 hours back every week.</strong> That's 360 hours a year with my family.</p>
-
-                <hr className="border-slate-700 my-6" />
-
-                <p className="mb-4">This took hundreds of late nights to build — after the kids went down, before my alarm went off. I want you to have it without losing what I lost to create it.</p>
-                <p className="mb-4 font-bold text-xl text-teal-400">Stop missing the steps.</p>
-                <p className="mb-4">I built this so you don't have to.</p>
-                <p className="text-slate-400 italic">— DDS<br />Still in residency. Still learning. Still tired. But finally present.</p>
+                <p className="mb-4">Here's my confession: <strong className="text-teal-400">I have zero coding experience.</strong></p>
+                <p className="mb-4">This entire website — every page, every feature — was built with the help of Claude, ChatGPT, Grok, and Gemini. I'm a dental resident and Army vet with two kids under 3. I'm not a developer. I just refused to quit.</p>
+                <p className="mb-4">I'm sharing this because if I can do it, <em>you</em> can use these agents. You don't need to build them from scratch — I already did that part.</p>
+                <p className="mb-4 font-bold text-xl text-teal-400">If this helps even one person reclaim their peace, it was worth it.</p>
+                <p className="text-slate-400 italic">— DDS<br />Still in residency. Still learning. Still building. But finally at peace.</p>
             </>
         )
     },
@@ -134,11 +131,11 @@ export const faqData = [
         question: 'Why did you create this?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Desperation, honestly. And then it worked so well I had to share it.</p>
-                <p className="mb-4">Picture this: dental residency (50+ hour weeks), two kids under 3, studying for board exams, trying to be a present husband and father. I was drowning in "life admin."</p>
-                <p className="mb-4">Then I discovered AI agents. Not just ChatGPT — but AI that takes ACTION. Plans meals. Manages my calendar. Drafts emails. Tracks finances.</p>
-                <p className="mb-4"><strong>Result?</strong> I got 7-8 hours back every week. Hours I now spend with my kids instead of meal planning at midnight.</p>
-                <p>That transformation was so powerful that I felt compelled to share it.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Because I wanted to prove something to myself.</p>
+                <p className="mb-4">I'd been using AI for years — research, studying, data sorting. But I wondered: could I actually <em>build</em> something real with it? Something that could help others?</p>
+                <p className="mb-4">So I started small. One agent. Then another. Then a whole army of them. And when my own life started getting peaceful — when I could finally be <em>present</em> with my family — I knew I had to share it.</p>
+                <p className="mb-4">The craziest part? <strong>I have zero coding experience.</strong> This entire website was built with AI tools (Claude, ChatGPT, Grok, Gemini). If I can do that, you can definitely use the agents I've already built for you.</p>
+                <p>I'm sharing this to help at least one person reclaim their peace. That would make it all worth it.</p>
             </>
         )
     },

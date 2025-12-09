@@ -152,22 +152,24 @@ const PrePurchaseBridge = () => {
                                 👋 FROM THE CREATOR (DDS)
                             </h3>
                             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                                "My wife would kill me if I gave this away."
+                                "I didn't set out to build this."
                             </h2>
 
                             <div className="space-y-4 text-slate-300 leading-relaxed text-lg">
                                 <p>
-                                    Hi, I'm just a normal guy—a <strong>dad of two toddlers</strong>, a dental resident working 60-hour weeks, and an Army vet.
+                                    Like most people, I started using AI a couple years ago — summarizing research, studying for exams, sorting data. Then I discovered <strong>agents</strong> — AI that works <em>for</em> you while you live your life.
                                 </p>
                                 <p>
-                                    I built this system out of survival. I was drowning in life admin—meal planning at midnight, missing birthdays, stressing over emails.
-                                    I used AI to build "agents" that gave me <strong>7 hours back every week</strong>.
+                                    I started tinkering. Building. Testing. It took a lot of late nights, but I assembled an army of agents that now handle my life logistics. And something unexpected happened: <strong className="text-white">my life got quieter</strong>.
                                 </p>
                                 <p>
-                                    I'm not a guru. I still practice dentistry. I charge $39.99 because I spent hundreds of late nights building this, and well... diapers aren't free! 😂
+                                    Not boring — <em>peaceful</em>. I was finally present with my family, not just physically, but mentally.
+                                </p>
+                                <p>
+                                    Here's my confession: <strong className="text-teal-400">I have zero coding experience</strong>. This entire site was built with Claude, ChatGPT, Grok, and Gemini. I'm a dental resident and Army vet with two kids under 3. I just refused to quit.
                                 </p>
                                 <p className="font-medium text-white">
-                                    But mostly, I want you to have the same freedom I found.
+                                    If this helps even one person reclaim their peace, it was worth it.
                                 </p>
                             </div>
 
@@ -175,7 +177,7 @@ const PrePurchaseBridge = () => {
                                 <div className="h-12 w-12 rounded-full bg-slate-700 border-2 border-slate-600 flex items-center justify-center text-xl">🦷</div>
                                 <div>
                                     <div className="text-white font-bold">DDS</div>
-                                    <div className="text-xs text-slate-500">Creator of Agentic AI Home</div>
+                                    <div className="text-xs text-slate-500">Still in residency. Still learning. Finally at peace.</div>
                                 </div>
                             </div>
                         </div>
