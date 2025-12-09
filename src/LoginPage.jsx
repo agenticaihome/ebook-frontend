@@ -1,32 +1,27 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { m } from 'framer-motion';
-import { Mail, Lock, Key, CreditCard, ArrowRight, AlertCircle } from 'lucide-react';
+import { Mail, Lock, Key, ArrowRight, ArrowLeft, AlertCircle, Sparkles, Shield, Loader2 } from 'lucide-react';
 import { api } from './services/api';
 import { usePageTitle } from './hooks/usePageTitle';
-import { validateEmail, sanitizeInput, preventDoubleClick } from './utils/sanitizer';
+import { validateEmail, preventDoubleClick } from './utils/sanitizer';
+import CaptainHero from './components/CaptainHero';
 
 const LoginPage = () => {
     usePageTitle('Login');
-    const [activeTab, setActiveTab] = useState('email');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    // Email Form State
+    // Form State
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    // Ergo Form State
-    const [txId, setTxId] = useState('');
-    const [accessCode, setAccessCode] = useState('');
 
     const handleEmailLogin = preventDoubleClick(async (e) => {
         e.preventDefault();
         setIsLoading(true);
         setError('');
 
-        // Validate and sanitize email
         const cleanEmail = validateEmail(email);
         if (!cleanEmail) {
             setError('Please enter a valid email address.');
@@ -47,14 +42,9 @@ const LoginPage = () => {
         }
 
         try {
-            // Don't store password in variable - use directly
-            const data = await api.login(cleanEmail, password);
-            // JWT is now in httpOnly cookie - no localStorage needed
-
-            // Clear sensitive data
+            await api.login(cleanEmail, password);
             setEmail('');
             setPassword('');
-
             navigate('/dashboard');
         } catch (err) {
             setError(err.message || 'Login failed. Please check your credentials.');
@@ -63,125 +53,171 @@ const LoginPage = () => {
         }
     }, 2000);
 
-    const handleErgoClaim = async (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setError('');
-        try {
-            const data = await api.claimErgoPayment(txId, accessCode);
-            if (data.success) {
-                localStorage.setItem('token', data.token);
-                navigate('/dashboard');
-            } else {
-                setError(data.error || 'Verification failed');
-            }
-        } catch (err) {
-            setError(err.message || 'Claim failed');
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     return (
-        <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-            <div className="bg-slate-800 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-slate-600">
-
-                {/* Header */}
-                <div className="p-8 text-center bg-gradient-to-b from-slate-800 to-slate-900 border-b border-slate-600">
-                    <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
-                    <p className="text-slate-400">Access your digital library</p>
-                </div>
-
-                {/* Content */}
-                <div className="p-8">
-                    {error && (
-                        <m.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            role="alert"
-                            className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg mb-6 flex items-center gap-2 text-sm"
-                        >
-                            <AlertCircle size={16} />
-                            {error}
-                        </m.div>
-                    )}
-
-                    <form onSubmit={handleEmailLogin} className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-1">Email Address</label>
-                            <div className="relative">
-                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => {
-                                        const value = e.target.value;
-                                        if (value.length <= 255) {
-                                            setEmail(value);
-                                        }
-                                    }}
-                                    maxLength={255}
-                                    className="w-full bg-slate-900 border border-slate-600 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                                    placeholder="you@example.com"
-                                    required
-                                    autoComplete="email"
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-1">Password</label>
-                            <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                <input
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => {
-                                        const value = e.target.value;
-                                        if (value.length <= 128) {
-                                            setPassword(value);
-                                        }
-                                    }}
-                                    maxLength={128}
-                                    className="w-full bg-slate-900 border border-slate-600 rounded-lg py-2.5 pl-10 pr-4 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                                    placeholder="••••••••"
-                                    required
-                                    autoComplete="current-password"
-                                />
-                            </div>
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={isLoading}
-                            className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {isLoading ? 'Logging in...' : 'Sign In'}
-                            {!isLoading && <ArrowRight size={18} />}
-                        </button>
-                    </form>
-                </div>
-
-                {/* Footer Actions */}
-                <div className="p-6 bg-slate-900/50 border-t border-slate-600 space-y-4">
-                    <div className="text-center">
-                        <p className="text-slate-400 text-sm mb-2">
-                            Paid but no account?
-                        </p>
-                        <button
-                            onClick={() => navigate('/claim-access')}
-                            className="w-full py-2 px-4 bg-slate-800 hover:bg-slate-700 text-cyan-400 font-medium rounded-lg border border-slate-600 transition-colors flex items-center justify-center gap-2"
-                        >
-                            <Key size={16} />
-                            Claim Purchase
-                        </button>
-                    </div>
-
-                    <div className="text-center pt-2">
-                        <p className="text-slate-400 text-xs">
-                            Need help? <Link to="/faq" className="text-blue-400 hover:underline">Contact Support</Link>
-                        </p>
-                    </div>
-                </div>
+        <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center p-4 relative overflow-hidden">
+            {/* Ambient Background */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-teal-900/20 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[100px]" />
+                <div className="absolute top-[40%] right-[20%] w-[300px] h-[300px] bg-purple-900/10 rounded-full blur-[80px]" />
             </div>
+
+            {/* Back Button */}
+            <button
+                onClick={() => navigate('/')}
+                className="absolute top-6 left-6 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group z-20"
+            >
+                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                <span className="hidden sm:inline">Back to Home</span>
+            </button>
+
+            <m.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-md relative z-10"
+            >
+                {/* Glass Card */}
+                <div className="bg-slate-800/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-600/50 overflow-hidden">
+
+                    {/* Header with Captain */}
+                    <div className="p-8 text-center border-b border-slate-700/50 relative">
+                        {/* Captain Hero */}
+                        <div className="flex justify-center mb-4">
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-teal-500/20 blur-2xl rounded-full" />
+                                <CaptainHero size="sm" pose="waving" />
+                            </div>
+                        </div>
+
+                        <h1 className="text-3xl font-bold text-white mb-2">Welcome Back!</h1>
+                        <p className="text-slate-400">Your AI agents are waiting</p>
+
+                        {/* Trust Badge */}
+                        <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-medium">
+                            <Shield size={12} />
+                            <span>Secure Login</span>
+                        </div>
+                    </div>
+
+                    {/* Form Section */}
+                    <div className="p-8">
+                        {error && (
+                            <m.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                role="alert"
+                                className="bg-red-500/10 border border-red-500/30 text-red-400 p-3 rounded-xl mb-6 flex items-center gap-2 text-sm"
+                            >
+                                <AlertCircle size={16} />
+                                {error}
+                            </m.div>
+                        )}
+
+                        <form onSubmit={handleEmailLogin} className="space-y-5">
+                            <div>
+                                <label className="block text-sm font-medium text-slate-400 mb-2">Email Address</label>
+                                <div className="relative">
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                                    <input
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => {
+                                            if (e.target.value.length <= 255) setEmail(e.target.value);
+                                        }}
+                                        maxLength={255}
+                                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl py-3 pl-11 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-all"
+                                        placeholder="you@example.com"
+                                        required
+                                        autoComplete="email"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-slate-400 mb-2">Password</label>
+                                <div className="relative">
+                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                                    <input
+                                        type="password"
+                                        value={password}
+                                        onChange={(e) => {
+                                            if (e.target.value.length <= 128) setPassword(e.target.value);
+                                        }}
+                                        maxLength={128}
+                                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl py-3 pl-11 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-all"
+                                        placeholder="••••••••"
+                                        required
+                                        autoComplete="current-password"
+                                    />
+                                </div>
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                            >
+                                {isLoading ? (
+                                    <>
+                                        <Loader2 size={18} className="animate-spin" />
+                                        Signing In...
+                                    </>
+                                ) : (
+                                    <>
+                                        Sign In
+                                        <ArrowRight size={18} />
+                                    </>
+                                )}
+                            </button>
+                        </form>
+                    </div>
+
+                    {/* Footer Actions */}
+                    <div className="p-6 bg-slate-900/30 border-t border-slate-700/50 space-y-4">
+                        {/* Claim Purchase */}
+                        <div className="text-center">
+                            <p className="text-slate-500 text-sm mb-3">
+                                Paid but no account yet?
+                            </p>
+                            <button
+                                onClick={() => navigate('/claim-access')}
+                                className="w-full py-3 px-4 bg-slate-800/50 hover:bg-slate-700/50 text-teal-400 font-medium rounded-xl border border-slate-600 hover:border-teal-500/50 transition-all flex items-center justify-center gap-2 group"
+                            >
+                                <Key size={16} />
+                                <span>Claim Your Purchase</span>
+                                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                            </button>
+                        </div>
+
+                        {/* Don't have access? */}
+                        <div className="text-center pt-2">
+                            <p className="text-slate-500 text-xs mb-2">
+                                Don't have access yet?
+                            </p>
+                            <Link
+                                to="/unlock"
+                                className="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
+                            >
+                                <Sparkles size={14} />
+                                Get Full Access
+                            </Link>
+                        </div>
+
+                        {/* Support */}
+                        <div className="text-center pt-2 border-t border-slate-700/30">
+                            <p className="text-slate-500 text-xs pt-3">
+                                Need help? <Link to="/faq" className="text-teal-400 hover:text-teal-300 hover:underline">Contact Support</Link>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom Text */}
+                <p className="text-center text-slate-600 text-xs mt-6">
+                    Your data is encrypted and secure 🔒
+                </p>
+            </m.div>
         </div>
     );
 };
