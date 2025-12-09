@@ -77,7 +77,7 @@ export const faqData = [
         question: 'What happens after I purchase?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">You create an account and get instant access to all 16 chapters.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">You create an account and get instant access to all 10 chapters.</p>
                 <p className="mb-4">After payment (Stripe or Ergo), you'll set a password, then all chapters unlock immediately. Your progress is saved, and you can log in from any device using your email.</p>
             </>
         )
@@ -103,7 +103,7 @@ export const faqData = [
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">An interactive webbook that teaches you to use AI helpers for everyday life.</p>
                 <p className="mb-4">Unlike chatbots that just answer questions, AI "agents" take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
-                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 16 chapters:</p>
+                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 10 chapters:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Part 1:</strong> Foundations (understanding AI, choosing tools, privacy)</li>
                     <li><strong>Part 2:</strong> Daily Operations (morning routines, kitchen, household)</li>
@@ -645,7 +645,7 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">No — games are optional fun, not required curriculum.</p>
-                <p>You can complete all 16 chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
+                <p>You can complete all 10 chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
             </>
         )
     },
