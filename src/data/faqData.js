@@ -29,7 +29,7 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Click "Start Free" and begin with Chapter 1 — it's free, no payment needed.</p>
-                <p className="mb-4">The first chapter is completely free. You'll meet Captain Efficiency, learn what AI agents are, and decide if this adventure is for you. No credit card. No commitment. Just click and start reading.</p>
+                <p className="mb-4">The first chapter is completely free. You'll meet Captain Efficiency, learn what AI agents are, and decide if this is for you. No credit card. No commitment. Just click and start reading.</p>
             </>
         )
     },
@@ -51,7 +51,7 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Visit the homepage and click "Start Free" — no account needed.</p>
-                <p className="mb-4">Chapter 1 is unlocked for everyone. You'll get a taste of the adventure before deciding if you want the full course.</p>
+                <p className="mb-4">Chapter 1 is unlocked for everyone. You'll get a taste of the webbook before deciding if you want the full course.</p>
                 <ol className="list-decimal pl-5 space-y-1 mb-4">
                     <li>Click "Start Free" on the welcome page</li>
                     <li>Chapter 1 opens immediately</li>
@@ -628,7 +628,7 @@ export const faqData = [
         question: 'What games are included?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">A growing collection including clicking challenges, focus games, and AI-themed adventures.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">A growing collection including clicking challenges, focus games, and AI-themed mini-games.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Captain Click Challenge</strong> — Test your speed and precision</li>
                     <li><strong>Deep Work Dive</strong> — Practice focus and flow</li>
@@ -990,7 +990,7 @@ export const faqData = [
         question: 'Who is Captain Efficiency?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Your friendly AI guide and mascot throughout the adventure.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Your friendly AI guide and mascot throughout the webbook.</p>
                 <p className="mb-4">Captain Efficiency:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li>Explains concepts in friendly language</li>

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { m } from 'framer-motion';
-import { Compass, AlertCircle, Map, Lock } from 'lucide-react';
+import { Lock, AlertCircle, BookOpen, Sparkles } from 'lucide-react';
 
-// Territory names for each part
-const TERRITORY_NAMES = {
-    2: 'Homestead Valley',
-    3: 'Digital Frontier',
-    4: 'Wellness Mountains',
-    5: 'Grand Command'
+// Section names for each part
+const SECTION_NAMES = {
+    2: 'Part 2: Daily Operations',
+    3: 'Part 3: Productivity',
+    4: 'Part 4: Advanced Systems',
+    5: 'Part 5: Mastery'
 };
 
 const PasswordGate = ({ children, partNumber }) => {
@@ -26,7 +26,7 @@ const PasswordGate = ({ children, partNumber }) => {
     const [isShaking, setIsShaking] = useState(false);
 
     const BETA_PASSWORD = 'family1!';
-    const territoryName = TERRITORY_NAMES[partNumber] || `Territory ${partNumber}`;
+    const sectionName = SECTION_NAMES[partNumber] || `Part ${partNumber}`;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -56,13 +56,11 @@ const PasswordGate = ({ children, partNumber }) => {
     }
 
     return (
-        <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center p-4">
-            {/* Background - Map/Frontier aesthetic */}
+        <div className="min-h-screen bg-[#0a0a12] flex items-center justify-center p-4">
+            {/* Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-amber-900/15 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-900/15 rounded-full blur-[120px]" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px]" />
-                {/* Subtle grid overlay for map feel */}
-                <div className="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
             </div>
 
             <m.div
@@ -75,29 +73,29 @@ const PasswordGate = ({ children, partNumber }) => {
                 transition={{ duration: 0.3 }}
                 className="relative z-10 w-full max-w-md"
             >
-                <div className="bg-slate-900/80 backdrop-blur-xl border border-amber-500/20 rounded-3xl p-8 shadow-2xl">
-                    {/* Uncharted Territory Header */}
+                <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 shadow-2xl">
+                    {/* Header */}
                     <div className="text-center mb-8">
-                        <div className="w-20 h-20 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-4 ring-1 ring-amber-500/30">
-                            <Compass className="w-10 h-10 text-amber-400" />
+                        <div className="w-16 h-16 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4 border border-teal-500/30">
+                            <Lock className="w-8 h-8 text-teal-400" />
                         </div>
-                        <h2 className="text-2xl font-bold text-white mb-2">Uncharted Territory</h2>
+                        <h2 className="text-2xl font-bold text-white mb-2">Premium Content</h2>
                         <div className="flex items-center justify-center gap-2 mb-3">
-                            <Map size={16} className="text-cyan-400" />
-                            <span className="text-cyan-400 font-medium">{territoryName}</span>
+                            <BookOpen size={16} className="text-teal-400" />
+                            <span className="text-teal-400 font-medium">{sectionName}</span>
                         </div>
                         <p className="text-slate-400 text-sm">
-                            This territory requires expedition clearance
+                            This section requires full access
                         </p>
                         <p className="text-slate-500 text-xs mt-1">
-                            Early explorers only • Opening to all pioneers soon
+                            Beta testers • Purchase coming soon
                         </p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
-                                Enter Expedition Code
+                                Enter Access Code
                             </label>
                             <input
                                 type="password"
@@ -107,7 +105,7 @@ const PasswordGate = ({ children, partNumber }) => {
                                     setPassword(e.target.value);
                                     setError('');
                                 }}
-                                className="w-full px-4 py-3 bg-slate-800 border border-amber-500/30 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 bg-slate-800 border border-slate-600/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                                 placeholder="••••••••"
                                 autoFocus
                             />
@@ -126,15 +124,15 @@ const PasswordGate = ({ children, partNumber }) => {
 
                         <button
                             type="submit"
-                            className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white py-3 rounded-xl font-bold transition-all shadow-lg shadow-amber-900/20 hover:shadow-amber-900/40 flex items-center justify-center gap-2"
+                            className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-3 rounded-xl font-bold transition-all shadow-lg shadow-teal-900/20 hover:shadow-teal-900/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
                         >
-                            <Lock size={18} />
-                            Unlock Territory
+                            <Sparkles size={18} />
+                            Unlock Content
                         </button>
                     </form>
 
-                    <p className="text-center text-slate-400 text-xs mt-6">
-                        Don't have access? <span className="text-amber-400 font-medium">Public expedition launching soon</span>
+                    <p className="text-center text-slate-500 text-xs mt-6">
+                        Don't have access? <span className="text-teal-400 font-medium">Full launch coming soon</span>
                     </p>
                 </div>
             </m.div>

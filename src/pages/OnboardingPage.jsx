@@ -11,7 +11,7 @@ const OnboardingPage = () => {
     return (
         <>
             <Helmet>
-                <title>Welcome to Agentic AI - Your Adventure Begins</title>
+                <title>Welcome to Agentic AI at Home</title>
                 <meta name="description" content="Captain Efficiency welcomes you to the Agentic AI world. Learn how AI agents will give you TIME back." />
             </Helmet>
 
@@ -121,7 +121,7 @@ const OnboardingPage = () => {
                                     <div className="text-4xl mb-4">📖</div>
                                     <h3 className="text-lg font-bold text-white mb-2">What Is This?</h3>
                                     <p className="text-slate-400 text-sm">
-                                        An interactive AI adventure that teaches you to build <span className="text-teal-400">real agent systems</span>.
+                                        An interactive webbook that teaches you to build <span className="text-teal-400">real AI agent systems</span>.
                                     </p>
                                 </div>
                                 <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
@@ -369,7 +369,7 @@ const OnboardingPage = () => {
                                 Ready to Begin?
                             </h2>
                             <p className="text-slate-400 mb-10">
-                                Choose how you want to start your adventure.
+                                Choose how you want to start.
                             </p>
 
                             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-10">
@@ -383,7 +383,7 @@ const OnboardingPage = () => {
                                         <h3 className="text-xl font-bold text-white mb-2">Start Mission 1</h3>
                                         <p className="text-slate-400 text-sm mb-4">The full story experience. Best for first-timers.</p>
                                         <div className="flex items-center justify-center gap-2 text-teal-400 font-bold">
-                                            Begin Adventure <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                            Start Learning <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                         </div>
                                     </div>
                                 </Link>
