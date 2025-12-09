@@ -11,6 +11,7 @@ import MobileBottomNav from './components/layout/MobileBottomNav';
 import { Toaster, toast } from 'react-hot-toast';
 import { routeConfig } from './config/routes';
 import { initGA, logPageView } from './utils/analytics';
+import PasswordGate from './components/common/PasswordGate';
 
 // Eager load SplashPage
 import SplashPage from './pages/SplashPage';
@@ -112,21 +113,21 @@ const AnimatedRoutes = () => {
 
             {/* Part 1 Chapters */}
             <Route path="/part1/chapter1" element={<PageTransition><routeConfig.part1chapter1.Component /></PageTransition>} />
-            <Route path="/part1/chapter2" element={<PageTransition><routeConfig.part1chapter2.Component /></PageTransition>} />
-            <Route path="/part1/chapter3" element={<PageTransition><routeConfig.part1chapter3.Component /></PageTransition>} />
+            <Route path="/part1/chapter2" element={<PasswordGate partNumber={1}><PageTransition><routeConfig.part1chapter2.Component /></PageTransition></PasswordGate>} />
+            <Route path="/part1/chapter3" element={<PasswordGate partNumber={1}><PageTransition><routeConfig.part1chapter3.Component /></PageTransition></PasswordGate>} />
 
             {/* Part 2 Chapters */}
-            <Route path="/part2/chapter1" element={<PageTransition><routeConfig.part2chapter1.Component /></PageTransition>} />
-            <Route path="/part2/chapter2" element={<PageTransition><routeConfig.part2chapter2.Component /></PageTransition>} />
-            <Route path="/part2/chapter3" element={<PageTransition><routeConfig.part2chapter3.Component /></PageTransition>} />
+            <Route path="/part2/chapter1" element={<PasswordGate partNumber={2}><PageTransition><routeConfig.part2chapter1.Component /></PageTransition></PasswordGate>} />
+            <Route path="/part2/chapter2" element={<PasswordGate partNumber={2}><PageTransition><routeConfig.part2chapter2.Component /></PageTransition></PasswordGate>} />
+            <Route path="/part2/chapter3" element={<PasswordGate partNumber={2}><PageTransition><routeConfig.part2chapter3.Component /></PageTransition></PasswordGate>} />
 
             {/* Part 3 Chapters */}
-            <Route path="/part3/chapter1" element={<PageTransition><routeConfig.part3chapter1.Component /></PageTransition>} />
-            <Route path="/part3/chapter2" element={<PageTransition><routeConfig.part3chapter2.Component /></PageTransition>} />
-            <Route path="/part3/chapter3" element={<PageTransition><routeConfig.part3chapter3.Component /></PageTransition>} />
+            <Route path="/part3/chapter1" element={<PasswordGate partNumber={3}><PageTransition><routeConfig.part3chapter1.Component /></PageTransition></PasswordGate>} />
+            <Route path="/part3/chapter2" element={<PasswordGate partNumber={3}><PageTransition><routeConfig.part3chapter2.Component /></PageTransition></PasswordGate>} />
+            <Route path="/part3/chapter3" element={<PasswordGate partNumber={3}><PageTransition><routeConfig.part3chapter3.Component /></PageTransition></PasswordGate>} />
 
             {/* Part 4 Chapters */}
-            <Route path="/part4/chapter1" element={<PageTransition><routeConfig.part4chapter1.Component /></PageTransition>} />
+            <Route path="/part4/chapter1" element={<PasswordGate partNumber={4}><PageTransition><routeConfig.part4chapter1.Component /></PageTransition></PasswordGate>} />
 
             <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
             <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
