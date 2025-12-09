@@ -1,9 +1,9 @@
+/* Import Medical Glassmorphism Design System */
+@import './globals.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import Medical Glassmorphism Design System */
-@import './globals.css';
 
 body {
   margin: 0;
