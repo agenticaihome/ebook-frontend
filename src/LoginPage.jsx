@@ -5,7 +5,6 @@ import { Mail, Lock, Key, ArrowRight, ArrowLeft, AlertCircle, Sparkles, Shield, 
 import { api } from './services/api';
 import { usePageTitle } from './hooks/usePageTitle';
 import { validateEmail, preventDoubleClick } from './utils/sanitizer';
-import CaptainHero from './components/CaptainHero';
 
 const LoginPage = () => {
     usePageTitle('Login');
@@ -13,7 +12,6 @@ const LoginPage = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    // Form State
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -80,30 +78,39 @@ const LoginPage = () => {
                 {/* Glass Card */}
                 <div className="bg-slate-800/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-600/50 overflow-hidden">
 
-                    {/* Header with Logo & Captain */}
-                    <div className="p-8 text-center border-b border-slate-700/50 relative">
-                        {/* Logo */}
-                        <div className="flex justify-center mb-4">
-                            <img
-                                src="/assets/logo-new.png"
-                                alt="Agentic AI at Home"
-                                className="h-12 w-auto"
-                            />
+                    {/* Header with Masterpiece Logo */}
+                    <div className="p-8 text-center border-b border-slate-700/50 relative overflow-hidden">
+                        {/* Ambient glow behind logo */}
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-48 h-48 bg-gradient-to-r from-teal-500/30 via-cyan-500/20 to-purple-500/30 rounded-full blur-3xl animate-pulse" />
                         </div>
 
-                        {/* Captain Hero */}
-                        <div className="flex justify-center mb-4">
-                            <div className="relative">
-                                <div className="absolute inset-0 bg-teal-500/20 blur-2xl rounded-full" />
-                                <CaptainHero size="sm" pose="waving" />
+                        {/* Logo Container - The Masterpiece */}
+                        <div className="relative flex justify-center mb-6">
+                            {/* Outer glow ring */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-32 h-32 rounded-full bg-gradient-to-r from-teal-500/20 to-cyan-500/20 blur-xl animate-pulse" />
+                            </div>
+
+                            {/* Glass frame */}
+                            <div className="relative p-5 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-2xl shadow-teal-500/10">
+                                {/* Inner shimmer */}
+                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400/10 via-transparent to-purple-400/10" />
+
+                                {/* The Logo */}
+                                <img
+                                    src="/assets/logo-new.png"
+                                    alt="Agentic AI at Home"
+                                    className="relative z-10 h-16 w-auto drop-shadow-[0_0_20px_rgba(20,184,166,0.4)]"
+                                />
                             </div>
                         </div>
 
-                        <h1 className="text-3xl font-bold text-white mb-2">Welcome Back!</h1>
-                        <p className="text-slate-400">Your AI agents are waiting</p>
+                        <h1 className="text-3xl font-bold text-white mb-2 relative z-10">Welcome Back!</h1>
+                        <p className="text-slate-400 relative z-10">Your AI agents are waiting</p>
 
                         {/* Trust Badge */}
-                        <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-medium">
+                        <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-medium relative z-10">
                             <Shield size={12} />
                             <span>Secure Login</span>
                         </div>
