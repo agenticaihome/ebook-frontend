@@ -102,16 +102,29 @@ export const faqData = [
         question: 'Who made this? Is this a real person?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">Yes! I'm a real person — a dad, dentist, and Army veteran who built this to survive my own chaos.</p>
-                <p className="mb-4">Here's my story:</p>
-                <ul className="list-disc pl-5 space-y-2 mb-4">
-                    <li><strong>Endodontic Resident</strong> — 50+ hour clinical weeks</li>
-                    <li><strong>Dad of Two Under 3</strong> — a baby and a toddler when I started this</li>
-                    <li><strong>Army Veteran</strong> — 502nd Dental Company, Fort Hood</li>
-                    <li><strong>Learned to Code</strong> — with AI's help (I'm not a programmer!)</li>
-                </ul>
-                <p className="mb-4">I was drowning in life admin: meal planning, appointments, bills, household tasks, emails, board exam prep. Something had to give.</p>
-                <p>AI agents became my solution. Now I want to share what worked.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">I almost missed my son's first steps.</p>
+                <p className="mb-4">I was on the couch after a long shift — phone in one hand, grocery list in the other, calculating if we could afford diapers this week.</p>
+                <p className="mb-4">That's when he stood up. Three wobbly steps toward me.</p>
+                <p className="mb-6 font-semibold text-white">I caught the last two.</p>
+
+                <hr className="border-slate-700 my-6" />
+
+                <p className="mb-4">I'm a dad of two under 3. A dental resident working 50+ hour weeks. An Army vet. And I was drowning.</p>
+                <p className="mb-4">Not in residency — I was good at residency. But at home? Meal planning at midnight. A calendar my wife stopped trusting. Endless unread emails. The quiet guilt of being <em>physically there</em> but <em>mentally gone</em>.</p>
+                <p className="mb-6">I was succeeding in residency. But at what cost?</p>
+
+                <hr className="border-slate-700 my-6" />
+
+                <p className="mb-4">So I built AI helpers.</p>
+                <p className="mb-4">Not a side hustle — a survival mechanism. Digital assistants that now handle the life logistics I was failing at. Meal plans in 3 minutes. Emails sorted before I wake up. Birthdays I haven't missed since.</p>
+                <p className="mb-6"><strong className="text-teal-400">I got 7 hours back every week.</strong> That's 360 hours a year with my family.</p>
+
+                <hr className="border-slate-700 my-6" />
+
+                <p className="mb-4">This took hundreds of late nights to build — after the kids went down, before my alarm went off. I want you to have it without losing what I lost to create it.</p>
+                <p className="mb-4 font-bold text-xl text-teal-400">Stop missing the steps.</p>
+                <p className="mb-4">I built this so you don't have to.</p>
+                <p className="text-slate-400 italic">— DDS<br />Still in residency. Still learning. Still tired. But finally present.</p>
             </>
         )
     },
