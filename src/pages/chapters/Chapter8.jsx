@@ -62,6 +62,13 @@ Then design a simple agent prompt I can use.`;
                         </div>
                     </motion.div>
 
+                    {/* WHY THIS MATTERS */}
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-center mb-4">
+                        <p className="text-slate-500 text-sm italic">
+                            "The agent that solves YOUR unique problem? Only you can build it."
+                        </p>
+                    </motion.div>
+
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Custom Agent Builder</span>

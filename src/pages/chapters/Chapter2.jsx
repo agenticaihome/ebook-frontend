@@ -60,6 +60,13 @@ Real food, not fancy stuff. Set this up now.`;
                         </div>
                     </motion.div>
 
+                    {/* WHY THIS MATTERS */}
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-center mb-4">
+                        <p className="text-slate-500 text-sm italic">
+                            "You didn't become a parent to stress about dinners every night."
+                        </p>
+                    </motion.div>
+
                     {/* HEADLINE */}
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
@@ -69,6 +76,7 @@ Real food, not fancy stuff. Set this up now.`;
                             Never stare into the fridge wondering "what's for dinner?" again.
                         </p>
                     </motion.div>
+
 
                     {/* CAPTAIN */}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">

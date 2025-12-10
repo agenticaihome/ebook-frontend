@@ -61,6 +61,13 @@ Start by asking: "Ready for your briefing?"`;
                         </div>
                     </motion.div>
 
+                    {/* WHY THIS MATTERS */}
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-center mb-4">
+                        <p className="text-slate-500 text-sm italic">
+                            "You didn't come this far to just manage life. You came to own it."
+                        </p>
+                    </motion.div>
+
                     {/* HEADLINE */}
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">

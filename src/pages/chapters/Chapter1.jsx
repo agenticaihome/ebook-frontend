@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Bell, ExternalLink, Sun, Calendar, Brain, AlertCircle, HelpCircle, Smartphone, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+const ProgressTracker = React.lazy(() => import('../../components/common/ProgressTracker'));
 
 // ============================================
 // CHAPTER 1 - SIMPLE, EFFECTIVE, HELPFUL
@@ -67,6 +68,23 @@ Set this up now.`;
                         </div>
                     </motion.div>
 
+                    {/* PROGRESS TRACKER */}
+                    <Suspense fallback={<div className="h-16 animate-pulse bg-slate-800/30 rounded-xl mb-6" />}>
+                        <ProgressTracker currentChapter={1} />
+                    </Suspense>
+
+                    {/* WHY THIS MATTERS */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-center mb-4"
+                    >
+                        <p className="text-slate-500 text-sm italic">
+                            "You didn't wake up today to feel overwhelmed before breakfast."
+                        </p>
+                    </motion.div>
+
                     {/* HEADLINE */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -83,6 +101,7 @@ Set this up now.`;
                             💡 "Agent" just means an AI helper that does tasks for you. Nothing technical!
                         </p>
                     </motion.div>
+
 
                     {/* CAPTAIN */}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">

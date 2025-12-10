@@ -4,11 +4,13 @@ import { Lock, AlertCircle, BookOpen, Sparkles } from 'lucide-react';
 
 // Section names for each part
 const SECTION_NAMES = {
+    1: 'Part 1: The Foundation',
     2: 'Part 2: Daily Operations',
     3: 'Part 3: Productivity',
     4: 'Part 4: Advanced Systems',
     5: 'Part 5: Mastery'
 };
+
 
 const PasswordGate = ({ children, partNumber }) => {
     const [password, setPassword] = useState('');
