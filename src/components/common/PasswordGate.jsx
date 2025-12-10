@@ -105,7 +105,7 @@ const PasswordGate = ({ children, partNumber }) => {
                                     setPassword(e.target.value);
                                     setError('');
                                 }}
-                                className="w-full px-4 py-3 bg-slate-800 border border-slate-600/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 bg-slate-800 border border-slate-600/50 rounded-xl text-white text-base placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                                 placeholder="••••••••"
                                 autoFocus
                             />

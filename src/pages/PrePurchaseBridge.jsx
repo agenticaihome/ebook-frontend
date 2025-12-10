@@ -390,7 +390,7 @@ const PrePurchaseBridge = () => {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="your@email.com"
-                                        className="flex-1 px-3 py-2 rounded-lg bg-slate-900 border border-slate-600 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-1 focus:ring-teal-500"
+                                        className="flex-1 px-3 py-2.5 rounded-lg bg-slate-900 border border-slate-600 text-white placeholder-slate-500 text-base focus:outline-none focus:ring-1 focus:ring-teal-500"
                                         required
                                     />
                                     <button

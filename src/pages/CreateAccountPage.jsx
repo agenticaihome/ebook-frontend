@@ -130,7 +130,7 @@ const CreateAccountPage = () => {
                                     onChange={(e) => setEmail(e.target.value)}
                                     readOnly={paymentType === 'stripe'}
                                     placeholder="Enter your email"
-                                    className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white ${paymentType === 'stripe' ? 'cursor-not-allowed opacity-75' : ''}`}
+                                    className={`w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white text-base ${paymentType === 'stripe' ? 'cursor-not-allowed opacity-75' : ''}`}
                                 />
                             </div>
                             {email.includes('@temp.ergo') && (
@@ -150,7 +150,7 @@ const CreateAccountPage = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Enter password (min 8 characters)"
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:border-purple-500 focus:outline-none"
+                                    className="w-full pl-10 pr-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white text-base focus:border-purple-500 focus:outline-none"
                                     required
                                 />
                             </div>

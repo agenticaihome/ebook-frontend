@@ -142,7 +142,7 @@ const LoginPage = () => {
                                             if (e.target.value.length <= 255) setEmail(e.target.value);
                                         }}
                                         maxLength={255}
-                                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl py-3 pl-11 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-all"
+                                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl py-3 pl-11 pr-4 text-white text-base placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-all"
                                         placeholder="you@example.com"
                                         required
                                         autoComplete="email"
@@ -161,7 +161,7 @@ const LoginPage = () => {
                                             if (e.target.value.length <= 128) setPassword(e.target.value);
                                         }}
                                         maxLength={128}
-                                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl py-3 pl-11 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-all"
+                                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl py-3 pl-11 pr-4 text-white text-base placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-all"
                                         placeholder="••••••••"
                                         required
                                         autoComplete="current-password"
