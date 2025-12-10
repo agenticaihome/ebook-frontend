@@ -217,7 +217,7 @@ export default function FAQ() {
                 </div>
 
                 {/* Contact Section */}
-                <div className="bg-slate-900/80 border-t border-slate-700/50 py-16">
+                <div className="bg-slate-900/80 border-t border-slate-700/50 py-16 pb-32 md:pb-16">
                     <div className="max-w-4xl mx-auto px-6 text-center">
                         <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-teal-500/20">
                             <Mail className="text-white" size={26} />

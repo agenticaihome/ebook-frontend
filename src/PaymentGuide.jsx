@@ -285,7 +285,7 @@ export default function PaymentGuide() {
                 </section>
 
                 {/* FOOTER CTA */}
-                <section className="py-16 px-6 text-center">
+                <section className="py-16 pb-32 md:pb-16 px-6 text-center">
                     <div className="max-w-2xl mx-auto">
                         <h2 className="text-3xl font-bold mb-4">Still deciding?</h2>
                         <p className="text-slate-400 mb-8">

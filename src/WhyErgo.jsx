@@ -529,7 +529,7 @@ export default function WhyErgo() {
                 </section>
 
                 {/* CLOSING */}
-                <section className="py-16 px-6 text-center border-t border-slate-800">
+                <section className="py-16 pb-32 md:pb-16 px-6 text-center border-t border-slate-800">
                     <div className="max-w-2xl mx-auto">
                         <p className="text-xl text-slate-300 italic mb-6">
                             "We built Ergo because we believed in the original vision—not the exit."

@@ -555,7 +555,7 @@ export default function HowToPay() {
                 </section>
 
                 {/* Claim Access Section */}
-                <section className="mb-16">
+                <section className="mb-16 pb-20 md:pb-0">
                     <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
