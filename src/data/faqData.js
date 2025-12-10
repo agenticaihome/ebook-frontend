@@ -122,7 +122,17 @@ export const faqData = [
                 <p className="mb-4">This entire website — every page, every feature — was built with the help of Claude, ChatGPT, Grok, and Gemini. I'm a dental resident and Army vet with two kids under 3. I'm not a developer. I just refused to quit.</p>
                 <p className="mb-4">I'm sharing this because if I can do it, <em>you</em> can use these agents. You don't need to build them from scratch — I already did that part.</p>
                 <p className="mb-4 font-bold text-xl text-teal-400">If this helps even one person reclaim their peace, it was worth it.</p>
-                <p className="text-slate-400 italic">— DDS<br />Still in residency. Still learning. Still building. But finally at peace.</p>
+
+                <div className="mt-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
+                    <p className="text-slate-400 italic mb-3">— DDS</p>
+                    <div className="text-xs text-slate-500 space-y-1">
+                        <p>✓ <span className="text-slate-400">Doctor of Dental Surgery</span> — my actual degree</p>
+                        <p>✓ <span className="text-slate-400">Dad Deploying Systems</span> — my current identity</p>
+                        <p>✓ <span className="text-slate-400">Doctor of Digital Systems</span> — what you'll earn</p>
+                        <p>✓ <span className="text-slate-400">Digital Drowning Syndrome</span> — what we're curing</p>
+                    </div>
+                    <p className="text-slate-500 italic text-xs mt-3">Still in residency. Still learning. Still building. But finally at peace.</p>
+                </div>
             </>
         )
     },
