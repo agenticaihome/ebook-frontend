@@ -126,9 +126,7 @@ export const faqData = [
                 <div className="mt-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
                     <p className="text-slate-300 mb-3">— <span className="text-white font-bold">DDS</span></p>
                     <p className="text-slate-500 text-sm leading-relaxed">
-                        P.S. — Fun fact: DDS is my actual degree (Doctor of Dental Surgery). But these days I think of it as <em className="text-slate-400">Dad Deploying Systems</em>.
-                        Finish all 10 chapters and you'll cure your own <em className="text-slate-400">Digital Drowning Syndrome</em> — and be well on your way to becoming a <em className="text-slate-400">Doctor of Digital Systems</em> yourself.
-                        The letters just keep giving. 🦷
+                        P.S. — DDS is my actual degree (Doctor of Dental Surgery). But honestly? These days I think of it more as <em className="text-slate-400">Dad Deploying Systems</em>. And by the time you finish all 10 chapters, you'll have cured your own <em className="text-slate-400">Digital Drowning Syndrome</em> and be on your way to becoming a <em className="text-slate-400">Doctor of Digital Systems</em> yourself.
                     </p>
                 </div>
             </>
