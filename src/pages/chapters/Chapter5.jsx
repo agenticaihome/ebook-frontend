@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, DollarSign, TrendingUp, PiggyBank, AlertCircle, HelpCircle, Zap } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, DollarSign, TrendingUp, PiggyBank, AlertCircle, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -24,6 +24,7 @@ const Chapter5 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showExampleOutput, setShowExampleOutput] = useState(false);
 
     const goldPrompt = `Be my Money Check-In Agent.
 
@@ -117,6 +118,32 @@ Then give me a quick 3-line money status.`;
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-400 hover:to-teal-400 text-white'}`}>
                                 {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy These Instructions</>}
                             </button>
+
+                            {/* See Example Output */}
+                            <button
+                                onClick={() => setShowExampleOutput(!showExampleOutput)}
+                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-green-400 hover:text-green-300 text-sm font-medium transition-colors"
+                            >
+                                <Eye size={16} />
+                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
+                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+
+                            {showExampleOutput && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-green-500/20"
+                                >
+                                    <p className="text-green-400 text-xs font-bold mb-2">💰 EXAMPLE SUNDAY CHECK-IN:</p>
+                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
+                                        <p>📊 <strong className="text-white">This Week:</strong><br />• Groceries: ~$120<br />• Gas: $45<br />• Dinner out: $65</p>
+                                        <p>📅 <strong className="text-white">Coming Up:</strong><br />• Rent due Friday ($1,400)<br />• Phone bill auto-pays Wednesday</p>
+                                        <p>✅ <strong className="text-white">Your Status:</strong><br />"You're $80 under your weekly budget. Nice! Rent is covered. You have about $400 flex money until next paycheck."</p>
+                                    </div>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 A 2-minute check-in that keeps you in control!</p>
+                                </motion.div>
+                            )}
                         </div>
                     </motion.section>
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Users, MessageSquare, GitBranch, HelpCircle, Zap } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Users, MessageSquare, GitBranch, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -24,6 +24,7 @@ const Chapter9 = () => {
     const [copied, setCopied] = useState(false);
     const [showExamples, setShowExamples] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showExampleOutput, setShowExampleOutput] = useState(false);
 
     const goldPrompt = `Help me coordinate my AI agents.
 
@@ -112,6 +113,35 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white'}`}>
                                 {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy These Instructions</>}
                             </button>
+
+                            {/* See Example Output */}
+                            <button
+                                onClick={() => setShowExampleOutput(!showExampleOutput)}
+                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors"
+                            >
+                                <Eye size={16} />
+                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
+                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+
+                            {showExampleOutput && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-cyan-500/20"
+                                >
+                                    <p className="text-cyan-400 text-xs font-bold mb-2">📊 EXAMPLE UNIFIED MORNING BRIEFING:</p>
+                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
+                                        <p>☕ <strong className="text-white">Good morning! Here's your 60-second summary:</strong></p>
+                                        <p>📅 <strong className="text-cyan-300">Calendar:</strong> 2 meetings today (10am standup, 3pm client call)</p>
+                                        <p>📧 <strong className="text-cyan-300">Emails:</strong> 3 need replies today - boss asked about project timeline</p>
+                                        <p>🎯 <strong className="text-cyan-300">Priority:</strong> Finish proposal before 3pm call</p>
+                                        <p>☀️ <strong className="text-cyan-300">Weather:</strong> 68°F, sunny - good walking weather for lunch</p>
+                                        <p>💰 <strong className="text-cyan-300">Money note:</strong> Rent auto-pays tomorrow, all good!</p>
+                                    </div>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 All your agents working together in one view!</p>
+                                </motion.div>
+                            )}
                         </div>
                     </motion.section>
 

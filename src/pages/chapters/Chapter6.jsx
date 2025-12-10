@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Dumbbell, Heart, Activity, HelpCircle, Zap } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Dumbbell, Heart, Activity, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -24,6 +24,7 @@ const Chapter6 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showExampleOutput, setShowExampleOutput] = useState(false);
 
     const goldPrompt = `Be my Fitness Agent.
 
@@ -106,6 +107,33 @@ No gym jargon. Keep each workout under 30 minutes.`;
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-400 hover:to-orange-400 text-white'}`}>
                                 {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy These Instructions</>}
                             </button>
+
+                            {/* See Example Output */}
+                            <button
+                                onClick={() => setShowExampleOutput(!showExampleOutput)}
+                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-red-400 hover:text-red-300 text-sm font-medium transition-colors"
+                            >
+                                <Eye size={16} />
+                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
+                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+
+                            {showExampleOutput && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-red-500/20"
+                                >
+                                    <p className="text-red-400 text-xs font-bold mb-2">🏋️ EXAMPLE WORKOUT PLAN:</p>
+                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
+                                        <p>🗓️ <strong className="text-white">Your 3-Day Plan:</strong></p>
+                                        <p><strong className="text-red-300">Monday (20 min):</strong><br />• Bodyweight squats - 3x12<br />• Push-ups (or knee push-ups) - 3x10<br />• Plank - 3x30 seconds</p>
+                                        <p><strong className="text-red-300">Wednesday (25 min):</strong><br />• Dumbbell rows - 3x10 each arm<br />• Lunges - 3x10 each leg<br />• Dumbbell shoulder press - 3x10</p>
+                                        <p><strong className="text-red-300">Friday (20 min):</strong><br />• Glute bridges - 3x15<br />• Dumbbell curls - 3x12<br />• Dead bugs - 3x10 each side</p>
+                                    </div>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 Real workouts you can actually do at home!</p>
+                                </motion.div>
+                            )}
                         </div>
                     </motion.section>
 

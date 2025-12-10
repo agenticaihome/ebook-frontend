@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Mail, Inbox, Clock, AlertCircle, HelpCircle, Zap } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Mail, Inbox, Clock, AlertCircle, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -24,6 +24,7 @@ const Chapter4 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showExampleOutput, setShowExampleOutput] = useState(false);
 
     const goldPrompt = `Be my Email Triage Agent.
 
@@ -134,6 +135,33 @@ Start by asking what email I use.`;
                                     <><Copy size={22} /> Copy These Instructions</>
                                 )}
                             </button>
+
+                            {/* See Example Output */}
+                            <button
+                                onClick={() => setShowExampleOutput(!showExampleOutput)}
+                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
+                            >
+                                <Eye size={16} />
+                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
+                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+
+                            {showExampleOutput && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-blue-500/20"
+                                >
+                                    <p className="text-blue-400 text-xs font-bold mb-2">📧 EXAMPLE OUTPUT:</p>
+                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
+                                        <p>🔴 <strong className="text-white">Respond Today (3):</strong><br />• Boss - "Project update needed" (sent 2 hrs ago)<br />• Client - "Quick question about invoice" <br />• Doctor's office - confirm appointment</p>
+                                        <p>🟡 <strong className="text-white">Can Wait (8):</strong><br />• Team updates, newsletters, FYI emails<br />• LinkedIn notifications</p>
+                                        <p>✅ <strong className="text-white">Safe to Archive (24):</strong><br />• Promotional emails, automated receipts</p>
+                                        <p>✍️ <strong className="text-white">Draft Reply for Boss:</strong><br />"Hi [Name], here's a quick update on the project..."</p>
+                                    </div>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 Your agent will organize YOUR inbox like this!</p>
+                                </motion.div>
+                            )}
                         </div>
                     </motion.section>
 

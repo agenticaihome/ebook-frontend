@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Briefcase, Target, ListTodo, HelpCircle, Zap } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Briefcase, Target, ListTodo, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -24,6 +24,7 @@ const Chapter7 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showExampleOutput, setShowExampleOutput] = useState(false);
 
     const goldPrompt = `Be my Work Task Agent.
 
@@ -105,6 +106,33 @@ Be ruthless about priorities. Less is more.`;
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white'}`}>
                                 {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy These Instructions</>}
                             </button>
+
+                            {/* See Example Output */}
+                            <button
+                                onClick={() => setShowExampleOutput(!showExampleOutput)}
+                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
+                            >
+                                <Eye size={16} />
+                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
+                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+
+                            {showExampleOutput && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-amber-500/20"
+                                >
+                                    <p className="text-amber-400 text-xs font-bold mb-2">🎯 EXAMPLE DAILY PRIORITIZATION:</p>
+                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
+                                        <p>🎯 <strong className="text-white">Your ONE Thing Today:</strong><br />Finish the client proposal (due tomorrow) - this moves the needle most.</p>
+                                        <p>⌛ <strong className="text-white">If Time Permits:</strong><br />• Reply to Sarah's email<br />• Review team slides</p>
+                                        <p>🚫 <strong className="text-white">Move to Tomorrow:</strong><br />• Organize files (not urgent)<br />• Research new tools (nice-to-have)</p>
+                                        <p>💭 <strong className="text-white">Reality Check:</strong><br />"You listed 12 tasks. That's 12 hours of work. You have 4 hours. I picked the ONE that matters."</p>
+                                    </div>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 Clarity in 60 seconds. No more overwhelm.</p>
+                                </motion.div>
+                            )}
                         </div>
                     </motion.section>
 

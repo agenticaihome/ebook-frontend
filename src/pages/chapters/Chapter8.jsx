@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, Settings, Wrench, Lightbulb, HelpCircle, Zap } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Settings, Wrench, Lightbulb, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 
@@ -24,6 +24,7 @@ const Chapter8 = () => {
     const [copied, setCopied] = useState(false);
     const [showExamples, setShowExamples] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showExampleOutput, setShowExampleOutput] = useState(false);
 
     const goldPrompt = `Help me create a custom AI agent.
 
@@ -111,6 +112,35 @@ Then design a simple agent prompt I can use.`;
                                 className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied ? 'bg-green-500 text-white' : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white'}`}>
                                 {copied ? <><CheckCircle size={22} /> Copied!</> : <><Copy size={22} /> Copy These Instructions</>}
                             </button>
+
+                            {/* See Example Output */}
+                            <button
+                                onClick={() => setShowExampleOutput(!showExampleOutput)}
+                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-purple-400 hover:text-purple-300 text-sm font-medium transition-colors"
+                            >
+                                <Eye size={16} />
+                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
+                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                            </button>
+
+                            {showExampleOutput && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-purple-500/20"
+                                >
+                                    <p className="text-purple-400 text-xs font-bold mb-2">🛠️ EXAMPLE CUSTOM AGENT DESIGN:</p>
+                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
+                                        <p><strong className="text-white">You said:</strong> "I keep forgetting to take my vitamins"</p>
+                                        <p><strong className="text-purple-300">Your AI designed:</strong></p>
+                                        <div className="bg-purple-900/20 rounded-lg p-2 text-xs border border-purple-500/20">
+                                            <p className="font-mono">"Be my Vitamin Reminder Agent.<br /><br />Every morning at 8am, send me a friendly reminder to take my vitamins. Ask if I took them. If I say no, remind me again at noon."</p>
+                                        </div>
+                                        <p className="text-slate-400">That's it! You just built a custom agent in 30 seconds.</p>
+                                    </div>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 The framework works for ANY problem you have!</p>
+                                </motion.div>
+                            )}
                         </div>
                     </motion.section>
 
