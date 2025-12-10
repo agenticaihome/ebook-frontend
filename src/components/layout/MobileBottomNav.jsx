@@ -14,8 +14,24 @@ const MobileBottomNav = () => {
         return location.pathname.startsWith(path);
     };
 
-    // Don't show mobile nav on splash page
-    if (location.pathname === '/') {
+    // Only show on content consumption pages (Dashboard, Chapters, Games, FAQ, Why Ergo)
+    // Hide on conversion pages (splash, onboarding, sales, login, success, etc.)
+    const showNavPaths = [
+        '/dashboard',
+        '/part1',
+        '/part2',
+        '/part3',
+        '/part4',
+        '/games',
+        '/faq',
+        '/why-ergo',
+        '/hall-of-fame',
+        '/graduation'
+    ];
+
+    const shouldShowNav = showNavPaths.some(path => location.pathname.startsWith(path));
+
+    if (!shouldShowNav) {
         return null;
     }
 
