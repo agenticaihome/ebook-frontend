@@ -188,6 +188,9 @@ const AnimatedRoutes = () => {
               </Suspense>
             } />
 
+            {/* Graduation Page - Commander Certificate */}
+            <Route path="/graduation" element={<PageTransition><routeConfig.graduation.Component /></PageTransition>} />
+
             {/* 404 Route */}
             <Route path="*" element={
               <Suspense fallback={<Loading />}>
