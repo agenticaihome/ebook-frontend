@@ -204,17 +204,25 @@ Start by asking: "Ready for your briefing?"`;
                             </motion.div>
 
                             <h2 className="text-2xl font-black text-white mb-3">
-                                🎉 Congratulations, Agent Commander!
+                                🎉 You did it!
                             </h2>
                             <p className="text-slate-300 mb-6">
-                                You've completed all 10 chapters. You now have the skills to build, coordinate, and command AI agents for any area of your life.
+                                You've completed all 10 chapters. Your Agent Army is ready — AI is now working for you every day.
                             </p>
+
+                            {/* Get Certificate - MAIN CTA */}
+                            <Link
+                                to="/graduation"
+                                className="inline-flex items-center justify-center gap-2 w-full py-4 px-6 mb-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50"
+                            >
+                                🎖️ Get Your Certificate
+                            </Link>
 
                             <div className="grid grid-cols-2 gap-3 mb-6">
                                 <Link to="/games" className="flex items-center justify-center gap-2 py-3 px-4 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl transition-all">
                                     🎮 Play Games
                                 </Link>
-                                <Link to="/dashboard" className="flex items-center justify-center gap-2 py-3 px-4 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl transition-all">
+                                <Link to="/dashboard" className="flex items-center justify-center gap-2 py-3 px-4 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-xl transition-all">
                                     📊 Dashboard
                                 </Link>
                             </div>
