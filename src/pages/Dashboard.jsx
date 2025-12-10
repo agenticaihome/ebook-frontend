@@ -152,13 +152,13 @@ const Dashboard = () => {
                             className="relative"
                         >
                             <div className="bg-slate-800 border border-teal-500/30 rounded-2xl p-4 max-w-sm mx-auto shadow-lg shadow-teal-900/20 relative z-10">
-                                <p className="text-teal-300 font-medium text-sm mb-1">🫡 Captain's Orders:</p>
+                                <p className="text-teal-300 font-medium text-sm mb-1">💡 Captain E says:</p>
                                 <p className="text-white text-base">
                                     {allComplete
-                                        ? "Mission accomplished, soldier! Review your troops below."
+                                        ? "You did it! All 10 agents deployed. Your life is officially on autopilot. 🎉"
                                         : completedCount === 0
-                                            ? "The journey of a thousand automated tasks starts here."
-                                            : "Consistency is key. One more chapter today?"}
+                                            ? "Ready to build your first AI agent? Let's do this!"
+                                            : "Nice progress! One more chapter today?"}
                                 </p>
                                 {/* Triangle pointer */}
                                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-800 border-b border-r border-teal-500/30 transform rotate-45"></div>
