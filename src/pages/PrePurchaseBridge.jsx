@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -8,6 +8,7 @@ import {
     Sparkles, Star, Calendar, UtensilsCrossed
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
+import { logViewItem, logBeginCheckout } from '../utils/analytics';
 
 // ============================================
 // OPTIMIZED PRE-PURCHASE BRIDGE
@@ -20,6 +21,36 @@ const PrePurchaseBridge = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [subscribed, setSubscribed] = useState(false);
     const [expandedFaq, setExpandedFaq] = useState(null);
+
+    // Track view_item when user lands on sales page (conversion funnel step 1)
+    useEffect(() => {
+        logViewItem({
+            currency: 'USD',
+            value: 39.99,
+            items: [{
+                item_id: 'ebook_standard',
+                item_name: 'Agentic AI at Home - Full Access',
+                price: 39.99,
+                quantity: 1,
+                item_category: 'digital_product'
+            }]
+        });
+    }, []);
+
+    // Track begin_checkout when user clicks any CTA (conversion funnel step 2)
+    const handleCheckoutClick = () => {
+        logBeginCheckout({
+            currency: 'USD',
+            value: 39.99,
+            items: [{
+                item_id: 'ebook_standard',
+                item_name: 'Agentic AI at Home - Full Access',
+                price: 39.99,
+                quantity: 1,
+                item_category: 'digital_product'
+            }]
+        });
+    };
 
     const handleSubscribe = async (e) => {
         e.preventDefault();
@@ -124,6 +155,7 @@ const PrePurchaseBridge = () => {
                         {/* Primary CTA */}
                         <Link
                             to="/payment-guide"
+                            onClick={handleCheckoutClick}
                             className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white px-8 py-4 rounded-2xl font-bold text-xl transition-all shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
                         >
                             <span className="relative z-10">Get Full Access</span>
@@ -323,6 +355,7 @@ const PrePurchaseBridge = () => {
 
                         <Link
                             to="/payment-guide"
+                            onClick={handleCheckoutClick}
                             className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-2xl font-black text-xl inline-flex items-center gap-2 transition-transform hover:scale-105"
                         >
                             Get Instant Access <Zap size={20} className="text-teal-600 fill-teal-600" />
@@ -411,6 +444,7 @@ const PrePurchaseBridge = () => {
                 <div className="fixed bottom-0 left-0 right-0 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] bg-gradient-to-t from-[#0a0a12] via-[#0a0a12]/95 to-transparent md:hidden z-50">
                     <Link
                         to="/payment-guide"
+                        onClick={handleCheckoutClick}
                         className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-teal-500/30"
                     >
                         Unlock All 10 Chapters — $39.99 (↑ Feb 1)
