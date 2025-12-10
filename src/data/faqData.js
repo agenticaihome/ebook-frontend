@@ -124,14 +124,12 @@ export const faqData = [
                 <p className="mb-4 font-bold text-xl text-teal-400">If this helps even one person reclaim their peace, it was worth it.</p>
 
                 <div className="mt-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
-                    <p className="text-slate-400 italic mb-3">— DDS</p>
-                    <div className="text-xs text-slate-500 space-y-1">
-                        <p>✓ <span className="text-slate-400">Doctor of Dental Surgery</span> — my actual degree</p>
-                        <p>✓ <span className="text-slate-400">Dad Deploying Systems</span> — my current identity</p>
-                        <p>✓ <span className="text-slate-400">Doctor of Digital Systems</span> — what you'll earn</p>
-                        <p>✓ <span className="text-slate-400">Digital Drowning Syndrome</span> — what we're curing</p>
-                    </div>
-                    <p className="text-slate-500 italic text-xs mt-3">Still in residency. Still learning. Still building. But finally at peace.</p>
+                    <p className="text-slate-300 mb-3">— <span className="text-white font-bold">DDS</span></p>
+                    <p className="text-slate-500 text-sm leading-relaxed">
+                        P.S. — Fun fact: DDS is my actual degree (Doctor of Dental Surgery). But these days I think of it as <em className="text-slate-400">Dad Deploying Systems</em>.
+                        And if you finish all 10 chapters? You'll have cured your own <em className="text-slate-400">Digital Drowning Syndrome</em>.
+                        The letters just keep giving. 🦷
+                    </p>
                 </div>
             </>
         )
