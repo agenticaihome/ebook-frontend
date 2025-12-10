@@ -441,7 +441,7 @@ const WebbookLayout = ({ children }) => {
                 </header>
 
                 {/* Page Content */}
-                <main id="main-content" className="flex-1 overflow-x-hidden focus:outline-none" tabIndex="-1">
+                <main id="main-content" className="flex-1 overflow-x-hidden focus:outline-none pb-24 md:pb-0" tabIndex="-1">
                     {children}
                 </main>
             </div>
