@@ -1,108 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://agenticaihome.com/</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Key Pages -->
   <url>
-    <loc>https://agenticaihome.com/games</loc>
+    <loc>https://agenticaihome.com/start</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://agenticaihome.com/unlock</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://agenticaihome.com/dashboard</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Part 1 -->
+  <url>
+    <loc>https://agenticaihome.com/games</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Part 1: Getting Started (Free Chapters) -->
   <url>
     <loc>https://agenticaihome.com/part1/chapter1</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://agenticaihome.com/part1/chapter2</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://agenticaihome.com/part1/chapter3</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- Part 2 -->
+  
+  <!-- Part 2: Level Up -->
   <url>
     <loc>https://agenticaihome.com/part2/chapter1</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part2/chapter2</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part2/chapter3</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <!-- Part 3 -->
-  <url>
-    <loc>https://agenticaihome.com/part3/chapter1</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part3/chapter2</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part3/chapter3</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <!-- Part 4 -->
-  <url>
-    <loc>https://agenticaihome.com/part4/chapter1</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part4/chapter2</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part4/chapter3</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <!-- Part 5 -->
-  <url>
-    <loc>https://agenticaihome.com/part5/chapter1</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part5/chapter2</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/part5/chapter3</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://agenticaihome.com/why-ergo</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://agenticaihome.com/part2/chapter2</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticaihome.com/part2/chapter3</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Part 3: Power User -->
+  <url>
+    <loc>https://agenticaihome.com/part3/chapter1</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticaihome.com/part3/chapter2</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://agenticaihome.com/part3/chapter3</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Part 4: Grand Finale -->
+  <url>
+    <loc>https://agenticaihome.com/part4/chapter1</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Support Pages -->
+  <url>
     <loc>https://agenticaihome.com/faq</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://agenticaihome.com/payment-guide</loc>
+    <loc>https://agenticaihome.com/why-ergo</loc>
+    <lastmod>2024-12-10</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://agenticaihome.com/hall-of-fame</loc>
+    <lastmod>2024-12-10</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>
