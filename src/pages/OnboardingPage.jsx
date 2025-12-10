@@ -12,7 +12,7 @@ const OnboardingPage = () => {
     return (
         <>
             <Helmet>
-                <title>Welcome to Agentic AI at Home</title>
+                <title>Get Started - Build Your First AI Agent in 5 Minutes</title>
                 <meta name="description" content="Captain Efficiency welcomes you to the Agentic AI world. Learn how AI agents will give you TIME back." />
             </Helmet>
 

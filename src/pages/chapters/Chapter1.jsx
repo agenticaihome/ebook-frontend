@@ -7,6 +7,7 @@ import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Bell, 
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ProgressTracker = React.lazy(() => import('../../components/common/ProgressTracker'));
+const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
 
 // ============================================
 // CHAPTER 1 - SIMPLE, EFFECTIVE, HELPFUL
@@ -334,6 +335,12 @@ Set this up now.`;
                                 Most people never get past this point. You're already ahead.
                             </p>
                         </div>
+
+                        {/* Share to X */}
+                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/30 rounded-xl" />}>
+                            <ShareToX chapterNumber={1} />
+                        </Suspense>
+
                         <Link
                             to="/unlock"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98]"
