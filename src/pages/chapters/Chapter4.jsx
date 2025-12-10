@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Mail, Inbox, Clock, AlertCircle, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
 
 // ============================================
 // CHAPTER 4 - EMAIL TRIAGE AGENT
@@ -282,6 +283,13 @@ Start by asking what email I use.`;
                                 </div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* SHARE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95 }} className="mb-6">
+                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/30 rounded-xl" />}>
+                            <ShareToX chapterNumber={4} />
+                        </Suspense>
                     </motion.section>
 
                     {/* NEXT CHAPTER */}

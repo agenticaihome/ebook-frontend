@@ -7,6 +7,7 @@ import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, Cal
 import EmailCaptureForm from '../../components/common/EmailCaptureForm';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
 
 // ============================================
 // CHAPTER 3 - IMPORTANT DATES AGENT
@@ -284,6 +285,13 @@ Let me dump my dates now.`;
                             <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 3</p>
                             <p className="text-slate-400 text-sm">Morning Agent + Meal Planning Agent + Important Dates Agent</p>
                         </div>
+                    </motion.section>
+
+                    {/* SHARE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.88 }} className="mb-6">
+                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/30 rounded-xl" />}>
+                            <ShareToX chapterNumber={3} />
+                        </Suspense>
                     </motion.section>
 
                     {/* PART 1 COMPLETE */}

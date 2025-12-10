@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Crown, Trophy, Rocket, Star, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
 
 // ============================================
 // CHAPTER 10 - YOUR AGENT ARMY
@@ -181,6 +182,13 @@ Start by asking: "Ready for your briefing?"`;
                                 <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">4</div><p className="text-slate-300 text-sm"><strong>Play the games:</strong> Sharpen your skills in the Games Hub</p></div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* SHARE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }} className="mb-8">
+                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/30 rounded-xl" />}>
+                            <ShareToX chapterNumber={10} />
+                        </Suspense>
                     </motion.section>
 
                     {/* GRADUATION */}

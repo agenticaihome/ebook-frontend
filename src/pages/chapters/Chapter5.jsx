@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, DollarSign, TrendingUp, PiggyBank, AlertCircle, HelpCircle, Zap, Eye } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
 
 // ============================================
 // CHAPTER 5 - MONEY CHECK-IN AGENT
@@ -242,6 +243,13 @@ Then give me a quick 3-line money status.`;
                                 </div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* SHARE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.95 }} className="mb-6">
+                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/30 rounded-xl" />}>
+                            <ShareToX chapterNumber={5} />
+                        </Suspense>
                     </motion.section>
 
                     {/* NEXT CHAPTER */}

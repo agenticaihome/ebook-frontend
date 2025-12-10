@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, ShoppingCart, UtensilsCrossed, HelpCircle, MessageSquare } from 'lucide-react';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
+const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
 
 // ============================================
 // CHAPTER 2 - MEAL PLANNING AGENT
@@ -286,6 +287,13 @@ Real food, not fancy stuff. Set this up now.`;
                             <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 2</p>
                             <p className="text-slate-400 text-sm">Morning Agent + Meal Planning Agent</p>
                         </div>
+                    </motion.section>
+
+                    {/* SHARE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.88 }} className="mb-6">
+                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/30 rounded-xl" />}>
+                            <ShareToX chapterNumber={2} />
+                        </Suspense>
                     </motion.section>
 
                     {/* NEXT */}
