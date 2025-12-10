@@ -58,32 +58,32 @@ const MobileBottomNav = () => {
             )}
 
             <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f1a]/95 backdrop-blur-lg border-t border-slate-800 md:hidden z-50 pb-safe">
-                <div className="flex justify-around items-center p-3">
-                    <PrefetchLink to="/" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-400'}`}>
-                        <Home size={24} />
+                <div className="flex justify-around items-center p-2">
+                    <PrefetchLink to="/" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-400'}`}>
+                        <Home size={22} />
                         <span className="text-[10px] font-bold">Home</span>
                     </PrefetchLink>
 
-                    <PrefetchLink to="/dashboard" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-400'}`}>
-                        <LayoutDashboard size={24} />
+                    <PrefetchLink to="/dashboard" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-400'}`}>
+                        <LayoutDashboard size={22} />
                         <span className="text-[10px] font-bold">Quests</span>
                     </PrefetchLink>
 
-                    <PrefetchLink to="/part1" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-400'}`}>
-                        <BookOpen size={24} />
+                    <PrefetchLink to="/part1" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') ? 'text-cyan-400' : 'text-slate-400'}`}>
+                        <BookOpen size={22} />
                         <span className="text-[10px] font-bold">Read</span>
                     </PrefetchLink>
 
-                    <PrefetchLink to="/games" className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-400'}`}>
-                        <Gamepad2 size={24} />
+                    <PrefetchLink to="/games" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-400'}`}>
+                        <Gamepad2 size={22} />
                         <span className="text-[10px] font-bold">Games</span>
                     </PrefetchLink>
 
                     <button
                         onClick={() => setShowTools(!showTools)}
-                        className={`flex flex-col items-center gap-1 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${showTools ? 'text-cyan-400' : 'text-slate-400'}`}
+                        className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${showTools ? 'text-cyan-400' : 'text-slate-400'}`}
                     >
-                        <Wrench size={24} />
+                        <Wrench size={22} />
                         <span className="text-[10px] font-bold">Tools</span>
                     </button>
                 </div>

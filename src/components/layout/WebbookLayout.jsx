@@ -269,7 +269,7 @@ const WebbookLayout = ({ children }) => {
                         return (
                             <div key={chapter.id} className="flex flex-col">
                                 {/* Chapter Header */}
-                                <div className={`flex items-center gap-2 px-3 py-2.5 rounded-xl transition-all group ${isFreeSection
+                                <div className={`flex items-center gap-2 px-3 py-3 min-h-[48px] rounded-xl transition-all group ${isFreeSection
                                     ? 'bg-green-900/30 border border-green-500/30 hover:bg-green-900/40'
                                     : isActive
                                         ? 'bg-teal-600/90 text-white shadow-md'
@@ -290,11 +290,11 @@ const WebbookLayout = ({ children }) => {
                                     </Link>
                                     <button
                                         onClick={(e) => toggleChapter(e, chapter.id)}
-                                        className={`p-1 rounded hover:bg-white/10 transition-colors ${isFreeSection ? 'text-green-400' : isActive ? 'text-teal-200' : 'text-slate-500'}`}
+                                        className={`p-2 min-w-[36px] min-h-[36px] rounded hover:bg-white/10 transition-colors flex items-center justify-center ${isFreeSection ? 'text-green-400' : isActive ? 'text-teal-200' : 'text-slate-500'}`}
                                         aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${chapter.title}`}
                                         aria-expanded={isExpanded}
                                     >
-                                        {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                                        {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                                     </button>
                                 </div>
 
@@ -311,7 +311,7 @@ const WebbookLayout = ({ children }) => {
                                                         <Link
                                                             key={sub.id}
                                                             to={sub.path}
-                                                            className={`flex items-center gap-2 text-xs py-2 px-2 transition-colors rounded-lg ${isSubActive
+                                                            className={`flex items-center gap-2 text-xs py-3 px-3 min-h-[44px] transition-colors rounded-lg ${isSubActive
                                                                 ? 'text-teal-400 font-semibold bg-teal-900/30'
                                                                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                                                                 }`}
