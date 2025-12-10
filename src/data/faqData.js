@@ -31,11 +31,12 @@ export const faqData = [
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">An interactive webbook that teaches you to use AI helpers for everyday life.</p>
                 <p className="mb-4">Unlike chatbots that just answer questions, AI "agents" take ACTION on your behalf. They don't just tell you what's for dinner — they plan your meals, generate grocery lists, and track your pantry.</p>
-                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 3 parts:</p>
+                <p className="mb-2 font-bold">You'll learn to build 10 different agents across 4 parts:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Part 1:</strong> Foundations (Morning Agent, Meal Planning, Dates)</li>
-                    <li><strong>Part 2:</strong> Daily Systems (Email Triage, Money Check-in, Fitness, Work Tasks)</li>
-                    <li><strong>Part 3:</strong> Mastery (Custom Builder, Multi-Agent Coordination, Full Army)</li>
+                    <li><strong>Part 1:</strong> The Foundation (Morning Agent, Meal Planning, Important Dates)</li>
+                    <li><strong>Part 2:</strong> Daily Operations (Email Triage, Money Check-In, Fitness)</li>
+                    <li><strong>Part 3:</strong> Productivity (Work Tasks, Custom Builder, Multi-Agent)</li>
+                    <li><strong>Part 4:</strong> Mastery (Your Complete Agent Army)</li>
                 </ul>
             </>
         )
@@ -360,10 +361,10 @@ export const faqData = [
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">4-6 hours total. Most people finish in a weekend or 2-3 evenings.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Free Chapters:</strong> ~30 minutes</li>
-                    <li><strong>Part 1 (Foundations):</strong> ~1 hour</li>
-                    <li><strong>Part 2 (Daily Systems):</strong> ~2 hours</li>
-                    <li><strong>Part 3 (Mastery):</strong> ~2-3 hours</li>
+                    <li><strong>Part 1 (The Foundation):</strong> ~1 hour</li>
+                    <li><strong>Part 2 (Daily Operations):</strong> ~1.5 hours</li>
+                    <li><strong>Part 3 (Productivity):</strong> ~2 hours</li>
+                    <li><strong>Part 4 (Mastery):</strong> ~1 hour</li>
                 </ul>
                 <p>You have lifetime access — go at your pace.</p>
             </>
@@ -389,11 +390,12 @@ export const faqData = [
         question: 'How many chapters are there?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">10 chapters organized into 3 Parts.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">10 chapters organized into 4 Parts.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li><strong>Part 1:</strong> Foundations — Getting started with your first agents</li>
-                    <li><strong>Part 2:</strong> Daily Systems — Email, finance, fitness, and work automation</li>
-                    <li><strong>Part 3:</strong> Mastery — Custom builders and multi-agent coordination</li>
+                    <li><strong>Part 1: The Foundation</strong> — Morning Agent, Meal Planning, Important Dates</li>
+                    <li><strong>Part 2: Daily Operations</strong> — Email Triage, Money Check-In, Fitness</li>
+                    <li><strong>Part 3: Productivity</strong> — Work Tasks, Custom Builder, Multi-Agent</li>
+                    <li><strong>Part 4: Mastery</strong> — Your Complete Agent Army</li>
                 </ul>
                 <p>Each chapter includes reading, actionable templates, and missions to complete.</p>
             </>
