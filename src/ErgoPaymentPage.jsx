@@ -108,8 +108,15 @@ const ErgoPaymentPage = () => {
     // WebSocket for real-time updates
     useEffect(() => {
         if (step === 2 && paymentStatus === 'WAITING' && accessCode && !isOffline) {
+            // Dynamically determine WebSocket URL based on environment
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = isLocal
+                ? 'ws://localhost:8080/ws'
+                : `${wsProtocol}//ebook-backend-production-8f68.up.railway.app/ws`;
+
             const client = new Client({
-                brokerURL: 'ws://localhost:8080/ws', // TODO: Make this configurable for prod
+                brokerURL: wsUrl,
                 onConnect: () => {
                     client.subscribe(`/topic/payment/${accessCode}`, (message) => {
                         if (message.body) {
