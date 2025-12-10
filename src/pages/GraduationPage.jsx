@@ -60,8 +60,8 @@ const GraduationPage = () => {
     return (
         <WebbookLayout>
             <Helmet>
-                <title>🎖️ Congratulations, Commander! | Agentic AI Home</title>
-                <meta name="description" content="You've completed all 10 missions and joined the Agent Army!" />
+                <title>🎉 Congratulations! | Agentic AI Home</title>
+                <meta name="description" content="You've completed all 10 chapters and built your Agent Army!" />
             </Helmet>
 
             <div className="min-h-screen bg-[#0a0a12] text-white py-12 px-6">
@@ -86,8 +86,8 @@ const GraduationPage = () => {
                                         className="w-full h-full object-contain"
                                     />
                                 </div>
-                                <h2 className="text-2xl font-bold mb-2">One Last Thing, Commander...</h2>
-                                <p className="text-slate-400 mb-6">What name should go on your certificate?</p>
+                                <h2 className="text-2xl font-bold mb-2">One Last Thing...</h2>
+                                <p className="text-slate-400 mb-6">What name should we put on your certificate?</p>
                                 <form onSubmit={handleNameSubmit}>
                                     <input
                                         type="text"
@@ -116,7 +116,7 @@ const GraduationPage = () => {
                     >
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/20 border border-amber-500/40 mb-6">
                             <Trophy className="text-amber-400" size={18} />
-                            <span className="text-amber-400 font-bold text-sm">ALL 10 MISSIONS COMPLETE</span>
+                            <span className="text-amber-400 font-bold text-sm">ALL 10 CHAPTERS COMPLETE</span>
                         </div>
 
                         <h1 className="text-4xl md:text-6xl font-black mb-4">
@@ -146,11 +146,11 @@ const GraduationPage = () => {
                                 className="w-20 h-20 object-contain flex-shrink-0"
                             />
                             <div>
-                                <p className="text-teal-400 font-bold mb-2">Captain Efficiency says:</p>
+                                <p className="text-teal-400 font-bold mb-2">Captain E says:</p>
                                 <p className="text-slate-300 leading-relaxed text-lg italic">
-                                    "Commander {commanderName}, on behalf of every hour you'll never waste again,
+                                    "{commanderName}, on behalf of every hour you'll never waste again,
                                     every morning you'll wake up to clarity, and every task that now runs on autopilot...
-                                    <span className="text-white font-medium">Welcome to the Agent Army.</span>
+                                    <span className="text-white font-medium">welcome to the Agent Army.</span>
                                     You didn't just read a book. You built a Life Operating System.
                                     Now go live the life your agents are working to give you."
                                 </p>
@@ -167,7 +167,7 @@ const GraduationPage = () => {
                     >
                         <h2 className="text-2xl font-bold text-center mb-6 flex items-center justify-center gap-2">
                             <Sparkles className="text-amber-400" size={24} />
-                            Your Commander Certificate
+                            Your Certificate
                         </h2>
                         <CommanderCertificate
                             commanderName={commanderName}
@@ -182,7 +182,7 @@ const GraduationPage = () => {
                         transition={{ delay: 0.7 }}
                         className="text-center"
                     >
-                        <h3 className="text-xl font-bold mb-4">What's Next, Commander?</h3>
+                        <h3 className="text-xl font-bold mb-4">What's Next?</h3>
                         <div className="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
                             <Link
                                 to="/dashboard"
@@ -202,7 +202,7 @@ const GraduationPage = () => {
                             </Link>
                             <button
                                 onClick={() => {
-                                    const text = "🎖️ I just graduated from @agenticaihome! All 10 AI agents deployed. My life is officially on autopilot. #AgentArmy";
+                                    const text = "🎉 I just finished all 10 chapters at @agenticaihome! My AI agents now handle my mornings, meals, emails, and more. The future is here! agenticaihome.com";
                                     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
                                 }}
                                 className="p-4 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group"

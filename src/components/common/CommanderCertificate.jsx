@@ -7,14 +7,14 @@ import { Download, Share2, Trophy, Shield, Sparkles } from 'lucide-react';
  * This is the "graduation diploma" users can share on social media
  */
 const CommanderCertificate = ({
-    commanderName = "Commander",
+    commanderName = "Friend",
     completionDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
     agentsDeployed = 10
 }) => {
     const certificateRef = useRef(null);
 
     const handleShare = () => {
-        const shareText = `🎖️ I'm officially a certified Agent Commander at @agenticaihome!\n\n✅ 10 AI agents deployed\n✅ Morning briefings automated\n✅ Emails, meals, fitness & more on autopilot\n\nJoin the Agent Army → agenticaihome.com\n\n#AgentArmy #AI #Productivity`;
+        const shareText = `🎉 I just finished all 10 chapters at @agenticaihome!\n\n✅ 10 AI agents helping me daily\n✅ Mornings, emails, meals on autopilot\n✅ 5+ hours saved every week\n\nCheck it out → agenticaihome.com`;
         const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
         window.open(url, '_blank');
     };
@@ -61,7 +61,7 @@ const CommanderCertificate = ({
 
                     {/* Title */}
                     <h2 className="text-4xl md:text-5xl font-black text-white mb-2">
-                        Agent Commander
+                        AI Pro
                     </h2>
                     <div className="w-32 h-1 bg-gradient-to-r from-teal-500 to-amber-500 mx-auto rounded-full mb-6" />
 
@@ -73,14 +73,14 @@ const CommanderCertificate = ({
 
                     {/* Description */}
                     <p className="text-slate-300 max-w-md mx-auto mb-8 leading-relaxed">
-                        has successfully completed all 10 missions of the Agentic AI at Home training program and deployed a full <span className="text-white font-semibold">Agent Army</span> to automate their daily life.
+                        has successfully completed all 10 chapters of the Agentic AI at Home training program and built a full <span className="text-white font-semibold">Agent Army</span> to automate their daily life.
                     </p>
 
                     {/* Stats */}
                     <div className="flex justify-center gap-6 mb-8">
                         <div className="text-center">
                             <div className="text-3xl font-black text-white">{agentsDeployed}</div>
-                            <div className="text-xs text-slate-500 uppercase tracking-wider">Agents Deployed</div>
+                            <div className="text-xs text-slate-500 uppercase tracking-wider">Agents Built</div>
                         </div>
                         <div className="w-px bg-slate-700" />
                         <div className="text-center">
@@ -99,11 +99,11 @@ const CommanderCertificate = ({
                         <div className="text-center">
                             <img
                                 src="/assets/captain-pointing-transparent.webp"
-                                alt="Captain Efficiency"
+                                alt="Captain E"
                                 className="w-16 h-16 object-contain mx-auto mb-2"
                             />
-                            <div className="text-white font-bold text-sm">Captain Efficiency</div>
-                            <div className="text-slate-500 text-xs">Chief Delegation Officer</div>
+                            <div className="text-white font-bold text-sm">Captain E</div>
+                            <div className="text-slate-500 text-xs">Your Guide</div>
                         </div>
                         <div className="text-center">
                             <div className="w-16 h-16 rounded-full bg-slate-700 flex items-center justify-center mx-auto mb-2">
@@ -123,7 +123,7 @@ const CommanderCertificate = ({
                     </div>
                 </div>
 
-                {/* Corner badges */}
+                {/* Corner badge */}
                 <div className="absolute bottom-4 right-4 opacity-20">
                     <img
                         src="/assets/logo-new.webp"
