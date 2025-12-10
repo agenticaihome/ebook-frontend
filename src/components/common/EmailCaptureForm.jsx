@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Loader2, CheckCircle } from 'lucide-react';
+import { logSubscription } from '../../utils/analytics';
 
 /**
  * Reusable email capture component with trust signals and inline error handling.
@@ -42,15 +43,8 @@ const EmailCaptureForm = ({
 
             if (response.ok && data.success) {
                 setStatus('success');
-                // Track in GA4 with detailed event parameters
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'email_subscribe', {
-                        event_category: 'engagement',
-                        event_label: source,
-                        email_source: source,
-                        page_location: window.location.pathname
-                    });
-                }
+                // Track subscription in GA4
+                logSubscription(source);
             } else {
                 setStatus('error');
                 setErrorMessage(data.error || 'Something went wrong. Please try again.');

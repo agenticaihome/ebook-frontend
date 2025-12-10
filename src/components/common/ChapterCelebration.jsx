@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 import { Trophy, Share2, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSound } from '../../context/SoundContext';
+import { logChapterComplete } from '../../utils/analytics';
 
 /**
  * ChapterCelebration - Pixar-level celebration moment for chapter completion
@@ -30,9 +31,12 @@ const ChapterCelebration = ({
             fireConfetti();
             playChime('celebration');
 
+            // Track chapter completion in GA4
+            logChapterComplete(chapterNumber);
+
             return () => clearTimeout(timer);
         }
-    }, [isVisible, playChime]);
+    }, [isVisible, playChime, chapterNumber]);
 
     const fireConfetti = () => {
         // Left side burst
