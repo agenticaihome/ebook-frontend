@@ -212,8 +212,8 @@ const Dashboard = () => {
                     ) : (
                         <div className="mb-8 p-6 bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl text-center">
                             <div className="text-4xl mb-3">🎉</div>
-                            <div className="text-2xl font-bold mb-2">Congratulations!</div>
-                            <div className="text-white/80">You've completed all 10 chapters. You're now an Agent Commander!</div>
+                            <div className="text-2xl font-bold mb-2">You did it!</div>
+                            <div className="text-white/80">All 10 agents are deployed. Your life is officially on autopilot!</div>
                         </div>
                     )}
 

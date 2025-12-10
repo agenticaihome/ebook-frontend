@@ -63,6 +63,21 @@ export const SoundProvider = ({ children }) => {
             gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
             oscillator.start(now);
             oscillator.stop(now + 0.1);
+        } else if (type === 'celebration') {
+            // Triumphant celebration fanfare - ascending with sparkle
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(523.25, now); // C5
+            oscillator.frequency.setValueAtTime(659.25, now + 0.1); // E5
+            oscillator.frequency.setValueAtTime(783.99, now + 0.2); // G5
+            oscillator.frequency.setValueAtTime(1046.5, now + 0.3); // C6 (octave up!)
+
+            gainNode.gain.setValueAtTime(0, now);
+            gainNode.gain.linearRampToValueAtTime(0.25, now + 0.05);
+            gainNode.gain.setValueAtTime(0.25, now + 0.3);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.8);
+
+            oscillator.start(now);
+            oscillator.stop(now + 0.8);
         }
     };
 

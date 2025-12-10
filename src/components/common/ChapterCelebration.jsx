@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Trophy, Share2, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSound } from '../../context/SoundContext';
 
 /**
  * ChapterCelebration - Pixar-level celebration moment for chapter completion
@@ -18,18 +19,20 @@ const ChapterCelebration = ({
     isFinalChapter = false
 }) => {
     const [showContent, setShowContent] = useState(false);
+    const { playChime } = useSound();
 
     useEffect(() => {
         if (isVisible) {
             // Delay content appearance for dramatic effect
             const timer = setTimeout(() => setShowContent(true), 300);
 
-            // Fire confetti
+            // Fire confetti and play celebration sound
             fireConfetti();
+            playChime('celebration');
 
             return () => clearTimeout(timer);
         }
-    }, [isVisible]);
+    }, [isVisible, playChime]);
 
     const fireConfetti = () => {
         // Left side burst
