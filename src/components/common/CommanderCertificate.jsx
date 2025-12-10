@@ -60,10 +60,9 @@ const CommanderCertificate = ({
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-3xl md:text-4xl font-black text-white mb-1">
-                        Doctor of Digital Systems
+                    <h2 className="text-4xl md:text-5xl font-black text-white mb-2">
+                        AI Pro
                     </h2>
-                    <p className="text-amber-400 text-sm font-bold tracking-wide mb-2">DDS</p>
                     <div className="w-32 h-1 bg-gradient-to-r from-teal-500 to-amber-500 mx-auto rounded-full mb-6" />
 
                     {/* Name */}
@@ -74,7 +73,7 @@ const CommanderCertificate = ({
 
                     {/* Description */}
                     <p className="text-slate-300 max-w-md mx-auto mb-8 leading-relaxed">
-                        has successfully treated their <span className="text-amber-400">Digital Drowning Syndrome</span> by completing all 10 chapters and deploying a full <span className="text-white font-semibold">Agent Army</span> to automate their daily life.
+                        has successfully completed all 10 chapters of the Agentic AI at Home training and built a full <span className="text-white font-semibold">Agent Army</span> to automate their daily life.
                     </p>
 
                     {/* Stats */}

@@ -209,7 +209,7 @@ const PrePurchaseBridge = () => {
                             <div className="mt-6 flex items-center gap-3">
                                 <div className="h-12 w-12 rounded-full bg-slate-700 border-2 border-slate-600 flex items-center justify-center text-xl">🦷</div>
                                 <div>
-                                    <div className="text-white font-bold">DDS <span className="text-slate-500 text-xs font-normal">(it stands for more than you think)</span></div>
+                                    <div className="text-white font-bold">DDS</div>
                                     <div className="text-xs text-slate-500">Dental resident. Army vet. Dad of 2. Finally at peace.</div>
                                 </div>
                             </div>
