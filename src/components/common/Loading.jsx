@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * Loading - Captain E themed loading state
+ * Loading - Captain Efficiency themed loading state
  * Makes waiting feel like part of the experience
  */
 const Loading = ({ message = "Loading..." }) => {
@@ -10,7 +10,7 @@ const Loading = ({ message = "Loading..." }) => {
     const loadingMessages = [
         "Deploying agents...",
         "Organizing your life...",
-        "Captain E is on it...",
+        "Captain Efficiency is on it...",
         "Almost there...",
         "Loading awesome stuff..."
     ];
@@ -22,7 +22,7 @@ const Loading = ({ message = "Loading..." }) => {
 
     return (
         <div className="min-h-screen bg-[#0a0a12] flex flex-col items-center justify-center gap-6 p-4">
-            {/* Captain E with floating animation */}
+            {/* Captain Efficiency with floating animation */}
             <motion.div
                 animate={{
                     y: [0, -10, 0],
@@ -34,12 +34,12 @@ const Loading = ({ message = "Loading..." }) => {
                 }}
                 className="relative"
             >
-                {/* Glow effect behind Captain E */}
+                {/* Glow effect behind Captain Efficiency */}
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-full blur-xl scale-150" />
 
                 <img
                     src="/assets/captain-pointing-transparent.webp"
-                    alt="Captain E"
+                    alt="Captain Efficiency"
                     className="w-24 h-24 md:w-32 md:h-32 object-contain relative z-10"
                 />
             </motion.div>

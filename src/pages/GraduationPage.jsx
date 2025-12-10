@@ -82,7 +82,7 @@ const GraduationPage = () => {
                                 <div className="w-20 h-20 mx-auto mb-6">
                                     <img
                                         src="/assets/captain-celebrating-transparent.webp"
-                                        alt="Captain E celebrating"
+                                        alt="Captain Efficiency celebrating"
                                         className="w-full h-full object-contain"
                                     />
                                 </div>
@@ -132,7 +132,7 @@ const GraduationPage = () => {
                         </p>
                     </motion.div>
 
-                    {/* Captain E message */}
+                    {/* Captain Efficiency message */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -142,11 +142,11 @@ const GraduationPage = () => {
                         <div className="flex items-start gap-4">
                             <img
                                 src="/assets/captain-pointing-transparent.webp"
-                                alt="Captain E"
+                                alt="Captain Efficiency"
                                 className="w-20 h-20 object-contain flex-shrink-0"
                             />
                             <div>
-                                <p className="text-teal-400 font-bold mb-2">Captain E says:</p>
+                                <p className="text-teal-400 font-bold mb-2">Captain Efficiency says:</p>
                                 <p className="text-slate-300 leading-relaxed text-lg italic">
                                     "{commanderName}, on behalf of every hour you'll never waste again,
                                     every morning you'll wake up to clarity, and every task that now runs on autopilot...

@@ -7,7 +7,7 @@ import { useSound } from '../../context/SoundContext';
 
 /**
  * ChapterCelebration - Pixar-level celebration moment for chapter completion
- * This is the MVP celebration component with confetti and Captain E
+ * This is the MVP celebration component with confetti and Captain Efficiency
  */
 const ChapterCelebration = ({
     chapterNumber,
@@ -94,7 +94,7 @@ const ChapterCelebration = ({
                     {/* Background glow */}
                     <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-purple-500/10 pointer-events-none" />
 
-                    {/* Captain E celebrating */}
+                    {/* Captain Efficiency celebrating */}
                     <motion.div
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}

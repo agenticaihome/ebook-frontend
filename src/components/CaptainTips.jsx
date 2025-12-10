@@ -3,7 +3,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import { X, Sparkles, Lightbulb, ArrowRight } from 'lucide-react';
 import { useLocation, Link } from 'react-router-dom';
 
-// Captain E's insights - specific to book content
+// Captain Efficiency's insights - specific to book content
 const CAPTAIN_TIPS = [
     // Chapter 1: Morning Agent
     {

@@ -141,10 +141,10 @@ const Dashboard = () => {
                 <div className="max-w-2xl mx-auto">
 
                     {/* ===================== */}
-                    {/* HEADER - With Captain E Tip */}
+                    {/* HEADER - With Captain Efficiency Tip */}
                     {/* ===================== */}
                     <div className="flex flex-col items-center gap-4 mb-10 text-center">
-                        {/* DELIGHT: Floating Captain E Speech Bubble (Disney Audit) */}
+                        {/* DELIGHT: Floating Captain Efficiency Speech Bubble (Disney Audit) */}
                         <m.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ const Dashboard = () => {
                             className="relative"
                         >
                             <div className="bg-slate-800 border border-teal-500/30 rounded-2xl p-4 max-w-sm mx-auto shadow-lg shadow-teal-900/20 relative z-10">
-                                <p className="text-teal-300 font-medium text-sm mb-1">💡 Captain E says:</p>
+                                <p className="text-teal-300 font-medium text-sm mb-1">💡 Captain Efficiency says:</p>
                                 <p className="text-white text-base">
                                     {allComplete
                                         ? "You did it! All 10 agents deployed. Your life is officially on autopilot. 🎉"

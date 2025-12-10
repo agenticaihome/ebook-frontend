@@ -99,10 +99,10 @@ const CommanderCertificate = ({
                         <div className="text-center">
                             <img
                                 src="/assets/captain-pointing-transparent.webp"
-                                alt="Captain E"
+                                alt="Captain Efficiency"
                                 className="w-16 h-16 object-contain mx-auto mb-2"
                             />
-                            <div className="text-white font-bold text-sm">Captain E</div>
+                            <div className="text-white font-bold text-sm">Captain Efficiency</div>
                             <div className="text-slate-500 text-xs">Your Guide</div>
                         </div>
                         <div className="text-center">

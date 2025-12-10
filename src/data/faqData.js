@@ -198,7 +198,7 @@ export const faqData = [
                     <li>Appears in games</li>
                     <li>Makes learning feel less alone</li>
                 </ul>
-                <p>Think of Captain E as your productivity co-pilot — encouraging but never annoying.</p>
+                <p>Think of Captain Efficiency as your productivity co-pilot — encouraging but never annoying.</p>
             </>
         )
     },
