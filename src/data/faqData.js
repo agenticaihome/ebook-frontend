@@ -154,7 +154,7 @@ export const faqData = [
                     <li><strong>Server costs, domain, hosting</strong> — it adds up</li>
                 </ul>
                 <p className="mb-4">I made this for fun, out of genuine passion. But I also believe value deserves value.</p>
-                <p className="mb-4">At $39.99 (or $19.99 with crypto), if you save even 2 hours a week, you've made back your investment in the first month. That's math even I can do. 🦷</p>
+                <p className="mb-4">At $39.99 (or $19.99 with crypto) — early adopter pricing until Feb 1st — if you save even 2 hours a week, you've made back your investment in the first month. That's math even I can do. 🦷</p>
                 <p className="text-slate-400 text-sm italic">Plus there's a 30-day money-back guarantee. So you're not risking anything.</p>
             </>
         )
@@ -577,10 +577,11 @@ export const faqData = [
         question: 'How much does it cost?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">$39.99 with card, or $19.99 with Ergo cryptocurrency (50% off!).</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Early adopter pricing (until Feb 1st): $39.99 with card, or $19.99 with Ergo cryptocurrency (50% off!).</p>
+                <p className="mb-4 text-sm text-amber-400">⏰ After Feb 1st: $49.99 (card) / $24.99 (crypto)</p>
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div className="bg-slate-800 p-4 rounded-lg border border-slate-600">
-                        <h4 className="font-bold text-white mb-2">STANDARD: $39.99</h4>
+                        <h4 className="font-bold text-white mb-2">STANDARD: $39.99 <span className="text-xs text-amber-400">→ $49.99 Feb 1</span></h4>
                         <ul className="text-sm text-slate-400 space-y-1">
                             <li>Pay with Credit/Debit Card</li>
                             <li>Instant access</li>
@@ -588,7 +589,7 @@ export const faqData = [
                         </ul>
                     </div>
                     <div className="bg-green-900/20 p-4 rounded-lg border border-green-500/30">
-                        <h4 className="font-bold text-green-400 mb-2">CRYPTO: $19.99 (50% OFF)</h4>
+                        <h4 className="font-bold text-green-400 mb-2">CRYPTO: $19.99 (50% OFF) <span className="text-xs text-amber-400">→ $24.99 Feb 1</span></h4>
                         <ul className="text-sm text-green-200/70 space-y-1">
                             <li>Pay with Ergo (ERG)</li>
                             <li>Same instant access</li>

@@ -103,9 +103,10 @@ export default function PaymentGuide() {
                                 </div>
 
                                 <h2 className="text-3xl font-bold mb-2">Standard Access</h2>
-                                <div className="text-5xl font-bold mb-6">
+                                <div className="text-5xl font-bold mb-1">
                                     $39.99 <span className="text-lg text-slate-400 font-normal">USD</span>
                                 </div>
+                                <p className="text-xs text-amber-400/80 mb-6">⏰ Early adopter price — $49.99 after Feb 1</p>
 
                                 <div className="space-y-4 mb-8">
                                     <div className="flex items-start gap-3">
@@ -186,9 +187,10 @@ export default function PaymentGuide() {
                                 </div>
 
                                 <h2 className="text-3xl font-bold mb-2 text-green-400">Crypto Access</h2>
-                                <div className="text-5xl font-bold mb-6">
+                                <div className="text-5xl font-bold mb-1">
                                     $19.99 <span className="text-lg text-slate-400 font-normal">in ERG</span>
                                 </div>
+                                <p className="text-xs text-amber-400/80 mb-6">⏰ Early adopter price — $24.99 after Feb 1</p>
 
                                 <div className="space-y-4 mb-8">
                                     <div className="flex items-start gap-3">
@@ -252,9 +254,9 @@ export default function PaymentGuide() {
                                 </thead>
                                 <tbody className="text-slate-300">
                                     <tr className="border-b border-slate-800">
-                                        <td className="py-4 px-4">Price</td>
-                                        <td className="py-4 px-4 text-center">$39.99</td>
-                                        <td className="py-4 px-4 text-center font-bold text-green-400">$19.99</td>
+                                        <td className="py-4 px-4">Price (until Feb 1)</td>
+                                        <td className="py-4 px-4 text-center">$39.99 <span className="text-xs text-slate-500">→ $49.99</span></td>
+                                        <td className="py-4 px-4 text-center font-bold text-green-400">$19.99 <span className="text-xs text-slate-500">→ $24.99</span></td>
                                     </tr>
                                     <tr className="border-b border-slate-800">
                                         <td className="py-4 px-4">Setup Time</td>

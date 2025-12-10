@@ -424,7 +424,10 @@ const ErgoPaymentPage = () => {
                                         <p className="text-slate-400 text-sm uppercase tracking-widest mb-2">Total Amount</p>
                                         <div className="flex items-baseline justify-center gap-3">
                                             <span className="text-3xl md:text-5xl font-bold text-white">$19.99</span>
-                                            <span className="text-xl text-slate-400 line-through">$39.99</span>
+                                            <span className="text-xl text-slate-400 line-through">$24.99</span>
+                                        </div>
+                                        <div className="text-xs text-amber-400/80 font-medium mt-1">
+                                            ⏰ Early adopter price — becomes $24.99 Feb 1st
                                         </div>
 
                                         {/* Live ERG Conversion */}
@@ -464,7 +467,7 @@ const ErgoPaymentPage = () => {
                                             onClick={() => navigate('/payment-guide')}
                                             className="text-sm text-slate-400 hover:text-white underline decoration-slate-600 hover:decoration-white transition-all"
                                         >
-                                            Don't have crypto? Pay with Card ($39.99)
+                                            Don't have crypto? Pay with Card ($39.99 until Feb 1)
                                         </button>
                                     </div>
 
@@ -664,7 +667,7 @@ const ErgoPaymentPage = () => {
                                     onClick={() => navigate('/payment-guide')}
                                     className="text-sm text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center justify-center gap-2 mx-auto"
                                 >
-                                    Switch to Credit Card Payment ($39.99)
+                                    Switch to Credit Card Payment ($39.99 until Feb 1)
                                     <ArrowRight className="w-4 h-4" />
                                 </button>
                             </div>

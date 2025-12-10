@@ -110,14 +110,15 @@ const PrePurchaseBridge = () => {
                         {/* Price Anchor (Bezos Audit) */}
                         <div className="mb-8 relative inline-block">
                             <div className="absolute -top-3 -right-6 rotate-12 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse">
-                                ENDS SOON
+                                PRICE ↑ FEB 1
                             </div>
-                            <div className="text-amber-400 font-bold text-xs tracking-wider uppercase mb-1">Early Adopter Pricing</div>
+                            <div className="text-amber-400 font-bold text-xs tracking-wider uppercase mb-1">🚀 Early Adopter Pricing</div>
                             <div className="inline-flex items-baseline gap-2">
                                 <span className="text-4xl font-black text-white">$39.99</span>
-                                <span className="text-slate-500 line-through text-xl">$199</span>
+                                <span className="text-slate-500 line-through text-xl">$49.99</span>
                             </div>
                             <p className="text-slate-500 text-sm mt-1">One-time payment • Lifetime access</p>
+                            <p className="text-amber-400/80 text-xs mt-1 font-medium">⏰ Becomes $49.99 on February 1st</p>
                         </div>
 
                         {/* Primary CTA */}
@@ -298,7 +299,10 @@ const PrePurchaseBridge = () => {
                                         </div>
                                         <div className="flex justify-between items-center text-white font-bold pt-3 border-t border-slate-700 mt-2">
                                             <span>Agentic AI Home</span>
-                                            <span className="text-2xl text-teal-400">$39.99</span>
+                                            <div className="text-right">
+                                                <span className="text-2xl text-teal-400">$39.99</span>
+                                                <div className="text-xs text-amber-400/70 font-normal">until Feb 1</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -409,7 +413,7 @@ const PrePurchaseBridge = () => {
                         to="/payment-guide"
                         className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-teal-500/30"
                     >
-                        Unlock All 10 Chapters — $39.99
+                        Unlock All 10 Chapters — $39.99 (↑ Feb 1)
                     </Link>
                 </div>
             </div>

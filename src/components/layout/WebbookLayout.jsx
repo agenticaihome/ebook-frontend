@@ -344,7 +344,10 @@ const WebbookLayout = ({ children }) => {
                                             </div>
                                             <div className="flex items-center justify-between">
                                                 <span className="text-slate-400 text-xs">9 more chapters</span>
-                                                <span className="text-white font-bold text-sm group-hover:translate-x-0.5 transition-transform">$39.99 →</span>
+                                                <div className="text-right">
+                                                    <span className="text-white font-bold text-sm group-hover:translate-x-0.5 transition-transform">$39.99 →</span>
+                                                    <span className="text-amber-400/70 text-[9px] block">↑ Feb 1</span>
+                                                </div>
                                             </div>
                                         </Link>
                                     </div>
