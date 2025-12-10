@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import { Sparkles, Zap, Clock, Users, ArrowRight, Shield } from 'lucide-react';
 import EmailCaptureForm from '../components/common/EmailCaptureForm';
+import SEO from '../components/SEO';
 
 const SplashPage = () => {
     return (
         <>
-            <Helmet>
-                <title>Agentic AI Home - Stop Doing Everything. Start Delegating to AI.</title>
-                <meta name="description" content="Captain Efficiency guides you through 10 chapters to automate your life. Reclaim 5+ hours every week with AI agents." />
-            </Helmet>
+            <SEO
+                title="Agentic AI at Home - Reclaim 10 Hours/Week with AI Agents"
+                description="Build a 'Household Staff' of autonomous AI agents that handle email, calendar, meal planning, and home tasks. Stop drowning in to-do lists. Start deploying agents."
+                canonical="/"
+                image="/og/homepage.png"
+            />
 
             <div className="min-h-screen bg-gradient-to-br from-slate-950 via-[#0a1628] to-slate-950 flex flex-col items-center justify-between px-4 py-12 md:py-20 relative overflow-hidden">
 
