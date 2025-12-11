@@ -206,6 +206,12 @@ Start by asking: "Ready for your briefing?"`;
                                 <Crown className="text-white" size={40} />
                             </motion.div>
 
+                            <div className="mb-6">
+                                <Link to="/part3/chapter3" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
+                                    ← Back to Chapter 9
+                                </Link>
+                            </div>
+
                             <h2 className="text-2xl font-black text-white mb-3">
                                 🎉 You did it!
                             </h2>

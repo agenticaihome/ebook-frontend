@@ -206,7 +206,12 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 9 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready to build your complete system?</h3>
                             <p className="text-slate-400 text-sm mb-4">The final chapter: Your Agent Army.</p>
-                            <Link to="/part4/chapter1" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-xl transition-all">?? Final chapter! Let's finish this<ArrowRight size={18} /></Link>
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                                <Link to="/part3/chapter2" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
+                                    ← Back to Chapter 8
+                                </Link>
+                                <Link to="/part4/chapter1" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-xl transition-all">🎉 Final chapter! Let's finish this<ArrowRight size={18} /></Link>
+                            </div>
                         </div>
                     </motion.section>
 
