@@ -606,9 +606,9 @@ const CaptainClickChallenge = ({ onBack }) => {
                                     <Target className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                                 </m.div>
 
-                                <h3 className="text-xl sm:text-2xl font-black text-white mb-2">Captain Click Challenge</h3>
+                                <h3 className="text-xl sm:text-2xl font-black text-white mb-2">Tap Blitz</h3>
                                 <p className="text-slate-400 mb-4 text-sm">
-                                    Click Captain Efficiency before he escapes!
+                                    Tap Captain Efficiency before he escapes! Speed = efficiency.
                                 </p>
 
                                 <div className="flex flex-wrap justify-center gap-2 mb-4 text-[10px] sm:text-xs">
