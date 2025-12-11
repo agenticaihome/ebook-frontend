@@ -223,7 +223,7 @@ No gym jargon. Keep each workout under 30 minutes.`;
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 6 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready for your Work Task Agent?</h3>
                             <p className="text-slate-400 text-sm mb-4">Learn to prioritize what actually matters at work.</p>
-                            <Link to="/part2/chapter7" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-400 hover:to-orange-400 text-white font-bold rounded-xl transition-all">🎉 Keep going! On to Chapter 7<ArrowRight size={18} /></Link>
+                            <Link to="/part3/chapter1" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-400 hover:to-orange-400 text-white font-bold rounded-xl transition-all">🎉 Keep going! On to Chapter 7<ArrowRight size={18} /></Link>
                         </div>
                     </motion.section>
 

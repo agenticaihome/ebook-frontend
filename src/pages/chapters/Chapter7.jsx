@@ -213,7 +213,7 @@ Be ruthless about priorities. Less is more.`;
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 7 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready to build ANY agent you want?</h3>
                             <p className="text-slate-400 text-sm mb-4">Learn the Custom Agent Builder framework.</p>
-                            <Link to="/part3/chapter8" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold rounded-xl transition-all">🎉 Amazing! On to Chapter 8<ArrowRight size={18} /></Link>
+                            <Link to="/part3/chapter2" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold rounded-xl transition-all">🎉 Amazing! On to Chapter 8<ArrowRight size={18} /></Link>
                         </div>
                     </motion.section>
 

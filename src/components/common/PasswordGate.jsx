@@ -91,7 +91,7 @@ const PasswordGate = ({ children, partNumber }) => {
                             This section requires full access
                         </p>
                         <p className="text-slate-500 text-xs mt-1">
-                            Beta testers • Purchase coming soon
+                            Beta testers • Launch Pricing Available
                         </p>
                     </div>
 

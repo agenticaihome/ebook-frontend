@@ -305,7 +305,7 @@ Start by asking what email I use.`;
                             <h3 className="text-white font-bold text-xl mb-2">Ready for your Money Check-In Agent?</h3>
                             <p className="text-slate-400 text-sm mb-4">Get a weekly snapshot of your finances without the stress.</p>
                             <Link
-                                to="/part2/chapter5"
+                                to="/part2/chapter2"
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-400 hover:to-teal-400 text-white font-bold rounded-xl transition-all"
                             >
                                 🎉 Awesome! On to Chapter 5

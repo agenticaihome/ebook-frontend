@@ -753,7 +753,7 @@ const ErgoPaymentPage = () => {
                                                         Troubleshooting Guide
                                                     </a>
                                                     <a
-                                                        href="/unified-checkout"
+                                                        href="/payment-guide"
                                                         className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-slate-300 text-sm font-medium transition-colors"
                                                     >
                                                         Or try Stripe checkout

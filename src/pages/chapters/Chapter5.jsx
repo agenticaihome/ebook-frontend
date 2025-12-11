@@ -264,7 +264,7 @@ Then give me a quick 3-line money status.`;
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready for your Fitness Agent?</h3>
                             <p className="text-slate-400 text-sm mb-4">Workouts that actually fit your life.</p>
-                            <Link to="/part2/chapter6" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-400 hover:to-teal-400 text-white font-bold rounded-xl transition-all">
+                            <Link to="/part2/chapter3" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-400 hover:to-teal-400 text-white font-bold rounded-xl transition-all">
                                 🎉 Halfway there! On to Chapter 6
                                 <ArrowRight size={18} />
                             </Link>
