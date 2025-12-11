@@ -50,11 +50,18 @@ const WebbookLayout = ({ children }) => {
         setHasSaved(false);
     }, [location.pathname]);
 
-    // Badge Definitions
+    // Badge Definitions - One for each chapter!
     const badges = {
-        '/part1': { id: 'free_complete', title: 'First Steps', description: 'You completed the free agents. Welcome to the AI life!' },
-        '/part2': { id: 'premium_complete', title: 'Productivity Pro', description: 'Your daily agents are deployed. Time savings unlocked.' },
-        '/part3': { id: 'advanced_complete', title: 'Agent Architect', description: 'You built your complete agent army. Welcome to the future.' }
+        '/part1/chapter1': { id: 'ch1_complete', title: '☀️ Morning Commander', description: 'You built your first AI agent! Your mornings will never be the same.' },
+        '/part1/chapter2': { id: 'ch2_complete', title: '🍽️ Meal Master', description: 'No more "what\'s for dinner?" stress. Your family eats better now.' },
+        '/part1/chapter3': { id: 'ch3_complete', title: '🎂 Memory Keeper', description: 'You\'ll never forget an important date again. Relationships saved!' },
+        '/part2/chapter4': { id: 'ch4_complete', title: '📧 Inbox Zero Hero', description: 'Email no longer controls you. You control it.' },
+        '/part2/chapter5': { id: 'ch5_complete', title: '💰 Money Clarity', description: 'Your finances have a guardian now. Peace of mind unlocked.' },
+        '/part2/chapter6': { id: 'ch6_complete', title: '💪 Fitness Automator', description: 'Your workouts plan themselves. Consistency made easy.' },
+        '/part3/chapter7': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.' },
+        '/part3/chapter8': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.' },
+        '/part3/chapter9': { id: 'ch9_complete', title: '🤖 Team Architect', description: 'Your agents work together. You\'ve built a system, not just tools.' },
+        '/part4/chapter10': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!' }
     };
 
     useEffect(() => {
