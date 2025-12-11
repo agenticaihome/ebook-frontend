@@ -4,7 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, Calendar, Gift, CreditCard, Heart, HelpCircle, MessageSquare, Bell, Lock, Share2, Twitter } from 'lucide-react';
-import EmailCaptureForm from '../../components/common/EmailCaptureForm';
+
 import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
@@ -312,45 +312,7 @@ Let me dump my dates now.`;
                         </div>
                     </motion.section>
 
-                    {/* SHARE SECTION - VIRAL LOOP */}
-                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.92 }} className="mb-6">
-                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700/50">
-                            <p className="text-white font-bold mb-3">Know someone who forgets birthdays? 👀</p>
-                            <div className="flex flex-wrap gap-3">
-                                <a
-                                    href="https://twitter.com/intent/tweet?text=I%20just%20created%20an%20AI%20agent%20that%20reminds%20me%20of%20birthdays%20and%20suggests%20gifts.%20Game%20changer.%20%F0%9F%A4%96&url=https://agenticaihome.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 bg-black hover:bg-slate-900 text-white rounded-lg text-sm font-medium transition-colors"
-                                >
-                                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                                    Share on X
-                                </a>
-                                <button
-                                    onClick={() => {
-                                        navigator.clipboard.writeText('I just set up 3 AI agents: morning briefings, meal planning, and birthday reminders. Check it out: agenticaihome.com');
-                                        alert('Link copied!');
-                                    }}
-                                    className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm font-medium transition-colors"
-                                >
-                                    <Share2 size={16} />
-                                    Copy Link
-                                </button>
-                            </div>
-                        </div>
-                    </motion.section>
 
-                    {/* EMAIL CAPTURE - Peak motivation after free content */}
-                    <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.93 }} className="mb-6">
-                        <EmailCaptureForm
-                            source="chapter3_end"
-                            headline="📬 Not ready to continue?"
-                            subheadline="Get a free AI Starter Checklist + weekly tips from Captain Efficiency"
-                            buttonText="Send Me Tips"
-                            successMessage="Awesome! Check your inbox."
-                            compact={false}
-                        />
-                    </motion.section>
 
                     {/* CTA - UPGRADE */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }} className="mb-10">
