@@ -38,7 +38,7 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
     return (
         <div className="flex flex-col items-center gap-4 py-6 px-4 bg-gradient-to-r from-slate-900/80 to-slate-800/80 rounded-xl border border-teal-500/30 max-w-md mx-auto">
             {/* Viral prompt */}
-            <p className="text-teal-400 text-sm text-center font-medium">
+            <p className="text-teal-300 text-sm text-center font-medium">
                 🎉 You did it! Share your win:
             </p>
 
@@ -46,10 +46,11 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
                 {/* Share to X Button */}
                 <button
                     onClick={handleShare}
-                    className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 text-white rounded-lg transition-all font-bold border border-slate-500 shadow-lg"
+                    className="flex items-center gap-2 px-4 py-2.5 min-h-[44px] bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 text-white rounded-lg transition-all font-bold border border-slate-500 shadow-lg"
+                    aria-label="Share on X (Twitter)"
                 >
                     {/* X Logo SVG */}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                     <span>X</span>
@@ -58,10 +59,11 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
                 {/* Share to Facebook Button */}
                 <button
                     onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?quote=${encodedText}`, '_blank', 'width=550,height=420')}
-                    className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-lg transition-all font-bold shadow-lg"
+                    className="flex items-center gap-2 px-4 py-2.5 min-h-[44px] bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-lg transition-all font-bold shadow-lg"
+                    aria-label="Share on Facebook"
                 >
                     {/* Facebook Logo SVG */}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                     <span>Facebook</span>
@@ -70,7 +72,8 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
                 {/* Copy Text Button */}
                 <button
                     onClick={handleCopy}
-                    className="flex items-center gap-2 px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-all text-sm border border-slate-600"
+                    className="flex items-center gap-2 px-3 py-2.5 min-h-[44px] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition-all text-sm border border-slate-600"
+                    aria-label="Copy share text to clipboard"
                 >
                     {copied ? (
                         <>
@@ -92,7 +95,7 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
             </div>
 
             {/* Viral nudge */}
-            <p className="text-slate-500 text-xs text-center">
+            <p className="text-slate-400 text-sm text-center">
                 💡 Send this to someone drowning in to-do lists
             </p>
         </div>

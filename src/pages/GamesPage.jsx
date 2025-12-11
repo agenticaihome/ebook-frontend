@@ -163,7 +163,8 @@ const GamesPage = () => {
                             <div className="flex items-center justify-between mb-8">
                                 <button
                                     onClick={() => setActiveGame(null)}
-                                    className="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-600 rounded-xl hover:bg-slate-700 hover:border-teal-500/50 transition-all text-slate-300 hover:text-white"
+                                    className="flex items-center gap-2 px-4 py-2 min-h-[44px] bg-slate-800/50 border border-slate-600 rounded-xl hover:bg-slate-700 hover:border-teal-500/50 transition-all text-slate-300 hover:text-white"
+                                    aria-label="Go back to Games Hub"
                                 >
                                     <ArrowLeft size={20} />
                                     <span>Back to Hub</span>
@@ -185,7 +186,7 @@ const GamesPage = () => {
                                         AI Games
                                     </span>
                                 </h1>
-                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-4">
+                                <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-4">
                                     Fun mini-games to practice your new skills. Everyone can play — no experience needed!
                                 </p>
                                 {/* Viral Challenge Hook */}

@@ -961,7 +961,7 @@ const DeepWorkDive = ({ onBack }) => {
                                 </div>
 
                                 {score < 3 && (
-                                    <p className="text-slate-400 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
+                                    <p className="text-slate-300 text-sm mb-4 bg-slate-800/50 rounded-lg p-2">
                                         💡 Tip: Tap gently and often - small movements work
                                         best!
                                     </p>
@@ -984,7 +984,8 @@ const DeepWorkDive = ({ onBack }) => {
                                             e.stopPropagation();
                                             onBack?.();
                                         }}
-                                        className="bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white px-4 py-3 rounded-xl font-bold transition-all flex items-center gap-2 text-sm"
+                                        className="bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white px-4 py-3 min-h-[44px] rounded-xl font-bold transition-all flex items-center gap-2 text-sm"
+                                        aria-label="Go back to games hub"
                                     >
                                         <ArrowLeft size={18} /> Back
                                     </m.button>
@@ -994,7 +995,8 @@ const DeepWorkDive = ({ onBack }) => {
                                             e.stopPropagation();
                                             startGame();
                                         }}
-                                        className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-5 py-3 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm"
+                                        className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-5 py-3 min-h-[44px] rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm"
+                                        aria-label="Play again"
                                     >
                                         <RotateCcw size={18} /> Try Again
                                     </m.button>

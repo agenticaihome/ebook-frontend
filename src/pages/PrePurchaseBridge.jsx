@@ -149,8 +149,8 @@ const PrePurchaseBridge = () => {
                                 <span className="text-4xl font-black text-white">$39.99</span>
                                 <span className="text-slate-500 line-through text-xl">$49.99</span>
                             </div>
-                            <p className="text-slate-500 text-sm mt-1">One-time payment • Lifetime access</p>
-                            <p className="text-teal-400/80 text-xs mt-1 font-medium">📈 Increases at 1,000 members</p>
+                            <p className="text-slate-400 text-sm mt-1">One-time payment • Lifetime access</p>
+                            <p className="text-teal-400/90 text-sm mt-1 font-medium">📈 Increases at 1,000 members</p>
                         </div>
 
                         {/* Primary CTA */}
@@ -166,7 +166,7 @@ const PrePurchaseBridge = () => {
                             <div className="absolute inset-0 rounded-2xl bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>
 
-                        <div className="mt-4 text-xs text-slate-500">
+                        <div className="mt-4 text-sm text-slate-400">
                             Secure checkout • Instant access
                         </div>
                     </motion.section>
