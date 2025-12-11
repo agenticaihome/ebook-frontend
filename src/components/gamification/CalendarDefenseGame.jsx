@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Calendar, XCircle, Shield, Clock, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Coffee, Zap, Battery, Keyboard } from 'lucide-react';
+import { Calendar, XCircle, Shield, Clock, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Coffee, Zap, Battery, Keyboard, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 
@@ -731,6 +731,24 @@ const CalendarDefenseGame = ({ onBack }) => {
         };
     }, []);
 
+    // ===================
+    // SHARE
+    // ===================
+    const shareScore = () => {
+        const didSurvive = gameState === 'won';
+        const text = didSurvive
+            ? `📅 I defended my calendar and scored ${score} points in Meeting Mayhem!\n\nDeclined ${stats.declined} meetings! Think you can beat me? 🎮\n\nPlay free: AgenticAIHome.com/games`
+            : `📅 I scored ${score} points in Meeting Mayhem before burnout!\n\nDeclined ${stats.declined} meetings! Think you can do better? 🎮\n\nPlay free: AgenticAIHome.com/games`;
+
+        if (navigator.share) {
+            navigator.share({ title: 'Meeting Mayhem Challenge', text }).catch(() => { });
+        } else {
+            navigator.clipboard?.writeText(text).then(() => {
+                alert('Challenge copied! Paste it anywhere to challenge a friend.');
+            }).catch(() => { });
+        }
+    };
+
     // Calculate health bar color
     const healthPercent = (deepWorkHours / 6) * 100;
     const healthColor = healthPercent > 50 ? 'from-green-500 to-emerald-400'
@@ -1031,6 +1049,24 @@ const CalendarDefenseGame = ({ onBack }) => {
                                     <RotateCcw size={18} /> Again
                                 </button>
                             </div>
+
+                            {/* PROMINENT SHARE / CHALLENGE SECTION */}
+                            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/40 rounded-xl p-3 mt-4">
+                                <p className="text-purple-300 text-xs font-medium mb-2 text-center">
+                                    📸 Screenshot this → Challenge a friend!
+                                </p>
+                                <button
+                                    onClick={shareScore}
+                                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white px-4 py-2.5 rounded-lg font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
+                                >
+                                    <Share2 size={16} />
+                                    Challenge a Friend
+                                </button>
+                            </div>
+
+                            <p className="text-slate-500 text-xs text-center mt-2">
+                                Think they can beat {score}? 😏
+                            </p>
                         </m.div>
                     </div>
                 )}

@@ -602,13 +602,13 @@ const FocusFury = ({ onBack }) => {
     // ===================
     const shareScore = () => {
         const rank = getRank(kills);
-        const text = `${rank.emoji} I destroyed ${kills} distractions in Focus Fury!\n\n${rank.label} achieved with ${maxCombo}x max combo! 🧠⚡\n\nCan you beat my focus? Play free: AgenticAIHome.com`;
+        const text = `${rank.emoji} I destroyed ${kills} distractions in Focus Fury!\n\n${rank.label} with ${maxCombo}x max combo! Think you can beat me? 🎮\n\nPlay free: AgenticAIHome.com/games`;
 
         if (navigator.share) {
-            navigator.share({ title: 'Focus Fury Score', text }).catch(() => { });
+            navigator.share({ title: 'Focus Fury Challenge', text }).catch(() => { });
         } else {
             navigator.clipboard?.writeText(text).then(() => {
-                alert('Score copied to clipboard!');
+                alert('Challenge copied! Paste it anywhere to challenge a friend.');
             }).catch(() => { });
         }
     };
@@ -975,12 +975,23 @@ const FocusFury = ({ onBack }) => {
                                     </m.button>
                                 </div>
 
-                                <button
-                                    onClick={shareScore}
-                                    className="text-slate-400 hover:text-white text-sm flex items-center gap-2 mx-auto transition-colors"
-                                >
-                                    <Share2 size={16} /> Share Score
-                                </button>
+                                {/* PROMINENT SHARE / CHALLENGE SECTION */}
+                                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/40 rounded-xl p-3 mb-4">
+                                    <p className="text-purple-300 text-xs font-medium mb-2 text-center">
+                                        📸 Screenshot this → Challenge a friend!
+                                    </p>
+                                    <button
+                                        onClick={shareScore}
+                                        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white px-4 py-2.5 rounded-lg font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <Share2 size={16} />
+                                        Challenge a Friend
+                                    </button>
+                                </div>
+
+                                <p className="text-slate-500 text-xs text-center">
+                                    Think they can beat {kills}? 😏
+                                </p>
                             </m.div>
                         </m.div>
                     )}

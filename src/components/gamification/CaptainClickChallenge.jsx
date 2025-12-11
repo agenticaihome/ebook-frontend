@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft, Flame, Star } from 'lucide-react';
+import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft, Flame, Star, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 import { useGameAudio } from '../../hooks/useGameAudio';
@@ -420,6 +420,22 @@ const CaptainClickChallenge = ({ onBack }) => {
     }, []);
 
     // ===================
+    // SHARE
+    // ===================
+    const shareScore = () => {
+        const tier = getScoreTier(score);
+        const text = `${tier.label.split(' ')[0]} I scored ${score} points in Tap Blitz!\n\nMax combo: ${maxCombo}x! Think you can beat me? 🎮\n\nPlay free: AgenticAIHome.com/games`;
+
+        if (navigator.share) {
+            navigator.share({ title: 'Tap Blitz Challenge', text }).catch(() => { });
+        } else {
+            navigator.clipboard?.writeText(text).then(() => {
+                alert('Challenge copied! Paste it anywhere to challenge a friend.');
+            }).catch(() => { });
+        }
+    };
+
+    // ===================
     // SCORE TIER CALCULATION
     // ===================
     const getScoreTier = (s) => {
@@ -705,6 +721,24 @@ const CaptainClickChallenge = ({ onBack }) => {
                                         <RotateCcw size={18} /> Again
                                     </m.button>
                                 </div>
+
+                                {/* PROMINENT SHARE / CHALLENGE SECTION */}
+                                <div className="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border border-orange-500/40 rounded-xl p-3 mt-4">
+                                    <p className="text-orange-300 text-xs font-medium mb-2 text-center">
+                                        📸 Screenshot this → Challenge a friend!
+                                    </p>
+                                    <button
+                                        onClick={shareScore}
+                                        className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-400 hover:to-yellow-400 text-white px-4 py-2.5 rounded-lg font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <Share2 size={16} />
+                                        Challenge a Friend
+                                    </button>
+                                </div>
+
+                                <p className="text-slate-500 text-xs text-center mt-2">
+                                    Think they can beat {score}? 😏
+                                </p>
                             </m.div>
                         </m.div>
                     )}

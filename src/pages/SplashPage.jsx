@@ -109,8 +109,12 @@ const SplashPage = () => {
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Your Time Back.</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-2">
                             10 chapters. Zero coding. <span className="text-white font-bold">5+ hours reclaimed every week.</span>
+                        </p>
+                        {/* Viral quotable line */}
+                        <p className="text-slate-500 text-sm italic">
+                            Built by a busy dad who actually uses this daily. No fluff. Just results.
                         </p>
                     </motion.div>
 

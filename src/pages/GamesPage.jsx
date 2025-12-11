@@ -185,9 +185,15 @@ const GamesPage = () => {
                                         AI Games
                                     </span>
                                 </h1>
-                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-6">
+                                <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-4">
                                     Fun mini-games to practice your new skills. Everyone can play — no experience needed!
                                 </p>
+                                {/* Viral Challenge Hook */}
+                                <div className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-500/40 rounded-full px-5 py-2 mb-6">
+                                    <span className="text-purple-300 text-sm font-medium">
+                                        🎮 Think you can focus? <span className="text-white font-bold">Most people can't beat 15.</span>
+                                    </span>
+                                </div>
 
                                 {/* Daily Challenge Banner */}
                                 <m.div

@@ -386,20 +386,21 @@ const AgentTriageGame = ({ onBack }) => {
             ? Math.round((stats.correct / (stats.correct + stats.wrong)) * 100)
             : 0;
 
-        const text = `📧 I triaged ${emailsTriaged} emails and scored ${score} points in Inbox Defense!\\n\\nAccuracy: ${accuracy}%\\nMax Combo: ${maxCombo}x\\nCritical Saved: ${stats.criticalSaved}\\n\\nPlay at AgenticAIHome.com/games`;
+        const text = `📧 I triaged ${emailsTriaged} emails and scored ${score} points in Inbox Defense!\n\nAccuracy: ${accuracy}% | Max Combo: ${maxCombo}x\nThink you can beat me? 🎮\n\nPlay free: AgenticAIHome.com/games`;
 
         if (navigator.share) {
             navigator.share({
-                title: 'Inbox Defense Score',
+                title: 'Inbox Defense Challenge',
                 text
             }).catch(() => {
                 navigator.clipboard?.writeText(text);
+                alert('Challenge copied! Paste it anywhere to challenge a friend.');
             });
         } else {
             navigator.clipboard?.writeText(text);
-            updateCaptain({ text: '📋 Score copied to clipboard!', mood: 'happy' });
+            alert('Challenge copied! Paste it anywhere to challenge a friend.');
         }
-    }, [score, emailsTriaged, maxCombo, stats, updateCaptain]);
+    }, [score, emailsTriaged, maxCombo, stats]);
 
     // Spawn Email
     const spawnEmail = useCallback((currentWave) => {
@@ -1051,11 +1052,19 @@ const AgentTriageGame = ({ onBack }) => {
                                 >
                                     <RotateCcw size={20} /> Play Again
                                 </button>
+                            </div>
+
+                            {/* PROMINENT SHARE / CHALLENGE SECTION */}
+                            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/40 rounded-xl p-3 mt-4">
+                                <p className="text-purple-300 text-xs font-medium mb-2 text-center">
+                                    📸 Challenge a friend to beat your score!
+                                </p>
                                 <button
                                     onClick={shareScore}
-                                    className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 active:scale-95 text-white px-5 py-3 rounded-xl font-bold transition-all"
+                                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white px-4 py-2.5 rounded-lg font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
                                 >
-                                    <Share2 size={20} /> Share
+                                    <Share2 size={16} />
+                                    Challenge a Friend
                                 </button>
                             </div>
                         </m.div>

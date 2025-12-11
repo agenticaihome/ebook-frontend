@@ -569,17 +569,17 @@ const DeepWorkDive = ({ onBack }) => {
     // ===================
     const shareScore = () => {
         const m = getMilestone(score);
-        const text = `${m.emoji} I dodged ${score} distractions in Deep Work Dive!\n\n${m.label} status achieved! Can you beat my focus? 🧠💪\n\nPlay free: AgenticAIHome.com`;
+        const text = `${m.emoji} I dodged ${score} distractions in Deep Work Dive!\n\n${m.label} status achieved! Think you can beat me? 🎮\n\nPlay free: AgenticAIHome.com/games`;
 
         if (navigator.share) {
             navigator
-                .share({ title: "Deep Work Dive", text })
+                .share({ title: "Deep Work Dive Challenge", text })
                 .catch(() => { });
         } else if (navigator.clipboard) {
             navigator.clipboard
                 .writeText(text)
                 .then(() => {
-                    alert("Score copied to clipboard!");
+                    alert("Challenge copied! Paste it anywhere to challenge a friend.");
                 })
                 .catch(() => { });
         }
@@ -1000,15 +1000,26 @@ const DeepWorkDive = ({ onBack }) => {
                                     </m.button>
                                 </div>
 
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        shareScore();
-                                    }}
-                                    className="text-slate-400 hover:text-white text-sm flex items-center gap-2 mx-auto transition-colors"
-                                >
-                                    <Share2 size={16} /> Share Score
-                                </button>
+                                {/* PROMINENT SHARE / CHALLENGE SECTION */}
+                                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/40 rounded-xl p-3 mb-4">
+                                    <p className="text-purple-300 text-xs font-medium mb-2 text-center">
+                                        📸 Screenshot this → Challenge a friend!
+                                    </p>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            shareScore();
+                                        }}
+                                        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white px-4 py-2.5 rounded-lg font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <Share2 size={16} />
+                                        Challenge a Friend
+                                    </button>
+                                </div>
+
+                                <p className="text-slate-500 text-xs text-center">
+                                    Think they can beat {score}? 😏
+                                </p>
                             </m.div>
 
                             <m.p
