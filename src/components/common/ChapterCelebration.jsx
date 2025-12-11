@@ -5,6 +5,7 @@ import { Trophy, Share2, ArrowRight, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSound } from '../../context/SoundContext';
 import { logChapterComplete } from '../../utils/analytics';
+import { useImmersion } from '../../hooks/useImmersion';
 
 /**
  * ChapterCelebration - Pixar-level celebration moment for chapter completion

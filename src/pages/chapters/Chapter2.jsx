@@ -4,6 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, ShoppingCart, UtensilsCrossed, HelpCircle, MessageSquare } from 'lucide-react';
+import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
@@ -25,6 +26,7 @@ const Chapter2 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Meal Planning Agent.
 
@@ -36,6 +38,7 @@ Real food, not fancy stuff. Set this up now.`;
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
         setCopied(true);
+        triggerDelight('copy');
         setTimeout(() => setCopied(false), 3000);
     };
 

@@ -5,6 +5,7 @@ import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, Sparkles, ExternalLink, Calendar, Gift, CreditCard, Heart, HelpCircle, MessageSquare, Bell, Lock, Share2, Twitter } from 'lucide-react';
 import EmailCaptureForm from '../../components/common/EmailCaptureForm';
+import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
@@ -26,6 +27,7 @@ const Chapter3 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Important Dates Agent.
 
@@ -38,6 +40,7 @@ Let me dump my dates now.`;
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
         setCopied(true);
+        triggerDelight('copy');
         setTimeout(() => setCopied(false), 3000);
     };
 

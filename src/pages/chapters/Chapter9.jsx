@@ -4,6 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Users, MessageSquare, GitBranch, HelpCircle, Zap, Eye } from 'lucide-react';
+import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
@@ -26,6 +27,7 @@ const Chapter9 = () => {
     const [showExamples, setShowExamples] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Help me coordinate my AI agents.
 
@@ -40,6 +42,7 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
         setCopied(true);
+        triggerDelight('copy');
         setTimeout(() => setCopied(false), 3000);
     };
 

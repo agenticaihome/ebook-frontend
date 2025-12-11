@@ -110,7 +110,7 @@ const CaptainHero = ({
                     <img
                         src={finalImageSrc}
                         alt="Captain Efficiency"
-                        className="relative z-10 w-full h-full object-contain mix-blend-normal"
+                        className="relative z-10 w-full h-full object-contain mix-blend-normal captain-idle"
                         loading={loading}
                         width={size === 'lg' ? 256 : size === 'md' ? 192 : 128}
                         height={size === 'lg' ? 256 : size === 'md' ? 192 : 128}

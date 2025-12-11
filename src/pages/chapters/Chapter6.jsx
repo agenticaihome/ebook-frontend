@@ -4,6 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Dumbbell, Heart, Activity, HelpCircle, Zap, Eye } from 'lucide-react';
+import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
@@ -26,6 +27,7 @@ const Chapter6 = () => {
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Fitness Agent.
 
@@ -39,6 +41,7 @@ No gym jargon. Keep each workout under 30 minutes.`;
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
         setCopied(true);
+        triggerDelight('copy');
         setTimeout(() => setCopied(false), 3000);
     };
 

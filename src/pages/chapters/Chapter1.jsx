@@ -4,6 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Bell, ExternalLink, Sun, Calendar, Brain, AlertCircle, HelpCircle, Smartphone, Eye } from 'lucide-react';
+import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ProgressTracker = React.lazy(() => import('../../components/common/ProgressTracker'));
@@ -27,6 +28,7 @@ const Chapter1 = () => {
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showSetupTips, setShowSetupTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my morning agent.
 
@@ -40,6 +42,8 @@ Set this up now.`;
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
         setCopied(true);
+        // Trigger delightful feedback on copy
+        triggerDelight('copy');
         setTimeout(() => setCopied(false), 3000);
     };
 

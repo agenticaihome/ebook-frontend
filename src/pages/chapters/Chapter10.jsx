@@ -4,6 +4,7 @@ import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Crown, Trophy, Rocket, Star, HelpCircle, Zap, Eye } from 'lucide-react';
+import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
@@ -18,6 +19,7 @@ const Chapter10 = () => {
     const [showChecklist, setShowChecklist] = useState(false);
     const [showNextSteps, setShowNextSteps] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const { triggerDelight } = useImmersion();
 
     const goldPrompt = `You are my Personal AI Command Center.
 
@@ -36,6 +38,7 @@ Start by asking: "Ready for your briefing?"`;
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
         setCopied(true);
+        triggerDelight('copy');
         setTimeout(() => setCopied(false), 3000);
     };
 

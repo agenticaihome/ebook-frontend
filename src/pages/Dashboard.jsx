@@ -191,7 +191,7 @@ const Dashboard = () => {
                                 initial={{ width: 0 }}
                                 animate={{ width: `${(completedCount / 10) * 100}%` }}
                                 transition={{ duration: 1, ease: "easeOut" }}
-                                className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full"
+                                className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full progress-shimmer"
                             />
                         </div>
                     </div>
@@ -307,7 +307,7 @@ const Dashboard = () => {
 
                                 return (
                                     <Link key={num} to={CHAPTER_ROUTES[num]}>
-                                        <div className={`flex items-center gap-4 p-3 rounded-xl transition-colors ${isComplete
+                                        <div className={`flex items-center gap-4 p-3 rounded-xl card-glow-hover ${isComplete
                                             ? 'bg-green-900/20 border border-green-500/30'
                                             : parseInt(num) === nextChapter?.number
                                                 ? 'bg-teal-900/20 border border-teal-500/40'
