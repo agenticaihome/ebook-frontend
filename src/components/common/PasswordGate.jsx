@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { m } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Lock, AlertCircle, BookOpen, Sparkles } from 'lucide-react';
 
 // Section names for each part
@@ -134,7 +135,7 @@ const PasswordGate = ({ children, partNumber }) => {
                     </form>
 
                     <p className="text-center text-slate-500 text-xs mt-6">
-                        Don't have access? <span className="text-teal-400 font-medium">Full launch coming soon</span>
+                        Don't have access? <Link to="/unlock" className="text-teal-400 font-medium hover:underline">Get instant access here</Link>
                     </p>
                 </div>
             </m.div>
