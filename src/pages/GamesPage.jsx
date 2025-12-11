@@ -76,7 +76,7 @@ const GamesPage = () => {
         },
         {
             id: 'calendar',
-            title: 'Calendar Defense',
+            title: 'Meeting Mayhem',
             description: 'Your calendar is under siege. Decline the noise, defend deep work, survive the meeting onslaught.',
             icon: Calendar,
             color: 'from-purple-500 to-pink-500',
@@ -100,8 +100,8 @@ const GamesPage = () => {
         },
         {
             id: 'clicker',
-            title: 'Captain Click Challenge',
-            description: 'How fast can you optimize? Click Captain Efficiency before time runs out. Speed = efficiency.',
+            title: 'Tap Blitz',
+            description: 'How fast can you tap? Click Captain Efficiency before time runs out. Speed = efficiency.',
             icon: Zap,
             color: 'from-yellow-400 to-orange-500',
             component: CaptainClickChallenge,
