@@ -152,13 +152,12 @@ const Dashboard = () => {
                             className="relative"
                         >
                             <div className="bg-slate-800 border border-teal-500/30 rounded-2xl p-4 max-w-sm mx-auto shadow-lg shadow-teal-900/20 relative z-10">
-                                <p className="text-teal-300 font-medium text-sm mb-1">💡 Next Step:</p>
                                 <p className="text-white text-base">
                                     {allComplete
-                                        ? "You did it! All 10 agents deployed. Your life is on autopilot. 🎉"
+                                        ? "All 10 agents deployed. Life on autopilot. 🎉"
                                         : completedCount === 0
-                                            ? "Ready to build your first AI agent? Let's do this!"
-                                            : "Nice progress! One more chapter today?"}
+                                            ? "Ready for your first agent? Let's go!"
+                                            : "Nice progress! One more today?"}
                                 </p>
                                 {/* Triangle pointer */}
                                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-800 border-b border-r border-teal-500/30 transform rotate-45"></div>
@@ -170,10 +169,7 @@ const Dashboard = () => {
                                 My Dashboard
                             </h1>
                             <p className="text-xl text-slate-300">
-                                You've completed <span className="text-teal-400 font-bold">{completedCount} of 10</span> chapters.
-                                {completedCount === 0 && " Let's get started!"}
-                                {completedCount > 0 && completedCount < 10 && " Keep going!"}
-                                {allComplete && " 🎉 You finished everything!"}
+                                <span className="text-teal-400 font-bold">{completedCount}</span> of 10 complete.
                             </p>
                         </div>
                     </div>
@@ -222,7 +218,7 @@ const Dashboard = () => {
                     {/* ===================== */}
                     <div className="flex items-center gap-4 mb-6">
                         <div className="flex-1 h-px bg-slate-700" />
-                        <span className="text-slate-400 text-sm font-medium">Other Things To Do</span>
+                        <span className="text-slate-400 text-sm font-medium">More</span>
                         <div className="flex-1 h-px bg-slate-700" />
                     </div>
 

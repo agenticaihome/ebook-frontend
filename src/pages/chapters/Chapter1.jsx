@@ -28,6 +28,7 @@ const Chapter1 = () => {
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showSetupTips, setShowSetupTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my morning agent.
@@ -348,9 +349,32 @@ Set this up now.`;
                     </motion.section>
 
                     {/* NEXT - Jobs/Bezos Exclusivity Framing */}
-                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mb-10">
+                    <motion.section
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.9 }}
+                        className="mb-10"
+                        onViewportEnter={() => {
+                            // "One More Thing" - trigger confetti on first view
+                            const hasSeenConfetti = localStorage.getItem('chapter1_confetti_seen');
+                            if (!hasSeenConfetti) {
+                                setShowConfetti(true);
+                                localStorage.setItem('chapter1_confetti_seen', 'true');
+                                setTimeout(() => setShowConfetti(false), 3000);
+                            }
+                        }}
+                    >
+                        {/* Confetti Celebration - "One More Thing" */}
+                        {showConfetti && (
+                            <div className="confetti-celebration">
+                                {[...Array(15)].map((_, i) => (
+                                    <div key={i} className="confetti-piece" />
+                                ))}
+                            </div>
+                        )}
+
                         <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-2xl p-6 border border-green-500/30 text-center mb-6">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4 complete-pop">
                                 <CheckCircle size={16} />
                                 Chapter 1 Complete!
                             </div>

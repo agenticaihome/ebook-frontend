@@ -110,12 +110,8 @@ const SplashPage = () => {
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Your Time Back.</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
                             Reclaim <span className="text-white font-bold">5+ hours/week</span> with your own AI agents.
-                        </p>
-                        {/* Viral quotable line */}
-                        <p className="text-slate-400 text-sm italic">
-                            Built by a busy dad who actually uses this daily. No fluff. Just results.
                         </p>
                     </motion.div>
 
@@ -160,40 +156,23 @@ const SplashPage = () => {
                         <p className="mt-3 text-slate-500 text-sm font-medium">✨ No credit card required</p>
                     </motion.div>
 
-                    {/* Social Proof - With Live Counter */}
+                    {/* Social Proof - Clean & Consolidated */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.9 }}
-                        className="flex flex-col items-center gap-3"
+                        className="flex items-center justify-center gap-3"
                     >
-                        {/* Live Join Counter */}
-                        <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            <span className="text-green-400 text-sm font-medium">
-                                <span className="font-bold">547 people</span> started this week
-                            </span>
+                        <div className="flex -space-x-2">
+                            {[...Array(4)].map((_, i) => (
+                                <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs text-white font-bold">
+                                    {['S', 'M', 'J', 'A'][i]}
+                                </div>
+                            ))}
                         </div>
-
-                        {/* Avatars + Count */}
-                        <div className="flex items-center gap-3">
-                            <div className="flex -space-x-2">
-                                {[...Array(4)].map((_, i) => (
-                                    <div key={i} className="w-9 h-9 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 border-2 border-slate-800 flex items-center justify-center text-sm text-white font-bold shadow-lg shadow-black/20">
-                                        {['S', 'M', 'J', 'A'][i]}
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-yellow-400">★★★★★</span>
-                                <span className="text-slate-300 text-sm">
-                                    <span className="text-white font-semibold">500+</span> busy people like you
-                                </span>
-                            </div>
-                        </div>
+                        <span className="text-slate-300 text-sm">
+                            <span className="text-yellow-400">★★★★★</span> <span className="text-white font-semibold">500+</span> people learning
+                        </span>
                     </motion.div>
 
                     {/* Micro-testimonial for trust */}
@@ -227,22 +206,7 @@ const SplashPage = () => {
 
                 </div>
 
-                {/* Email Capture - Moved to Footer/Bottom to declutter Hero */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5 }}
-                    className="relative z-10 w-full max-w-md mx-auto mb-8 px-4"
-                >
-                    <EmailCaptureForm
-                        source="splash_page"
-                        headline="📬 Join 500+ AI learners"
-                        subheadline="Get a free AI Starter Checklist"
-                        buttonText="Send Tips"
-                        successMessage="Check inbox!"
-                        compact={true}
-                    />
-                </motion.div>
+
 
                 {/* Footer Socials - Colorful */}
                 <motion.div

@@ -183,32 +183,15 @@ const GamesPage = () => {
                                 <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 mb-6 drop-shadow-2xl">
                                     Training Games
                                 </h1>
-                                <p className="text-slate-400 max-w-2xl mx-auto mb-8 text-lg">
-                                    Tap any game to play. Skills transfer to real life.
+                                <p className="text-slate-400 max-w-2xl mx-auto mb-8">
+                                    Play. Learn. Master. Skills transfer to real life.
                                 </p>
-                                <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-4">
-                                    Fun mini-games to practice your new skills. Everyone can play — no experience needed!
-                                </p>
-                                {/* Viral Challenge Hook */}
-                                <div className="inline-flex items-center gap-2 bg-purple-500/20 border border-purple-500/40 rounded-full px-5 py-2 mb-6">
-                                    <span className="text-purple-300 text-sm font-medium">
-                                        🎮 Think you can focus? <span className="text-white font-bold">Most people can't beat 15.</span>
+                                {/* Challenge Hook */}
+                                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/30 px-4 py-2 rounded-full mb-6">
+                                    <span className="text-yellow-400 text-sm font-medium">
+                                        🎮 Most can't beat 15. Can you?
                                     </span>
                                 </div>
-
-                                {/* Daily Challenge Banner */}
-                                <m.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/40 px-6 py-3 rounded-2xl mb-6"
-                                >
-                                    <span className="text-2xl">🌟</span>
-                                    <div className="text-left">
-                                        <div className="text-yellow-400 font-bold text-sm">DAILY CHALLENGE ACTIVE</div>
-                                        <div className="text-yellow-300/70 text-xs">All scores count 2X toward monthly leaderboard!</div>
-                                    </div>
-                                    <span className="px-3 py-1 bg-yellow-500 text-black font-black text-sm rounded-full">2X</span>
-                                </m.div>
 
                                 {/* Global Stats / Ticker */}
                                 <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-sm text-slate-400 mb-12">
@@ -284,17 +267,16 @@ const GamesPage = () => {
                                                     </div>
                                                     <h3 className="text-xl font-bold text-white mb-2">Locked</h3>
                                                     <p className="text-slate-300 text-sm mb-4">
-                                                        Complete <strong className="text-teal-400">Part {game.unlockCondition}</strong> to unlock this game.
+                                                        Unlock by reading <strong className="text-teal-400">Part {game.unlockCondition}</strong>
                                                     </p>
                                                     <button
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             navigate(`/part${game.unlockCondition}`);
                                                         }}
-                                                        className="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs text-teal-400 border border-slate-600 hover:border-teal-500/50 transition-all flex items-center gap-2 font-medium"
+                                                        className="px-4 py-2 bg-teal-600 hover:bg-teal-500 rounded-lg text-xs text-white transition-all flex items-center gap-2 font-medium"
                                                     >
-                                                        <Lock size={12} />
-                                                        Enter Password
+                                                        Start Part {game.unlockCondition}
                                                     </button>
                                                 </div>
                                             )}

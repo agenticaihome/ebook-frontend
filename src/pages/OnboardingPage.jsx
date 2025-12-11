@@ -179,12 +179,9 @@ const OnboardingPage = () => {
 
                         <div className="grid md:grid-cols-3 gap-4">
                             {[
-                                { emoji: '🤔', title: 'AI Curious', desc: 'Heard the hype but unsure where to start? This is your zero-jargon intro.' },
-                                { emoji: '😰', title: 'AI Skeptics', desc: 'Worried or overwhelmed? Learn to use AI responsibly.' },
-                                { emoji: '🚀', title: 'AI Enthusiasts', desc: 'Already using ChatGPT? Go deeper with real systems.' },
                                 { emoji: '👶', title: 'Complete Beginners', desc: 'Never touched AI? Perfect. We start from zero.' },
                                 { emoji: '👨‍👩‍👧‍👦', title: 'Busy Humans', desc: 'Parents, students, professionals—AI gives you back time.' },
-                                { emoji: '🔮', title: 'Future-Proofers', desc: 'AI is changing everything. Learn it now.' },
+                                { emoji: '🚀', title: 'AI Enthusiasts', desc: 'Already using ChatGPT? Go deeper with real systems.' },
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
@@ -383,9 +380,7 @@ const OnboardingPage = () => {
                         <div className="grid md:grid-cols-2 gap-4">
                             {[
                                 { worry: "I'm bad with tech", answer: "No tech skills required. Seriously." },
-                                { worry: "Is this too much work?", answer: "Each mission takes only minutes." },
-                                { worry: "Will I actually use this?", answer: "Your first win happens fast." },
-                                { worry: "I don't understand AI", answer: "That's exactly why we made this fun." },
+                                { worry: "Will I actually use this?", answer: "Your first win happens in minutes." },
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
