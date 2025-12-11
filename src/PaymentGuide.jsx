@@ -71,7 +71,7 @@ export default function PaymentGuide() {
                                         <Sparkles className="text-teal-400" size={20} />
                                         Captain's Insight
                                     </h3>
-                                    <p className="text-slate-400 text-sm">
+                                    <p className="text-slate-400 text-base leading-relaxed">
                                         Stripe is instant and familiar. Ergo gets you 50% off if you're willing to learn something new.
                                         Both paths lead to the same destination — a life with 5+ extra hours per week.
                                     </p>
