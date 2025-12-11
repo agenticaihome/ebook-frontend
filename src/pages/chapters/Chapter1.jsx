@@ -253,6 +253,14 @@ Set this up now.`;
                                     <p className="text-center text-slate-500 text-xs mt-3">👆 This is what YOUR morning agent will send you!</p>
                                 </motion.div>
                             )}
+
+                            {/* Pro Tip: Calendar Connection */}
+                            <div className="mt-4 bg-amber-500/10 border border-amber-500/30 rounded-lg p-3">
+                                <p className="text-amber-400 text-xs font-bold mb-1">💡 PRO TIP</p>
+                                <p className="text-slate-300 text-sm">
+                                    Want your AI to <span className="text-white font-medium">automatically</span> know your schedule? Connect your Google Calendar to ChatGPT in Settings → Connected Apps.
+                                </p>
+                            </div>
                         </div>
                     </motion.section>
 
