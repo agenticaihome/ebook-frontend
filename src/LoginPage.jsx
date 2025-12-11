@@ -99,7 +99,7 @@ const LoginPage = () => {
 
                                 {/* The Logo */}
                                 <img
-                                    src="/assets/logo-new.png"
+                                    src="/assets/logo-new.webp"
                                     alt="Agentic AI at Home"
                                     className="relative z-10 h-16 w-auto drop-shadow-[0_0_20px_rgba(20,184,166,0.4)]"
                                 />

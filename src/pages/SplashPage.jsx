@@ -11,6 +11,8 @@ const SplashPage = () => {
             <Helmet>
                 <title>Agentic AI Home - Stop Doing Everything. Start Delegating to AI.</title>
                 <meta name="description" content="Captain Efficiency guides you through 10 chapters to automate your life. Reclaim 5+ hours every week with AI agents." />
+                {/* Preload critical hero assets for faster LCP */}
+                <link rel="preload" as="image" href="/assets/captain-pointing-transparent.webp" />
             </Helmet>
 
             <div className="min-h-screen bg-gradient-to-br from-slate-950 via-[#0a1628] to-slate-950 flex flex-col items-center justify-between px-4 py-12 md:py-20 relative overflow-hidden">

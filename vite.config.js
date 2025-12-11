@@ -15,14 +15,24 @@ export default defineConfig({
     build: {
         outDir: 'build',
         sourcemap: false,
+        // Minification options
+        minify: 'esbuild',
+        target: 'es2020',
         rollupOptions: {
             output: {
                 manualChunks: {
                     vendor: ['react', 'react-dom', 'react-router-dom'],
                     framer: ['framer-motion'],
+                    icons: ['lucide-react'],
                 },
+                // Better cache busting with content hashes
+                chunkFileNames: 'assets/[name]-[hash].js',
+                entryFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: 'assets/[name]-[hash].[ext]',
             },
         },
+        // Chunk size warning threshold
+        chunkSizeWarningLimit: 500,
     },
 
     // Handle CRA environment variables
