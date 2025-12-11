@@ -75,7 +75,7 @@ Set this up now.`;
                     </motion.div>
 
                     {/* PROGRESS TRACKER */}
-                    <Suspense fallback={<div className="h-16 animate-pulse bg-slate-800/30 rounded-xl mb-6" />}>
+                    <Suspense fallback={<div className="h-16" />}>
                         <ProgressTracker currentChapter={1} />
                     </Suspense>
 
@@ -123,7 +123,7 @@ Set this up now.`;
 
                     {/* CAPTAIN */}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
-                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/50 rounded-xl" />}>
+                        <Suspense fallback={<div className="h-24" />}>
                             <CaptainHero
                                 size="md"
                                 pose="default"
@@ -388,7 +388,7 @@ Set this up now.`;
                         </div>
 
                         {/* Share to X */}
-                        <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/30 rounded-xl" />}>
+                        <Suspense fallback={<div className="h-12" />}>
                             <ShareToX chapterNumber={1} />
                         </Suspense>
 
