@@ -344,7 +344,7 @@ const GamesPage = () => {
                                                 </div>
 
                                                 {/* Actions */}
-                                                <div className="grid grid-cols-2 gap-3 mt-auto">
+                                                <div className="grid grid-cols-2 gap-4 mt-auto">
                                                     <button
                                                         onClick={(e) => openLeaderboard(e, game)}
                                                         className="px-4 py-3 rounded-xl bg-slate-900/50 hover:bg-slate-800 border border-slate-600 hover:border-slate-600 text-slate-300 hover:text-white font-bold text-sm transition-all flex items-center justify-center gap-2"

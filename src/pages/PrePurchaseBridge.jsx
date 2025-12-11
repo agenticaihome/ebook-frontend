@@ -157,7 +157,7 @@ const PrePurchaseBridge = () => {
                         <Link
                             to="/payment-guide"
                             onClick={handleCheckoutClick}
-                            className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white px-8 py-4 rounded-2xl font-bold text-xl transition-all shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                            className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white px-8 py-5 rounded-2xl font-bold text-xl transition-all shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
                         >
                             <span className="relative z-10">Get Full Access</span>
                             <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={24} />
