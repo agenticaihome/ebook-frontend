@@ -439,7 +439,7 @@ const ErgoPaymentPage = () => {
                                             <span className="text-xl text-slate-400 line-through">$24.99</span>
                                         </div>
                                         <div className="text-xs text-amber-400/80 font-medium mt-1">
-                                            ⏰ Early adopter price — price increases Feb 1st
+                                            ⏰ Early adopter price — Limited time offer
                                         </div>
                                     </div>
 

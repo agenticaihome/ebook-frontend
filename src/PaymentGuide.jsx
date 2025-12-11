@@ -106,7 +106,7 @@ export default function PaymentGuide() {
                                 <div className="text-5xl font-bold mb-1">
                                     $39.99 <span className="text-lg text-slate-400 font-normal">USD</span>
                                 </div>
-                                <p className="text-xs text-amber-400/80 mb-6">⏰ Early adopter price — $49.99 after Feb 1</p>
+                                <p className="text-xs text-amber-400/80 mb-6">⏰ Limited time launch pricing</p>
 
                                 <div className="space-y-4 mb-8">
                                     <div className="flex items-start gap-3">
