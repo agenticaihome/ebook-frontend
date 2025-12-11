@@ -98,6 +98,10 @@ const SplashPage = () => {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="mb-6 md:mb-8"
                     >
+                        {/* Descriptor for instant understanding */}
+                        <p className="text-teal-400 text-sm md:text-base font-medium mb-3 tracking-wide">
+                            A step-by-step guide to automate your daily life
+                        </p>
                         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight tracking-tight">
                             Your AI. Your Rules.
                             <br />
@@ -178,7 +182,7 @@ const SplashPage = () => {
                             <div className="flex items-center gap-2">
                                 <span className="text-yellow-400">★★★★★</span>
                                 <span className="text-slate-300 text-sm">
-                                    <span className="text-white font-semibold">500+</span> pioneers
+                                    <span className="text-white font-semibold">500+</span> busy people like you
                                 </span>
                             </div>
                         </div>

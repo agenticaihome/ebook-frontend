@@ -107,6 +107,18 @@ Set this up now.`;
                         </p>
                     </motion.div>
 
+                    {/* OUTCOME BOX - What You'll Get */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.15 }}
+                        className="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-xl p-4 mb-6 text-center"
+                    >
+                        <p className="text-white text-sm md:text-base">
+                            ✅ <span className="font-medium">By the end of this 5-minute chapter</span>, you'll have an AI that sends you a personalized morning briefing every day.
+                        </p>
+                    </motion.div>
+
 
                     {/* CAPTAIN */}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">

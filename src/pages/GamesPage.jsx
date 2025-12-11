@@ -182,11 +182,11 @@ const GamesPage = () => {
                                 </div>
                                 <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">
-                                        Agent Training Center
+                                        AI Games
                                     </span>
                                 </h1>
                                 <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-6">
-                                    Sharpen your agentic skills. Unlock new simulations as you progress through the book.
+                                    Fun mini-games to practice your new skills. Everyone can play — no experience needed!
                                 </p>
 
                                 {/* Daily Challenge Banner */}
