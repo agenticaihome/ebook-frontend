@@ -102,7 +102,7 @@ const SplashPage = () => {
                     >
                         {/* Descriptor for instant understanding */}
                         <p className="text-teal-400 text-sm md:text-base font-medium mb-3 tracking-wide">
-                            A step-by-step guide to automate your daily life
+                            A simple, step-by-step guide to automate your life
                         </p>
                         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight tracking-tight">
                             Your AI. Your Rules.

@@ -149,7 +149,7 @@ const PrePurchaseBridge = () => {
                                 <span className="text-4xl font-black text-white">$39.99</span>
                                 <span className="text-slate-500 line-through text-xl">$49.99</span>
                             </div>
-                            <p className="text-slate-400 text-sm mt-1">One-time payment • Lifetime access</p>
+                            <p className="text-slate-400 text-sm mt-1">One-time payment • Lifetime access • Start immediately</p>
                             <p className="text-teal-400/90 text-sm mt-1 font-medium">📈 Increases at 1,000 members</p>
                         </div>
 
@@ -159,7 +159,7 @@ const PrePurchaseBridge = () => {
                             onClick={handleCheckoutClick}
                             className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white px-8 py-5 rounded-2xl font-bold text-xl transition-all shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
                         >
-                            <span className="relative z-10">Get Full Access</span>
+                            <span className="relative z-10">Get Instant Access</span>
                             <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={24} />
 
                             {/* Glow pulse */}

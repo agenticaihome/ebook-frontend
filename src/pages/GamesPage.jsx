@@ -65,7 +65,7 @@ const GamesPage = () => {
         {
             id: 'triage',
             title: 'Inbox Defense',
-            description: 'Train your triage instincts. Feel the zen of an empty inbox — separate noise from signal.',
+            description: 'Train your email sorting instincts. Feel the zen of an empty inbox.',
             icon: Mail,
             color: 'from-teal-500 to-blue-500',
             component: AgentTriageGame,
@@ -101,7 +101,7 @@ const GamesPage = () => {
         {
             id: 'clicker',
             title: 'Tap Blitz',
-            description: 'How fast can you tap? Click Captain Efficiency before time runs out. Speed = efficiency.',
+            description: 'How fast can you tap? Tap Captain Efficiency before time runs out.',
             icon: Zap,
             color: 'from-yellow-400 to-orange-500',
             component: CaptainClickChallenge,
@@ -284,7 +284,7 @@ const GamesPage = () => {
                                                     </div>
                                                     <h3 className="text-xl font-bold text-white mb-2">Locked</h3>
                                                     <p className="text-slate-300 text-sm mb-4">
-                                                        Complete <strong className="text-teal-400">Part {game.unlockCondition}</strong> to unlock this simulation.
+                                                        Complete <strong className="text-teal-400">Part {game.unlockCondition}</strong> to unlock this game.
                                                     </p>
                                                     <button
                                                         onClick={(e) => {

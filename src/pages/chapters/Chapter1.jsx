@@ -31,7 +31,7 @@ const Chapter1 = () => {
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my morning agent.
-
+    
 Every day when I wake up, send me:
 - Weather for my location
 - 3 things happening today
@@ -168,7 +168,7 @@ Set this up now.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm">1</div>
-                            <h3 className="text-white font-bold">Pick your AI</h3>
+                            <h3 className="text-white font-bold">Choose an AI (Any will work)</h3>
                         </div>
 
                         <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50 mb-3">
@@ -201,7 +201,7 @@ Set this up now.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-white font-bold text-sm">2</div>
-                            <h3 className="text-white font-bold">Copy These Instructions and paste it</h3>
+                            <h3 className="text-white font-bold">Copy this text and paste it</h3>
                         </div>
 
                         <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-5 border border-teal-500/30">
