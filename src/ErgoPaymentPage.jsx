@@ -474,6 +474,25 @@ const ErgoPaymentPage = () => {
                                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                     </button>
 
+                                    {/* After Purchase Expectations - Trust Block */}
+                                    <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
+                                        <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-2">
+                                            <span className="text-green-400 font-medium">✓ Instant Access</span>
+                                        </div>
+                                        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-2">
+                                            <span className="text-cyan-400 font-medium">✓ Lifetime Updates</span>
+                                        </div>
+                                        <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-2">
+                                            <span className="text-purple-400 font-medium">✓ No Subscription</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Payment Security Microcopy */}
+                                    <div className="mt-3 flex items-center justify-center gap-2 text-slate-500 text-xs">
+                                        <ShieldCheck size={14} className="text-green-500" />
+                                        <span>Secured by blockchain • Your wallet, your keys • No card data stored</span>
+                                    </div>
+
                                     <div className="mt-4 text-center">
                                         <button
                                             onClick={() => navigate('/payment-guide')}

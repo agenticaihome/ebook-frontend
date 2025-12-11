@@ -402,6 +402,44 @@ const OnboardingPage = () => {
                     </div>
                 </section>
 
+                {/* SECTION 5B: Who Made This (Trust Builder) */}
+                <section className="py-16 px-6 bg-gradient-to-b from-transparent to-slate-900/30">
+                    <div className="max-w-3xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-slate-800/50 rounded-2xl p-6 md:p-8 border border-slate-700/50"
+                        >
+                            <div className="flex flex-col md:flex-row items-start gap-6">
+                                <div className="flex-shrink-0 hidden md:block">
+                                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-2xl font-bold text-white">
+                                        D
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="text-sm text-teal-400 font-medium mb-2">👋 Who Made This?</div>
+                                    <p className="text-slate-300 mb-4 leading-relaxed">
+                                        I'm a dental resident and Army vet with two kids under 3. I built this with <span className="text-white font-medium">zero coding experience</span> — just AI tools, late nights, and a refusal to quit.
+                                    </p>
+                                    <p className="text-slate-400 text-sm mb-4">
+                                        The agents in this course are the same ones I use to manage my own chaotic life. If they can handle a 50+ hour clinical week plus toddlers, they can handle yours.
+                                    </p>
+                                    <Link
+                                        to="/faq"
+                                        className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 text-sm font-medium transition-colors"
+                                    >
+                                        Read the full story in FAQ →
+                                    </Link>
+                                    <div className="mt-4 pt-4 border-t border-slate-700/50 text-xs text-slate-500">
+                                        — DDS <span className="text-slate-600">(Dad Deploying Systems)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
                 {/* SECTION 6: Choose Your Path CTA */}
                 <section className="py-20 px-6 bg-gradient-to-t from-slate-950 to-transparent">
                     <div className="max-w-4xl mx-auto text-center">
