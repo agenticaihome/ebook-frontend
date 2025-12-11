@@ -72,6 +72,7 @@ const SplashPage = () => {
                                     src="/assets/captain-pointing-transparent.webp"
                                     alt="Captain Efficiency"
                                     className="w-full h-full object-cover"
+                                    fetchpriority="high"
                                 />
                             </video>
 
