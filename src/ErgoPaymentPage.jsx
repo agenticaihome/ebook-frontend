@@ -499,7 +499,7 @@ const ErgoPaymentPage = () => {
                                         onClick={() => navigate('/payment-guide')}
                                         className="text-sm text-slate-400 hover:text-white underline decoration-slate-600 hover:decoration-white transition-all"
                                     >
-                                        Don't have crypto? Pay with Card ($39.99 until Feb 1)
+                                        Don't have crypto? Pay with Card ($39.99)
                                     </button>
                                 </div>
 
@@ -699,7 +699,7 @@ const ErgoPaymentPage = () => {
                                     onClick={() => navigate('/payment-guide')}
                                     className="text-sm text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center justify-center gap-2 mx-auto"
                                 >
-                                    Switch to Credit Card Payment ($39.99 until Feb 1)
+                                    Switch to Credit Card Payment ($39.99)
                                     <ArrowRight className="w-4 h-4" />
                                 </button>
                             </div>

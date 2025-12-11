@@ -102,15 +102,15 @@ const SplashPage = () => {
                     >
                         {/* Descriptor for instant understanding */}
                         <p className="text-teal-400 text-sm md:text-base font-medium mb-3 tracking-wide">
-                            A simple, step-by-step guide to automate your life
+                            Step-by-step guide to freedom
                         </p>
                         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight tracking-tight">
                             Your AI. Your Rules.
                             <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Your Time Back.</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-2">
-                            10 chapters. Zero coding. <span className="text-white font-bold">5+ hours reclaimed every week.</span>
+                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+                            Reclaim <span className="text-white font-bold">5+ hours/week</span> with your own AI agents.
                         </p>
                         {/* Viral quotable line */}
                         <p className="text-slate-400 text-sm italic">

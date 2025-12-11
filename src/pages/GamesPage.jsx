@@ -171,8 +171,7 @@ const GamesPage = () => {
                                 </button>
                                 <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">
                                     {games.find(g => g.id === activeGame)?.title}
-                                </h1>
-                                <div className="w-[120px]"></div> {/* Spacer for centering */}
+                                </h1>                                <div className="w-[120px]"></div> {/* Spacer for centering */}
                             </div>
                         ) : (
                             <>
@@ -181,11 +180,12 @@ const GamesPage = () => {
                                         <Gamepad2 size={40} className="text-white" />
                                     </div>
                                 </div>
-                                <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">
-                                        AI Games
-                                    </span>
+                                <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 mb-6 drop-shadow-2xl">
+                                    Training Games
                                 </h1>
+                                <p className="text-slate-400 max-w-2xl mx-auto mb-8 text-lg">
+                                    Tap any game to play. Skills transfer to real life.
+                                </p>
                                 <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-4">
                                     Fun mini-games to practice your new skills. Everyone can play — no experience needed!
                                 </p>
