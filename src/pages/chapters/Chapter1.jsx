@@ -389,13 +389,15 @@ Set this up now.`;
 
                         {/* Share to X */}
                         <Suspense fallback={<div className="h-12" />}>
-                            <ShareToX chapterNumber={1} />
+                            <div className="mb-6">
+                                <ShareToX chapterNumber={1} />
+                            </div>
                         </Suspense>
 
                         {/* ONE MORE THING - Free Game CTA */}
                         <Link
                             to="/games"
-                            className="group block mb-4 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-2xl p-5 border border-purple-500/30 hover:border-purple-400/50 transition-all hover:scale-[1.01]"
+                            className="group block mb-6 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-2xl p-5 border border-purple-500/30 hover:border-purple-400/50 transition-all hover:scale-[1.01]"
                         >
                             <div className="flex items-center gap-4">
                                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center text-white">
