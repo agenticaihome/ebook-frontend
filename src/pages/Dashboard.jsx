@@ -152,10 +152,10 @@ const Dashboard = () => {
                             className="relative"
                         >
                             <div className="bg-slate-800 border border-teal-500/30 rounded-2xl p-4 max-w-sm mx-auto shadow-lg shadow-teal-900/20 relative z-10">
-                                <p className="text-teal-300 font-medium text-sm mb-1">💡 Captain Efficiency says:</p>
+                                <p className="text-teal-300 font-medium text-sm mb-1">💡 Next Step:</p>
                                 <p className="text-white text-base">
                                     {allComplete
-                                        ? "You did it! All 10 agents deployed. Your life is officially on autopilot. 🎉"
+                                        ? "You did it! All 10 agents deployed. Your life is on autopilot. 🎉"
                                         : completedCount === 0
                                             ? "Ready to build your first AI agent? Let's do this!"
                                             : "Nice progress! One more chapter today?"}
@@ -167,7 +167,7 @@ const Dashboard = () => {
 
                         <div className="mt-4">
                             <h1 className="text-3xl md:text-5xl font-black text-white mb-3">
-                                Welcome Back! 👋
+                                My Dashboard
                             </h1>
                             <p className="text-xl text-slate-300">
                                 You've completed <span className="text-teal-400 font-bold">{completedCount} of 10</span> chapters.

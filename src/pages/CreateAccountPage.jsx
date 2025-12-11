@@ -100,7 +100,7 @@ const CreateAccountPage = () => {
                         <CheckCircle2 className="w-8 h-8 text-green-400" />
                     </div>
                     <h1 className="text-3xl font-bold text-white mb-2">
-                        Payment Confirmed!
+                        You're Almost Done
                     </h1>
                     <p className="text-slate-300">
                         {paymentType === 'stripe' ? 'Stripe payment' : 'ERG payment'} successful
@@ -195,7 +195,7 @@ const CreateAccountPage = () => {
                             ) : (
                                 <>
                                     <ShieldCheck className="w-5 h-5" />
-                                    Create Account & Access Content
+                                    Create Password & Start
                                 </>
                             )}
                         </button>

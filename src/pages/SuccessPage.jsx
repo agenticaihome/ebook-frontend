@@ -25,7 +25,7 @@ const SuccessPage = () => {
                 const result = await api.verifyStripePayment(sessionId);
                 if (result.success) {
                     setStatus('success');
-                    setMessage('Welcome to the Army! Redirecting to setup...');
+                    setMessage('Payment successful! Redirecting to setup...');
 
                     // 🎉 DIS audit: Celebration moment
                     confetti({
@@ -87,8 +87,8 @@ const SuccessPage = () => {
                             <Loader2 className="w-16 h-16 text-cyan-400 animate-spin relative z-10" />
                         </div>
                         <div>
-                            <h2 className="text-2xl font-bold text-white mb-2">Finalizing...</h2>
-                            <p className="text-slate-400 text-sm">Securely confirming your spot in the Agent Army.</p>
+                            <h2 className="text-2xl font-bold text-white mb-2">Confirming...</h2>
+                            <p className="text-slate-400 text-sm">Just a moment while we secure your spot.</p>
                         </div>
                     </div>
                 )}
@@ -105,7 +105,7 @@ const SuccessPage = () => {
                         </m.div>
 
                         <div>
-                            <h2 className="text-3xl font-black text-white mb-2">You're In! 🎉</h2>
+                            <h2 className="text-3xl font-black text-white mb-2">Payment Successful</h2>
                             <p className="text-teal-300 font-medium text-lg">{message}</p>
                         </div>
 
