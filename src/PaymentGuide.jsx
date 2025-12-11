@@ -102,7 +102,7 @@ export default function PaymentGuide() {
                                     <CreditCard className="text-purple-400" size={32} />
                                 </div>
 
-                                <h2 className="text-3xl font-bold mb-2">Standard Access</h2>
+                                <h2 className="text-3xl font-bold mb-2">Instant Access</h2>
                                 <div className="text-5xl font-bold mb-1">
                                     $39.99 <span className="text-lg text-slate-400 font-normal">USD</span>
                                 </div>
@@ -120,7 +120,7 @@ export default function PaymentGuide() {
                                         <Shield className="text-purple-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
                                             <strong className="text-white">Secure & Familiar</strong>
-                                            <p className="text-slate-400 text-sm">Credit/debit card via Stripe (industry standard)</p>
+                                            <p className="text-slate-400 text-sm">Secure credit/debit card via Stripe</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-3">
@@ -157,8 +157,9 @@ export default function PaymentGuide() {
                                     >
                                         Sales Paused
                                     </button>
-                                    <p className="text-xs text-slate-400 text-center">
-                                        30-day money-back guarantee • Secure payment via Stripe
+                                    <p className="text-xs text-slate-400 text-center flex items-center justify-center gap-1">
+                                        <Lock size={10} className="text-green-400" />
+                                        Bank-Level 256-bit SSL Encryption
                                     </p>
                                 </div>
                             </div>

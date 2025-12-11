@@ -28,8 +28,8 @@ const PrePurchaseBridge = () => {
             currency: 'USD',
             value: 39.99,
             items: [{
-                item_id: 'ebook_standard',
-                item_name: 'Agentic AI at Home - Full Access',
+                item_id: 'ebook_instant',
+                item_name: 'Agentic AI at Home - Instant Access',
                 price: 39.99,
                 quantity: 1,
                 item_category: 'digital_product'
@@ -43,8 +43,8 @@ const PrePurchaseBridge = () => {
             currency: 'USD',
             value: 39.99,
             items: [{
-                item_id: 'ebook_standard',
-                item_name: 'Agentic AI at Home - Full Access',
+                item_id: 'ebook_instant',
+                item_name: 'Agentic AI at Home - Instant Access',
                 price: 39.99,
                 quantity: 1,
                 item_category: 'digital_product'
@@ -306,7 +306,7 @@ const PrePurchaseBridge = () => {
                                     {[
                                         { text: 'All 10 Chapters (Lifetime Access)', icon: '📚' },
                                         { text: '10 Ready-to-Copy Agent Templates', icon: '🤖' },
-                                        { text: '5 Training Games & Tools', icon: '🎮' },
+                                        { text: '5 Training Games (Make AI Fun)', icon: '🎮' },
                                         { text: 'Future Updates Included', icon: '🚀' },
                                         { text: '30-Day Money-Back Guarantee', icon: '🛡️' },
                                     ].map((item, i) => (
