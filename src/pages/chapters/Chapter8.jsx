@@ -209,7 +209,12 @@ Then design a simple agent prompt I can use.`;
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 8 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready to make agents work together?</h3>
                             <p className="text-slate-400 text-sm mb-4">Learn multi-agent coordination.</p>
-                            <Link to="/part3/chapter3" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-bold rounded-xl transition-all">🎉 So close! On to Chapter 9<ArrowRight size={18} /></Link>
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                                <Link to="/part3/chapter1" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
+                                    ← Back to Chapter 7
+                                </Link>
+                                <Link to="/part3/chapter3" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white font-bold rounded-xl transition-all">🎉 So close! On to Chapter 9<ArrowRight size={18} /></Link>
+                            </div>
                         </div>
                     </motion.section>
 
