@@ -392,6 +392,24 @@ Set this up now.`;
                             <ShareToX chapterNumber={1} />
                         </Suspense>
 
+                        {/* ONE MORE THING - Free Game CTA */}
+                        <Link
+                            to="/games"
+                            className="group block mb-4 bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-2xl p-5 border border-purple-500/30 hover:border-purple-400/50 transition-all hover:scale-[1.01]"
+                        >
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center text-white">
+                                    <Sparkles size={24} />
+                                </div>
+                                <div className="flex-1">
+                                    <div className="text-xs text-purple-400 font-bold uppercase tracking-wide mb-1">🎮 Practice Your Skills</div>
+                                    <div className="text-white font-bold">Play Deep Work Dive — FREE</div>
+                                    <div className="text-slate-400 text-sm">Can you survive 30 distractions?</div>
+                                </div>
+                                <ArrowRight className="text-purple-400 group-hover:translate-x-1 transition-transform" size={20} />
+                            </div>
+                        </Link>
+
                         <Link
                             to="/unlock"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"

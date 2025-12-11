@@ -114,12 +114,15 @@ const GamesPage = () => {
 
     const handleGameClick = (game) => {
         // Check if unlocked
-        // Check if unlocked
         let isUnlocked = !game.unlockCondition;
         try {
+            // Check if user has paid for full access
+            const ergoPayment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
+            if (ergoPayment.paid === true) isUnlocked = true;
+
             isUnlocked = isUnlocked ||
                 localStorage.getItem(`unlocked_part_${game.unlockCondition}`) === 'true' ||
-                localStorage.getItem('beta_access') === 'true'; // Legacy fallback
+                localStorage.getItem('beta_access') === 'true';
         } catch (e) {
             // Keep default locked state if storage fails
         }
@@ -140,6 +143,11 @@ const GamesPage = () => {
     const isGameUnlocked = (game) => {
         if (!game.unlockCondition) return true;
         try {
+            // Check if user has paid for full access
+            const ergoPayment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
+            if (ergoPayment.paid === true) return true;
+
+            // Check beta access or individual part unlock
             return localStorage.getItem(`unlocked_part_${game.unlockCondition}`) === 'true' ||
                 localStorage.getItem('beta_access') === 'true';
         } catch (e) {
