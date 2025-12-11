@@ -50,18 +50,18 @@ const WebbookLayout = ({ children }) => {
         setHasSaved(false);
     }, [location.pathname]);
 
-    // Badge Definitions - One for each chapter!
+    // Badge Definitions - One for each chapter with premium share images!
     const badges = {
-        '/part1/chapter1': { id: 'ch1_complete', title: '☀️ Morning Commander', description: 'You built your first AI agent! Your mornings will never be the same.' },
-        '/part1/chapter2': { id: 'ch2_complete', title: '🍽️ Meal Master', description: 'No more "what\'s for dinner?" stress. Your family eats better now.' },
-        '/part1/chapter3': { id: 'ch3_complete', title: '🎂 Memory Keeper', description: 'You\'ll never forget an important date again. Relationships saved!' },
-        '/part2/chapter4': { id: 'ch4_complete', title: '📧 Inbox Zero Hero', description: 'Email no longer controls you. You control it.' },
-        '/part2/chapter5': { id: 'ch5_complete', title: '💰 Money Clarity', description: 'Your finances have a guardian now. Peace of mind unlocked.' },
-        '/part2/chapter6': { id: 'ch6_complete', title: '💪 Fitness Automator', description: 'Your workouts plan themselves. Consistency made easy.' },
-        '/part3/chapter7': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.' },
-        '/part3/chapter8': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.' },
-        '/part3/chapter9': { id: 'ch9_complete', title: '🤖 Team Architect', description: 'Your agents work together. You\'ve built a system, not just tools.' },
-        '/part4/chapter10': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!' }
+        '/part1/chapter1': { id: 'ch1_complete', title: '☀️ Morning Commander', description: 'You built your first AI agent! Your mornings will never be the same.', image: '/og/badges/morning-commander.png' },
+        '/part1/chapter2': { id: 'ch2_complete', title: '🍽️ Meal Master', description: 'No more "what\'s for dinner?" stress. Your family eats better now.', image: '/og/badges/meal-master.png' },
+        '/part1/chapter3': { id: 'ch3_complete', title: '🎂 Memory Keeper', description: 'You\'ll never forget an important date again. Relationships saved!', image: '/og/badges/memory-keeper.png' },
+        '/part2/chapter4': { id: 'ch4_complete', title: '📧 Inbox Zero Hero', description: 'Email no longer controls you. You control it.', image: '/og/badges/inbox-zero-hero.png' },
+        '/part2/chapter5': { id: 'ch5_complete', title: '💰 Money Clarity', description: 'Your finances have a guardian now. Peace of mind unlocked.', image: '/og/badges/money-clarity.png' },
+        '/part2/chapter6': { id: 'ch6_complete', title: '💪 Fitness Automator', description: 'Your workouts plan themselves. Consistency made easy.', image: '/og/badges/fitness-automator.png' },
+        '/part3/chapter7': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.', image: '/og/badges/priority-pro.png' },
+        '/part3/chapter8': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.', image: '/og/badges/agent-builder.png' },
+        '/part3/chapter9': { id: 'ch9_complete', title: '🤖 Team Architect', description: 'Your agents work together. You\'ve built a system, not just tools.', image: '/og/badges/team-architect.png' },
+        '/part4/chapter10': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!', image: '/og/badges/automation-commander.png' }
     };
 
     useEffect(() => {

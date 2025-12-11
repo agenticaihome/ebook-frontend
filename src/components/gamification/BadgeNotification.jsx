@@ -31,8 +31,9 @@ const BadgeNotification = ({ badge, onClose }) => {
     if (!badge) return null;
 
     const handleShare = () => {
-        const text = `I just unlocked the "${badge.title}" badge on Agentic AI Home! I'm building my autonomous future. 🚀 #AgenticAI #Productivity`;
-        const url = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text);
+        const text = `I just unlocked the "${badge.title}" badge on Agentic AI Home! 🚀 #AgenticAI #Productivity`;
+        const shareUrl = badge.image ? `https://agenticaihome.com${badge.image}` : 'https://agenticaihome.com';
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent('https://agenticaihome.com')}`;
         window.open(url, '_blank');
     };
 
