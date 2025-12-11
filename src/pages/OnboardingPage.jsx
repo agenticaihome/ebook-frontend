@@ -144,6 +144,24 @@ const OnboardingPage = () => {
                     </div>
                 </section>
 
+                {/* Early CTA - Reduce scroll fatigue for eager users */}
+                <section className="py-6 px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-xl mx-auto text-center"
+                    >
+                        <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-5 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-2xl">
+                            <p className="text-slate-300 text-sm font-medium">Ready to start now?</p>
+                            <Link to="/part1/chapter1" className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-teal-500/20 hover:scale-105">
+                                Begin Chapter 1 <ArrowRight size={18} />
+                            </Link>
+                        </div>
+                        <p className="text-slate-500 text-xs mt-3">Or keep scrolling to learn more ↓</p>
+                    </motion.div>
+                </section>
+
                 {/* SECTION 2B: Who This Is For */}
                 <section className="py-16 px-6">
                     <div className="max-w-5xl mx-auto">

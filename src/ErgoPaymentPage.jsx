@@ -400,14 +400,19 @@ const ErgoPaymentPage = () => {
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
                         <img src="/assets/ergo-logo.png" alt="Ergo" className="w-4 h-4 object-contain invert" />
-                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">Powered by Ergo</span>
+                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">Crypto Payment</span>
                     </div>
                     <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 mb-6 tracking-tight">
                         Unlock <span className="text-cyan-400">Full Access</span>
                     </h1>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                        Join the elite efficient. Pay with Ergo to receive your <span className="text-white font-semibold">50% Tech Literacy Discount</span>.
+                        Pay with crypto & save 50%. <span className="text-white font-semibold">Early supporter price: $19.99</span>
                     </p>
+                    <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-slate-400">
+                        <span className="flex items-center gap-1.5">🔒 Instant access</span>
+                        <span className="flex items-center gap-1.5">💳 No recurring fees</span>
+                        <span className="flex items-center gap-1.5">✅ 30-day money-back</span>
+                    </div>
                 </m.div>
 
                 <AnimatePresence mode="wait">

@@ -104,7 +104,7 @@ const SplashPage = () => {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Your Time Back.</span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                            10 chapters. Zero coding. Captain Efficiency guides you to automate email, calendar & more.
+                            10 chapters. Zero coding. <span className="text-white font-bold">5+ hours reclaimed every week.</span>
                         </p>
                     </motion.div>
 
@@ -184,6 +184,19 @@ const SplashPage = () => {
                         </div>
                     </motion.div>
 
+                    {/* Micro-testimonial for trust */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.0 }}
+                        className="mt-4 text-center"
+                    >
+                        <p className="text-slate-400 text-sm italic">
+                            "I set up my first agent in 10 minutes. Now my mornings run themselves."
+                            <span className="text-teal-400 font-medium not-italic ml-1">— Sarah M., working mom</span>
+                        </p>
+                    </motion.div>
+
                     {/* Secondary link - Minimal, for returning users only */}
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -211,7 +224,7 @@ const SplashPage = () => {
                 >
                     <EmailCaptureForm
                         source="splash_page"
-                        headline="📬 Not ready to start yet?"
+                        headline="📬 Join 500+ AI learners"
                         subheadline="Get a free AI Starter Checklist"
                         buttonText="Send Tips"
                         successMessage="Check inbox!"
