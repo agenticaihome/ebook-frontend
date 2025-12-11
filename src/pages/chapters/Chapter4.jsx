@@ -304,13 +304,18 @@ Start by asking what email I use.`;
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready for your Money Check-In Agent?</h3>
                             <p className="text-slate-400 text-sm mb-4">Get a weekly snapshot of your finances without the stress.</p>
-                            <Link
-                                to="/part2/chapter2"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-400 hover:to-teal-400 text-white font-bold rounded-xl transition-all"
-                            >
-                                🎉 Awesome! On to Chapter 5
-                                <ArrowRight size={18} />
-                            </Link>
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                                <Link to="/part1/chapter3" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
+                                    ← Back to Chapter 3
+                                </Link>
+                                <Link
+                                    to="/part2/chapter2"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-400 hover:to-teal-400 text-white font-bold rounded-xl transition-all"
+                                >
+                                    🎉 Awesome! On to Chapter 5
+                                    <ArrowRight size={18} />
+                                </Link>
+                            </div>
                         </div>
                     </motion.section>
 

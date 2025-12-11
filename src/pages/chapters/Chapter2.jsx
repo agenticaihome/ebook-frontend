@@ -301,13 +301,18 @@ Real food, not fancy stuff. Set this up now.`;
 
                     {/* NEXT */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mb-10">
-                        <Link
-                            to="/part1/chapter3"
-                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-orange-500/20"
-                        >
-                            🎉 Great! On to Chapter 3
-                            <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                            <Link to="/part1/chapter1" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
+                                ← Back to Chapter 1
+                            </Link>
+                            <Link
+                                to="/part1/chapter3"
+                                className="group flex items-center justify-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white py-5 px-8 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-orange-500/20"
+                            >
+                                🎉 Great! On to Chapter 3
+                                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </div>
                         <p className="text-center text-slate-500 text-sm mt-3">
                             Next: Never forget important dates again
                         </p>
