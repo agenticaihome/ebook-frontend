@@ -862,11 +862,11 @@ const DeepWorkDive = ({ onBack }) => {
                                 <h1 className="text-3xl sm:text-4xl font-black text-white mb-1 tracking-tight">
                                     DEEP WORK DIVE
                                 </h1>
-                                <p className="text-cyan-400 font-medium mb-2 text-sm sm:text-base">
-                                    Guide Captain Efficiency through distractions!
+                                <p className="text-cyan-400 font-medium mb-1 text-sm sm:text-base">
+                                    Tap to stay in the Deep Work Zone!
                                 </p>
                                 <p className="text-slate-400 text-xs mb-5">
-                                    🎮 Starts easy • Gets harder as you improve
+                                    🎮 Avoid distractions • The longer you focus, the deeper you dive
                                 </p>
 
                                 {bestScore > 0 && (
