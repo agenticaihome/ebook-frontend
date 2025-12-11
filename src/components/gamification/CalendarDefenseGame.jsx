@@ -934,9 +934,9 @@ const CalendarDefenseGame = ({ onBack }) => {
                         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-2xl font-bold text-white mb-4 shadow-lg shadow-purple-500/30">
                             CE
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">Calendar Defense</h3>
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">Meeting Mayhem</h3>
                         <p className="text-slate-300 mb-6 max-w-sm text-sm sm:text-base">
-                            Protect your deep work time from meeting invaders!
+                            Your calendar is under attack! Decline meetings to protect your deep work time.
                         </p>
 
                         <div className="grid grid-cols-2 gap-3 mb-6 text-left text-xs max-w-sm">
