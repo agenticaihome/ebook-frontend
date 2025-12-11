@@ -136,7 +136,7 @@ const PrePurchaseBridge = () => {
                         </h1>
 
                         <p className="text-slate-300 text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-                            Unlock the full army of 10 agents to handle your emails, meals, money, and admin—forever.
+                            Unlock the full army of 10 agents to handle your emails, meals, money, and admin. <span className="text-teal-400 font-medium">Your future self will thank you.</span>
                         </p>
 
                         {/* Price Anchor - Evergreen Milestone */}
@@ -167,7 +167,7 @@ const PrePurchaseBridge = () => {
                         </Link>
 
                         <div className="mt-4 text-sm text-slate-400">
-                            Secure checkout • Instant access
+                            Love it or it's free. We promise.
                         </div>
                     </motion.section>
 

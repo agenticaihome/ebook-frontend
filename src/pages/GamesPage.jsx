@@ -52,7 +52,7 @@ const GamesPage = () => {
         {
             id: 'deepwork',
             title: 'Deep Work Dive',
-            description: '🔥 FREE TO PLAY! Flappy Bird meets productivity. Tap to surge, dodge distractions. Can you survive 30?',
+            description: '🔥 FREE TO PLAY! Flappy Bird meets productivity. Tap to surge, can you beat the urge to scroll?',
             icon: Zap,
             color: 'from-blue-500 to-teal-400',
             component: DeepWorkDive,
@@ -65,7 +65,7 @@ const GamesPage = () => {
         {
             id: 'triage',
             title: 'Inbox Defense',
-            description: 'Train your triage instincts. Every email is someone else\'s agenda—learn to spot what\'s actually yours.',
+            description: 'Train your triage instincts. Feel the zen of an empty inbox — separate noise from signal.',
             icon: Mail,
             color: 'from-teal-500 to-blue-500',
             component: AgentTriageGame,
@@ -77,7 +77,7 @@ const GamesPage = () => {
         {
             id: 'calendar',
             title: 'Meeting Mayhem',
-            description: 'Your calendar is under siege. Decline the noise, defend deep work, survive the meeting onslaught.',
+            description: 'Your calendar is under siege. Practice saying "no" here so you can say it in real life.',
             icon: Calendar,
             color: 'from-purple-500 to-pink-500',
             component: CalendarDefenseGame,

@@ -87,7 +87,7 @@ const SplashPage = () => {
                             className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-800/90 backdrop-blur-sm border border-teal-500/30 rounded-xl px-4 py-2 whitespace-nowrap"
                         >
                             <p className="text-sm md:text-base text-white font-medium">
-                                Ready to reclaim your time? <span className="text-teal-400">Let's go!</span>
+                                Ready to reclaim your time? <span className="text-teal-400">It's easier than you think.</span>
                             </p>
                             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-slate-800/90" />
                         </motion.div>
@@ -131,7 +131,7 @@ const SplashPage = () => {
                         </div>
                         <div className="flex items-center gap-2 text-slate-400">
                             <Zap size={18} className="text-amber-400" />
-                            <span><span className="text-white font-bold">Zero</span> coding</span>
+                            <span><span className="text-white font-bold">Zero</span> tech skills needed</span>
                         </div>
                         <div className="flex items-center gap-2 text-slate-300">
                             <Shield size={18} className="text-green-400" />
@@ -156,6 +156,7 @@ const SplashPage = () => {
                             {/* Glow pulse */}
                             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-400 to-cyan-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
                         </Link>
+                        <p className="mt-3 text-slate-500 text-sm font-medium">✨ No credit card required</p>
                     </motion.div>
 
                     {/* Social Proof - With Live Counter */}
