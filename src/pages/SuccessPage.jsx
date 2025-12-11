@@ -27,6 +27,14 @@ const SuccessPage = () => {
                     setStatus('success');
                     setMessage('Payment successful! Redirecting to setup...');
 
+                    // Store paid status in localStorage for unlocking games/content
+                    localStorage.setItem('stripe_payment', JSON.stringify({
+                        paid: true,
+                        paymentId: result.paymentId,
+                        email: result.email,
+                        timestamp: new Date().toISOString()
+                    }));
+
                     // 🎉 DIS audit: Celebration moment
                     confetti({
                         particleCount: 150,

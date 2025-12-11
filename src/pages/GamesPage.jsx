@@ -116,9 +116,10 @@ const GamesPage = () => {
         // Check if unlocked
         let isUnlocked = !game.unlockCondition;
         try {
-            // Check if user has paid for full access
+            // Check if user has paid for full access (Ergo or Stripe)
             const ergoPayment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
-            if (ergoPayment.paid === true) isUnlocked = true;
+            const stripePayment = JSON.parse(localStorage.getItem('stripe_payment') || '{}');
+            if (ergoPayment.paid === true || stripePayment.paid === true) isUnlocked = true;
 
             isUnlocked = isUnlocked ||
                 localStorage.getItem(`unlocked_part_${game.unlockCondition}`) === 'true' ||
@@ -143,9 +144,10 @@ const GamesPage = () => {
     const isGameUnlocked = (game) => {
         if (!game.unlockCondition) return true;
         try {
-            // Check if user has paid for full access
+            // Check if user has paid for full access (Ergo or Stripe)
             const ergoPayment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
-            if (ergoPayment.paid === true) return true;
+            const stripePayment = JSON.parse(localStorage.getItem('stripe_payment') || '{}');
+            if (ergoPayment.paid === true || stripePayment.paid === true) return true;
 
             // Check beta access or individual part unlock
             return localStorage.getItem(`unlocked_part_${game.unlockCondition}`) === 'true' ||
