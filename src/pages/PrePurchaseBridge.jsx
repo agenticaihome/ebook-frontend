@@ -357,7 +357,7 @@ const PrePurchaseBridge = () => {
                         <Link
                             to="/payment-guide"
                             onClick={handleCheckoutClick}
-                            className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-2xl font-black text-xl inline-flex items-center gap-2 transition-transform hover:scale-105"
+                            className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-2xl font-black text-xl inline-flex items-center gap-2 transition-transform hover:scale-[1.02]"
                         >
                             Get Instant Access <Zap size={20} className="text-teal-600 fill-teal-600" />
                         </Link>

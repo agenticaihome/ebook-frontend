@@ -21,12 +21,12 @@ const OnboardingPage = () => {
                 {/* Cinematic Background */}
                 <div className="fixed inset-0 pointer-events-none">
                     <motion.div
-                        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.05, 0.15, 0.05] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-teal-500 rounded-full blur-[150px]"
                     />
                     <motion.div
-                        animate={{ scale: [1.2, 1, 1.2], opacity: [0.08, 0.15, 0.08] }}
+                        animate={{ scale: [1.2, 1, 1.2], opacity: [0.05, 0.1, 0.05] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                         className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-orange-500 rounded-full blur-[120px]"
                     />
@@ -154,7 +154,7 @@ const OnboardingPage = () => {
                     >
                         <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-5 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-2xl">
                             <p className="text-slate-300 text-sm font-medium">Ready to start now?</p>
-                            <Link to="/part1/chapter1" className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-teal-500/20 hover:scale-105">
+                            <Link to="/part1/chapter1" className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-teal-500/20 hover:scale-[1.02]">
                                 Begin Chapter 1 <ArrowRight size={18} />
                             </Link>
                         </div>
@@ -189,10 +189,10 @@ const OnboardingPage = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.05 }}
-                                    className="bg-slate-800/40 rounded-xl p-5 border border-slate-700/50 hover:border-slate-600/80 transition-all"
+                                    className="bg-slate-800/40 rounded-2xl p-6 border border-slate-700/50 hover:border-slate-600/80 transition-all"
                                 >
                                     <span className="text-3xl mb-3 block">{item.emoji}</span>
-                                    <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
+                                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
                                     <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                                 </motion.div>
                             ))}
@@ -387,10 +387,10 @@ const OnboardingPage = () => {
                                     initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50"
+                                    className="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 hover:bg-slate-800/50 transition-colors"
                                 >
-                                    <p className="text-slate-500 text-sm mb-1">"{item.worry}"</p>
-                                    <p className="text-white font-medium">{item.answer}</p>
+                                    <p className="text-slate-500 text-sm mb-2 font-medium">"{item.worry}"</p>
+                                    <p className="text-white text-lg font-bold">{item.answer}</p>
                                 </motion.div>
                             ))}
                         </div>

@@ -113,7 +113,7 @@ Set this up now.`;
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.15 }}
-                        className="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-xl p-4 mb-6 text-center"
+                        className="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-2xl p-4 mb-6 text-center"
                     >
                         <p className="text-white text-sm md:text-base">
                             ✅ <span className="font-medium">By the end of this 5-minute chapter</span>, you'll have an AI that sends you a personalized morning briefing every day.
@@ -172,7 +172,7 @@ Set this up now.`;
                             <h3 className="text-white font-bold">Choose an AI (Any will work)</h3>
                         </div>
 
-                        <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50 mb-3">
+                        <div className="bg-slate-800/30 rounded-2xl p-4 border border-slate-700/50 mb-3">
                             <p className="text-slate-300 text-sm mb-3">
                                 Don't have any of these? <strong className="text-teal-400">ChatGPT is the easiest to start with.</strong> It's free and takes 30 seconds to sign up with your Google or Apple account.
                             </p>
@@ -183,7 +183,7 @@ Set this up now.`;
                                         href={platform.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`relative flex items-center justify-center gap-2 px-3 py-3 rounded-xl bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:scale-105 transition-all`}
+                                        className={`relative flex items-center justify-center gap-2 px-3 py-3 rounded-xl bg-gradient-to-r ${platform.color} text-white font-bold text-sm hover:scale-[1.02] transition-all`}
                                     >
                                         {platform.recommended && (
                                             <span className="absolute -top-2 -right-1 bg-amber-400 text-black text-[10px] px-2 py-0.5 rounded-full font-bold">
@@ -212,7 +212,7 @@ Set this up now.`;
 
                             <button
                                 onClick={handleCopy}
-                                className={`w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-lg transition-all ${copied
+                                className={`w-full flex items-center justify-center gap-3 py-4 rounded-2xl font-bold text-lg transition-all ${copied
                                     ? 'bg-green-500 text-white'
                                     : 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white'
                                     }`}
@@ -272,7 +272,7 @@ Set this up now.`;
                             <h3 className="text-white font-bold">Answer 3 questions</h3>
                         </div>
 
-                        <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700/50">
+                        <div className="bg-slate-800/30 rounded-2xl p-5 border border-slate-700/50">
                             <p className="text-slate-300 text-sm mb-4">The AI will ask you:</p>
                             <ul className="space-y-2 text-sm mb-4">
                                 <li className="flex items-start gap-2 text-slate-300">
@@ -299,7 +299,7 @@ Set this up now.`;
 
                     {/* NOTIFICATIONS TIP */}
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="mb-6">
-                        <div className="bg-amber-900/20 rounded-xl p-4 border border-amber-500/30">
+                        <div className="bg-amber-900/20 rounded-2xl p-4 border border-amber-500/30">
                             <div className="flex items-start gap-3">
                                 <Smartphone className="text-amber-400 flex-shrink-0 mt-0.5" size={20} />
                                 <div>
@@ -317,7 +317,7 @@ Set this up now.`;
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="mb-8">
                         <button
                             onClick={() => setShowTroubleshooting(!showTroubleshooting)}
-                            className="w-full flex items-center justify-between py-3 px-4 bg-slate-800/30 rounded-xl border border-slate-700/50 text-left hover:bg-slate-800/50 transition-colors"
+                            className="w-full flex items-center justify-between py-3 px-4 bg-slate-800/30 rounded-2xl border border-slate-700/50 text-left hover:bg-slate-800/50 transition-colors"
                         >
                             <span className="flex items-center gap-2 text-slate-300 text-sm font-medium">
                                 <HelpCircle size={16} className="text-slate-400" />
@@ -431,8 +431,8 @@ Set this up now.`;
                     </motion.section>
 
                 </div>
-            </div>
-        </WebbookLayout>
+            </div >
+        </WebbookLayout >
     );
 };
 

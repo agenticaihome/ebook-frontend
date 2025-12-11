@@ -241,7 +241,7 @@ const WebbookLayout = ({ children }) => {
                     </Link>
                     <button
                         onClick={() => setIsSidebarOpen(false)}
-                        className="md:hidden absolute top-3 right-3 text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors"
+                        className="md:hidden absolute top-3 right-3 text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors"
                         aria-label="Close Menu"
                     >
                         <X size={20} />
@@ -259,7 +259,7 @@ const WebbookLayout = ({ children }) => {
                     >
                         <BarChart3 size={18} />
                         <span className="font-bold">My Progress</span>
-                        <span className="ml-auto text-sm bg-teal-500/20 text-teal-400 px-2 py-0.5 rounded-lg font-bold">{progressPercent}%</span>
+                        <span className="ml-auto text-sm bg-teal-500/10 text-teal-400 px-2.5 py-0.5 rounded-lg font-bold shadow-[0_0_10px_rgba(20,184,166,0.2)]">{progressPercent}%</span>
                     </PrefetchLink>
 
                     {/* Course Section Header */}
@@ -343,11 +343,11 @@ const WebbookLayout = ({ children }) => {
                                     <div className="mx-2 my-3">
                                         <Link
                                             to="/unlock"
-                                            className="block bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-2 border-amber-500/40 hover:border-amber-400/60 rounded-xl p-3 transition-all hover:scale-[1.02] active:scale-[0.98] group"
+                                            className="block bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 hover:border-amber-400/50 rounded-2xl p-4 transition-all hover:scale-[1.02] active:scale-[0.98] group"
                                         >
-                                            <div className="flex items-center gap-2 mb-1">
+                                            <div className="flex items-center gap-2 mb-2">
                                                 <Unlock size={16} className="text-amber-400" />
-                                                <span className="text-amber-400 font-bold text-sm">Get Full Access</span>
+                                                <span className="text-amber-400 font-bold text-sm tracking-wide">Get Full Access</span>
                                             </div>
                                             <div className="flex items-center justify-between">
                                                 <span className="text-slate-400 text-xs">9 more chapters</span>
@@ -384,7 +384,7 @@ const WebbookLayout = ({ children }) => {
                 <div className="border-t border-slate-700/50 p-3">
                     <PrefetchLink
                         to="/faq"
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-sm ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white'}`}
+                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-sm ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white'}`}
                     >
                         <HelpCircle size={16} />
                         <span>FAQ & Support</span>
@@ -401,7 +401,7 @@ const WebbookLayout = ({ children }) => {
                         {!isSidebarOpen && (
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-400 flex-shrink-0"
+                                className="p-2 hover:bg-slate-800 rounded-xl text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-400 flex-shrink-0"
                                 aria-label="Open Sidebar"
                             >
                                 <Menu size={22} />
@@ -426,15 +426,15 @@ const WebbookLayout = ({ children }) => {
 
                     <div className="flex items-center gap-3">
                         {isLoggedIn ? (
-                            <Link to="/dashboard" className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:from-teal-400 hover:to-cyan-400 transition-colors shadow-lg shadow-teal-900/30">
+                            <Link to="/dashboard" className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-5 py-2 rounded-2xl text-sm font-bold hover:from-teal-400 hover:to-cyan-400 transition-all shadow-lg shadow-teal-900/30 hover:shadow-teal-500/20">
                                 Dashboard
                             </Link>
                         ) : (
                             <>
-                                <Link to="/login" className="text-sm font-medium text-slate-400 hover:text-teal-400 rounded-lg px-2 py-1">
+                                <Link to="/login" className="text-sm font-medium text-slate-400 hover:text-teal-400 rounded-xl px-3 py-1.5 transition-colors">
                                     Login
                                 </Link>
-                                <Link to="/unlock" className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:from-amber-400 hover:to-orange-400 transition-colors shadow-lg shadow-amber-900/30">
+                                <Link to="/unlock" className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-2 rounded-2xl text-sm font-bold hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-900/30 hover:shadow-amber-500/20">
                                     Get Full Access
                                 </Link>
                             </>
