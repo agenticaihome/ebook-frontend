@@ -346,7 +346,7 @@ const WebbookLayout = ({ children }) => {
                                                 <span className="text-slate-400 text-xs">9 more chapters</span>
                                                 <div className="text-right">
                                                     <span className="text-white font-bold text-sm group-hover:translate-x-0.5 transition-transform">$39.99 →</span>
-                                                    <span className="text-amber-400/70 text-[9px] block">↑ Feb 1</span>
+                                                    <span className="text-green-400/70 text-[9px] block">🛡️ 30-day guarantee</span>
                                                 </div>
                                             </div>
                                         </Link>

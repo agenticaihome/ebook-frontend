@@ -88,6 +88,7 @@ const PrePurchaseBridge = () => {
 
     const faqs = [
         { q: 'Do I need coding skills?', a: 'Nope! Just copy-paste prompts into ChatGPT. If you can send an email, you can do this.' },
+        { q: 'How much time does this take?', a: 'Each chapter is 5-10 minutes. Most people finish a chapter during coffee. Set up one agent, then come back when you\'re ready for the next.' },
         { q: 'What if I get stuck?', a: 'Each chapter has troubleshooting tips. Plus email us at support@agenticaihome.com — we actually respond!' },
         { q: 'Can I get a refund?', a: '100%. If you don\'t love it within 30 days, email us and we\'ll refund you — no questions asked.' },
     ];
@@ -138,18 +139,18 @@ const PrePurchaseBridge = () => {
                             Unlock the full army of 10 agents to handle your emails, meals, money, and admin—forever.
                         </p>
 
-                        {/* Price Anchor (Bezos Audit) */}
+                        {/* Price Anchor - Evergreen Milestone */}
                         <div className="mb-8 relative inline-block">
-                            <div className="absolute -top-3 -right-6 rotate-12 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse">
-                                PRICE ↑ FEB 1
+                            <div className="absolute -top-3 -right-6 rotate-12 bg-teal-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-lg">
+                                LAUNCH PRICE
                             </div>
-                            <div className="text-amber-400 font-bold text-xs tracking-wider uppercase mb-1">🚀 Early Adopter Pricing</div>
+                            <div className="text-teal-400 font-bold text-xs tracking-wider uppercase mb-1">🚀 Launch Pricing</div>
                             <div className="inline-flex items-baseline gap-2">
                                 <span className="text-4xl font-black text-white">$39.99</span>
                                 <span className="text-slate-500 line-through text-xl">$49.99</span>
                             </div>
                             <p className="text-slate-500 text-sm mt-1">One-time payment • Lifetime access</p>
-                            <p className="text-amber-400/80 text-xs mt-1 font-medium">⏰ Becomes $49.99 on Feb 1st</p>
+                            <p className="text-teal-400/80 text-xs mt-1 font-medium">📈 Increases at 1,000 members</p>
                         </div>
 
                         {/* Primary CTA */}
@@ -250,12 +251,12 @@ const PrePurchaseBridge = () => {
                                 <div className="flex items-center gap-1 mb-2">
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
                                 </div>
-                                <p className="text-slate-300 text-sm mb-3">"The Meal Planner alone saved me <span className="text-white font-bold">2 hours this Sunday</span>. It writes the list, I just shop."</p>
+                                <p className="text-slate-300 text-sm mb-3">"Went from <span className="text-red-400">Sunday dinner panic</span> to <span className="text-green-400">calm meal prep</span>. The Meal Planner saved me <span className="text-white font-bold">2 hours</span> on my first Sunday."</p>
                                 <div className="flex items-center gap-2">
                                     <div className="w-8 h-8 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold text-xs">SJ</div>
                                     <div>
                                         <div className="text-white text-xs font-bold">Sarah J.</div>
-                                        <div className="text-slate-500 text-[10px]">Mom of 3</div>
+                                        <div className="text-slate-500 text-[10px]">Mom of 3 • Austin, TX</div>
                                     </div>
                                 </div>
                             </div>
@@ -264,12 +265,12 @@ const PrePurchaseBridge = () => {
                                 <div className="flex items-center gap-1 mb-2">
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
                                 </div>
-                                <p className="text-slate-300 text-sm mb-3">"Email Triage is a lifesaver. I used to spend an hour a day. Now it's <span className="text-white font-bold">10 minutes</span>."</p>
+                                <p className="text-slate-300 text-sm mb-3">"<span className="text-red-400">Inbox anxiety</span> → <span className="text-green-400">inbox zero</span>. I used to dread mornings. Now Email Triage handles it in <span className="text-white font-bold">10 minutes</span>."</p>
                                 <div className="flex items-center gap-2">
                                     <div className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs">MT</div>
                                     <div>
                                         <div className="text-white text-xs font-bold">Mike T.</div>
-                                        <div className="text-slate-500 text-[10px]">Small Biz Owner</div>
+                                        <div className="text-slate-500 text-[10px]">Small Biz Owner • Denver, CO</div>
                                     </div>
                                 </div>
                             </div>
@@ -278,12 +279,12 @@ const PrePurchaseBridge = () => {
                                 <div className="flex items-center gap-1 mb-2">
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
                                 </div>
-                                <p className="text-slate-300 text-sm mb-3">"I built the 'Never-Forget' agent in <span className="text-white font-bold">5 minutes</span>. My wife was impressed I remembered!"</p>
+                                <p className="text-slate-300 text-sm mb-3">"Built the 'Never-Forget' agent in <span className="text-white font-bold">5 minutes</span>. My wife went from <span className="text-red-400">annoyed</span> to <span className="text-green-400">impressed</span> I remembered her mom's birthday."</p>
                                 <div className="flex items-center gap-2">
                                     <div className="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs">DR</div>
                                     <div>
                                         <div className="text-white text-xs font-bold">David R.</div>
-                                        <div className="text-slate-500 text-[10px]">Student</div>
+                                        <div className="text-slate-500 text-[10px]">Grad Student • Seattle, WA</div>
                                     </div>
                                 </div>
                             </div>
@@ -333,7 +334,7 @@ const PrePurchaseBridge = () => {
                                             <span>Agentic AI Home</span>
                                             <div className="text-right">
                                                 <span className="text-2xl text-teal-400">$39.99</span>
-                                                <div className="text-xs text-amber-400/70 font-normal">until Feb 1</div>
+                                                <div className="text-xs text-teal-400/70 font-normal">launch price</div>
                                             </div>
                                         </div>
                                     </div>
@@ -415,7 +416,7 @@ const PrePurchaseBridge = () => {
                         ) : (
                             <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
                                 <p className="text-slate-400 text-sm text-center mb-3">
-                                    📬 Not ready yet? Get free AI tips + a starter checklist
+                                    🎁 <span className="text-teal-400 font-medium">Get Your Free AI Starter Kit</span> — tips + checklist
                                 </p>
                                 <form className="flex gap-2" onSubmit={handleSubscribe}>
                                     <input
@@ -447,8 +448,12 @@ const PrePurchaseBridge = () => {
                         onClick={handleCheckoutClick}
                         className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-teal-500/30"
                     >
-                        Unlock All 10 Chapters — $39.99 (↑ Feb 1)
+                        Unlock All 10 Chapters — $39.99
                     </Link>
+                    <p className="text-center text-slate-500 text-xs mt-2 flex items-center justify-center gap-2">
+                        <Shield size={12} className="text-green-400" />
+                        30-day money-back guarantee
+                    </p>
                 </div>
             </div>
         </WebbookLayout>

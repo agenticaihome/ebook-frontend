@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Bell, ExternalLink, Sun, Calendar, Brain, AlertCircle, HelpCircle, Smartphone, Eye } from 'lucide-react';
+import { ArrowRight, Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Bell, ExternalLink, Sun, Calendar, Brain, AlertCircle, HelpCircle, Smartphone, Eye, Shield } from 'lucide-react';
 import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
@@ -341,7 +341,7 @@ Set this up now.`;
 
                     {/* NEXT - Jobs/Bezos Exclusivity Framing */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mb-10">
-                        <div className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 rounded-2xl p-6 border border-amber-500/30 text-center mb-6">
+                        <div className="bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-2xl p-6 border border-green-500/30 text-center mb-6">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4">
                                 <CheckCircle size={16} />
                                 Chapter 1 Complete!
@@ -349,6 +349,9 @@ Set this up now.`;
                             <h3 className="text-white font-bold text-xl mb-2">You just built your first AI agent. 🎉</h3>
                             <p className="text-slate-400 text-sm mb-4">
                                 Most people never get past this point. You're already ahead.
+                            </p>
+                            <p className="text-teal-400 text-sm font-medium">
+                                ✨ Now imagine 9 more handling your meals, emails, money, fitness...
                             </p>
                         </div>
 
@@ -359,14 +362,20 @@ Set this up now.`;
 
                         <Link
                             to="/unlock"
-                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-[0.98]"
+                            className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
                         >
-                            🔓 Get Full Access
+                            Continue Your Journey
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
-                        <p className="text-center text-slate-500 text-sm mt-3">
-                            Reclaim 5+ hours every week — 10 agents, 10 chapters, lifetime access
-                        </p>
+                        <div className="text-center mt-4 space-y-1">
+                            <p className="text-slate-500 text-sm">
+                                Reclaim 5+ hours every week — 10 agents, 10 chapters, lifetime access
+                            </p>
+                            <p className="text-green-400/80 text-xs flex items-center justify-center gap-1">
+                                <Shield size={12} />
+                                30-day money-back guarantee — no questions asked
+                            </p>
+                        </div>
                     </motion.section>
 
                 </div>
