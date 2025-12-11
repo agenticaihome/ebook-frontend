@@ -21,25 +21,25 @@ export default function HowToPay() {
             onClick={() => setDevice(type)}
             className={`flex items-center gap-3 px-6 py-4 rounded-xl border transition-all w-full md:w-auto justify-center
                 ${device === type
-                    ? 'bg-green-500/20 border-green-500 text-white shadow-[0_0_20px_rgba(34,197,94,0.2)]'
-                    : 'bg-slate-800/50 border-slate-600 text-slate-400 hover:bg-slate-800 hover:border-slate-600'
+                    ? 'bg-teal-500/20 border-teal-500 text-white shadow-[0_0_20px_rgba(20,184,166,0.2)]'
+                    : 'bg-slate-800/50 border-slate-600 text-slate-400 hover:bg-slate-800 hover:border-slate-500'
                 }`}
         >
-            <Icon size={24} className={device === type ? 'text-green-400' : ''} />
+            <Icon size={24} className={device === type ? 'text-teal-400' : ''} />
             <span className="font-bold">{label}</span>
         </button>
     );
 
     const StepHeader = ({ number, title, time }) => (
         <div className="flex items-center gap-4 mb-6">
-            <div className="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 font-bold text-xl">
+            <div className="w-10 h-10 rounded-full bg-teal-500/20 border border-teal-500/50 flex items-center justify-center text-teal-400 font-bold text-xl shadow-[0_0_15px_rgba(20,184,166,0.2)]">
                 {number}
             </div>
             <div>
-                <h2 className="text-2xl font-bold text-white">{title}</h2>
+                <h2 className="text-2xl font-bold text-white tracking-tight">{title}</h2>
                 <p className="text-slate-400 text-sm flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-slate-600"></span>
-                    Estimated time: {time}
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+                    Estimated time: <span className="text-slate-300 font-medium">{time}</span>
                 </p>
             </div>
         </div>
@@ -58,14 +58,14 @@ export default function HowToPay() {
                                 Payment Guide
                             </Link>
                             <span>/</span>
-                            <span className="text-green-400">Ergo Guide</span>
+                            <span className="text-teal-400 font-medium">Ergo Guide</span>
                         </div>
 
                         <div className="text-center">
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                                 Complete Ergo Payment Guide
-                                <span className="block text-2xl md:text-3xl text-green-400 mt-2 font-normal">
-                                    Smart Money for the Agentic Age: Efficient Peer-to-Peer Finance
+                                <span className="block text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 mt-2 font-normal">
+                                    Smart Money for the Agentic Age
                                 </span>
                             </h1>
                             <p className="text-xl text-slate-300 font-medium mb-8 max-w-2xl mx-auto">
@@ -160,7 +160,7 @@ export default function HowToPay() {
                         {/* DESKTOP - Nautilus (Primary Recommendation) */}
                         <div className="bg-slate-800/50 rounded-2xl p-8 border border-slate-600 mb-6">
                             <div className="flex items-center gap-3 mb-4">
-                                <Monitor className="text-green-400" size={28} />
+                                <Monitor className="text-teal-400" size={28} />
                                 <h3 className="text-xl font-bold text-white">Desktop: Nautilus Wallet (Recommended)</h3>
                             </div>
                             <p className="text-slate-400 mb-6">
@@ -341,11 +341,11 @@ export default function HowToPay() {
                                 <div>
                                     <h4 className="font-bold text-white mb-2">1. Create Account</h4>
                                     <p className="text-slate-400 mb-4">Go to CoinEx.com and sign up with your email.</p>
-                                    <div className="rounded-xl overflow-hidden border border-slate-600 shadow-2xl">
+                                    <div className="rounded-xl overflow-hidden border border-slate-600/50 shadow-2xl max-w-md mx-auto hover:scale-[1.02] transition-transform duration-500">
                                         <img
                                             src="/images/guide/guide-coinex-signup.png"
                                             alt="CoinEx Sign Up Page"
-                                            className="w-full h-auto"
+                                            className="w-full h-auto opacity-90 hover:opacity-100 transition-opacity"
                                         />
                                     </div>
                                 </div>
@@ -355,22 +355,26 @@ export default function HowToPay() {
                                     <p className="text-slate-400 mb-4">
                                         Click "Buy Crypto", select <strong>ERG</strong>, and enter <strong>$25</strong>. Pay with your card.
                                     </p>
-                                    <div className="grid md:grid-cols-2 gap-4">
-                                        <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg">
-                                            <img
-                                                src="/images/guide/guide-search-erg.jpg"
-                                                alt="Search for ERG"
-                                                className="w-full h-auto"
-                                            />
-                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Search for "ERG"</p>
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div className="rounded-xl overflow-hidden border border-slate-600/50 shadow-lg bg-slate-900/50 max-w-sm mx-auto">
+                                            <div className="p-1">
+                                                <img
+                                                    src="/images/guide/guide-search-erg.jpg"
+                                                    alt="Search for ERG"
+                                                    className="w-full h-auto rounded-lg"
+                                                />
+                                            </div>
+                                            <p className="text-xs text-center p-3 text-slate-400 font-medium bg-slate-900/80 backdrop-blur-sm">1. Search for "ERG"</p>
                                         </div>
-                                        <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg">
-                                            <img
-                                                src="/images/guide/guide-buy-erg.png"
-                                                alt="Buy ERG Interface"
-                                                className="w-full h-auto"
-                                            />
-                                            <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Select Amount & Buy</p>
+                                        <div className="rounded-xl overflow-hidden border border-slate-600/50 shadow-lg bg-slate-900/50 max-w-sm mx-auto">
+                                            <div className="p-1">
+                                                <img
+                                                    src="/images/guide/guide-buy-erg.png"
+                                                    alt="Buy ERG Interface"
+                                                    className="w-full h-auto rounded-lg"
+                                                />
+                                            </div>
+                                            <p className="text-xs text-center p-3 text-slate-400 font-medium bg-slate-900/80 backdrop-blur-sm">2. Select Amount & Buy</p>
                                         </div>
                                     </div>
                                 </div>
@@ -385,12 +389,14 @@ export default function HowToPay() {
                                             ⚠️ Triple-check the address! If you send to the wrong place, it's gone.
                                         </p>
                                     </div>
-                                    <div className="rounded-xl overflow-hidden border border-slate-600 shadow-lg">
-                                        <img
-                                            src="/images/guide/guide-withdraw.png"
-                                            alt="Withdraw Funds Interface"
-                                            className="w-full h-auto"
-                                        />
+                                    <div className="rounded-xl overflow-hidden border border-slate-600/50 shadow-lg max-w-md mx-auto bg-slate-900/50">
+                                        <div className="p-1">
+                                            <img
+                                                src="/images/guide/guide-withdraw.png"
+                                                alt="Withdraw Funds Interface"
+                                                className="w-full h-auto rounded-lg"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -451,7 +457,7 @@ export default function HowToPay() {
                                         alt="Wallet QR Code"
                                         className="w-full h-auto"
                                     />
-                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Scan to Auto-Fill Address</p>
+                                    <p className="text-xs text-center p-2 bg-slate-900/80 backdrop-blur-sm text-slate-400 font-medium">Scan to Auto-Fill Address</p>
                                 </div>
                             </div>
 
@@ -468,7 +474,7 @@ export default function HowToPay() {
                                         alt="Terminus Wallet Send Screen"
                                         className="w-full h-auto"
                                     />
-                                    <p className="text-xs text-center p-2 bg-slate-900 text-slate-400">Terminus Wallet: Confirm Address & Amount</p>
+                                    <p className="text-xs text-center p-2 bg-slate-900/80 backdrop-blur-sm text-slate-400 font-medium">Terminus Wallet: Confirm Address & Amount</p>
                                 </div>
                             </div>
 
