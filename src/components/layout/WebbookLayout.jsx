@@ -264,7 +264,7 @@ const WebbookLayout = ({ children }) => {
 
                     {/* Course Section Header */}
                     <div className="pt-2 pb-2 px-2">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">📚 The Course</span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 The Course</span>
                     </div>
 
                     {/* CHAPTERS */}
@@ -365,7 +365,7 @@ const WebbookLayout = ({ children }) => {
 
                     {/* EXTRAS Section */}
                     <div className="pt-4 pb-2 px-2">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">✨ Extras</span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">✨ Extras</span>
                     </div>
                     <PrefetchLink
                         to="/games"
