@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import CaptainHero from '../components/CaptainHero';
 
 const NotFoundPage = () => {
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>404 - Page Not Found | Agentic AI Home</title>
+                <meta name="description" content="This page doesn't exist. Return home to explore AI automation for your daily life." />
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
             <div className="min-h-screen bg-[#0f0f1a] text-white flex items-center justify-center px-6">
                 <div className="max-w-2xl w-full text-center">
                     <CaptainHero

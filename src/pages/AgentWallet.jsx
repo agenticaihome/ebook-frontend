@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import {
     Wallet, Clock, Zap, Search, Star, Trophy
@@ -86,6 +87,10 @@ const AgentWallet = ({ unlockedCardIds: propUnlockedCardIds }) => {
 
     return (
         <WebbookLayout>
+            <Helmet>
+                <title>Your Agent Deck | Agentic AI Home</title>
+                <meta name="description" content="View and manage your collected AI agent cards." />
+            </Helmet>
             <div className="min-h-screen bg-[#0f0f1a] p-6">
                 <div className="max-w-7xl mx-auto">
                     <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-slate-600 overflow-hidden">
@@ -146,8 +151,8 @@ const AgentWallet = ({ unlockedCardIds: propUnlockedCardIds }) => {
                                             key={cat}
                                             onClick={() => setFilter(cat)}
                                             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === cat
-                                                    ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
-                                                    : 'bg-slate-700/50 text-slate-400 hover:text-white'
+                                                ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                                                : 'bg-slate-700/50 text-slate-400 hover:text-white'
                                                 }`}
                                         >
                                             {cat === 'all' ? 'All' : cat}

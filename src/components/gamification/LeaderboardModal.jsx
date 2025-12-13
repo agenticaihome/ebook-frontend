@@ -69,6 +69,9 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                 exit={{ opacity: 0 }}
                 className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
                 onClick={onClose}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="leaderboard-title"
             >
                 <m.div
                     initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -91,7 +94,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                                     <Sparkles className="absolute -top-1 -right-1 text-yellow-300 w-4 h-4" />
                                 </m.div>
                                 <div>
-                                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                                    <h2 id="leaderboard-title" className="text-xl font-bold text-white flex items-center gap-2">
                                         Top 10 Agents
                                         <span className="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full">GLOBAL</span>
                                     </h2>
@@ -100,6 +103,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                             </div>
                             <button
                                 onClick={onClose}
+                                aria-label="Close leaderboard"
                                 className="p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-400 hover:text-white"
                             >
                                 <X size={20} />

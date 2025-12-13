@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
+import React, { createContext, useState, useContext, useEffect, useRef, useMemo, useCallback } from 'react';
 
 const SoundContext = createContext();
 
@@ -22,7 +22,7 @@ export const SoundProvider = ({ children }) => {
         }
     };
 
-    const playChime = (type = 'success') => {
+    const playChime = useCallback((type = 'success') => {
         if (!isSoundEnabled) return;
 
         initAudioContext();
@@ -79,12 +79,19 @@ export const SoundProvider = ({ children }) => {
             oscillator.start(now);
             oscillator.stop(now + 0.8);
         }
-    };
+    }, [isSoundEnabled]);
 
-    const toggleSound = () => setIsSoundEnabled(!isSoundEnabled);
+    const toggleSound = useCallback(() => setIsSoundEnabled(prev => !prev), []);
+
+    // Memoize context value to prevent unnecessary re-renders
+    const value = useMemo(() => ({
+        isSoundEnabled,
+        toggleSound,
+        playChime
+    }), [isSoundEnabled, toggleSound, playChime]);
 
     return (
-        <SoundContext.Provider value={{ isSoundEnabled, toggleSound, playChime }}>
+        <SoundContext.Provider value={value}>
             {children}
         </SoundContext.Provider>
     );

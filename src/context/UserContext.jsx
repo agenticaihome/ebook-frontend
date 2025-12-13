@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 const UserContext = createContext();
 
@@ -45,8 +45,16 @@ export const UserProvider = ({ children }) => {
         return false;
     };
 
+    // Memoize context value to prevent unnecessary re-renders
+    const value = useMemo(() => ({
+        userState,
+        setUserState,
+        updatePersona,
+        unlockBadge
+    }), [userState]);
+
     return (
-        <UserContext.Provider value={{ userState, setUserState, updatePersona, unlockBadge }}>
+        <UserContext.Provider value={value}>
             {children}
         </UserContext.Provider>
     );

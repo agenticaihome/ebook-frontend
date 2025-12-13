@@ -37,6 +37,9 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
                         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                         className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="welcome-modal-title"
                     >
                         <div className="relative w-full max-w-md bg-gradient-to-b from-slate-800 to-slate-900 rounded-3xl border border-purple-500/30 shadow-2xl shadow-purple-500/20 overflow-hidden">
 
@@ -60,7 +63,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                                     <Crown className="text-white" size={32} />
                                 </m.div>
 
-                                <h2 className="text-2xl font-black text-white mb-2">
+                                <h2 id="welcome-modal-title" className="text-2xl font-black text-white mb-2">
                                     🎉 Welcome to the Team!
                                 </h2>
                                 <p className="text-slate-400 text-sm">
