@@ -95,7 +95,7 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
             </div>
 
             {/* Viral nudge */}
-            <p className="text-slate-400 text-sm text-center">
+            <p className="text-slate-300 text-sm text-center">
                 💡 Send this to someone drowning in to-do lists
             </p>
         </div>

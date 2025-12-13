@@ -101,7 +101,7 @@ const SuccessPage = () => {
                             </div>
                             <div>
                                 <h2 className="text-2xl font-bold text-white mb-2">Confirming...</h2>
-                                <p className="text-slate-400 text-sm">Just a moment while we secure your spot.</p>
+                                <p className="text-slate-300 text-sm">Just a moment while we secure your spot.</p>
                             </div>
                         </div>
                     )}
@@ -122,7 +122,7 @@ const SuccessPage = () => {
                                 <p className="text-teal-300 font-medium text-lg">{message}</p>
                             </div>
 
-                            <div className="text-slate-400 text-sm bg-slate-900/50 p-3 rounded-lg border border-slate-700">
+                            <div className="text-slate-300 text-sm bg-slate-900/50 p-3 rounded-lg border border-slate-700">
                                 Check your email for your receipt.
                             </div>
                         </div>

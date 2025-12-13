@@ -74,7 +74,7 @@ Then give me a quick 3-line money status.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-teal-400">Money Check-In Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">
+                        <p className="text-slate-300 text-lg">
                             A weekly financial pulse check without the anxiety.
                         </p>
                     </motion.div>
@@ -178,21 +178,21 @@ Then give me a quick 3-line money status.`;
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Weekly money pulse</span>
-                                        <p className="text-slate-400 text-sm">A 3-line summary of where you stand</p>
+                                        <p className="text-slate-300 text-sm">A 3-line summary of where you stand</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Bill reminders</span>
-                                        <p className="text-slate-400 text-sm">Never get surprised by due dates again</p>
+                                        <p className="text-slate-300 text-sm">Never get surprised by due dates again</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Spending awareness</span>
-                                        <p className="text-slate-400 text-sm">Track without obsessing</p>
+                                        <p className="text-slate-300 text-sm">Track without obsessing</p>
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +203,7 @@ Then give me a quick 3-line money status.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="mb-8">
                         <button onClick={() => setShowTips(!showTips)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-green-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Zap className="text-amber-400" size={18} />Make it even better</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTips && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -226,18 +226,18 @@ Then give me a quick 3-line money status.`;
                     {/* TROUBLESHOOTING */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mb-8">
                         <button onClick={() => setShowTroubleshooting(!showTroubleshooting)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-green-500/30 transition-colors">
-                            <span className="text-white font-bold flex items-center gap-2"><HelpCircle className="text-slate-400" size={18} />Troubleshooting</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
+                            <span className="text-white font-bold flex items-center gap-2"><HelpCircle className="text-slate-300" size={18} />Troubleshooting</span>
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTroubleshooting && (
                             <div className="mt-3 space-y-3">
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"I don't want to share my account details"</p>
-                                    <p className="text-slate-400 text-sm">Great! Don't. Just tell your AI rough numbers — "I spent about $300 on food." No bank login needed.</p>
+                                    <p className="text-slate-300 text-sm">Great! Don't. Just tell your AI rough numbers — "I spent about $300 on food." No bank login needed.</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"I forget to check in"</p>
-                                    <p className="text-slate-400 text-sm">Set a Sunday phone reminder: "Money check-in with AI." Takes 2 minutes.</p>
+                                    <p className="text-slate-300 text-sm">Set a Sunday phone reminder: "Money check-in with AI." Takes 2 minutes.</p>
                                 </div>
                             </div>
                         )}
@@ -258,7 +258,7 @@ Then give me a quick 3-line money status.`;
                                 Chapter 5 Complete!
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready for your Fitness Agent?</h3>
-                            <p className="text-slate-400 text-sm mb-4">Workouts that actually fit your life.</p>
+                            <p className="text-slate-300 text-sm mb-4">Workouts that actually fit your life.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part2/chapter2" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
                                     ← Back to Chapter 4

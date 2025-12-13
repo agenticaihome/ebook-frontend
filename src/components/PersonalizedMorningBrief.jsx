@@ -78,7 +78,7 @@ const PersonalizedMorningBrief = () => {
             </div>
 
             <div className="text-cyan-400">════════════════════════════════════</div>
-            <div className="mt-2 text-slate-400 text-xs">Time to read: 2 minutes | Decisions made for you: 5+</div>
+            <div className="mt-2 text-slate-300 text-xs">Time to read: 2 minutes | Decisions made for you: 5+</div>
         </div>
     );
 };

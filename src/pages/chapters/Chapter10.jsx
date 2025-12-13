@@ -77,7 +77,7 @@ Start by asking: "Ready for your briefing?"`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-purple-400">Agent Army</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">The complete system. Welcome to the future.</p>
+                        <p className="text-slate-300 text-lg">The complete system. Welcome to the future.</p>
                     </motion.div>
 
                     {/* CAPTAIN */}
@@ -159,7 +159,7 @@ Start by asking: "Ready for your briefing?"`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-8">
                         <button onClick={() => setShowChecklist(!showChecklist)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Star className="text-amber-400" size={18} />Your new daily routine</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showChecklist ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showChecklist ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showChecklist && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -175,7 +175,7 @@ Start by asking: "Ready for your briefing?"`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
                         <button onClick={() => setShowNextSteps(!showNextSteps)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Rocket className="text-cyan-400" size={18} />What's next?</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showNextSteps ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showNextSteps ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showNextSteps && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -236,7 +236,7 @@ Start by asking: "Ready for your briefing?"`;
                                 </Link>
                             </div>
 
-                            <p className="text-slate-400 text-sm">
+                            <p className="text-slate-300 text-sm">
                                 Thank you for trusting us with your AI journey. Now go save some time! 🚀
                             </p>
                         </div>

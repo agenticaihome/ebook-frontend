@@ -98,13 +98,13 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                                         Top 10 Agents
                                         <span className="text-xs bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded-full">GLOBAL</span>
                                     </h2>
-                                    <p className="text-xs text-slate-400">{gameTitle}</p>
+                                    <p className="text-xs text-slate-300">{gameTitle}</p>
                                 </div>
                             </div>
                             <button
                                 onClick={onClose}
                                 aria-label="Close leaderboard"
-                                className="p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-400 hover:text-white"
+                                className="p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-300 hover:text-white"
                             >
                                 <X size={20} />
                             </button>
@@ -134,20 +134,20 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                         {loading ? (
                             <div className="flex flex-col items-center justify-center py-12 gap-3">
                                 <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-cyan-500"></div>
-                                <p className="text-slate-400 text-sm">Loading champions...</p>
+                                <p className="text-slate-300 text-sm">Loading champions...</p>
                             </div>
                         ) : error ? (
                             <div className="text-center py-12 text-red-400">
                                 <p>{error}</p>
                                 <button
                                     onClick={fetchScores}
-                                    className="mt-4 text-sm text-slate-400 hover:text-white underline"
+                                    className="mt-4 text-sm text-slate-300 hover:text-white underline"
                                 >
                                     Try Again
                                 </button>
                             </div>
                         ) : scores.length === 0 ? (
-                            <div className="text-center py-12 text-slate-400">
+                            <div className="text-center py-12 text-slate-300">
                                 <Trophy size={48} className="mx-auto mb-4 opacity-20" />
                                 <p className="font-bold">No scores yet!</p>
                                 <p className="text-sm mt-1">Be the first to claim the #1 spot!</p>
@@ -191,7 +191,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                                                     {score.username || score.user?.email?.split('@')[0] || 'Anonymous'}
                                                     {getRankIcon(index)}
                                                 </div>
-                                                <div className="text-xs text-slate-400 flex items-center gap-1">
+                                                <div className="text-xs text-slate-300 flex items-center gap-1">
                                                     <Calendar size={10} />
                                                     {score.achievedAt
                                                         ? new Date(score.achievedAt).toLocaleDateString()
@@ -212,7 +212,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                                             >
                                                 {score.score?.toLocaleString() || 0}
                                             </m.div>
-                                            <div className="text-[10px] text-slate-400 uppercase tracking-wider">
+                                            <div className="text-[10px] text-slate-300 uppercase tracking-wider">
                                                 Points
                                             </div>
                                         </div>
@@ -225,7 +225,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                     {/* Footer */}
                     <div className="p-4 border-t border-slate-800 bg-slate-900/50">
                         <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-xs text-slate-400">
+                            <div className="flex items-center gap-2 text-xs text-slate-300">
                                 <Clock size={12} className="text-cyan-400" />
                                 <span>Resets in <span className="text-cyan-400 font-bold">{daysUntilReset}</span> days</span>
                             </div>

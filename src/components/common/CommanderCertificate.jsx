@@ -66,7 +66,7 @@ const CommanderCertificate = ({
                     <div className="w-32 h-1 bg-gradient-to-r from-teal-500 to-amber-500 mx-auto rounded-full mb-6" />
 
                     {/* Name */}
-                    <p className="text-slate-400 mb-2">This certifies that</p>
+                    <p className="text-slate-300 mb-2">This certifies that</p>
                     <h1 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400 mb-6">
                         {commanderName}
                     </h1>

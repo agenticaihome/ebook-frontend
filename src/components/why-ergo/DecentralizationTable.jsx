@@ -13,7 +13,7 @@ export default function DecentralizationTable() {
         <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
                 <thead>
-                    <tr className="border-b border-slate-600 text-slate-400 text-sm uppercase tracking-wider">
+                    <tr className="border-b border-slate-600 text-slate-300 text-sm uppercase tracking-wider">
                         <th className="p-4">Factor</th>
                         <th className="p-4 text-orange-400">Bitcoin</th>
                         <th className="p-4 text-blue-400">Ethereum</th>
@@ -35,7 +35,7 @@ export default function DecentralizationTable() {
                     ))}
                 </tbody>
             </table>
-            <div className="mt-4 text-center text-xs text-slate-400 italic">
+            <div className="mt-4 text-center text-xs text-slate-300 italic">
                 * Honest assessment based on public launch data and consensus mechanisms.
             </div>
         </div>

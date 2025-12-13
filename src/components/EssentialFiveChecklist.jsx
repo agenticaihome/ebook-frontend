@@ -42,7 +42,7 @@ const EssentialFiveChecklist = () => {
                 <Shield className="text-cyan-400" size={28} />
                 <div>
                     <h3 className="text-2xl font-bold text-white">The Essential 5 Tracker</h3>
-                    <p className="text-slate-400 text-sm">Check these off to unlock your "Home Guardian" badge</p>
+                    <p className="text-slate-300 text-sm">Check these off to unlock your "Home Guardian" badge</p>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@ const EssentialFiveChecklist = () => {
                                     {item.name}
                                 </span>
                             </div>
-                            <div className="text-xs text-slate-400 pl-8">{item.freq}</div>
+                            <div className="text-xs text-slate-300 pl-8">{item.freq}</div>
                         </div>
                     </m.button>
                 ))}

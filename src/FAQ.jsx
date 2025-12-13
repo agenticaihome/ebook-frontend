@@ -83,7 +83,7 @@ export default function FAQ() {
                                     Frequently Asked Questions
                                 </span>
                             </h1>
-                            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-8">
+                            <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
                                 Everything you need to know about getting started with AI helpers.
                             </p>
                         </m.div>
@@ -116,7 +116,7 @@ export default function FAQ() {
                             onClick={() => setActiveCategory('all')}
                             className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all min-h-[44px] ${activeCategory === 'all'
                                 ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg shadow-teal-500/25'
-                                : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50 hover:text-white border border-slate-700/50'
+                                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 hover:text-white border border-slate-700/50'
                                 }`}
                         >
                             All Questions
@@ -127,7 +127,7 @@ export default function FAQ() {
                                 onClick={() => setActiveCategory(cat.id)}
                                 className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all min-h-[44px] ${activeCategory === cat.id
                                     ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg shadow-teal-500/25'
-                                    : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50 hover:text-white border border-slate-700/50'
+                                    : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 hover:text-white border border-slate-700/50'
                                     }`}
                             >
                                 {cat.icon}
@@ -204,7 +204,7 @@ export default function FAQ() {
                                     <Search className="text-slate-500" size={28} />
                                 </div>
                                 <h3 className="text-lg font-semibold text-white mb-2">No questions found</h3>
-                                <p className="text-slate-400 mb-4">Try adjusting your search or category filter.</p>
+                                <p className="text-slate-300 mb-4">Try adjusting your search or category filter.</p>
                                 <button
                                     onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}
                                     className="text-teal-400 hover:text-teal-300 font-medium underline underline-offset-2"
@@ -223,7 +223,7 @@ export default function FAQ() {
                             <Mail className="text-white" size={26} />
                         </div>
                         <h2 className="text-2xl font-bold text-white mb-3">Still have questions?</h2>
-                        <p className="text-slate-400 mb-6 max-w-md mx-auto">
+                        <p className="text-slate-300 mb-6 max-w-md mx-auto">
                             We're here to help. Send us an email and we'll respond within 24 hours.
                         </p>
                         <a

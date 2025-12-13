@@ -121,11 +121,11 @@ const SplashPage = () => {
                         transition={{ delay: 0.5 }}
                         className="flex flex-wrap justify-center gap-4 md:gap-6 mb-6 text-sm md:text-base"
                     >
-                        <div className="flex items-center gap-2 text-slate-400">
+                        <div className="flex items-center gap-2 text-slate-300">
                             <Clock size={18} className="text-teal-400" />
                             <span><span className="text-white font-bold">5+ hours</span>/week saved</span>
                         </div>
-                        <div className="flex items-center gap-2 text-slate-400">
+                        <div className="flex items-center gap-2 text-slate-300">
                             <Zap size={18} className="text-amber-400" />
                             <span><span className="text-white font-bold">Zero</span> tech skills needed</span>
                         </div>

@@ -46,7 +46,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                             {/* Close Button */}
                             <button
                                 onClick={handleDismiss}
-                                className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition-colors z-10"
+                                className="absolute top-4 right-4 text-slate-300 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition-colors z-10"
                                 aria-label="Close"
                             >
                                 <X size={20} />
@@ -66,7 +66,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                                 <h2 id="welcome-modal-title" className="text-2xl font-black text-white mb-2">
                                     🎉 Welcome to the Team!
                                 </h2>
-                                <p className="text-slate-400 text-sm">
+                                <p className="text-slate-300 text-sm">
                                     You're now part of the AI revolution
                                 </p>
                             </div>
@@ -96,7 +96,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                                         </div>
                                         <div>
                                             <p className="text-white font-bold text-sm">Start with Chapter 4</p>
-                                            <p className="text-slate-400 text-xs">Email Triage Agent — inbox zero in 10 min/day</p>
+                                            <p className="text-slate-300 text-xs">Email Triage Agent — inbox zero in 10 min/day</p>
                                         </div>
                                     </div>
                                     <Link
@@ -134,7 +134,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                             <div className="px-6 pb-6">
                                 <button
                                     onClick={handleDismiss}
-                                    className="w-full py-3 text-slate-400 hover:text-white text-sm font-medium transition-colors"
+                                    className="w-full py-3 text-slate-300 hover:text-white text-sm font-medium transition-colors"
                                 >
                                     Got it, let's go! →
                                 </button>

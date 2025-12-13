@@ -72,7 +72,7 @@ Be ruthless about priorities. Less is more.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">Work Task Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">Stop doing everything. Start doing what matters.</p>
+                        <p className="text-slate-300 text-lg">Stop doing everything. Start doing what matters.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
@@ -156,9 +156,9 @@ Be ruthless about priorities. Less is more.`;
                         <div className="bg-gradient-to-r from-amber-500/5 to-orange-500/5 rounded-2xl p-6 border border-amber-500/20">
                             <h3 className="text-white font-bold mb-4 flex items-center gap-2"><Sparkles className="text-amber-400" size={20} />What you'll get</h3>
                             <div className="space-y-3">
-                                <div className="flex items-start gap-3"><CheckCircle className="text-green-400 mt-0.5" size={18} /><div><span className="text-white font-medium">Your ONE thing</span><p className="text-slate-400 text-sm">The single task that matters most today</p></div></div>
-                                <div className="flex items-start gap-3"><CheckCircle className="text-green-400 mt-0.5" size={18} /><div><span className="text-white font-medium">Distraction filter</span><p className="text-slate-400 text-sm">Your AI will push back on time-wasters</p></div></div>
-                                <div className="flex items-start gap-3"><CheckCircle className="text-green-400 mt-0.5" size={18} /><div><span className="text-white font-medium">End-of-day review</span><p className="text-slate-400 text-sm">Did you do the thing? What blocked you?</p></div></div>
+                                <div className="flex items-start gap-3"><CheckCircle className="text-green-400 mt-0.5" size={18} /><div><span className="text-white font-medium">Your ONE thing</span><p className="text-slate-300 text-sm">The single task that matters most today</p></div></div>
+                                <div className="flex items-start gap-3"><CheckCircle className="text-green-400 mt-0.5" size={18} /><div><span className="text-white font-medium">Distraction filter</span><p className="text-slate-300 text-sm">Your AI will push back on time-wasters</p></div></div>
+                                <div className="flex items-start gap-3"><CheckCircle className="text-green-400 mt-0.5" size={18} /><div><span className="text-white font-medium">End-of-day review</span><p className="text-slate-300 text-sm">Did you do the thing? What blocked you?</p></div></div>
                             </div>
                         </div>
                     </motion.section>
@@ -166,7 +166,7 @@ Be ruthless about priorities. Less is more.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="mb-8">
                         <button onClick={() => setShowTips(!showTips)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Zap className="text-amber-400" size={18} />Make it even better</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTips && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -179,18 +179,18 @@ Be ruthless about priorities. Less is more.`;
 
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mb-8">
                         <button onClick={() => setShowTroubleshooting(!showTroubleshooting)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
-                            <span className="text-white font-bold flex items-center gap-2"><HelpCircle className="text-slate-400" size={18} />Troubleshooting</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
+                            <span className="text-white font-bold flex items-center gap-2"><HelpCircle className="text-slate-300" size={18} />Troubleshooting</span>
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTroubleshooting && (
                             <div className="mt-3 space-y-3">
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"Everything feels urgent"</p>
-                                    <p className="text-slate-400 text-sm">Tell your AI: "If I could only do ONE thing today and nothing else, which task would have the biggest impact in a week?"</p>
+                                    <p className="text-slate-300 text-sm">Tell your AI: "If I could only do ONE thing today and nothing else, which task would have the biggest impact in a week?"</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"I have too many meetings"</p>
-                                    <p className="text-slate-400 text-sm">Ask: "Which of these meetings could be an email? Draft a message declining the non-essential ones."</p>
+                                    <p className="text-slate-300 text-sm">Ask: "Which of these meetings could be an email? Draft a message declining the non-essential ones."</p>
                                 </div>
                             </div>
                         )}
@@ -207,7 +207,7 @@ Be ruthless about priorities. Less is more.`;
                         <div className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 rounded-2xl p-6 border border-amber-500/30 text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 7 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready to build ANY agent you want?</h3>
-                            <p className="text-slate-400 text-sm mb-4">Learn the Custom Agent Builder framework.</p>
+                            <p className="text-slate-300 text-sm mb-4">Learn the Custom Agent Builder framework.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part2/chapter3" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
                                     ← Back to Chapter 6

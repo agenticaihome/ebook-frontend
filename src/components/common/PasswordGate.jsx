@@ -87,7 +87,7 @@ const PasswordGate = ({ children, partNumber }) => {
                             <BookOpen size={16} className="text-teal-400" />
                             <span className="text-teal-400 font-medium">{sectionName}</span>
                         </div>
-                        <p className="text-slate-400 text-sm">
+                        <p className="text-slate-300 text-sm">
                             This section requires full access
                         </p>
                         <p className="text-slate-500 text-xs mt-1">

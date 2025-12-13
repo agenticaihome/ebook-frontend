@@ -82,7 +82,7 @@ const CalendarHealthScore = () => {
                             onChange={(e) => handleInputChange('meetingHours', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 hrs</span>
                             <span className="text-cyan-400 font-bold">{inputs.meetingHours} hrs</span>
                             <span>40+ hrs</span>
@@ -100,7 +100,7 @@ const CalendarHealthScore = () => {
                             onChange={(e) => handleInputChange('longestBlock', parseFloat(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 hrs</span>
                             <span className="text-cyan-400 font-bold">{inputs.longestBlock} hrs</span>
                             <span>8 hrs</span>
@@ -117,7 +117,7 @@ const CalendarHealthScore = () => {
                             onChange={(e) => handleInputChange('acceptanceRate', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>Selectively (0%)</span>
                             <span className="text-cyan-400 font-bold">{inputs.acceptanceRate}%</span>
                             <span>Everything (100%)</span>
@@ -138,7 +138,7 @@ const CalendarHealthScore = () => {
                                     onClick={() => handleInputChange('interruptionFreq', opt.val)}
                                     className={`p-3 rounded-xl border-2 transition-all text-sm ${inputs.interruptionFreq === opt.val
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt.label}
@@ -160,7 +160,7 @@ const CalendarHealthScore = () => {
                         <div className={`text-6xl font-bold ${getScoreColor(results.score)} mb-2`}>
                             {results.score}/10
                         </div>
-                        <div className="text-slate-400">Calendar Health Score</div>
+                        <div className="text-slate-300">Calendar Health Score</div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -177,7 +177,7 @@ const CalendarHealthScore = () => {
                                 <span className="text-sm">Recoverable Hours</span>
                             </div>
                             <div className="text-2xl font-bold text-green-400">{results.recoverable} hrs/week</div>
-                            <div className="text-xs text-slate-400 mt-1">Potential gain</div>
+                            <div className="text-xs text-slate-300 mt-1">Potential gain</div>
                         </div>
                     </div>
 
@@ -191,7 +191,7 @@ const CalendarHealthScore = () => {
 
                     <button
                         onClick={() => setShowResults(false)}
-                        className="w-full text-slate-400 hover:text-white transition-colors"
+                        className="w-full text-slate-300 hover:text-white transition-colors"
                     >
                         Recalculate
                     </button>

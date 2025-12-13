@@ -32,7 +32,7 @@ const AgentArmyPoster = ({ completedChapters = [] }) => {
                     <Sparkles className="text-amber-400" size={24} />
                     Your Agent Army
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-slate-300">
                     {allComplete
                         ? "All 10 agents deployed! Your life is on autopilot. 🎉"
                         : `${completedCount} of 10 agents deployed`

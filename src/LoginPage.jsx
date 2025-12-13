@@ -63,7 +63,7 @@ const LoginPage = () => {
             {/* Back Button */}
             <button
                 onClick={() => navigate('/')}
-                className="absolute top-6 left-6 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group z-20"
+                className="absolute top-6 left-6 flex items-center gap-2 text-slate-300 hover:text-white transition-colors group z-20"
             >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="hidden sm:inline">Back to Home</span>
@@ -107,7 +107,7 @@ const LoginPage = () => {
                         </div>
 
                         <h1 className="text-3xl font-bold text-white mb-2 relative z-10">Welcome Back!</h1>
-                        <p className="text-slate-400 relative z-10">Your AI agents are waiting</p>
+                        <p className="text-slate-300 relative z-10">Your AI agents are waiting</p>
 
                         {/* Trust Badge */}
                         <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-medium relative z-10">
@@ -132,7 +132,7 @@ const LoginPage = () => {
 
                         <form onSubmit={handleEmailLogin} className="space-y-5">
                             <div>
-                                <label className="block text-sm font-medium text-slate-400 mb-2">Email Address</label>
+                                <label className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
                                 <div className="relative">
                                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                                     <input
@@ -151,7 +151,7 @@ const LoginPage = () => {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-slate-400 mb-2">Password</label>
+                                <label className="block text-sm font-medium text-slate-300 mb-2">Password</label>
                                 <div className="relative">
                                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                                     <input

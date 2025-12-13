@@ -95,7 +95,7 @@ Set this up now.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400"> Morning Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg mb-2">
+                        <p className="text-slate-300 text-lg mb-2">
                             An AI that sends you a personalized briefing every morning.
                         </p>
                         <p className="text-slate-500 text-sm">
@@ -139,21 +139,21 @@ Set this up now.`;
                                     <Sun className="text-amber-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Weather check</span>
-                                        <p className="text-slate-400 text-sm">So you know if you need an umbrella or jacket</p>
+                                        <p className="text-slate-300 text-sm">So you know if you need an umbrella or jacket</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <Calendar className="text-teal-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">3 things happening today</span>
-                                        <p className="text-slate-400 text-sm">Meetings, appointments, or tasks you mentioned</p>
+                                        <p className="text-slate-300 text-sm">Meetings, appointments, or tasks you mentioned</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <Brain className="text-purple-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">One reminder</span>
-                                        <p className="text-slate-400 text-sm">Something you told it you tend to forget</p>
+                                        <p className="text-slate-300 text-sm">Something you told it you tend to forget</p>
                                     </div>
                                 </div>
                             </div>
@@ -315,10 +315,10 @@ Set this up now.`;
                             className="w-full flex items-center justify-between py-3 px-4 bg-slate-800/30 rounded-2xl border border-slate-700/50 text-left hover:bg-slate-800/50 transition-colors"
                         >
                             <span className="flex items-center gap-2 text-slate-300 text-sm font-medium">
-                                <HelpCircle size={16} className="text-slate-400" />
+                                <HelpCircle size={16} className="text-slate-300" />
                                 Not working? Common questions
                             </span>
-                            <ChevronDown size={16} className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} />
+                            <ChevronDown size={16} className={`text-slate-300 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} />
                         </button>
 
                         {showTroubleshooting && (
@@ -329,15 +329,15 @@ Set this up now.`;
                             >
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"The AI didn't offer to send daily notifications"</p>
-                                    <p className="text-slate-400 text-sm">Say: <span className="text-teal-400">"Can you set this up as a scheduled task that sends me a notification every day?"</span></p>
+                                    <p className="text-slate-300 text-sm">Say: <span className="text-teal-400">"Can you set this up as a scheduled task that sends me a notification every day?"</span></p>
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"I don't see scheduling options"</p>
-                                    <p className="text-slate-400 text-sm">This feature is mainly on ChatGPT. Claude and others may need you to start a new chat each morning (still useful, just manual).</p>
+                                    <p className="text-slate-300 text-sm">This feature is mainly on ChatGPT. Claude and others may need you to start a new chat each morning (still useful, just manual).</p>
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"The AI didn't remember my info"</p>
-                                    <p className="text-slate-400 text-sm">Say: <span className="text-teal-400">"Please remember this for next time"</span> - ChatGPT has a memory feature that stores your preferences.</p>
+                                    <p className="text-slate-300 text-sm">Say: <span className="text-teal-400">"Please remember this for next time"</span> - ChatGPT has a memory feature that stores your preferences.</p>
                                 </div>
                             </motion.div>
                         )}
@@ -374,7 +374,7 @@ Set this up now.`;
                                 Chapter 1 Complete!
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">You just built your first AI agent. 🎉</h3>
-                            <p className="text-slate-400 text-sm mb-4">
+                            <p className="text-slate-300 text-sm mb-4">
                                 Most people never get past this point. You're already ahead.
                             </p>
                             <p className="text-teal-400 text-sm font-medium">
@@ -401,7 +401,7 @@ Set this up now.`;
                                 <div className="flex-1">
                                     <div className="text-xs text-purple-400 font-bold uppercase tracking-wide mb-1">🎮 Practice Your Skills</div>
                                     <div className="text-white font-bold">Play Deep Work Dive — FREE</div>
-                                    <div className="text-slate-400 text-sm">Can you survive 30 distractions?</div>
+                                    <div className="text-slate-300 text-sm">Can you survive 30 distractions?</div>
                                 </div>
                                 <ArrowRight className="text-purple-400 group-hover:translate-x-1 transition-transform" size={20} />
                             </div>

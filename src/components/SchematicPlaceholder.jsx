@@ -97,7 +97,7 @@ const SchematicPlaceholder = ({ type = 'browser', label, subLabel }) => {
                         <div className="text-xs font-bold text-green-400 uppercase tracking-wider mb-0.5">Visual Guide</div>
                         <div className="text-sm text-white font-medium">{label}</div>
                     </div>
-                    {subLabel && <div className="text-xs text-slate-400">{subLabel}</div>}
+                    {subLabel && <div className="text-xs text-slate-300">{subLabel}</div>}
                 </div>
             </div>
         </div>

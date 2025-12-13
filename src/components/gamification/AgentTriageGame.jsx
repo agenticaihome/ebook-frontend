@@ -103,10 +103,10 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
                                     🔥 URGENT
                                 </span>
                             )}
-                            <span className="text-xs text-slate-400">#{index + 1}</span>
+                            <span className="text-xs text-slate-300">#{index + 1}</span>
                         </div>
                         <p className="text-sm sm:text-base font-semibold text-white truncate">{email.subject}</p>
-                        <p className="text-xs text-slate-400 mt-0.5 hidden sm:block">
+                        <p className="text-xs text-slate-300 mt-0.5 hidden sm:block">
                             {email.action === 'delegate' ? '💼 Work-related' : '🗑️ Low priority'}
                         </p>
                     </div>
@@ -131,7 +131,7 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
                 </div>
 
                 {/* Swipe Hint for Mobile */}
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] text-slate-400 sm:hidden">
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] text-slate-300 sm:hidden">
                     <ChevronLeft size={12} />
                     <span>swipe</span>
                     <ChevronRight size={12} />
@@ -776,7 +776,7 @@ const AgentTriageGame = ({ onBack }) => {
                     <div className="text-center flex-1">
                         <div className="text-3xl sm:text-4xl font-black text-white font-mono tracking-tight">{score}</div>
                         {personalBest.score > 0 && score <= personalBest.score && (
-                            <div className="text-[10px] text-slate-400">Best: {personalBest.score}</div>
+                            <div className="text-[10px] text-slate-300">Best: {personalBest.score}</div>
                         )}
                         {score > personalBest.score && (
                             <div className="text-[10px] text-yellow-400 font-bold animate-pulse">🏆 NEW BEST!</div>
@@ -815,14 +815,14 @@ const AgentTriageGame = ({ onBack }) => {
                                 className={`flex items-center gap-1 px-2 py-1 rounded-lg ${combo >= 7 ? 'bg-purple-500/30 text-purple-400' :
                                     combo >= 5 ? 'bg-cyan-500/30 text-cyan-400' :
                                         combo >= 3 ? 'bg-orange-500/30 text-orange-400' :
-                                            'bg-slate-600/30 text-slate-400'
+                                            'bg-slate-600/30 text-slate-300'
                                     }`}
                             >
                                 <Flame size={16} className={combo >= 5 ? 'animate-pulse' : ''} />
                                 <span className="font-bold font-mono">{combo}x</span>
                             </m.div>
                         )}
-                        <div className="text-xs text-slate-400 font-mono">W{wave}</div>
+                        <div className="text-xs text-slate-300 font-mono">W{wave}</div>
                     </div>
 
                     {/* Controls */}
@@ -832,7 +832,7 @@ const AgentTriageGame = ({ onBack }) => {
                             className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-600 active:scale-95 transition-all"
                             title={soundEnabled ? 'Mute' : 'Unmute'}
                         >
-                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-400" />}
+                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-300" />}
                         </button>
                         <button
                             onClick={() => setShowControls(!showControls)}
@@ -939,7 +939,7 @@ const AgentTriageGame = ({ onBack }) => {
                                 CE
                             </div>
                             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Inbox Defense</h3>
-                            <p className="text-slate-400 mb-6 text-sm sm:text-base">
+                            <p className="text-slate-300 mb-6 text-sm sm:text-base">
                                 Train your AI Triage Agent! Sort 20 emails before time runs out.
                             </p>
 
@@ -948,23 +948,23 @@ const AgentTriageGame = ({ onBack }) => {
                                     <div className="flex items-center justify-center gap-2 text-green-400 font-bold mb-1 text-sm sm:text-base">
                                         <Check size={18} /> DELEGATE
                                     </div>
-                                    <p className="text-slate-400 text-xs">Work emails, meetings, deadlines, clients</p>
+                                    <p className="text-slate-300 text-xs">Work emails, meetings, deadlines, clients</p>
                                 </div>
                                 <div className="bg-red-900/40 border border-red-500/40 rounded-xl p-3 sm:p-4">
                                     <div className="flex items-center justify-center gap-2 text-red-400 font-bold mb-1 text-sm sm:text-base">
                                         <Trash2 size={18} /> DELETE
                                     </div>
-                                    <p className="text-slate-400 text-xs">Spam, newsletters, promos, receipts</p>
+                                    <p className="text-slate-300 text-xs">Spam, newsletters, promos, receipts</p>
                                 </div>
                             </div>
 
                             {/* Mobile hint */}
-                            <div className="text-xs text-slate-400 mb-4 sm:hidden">
+                            <div className="text-xs text-slate-300 mb-4 sm:hidden">
                                 📱 Swipe cards or tap buttons
                             </div>
 
                             {/* Desktop hint */}
-                            <div className="text-xs text-slate-400 mb-4 hidden sm:block">
+                            <div className="text-xs text-slate-300 mb-4 hidden sm:block">
                                 ⌨️ <kbd className="px-1 py-0.5 bg-slate-700 rounded mx-0.5">D</kbd> Delegate
                                 <kbd className="px-1 py-0.5 bg-slate-700 rounded mx-0.5">X</kbd> Delete
                                 <kbd className="px-1 py-0.5 bg-slate-700 rounded mx-0.5">Space</kbd> Start
@@ -1018,15 +1018,15 @@ const AgentTriageGame = ({ onBack }) => {
                             {/* Stats Grid */}
                             <div className="grid grid-cols-2 gap-2 mt-4 mb-6">
                                 <div className="bg-slate-800/60 rounded-xl p-3">
-                                    <div className="text-slate-400 text-xs mb-1">Triaged</div>
-                                    <div className="text-2xl font-bold text-white">{emailsTriaged}<span className="text-slate-400 text-lg">/20</span></div>
+                                    <div className="text-slate-300 text-xs mb-1">Triaged</div>
+                                    <div className="text-2xl font-bold text-white">{emailsTriaged}<span className="text-slate-300 text-lg">/20</span></div>
                                 </div>
                                 <div className="bg-slate-800/60 rounded-xl p-3">
-                                    <div className="text-slate-400 text-xs mb-1">Max Combo</div>
+                                    <div className="text-slate-300 text-xs mb-1">Max Combo</div>
                                     <div className="text-2xl font-bold text-orange-400">{maxCombo}x</div>
                                 </div>
                                 <div className="bg-slate-800/60 rounded-xl p-3">
-                                    <div className="text-slate-400 text-xs mb-1">Accuracy</div>
+                                    <div className="text-slate-300 text-xs mb-1">Accuracy</div>
                                     <div className="text-2xl font-bold text-cyan-400">
                                         {stats.correct + stats.wrong > 0
                                             ? Math.round((stats.correct / (stats.correct + stats.wrong)) * 100)
@@ -1034,7 +1034,7 @@ const AgentTriageGame = ({ onBack }) => {
                                     </div>
                                 </div>
                                 <div className="bg-slate-800/60 rounded-xl p-3">
-                                    <div className="text-slate-400 text-xs mb-1">Fast Actions</div>
+                                    <div className="text-slate-300 text-xs mb-1">Fast Actions</div>
                                     <div className="text-2xl font-bold text-yellow-400">{stats.fastActions}</div>
                                 </div>
                             </div>
@@ -1078,7 +1078,7 @@ const AgentTriageGame = ({ onBack }) => {
                         className="p-3 sm:p-4 space-y-2 overflow-y-auto max-h-[400px] sm:max-h-[450px]"
                     >
                         {emails.length === 0 && (
-                            <div className="flex flex-col items-center justify-center h-48 text-slate-400">
+                            <div className="flex flex-col items-center justify-center h-48 text-slate-300">
                                 <Mail size={48} className="mb-3 opacity-30" />
                                 <p className="text-sm">Waiting for emails...</p>
                             </div>

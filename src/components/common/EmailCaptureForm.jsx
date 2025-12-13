@@ -68,7 +68,7 @@ const EmailCaptureForm = ({
             <div className={`p-4 bg-green-500/10 rounded-2xl border border-green-500/30 text-center ${className}`}>
                 <CheckCircle className="w-8 h-8 text-green-400 mx-auto mb-2" />
                 <p className="text-green-400 font-bold text-lg">✅ {successMessage}</p>
-                <p className="text-slate-400 text-sm mt-1">No spam, ever. Unsubscribe anytime.</p>
+                <p className="text-slate-300 text-sm mt-1">No spam, ever. Unsubscribe anytime.</p>
             </div>
         );
     }
@@ -81,7 +81,7 @@ const EmailCaptureForm = ({
                         <Mail className="w-5 h-5 text-teal-400" />
                         <p className="text-white font-bold text-lg">{headline}</p>
                     </div>
-                    <p className="text-slate-400 text-sm mb-4 text-center">{subheadline}</p>
+                    <p className="text-slate-300 text-sm mb-4 text-center">{subheadline}</p>
                 </>
             )}
 

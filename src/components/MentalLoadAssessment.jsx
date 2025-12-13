@@ -101,7 +101,7 @@ const MentalLoadAssessment = () => {
 
             {!showResults ? (
                 <div className="space-y-6">
-                    <div className="flex justify-between text-sm text-slate-400 mb-4">
+                    <div className="flex justify-between text-sm text-slate-300 mb-4">
                         <span>Question {step + 1} of {questions.length}</span>
                         <span>{Math.round(((step) / questions.length) * 100)}% Complete</span>
                     </div>
@@ -130,7 +130,7 @@ const MentalLoadAssessment = () => {
                 <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <div className="text-center mb-8">
                         <div className="text-6xl font-bold text-cyan-400 mb-2">{results.score}/10</div>
-                        <div className="text-slate-400">Mental Load Score</div>
+                        <div className="text-slate-300">Mental Load Score</div>
                         <div className="text-xl font-bold text-white mt-2">{results.level}</div>
                     </div>
 
@@ -169,7 +169,7 @@ const MentalLoadAssessment = () => {
                             setAnswers({});
                             setShowResults(false);
                         }}
-                        className="w-full text-slate-400 hover:text-white transition-colors"
+                        className="w-full text-slate-300 hover:text-white transition-colors"
                     >
                         Retake Assessment
                     </button>

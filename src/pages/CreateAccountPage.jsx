@@ -121,9 +121,9 @@ const CreateAccountPage = () => {
                     <form onSubmit={handleCreateAccount} className="space-y-4">
                         {/* Email */}
                         <div>
-                            <label className="text-sm text-slate-400 block mb-2">Email</label>
+                            <label className="text-sm text-slate-300 block mb-2">Email</label>
                             <div className="relative">
-                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
                                 <input
                                     type="email"
                                     value={email}
@@ -142,9 +142,9 @@ const CreateAccountPage = () => {
 
                         {/* Password */}
                         <div>
-                            <label className="text-sm text-slate-400 block mb-2">Password</label>
+                            <label className="text-sm text-slate-300 block mb-2">Password</label>
                             <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
                                 <input
                                     type="password"
                                     value={password}
@@ -203,7 +203,7 @@ const CreateAccountPage = () => {
                 </div>
 
                 {/* Security Note */}
-                <div className="text-center text-sm text-slate-400">
+                <div className="text-center text-sm text-slate-300">
                     <p>🔒 Your password is encrypted and secure</p>
                     <p className="mt-1">You'll be automatically logged in after creation</p>
                 </div>

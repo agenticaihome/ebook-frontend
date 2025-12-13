@@ -87,7 +87,7 @@ const GraduationPage = () => {
                                     />
                                 </div>
                                 <h2 className="text-2xl font-bold mb-2">One Last Thing...</h2>
-                                <p className="text-slate-400 mb-6">What name should we put on your certificate?</p>
+                                <p className="text-slate-300 mb-6">What name should we put on your certificate?</p>
                                 <form onSubmit={handleNameSubmit}>
                                     <input
                                         type="text"

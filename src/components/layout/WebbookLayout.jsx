@@ -241,7 +241,7 @@ const WebbookLayout = ({ children }) => {
                     </Link>
                     <button
                         onClick={() => setIsSidebarOpen(false)}
-                        className="md:hidden absolute top-3 right-3 text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors"
+                        className="md:hidden absolute top-3 right-3 text-slate-300 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors"
                         aria-label="Close Menu"
                     >
                         <X size={20} />
@@ -320,7 +320,7 @@ const WebbookLayout = ({ children }) => {
                                                             to={sub.path}
                                                             className={`flex items-center gap-2 text-xs py-3 px-3 min-h-[44px] transition-colors rounded-lg ${isSubActive
                                                                 ? 'text-teal-400 font-semibold bg-teal-900/30'
-                                                                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                                                : 'text-slate-300 hover:text-slate-200 hover:bg-slate-800/50'
                                                                 }`}
                                                         >
                                                             {isCompleted ? (
@@ -350,7 +350,7 @@ const WebbookLayout = ({ children }) => {
                                                 <span className="text-amber-400 font-bold text-sm tracking-wide">Get Full Access</span>
                                             </div>
                                             <div className="flex items-center justify-between">
-                                                <span className="text-slate-400 text-xs">9 more chapters</span>
+                                                <span className="text-slate-300 text-xs">9 more chapters</span>
                                                 <div className="text-right">
                                                     <span className="text-white font-bold text-sm group-hover:translate-x-0.5 transition-transform">$39.99 →</span>
                                                     <span className="text-green-400/70 text-[9px] block">🛡️ 30-day guarantee</span>
@@ -371,7 +371,7 @@ const WebbookLayout = ({ children }) => {
                         to="/games"
                         className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${location.pathname === '/games'
                             ? 'bg-purple-600/90 text-white shadow-md'
-                            : 'text-slate-400 hover:bg-slate-800/70 hover:text-white'
+                            : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
                             }`}
                     >
                         <Gamepad2 size={16} className={location.pathname === '/games' ? 'text-purple-200' : 'text-purple-400'} />
@@ -401,7 +401,7 @@ const WebbookLayout = ({ children }) => {
                         {!isSidebarOpen && (
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="p-2 hover:bg-slate-800 rounded-xl text-slate-400 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-400 flex-shrink-0"
+                                className="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-400 flex-shrink-0"
                                 aria-label="Open Sidebar"
                             >
                                 <Menu size={22} />
@@ -431,7 +431,7 @@ const WebbookLayout = ({ children }) => {
                             </Link>
                         ) : (
                             <>
-                                <Link to="/login" className="text-sm font-medium text-slate-400 hover:text-teal-400 rounded-xl px-3 py-1.5 transition-colors">
+                                <Link to="/login" className="text-sm font-medium text-slate-300 hover:text-teal-400 rounded-xl px-3 py-1.5 transition-colors">
                                     Login
                                 </Link>
                                 <Link to="/unlock" className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-2 rounded-2xl text-sm font-bold hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-900/30 hover:shadow-amber-500/20">

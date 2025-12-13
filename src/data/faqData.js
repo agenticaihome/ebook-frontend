@@ -126,7 +126,7 @@ export const faqData = [
                 <div className="mt-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
                     <p className="text-slate-300 mb-3">— <span className="text-white font-bold">DDS</span></p>
                     <p className="text-slate-500 text-sm leading-relaxed">
-                        P.S. — DDS is my actual degree (Doctor of Dental Surgery). But honestly? These days I think of it more as <em className="text-slate-400">Dad Deploying Systems</em>. And by the time you finish all 10 chapters, you'll have cured your own <em className="text-slate-400">Digital Drowning Syndrome</em> and be on your way to becoming a <em className="text-slate-400">Doctor of Digital Systems</em> yourself.
+                        P.S. — DDS is my actual degree (Doctor of Dental Surgery). But honestly? These days I think of it more as <em className="text-slate-300">Dad Deploying Systems</em>. And by the time you finish all 10 chapters, you'll have cured your own <em className="text-slate-300">Digital Drowning Syndrome</em> and be on your way to becoming a <em className="text-slate-300">Doctor of Digital Systems</em> yourself.
                     </p>
                 </div>
             </>
@@ -162,7 +162,7 @@ export const faqData = [
                 </ul>
                 <p className="mb-4">I made this for fun, out of genuine passion. But I also believe value deserves value.</p>
                 <p className="mb-4">At $39.99 (or $19.99 with crypto) — limited time launch pricing — if you save even 2 hours a week, you've made back your investment in the first month. That's math even I can do. 🦷</p>
-                <p className="text-slate-400 text-sm italic">Plus there's a 30-day money-back guarantee. So you're not risking anything.</p>
+                <p className="text-slate-300 text-sm italic">Plus there's a 30-day money-back guarantee. So you're not risking anything.</p>
             </>
         )
     },
@@ -589,7 +589,7 @@ export const faqData = [
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div className="bg-slate-800 p-4 rounded-lg border border-slate-600">
                         <h4 className="font-bold text-white mb-2">STANDARD: $39.99 <span className="text-xs text-amber-400">→ Launch Price</span></h4>
-                        <ul className="text-sm text-slate-400 space-y-1">
+                        <ul className="text-sm text-slate-300 space-y-1">
                             <li>Pay with Credit/Debit Card</li>
                             <li>Instant access</li>
                             <li>Processed via Stripe</li>
@@ -921,7 +921,7 @@ export const faqData = [
                 <p className="mb-4 font-bold text-lg text-teal-400">Because time is the only thing we can't get back.</p>
                 <p className="mb-4">We get one short life. I don't want to spend mine drowning in meal planning, email, and appointment scheduling. I want to spend it with my kids, my wife, doing work that matters.</p>
                 <p className="mb-4">AI agents gave me that time back. If I can help even one other overwhelmed person reclaim their hours — hours they can spend with the people they love — then this whole project is worth it.</p>
-                <p className="italic text-slate-400">That's it. That's the whole reason.</p>
+                <p className="italic text-slate-300">That's it. That's the whole reason.</p>
             </>
         )
     },

@@ -78,7 +78,7 @@ const EmailChaosCalculator = () => {
                             onChange={(e) => handleInputChange('dailyEmails', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>10</span>
                             <span className="text-cyan-400 font-bold">{inputs.dailyEmails}</span>
                             <span>200+</span>
@@ -96,7 +96,7 @@ const EmailChaosCalculator = () => {
                             onChange={(e) => handleInputChange('dailyHours', parseFloat(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0.5 hrs</span>
                             <span className="text-cyan-400 font-bold">{inputs.dailyHours} hrs</span>
                             <span>6+ hrs</span>
@@ -117,7 +117,7 @@ const EmailChaosCalculator = () => {
                                     onClick={() => handleInputChange('checkFrequency', opt.val)}
                                     className={`p-3 rounded-xl border-2 transition-all text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 ${inputs.checkFrequency === opt.val
                                         ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                        : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt.label}
@@ -140,7 +140,7 @@ const EmailChaosCalculator = () => {
                                     onClick={() => handleInputChange('painPoint', opt.val)}
                                     className={`p-3 rounded-xl border-2 transition-all text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 ${inputs.painPoint === opt.val
                                         ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                        : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt.label}
@@ -162,17 +162,17 @@ const EmailChaosCalculator = () => {
                         <div className={`text-6xl font-bold ${getScoreColor(results.score)} mb-2`}>
                             {results.score}/10
                         </div>
-                        <div className="text-slate-400">Email Chaos Score</div>
+                        <div className="text-slate-300">Email Chaos Score</div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
                         <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
-                            <div className="flex items-center gap-2 mb-2 text-slate-400">
+                            <div className="flex items-center gap-2 mb-2 text-slate-300">
                                 <Clock size={18} />
                                 <span className="text-sm">Hours Wasted Annually</span>
                             </div>
                             <div className="text-2xl font-bold text-white">{results.annualHours} hours</div>
-                            <div className="text-xs text-slate-400 mt-1">That's {Math.round(results.annualHours / 8)} work days!</div>
+                            <div className="text-xs text-slate-300 mt-1">That's {Math.round(results.annualHours / 8)} work days!</div>
                         </div>
                         <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                             <div className="flex items-center gap-2 mb-2 text-green-400">
@@ -180,7 +180,7 @@ const EmailChaosCalculator = () => {
                                 <span className="text-sm">Recoverable with Agent</span>
                             </div>
                             <div className="text-2xl font-bold text-green-400">{results.recoverableAnnual} hours</div>
-                            <div className="text-xs text-slate-400 mt-1">~{results.recoverableWeekly} hours per week back</div>
+                            <div className="text-xs text-slate-300 mt-1">~{results.recoverableWeekly} hours per week back</div>
                         </div>
                     </div>
 
@@ -194,7 +194,7 @@ const EmailChaosCalculator = () => {
 
                     <button
                         onClick={() => setShowResults(false)}
-                        className="w-full text-slate-400 hover:text-white transition-colors"
+                        className="w-full text-slate-300 hover:text-white transition-colors"
                     >
                         Recalculate
                     </button>

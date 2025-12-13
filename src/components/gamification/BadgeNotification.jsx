@@ -53,7 +53,7 @@ const BadgeNotification = ({ badge, onClose }) => {
                 >
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+                        className="absolute top-4 right-4 text-slate-300 hover:text-white transition-colors"
                     >
                         <X size={24} />
                     </button>

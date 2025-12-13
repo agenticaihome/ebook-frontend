@@ -68,7 +68,7 @@ const SystemHealthDiagnostic = () => {
                                     onChange={(e) => handleRatingChange(agent, e.target.value)}
                                     className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                                 />
-                                <div className="flex justify-between text-xs text-slate-400 mt-1">
+                                <div className="flex justify-between text-xs text-slate-300 mt-1">
                                     <span>Useless</span>
                                     <span>Essential</span>
                                 </div>
@@ -89,7 +89,7 @@ const SystemHealthDiagnostic = () => {
                         <div className={`text-6xl font-bold mb-2 ${results.percentage >= 80 ? 'text-green-400' : results.percentage >= 60 ? 'text-yellow-400' : 'text-red-400'}`}>
                             {results.percentage}%
                         </div>
-                        <div className="text-slate-400">Overall System Health</div>
+                        <div className="text-slate-300">Overall System Health</div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -105,7 +105,7 @@ const SystemHealthDiagnostic = () => {
                                     ))}
                                 </ul>
                             ) : (
-                                <p className="text-sm text-slate-400">No strong points yet. Keep building!</p>
+                                <p className="text-sm text-slate-300">No strong points yet. Keep building!</p>
                             )}
                         </div>
 
@@ -121,7 +121,7 @@ const SystemHealthDiagnostic = () => {
                                     ))}
                                 </ul>
                             ) : (
-                                <p className="text-sm text-slate-400">No critical failures. Great job!</p>
+                                <p className="text-sm text-slate-300">No critical failures. Great job!</p>
                             )}
                         </div>
                     </div>
@@ -140,7 +140,7 @@ const SystemHealthDiagnostic = () => {
 
                     <button
                         onClick={() => setShowResults(false)}
-                        className="w-full text-slate-400 hover:text-white transition-colors"
+                        className="w-full text-slate-300 hover:text-white transition-colors"
                     >
                         Recalculate
                     </button>

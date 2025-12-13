@@ -93,26 +93,26 @@ const SubscriptionAuditTool = () => {
                             <div key={sub.id} className="flex items-center justify-between p-3 bg-slate-800 rounded-lg">
                                 <div>
                                     <div className="text-white font-medium">{sub.name}</div>
-                                    <div className="text-xs text-slate-400">${sub.cost} / {sub.frequency}</div>
+                                    <div className="text-xs text-slate-300">${sub.cost} / {sub.frequency}</div>
                                 </div>
                                 <div className="flex gap-2">
                                     <button
                                         onClick={() => updateStatus(sub.id, 'keep')}
-                                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${sub.status === 'keep' ? 'bg-green-500/20 text-green-400' : 'bg-slate-700 text-slate-400'
+                                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${sub.status === 'keep' ? 'bg-green-500/20 text-green-400' : 'bg-slate-700 text-slate-300'
                                             }`}
                                     >
                                         Keep
                                     </button>
                                     <button
                                         onClick={() => updateStatus(sub.id, 'review')}
-                                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${sub.status === 'review' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-slate-700 text-slate-400'
+                                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${sub.status === 'review' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-slate-700 text-slate-300'
                                             }`}
                                     >
                                         Review
                                     </button>
                                     <button
                                         onClick={() => updateStatus(sub.id, 'cancel')}
-                                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${sub.status === 'cancel' ? 'bg-red-500/20 text-red-400' : 'bg-slate-700 text-slate-400'
+                                        className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${sub.status === 'cancel' ? 'bg-red-500/20 text-red-400' : 'bg-slate-700 text-slate-300'
                                             }`}
                                     >
                                         Cancel
@@ -126,12 +126,12 @@ const SubscriptionAuditTool = () => {
                 {/* Results Section */}
                 <m.div layout className="grid md:grid-cols-2 gap-4">
                     <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
-                        <div className="flex items-center gap-2 mb-2 text-slate-400">
+                        <div className="flex items-center gap-2 mb-2 text-slate-300">
                             <DollarSign size={18} />
                             <span className="text-sm">Total Monthly Cost</span>
                         </div>
                         <div className="text-2xl font-bold text-white">${results.monthlyTotal}</div>
-                        <div className="text-xs text-slate-400 mt-1">${results.annualTotal} / year</div>
+                        <div className="text-xs text-slate-300 mt-1">${results.annualTotal} / year</div>
                     </div>
                     <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-600">
                         <div className="flex items-center gap-2 mb-2 text-green-400">
@@ -139,7 +139,7 @@ const SubscriptionAuditTool = () => {
                             <span className="text-sm">Potential Savings</span>
                         </div>
                         <div className="text-2xl font-bold text-green-400">${results.potentialSavings}</div>
-                        <div className="text-xs text-slate-400 mt-1">${results.annualSavings} / year if cancelled</div>
+                        <div className="text-xs text-slate-300 mt-1">${results.annualSavings} / year if cancelled</div>
                     </div>
                 </m.div>
 

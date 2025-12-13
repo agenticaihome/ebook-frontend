@@ -72,7 +72,7 @@ No gym jargon. Keep each workout under 30 minutes.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">Fitness Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">Workouts that actually fit your life.</p>
+                        <p className="text-slate-300 text-lg">Workouts that actually fit your life.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
@@ -159,15 +159,15 @@ No gym jargon. Keep each workout under 30 minutes.`;
                             <div className="space-y-3">
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
-                                    <div><span className="text-white font-medium">Personalized weekly plan</span><p className="text-slate-400 text-sm">Based on YOUR schedule and equipment</p></div>
+                                    <div><span className="text-white font-medium">Personalized weekly plan</span><p className="text-slate-300 text-sm">Based on YOUR schedule and equipment</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
-                                    <div><span className="text-white font-medium">Under 30-minute workouts</span><p className="text-slate-400 text-sm">No 2-hour gym sessions required</p></div>
+                                    <div><span className="text-white font-medium">Under 30-minute workouts</span><p className="text-slate-300 text-sm">No 2-hour gym sessions required</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
-                                    <div><span className="text-white font-medium">Exercise explanations</span><p className="text-slate-400 text-sm">Ask "how do I do a Romanian deadlift?" and get clear answers</p></div>
+                                    <div><span className="text-white font-medium">Exercise explanations</span><p className="text-slate-300 text-sm">Ask "how do I do a Romanian deadlift?" and get clear answers</p></div>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +176,7 @@ No gym jargon. Keep each workout under 30 minutes.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="mb-8">
                         <button onClick={() => setShowTips(!showTips)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-red-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Zap className="text-amber-400" size={18} />Make it even better</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTips && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -189,18 +189,18 @@ No gym jargon. Keep each workout under 30 minutes.`;
 
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="mb-8">
                         <button onClick={() => setShowTroubleshooting(!showTroubleshooting)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-red-500/30 transition-colors">
-                            <span className="text-white font-bold flex items-center gap-2"><HelpCircle className="text-slate-400" size={18} />Troubleshooting</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
+                            <span className="text-white font-bold flex items-center gap-2"><HelpCircle className="text-slate-300" size={18} />Troubleshooting</span>
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTroubleshooting && (
                             <div className="mt-3 space-y-3">
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"The workouts are too hard"</p>
-                                    <p className="text-slate-400 text-sm">Tell your AI: "These are too intense. Give me a beginner version."</p>
+                                    <p className="text-slate-300 text-sm">Tell your AI: "These are too intense. Give me a beginner version."</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"I don't know how to do an exercise"</p>
-                                    <p className="text-slate-400 text-sm">Just ask: "Show me step-by-step how to do [exercise]." Your AI will explain it.</p>
+                                    <p className="text-slate-300 text-sm">Just ask: "Show me step-by-step how to do [exercise]." Your AI will explain it.</p>
                                 </div>
                             </div>
                         )}
@@ -217,7 +217,7 @@ No gym jargon. Keep each workout under 30 minutes.`;
                         <div className="bg-gradient-to-r from-red-900/20 to-orange-900/20 rounded-2xl p-6 border border-red-500/30 text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 6 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready for your Work Task Agent?</h3>
-                            <p className="text-slate-400 text-sm mb-4">Learn to prioritize what actually matters at work.</p>
+                            <p className="text-slate-300 text-sm mb-4">Learn to prioritize what actually matters at work.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part2/chapter2" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
                                     ← Back to Chapter 5

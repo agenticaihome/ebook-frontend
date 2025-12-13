@@ -72,7 +72,7 @@ const EmbeddableInfectionDiagnostic = () => {
                     {!showResults ? (
                         <>
                             <div className="mb-6">
-                                <div className="flex justify-between text-xs font-bold text-slate-400 mb-2">
+                                <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
                                     <span>QUESTION {currentQuestion + 1}/{questions.length}</span>
                                     <span>{Math.round(((currentQuestion) / questions.length) * 100)}%</span>
                                 </div>
@@ -122,7 +122,7 @@ const EmbeddableInfectionDiagnostic = () => {
                             >
                                 <div className="text-6xl mb-4">{diagnosis.emoji}</div>
                                 <h3 className="text-2xl font-bold text-slate-800 mb-2">{diagnosis.stage}</h3>
-                                <p className="text-slate-400 mb-6">
+                                <p className="text-slate-300 mb-6">
                                     Your Chaos Score: <span className="font-bold" style={{ color: diagnosis.color }}>{infectionLevel}/5</span>
                                 </p>
 
@@ -143,7 +143,7 @@ const EmbeddableInfectionDiagnostic = () => {
                                 <div className="flex justify-center gap-2">
                                     <button
                                         onClick={() => setShowEmbedCode(!showEmbedCode)}
-                                        className="text-xs text-slate-400 hover:text-slate-600 flex items-center gap-1"
+                                        className="text-xs text-slate-300 hover:text-slate-600 flex items-center gap-1"
                                     >
                                         <Code size={12} /> Embed this quiz
                                     </button>
@@ -161,7 +161,7 @@ const EmbeddableInfectionDiagnostic = () => {
                                             value={embedCode}
                                             onClick={(e) => e.target.select()}
                                         />
-                                        <p className="text-[10px] text-slate-400 mt-1">Copy and paste to your site</p>
+                                        <p className="text-[10px] text-slate-300 mt-1">Copy and paste to your site</p>
                                     </m.div>
                                 )}
                             </m.div>

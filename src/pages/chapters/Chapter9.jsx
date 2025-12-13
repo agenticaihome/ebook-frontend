@@ -73,7 +73,7 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Multi-Agent Coordination</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">Make your agents work as a team.</p>
+                        <p className="text-slate-300 text-lg">Make your agents work as a team.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
@@ -92,15 +92,15 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                             <div className="space-y-4">
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">1</div>
-                                    <div><span className="text-white font-medium">Hub Agent</span><p className="text-slate-400 text-sm">One "master" agent that collects info from the others</p></div>
+                                    <div><span className="text-white font-medium">Hub Agent</span><p className="text-slate-300 text-sm">One "master" agent that collects info from the others</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</div>
-                                    <div><span className="text-white font-medium">Feed it outputs</span><p className="text-slate-400 text-sm">Copy outputs from your other agents into the hub</p></div>
+                                    <div><span className="text-white font-medium">Feed it outputs</span><p className="text-slate-300 text-sm">Copy outputs from your other agents into the hub</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</div>
-                                    <div><span className="text-white font-medium">Unified summary</span><p className="text-slate-400 text-sm">Get one integrated view of your entire AI system</p></div>
+                                    <div><span className="text-white font-medium">Unified summary</span><p className="text-slate-300 text-sm">Get one integrated view of your entire AI system</p></div>
                                 </div>
                             </div>
                         </div>
@@ -155,21 +155,21 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-8">
                         <button onClick={() => setShowExamples(!showExamples)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><MessageSquare className="text-cyan-400" size={18} />Example coordination workflows</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showExamples ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showExamples ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showExamples && (
                             <div className="mt-3 grid gap-3">
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">🌅 Morning Dashboard</p>
-                                    <p className="text-slate-400 text-sm">"Combine my calendar, email triage, and weather into one morning briefing. Show me in 60 seconds what matters today."</p>
+                                    <p className="text-slate-300 text-sm">"Combine my calendar, email triage, and weather into one morning briefing. Show me in 60 seconds what matters today."</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">📊 Weekly Review</p>
-                                    <p className="text-slate-400 text-sm">"Take my money check, fitness progress, and work accomplishments. Give me a weekly scorecard every Sunday."</p>
+                                    <p className="text-slate-300 text-sm">"Take my money check, fitness progress, and work accomplishments. Give me a weekly scorecard every Sunday."</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">🏠 Family Sync</p>
-                                    <p className="text-slate-400 text-sm">"Combine everyone's calendars, meal plan, and chore assignments into one family dashboard for the week."</p>
+                                    <p className="text-slate-300 text-sm">"Combine everyone's calendars, meal plan, and chore assignments into one family dashboard for the week."</p>
                                 </div>
                             </div>
                         )}
@@ -178,7 +178,7 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
                         <button onClick={() => setShowTips(!showTips)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Zap className="text-amber-400" size={18} />Pro coordination tips</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTips && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -200,7 +200,7 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                         <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-2xl p-6 border border-cyan-500/30 text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 9 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready to build your complete system?</h3>
-                            <p className="text-slate-400 text-sm mb-4">The final chapter: Your Agent Army.</p>
+                            <p className="text-slate-300 text-sm mb-4">The final chapter: Your Agent Army.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part3/chapter2" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
                                     ← Back to Chapter 8

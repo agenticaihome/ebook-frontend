@@ -61,7 +61,7 @@ const MobileBottomNav = () => {
                             onClick={toggleSound}
                             className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors col-span-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
-                            {isSoundEnabled ? <Volume2 className="text-purple-400" /> : <VolumeX className="text-slate-400" />}
+                            {isSoundEnabled ? <Volume2 className="text-purple-400" /> : <VolumeX className="text-slate-300" />}
                             <span className="text-xs font-bold text-slate-300">Sound: {isSoundEnabled ? 'On' : 'Off'}</span>
                         </button>
                     </div>
@@ -75,32 +75,32 @@ const MobileBottomNav = () => {
 
             <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f1a]/95 backdrop-blur-lg border-t border-slate-800 md:hidden z-50 pb-safe">
                 <div className="flex justify-around items-center p-2">
-                    <PrefetchLink to="/" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-400'}`}>
+                    <PrefetchLink to="/" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-300'}`}>
                         <Home size={22} />
                         <span className="text-[10px] font-bold">Home</span>
                     </PrefetchLink>
 
-                    <PrefetchLink to="/dashboard" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-400'}`}>
+                    <PrefetchLink to="/dashboard" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-300'}`}>
                         <LayoutDashboard size={22} />
                         <span className="text-[10px] font-bold">Quests</span>
                     </PrefetchLink>
 
                     <PrefetchLink
                         to={localStorage.getItem('last_visited_route') || '/part1/chapter1'}
-                        className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') || isActive('/part2') || isActive('/part3') ? 'text-cyan-400' : 'text-slate-400'}`}
+                        className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') || isActive('/part2') || isActive('/part3') ? 'text-cyan-400' : 'text-slate-300'}`}
                     >
                         <BookOpen size={22} />
                         <span className="text-[10px] font-bold">Resume</span>
                     </PrefetchLink>
 
-                    <PrefetchLink to="/games" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-400'}`}>
+                    <PrefetchLink to="/games" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/games') ? 'text-cyan-400' : 'text-slate-300'}`}>
                         <Gamepad2 size={22} />
                         <span className="text-[10px] font-bold">Games</span>
                     </PrefetchLink>
 
                     <button
                         onClick={() => setShowTools(!showTools)}
-                        className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${showTools ? 'text-cyan-400' : 'text-slate-400'}`}
+                        className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${showTools ? 'text-cyan-400' : 'text-slate-300'}`}
                     >
                         <Wrench size={22} />
                         <span className="text-[10px] font-bold">Tools</span>

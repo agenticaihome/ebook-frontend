@@ -788,7 +788,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                                 {timer}/45s
                             </span>
                         </div>
-                        <div className="text-slate-400 font-mono text-xs sm:text-sm">W{wave}</div>
+                        <div className="text-slate-300 font-mono text-xs sm:text-sm">W{wave}</div>
                         {combo > 0 && (
                             <div className="flex items-center gap-1 text-orange-400">
                                 <span className="font-bold font-mono text-sm">{combo}x</span>
@@ -805,7 +805,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                     <div className="text-center">
                         <div className="text-2xl sm:text-3xl font-bold text-white font-mono">{score}</div>
                         {personalBest.score > 0 && (
-                            <div className="text-[10px] text-slate-400">Best: {personalBest.score}</div>
+                            <div className="text-[10px] text-slate-300">Best: {personalBest.score}</div>
                         )}
                     </div>
 
@@ -815,7 +815,7 @@ const CalendarDefenseGame = ({ onBack }) => {
                             onClick={() => setSoundEnabled(!soundEnabled)}
                             className="p-1.5 rounded-lg bg-slate-700/50 hover:bg-slate-600 transition-colors"
                         >
-                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-400" />}
+                            {soundEnabled ? <Volume2 size={16} className="text-slate-300" /> : <VolumeX size={16} className="text-slate-300" />}
                         </button>
                         <button
                             onClick={() => setShowControls(!showControls)}
@@ -861,11 +861,11 @@ const CalendarDefenseGame = ({ onBack }) => {
                                     : 'bg-slate-700'
                                     }`}
                             >
-                                <Shield size={12} className={i < shieldCharges ? 'text-white' : 'text-slate-400'} />
+                                <Shield size={12} className={i < shieldCharges ? 'text-white' : 'text-slate-300'} />
                             </div>
                         ))}
                         {shieldCooldown > 0 && (
-                            <span className="text-xs text-slate-400 font-mono ml-1">{Math.ceil(shieldCooldown)}s</span>
+                            <span className="text-xs text-slate-300 font-mono ml-1">{Math.ceil(shieldCooldown)}s</span>
                         )}
                     </div>
                 </div>
@@ -885,9 +885,9 @@ const CalendarDefenseGame = ({ onBack }) => {
                                 <div><kbd className="px-1.5 py-0.5 bg-slate-700 rounded text-slate-300 font-mono">Click</kbd> Decline meeting</div>
                                 <div><kbd className="px-1.5 py-0.5 bg-cyan-900/50 rounded text-cyan-400 font-mono">Space/S</kbd> Shield</div>
                                 <div><kbd className="px-1.5 py-0.5 bg-slate-700 rounded text-slate-300 font-mono">Hover+E</kbd> Decline</div>
-                                <div className="text-slate-400">Click power-ups to collect</div>
+                                <div className="text-slate-300">Click power-ups to collect</div>
                             </div>
-                            <button onClick={() => setShowControls(false)} className="text-slate-400 hover:text-white">×</button>
+                            <button onClick={() => setShowControls(false)} className="text-slate-300 hover:text-white">×</button>
                         </div>
                     </m.div>
                 )}
@@ -962,13 +962,13 @@ const CalendarDefenseGame = ({ onBack }) => {
                                 <div className="flex items-center gap-2 text-purple-300 font-bold mb-1">
                                     <XCircle size={14} /> CLICK TO DECLINE
                                 </div>
-                                <p className="text-slate-400 text-[10px]">Regular meetings can be declined</p>
+                                <p className="text-slate-300 text-[10px]">Regular meetings can be declined</p>
                             </div>
                             <div className="bg-cyan-900/30 border border-cyan-500/30 rounded-lg p-2.5">
                                 <div className="flex items-center gap-2 text-cyan-300 font-bold mb-1">
                                     <Shield size={14} /> SHIELD (SPACE)
                                 </div>
-                                <p className="text-slate-400 text-[10px]">Block boss meetings with shield</p>
+                                <p className="text-slate-300 text-[10px]">Block boss meetings with shield</p>
                             </div>
                         </div>
 
@@ -1018,19 +1018,19 @@ const CalendarDefenseGame = ({ onBack }) => {
                             {/* Stats Grid */}
                             <div className="grid grid-cols-2 gap-2 mt-4 mb-6 text-sm">
                                 <div className="bg-slate-800/50 rounded-lg p-2">
-                                    <div className="text-slate-400">Declined</div>
+                                    <div className="text-slate-300">Declined</div>
                                     <div className="text-xl font-bold text-purple-400">{stats.declined}</div>
                                 </div>
                                 <div className="bg-slate-800/50 rounded-lg p-2">
-                                    <div className="text-slate-400">Max Combo</div>
+                                    <div className="text-slate-300">Max Combo</div>
                                     <div className="text-xl font-bold text-orange-400">{maxCombo}x</div>
                                 </div>
                                 <div className="bg-slate-800/50 rounded-lg p-2">
-                                    <div className="text-slate-400">Boss Blocked</div>
+                                    <div className="text-slate-300">Boss Blocked</div>
                                     <div className="text-xl font-bold text-cyan-400">{stats.bossBlocked}</div>
                                 </div>
                                 <div className="bg-slate-800/50 rounded-lg p-2">
-                                    <div className="text-slate-400">Deep Work Left</div>
+                                    <div className="text-slate-300">Deep Work Left</div>
                                     <div className="text-xl font-bold text-green-400">{deepWorkHours.toFixed(1)}h</div>
                                 </div>
                             </div>

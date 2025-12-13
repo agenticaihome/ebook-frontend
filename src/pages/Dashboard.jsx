@@ -178,7 +178,7 @@ const Dashboard = () => {
                     {/* PROGRESS BAR - Visual */}
                     {/* ===================== */}
                     <div className="mb-8">
-                        <div className="flex justify-between text-sm text-slate-400 mb-2">
+                        <div className="flex justify-between text-sm text-slate-300 mb-2">
                             <span>Progress</span>
                             <span>{Math.round((completedCount / 10) * 100)}%</span>
                         </div>
@@ -218,7 +218,7 @@ const Dashboard = () => {
                     {/* ===================== */}
                     <div className="flex items-center gap-4 mb-6">
                         <div className="flex-1 h-px bg-slate-700" />
-                        <span className="text-slate-400 text-sm font-medium">More</span>
+                        <span className="text-slate-300 text-sm font-medium">More</span>
                         <div className="flex-1 h-px bg-slate-700" />
                     </div>
 

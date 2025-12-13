@@ -72,7 +72,7 @@ Then design a simple agent prompt I can use.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Custom Agent Builder</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">Build ANY agent you can imagine.</p>
+                        <p className="text-slate-300 text-lg">Build ANY agent you can imagine.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
@@ -91,15 +91,15 @@ Then design a simple agent prompt I can use.`;
                             <div className="space-y-4">
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">1</div>
-                                    <div><span className="text-white font-medium">Problem</span><p className="text-slate-400 text-sm">What specific pain point are you solving?</p></div>
+                                    <div><span className="text-white font-medium">Problem</span><p className="text-slate-300 text-sm">What specific pain point are you solving?</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</div>
-                                    <div><span className="text-white font-medium">Trigger</span><p className="text-slate-400 text-sm">When should this agent activate? (time, event, request)</p></div>
+                                    <div><span className="text-white font-medium">Trigger</span><p className="text-slate-300 text-sm">When should this agent activate? (time, event, request)</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</div>
-                                    <div><span className="text-white font-medium">Output</span><p className="text-slate-400 text-sm">What specific result should you get?</p></div>
+                                    <div><span className="text-white font-medium">Output</span><p className="text-slate-300 text-sm">What specific result should you get?</p></div>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,7 @@ Then design a simple agent prompt I can use.`;
                                         <div className="bg-purple-900/20 rounded-lg p-2 text-xs border border-purple-500/20">
                                             <p className="font-mono">"Be my Vitamin Reminder Agent.<br /><br />Every morning at 8am, send me a friendly reminder to take my vitamins. Ask if I took them. If I say no, remind me again at noon."</p>
                                         </div>
-                                        <p className="text-slate-400">That's it! You just built a custom agent in 30 seconds.</p>
+                                        <p className="text-slate-300">That's it! You just built a custom agent in 30 seconds.</p>
                                     </div>
                                     <p className="text-center text-slate-500 text-xs mt-3">👆 The framework works for ANY problem you have!</p>
                                 </motion.div>
@@ -154,25 +154,25 @@ Then design a simple agent prompt I can use.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-8">
                         <button onClick={() => setShowExamples(!showExamples)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-purple-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Lightbulb className="text-yellow-400" size={18} />Example agents you could build</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showExamples ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showExamples ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showExamples && (
                             <div className="mt-3 grid gap-3">
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">📚 Reading List Agent</p>
-                                    <p className="text-slate-400 text-sm">"Track books I want to read, remind me weekly, and give me a summary of my progress."</p>
+                                    <p className="text-slate-300 text-sm">"Track books I want to read, remind me weekly, and give me a summary of my progress."</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">🏠 Chore Agent</p>
-                                    <p className="text-slate-400 text-sm">"Remind me and my spouse about household tasks. Keep score of who did what."</p>
+                                    <p className="text-slate-300 text-sm">"Remind me and my spouse about household tasks. Keep score of who did what."</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">💡 Idea Capture Agent</p>
-                                    <p className="text-slate-400 text-sm">"When I say 'capture this idea,' store it and give me a weekly summary of all ideas."</p>
+                                    <p className="text-slate-300 text-sm">"When I say 'capture this idea,' store it and give me a weekly summary of all ideas."</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">🎁 Gift Agent</p>
-                                    <p className="text-slate-400 text-sm">"Track gift ideas for people when I mention them. Remind me 2 weeks before their birthday."</p>
+                                    <p className="text-slate-300 text-sm">"Track gift ideas for people when I mention them. Remind me 2 weeks before their birthday."</p>
                                 </div>
                             </div>
                         )}
@@ -181,7 +181,7 @@ Then design a simple agent prompt I can use.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
                         <button onClick={() => setShowTips(!showTips)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-purple-500/30 transition-colors">
                             <span className="text-white font-bold flex items-center gap-2"><Zap className="text-amber-400" size={18} />Pro tips for agent design</span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTips && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -203,7 +203,7 @@ Then design a simple agent prompt I can use.`;
                         <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-2xl p-6 border border-purple-500/30 text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 8 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready to make agents work together?</h3>
-                            <p className="text-slate-400 text-sm mb-4">Learn multi-agent coordination.</p>
+                            <p className="text-slate-300 text-sm mb-4">Learn multi-agent coordination.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part3/chapter1" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
                                     ← Back to Chapter 7

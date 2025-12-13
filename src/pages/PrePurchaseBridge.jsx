@@ -150,7 +150,7 @@ const PrePurchaseBridge = () => {
                                 <span className="text-4xl font-black text-white">$39.99</span>
                                 <span className="text-slate-500 line-through text-xl">$49.99</span>
                             </div>
-                            <p className="text-slate-400 text-sm mt-1">One-time payment • Lifetime access • Start immediately</p>
+                            <p className="text-slate-300 text-sm mt-1">One-time payment • Lifetime access • Start immediately</p>
                             <p className="text-teal-400/90 text-sm mt-1 font-medium">📈 Increases at 1,000 members</p>
                         </div>
 
@@ -167,7 +167,7 @@ const PrePurchaseBridge = () => {
                             <div className="absolute inset-0 rounded-2xl bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>
 
-                        <div className="mt-4 text-sm text-slate-400">
+                        <div className="mt-4 text-sm text-slate-300">
                             Love it or it's free. We promise.
                         </div>
                     </motion.section>
@@ -323,11 +323,11 @@ const PrePurchaseBridge = () => {
                                 <div className="bg-slate-800/50 rounded-xl p-5 border border-slate-700/50">
                                     <div className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-3">Compare The Value</div>
                                     <div className="space-y-2 text-sm">
-                                        <div className="flex justify-between text-slate-400">
+                                        <div className="flex justify-between text-slate-300">
                                             <span>Productivity Consultant</span>
                                             <span className="line-through decoration-red-500/50">$200+/hour</span>
                                         </div>
-                                        <div className="flex justify-between text-slate-400">
+                                        <div className="flex justify-between text-slate-300">
                                             <span>Professional Course</span>
                                             <span className="line-through decoration-red-500/50">$199-499</span>
                                         </div>
@@ -391,7 +391,7 @@ const PrePurchaseBridge = () => {
                             <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
                                 Which AI Tools Are Right For You?
                             </h2>
-                            <p className="text-slate-400 text-sm">
+                            <p className="text-slate-300 text-sm">
                                 Take this quiz to get personalized tool recommendations and see your estimated monthly cost.
                             </p>
                         </div>
@@ -418,7 +418,7 @@ const PrePurchaseBridge = () => {
                                         <span className="text-slate-500">{expandedFaq === i ? '−' : '+'}</span>
                                     </button>
                                     {expandedFaq === i && (
-                                        <div className="px-4 pb-3 text-slate-400 text-sm">{faq.a}</div>
+                                        <div className="px-4 pb-3 text-slate-300 text-sm">{faq.a}</div>
                                     )}
                                 </div>
                             ))}
@@ -438,7 +438,7 @@ const PrePurchaseBridge = () => {
                             </div>
                         ) : (
                             <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                                <p className="text-slate-400 text-sm text-center mb-3">
+                                <p className="text-slate-300 text-sm text-center mb-3">
                                     🎁 <span className="text-teal-400 font-medium">Get Your Free AI Starter Kit</span> — tips + checklist
                                 </p>
                                 <form className="flex gap-2" onSubmit={handleSubscribe}>

@@ -227,7 +227,7 @@ const FocusFury = ({ onBack }) => {
         if (k >= 60) return { label: 'LOCKED IN', emoji: '🔒', color: 'text-green-400', bg: 'bg-green-500/20' };
         if (k >= 30) return { label: 'FOCUSED', emoji: '🎯', color: 'text-blue-400', bg: 'bg-blue-500/20' };
         if (k >= 10) return { label: 'WARMING UP', emoji: '🔥', color: 'text-orange-400', bg: 'bg-orange-500/20' };
-        return { label: 'DISTRACTED', emoji: '😵', color: 'text-slate-400', bg: 'bg-slate-500/20' };
+        return { label: 'DISTRACTED', emoji: '😵', color: 'text-slate-300', bg: 'bg-slate-500/20' };
     }, []);
 
     // ===================
@@ -676,7 +676,7 @@ const FocusFury = ({ onBack }) => {
                             >
                                 {kills}
                             </m.div>
-                            <div className="text-[10px] text-slate-400">KILLS</div>
+                            <div className="text-[10px] text-slate-300">KILLS</div>
                         </div>
 
                         {/* Combo */}
@@ -691,7 +691,7 @@ const FocusFury = ({ onBack }) => {
                                     {combo}x
                                 </m.div>
                             )}
-                            <div className="text-[10px] text-slate-400">COMBO</div>
+                            <div className="text-[10px] text-slate-300">COMBO</div>
                         </div>
                     </div>
                     <SoundToggle className="absolute top-3 right-3 pointer-events-auto" />
@@ -867,13 +867,13 @@ const FocusFury = ({ onBack }) => {
                                 <p className="text-purple-400 font-medium mb-2 text-sm sm:text-base">
                                     Defend Captain Efficiency from distractions!
                                 </p>
-                                <p className="text-slate-400 text-xs mb-5">
+                                <p className="text-slate-300 text-xs mb-5">
                                     ⏱️ 60 seconds • 📱 Tap to fire beams • 🎯 Don't let them reach the center!
                                 </p>
 
                                 {bestKills > 0 && (
                                     <div className="mb-5 bg-slate-800/70 rounded-xl py-3 px-5 inline-block">
-                                        <span className="text-xs text-slate-400 uppercase">Your Best</span>
+                                        <span className="text-xs text-slate-300 uppercase">Your Best</span>
                                         <div className="text-3xl font-black text-yellow-400 flex items-center justify-center gap-2">
                                             <Trophy size={24} /> {bestKills}
                                         </div>
@@ -888,7 +888,7 @@ const FocusFury = ({ onBack }) => {
                                     <Zap size={26} fill="white" /> UNLEASH FURY
                                 </m.button>
 
-                                <p className="text-slate-400 text-xs mt-4">
+                                <p className="text-slate-300 text-xs mt-4">
                                     Tap/click anywhere to fire focus beams
                                 </p>
                             </m.div>
@@ -932,7 +932,7 @@ const FocusFury = ({ onBack }) => {
                                 )}
 
                                 <div className={`${rank.bg} rounded-2xl p-4 mb-4`}>
-                                    <div className="text-xs text-slate-400 uppercase">Distractions Destroyed</div>
+                                    <div className="text-xs text-slate-300 uppercase">Distractions Destroyed</div>
                                     <div className="text-5xl font-black text-white">{kills}</div>
                                     <div className="flex justify-center gap-4 mt-2 text-sm">
                                         <div className="text-purple-400">
@@ -940,7 +940,7 @@ const FocusFury = ({ onBack }) => {
                                         </div>
                                     </div>
                                     {!isNewBest && bestKills > 0 && (
-                                        <div className="text-xs text-slate-400 mt-1">
+                                        <div className="text-xs text-slate-300 mt-1">
                                             Best: {bestKills} {kills === bestKills && '(Tied!)'}
                                         </div>
                                     )}
@@ -948,12 +948,12 @@ const FocusFury = ({ onBack }) => {
 
                                 {/* Tips */}
                                 {kills < 20 && (
-                                    <p className="text-slate-400 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
+                                    <p className="text-slate-300 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
                                         💡 Tip: Fire ahead of where distractions are moving!
                                     </p>
                                 )}
                                 {kills >= 20 && kills < 60 && (
-                                    <p className="text-slate-400 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
+                                    <p className="text-slate-300 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
                                         💡 Build combos for bonus points - don't let the streak drop!
                                     </p>
                                 )}

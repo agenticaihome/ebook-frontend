@@ -214,7 +214,7 @@ const ToolRecommendationQuiz = () => {
                                     <div className="text-2xl font-bold text-white">
                                         ${results.foundationAI.cost}
                                     </div>
-                                    <div className="text-xs text-slate-400">/month</div>
+                                    <div className="text-xs text-slate-300">/month</div>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +227,7 @@ const ToolRecommendationQuiz = () => {
                                         <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-600 flex items-start justify-between">
                                             <div className="flex-1">
                                                 <div className="text-white font-bold mb-1">{tool.name}</div>
-                                                <div className="text-slate-400 text-sm mb-2">{tool.reason}</div>
+                                                <div className="text-slate-300 text-sm mb-2">{tool.reason}</div>
                                                 <a
                                                     href={tool.link}
                                                     target="_blank"
@@ -239,7 +239,7 @@ const ToolRecommendationQuiz = () => {
                                             </div>
                                             <div className="text-right ml-4">
                                                 <div className="text-xl font-bold text-white">${tool.cost}</div>
-                                                <div className="text-xs text-slate-400">/month</div>
+                                                <div className="text-xs text-slate-300">/month</div>
                                             </div>
                                         </div>
                                     ))}
@@ -252,12 +252,12 @@ const ToolRecommendationQuiz = () => {
                                 <div className="flex items-center gap-3">
                                     <DollarSign className="text-cyan-400" size={24} />
                                     <div>
-                                        <div className="text-sm text-slate-400">Estimated Monthly Cost</div>
+                                        <div className="text-sm text-slate-300">Estimated Monthly Cost</div>
                                         <div className="text-white font-bold text-2xl">${results.totalCost}/month</div>
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <div className="text-sm text-slate-400">Annual Investment</div>
+                                    <div className="text-sm text-slate-300">Annual Investment</div>
                                     <div className="text-cyan-400 font-bold">${results.totalCost * 12}/year</div>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@ const ToolRecommendationQuiz = () => {
                                     </div>
                                     <div className="text-sm">
                                         <div className="text-white font-medium">Sign up for {results.foundationAI.name}</div>
-                                        <div className="text-slate-400">Get your account set up and explore the interface</div>
+                                        <div className="text-slate-300">Get your account set up and explore the interface</div>
                                     </div>
                                 </div>
                                 <div className="flex gap-3">
@@ -282,7 +282,7 @@ const ToolRecommendationQuiz = () => {
                                     </div>
                                     <div className="text-sm">
                                         <div className="text-white font-medium">Build your first Morning Brief</div>
-                                        <div className="text-slate-400">Use the prompt from Part 2, Chapter 4</div>
+                                        <div className="text-slate-300">Use the prompt from Part 2, Chapter 4</div>
                                     </div>
                                 </div>
                                 <div className="flex gap-3">
@@ -291,7 +291,7 @@ const ToolRecommendationQuiz = () => {
                                     </div>
                                     <div className="text-sm">
                                         <div className="text-white font-medium">Test & refine your morning agent</div>
-                                        <div className="text-slate-400">Run it for 3 days, adjust what's missing</div>
+                                        <div className="text-slate-300">Run it for 3 days, adjust what's missing</div>
                                     </div>
                                 </div>
                                 {results.specializedTools.length > 0 && (
@@ -301,7 +301,7 @@ const ToolRecommendationQuiz = () => {
                                         </div>
                                         <div className="text-sm">
                                             <div className="text-white font-medium">Add specialized tools one at a time</div>
-                                            <div className="text-slate-400">Start with {results.specializedTools[0].name}, master it, then add more</div>
+                                            <div className="text-slate-300">Start with {results.specializedTools[0].name}, master it, then add more</div>
                                         </div>
                                     </div>
                                 )}

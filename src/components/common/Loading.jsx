@@ -67,7 +67,7 @@ const Loading = ({ message = "Loading..." }) => {
             <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-slate-400 text-sm md:text-base font-medium"
+                className="text-slate-300 text-sm md:text-base font-medium"
             >
                 {displayMessage}
             </motion.p>

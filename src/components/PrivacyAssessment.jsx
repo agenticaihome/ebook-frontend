@@ -144,7 +144,7 @@ const PrivacyAssessment = () => {
                                         onChange={(e) => handleAnswer(question.id, parseInt(e.target.value))}
                                         className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                                     />
-                                    <div className="flex justify-between text-sm text-slate-400 mt-2">
+                                    <div className="flex justify-between text-sm text-slate-300 mt-2">
                                         <span>{question.labels.min} ({question.min})</span>
                                         <span className="text-cyan-400 font-bold">{answers[question.id] || 5}</span>
                                         <span>{question.labels.max} ({question.max})</span>
@@ -192,7 +192,7 @@ const PrivacyAssessment = () => {
                         <h4 className="text-3xl font-bold text-white mb-2">
                             {results.tier} Privacy Tier
                         </h4>
-                        <p className="text-slate-400">{results.tierDescription}</p>
+                        <p className="text-slate-300">{results.tierDescription}</p>
                     </div>
 
                     <div className="mb-6">
@@ -201,7 +201,7 @@ const PrivacyAssessment = () => {
                             {results.tools.map((tool, idx) => (
                                 <div key={idx} className="p-4 bg-slate-900/50 rounded-xl border border-slate-600">
                                     <div className="text-white font-bold mb-1">{tool.name}</div>
-                                    <div className="text-slate-400 text-sm">{tool.reason}</div>
+                                    <div className="text-slate-300 text-sm">{tool.reason}</div>
                                 </div>
                             ))}
                         </div>

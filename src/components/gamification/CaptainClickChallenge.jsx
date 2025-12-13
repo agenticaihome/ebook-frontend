@@ -444,7 +444,7 @@ const CaptainClickChallenge = ({ onBack }) => {
         if (s >= 35) return { label: '⭐ Excellent!', color: 'text-cyan-400', bg: 'bg-cyan-500/20', sub: 'Really impressive!' };
         if (s >= 25) return { label: '🎯 Good Job!', color: 'text-green-400', bg: 'bg-green-500/20', sub: 'Solid clicking skills!' };
         if (s >= 15) return { label: '☕ Warming Up', color: 'text-slate-300', bg: 'bg-slate-500/20', sub: 'Keep practicing!' };
-        return { label: '😴 Sleepy Start', color: 'text-slate-400', bg: 'bg-slate-700/20', sub: 'More coffee needed!' };
+        return { label: '😴 Sleepy Start', color: 'text-slate-300', bg: 'bg-slate-700/20', sub: 'More coffee needed!' };
     };
 
     const scoreTier = getScoreTier(score);
@@ -487,7 +487,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                     {/* Score & Time */}
                     <div className="flex items-center gap-3 sm:gap-5">
                         <div className="text-center">
-                            <div className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">Score</div>
+                            <div className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider">Score</div>
                             <m.div
                                 key={score}
                                 initial={{ scale: 1.3 }}
@@ -498,11 +498,11 @@ const CaptainClickChallenge = ({ onBack }) => {
                             </m.div>
                         </div>
                         <div className="text-center">
-                            <div className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">Best</div>
+                            <div className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider">Best</div>
                             <div className="text-lg sm:text-xl font-bold text-cyan-400 font-mono">{highScore}</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">Time</div>
+                            <div className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-wider">Time</div>
                             <div className={`text-lg sm:text-xl font-bold font-mono ${timeLeft <= 10 ? 'text-red-500 animate-pulse' : 'text-white'}`}>
                                 {timeLeft}s
                             </div>
@@ -515,7 +515,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                         <div className="flex flex-col items-end">
                             <div className="flex items-center gap-1 mb-1">
                                 {frenzyMode && <Flame className="w-4 h-4 text-orange-500 animate-pulse" />}
-                                <span className={`text-[10px] sm:text-xs font-bold uppercase ${frenzyMode ? 'text-orange-400' : 'text-slate-400'}`}>
+                                <span className={`text-[10px] sm:text-xs font-bold uppercase ${frenzyMode ? 'text-orange-400' : 'text-slate-300'}`}>
                                     {frenzyMode ? 'FRENZY x2!' : `Combo ${combo}`}
                                 </span>
                             </div>
@@ -623,7 +623,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                                 </m.div>
 
                                 <h3 className="text-xl sm:text-2xl font-black text-white mb-2">Tap Blitz</h3>
-                                <p className="text-slate-400 mb-4 text-sm">
+                                <p className="text-slate-300 mb-4 text-sm">
                                     Tap Captain Efficiency before he escapes! Speed = efficiency.
                                 </p>
 
@@ -685,21 +685,21 @@ const CaptainClickChallenge = ({ onBack }) => {
                                         </h2>
                                     </>
                                 )}
-                                <p className="text-slate-400 text-sm mb-4">{scoreTier.sub}</p>
+                                <p className="text-slate-300 text-sm mb-4">{scoreTier.sub}</p>
 
                                 <div className={`${scoreTier.bg} rounded-2xl p-4 mb-4`}>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <div className="text-xs text-slate-400 uppercase">Score</div>
+                                            <div className="text-xs text-slate-300 uppercase">Score</div>
                                             <div className="text-3xl sm:text-4xl font-black text-orange-400">{score}</div>
                                         </div>
                                         <div>
-                                            <div className="text-xs text-slate-400 uppercase">Max Combo</div>
+                                            <div className="text-xs text-slate-300 uppercase">Max Combo</div>
                                             <div className="text-3xl sm:text-4xl font-black text-cyan-400">{maxCombo}</div>
                                         </div>
                                     </div>
                                     {!isNewHighScore && score > 0 && (
-                                        <div className="text-xs text-slate-400 mt-2">
+                                        <div className="text-xs text-slate-300 mt-2">
                                             {highScore - score > 0 ? `${highScore - score} away from best` : 'Tied with best!'}
                                         </div>
                                     )}
@@ -865,7 +865,7 @@ const CaptainClickChallenge = ({ onBack }) => {
             {/* Footer tip */}
             {gameState === 'playing' && (
                 <div className="bg-slate-800/50 px-3 py-2 text-center border-t border-slate-600/50">
-                    <p className="text-[10px] sm:text-xs text-slate-400">
+                    <p className="text-[10px] sm:text-xs text-slate-300">
                         🎯 Hit 5 in a row for <span className="text-orange-400 font-bold">FRENZY MODE</span> • Collect power-ups • Don't miss!
                     </p>
                 </div>

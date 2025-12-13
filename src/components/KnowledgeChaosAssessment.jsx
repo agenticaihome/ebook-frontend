@@ -85,7 +85,7 @@ const KnowledgeChaosAssessment = () => {
                                     onClick={() => handleInputChange('findability', opt)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize text-sm ${inputs.findability === opt
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {opt}
@@ -104,7 +104,7 @@ const KnowledgeChaosAssessment = () => {
                             onChange={(e) => handleInputChange('storageLocations', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>1 place</span>
                             <span className="text-cyan-400 font-bold">{inputs.storageLocations} places</span>
                             <span>10+ places</span>
@@ -122,7 +122,7 @@ const KnowledgeChaosAssessment = () => {
                             onChange={(e) => handleInputChange('searchHours', parseFloat(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 hrs</span>
                             <span className="text-cyan-400 font-bold">{inputs.searchHours} hrs</span>
                             <span>10+ hrs</span>
@@ -139,7 +139,7 @@ const KnowledgeChaosAssessment = () => {
                             onChange={(e) => handleInputChange('systemRating', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>Useless (1)</span>
                             <span className="text-cyan-400 font-bold">{inputs.systemRating}</span>
                             <span>Perfect (10)</span>
@@ -159,7 +159,7 @@ const KnowledgeChaosAssessment = () => {
                         <div className={`text-6xl font-bold ${getScoreColor(results.chaos)} mb-2`}>
                             {results.chaos}/10
                         </div>
-                        <div className="text-slate-400">Knowledge Chaos Score</div>
+                        <div className="text-slate-300">Knowledge Chaos Score</div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -176,7 +176,7 @@ const KnowledgeChaosAssessment = () => {
                                 <span className="text-sm">Recoverable Time</span>
                             </div>
                             <div className="text-2xl font-bold text-green-400">{results.recoverable} hrs/week</div>
-                            <div className="text-xs text-slate-400 mt-1">Potential gain</div>
+                            <div className="text-xs text-slate-300 mt-1">Potential gain</div>
                         </div>
                     </div>
 
@@ -194,7 +194,7 @@ const KnowledgeChaosAssessment = () => {
 
                     <button
                         onClick={() => setShowResults(false)}
-                        className="w-full text-slate-400 hover:text-white transition-colors"
+                        className="w-full text-slate-300 hover:text-white transition-colors"
                     >
                         Recalculate
                     </button>

@@ -122,21 +122,21 @@ const OnboardingPage = () => {
                                 <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
                                     <div className="text-4xl mb-4">📖</div>
                                     <h3 className="text-lg font-bold text-white mb-2">What Is This?</h3>
-                                    <p className="text-slate-400 text-sm">
+                                    <p className="text-slate-300 text-sm">
                                         An interactive webbook that teaches you to build <span className="text-teal-400">real AI agent systems</span>.
                                     </p>
                                 </div>
                                 <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
                                     <div className="text-4xl mb-4">⏰</div>
                                     <h3 className="text-lg font-bold text-white mb-2">Why Does It Matter?</h3>
-                                    <p className="text-slate-400 text-sm">
+                                    <p className="text-slate-300 text-sm">
                                         You'll save <span className="text-amber-400">5+ hours every week</span> once you deploy your agents.
                                     </p>
                                 </div>
                                 <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
                                     <div className="text-4xl mb-4">🚀</div>
                                     <h3 className="text-lg font-bold text-white mb-2">What Do I Do?</h3>
-                                    <p className="text-slate-400 text-sm">
+                                    <p className="text-slate-300 text-sm">
                                         Start Mission 1. Captain Efficiency will <span className="text-teal-400">guide you step-by-step</span>.
                                     </p>
                                 </div>
@@ -194,7 +194,7 @@ const OnboardingPage = () => {
                                 >
                                     <span className="text-3xl mb-3 block">{item.emoji}</span>
                                     <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                                    <p className="text-slate-300 text-sm leading-relaxed">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -216,7 +216,7 @@ const OnboardingPage = () => {
                             <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
                                 What's Your AI Readiness Level?
                             </h2>
-                            <p className="text-slate-400 text-sm">
+                            <p className="text-slate-300 text-sm">
                                 Take this 60-second quiz to discover your starting point and get personalized recommendations.
                             </p>
                         </motion.div>
@@ -244,7 +244,7 @@ const OnboardingPage = () => {
                             <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
                                 <p>
                                     <span className="text-cyan-400 font-bold">That first time your AI handles a task for you...</span>
-                                    <span className="text-slate-400"> it changes something.</span>
+                                    <span className="text-slate-300"> it changes something.</span>
                                 </p>
                                 <p>
                                     You wake up to a <span className="text-white font-medium">perfectly organized inbox</span>.
@@ -288,7 +288,7 @@ const OnboardingPage = () => {
                             <h2 className="text-2xl md:text-3xl font-bold mb-4">
                                 Meet Your New <span className="text-teal-400">Agent Army</span>
                             </h2>
-                            <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
+                            <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
                                 You are the CEO. They are your employees.
                                 <br />
                                 They work 24/7/365. They never complain. They don't need coffee.
@@ -313,7 +313,7 @@ const OnboardingPage = () => {
                             className="text-center mb-12"
                         >
                             <h2 className="text-2xl md:text-4xl font-bold mb-4">How This Works</h2>
-                            <p className="text-slate-400">4 simple steps to freedom</p>
+                            <p className="text-slate-300">4 simple steps to freedom</p>
                         </motion.div>
 
                         <div className="grid md:grid-cols-4 gap-4">
@@ -340,7 +340,7 @@ const OnboardingPage = () => {
                                         </div>
                                         <div className="text-xs text-slate-500 mb-1">Step {item.step}</div>
                                         <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
-                                        <p className="text-slate-400 text-sm">{item.desc}</p>
+                                        <p className="text-slate-300 text-sm">{item.desc}</p>
                                     </div>
                                     {i < 3 && (
                                         <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-slate-600">
@@ -442,7 +442,7 @@ const OnboardingPage = () => {
                                     <p className="text-slate-300 mb-4 leading-relaxed">
                                         I'm a dental resident and Army vet with two kids under 3. I built this with <span className="text-white font-medium">zero coding experience</span> — just AI tools, late nights, and a refusal to quit.
                                     </p>
-                                    <p className="text-slate-400 text-sm mb-4">
+                                    <p className="text-slate-300 text-sm mb-4">
                                         The agents in this course are the same ones I use to manage my own chaotic life. If they can handle a 50+ hour clinical week plus toddlers, they can handle yours.
                                     </p>
                                     <Link
@@ -471,7 +471,7 @@ const OnboardingPage = () => {
                             <h2 className="text-3xl md:text-5xl font-bold mb-4">
                                 Ready to Begin?
                             </h2>
-                            <p className="text-slate-400 mb-10">
+                            <p className="text-slate-300 mb-10">
                                 Choose how you want to start.
                             </p>
 
@@ -484,7 +484,7 @@ const OnboardingPage = () => {
                                         </div>
                                         <div className="text-4xl mb-3">🚀</div>
                                         <h3 className="text-xl font-bold text-white mb-2">Start Mission 1</h3>
-                                        <p className="text-slate-400 text-sm mb-4">The full story experience. Best for first-timers.</p>
+                                        <p className="text-slate-300 text-sm mb-4">The full story experience. Best for first-timers.</p>
                                         <div className="flex items-center justify-center gap-2 text-teal-400 font-bold">
                                             Start Learning <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                         </div>

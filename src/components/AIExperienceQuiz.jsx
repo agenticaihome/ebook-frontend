@@ -166,7 +166,7 @@ const AIExperienceQuiz = () => {
                                     onChange={(e) => handleAnswer(questions[currentQuestion].id, parseInt(e.target.value))}
                                     className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                                 />
-                                <div className="flex justify-between text-sm text-slate-400">
+                                <div className="flex justify-between text-sm text-slate-300">
                                     <span>Not comfortable (1)</span>
                                     <span className="text-cyan-400 font-bold text-lg">
                                         {answers[questions[currentQuestion].id] || 5}
@@ -226,17 +226,17 @@ const AIExperienceQuiz = () => {
 
                         <div className="grid md:grid-cols-2 gap-4 mb-6">
                             <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600">
-                                <div className="text-sm text-slate-400 mb-1">Recommended Starting Point</div>
+                                <div className="text-sm text-slate-300 mb-1">Recommended Starting Point</div>
                                 <div className="text-white font-bold">{results.recommendation}</div>
                             </div>
                             <div className="bg-slate-900/50 p-6 rounded-xl border border-slate-600">
-                                <div className="text-sm text-slate-400 mb-1">Potential Time Savings</div>
+                                <div className="text-sm text-slate-300 mb-1">Potential Time Savings</div>
                                 <div className="text-cyan-400 font-bold text-xl">{results.timeSavings}</div>
                             </div>
                         </div>
 
                         <div className="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 p-6 rounded-xl border border-cyan-500/30">
-                            <div className="text-sm text-slate-400 mb-2">Your First Agent Should Be</div>
+                            <div className="text-sm text-slate-300 mb-2">Your First Agent Should Be</div>
                             <div className="text-white font-bold text-2xl">{results.firstAgent}</div>
                         </div>
 

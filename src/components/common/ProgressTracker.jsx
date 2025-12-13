@@ -48,7 +48,7 @@ const ProgressTracker = ({ currentChapter = 1 }) => {
                         <div className="flex items-center gap-2">
                             <Trophy className="text-amber-400" size={18} />
                             <span className="text-white font-bold">{currentChapter}/10</span>
-                            <span className="text-slate-400 text-sm hidden sm:inline">agents</span>
+                            <span className="text-slate-300 text-sm hidden sm:inline">agents</span>
                         </div>
 
                         {/* Divider */}
@@ -58,7 +58,7 @@ const ProgressTracker = ({ currentChapter = 1 }) => {
                         <div className="flex items-center gap-2">
                             <Flame className="text-orange-400" size={18} />
                             <span className="text-white font-bold">{journeyDays}</span>
-                            <span className="text-slate-400 text-sm hidden sm:inline">
+                            <span className="text-slate-300 text-sm hidden sm:inline">
                                 {journeyDays === 1 ? 'day' : 'days'} in
                             </span>
                         </div>

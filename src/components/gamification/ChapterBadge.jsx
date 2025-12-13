@@ -51,7 +51,7 @@ const ChapterBadge = ({ chapter, num, isComplete, isLocked }) => {
                     <Check size={12} className="text-white" />
                 </div>
             ) : (
-                <span className="text-xs font-bold text-slate-400 font-mono">
+                <span className="text-xs font-bold text-slate-300 font-mono">
                     {num}
                 </span>
             )}

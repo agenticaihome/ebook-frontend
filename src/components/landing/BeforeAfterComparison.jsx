@@ -14,19 +14,19 @@ export default function BeforeAfterComparison() {
                     The Old Way (Chaos)
                 </h3>
                 <ul className="space-y-4">
-                    <li className="flex gap-3 text-slate-400">
+                    <li className="flex gap-3 text-slate-300">
                         <X className="text-red-500 flex-shrink-0" size={20} />
                         <span>Waking up to a messy kitchen & no plan</span>
                     </li>
-                    <li className="flex gap-3 text-slate-400">
+                    <li className="flex gap-3 text-slate-300">
                         <X className="text-red-500 flex-shrink-0" size={20} />
                         <span>Drowning in 100+ unread emails</span>
                     </li>
-                    <li className="flex gap-3 text-slate-400">
+                    <li className="flex gap-3 text-slate-300">
                         <X className="text-red-500 flex-shrink-0" size={20} />
                         <span>"What's for dinner?" panic at 5 PM</span>
                     </li>
-                    <li className="flex gap-3 text-slate-400">
+                    <li className="flex gap-3 text-slate-300">
                         <X className="text-red-500 flex-shrink-0" size={20} />
                         <span>Fighting biology & burning out</span>
                     </li>

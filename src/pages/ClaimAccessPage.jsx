@@ -58,7 +58,7 @@ const ClaimAccessPage = () => {
                 >
                     <button
                         onClick={() => navigate('/login')}
-                        className="absolute top-6 left-6 text-slate-400 hover:text-white transition-colors"
+                        className="absolute top-6 left-6 text-slate-300 hover:text-white transition-colors"
                     >
                         <ArrowLeft className="w-5 h-5" />
                     </button>
@@ -68,18 +68,18 @@ const ClaimAccessPage = () => {
                             <ShieldCheck className="w-8 h-8 text-cyan-400" />
                         </div>
                         <h1 className="text-2xl font-bold text-white mb-2">Claim Your Purchase</h1>
-                        <p className="text-slate-400 text-sm">
+                        <p className="text-slate-300 text-sm">
                             Lost your connection? Enter your Transaction ID or Access Code to resume setup.
                         </p>
                     </div>
 
                     <form onSubmit={handleClaim} className="space-y-6">
                         <div>
-                            <label className="text-xs text-slate-400 uppercase tracking-wider font-bold mb-2 block">
+                            <label className="text-xs text-slate-300 uppercase tracking-wider font-bold mb-2 block">
                                 Transaction ID / Access Code
                             </label>
                             <div className="relative">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300" />
                                 <input
                                     type="text"
                                     value={identifier}
@@ -89,7 +89,7 @@ const ClaimAccessPage = () => {
                                     required
                                 />
                             </div>
-                            <p className="text-xs text-slate-400 mt-2">
+                            <p className="text-xs text-slate-300 mt-2">
                                 Check your email (Stripe) or wallet history (Ergo) for this ID.
                             </p>
                         </div>

@@ -71,7 +71,7 @@ Real food, not fancy stuff. Set this up now.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400"> Meal Planning Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">
+                        <p className="text-slate-300 text-lg">
                             Never stare into the fridge wondering "what's for dinner?" again.
                         </p>
                     </motion.div>
@@ -100,14 +100,14 @@ Real food, not fancy stuff. Set this up now.`;
                                     <UtensilsCrossed className="text-orange-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">5 dinner ideas for the week</span>
-                                        <p className="text-slate-400 text-sm">Simple meals, 30 min or less, using what you already have</p>
+                                        <p className="text-slate-300 text-sm">Simple meals, 30 min or less, using what you already have</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <ShoppingCart className="text-green-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Complete shopping list</span>
-                                        <p className="text-slate-400 text-sm">Ready to screenshot and take to the store</p>
+                                        <p className="text-slate-300 text-sm">Ready to screenshot and take to the store</p>
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +216,7 @@ Real food, not fancy stuff. Set this up now.`;
                                 <MessageSquare size={16} className="text-orange-400" />
                                 Things you can say to make it better
                             </span>
-                            <ChevronDown size={16} className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} />
+                            <ChevronDown size={16} className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} />
                         </button>
 
                         {showTips && (
@@ -225,7 +225,7 @@ Real food, not fancy stuff. Set this up now.`;
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-3"
                             >
-                                <p className="text-slate-400 text-sm">Try saying these things to get better results:</p>
+                                <p className="text-slate-300 text-sm">Try saying these things to get better results:</p>
                                 <div className="space-y-2">
                                     <div className="bg-slate-900/50 rounded-lg p-3">
                                         <p className="text-orange-400 text-sm font-mono">"My kid won't eat vegetables unless they're hidden"</p>
@@ -251,10 +251,10 @@ Real food, not fancy stuff. Set this up now.`;
                             className="w-full flex items-center justify-between py-3 px-4 bg-slate-800/30 rounded-xl border border-slate-700/50 text-left hover:bg-slate-800/50 transition-colors"
                         >
                             <span className="flex items-center gap-2 text-slate-300 text-sm font-medium">
-                                <HelpCircle size={16} className="text-slate-400" />
+                                <HelpCircle size={16} className="text-slate-300" />
                                 Not working? Common questions
                             </span>
-                            <ChevronDown size={16} className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} />
+                            <ChevronDown size={16} className={`text-slate-300 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} />
                         </button>
 
                         {showTroubleshooting && (
@@ -265,15 +265,15 @@ Real food, not fancy stuff. Set this up now.`;
                             >
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"The meals are too complicated"</p>
-                                    <p className="text-slate-400 text-sm">Say: <span className="text-orange-400">"Simpler please. Max 5 ingredients per meal."</span></p>
+                                    <p className="text-slate-300 text-sm">Say: <span className="text-orange-400">"Simpler please. Max 5 ingredients per meal."</span></p>
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"The shopping list is too long"</p>
-                                    <p className="text-slate-400 text-sm">Say: <span className="text-orange-400">"Use overlapping ingredients so I buy less."</span></p>
+                                    <p className="text-slate-300 text-sm">Say: <span className="text-orange-400">"Use overlapping ingredients so I buy less."</span></p>
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"I want different meal suggestions"</p>
-                                    <p className="text-slate-400 text-sm">Say: <span className="text-orange-400">"Give me 5 more options, different style."</span></p>
+                                    <p className="text-slate-300 text-sm">Say: <span className="text-orange-400">"Give me 5 more options, different style."</span></p>
                                 </div>
                             </motion.div>
                         )}
@@ -283,7 +283,7 @@ Real food, not fancy stuff. Set this up now.`;
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }} className="mb-6">
                         <div className="bg-gradient-to-r from-teal-900/30 to-orange-900/30 rounded-xl p-4 border border-teal-500/30">
                             <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 2</p>
-                            <p className="text-slate-400 text-sm">Morning Agent + Meal Planning Agent</p>
+                            <p className="text-slate-300 text-sm">Morning Agent + Meal Planning Agent</p>
                         </div>
                     </motion.section>
 

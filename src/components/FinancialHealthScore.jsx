@@ -90,7 +90,7 @@ const FinancialHealthScore = () => {
                             onChange={(e) => handleInputChange('monthlyIncome', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>$1k</span>
                             <span className="text-cyan-400 font-bold">${inputs.monthlyIncome}</span>
                             <span>$20k+</span>
@@ -108,7 +108,7 @@ const FinancialHealthScore = () => {
                             onChange={(e) => handleInputChange('monthlyExpenses', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>$500</span>
                             <span className="text-cyan-400 font-bold">${inputs.monthlyExpenses}</span>
                             <span>$15k+</span>
@@ -126,7 +126,7 @@ const FinancialHealthScore = () => {
                             onChange={(e) => handleInputChange('totalSavings', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>$0</span>
                             <span className="text-cyan-400 font-bold">${inputs.totalSavings}</span>
                             <span>$50k+</span>
@@ -144,7 +144,7 @@ const FinancialHealthScore = () => {
                             onChange={(e) => handleInputChange('totalDebt', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>$0</span>
                             <span className="text-cyan-400 font-bold">${inputs.totalDebt}</span>
                             <span>$50k+</span>
@@ -164,7 +164,7 @@ const FinancialHealthScore = () => {
                         <div className={`text-6xl font-bold ${getScoreColor(results.score)} mb-2`}>
                             {results.score}/10
                         </div>
-                        <div className="text-slate-400">Financial Health Score</div>
+                        <div className="text-slate-300">Financial Health Score</div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -198,7 +198,7 @@ const FinancialHealthScore = () => {
 
                     <button
                         onClick={() => setShowResults(false)}
-                        className="w-full text-slate-400 hover:text-white transition-colors"
+                        className="w-full text-slate-300 hover:text-white transition-colors"
                     >
                         Recalculate
                     </button>

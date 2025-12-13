@@ -103,7 +103,7 @@ const AgentWallet = ({ unlockedCardIds: propUnlockedCardIds }) => {
                                     </div>
                                     <div>
                                         <h2 className="text-2xl font-bold text-white">Agent Deck</h2>
-                                        <p className="text-slate-400 text-sm">Your collection of AI agents</p>
+                                        <p className="text-slate-300 text-sm">Your collection of AI agents</p>
                                     </div>
                                 </div>
 
@@ -111,7 +111,7 @@ const AgentWallet = ({ unlockedCardIds: propUnlockedCardIds }) => {
                                     <div className="text-2xl font-bold text-white">
                                         {unlockedCards.length}/{ALL_CARDS.length}
                                     </div>
-                                    <div className="text-slate-400 text-sm">Cards Collected</div>
+                                    <div className="text-slate-300 text-sm">Cards Collected</div>
                                 </div>
                             </div>
 
@@ -152,7 +152,7 @@ const AgentWallet = ({ unlockedCardIds: propUnlockedCardIds }) => {
                                             onClick={() => setFilter(cat)}
                                             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === cat
                                                 ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
-                                                : 'bg-slate-700/50 text-slate-400 hover:text-white'
+                                                : 'bg-slate-700/50 text-slate-300 hover:text-white'
                                                 }`}
                                         >
                                             {cat === 'all' ? 'All' : cat}

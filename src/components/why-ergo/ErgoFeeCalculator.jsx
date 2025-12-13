@@ -21,7 +21,7 @@ export default function ErgoFeeCalculator() {
         <div className="bg-slate-800/50 rounded-3xl p-8 border border-slate-600 backdrop-blur-sm max-w-2xl mx-auto">
             <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2 text-white">The "Middleman Tax" Calculator</h3>
-                <p className="text-slate-400 text-sm">See why I can afford to give you 50% off.</p>
+                <p className="text-slate-300 text-sm">See why I can afford to give you 50% off.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -34,7 +34,7 @@ export default function ErgoFeeCalculator() {
                         <CreditCard size={20} />
                         <span className="font-bold">Credit Card / PayPal</span>
                     </div>
-                    <div className="space-y-2 text-sm text-slate-400">
+                    <div className="space-y-2 text-sm text-slate-300">
                         <div className="flex justify-between">
                             <span>Processing Fee:</span>
                             <span className="text-red-400 font-mono">~${stripeFee.toFixed(2)}</span>
@@ -49,7 +49,7 @@ export default function ErgoFeeCalculator() {
                         </div>
                     </div>
                     <div className="mt-6 pt-4 border-t border-red-900/30">
-                        <div className="text-xs text-slate-400 mb-1">YOU PAY</div>
+                        <div className="text-xs text-slate-300 mb-1">YOU PAY</div>
                         <div className="text-3xl font-bold text-white">${coursePrice}</div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ export default function ErgoFeeCalculator() {
                         <Coins size={20} />
                         <span className="font-bold">Ergo Blockchain</span>
                     </div>
-                    <div className="space-y-2 text-sm text-slate-400">
+                    <div className="space-y-2 text-sm text-slate-300">
                         <div className="flex justify-between">
                             <span>Network Fee:</span>
                             <span className="text-green-400 font-mono">~${ERGO_FEE.toFixed(2)}</span>
@@ -78,7 +78,7 @@ export default function ErgoFeeCalculator() {
                         </div>
                     </div>
                     <div className="mt-6 pt-4 border-t border-green-500/30">
-                        <div className="text-xs text-slate-400 mb-1">YOU PAY (50% OFF)</div>
+                        <div className="text-xs text-slate-300 mb-1">YOU PAY (50% OFF)</div>
                         <div className="text-3xl font-bold text-green-400">${finalPrice}</div>
                     </div>
                 </div>

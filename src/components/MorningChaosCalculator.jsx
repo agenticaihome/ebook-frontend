@@ -91,7 +91,7 @@ const MorningChaosCalculator = () => {
                             onChange={(e) => handleInputChange('snoozeCount', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 times</span>
                             <span className="text-cyan-400 font-bold">{inputs.snoozeCount} times</span>
                             <span>10+ times</span>
@@ -110,7 +110,7 @@ const MorningChaosCalculator = () => {
                             onChange={(e) => handleInputChange('appsChecked', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 apps</span>
                             <span className="text-cyan-400 font-bold">{inputs.appsChecked} apps</span>
                             <span>15+ apps</span>
@@ -128,7 +128,7 @@ const MorningChaosCalculator = () => {
                                     onClick={() => handleInputChange('forgetThings', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgetThings === freq
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -148,7 +148,7 @@ const MorningChaosCalculator = () => {
                                     onClick={() => handleInputChange('lateFrequency', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.lateFrequency === freq
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -169,7 +169,7 @@ const MorningChaosCalculator = () => {
                             onChange={(e) => handleInputChange('stressLevel', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>Calm (1)</span>
                             <span className="text-cyan-400 font-bold">{inputs.stressLevel}</span>
                             <span>Panic (10)</span>
@@ -193,7 +193,7 @@ const MorningChaosCalculator = () => {
                             <div className={`text-6xl font-bold ${getScoreColor(results.score)}`}>
                                 {results.score}/10
                             </div>
-                            <div className="text-slate-400 mt-2">{getScoreLabel(results.score)}</div>
+                            <div className="text-slate-300 mt-2">{getScoreLabel(results.score)}</div>
                         </div>
                     </div>
 
@@ -201,25 +201,25 @@ const MorningChaosCalculator = () => {
                         <div className="bg-gradient-to-br from-red-900/30 to-red-900/10 p-6 rounded-xl border border-red-500/30">
                             <div className="flex items-center gap-2 mb-2">
                                 <Clock size={20} className="text-red-400" />
-                                <div className="text-sm text-slate-400">Minutes Wasted Daily</div>
+                                <div className="text-sm text-slate-300">Minutes Wasted Daily</div>
                             </div>
                             <div className="text-red-400 font-bold text-3xl">{results.minutesWasted} min</div>
                         </div>
                         <div className="bg-gradient-to-br from-orange-900/30 to-orange-900/10 p-6 rounded-xl border border-orange-500/30">
                             <div className="flex items-center gap-2 mb-2">
                                 <AlertCircle size={20} className="text-orange-400" />
-                                <div className="text-sm text-slate-400">Annual Time Lost</div>
+                                <div className="text-sm text-slate-300">Annual Time Lost</div>
                             </div>
                             <div className="text-orange-400 font-bold text-3xl">{results.annualHours} hrs</div>
-                            <div className="text-xs text-slate-400 mt-1">That's {Math.round(results.annualHours / 8)} work days!</div>
+                            <div className="text-xs text-slate-300 mt-1">That's {Math.round(results.annualHours / 8)} work days!</div>
                         </div>
                         <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 p-6 rounded-xl border border-cyan-500/30">
                             <div className="flex items-center gap-2 mb-2">
                                 <Coffee size={20} className="text-cyan-400" />
-                                <div className="text-sm text-slate-400">Chaos Sources</div>
+                                <div className="text-sm text-slate-300">Chaos Sources</div>
                             </div>
                             <div className="text-cyan-400 font-bold text-3xl">{results.sources.length}</div>
-                            <div className="text-xs text-slate-400 mt-1">Priority areas to fix</div>
+                            <div className="text-xs text-slate-300 mt-1">Priority areas to fix</div>
                         </div>
                     </div>
 
@@ -243,7 +243,7 @@ const MorningChaosCalculator = () => {
                     <div className="p-6 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 rounded-xl border border-cyan-500/30">
                         <h4 className="text-white font-bold mb-2">Your First Fix</h4>
                         <p className="text-cyan-400 text-lg">{results.firstFix}</p>
-                        <p className="text-slate-400 text-sm mt-2">
+                        <p className="text-slate-300 text-sm mt-2">
                             Start here for maximum impact. Build your Morning Agent below!
                         </p>
                     </div>

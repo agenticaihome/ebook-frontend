@@ -121,7 +121,7 @@ const DeepWorkDive = ({ onBack }) => {
             };
         return {
             label: "JUST STARTING",
-            color: "text-slate-400",
+            color: "text-slate-300",
             bg: "bg-slate-600/20",
             emoji: "🌱",
         };
@@ -865,13 +865,13 @@ const DeepWorkDive = ({ onBack }) => {
                                 <p className="text-cyan-400 font-medium mb-1 text-sm sm:text-base">
                                     Tap to stay in the Deep Work Zone!
                                 </p>
-                                <p className="text-slate-400 text-xs mb-5">
+                                <p className="text-slate-300 text-xs mb-5">
                                     🎮 Avoid distractions • The longer you focus, the deeper you dive
                                 </p>
 
                                 {bestScore > 0 && (
                                     <div className="mb-5 bg-slate-800/70 rounded-xl py-3 px-5 inline-block">
-                                        <span className="text-xs text-slate-400 uppercase">
+                                        <span className="text-xs text-slate-300 uppercase">
                                             Your Best
                                         </span>
                                         <div className="text-3xl font-black text-yellow-400 flex items-center justify-center gap-2">
@@ -891,7 +891,7 @@ const DeepWorkDive = ({ onBack }) => {
                                     <Play size={26} fill="white" /> TAP TO PLAY
                                 </m.button>
 
-                                <p className="text-slate-400 text-xs mt-4">
+                                <p className="text-slate-300 text-xs mt-4">
                                     Tap anywhere or press SPACE to fly
                                 </p>
                             </m.div>
@@ -943,7 +943,7 @@ const DeepWorkDive = ({ onBack }) => {
                                 )}
 
                                 <div className={`${milestone.bg} rounded-2xl p-4 mb-4`}>
-                                    <div className="text-xs text-slate-400 uppercase">
+                                    <div className="text-xs text-slate-300 uppercase">
                                         Final Score
                                     </div>
                                     <div className="text-5xl font-black text-white">
@@ -953,7 +953,7 @@ const DeepWorkDive = ({ onBack }) => {
                                         Reached: {difficultyInfo.text}
                                     </div>
                                     {!isNewBest && bestScore > 0 && (
-                                        <div className="text-xs text-slate-400 mt-1">
+                                        <div className="text-xs text-slate-300 mt-1">
                                             Best: {bestScore}{" "}
                                             {score === bestScore && "(Tied!)"}
                                         </div>
@@ -967,12 +967,12 @@ const DeepWorkDive = ({ onBack }) => {
                                     </p>
                                 )}
                                 {score >= 3 && score < 10 && (
-                                    <p className="text-slate-400 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
+                                    <p className="text-slate-300 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
                                         💡 Nice! Focus on the gaps ahead, not on Captain.
                                     </p>
                                 )}
                                 {score >= 10 && score < 20 && (
-                                    <p className="text-slate-400 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
+                                    <p className="text-slate-300 text-xs mb-4 bg-slate-800/50 rounded-lg p-2">
                                         💡 Great focus! Gaps get trickier - stay calm!
                                     </p>
                                 )}

@@ -74,7 +74,7 @@ Start by asking what email I use.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Email Triage Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">
+                        <p className="text-slate-300 text-lg">
                             Inbox zero in 10 minutes a day. No exceptions.
                         </p>
                     </motion.div>
@@ -202,21 +202,21 @@ Start by asking what email I use.`;
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Priority inbox</span>
-                                        <p className="text-slate-400 text-sm">Your AI identifies what actually needs your attention today</p>
+                                        <p className="text-slate-300 text-sm">Your AI identifies what actually needs your attention today</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Draft responses</span>
-                                        <p className="text-slate-400 text-sm">Quick replies ready for you to approve, edit, or send</p>
+                                        <p className="text-slate-300 text-sm">Quick replies ready for you to approve, edit, or send</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Archive guidance</span>
-                                        <p className="text-slate-400 text-sm">Know what's safe to ignore without reading it</p>
+                                        <p className="text-slate-300 text-sm">Know what's safe to ignore without reading it</p>
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +233,7 @@ Start by asking what email I use.`;
                                 <Zap className="text-amber-400" size={18} />
                                 Make it even better
                             </span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTips && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
@@ -260,24 +260,24 @@ Start by asking what email I use.`;
                             className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-blue-500/30 transition-colors"
                         >
                             <span className="text-white font-bold flex items-center gap-2">
-                                <HelpCircle className="text-slate-400" size={18} />
+                                <HelpCircle className="text-slate-300" size={18} />
                                 Troubleshooting
                             </span>
-                            <ChevronDown className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
+                            <ChevronDown className={`text-slate-300 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showTroubleshooting && (
                             <div className="mt-3 space-y-3">
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"Can my AI actually read my emails?"</p>
-                                    <p className="text-slate-400 text-sm">Not directly. You copy/paste emails to it, or describe your inbox. For auto-access, look into ChatGPT plugins or Zapier integrations.</p>
+                                    <p className="text-slate-300 text-sm">Not directly. You copy/paste emails to it, or describe your inbox. For auto-access, look into ChatGPT plugins or Zapier integrations.</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"The draft replies don't sound like me"</p>
-                                    <p className="text-slate-400 text-sm">Tell your AI: "Here are 3 emails I've sent before. Match this tone." It learns fast.</p>
+                                    <p className="text-slate-300 text-sm">Tell your AI: "Here are 3 emails I've sent before. Match this tone." It learns fast.</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"I have 1000+ unread emails"</p>
-                                    <p className="text-slate-400 text-sm">Start fresh: "Help me triage just the last 7 days. Everything older gets archived."</p>
+                                    <p className="text-slate-300 text-sm">Start fresh: "Help me triage just the last 7 days. Everything older gets archived."</p>
                                 </div>
                             </div>
                         )}
@@ -298,7 +298,7 @@ Start by asking what email I use.`;
                                 Chapter 4 Complete!
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready for your Money Check-In Agent?</h3>
-                            <p className="text-slate-400 text-sm mb-4">Get a weekly snapshot of your finances without the stress.</p>
+                            <p className="text-slate-300 text-sm mb-4">Get a weekly snapshot of your finances without the stress.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part1/chapter3" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
                                     ← Back to Chapter 3

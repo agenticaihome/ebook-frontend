@@ -95,7 +95,7 @@ const SmartHomeReadinessAssessment = () => {
 
             {!showResults ? (
                 <div className="space-y-6">
-                    <div className="flex justify-between text-sm text-slate-400 mb-4">
+                    <div className="flex justify-between text-sm text-slate-300 mb-4">
                         <span>Question {step + 1} of {questions.length}</span>
                         <div className="w-32 h-2 bg-slate-700 rounded-full overflow-hidden">
                             <div
@@ -127,7 +127,7 @@ const SmartHomeReadinessAssessment = () => {
             ) : (
                 <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <div className="text-center mb-8">
-                        <div className="text-slate-400 mb-2">Recommended Ecosystem</div>
+                        <div className="text-slate-300 mb-2">Recommended Ecosystem</div>
                         <div className="text-4xl font-bold text-white mb-4">{result.ecosystem}</div>
                         <p className="text-slate-300 max-w-md mx-auto">{result.reason}</p>
                     </div>
@@ -146,7 +146,7 @@ const SmartHomeReadinessAssessment = () => {
                         </div>
                     </div>
 
-                    <div className="flex gap-4 text-sm text-slate-400 bg-slate-800/30 p-4 rounded-lg">
+                    <div className="flex gap-4 text-sm text-slate-300 bg-slate-800/30 p-4 rounded-lg">
                         <Lock size={16} className="flex-shrink-0 mt-0.5" />
                         <p>
                             Remember: Start small. Don't buy everything at once. Get one light and one speaker working perfectly before expanding.
@@ -159,7 +159,7 @@ const SmartHomeReadinessAssessment = () => {
                             setAnswers({});
                             setShowResults(false);
                         }}
-                        className="w-full mt-6 text-slate-400 hover:text-white transition-colors"
+                        className="w-full mt-6 text-slate-300 hover:text-white transition-colors"
                     >
                         Retake Assessment
                     </button>

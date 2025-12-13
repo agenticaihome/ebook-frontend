@@ -58,7 +58,7 @@ export default function WhyErgo() {
                         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
                             Why We Chose <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Ergo</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-4">
+                        <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed mb-4">
                             Honest technology. Fair from day one. Built for people, not profit.
                         </p>
                         <p className="text-lg text-slate-500 max-w-xl mx-auto">
@@ -93,7 +93,7 @@ export default function WhyErgo() {
                         <div className="mt-12 grid md:grid-cols-2 gap-6">
                             <div className="bg-red-900/10 border border-red-500/20 rounded-xl p-6">
                                 <h4 className="font-bold text-red-400 mb-3">The Pattern of Extraction</h4>
-                                <ul className="space-y-2 text-slate-400 text-sm">
+                                <ul className="space-y-2 text-slate-300 text-sm">
                                     <li className="flex gap-2"><span className="text-red-500">×</span> ICOs and pre-mines enriching insiders</li>
                                     <li className="flex gap-2"><span className="text-red-500">×</span> VC-backed tokens with locked supplies</li>
                                     <li className="flex gap-2"><span className="text-red-500">×</span> Centralized "DeFi" with admin keys</li>
@@ -103,7 +103,7 @@ export default function WhyErgo() {
                             </div>
                             <div className="bg-green-900/10 border border-green-500/20 rounded-xl p-6">
                                 <h4 className="font-bold text-green-400 mb-3">What Should Have Been</h4>
-                                <ul className="space-y-2 text-slate-400 text-sm">
+                                <ul className="space-y-2 text-slate-300 text-sm">
                                     <li className="flex gap-2"><span className="text-green-500">✓</span> Fair distribution from block 1</li>
                                     <li className="flex gap-2"><span className="text-green-500">✓</span> Research-driven development</li>
                                     <li className="flex gap-2"><span className="text-green-500">✓</span> Tools that serve ordinary people</li>
@@ -172,7 +172,7 @@ export default function WhyErgo() {
                                     </ul>
                                 </div>
                                 <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-700">
-                                    <p className="text-slate-400 text-sm mb-3">Foundation Treasury:</p>
+                                    <p className="text-slate-300 text-sm mb-3">Foundation Treasury:</p>
                                     <p className="text-2xl font-bold text-white mb-2">4.37%</p>
                                     <p className="text-slate-500 text-sm">
                                         A small allocation, mined over time, to fund development. Not extracted. Not pre-allocated to insiders. <em>Earned.</em>
@@ -184,7 +184,7 @@ export default function WhyErgo() {
                         {/* Why This Matters */}
                         <div className="bg-amber-900/10 border border-amber-500/20 rounded-xl p-6">
                             <h4 className="font-bold text-amber-400 mb-3">Why This Matters</h4>
-                            <p className="text-slate-400">
+                            <p className="text-slate-300">
                                 Most crypto projects are designed for extraction. Founders hold massive bags and dump on retail. VCs get discounted tokens and lock schedules that let them exit at your expense. Ergo's team had to <em>build value</em>, not extract it. This is Bitcoin-level integrity in a post-2017 world.
                             </p>
                         </div>
@@ -199,7 +199,7 @@ export default function WhyErgo() {
                             <h2 className="text-3xl font-bold text-white">Why Ergo Feels Different</h2>
                         </div>
 
-                        <p className="text-lg text-slate-400 mb-12 max-w-2xl">
+                        <p className="text-lg text-slate-300 mb-12 max-w-2xl">
                             You can sense it within minutes of joining the community. There's no marketing machine. No celebrity endorsements. No desperate shilling. Just researchers, builders, and believers.
                         </p>
 
@@ -211,7 +211,7 @@ export default function WhyErgo() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-white mb-1">Founder Still Writes Code</h4>
-                                        <p className="text-slate-400 text-sm">Kushti commits to the repo and answers questions on Telegram. No ivory towers.</p>
+                                        <p className="text-slate-300 text-sm">Kushti commits to the repo and answers questions on Telegram. No ivory towers.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -220,7 +220,7 @@ export default function WhyErgo() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-white mb-1">Community Debates Philosophy</h4>
-                                        <p className="text-slate-400 text-sm">Discussions center on design, security, and mission—not just price.</p>
+                                        <p className="text-slate-300 text-sm">Discussions center on design, security, and mission—not just price.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -229,7 +229,7 @@ export default function WhyErgo() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-white mb-1">Miners as Equal Stakeholders</h4>
-                                        <p className="text-slate-400 text-sm">ASIC-resistant mining means regular people with GPUs can participate.</p>
+                                        <p className="text-slate-300 text-sm">ASIC-resistant mining means regular people with GPUs can participate.</p>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@ export default function WhyErgo() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-white mb-1">No Marketing Budget</h4>
-                                        <p className="text-slate-400 text-sm">Ergo survives on merit. No paid influencers. No exchange listing bribes.</p>
+                                        <p className="text-slate-300 text-sm">Ergo survives on merit. No paid influencers. No exchange listing bribes.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -249,7 +249,7 @@ export default function WhyErgo() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-white mb-1">100% Open Source</h4>
-                                        <p className="text-slate-400 text-sm">Every line of code is auditable. No hidden contracts. No surprises.</p>
+                                        <p className="text-slate-300 text-sm">Every line of code is auditable. No hidden contracts. No surprises.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -258,7 +258,7 @@ export default function WhyErgo() {
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-white mb-1">Run a Full Node on a Laptop</h4>
-                                        <p className="text-slate-400 text-sm">True decentralization means anyone can verify the chain.</p>
+                                        <p className="text-slate-300 text-sm">True decentralization means anyone can verify the chain.</p>
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +273,7 @@ export default function WhyErgo() {
                             <Cpu className="text-teal-500" size={28} />
                             <h2 className="text-3xl font-bold text-white">The Technical Substance</h2>
                         </div>
-                        <p className="text-slate-400 mb-12 max-w-2xl">
+                        <p className="text-slate-300 mb-12 max-w-2xl">
                             Ergo isn't vapor. It's research-grade cryptography, implemented and running in production since 2019.
                         </p>
 
@@ -282,7 +282,7 @@ export default function WhyErgo() {
                             <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Database size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">Extended UTXO (eUTXO)</h3>
-                                <p className="text-slate-400 mb-4">
+                                <p className="text-slate-300 mb-4">
                                     Bitcoin's security model extended with smart contract capability. Each transaction is deterministic and predictable—no front-running, no sandwich attacks.
                                 </p>
                                 <p className="text-sm font-bold text-green-400">
@@ -294,7 +294,7 @@ export default function WhyErgo() {
                             <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Pickaxe size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">Autolykos (Mining)</h3>
-                                <p className="text-slate-400 mb-4">
+                                <p className="text-slate-300 mb-4">
                                     Memory-hard Proof-of-Work designed to resist ASIC centralization. GPU miners can participate. No warehouse farms controlling consensus.
                                 </p>
                                 <p className="text-sm font-bold text-green-400">
@@ -306,7 +306,7 @@ export default function WhyErgo() {
                             <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Lock size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">Sigma Protocols</h3>
-                                <p className="text-slate-400 mb-4">
+                                <p className="text-slate-300 mb-4">
                                     Zero-knowledge proofs built into the core protocol. Enable privacy features (mixers, ring signatures) without needing a separate "privacy coin."
                                 </p>
                                 <p className="text-sm font-bold text-green-400">
@@ -318,7 +318,7 @@ export default function WhyErgo() {
                             <div className="bg-slate-800/30 p-8 rounded-2xl border border-slate-600 hover:border-green-500/50 transition-colors">
                                 <div className="text-green-400 mb-4"><Server size={32} /></div>
                                 <h3 className="text-xl font-bold text-white mb-3">Storage Rent</h3>
-                                <p className="text-slate-400 mb-4">
+                                <p className="text-slate-300 mb-4">
                                     Lost coins slowly return to circulation. Miners are incentivized to store data long-term. The chain stays sustainable for centuries.
                                 </p>
                                 <p className="text-sm font-bold text-green-400">
@@ -419,7 +419,7 @@ export default function WhyErgo() {
                 <section className="py-24 px-6 bg-[#131320]">
                     <div className="max-w-5xl mx-auto">
                         <h2 className="text-3xl font-bold text-white mb-4 text-center">How to Participate</h2>
-                        <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+                        <p className="text-slate-300 text-center mb-12 max-w-2xl mx-auto">
                             There's no sales pitch here. If Ergo aligns with your values, here's how to get involved.
                         </p>
 
@@ -428,7 +428,7 @@ export default function WhyErgo() {
                             <a href={ERGO_LINKS.manifesto} target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all hover:-translate-y-1 group block">
                                 <BookOpen className="text-green-400 mb-4" size={28} />
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Learn</h3>
-                                <p className="text-slate-400 text-sm mb-3">Read the Ergo Manifesto. Understand the philosophy. Know what you're supporting.</p>
+                                <p className="text-slate-300 text-sm mb-3">Read the Ergo Manifesto. Understand the philosophy. Know what you're supporting.</p>
                                 <span className="text-green-400 text-sm flex items-center gap-1">
                                     Read the Manifesto <ExternalLink size={14} />
                                 </span>
@@ -438,7 +438,7 @@ export default function WhyErgo() {
                             <a href={ERGO_LINKS.getErg} target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all hover:-translate-y-1 group block">
                                 <Zap className="text-amber-400 mb-4" size={28} />
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Acquire ERG</h3>
-                                <p className="text-slate-400 text-sm mb-3">Get a wallet. Acquire ERG if it aligns with your values. Use the ecosystem.</p>
+                                <p className="text-slate-300 text-sm mb-3">Get a wallet. Acquire ERG if it aligns with your values. Use the ecosystem.</p>
                                 <span className="text-green-400 text-sm flex items-center gap-1">
                                     Get ERG <ExternalLink size={14} />
                                 </span>
@@ -448,7 +448,7 @@ export default function WhyErgo() {
                             <a href={ERGO_LINKS.docs} target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all hover:-translate-y-1 group block">
                                 <Code className="text-teal-400 mb-4" size={28} />
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Build</h3>
-                                <p className="text-slate-400 text-sm mb-3">ErgoScript is powerful. The docs are deep. Contribution is welcomed.</p>
+                                <p className="text-slate-300 text-sm mb-3">ErgoScript is powerful. The docs are deep. Contribution is welcomed.</p>
                                 <span className="text-green-400 text-sm flex items-center gap-1">
                                     Developer Docs <ExternalLink size={14} />
                                 </span>
@@ -458,7 +458,7 @@ export default function WhyErgo() {
                             <a href={ERGO_LINKS.mining} target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all hover:-translate-y-1 group block">
                                 <Pickaxe className="text-orange-400 mb-4" size={28} />
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Mine</h3>
-                                <p className="text-slate-400 text-sm mb-3">Secure the network with your GPU. True proof-of-work, ASIC-resistant.</p>
+                                <p className="text-slate-300 text-sm mb-3">Secure the network with your GPU. True proof-of-work, ASIC-resistant.</p>
                                 <span className="text-green-400 text-sm flex items-center gap-1">
                                     Mining Guide <ExternalLink size={14} />
                                 </span>
@@ -468,7 +468,7 @@ export default function WhyErgo() {
                             <a href={ERGO_LINKS.telegram} target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all hover:-translate-y-1 group block">
                                 <MessageCircle className="text-blue-400 mb-4" size={28} />
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Join the Community</h3>
-                                <p className="text-slate-400 text-sm mb-3">Talk to real people. Ask questions. The community is welcoming.</p>
+                                <p className="text-slate-300 text-sm mb-3">Talk to real people. Ask questions. The community is welcoming.</p>
                                 <span className="text-green-400 text-sm flex items-center gap-1">
                                     Telegram <ExternalLink size={14} />
                                 </span>
@@ -478,7 +478,7 @@ export default function WhyErgo() {
                             <a href={ERGO_LINKS.sigmaverse} target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 p-6 rounded-xl border border-slate-600 hover:border-green-500/50 transition-all hover:-translate-y-1 group block">
                                 <Globe className="text-purple-400 mb-4" size={28} />
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Explore dApps</h3>
-                                <p className="text-slate-400 text-sm mb-3">DEXs, lending, NFTs, gaming—all on a fair blockchain.</p>
+                                <p className="text-slate-300 text-sm mb-3">DEXs, lending, NFTs, gaming—all on a fair blockchain.</p>
                                 <span className="text-green-400 text-sm flex items-center gap-1">
                                     Sigmaverse <ExternalLink size={14} />
                                 </span>
@@ -494,7 +494,7 @@ export default function WhyErgo() {
                         <div className="grid md:grid-cols-4 gap-8 text-sm">
                             <div>
                                 <h4 className="font-bold text-white mb-4">Learn</h4>
-                                <ul className="space-y-2 text-slate-400">
+                                <ul className="space-y-2 text-slate-300">
                                     <li><a href={ERGO_LINKS.website} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Ergo Platform <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.docs} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Documentation <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.manifesto} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">The Manifesto <ExternalLink size={12} /></a></li>
@@ -503,7 +503,7 @@ export default function WhyErgo() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-white mb-4">Community</h4>
-                                <ul className="space-y-2 text-slate-400">
+                                <ul className="space-y-2 text-slate-300">
                                     <li><a href={ERGO_LINKS.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Telegram <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.discord} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Discord <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Twitter/X <ExternalLink size={12} /></a></li>
@@ -511,7 +511,7 @@ export default function WhyErgo() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-white mb-4">Tools</h4>
-                                <ul className="space-y-2 text-slate-400">
+                                <ul className="space-y-2 text-slate-300">
                                     <li><a href={ERGO_LINKS.explorer} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Block Explorer <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.sigmaverse} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Sigmaverse (dApps) <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.mining} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Mining Guide <ExternalLink size={12} /></a></li>
@@ -519,7 +519,7 @@ export default function WhyErgo() {
                             </div>
                             <div>
                                 <h4 className="font-bold text-white mb-4">Wallets</h4>
-                                <ul className="space-y-2 text-slate-400">
+                                <ul className="space-y-2 text-slate-300">
                                     <li><a href={ERGO_LINKS.nautilus} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Nautilus (Browser) <ExternalLink size={12} /></a></li>
                                     <li><a href={ERGO_LINKS.ergoWallet} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 flex items-center gap-1">Mobile Wallets <ExternalLink size={12} /></a></li>
                                 </ul>

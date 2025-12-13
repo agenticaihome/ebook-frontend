@@ -130,7 +130,7 @@ const MentalLoadCalculator = () => {
                             onChange={(e) => handleInputChange('emailHours', parseFloat(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 hours</span>
                             <span className="text-cyan-400 font-bold">{inputs.emailHours} hours</span>
                             <span>8 hours</span>
@@ -150,7 +150,7 @@ const MentalLoadCalculator = () => {
                             onChange={(e) => handleInputChange('adminHours', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 hours</span>
                             <span className="text-cyan-400 font-bold">{inputs.adminHours} hours</span>
                             <span>20 hours</span>
@@ -170,7 +170,7 @@ const MentalLoadCalculator = () => {
                             onChange={(e) => handleInputChange('recurringTasks', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 tasks</span>
                             <span className="text-cyan-400 font-bold">{inputs.recurringTasks} tasks</span>
                             <span>50+ tasks</span>
@@ -188,7 +188,7 @@ const MentalLoadCalculator = () => {
                                     onClick={() => handleInputChange('forgetFrequency', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgetFrequency === freq
                                         ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                        : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                        : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -210,7 +210,7 @@ const MentalLoadCalculator = () => {
                             onChange={(e) => handleInputChange('stressLevel', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>Low (1)</span>
                             <span className="text-cyan-400 font-bold">{inputs.stressLevel}</span>
                             <span>High (10)</span>
@@ -234,9 +234,9 @@ const MentalLoadCalculator = () => {
                             <div className={`text-6xl font-bold ${getScoreColor(results.score)}`}>
                                 {results.score}%
                             </div>
-                            <div className="text-slate-400 mt-2">{getScoreLabel(results.score)}</div>
+                            <div className="text-slate-300 mt-2">{getScoreLabel(results.score)}</div>
                         </div>
-                        <div className="inline-flex items-center gap-2 text-sm text-slate-400">
+                        <div className="inline-flex items-center gap-2 text-sm text-slate-300">
                             <TrendingUp size={16} />
                             <span>
                                 You're {results.comparison} the course average ({results.avgScore})
@@ -269,16 +269,16 @@ const MentalLoadCalculator = () => {
 
                     <div className="grid md:grid-cols-2 gap-4 mb-6">
                         <div className="bg-gradient-to-br from-cyan-900/30 to-cyan-900/10 p-6 rounded-xl border border-cyan-500/30">
-                            <div className="text-sm text-slate-400 mb-1">Hours Potentially Recoverable</div>
+                            <div className="text-sm text-slate-300 mb-1">Hours Potentially Recoverable</div>
                             <div className="text-cyan-400 font-bold text-3xl">{results.recoverable} hrs/week</div>
-                            <div className="text-xs text-slate-400 mt-2">
+                            <div className="text-xs text-slate-300 mt-2">
                                 That's {results.recoverable * 52} hours per year!
                             </div>
                         </div>
                         <div className="bg-gradient-to-br from-purple-900/30 to-purple-900/10 p-6 rounded-xl border border-purple-500/30">
-                            <div className="text-sm text-slate-400 mb-1">Intervention Priority</div>
+                            <div className="text-sm text-slate-300 mb-1">Intervention Priority</div>
                             <div className="text-purple-400 font-bold text-3xl">{results.areas.length} areas</div>
-                            <div className="text-xs text-slate-400 mt-2">
+                            <div className="text-xs text-slate-300 mt-2">
                                 Focus here for maximum impact
                             </div>
                         </div>
@@ -294,7 +294,7 @@ const MentalLoadCalculator = () => {
                                 <div key={idx} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
                                     <div>
                                         <div className="text-white font-medium">{area.name}</div>
-                                        <div className="text-sm text-slate-400">Recommended: {area.agent}</div>
+                                        <div className="text-sm text-slate-300">Recommended: {area.agent}</div>
                                     </div>
                                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${area.impact === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'
                                         }`}>

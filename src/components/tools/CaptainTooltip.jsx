@@ -9,7 +9,7 @@ const CaptainTooltip = ({ content }) => {
         <div className="relative inline-block ml-2">
             <button
                 type="button"
-                className="text-slate-400 hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-full"
+                className="text-slate-300 hover:text-cyan-400 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-full"
                 onMouseEnter={() => setIsVisible(true)}
                 onMouseLeave={() => setIsVisible(false)}
                 onClick={() => setIsVisible(!isVisible)}

@@ -38,7 +38,7 @@ class ErrorBoundary extends React.Component {
                         </div>
 
                         <h1 className="text-2xl font-bold text-white mb-2">Something went wrong</h1>
-                        <p className="text-slate-400 mb-6">
+                        <p className="text-slate-300 mb-6">
                             We've encountered an unexpected error. The navigation system has intercepted it to prevent a crash.
                         </p>
 

@@ -152,7 +152,7 @@ const ToolCard = ({ tool, isUnlocked, onSelect, isSelected }) => {
             <h3 className={`font-bold mb-1 ${isSelected ? 'text-white' : 'text-white'}`}>
                 {tool.name}
             </h3>
-            <p className={`text-sm ${isSelected ? 'text-white/80' : 'text-slate-400'}`}>
+            <p className={`text-sm ${isSelected ? 'text-white/80' : 'text-slate-300'}`}>
                 {tool.description}
             </p>
         </m.div>
@@ -189,7 +189,7 @@ const ToolsPage = () => {
                         </Link>
                         <div>
                             <h1 className="text-3xl font-black">🛠️ Tools Hub</h1>
-                            <p className="text-slate-400">Assess your chaos levels before building agents</p>
+                            <p className="text-slate-300">Assess your chaos levels before building agents</p>
                         </div>
                     </div>
 
@@ -199,7 +199,7 @@ const ToolsPage = () => {
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-white font-bold">🔒 2 tools are free. Unlock all 10 with premium!</p>
-                                    <p className="text-slate-400 text-sm">Get full access to diagnose every area of your life.</p>
+                                    <p className="text-slate-300 text-sm">Get full access to diagnose every area of your life.</p>
                                 </div>
                                 <Link to="/unlock" className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-colors">
                                     Unlock All
@@ -246,7 +246,7 @@ const ToolsPage = () => {
                                 <div className="flex flex-col items-center justify-center h-full min-h-[400px] bg-slate-800/20 rounded-2xl border border-slate-700/30">
                                     <div className="text-6xl mb-4">👈</div>
                                     <h3 className="text-xl font-bold text-white mb-2">Select a Tool</h3>
-                                    <p className="text-slate-400 text-center max-w-sm">
+                                    <p className="text-slate-300 text-center max-w-sm">
                                         Pick a calculator from the left to assess your chaos levels and discover where AI can help.
                                     </p>
                                 </div>

@@ -82,7 +82,7 @@ const HouseholdChaosCalculator = () => {
                             onChange={(e) => handleInputChange('emergencyRepairs', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0</span>
                             <span className="text-cyan-400 font-bold">{inputs.emergencyRepairs}</span>
                             <span>10+</span>
@@ -101,7 +101,7 @@ const HouseholdChaosCalculator = () => {
                             onChange={(e) => handleInputChange('lateFees', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0</span>
                             <span className="text-cyan-400 font-bold">{inputs.lateFees}</span>
                             <span>20+</span>
@@ -120,7 +120,7 @@ const HouseholdChaosCalculator = () => {
                             onChange={(e) => handleInputChange('emergencyRuns', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0</span>
                             <span className="text-cyan-400 font-bold">{inputs.emergencyRuns}</span>
                             <span>15+</span>
@@ -138,7 +138,7 @@ const HouseholdChaosCalculator = () => {
                                     onClick={() => handleInputChange('forgettingFrequency', freq)}
                                     className={`p-3 rounded-xl border-2 transition-all capitalize ${inputs.forgettingFrequency === freq
                                             ? 'border-cyan-500 bg-cyan-900/20 text-white'
-                                            : 'border-slate-600 bg-slate-900/50 text-slate-400 hover:border-slate-600'
+                                            : 'border-slate-600 bg-slate-900/50 text-slate-300 hover:border-slate-600'
                                         }`}
                                 >
                                     {freq}
@@ -159,7 +159,7 @@ const HouseholdChaosCalculator = () => {
                             onChange={(e) => handleInputChange('adminHours', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0 hours</span>
                             <span className="text-cyan-400 font-bold">{inputs.adminHours} hours</span>
                             <span>15 hours</span>
@@ -183,7 +183,7 @@ const HouseholdChaosCalculator = () => {
                             <div className={`text-6xl font-bold ${getScoreColor(results.score)}`}>
                                 {results.score}/10
                             </div>
-                            <div className="text-slate-400 mt-2">{getScoreLabel(results.score)}</div>
+                            <div className="text-slate-300 mt-2">{getScoreLabel(results.score)}</div>
                         </div>
                     </div>
 
@@ -191,18 +191,18 @@ const HouseholdChaosCalculator = () => {
                         <div className="bg-gradient-to-br from-red-900/30 to-red-900/10 p-6 rounded-xl border border-red-500/30">
                             <div className="flex items-center gap-2 mb-2">
                                 <DollarSign size={20} className="text-red-400" />
-                                <div className="text-sm text-slate-400">Money Lost Annually</div>
+                                <div className="text-sm text-slate-300">Money Lost Annually</div>
                             </div>
                             <div className="text-red-400 font-bold text-3xl">${results.annualLoss.toLocaleString()}</div>
-                            <div className="text-xs text-slate-400 mt-1">From preventable issues</div>
+                            <div className="text-xs text-slate-300 mt-1">From preventable issues</div>
                         </div>
                         <div className="bg-gradient-to-br from-orange-900/30 to-orange-900/10 p-6 rounded-xl border border-orange-500/30">
                             <div className="flex items-center gap-2 mb-2">
                                 <AlertTriangle size={20} className="text-orange-400" />
-                                <div className="text-sm text-slate-400">Problem Areas</div>
+                                <div className="text-sm text-slate-300">Problem Areas</div>
                             </div>
                             <div className="text-orange-400 font-bold text-3xl">{results.problems.length}</div>
-                            <div className="text-xs text-slate-400 mt-1">Priority fixes needed</div>
+                            <div className="text-xs text-slate-300 mt-1">Priority fixes needed</div>
                         </div>
                     </div>
 
@@ -238,7 +238,7 @@ const HouseholdChaosCalculator = () => {
                         </div>
                         <div className="mt-4 pt-4 border-t border-slate-600">
                             <div className="text-green-400 font-bold">Potential Annual Savings: ${Math.round(results.annualLoss * 0.8).toLocaleString()}</div>
-                            <div className="text-xs text-slate-400 mt-1">By preventing 80% of these issues</div>
+                            <div className="text-xs text-slate-300 mt-1">By preventing 80% of these issues</div>
                         </div>
                     </div>
 

@@ -225,7 +225,7 @@ Review and update quarterly or as needs change.`;
                             {generateConstitution()}
                         </pre>
                     </div>
-                    <div className="text-sm text-slate-400 text-center">
+                    <div className="text-sm text-slate-300 text-center">
                         Save this document and share it with your AI agents when setting them up.
                     </div>
                 </m.div>

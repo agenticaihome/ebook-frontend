@@ -36,7 +36,7 @@ const variants = {
     `,
     ghost: `
         bg-transparent hover:bg-slate-800/50
-        text-slate-400 hover:text-white font-medium
+        text-slate-300 hover:text-white font-medium
     `,
     danger: `
         bg-red-500/20 border border-red-500/30

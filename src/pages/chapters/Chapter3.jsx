@@ -73,7 +73,7 @@ Let me dump my dates now.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400"> Important Dates Agent</span>
                         </h1>
-                        <p className="text-slate-400 text-lg">
+                        <p className="text-slate-300 text-lg">
                             Never forget a birthday, anniversary, or bill again.
                         </p>
                     </motion.div>
@@ -101,21 +101,21 @@ Let me dump my dates now.`;
                                     <Gift className="text-pink-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Birthdays</span>
-                                        <p className="text-slate-400 text-sm">Reminds you 3 days before + suggests a gift based on what you've told it about the person</p>
+                                        <p className="text-slate-300 text-sm">Reminds you 3 days before + suggests a gift based on what you've told it about the person</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <Heart className="text-red-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Anniversaries</span>
-                                        <p className="text-slate-400 text-sm">Wedding, dating, work anniversary—whatever matters to you</p>
+                                        <p className="text-slate-300 text-sm">Wedding, dating, work anniversary—whatever matters to you</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <CreditCard className="text-green-400 mt-1" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Bills & Payments</span>
-                                        <p className="text-slate-400 text-sm">Rent, utilities, subscriptions—never pay a late fee again</p>
+                                        <p className="text-slate-300 text-sm">Rent, utilities, subscriptions—never pay a late fee again</p>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +214,7 @@ Let me dump my dates now.`;
                                 <MessageSquare size={16} className="text-pink-400" />
                                 Make it even better
                             </span>
-                            <ChevronDown size={16} className={`text-slate-400 transition-transform ${showTips ? 'rotate-180' : ''}`} />
+                            <ChevronDown size={16} className={`text-slate-300 transition-transform ${showTips ? 'rotate-180' : ''}`} />
                         </button>
 
                         {showTips && (
@@ -223,7 +223,7 @@ Let me dump my dates now.`;
                                 animate={{ opacity: 1, height: 'auto' }}
                                 className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-3"
                             >
-                                <p className="text-slate-400 text-sm">Say these things to get better results:</p>
+                                <p className="text-slate-300 text-sm">Say these things to get better results:</p>
                                 <div className="space-y-2">
                                     <div className="bg-slate-900/50 rounded-lg p-3">
                                         <p className="text-pink-400 text-sm font-mono">"For my wife's birthday, she loves spa stuff and hates jewelry"</p>
@@ -249,10 +249,10 @@ Let me dump my dates now.`;
                             className="w-full flex items-center justify-between py-3 px-4 bg-slate-800/30 rounded-xl border border-slate-700/50 text-left hover:bg-slate-800/50 transition-colors"
                         >
                             <span className="flex items-center gap-2 text-slate-300 text-sm font-medium">
-                                <HelpCircle size={16} className="text-slate-400" />
+                                <HelpCircle size={16} className="text-slate-300" />
                                 Not working? Common questions
                             </span>
-                            <ChevronDown size={16} className={`text-slate-400 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} />
+                            <ChevronDown size={16} className={`text-slate-300 transition-transform ${showTroubleshooting ? 'rotate-180' : ''}`} />
                         </button>
 
                         {showTroubleshooting && (
@@ -263,15 +263,15 @@ Let me dump my dates now.`;
                             >
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"Will it actually remind me on the date?"</p>
-                                    <p className="text-slate-400 text-sm">Yes, ChatGPT can send scheduled notifications. Make sure notifications are enabled on your phone.</p>
+                                    <p className="text-slate-300 text-sm">Yes, ChatGPT can send scheduled notifications. Make sure notifications are enabled on your phone.</p>
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"I have too many dates to type"</p>
-                                    <p className="text-slate-400 text-sm">Say: <span className="text-pink-400">"Let me give you dates in a list format"</span> - then paste them all at once.</p>
+                                    <p className="text-slate-300 text-sm">Say: <span className="text-pink-400">"Let me give you dates in a list format"</span> - then paste them all at once.</p>
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"What about recurring bills?"</p>
-                                    <p className="text-slate-400 text-sm">Say: <span className="text-pink-400">"Remind me on the 1st of EVERY month for rent"</span> - it understands recurring dates.</p>
+                                    <p className="text-slate-300 text-sm">Say: <span className="text-pink-400">"Remind me on the 1st of EVERY month for rent"</span> - it understands recurring dates.</p>
                                 </div>
                             </motion.div>
                         )}
@@ -281,7 +281,7 @@ Let me dump my dates now.`;
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }} className="mb-6">
                         <div className="bg-gradient-to-r from-teal-900/30 via-pink-900/20 to-orange-900/30 rounded-xl p-4 border border-teal-500/30">
                             <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 3</p>
-                            <p className="text-slate-400 text-sm">Morning Agent + Meal Planning Agent + Important Dates Agent</p>
+                            <p className="text-slate-300 text-sm">Morning Agent + Meal Planning Agent + Important Dates Agent</p>
                         </div>
                     </motion.section>
 

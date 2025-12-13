@@ -55,7 +55,7 @@ export default function PaymentGuide() {
                             <h1 className="text-4xl md:text-5xl font-bold mb-4">
                                 Choose Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-purple-400">Payment Method</span>
                             </h1>
-                            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
                                 Two ways to unlock full access. Both include everything. Pick what works for you.
                             </p>
                         </m.div>
@@ -71,7 +71,7 @@ export default function PaymentGuide() {
                                         <Sparkles className="text-teal-400" size={20} />
                                         Captain's Insight
                                     </h3>
-                                    <p className="text-slate-400 text-base leading-relaxed">
+                                    <p className="text-slate-300 text-base leading-relaxed">
                                         Stripe is instant and familiar. Ergo gets you 50% off if you're willing to learn something new.
                                         Both paths lead to the same destination — a life with 5+ extra hours per week.
                                     </p>
@@ -104,7 +104,7 @@ export default function PaymentGuide() {
 
                                 <h2 className="text-3xl font-bold mb-2">Instant Access</h2>
                                 <div className="text-5xl font-bold mb-1">
-                                    $39.99 <span className="text-lg text-slate-400 font-normal">USD</span>
+                                    $39.99 <span className="text-lg text-slate-300 font-normal">USD</span>
                                 </div>
                                 <p className="text-xs text-amber-400/80 mb-6">⏰ Limited time launch pricing</p>
 
@@ -113,28 +113,28 @@ export default function PaymentGuide() {
                                         <Check className="text-purple-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
                                             <strong className="text-white">Instant Access</strong>
-                                            <p className="text-slate-400 text-sm">Start learning immediately after payment</p>
+                                            <p className="text-slate-300 text-sm">Start learning immediately after payment</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-3">
                                         <Shield className="text-purple-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
                                             <strong className="text-white">Secure & Familiar</strong>
-                                            <p className="text-slate-400 text-sm">Secure credit/debit card via Stripe</p>
+                                            <p className="text-slate-300 text-sm">Secure credit/debit card via Stripe</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-3">
                                         <Clock className="text-purple-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
                                             <strong className="text-white">2-Minute Checkout</strong>
-                                            <p className="text-slate-400 text-sm">Email, card, done. No new accounts needed.</p>
+                                            <p className="text-slate-300 text-sm">Email, card, done. No new accounts needed.</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="space-y-4">
                                     <div>
-                                        <label className="block text-sm text-slate-400 mb-2 text-left">Your Email Address</label>
+                                        <label className="block text-sm text-slate-300 mb-2 text-left">Your Email Address</label>
                                         <input
                                             type="email"
                                             value={email}
@@ -153,11 +153,11 @@ export default function PaymentGuide() {
 
                                     <button
                                         disabled
-                                        className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
+                                        className="w-full bg-slate-700/50 text-slate-300 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                                     >
                                         Sales Paused
                                     </button>
-                                    <p className="text-xs text-slate-400 text-center flex items-center justify-center gap-1">
+                                    <p className="text-xs text-slate-300 text-center flex items-center justify-center gap-1">
                                         <Lock size={10} className="text-green-400" />
                                         Bank-Level 256-bit SSL Encryption
                                     </p>
@@ -189,7 +189,7 @@ export default function PaymentGuide() {
 
                                 <h2 className="text-3xl font-bold mb-2 text-green-400">Crypto Access</h2>
                                 <div className="text-5xl font-bold mb-1">
-                                    $19.99 <span className="text-lg text-slate-400 font-normal">in ERG</span>
+                                    $19.99 <span className="text-lg text-slate-300 font-normal">in ERG</span>
                                 </div>
                                 <p className="text-xs text-amber-400/80 mb-6">⏰ Limited time crypto offer</p>
 
@@ -198,21 +198,21 @@ export default function PaymentGuide() {
                                         <Zap className="text-green-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
                                             <strong className="text-white">50% Tech Literacy Discount</strong>
-                                            <p className="text-slate-400 text-sm">Save $20 for using decentralized tech</p>
+                                            <p className="text-slate-300 text-sm">Save $20 for using decentralized tech</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-3">
                                         <Lock className="text-green-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
                                             <strong className="text-white">Private & Secure</strong>
-                                            <p className="text-slate-400 text-sm">No sharing card info with payment processors</p>
+                                            <p className="text-slate-300 text-sm">No sharing card info with payment processors</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-3">
                                         <Globe className="text-green-400 flex-shrink-0 mt-1" size={20} />
                                         <div>
                                             <strong className="text-white">Support Decentralization</strong>
-                                            <p className="text-slate-400 text-sm">Help build the future of peer-to-peer commerce</p>
+                                            <p className="text-slate-300 text-sm">Help build the future of peer-to-peer commerce</p>
                                         </div>
                                     </div>
                                 </div>
@@ -226,11 +226,11 @@ export default function PaymentGuide() {
                                     </Link>
                                     <button
                                         disabled
-                                        className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
+                                        className="w-full bg-slate-700/50 text-slate-300 py-4 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-2 cursor-not-allowed"
                                     >
                                         Sales Paused
                                     </button>
-                                    <p className="text-xs text-slate-400 text-center">
+                                    <p className="text-xs text-slate-300 text-center">
                                         First time? Follow the guide above • Still 30-day guarantee
                                     </p>
                                 </div>
@@ -248,7 +248,7 @@ export default function PaymentGuide() {
                             <table className="w-full text-left border-collapse">
                                 <thead>
                                     <tr className="border-b border-slate-600">
-                                        <th className="py-4 px-4 text-slate-400 font-semibold">Feature</th>
+                                        <th className="py-4 px-4 text-slate-300 font-semibold">Feature</th>
                                         <th className="py-4 px-4 text-center text-purple-400 font-semibold">Stripe</th>
                                         <th className="py-4 px-4 text-center text-green-400 font-semibold">Ergo</th>
                                     </tr>
@@ -289,7 +289,7 @@ export default function PaymentGuide() {
                 <section className="py-16 pb-32 md:pb-16 px-6 text-center">
                     <div className="max-w-2xl mx-auto">
                         <h2 className="text-3xl font-bold mb-4">Still deciding?</h2>
-                        <p className="text-slate-400 mb-8">
+                        <p className="text-slate-300 mb-8">
                             Both options get you the same course, same tools, same results. The only difference is price and payment method.
                         </p>
                         <Link

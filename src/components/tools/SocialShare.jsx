@@ -16,7 +16,7 @@ const SocialShare = ({ url = "https://agenticaihome.com", title, hashtags = ["Ag
                 <Share2 className="text-cyan-400" size={24} />
                 <h3 className="text-lg font-bold text-white">Share your progress</h3>
             </div>
-            <p className="text-slate-400 mb-6 text-sm">
+            <p className="text-slate-300 mb-6 text-sm">
                 Inspire others to reclaim their time. Share your journey!
             </p>
             <div className="flex gap-4 flex-wrap">

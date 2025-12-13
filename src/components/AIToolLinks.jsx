@@ -125,7 +125,7 @@ export const AIToolLinksFull = ({ showAll = false, className = '' }) => {
                 </div>
                 <div>
                     <h3 className="text-white font-bold text-lg">Choose Your AI Tool</h3>
-                    <p className="text-slate-400 text-sm">Pick any one to get started. They all work with our prompts.</p>
+                    <p className="text-slate-300 text-sm">Pick any one to get started. They all work with our prompts.</p>
                 </div>
             </div>
 
@@ -153,7 +153,7 @@ export const AIToolLinksFull = ({ showAll = false, className = '' }) => {
                                 <ExternalLink className="text-slate-500 group-hover:text-slate-300 transition-colors" size={14} />
                             </div>
                         </div>
-                        <p className="text-slate-400 text-xs mb-1">{tool.bestFor}</p>
+                        <p className="text-slate-300 text-xs mb-1">{tool.bestFor}</p>
                         <p className="text-slate-500 text-xs italic">{tool.note}</p>
                     </a>
                 ))}
@@ -186,7 +186,7 @@ export const AIToolLinksFull = ({ showAll = false, className = '' }) => {
 export const AIToolBar = ({ className = '' }) => (
     <div className={`sticky top-0 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700 py-3 px-4 -mx-6 mb-6 ${className}`}>
         <div className="flex items-center justify-between flex-wrap gap-3">
-            <span className="text-slate-400 text-sm font-medium">Open your AI:</span>
+            <span className="text-slate-300 text-sm font-medium">Open your AI:</span>
             <div className="flex flex-wrap gap-2">
                 {tools.slice(0, 5).map((tool) => (
                     <a

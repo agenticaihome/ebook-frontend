@@ -98,7 +98,7 @@ const FoodChaosCalculator = () => {
                             onChange={(e) => handleInputChange('grocerySpending', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>$50</span>
                             <span className="text-cyan-400 font-bold">${inputs.grocerySpending}/week</span>
                             <span>$500</span>
@@ -118,7 +118,7 @@ const FoodChaosCalculator = () => {
                             onChange={(e) => handleInputChange('takeoutSpending', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>$0</span>
                             <span className="text-cyan-400 font-bold">${inputs.takeoutSpending}/week</span>
                             <span>$400</span>
@@ -138,7 +138,7 @@ const FoodChaosCalculator = () => {
                             onChange={(e) => handleInputChange('foodWaste', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>0%</span>
                             <span className="text-cyan-400 font-bold">{inputs.foodWaste}%</span>
                             <span>50%</span>
@@ -157,7 +157,7 @@ const FoodChaosCalculator = () => {
                             onChange={(e) => handleInputChange('foodHours', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>1 hour</span>
                             <span className="text-cyan-400 font-bold">{inputs.foodHours} hours</span>
                             <span>20 hours</span>
@@ -176,7 +176,7 @@ const FoodChaosCalculator = () => {
                             onChange={(e) => handleInputChange('foodStress', parseInt(e.target.value))}
                             className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-sm text-slate-400 mt-2">
+                        <div className="flex justify-between text-sm text-slate-300 mt-2">
                             <span>Low (1)</span>
                             <span className="text-cyan-400 font-bold">{inputs.foodStress}</span>
                             <span>High (10)</span>
@@ -200,7 +200,7 @@ const FoodChaosCalculator = () => {
                             <div className={`text-6xl font-bold ${getScoreColor(results.score)}`}>
                                 {results.score}/10
                             </div>
-                            <div className="text-slate-400 mt-2">{getScoreLabel(results.score)}</div>
+                            <div className="text-slate-300 mt-2">{getScoreLabel(results.score)}</div>
                         </div>
                     </div>
 
@@ -208,18 +208,18 @@ const FoodChaosCalculator = () => {
                         <div className="bg-gradient-to-br from-red-900/30 to-red-900/10 p-6 rounded-xl border border-red-500/30">
                             <div className="flex items-center gap-2 mb-2">
                                 <DollarSign size={20} className="text-red-400" />
-                                <div className="text-sm text-slate-400">Money Wasted Monthly</div>
+                                <div className="text-sm text-slate-300">Money Wasted Monthly</div>
                             </div>
                             <div className="text-red-400 font-bold text-3xl">${results.monthlyWaste}</div>
-                            <div className="text-xs text-slate-400 mt-1">${results.monthlyWaste * 12}/year!</div>
+                            <div className="text-xs text-slate-300 mt-1">${results.monthlyWaste * 12}/year!</div>
                         </div>
                         <div className="bg-gradient-to-br from-orange-900/30 to-orange-900/10 p-6 rounded-xl border border-orange-500/30">
                             <div className="flex items-center gap-2 mb-2">
                                 <Clock size={20} className="text-orange-400" />
-                                <div className="text-sm text-slate-400">Time Wasted Monthly</div>
+                                <div className="text-sm text-slate-300">Time Wasted Monthly</div>
                             </div>
                             <div className="text-orange-400 font-bold text-3xl">{results.monthlyTimeWasted} hrs</div>
-                            <div className="text-xs text-slate-400 mt-1">That's {Math.round(results.monthlyTimeWasted / 8)} work days!</div>
+                            <div className="text-xs text-slate-300 mt-1">That's {Math.round(results.monthlyTimeWasted / 8)} work days!</div>
                         </div>
                     </div>
 
@@ -246,14 +246,14 @@ const FoodChaosCalculator = () => {
                         </div>
                         <div className="grid md:grid-cols-2 gap-4">
                             <div>
-                                <div className="text-sm text-slate-400 mb-1">Monthly Savings</div>
+                                <div className="text-sm text-slate-300 mb-1">Monthly Savings</div>
                                 <div className="text-green-400 font-bold text-2xl">${results.monthlySavings}</div>
-                                <div className="text-xs text-slate-400 mt-1">${results.monthlySavings * 12}/year</div>
+                                <div className="text-xs text-slate-300 mt-1">${results.monthlySavings * 12}/year</div>
                             </div>
                             <div>
-                                <div className="text-sm text-slate-400 mb-1">Time Saved Weekly</div>
+                                <div className="text-sm text-slate-300 mb-1">Time Saved Weekly</div>
                                 <div className="text-cyan-400 font-bold text-2xl">{results.timeSavings} hrs</div>
-                                <div className="text-xs text-slate-400 mt-1">{results.timeSavings * 52} hrs/year</div>
+                                <div className="text-xs text-slate-300 mt-1">{results.timeSavings * 52} hrs/year</div>
                             </div>
                         </div>
                     </div>
