@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { agents } from '../data/agentData';
 
 const GameContext = createContext();
@@ -93,7 +93,8 @@ export const GameProvider = ({ children }) => {
         }
     };
 
-    const value = {
+    // Memoize the context value to prevent re-renders
+    const value = useMemo(() => ({
         ...state,
         addXp,
         collectCard,
@@ -102,7 +103,8 @@ export const GameProvider = ({ children }) => {
         getRank,
         resetProgress,
         allAgents: agents,
-    };
+    }), [state]);
 
     return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
+

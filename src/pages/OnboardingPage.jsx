@@ -7,6 +7,7 @@ import {
     Rocket, Heart, Shield, Gamepad2, Bot, ChevronRight
 } from 'lucide-react';
 import AgentEcosystem from '../components/common/AgentEcosystem';
+import AIExperienceQuiz from '../components/AIExperienceQuiz';
 
 const OnboardingPage = () => {
     return (
@@ -197,6 +198,30 @@ const OnboardingPage = () => {
                                 </motion.div>
                             ))}
                         </div>
+                    </div>
+                </section>
+
+                {/* SECTION 2B-2: AI Experience Quiz (FREE TOOL) */}
+                <section className="py-16 px-6 bg-gradient-to-b from-purple-900/5 to-transparent">
+                    <div className="max-w-3xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-6"
+                        >
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold mb-3">
+                                🎯 FREE TOOL
+                            </div>
+                            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
+                                What's Your AI Readiness Level?
+                            </h2>
+                            <p className="text-slate-400 text-sm">
+                                Take this 60-second quiz to discover your starting point and get personalized recommendations.
+                            </p>
+                        </motion.div>
+
+                        <AIExperienceQuiz />
                     </div>
                 </section>
 

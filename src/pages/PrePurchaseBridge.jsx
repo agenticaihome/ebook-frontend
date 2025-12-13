@@ -8,6 +8,7 @@ import {
     Sparkles, Star, Calendar, UtensilsCrossed
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
+import ToolRecommendationQuiz from '../components/ToolRecommendationQuiz';
 import { logViewItem, logBeginCheckout } from '../utils/analytics';
 
 // ============================================
@@ -374,6 +375,28 @@ const PrePurchaseBridge = () => {
                                 Pay $19.99 with Crypto (50% Off) →
                             </Link>
                         </div>
+                    </motion.section>
+
+                    {/* ========== SECTION 5B: PERSONALIZED TOOL RECOMMENDATION (FREE) ========== */}
+                    <motion.section
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-16"
+                    >
+                        <div className="text-center mb-6">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-sm font-bold mb-3">
+                                🎁 FREE TOOL
+                            </div>
+                            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
+                                Which AI Tools Are Right For You?
+                            </h2>
+                            <p className="text-slate-400 text-sm">
+                                Take this quiz to get personalized tool recommendations and see your estimated monthly cost.
+                            </p>
+                        </div>
+
+                        <ToolRecommendationQuiz />
                     </motion.section>
 
                     {/* ========== SECTION 6: FAQ ========== */}
