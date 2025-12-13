@@ -2,7 +2,7 @@ import React, { useState, Suspense, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { m, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock, BarChart2, Lock } from 'lucide-react';
+import { Gamepad2, Mail, Calendar, Zap, ArrowLeft, Trophy, Clock, BarChart2, Lock, Brain, Crosshair, MousePointerClick } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import LeaderboardModal from '../components/gamification/LeaderboardModal';
 import PasswordGate from '../components/common/PasswordGate';
@@ -53,7 +53,7 @@ const GamesPage = () => {
             id: 'deepwork',
             title: 'Deep Work Dive',
             description: '🔥 FREE TO PLAY! Flappy Bird meets productivity. Tap to surge, can you beat the urge to scroll?',
-            icon: Zap,
+            icon: Brain,
             color: 'from-blue-500 to-teal-400',
             component: DeepWorkDive,
             difficulty: 'Hard',
@@ -90,7 +90,7 @@ const GamesPage = () => {
             id: 'focusfury',
             title: 'Focus Blitz',
             description: 'NEW! Zap incoming distractions with focus beams. 60 seconds of pure attention defense.',
-            icon: Zap,
+            icon: Crosshair,
             color: 'from-teal-500 to-blue-600',
             component: FocusFury,
             difficulty: 'Intermediate',
@@ -102,7 +102,7 @@ const GamesPage = () => {
             id: 'clicker',
             title: 'Tap Blitz',
             description: 'How fast can you tap? Tap Captain Efficiency before time runs out.',
-            icon: Zap,
+            icon: MousePointerClick,
             color: 'from-yellow-400 to-orange-500',
             component: CaptainClickChallenge,
             difficulty: 'Beginner',
@@ -199,7 +199,7 @@ const GamesPage = () => {
                                 {/* Challenge Hook */}
                                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/30 px-4 py-2 rounded-full mb-6">
                                     <span className="text-yellow-400 text-sm font-medium">
-                                        🎮 Most can't beat 15. Can you?
+                                        🎮 Deep Work Dive: Most can't survive 15 distractions. Can you?
                                     </span>
                                 </div>
 

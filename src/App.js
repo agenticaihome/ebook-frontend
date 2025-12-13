@@ -5,6 +5,7 @@ import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-
 import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import OfflineIndicator from './components/common/OfflineIndicator';
 
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
@@ -241,6 +242,7 @@ function App() {
           <UserProvider>
             <Suspense fallback={<Loading />}>
               <ErrorBoundary>
+                <OfflineIndicator />
                 <AnimatedRoutes />
               </ErrorBoundary>
               <MobileBottomNav />

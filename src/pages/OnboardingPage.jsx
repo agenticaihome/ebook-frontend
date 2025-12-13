@@ -146,20 +146,26 @@ const OnboardingPage = () => {
                 </section>
 
                 {/* Early CTA - Reduce scroll fatigue for eager users */}
-                <section className="py-6 px-6">
+                <section className="py-8 px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="max-w-xl mx-auto text-center"
                     >
-                        <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-5 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-2xl">
-                            <p className="text-slate-300 text-sm font-medium">Ready to start now?</p>
-                            <Link to="/part1/chapter1" className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold rounded-xl transition-all shadow-lg shadow-teal-500/20 hover:scale-[1.02]">
-                                Begin Chapter 1 <ArrowRight size={18} />
+                        <div className="relative inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-gradient-to-r from-teal-500/15 to-cyan-500/15 border-2 border-teal-500/50 rounded-2xl shadow-lg shadow-teal-500/10">
+                            {/* Animated glow effect */}
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/20 to-cyan-500/20 blur-xl animate-pulse -z-10" />
+
+                            <div className="text-center sm:text-left">
+                                <p className="text-white text-lg font-bold mb-1">🚀 Ready to start now?</p>
+                                <p className="text-slate-400 text-sm">Skip the intro and jump right in</p>
+                            </div>
+                            <Link to="/part1/chapter1" className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold text-lg rounded-xl transition-all shadow-lg shadow-teal-500/30 hover:scale-[1.02] whitespace-nowrap">
+                                Begin Chapter 1 <ArrowRight size={20} />
                             </Link>
                         </div>
-                        <p className="text-slate-500 text-xs mt-3">Or keep scrolling to learn more ↓</p>
+                        <p className="text-slate-500 text-xs mt-4">Or keep scrolling to learn more ↓</p>
                     </motion.div>
                 </section>
 

@@ -248,7 +248,10 @@ const PrePurchaseBridge = () => {
                         </div>
 
                         <div className="grid md:grid-cols-3 gap-4 text-left mt-8">
-                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 relative">
+                                <div className="absolute -top-2 -right-2 bg-green-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <CheckCircle size={10} /> Verified
+                                </div>
                                 <div className="flex items-center gap-1 mb-2">
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
                                 </div>
@@ -262,7 +265,10 @@ const PrePurchaseBridge = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 relative">
+                                <div className="absolute -top-2 -right-2 bg-green-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <CheckCircle size={10} /> Verified
+                                </div>
                                 <div className="flex items-center gap-1 mb-2">
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
                                 </div>
@@ -276,7 +282,10 @@ const PrePurchaseBridge = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 relative">
+                                <div className="absolute -top-2 -right-2 bg-green-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <CheckCircle size={10} /> Verified
+                                </div>
                                 <div className="flex items-center gap-1 mb-2">
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-amber-400 fill-amber-400" />)}
                                 </div>
@@ -289,6 +298,40 @@ const PrePurchaseBridge = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </motion.section>
+
+                    {/* ========== SECTION 3B: WHAT HAPPENS AFTER PURCHASE ========== */}
+                    <motion.section
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-16"
+                    >
+                        <div className="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50">
+                            <h3 className="text-white font-bold text-lg text-center mb-6 flex items-center justify-center gap-2">
+                                📦 What Happens After You Pay?
+                            </h3>
+                            <div className="grid md:grid-cols-3 gap-4">
+                                <div className="text-center p-4 bg-slate-900/50 rounded-xl border border-slate-700/30">
+                                    <div className="w-10 h-10 mx-auto mb-3 bg-teal-500/20 rounded-full flex items-center justify-center text-teal-400 font-bold">1</div>
+                                    <div className="text-white font-medium mb-1">Instant Access</div>
+                                    <div className="text-slate-400 text-sm">All 10 chapters unlock immediately</div>
+                                </div>
+                                <div className="text-center p-4 bg-slate-900/50 rounded-xl border border-slate-700/30">
+                                    <div className="w-10 h-10 mx-auto mb-3 bg-teal-500/20 rounded-full flex items-center justify-center text-teal-400 font-bold">2</div>
+                                    <div className="text-white font-medium mb-1">Create Account</div>
+                                    <div className="text-slate-400 text-sm">Set password & save progress</div>
+                                </div>
+                                <div className="text-center p-4 bg-slate-900/50 rounded-xl border border-slate-700/30">
+                                    <div className="w-10 h-10 mx-auto mb-3 bg-teal-500/20 rounded-full flex items-center justify-center text-teal-400 font-bold">3</div>
+                                    <div className="text-white font-medium mb-1">Start Building</div>
+                                    <div className="text-slate-400 text-sm">Deploy your first agent today</div>
+                                </div>
+                            </div>
+                            <p className="text-center text-slate-400 text-sm mt-4">
+                                ✉️ Receipt sent to your email • Lifetime access • No recurring fees
+                            </p>
                         </div>
                     </motion.section>
 
