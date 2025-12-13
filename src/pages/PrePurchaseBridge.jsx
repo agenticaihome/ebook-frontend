@@ -151,7 +151,6 @@ const PrePurchaseBridge = () => {
                                 <span className="text-slate-500 line-through text-xl">$49.99</span>
                             </div>
                             <p className="text-slate-300 text-sm mt-1">One-time payment • Lifetime access • Start immediately</p>
-                            <p className="text-teal-400/90 text-sm mt-1 font-medium">📈 Increases at 1,000 members</p>
                         </div>
 
                         {/* Primary CTA */}

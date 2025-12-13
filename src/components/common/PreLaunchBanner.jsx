@@ -9,7 +9,7 @@ const PreLaunchBanner = () => {
             <span className="font-medium">
                 <span className="text-white font-bold">Launch Price: $39.99</span>
                 <span className="mx-2 text-teal-500">•</span>
-                <span className="text-teal-300">Increases at 1,000 members</span>
+                <span className="text-teal-300">Limited time offer</span>
             </span>
             <Link to="/unlock" className="ml-2 px-3 py-1 bg-teal-500/20 hover:bg-teal-500/30 border border-teal-500/40 rounded-full text-xs font-bold text-teal-300 hover:text-white transition-all flex items-center gap-1">
                 <Shield size={10} />

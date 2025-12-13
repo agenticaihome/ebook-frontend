@@ -30,6 +30,8 @@ const PrePurchaseBridge = lazy(() => import('./pages/PrePurchaseBridge'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
 const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
 const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 
 import Loading from './components/common/Loading';
 
@@ -107,6 +109,8 @@ const AnimatedRoutes = () => {
             <Route path="/" element={<PageTransition><SplashPage /></PageTransition>} />
             <Route path="/start" element={<Navigate to="/part1/chapter1" replace />} />
             <Route path="/onboarding" element={<PageTransition><OnboardingPage /></PageTransition>} />
+            <Route path="/privacy" element={<PageTransition><PrivacyPolicyPage /></PageTransition>} />
+            <Route path="/terms" element={<PageTransition><TermsOfServicePage /></PageTransition>} />
 
             {/* Part Redirects - redirect to first chapter of each part */}
             <Route path="/part1" element={<Navigate to="/part1/chapter1" replace />} />
