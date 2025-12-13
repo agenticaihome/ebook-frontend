@@ -271,7 +271,13 @@ const Dashboard = () => {
                                         <span className="text-slate-300">You're logged in</span>
                                     </div>
                                     <button
-                                        onClick={() => {
+                                        onClick={async () => {
+                                            try {
+                                                const { api } = await import('../services/api');
+                                                await api.logout();
+                                            } catch (e) {
+                                                // Continue with logout even if API fails
+                                            }
                                             localStorage.removeItem('token');
                                             navigate('/login');
                                         }}

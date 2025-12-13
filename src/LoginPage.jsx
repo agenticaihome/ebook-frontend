@@ -186,6 +186,16 @@ const LoginPage = () => {
                                     </>
                                 )}
                             </button>
+
+                            {/* Forgot Password Link */}
+                            <div className="text-center pt-2">
+                                <Link
+                                    to="/forgot-password"
+                                    className="text-sm text-slate-400 hover:text-teal-400 transition-colors"
+                                >
+                                    Forgot your password?
+                                </Link>
+                            </div>
                         </form>
                     </div>
 

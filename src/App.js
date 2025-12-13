@@ -27,6 +27,8 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AgentWallet = lazy(() => import('./pages/AgentWallet'));
 const PrePurchaseBridge = lazy(() => import('./pages/PrePurchaseBridge'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
+const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 
 import Loading from './components/common/Loading';
 
@@ -145,6 +147,18 @@ const AnimatedRoutes = () => {
             <Route path="/why-ergo" element={<PageTransition><routeConfig.whyErgo.Component /></PageTransition>} />
             <Route path="/ergo-guide" element={<PageTransition><routeConfig.ergoGuide.Component /></PageTransition>} />
             <Route path="/faq" element={<PageTransition><routeConfig.faq.Component /></PageTransition>} />
+
+            {/* Password Reset Routes */}
+            <Route path="/forgot-password" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><ForgotPasswordPage /></PageTransition>
+              </Suspense>
+            } />
+            <Route path="/reset-password" element={
+              <Suspense fallback={<Loading />}>
+                <PageTransition><ResetPasswordPage /></PageTransition>
+              </Suspense>
+            } />
 
             {/* Claim Access Route */}
             <Route path="/claim-access" element={

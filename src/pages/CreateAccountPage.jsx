@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { m } from 'framer-motion';
-import { ShieldCheck, Lock, Mail, Loader2, CheckCircle2, AlertTriangle, Check } from 'lucide-react';
+import { ShieldCheck, Lock, Mail, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
 import { api } from '../services/api';
 import { usePageTitle } from '../hooks/usePageTitle';
 import ReactGA from 'react-ga4';
+import PasswordStrengthMeter from '../components/common/PasswordStrengthMeter';
 
 const CreateAccountPage = () => {
     usePageTitle('Create Account');
@@ -154,24 +155,8 @@ const CreateAccountPage = () => {
                                     required
                                 />
                             </div>
+                            <PasswordStrengthMeter password={password} />
                         </div>
-
-                        {/* Password Strength Indicator */}
-                        {password.length > 0 && (
-                            <div className="bg-slate-700/30 rounded-lg p-3 text-sm">
-                                {password.length >= 8 ? (
-                                    <div className="flex items-center gap-2 text-green-400">
-                                        <Check size={16} />
-                                        <span>✓ Strong password</span>
-                                    </div>
-                                ) : (
-                                    <div className="flex items-center gap-2 text-yellow-400">
-                                        <AlertTriangle size={16} />
-                                        <span>⚠ Min 8 characters required ({password.length}/8)</span>
-                                    </div>
-                                )}
-                            </div>
-                        )}
 
                         {/* Error Message */}
                         {error && (

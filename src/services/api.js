@@ -92,6 +92,35 @@ export const api = {
     return handleResponse(response);
   },
 
+  logout: async () => {
+    const response = await fetch(`${API_URL}/auth/logout`, {
+      method: 'POST',
+      headers: getHeaders(),
+      credentials: 'include',
+    });
+    return handleResponse(response);
+  },
+
+  forgotPassword: async (email) => {
+    const response = await fetch(`${API_URL}/auth/forgot-password`, {
+      method: 'POST',
+      headers: getHeaders(),
+      credentials: 'include',
+      body: JSON.stringify({ email }),
+    });
+    return handleResponse(response);
+  },
+
+  resetPassword: async (email, token, newPassword) => {
+    const response = await fetch(`${API_URL}/auth/reset-password`, {
+      method: 'POST',
+      headers: getHeaders(),
+      credentials: 'include',
+      body: JSON.stringify({ email, token, newPassword }),
+    });
+    return handleResponse(response);
+  },
+
   // User
   getPurchases: async () => {
     const response = await fetch(`${API_URL}/user/purchases`, {
