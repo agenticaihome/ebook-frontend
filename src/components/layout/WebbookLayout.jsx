@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Menu, X, BookOpen, Zap, HelpCircle, Lock, ChevronDown, ChevronRight, Gamepad2, Unlock, CheckCircle, BarChart3 } from 'lucide-react';
+import { Menu, X, BookOpen, Zap, HelpCircle, Lock, ChevronDown, ChevronRight, Gamepad2, Unlock, CheckCircle, BarChart3, Wrench, Coins } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import PrefetchLink from './PrefetchLink';
@@ -377,6 +377,28 @@ const WebbookLayout = ({ children }) => {
                         <Gamepad2 size={16} className={location.pathname === '/games' ? 'text-purple-200' : 'text-purple-400'} />
                         <span className="font-medium text-sm">Practice Games</span>
                         <span className="ml-auto text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full">5</span>
+                    </PrefetchLink>
+                    <PrefetchLink
+                        to="/tools"
+                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${location.pathname === '/tools'
+                            ? 'bg-teal-600/90 text-white shadow-md'
+                            : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
+                            }`}
+                    >
+                        <Wrench size={16} className={location.pathname === '/tools' ? 'text-teal-200' : 'text-teal-400'} />
+                        <span className="font-medium text-sm">Free Tools</span>
+                        <span className="ml-auto text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full">10 FREE</span>
+                    </PrefetchLink>
+                    <PrefetchLink
+                        to="/why-ergo"
+                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${location.pathname === '/why-ergo'
+                            ? 'bg-green-600/90 text-white shadow-md'
+                            : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
+                            }`}
+                    >
+                        <Coins size={16} className={location.pathname === '/why-ergo' ? 'text-green-200' : 'text-green-400'} />
+                        <span className="font-medium text-sm">Why Ergo?</span>
+                        <span className="ml-auto text-[10px] bg-green-500/20 text-green-300 px-2 py-0.5 rounded-full">Save 50%</span>
                     </PrefetchLink>
                 </nav>
 

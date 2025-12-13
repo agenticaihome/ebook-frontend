@@ -80,11 +80,6 @@ const MobileBottomNav = () => {
                         <span className="text-[10px] font-bold">Home</span>
                     </PrefetchLink>
 
-                    <PrefetchLink to="/dashboard" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/dashboard') ? 'text-cyan-400' : 'text-slate-300'}`}>
-                        <LayoutDashboard size={22} />
-                        <span className="text-[10px] font-bold">Quests</span>
-                    </PrefetchLink>
-
                     <PrefetchLink
                         to={localStorage.getItem('last_visited_route') || '/part1/chapter1'}
                         className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/part1') || isActive('/part2') || isActive('/part3') ? 'text-cyan-400' : 'text-slate-300'}`}
