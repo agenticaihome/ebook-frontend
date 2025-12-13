@@ -21,14 +21,29 @@ const Chapter2 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showSampleOutput, setShowSampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Meal Planning Agent.
 
-Every Sunday at 10am, ask me what's in my fridge and my budget.
-Then give me 5 easy dinners + a shopping list I can screenshot.
+About my household:
+- [NUMBER] people eating dinner
+- Dietary needs: [ANY ALLERGIES, VEGETARIAN, PICKY EATERS, ETC.]
+- Weekly grocery budget: $[AMOUNT]
+- Cooking skill: [BEGINNER / INTERMEDIATE / LOVE TO COOK]
+- Time for weeknight dinners: [15 MIN / 30 MIN / UP TO 1 HOUR]
+- Cuisines we like: [EXAMPLES: Mexican, Italian, Asian, American comfort]
 
-Real food, not fancy stuff. Set this up now.`;
+Every time I come to you for meal planning, give me:
+1. 5 dinner recipes for the week
+2. For each recipe: name, ingredients list, prep time, cook time, and numbered steps
+3. A combined shopping list organized by store section (produce, dairy, meat, pantry)
+4. Cost estimate for the shopping list
+
+Keep it simple. Real food, not fancy stuff.
+
+Right now, ask me to fill in the blanks above so you can create my first meal plan.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -200,8 +215,154 @@ Real food, not fancy stuff. Set this up now.`;
                             <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
                                 <p className="text-green-400 text-sm flex items-start gap-2">
                                     <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
-                                    <span><strong>Next Sunday</strong> it'll check in automatically with your first meal plan.</span>
+                                    <span><strong>Want it automatic?</strong> In ChatGPT, use "Scheduled Tasks" to have it message you every Sunday. Or just open your AI Sunday morning and say "meal plan for this week."</span>
                                 </p>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-orange-900/20 to-amber-900/20 rounded-xl border border-orange-500/30 text-left hover:from-orange-900/30 hover:to-amber-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-orange-400" />
+                                📝 Not sure what to type? See examples
+                            </span>
+                            <ChevronDown size={16} className={`text-orange-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Here's how to fill in each blank:</p>
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-slate-400 text-xs mb-1">[NUMBER] people eating dinner</p>
+                                        <p className="text-orange-400 text-sm font-mono">"4" or "2 adults, 2 kids (ages 5 and 8)"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-slate-400 text-xs mb-1">[DIETARY NEEDS]</p>
+                                        <p className="text-orange-400 text-sm font-mono">"No nuts (allergy), one vegetarian, one picky eater who won't eat fish"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-slate-400 text-xs mb-1">[BUDGET]</p>
+                                        <p className="text-orange-400 text-sm font-mono">"$100-150" or "around $120"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-slate-400 text-xs mb-1">[COOKING SKILL]</p>
+                                        <p className="text-orange-400 text-sm font-mono">"Beginner - keep it simple" or "I can follow recipes but nothing fancy"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-slate-400 text-xs mb-1">[TIME]</p>
+                                        <p className="text-orange-400 text-sm font-mono">"30 minutes max on weeknights"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-slate-400 text-xs mb-1">[CUISINES]</p>
+                                        <p className="text-orange-400 text-sm font-mono">"Mexican, Italian, Chinese takeout style, comfort food"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* VISUAL EXAMPLE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68 }} className="mb-6">
+                        <button
+                            onClick={() => setShowSampleOutput(!showSampleOutput)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl border border-green-500/30 text-left hover:from-green-900/30 hover:to-emerald-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <CheckCircle size={16} className="text-green-400" />
+                                👀 See what a good AI response looks like
+                            </span>
+                            <ChevronDown size={16} className={`text-green-400 transition-transform ${showSampleOutput ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showSampleOutput && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-900/80 rounded-xl p-5 border border-green-500/30 space-y-4"
+                            >
+                                <p className="text-green-400 text-sm font-medium mb-3">✨ Example AI Response:</p>
+
+                                <div className="bg-slate-950 rounded-lg p-4 border border-slate-700 font-mono text-xs text-slate-300 space-y-4 max-h-96 overflow-y-auto">
+                                    <p className="text-white font-bold">🍽️ Your 5 Weeknight Dinners:</p>
+
+                                    <div className="border-l-2 border-orange-500 pl-3">
+                                        <p className="text-orange-400 font-bold">1. One-Pan Lemon Chicken & Rice</p>
+                                        <p className="text-slate-400">⏱ Prep: 10 min | Cook: 25 min</p>
+                                        <p className="mt-1">Chicken thighs, rice, lemon, garlic, chicken broth, frozen peas</p>
+                                    </div>
+
+                                    <div className="border-l-2 border-orange-500 pl-3">
+                                        <p className="text-orange-400 font-bold">2. Easy Beef Tacos</p>
+                                        <p className="text-slate-400">⏱ Prep: 5 min | Cook: 15 min</p>
+                                        <p className="mt-1">Ground beef, taco seasoning, tortillas, cheese, lettuce, salsa</p>
+                                    </div>
+
+                                    <div className="border-l-2 border-orange-500 pl-3">
+                                        <p className="text-orange-400 font-bold">3. Sheet Pan Sausage & Veggies</p>
+                                        <p className="text-slate-400">⏱ Prep: 10 min | Cook: 20 min</p>
+                                        <p className="mt-1">Italian sausage, bell peppers, zucchini, olive oil, Italian herbs</p>
+                                    </div>
+
+                                    <p className="text-slate-500 italic">...plus 2 more recipes with full steps</p>
+
+                                    <div className="border-t border-slate-700 pt-3">
+                                        <p className="text-green-400 font-bold">🛒 Shopping List by Section:</p>
+                                        <div className="mt-2 space-y-2">
+                                            <p><span className="text-slate-500">PRODUCE:</span> 1 lemon, 1 head garlic, 2 bell peppers, 1 zucchini, lettuce</p>
+                                            <p><span className="text-slate-500">MEAT:</span> 2 lbs chicken thighs, 1 lb ground beef, 1 lb Italian sausage</p>
+                                            <p><span className="text-slate-500">DAIRY:</span> Shredded cheese</p>
+                                            <p><span className="text-slate-500">PANTRY:</span> Rice, taco seasoning, tortillas, salsa, chicken broth, olive oil</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="border-t border-slate-700 pt-3">
+                                        <p className="text-amber-400">💰 Estimated Cost: ~$65-75</p>
+                                    </div>
+                                </div>
+
+                                <p className="text-slate-400 text-xs mt-2">This is a sample — your AI will customize based on YOUR household info!</p>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* WEEKLY USAGE GUIDE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.69 }} className="mb-6">
+                        <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
+                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                                📅 How to Use It Every Week
+                            </h3>
+                            <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-orange-400 font-bold mt-0.5">1</span>
+                                    <div>
+                                        <span className="text-white font-medium">Sunday morning:</span>
+                                        <p className="text-slate-300">Open your AI and say <span className="text-orange-400 font-mono">"Meal plan for this week"</span></p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-orange-400 font-bold mt-0.5">2</span>
+                                    <div>
+                                        <span className="text-white font-medium">Got leftovers?</span>
+                                        <p className="text-slate-300">Say <span className="text-orange-400 font-mono">"We have leftover chicken — use that for one dinner"</span></p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-orange-400 font-bold mt-0.5">3</span>
+                                    <div>
+                                        <span className="text-white font-medium">Plans changed mid-week?</span>
+                                        <p className="text-slate-300">Say <span className="text-orange-400 font-mono">"Swap Thursday's recipe with something quicker"</span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </motion.section>
