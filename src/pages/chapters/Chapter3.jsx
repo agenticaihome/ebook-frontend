@@ -22,15 +22,35 @@ const Chapter3 = () => {
     const [copied, setCopied] = useState(false);
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
+    const [showSampleOutput, setShowSampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Important Dates Agent.
 
-Remember my birthdays, anniversaries, and bill due dates.
-Remind me 3 days before each one.
-For birthdays, suggest a gift idea.
+BIRTHDAYS:
+- [NAME]: [DATE] - likes [INTERESTS/GIFT IDEAS]
+- [NAME]: [DATE] - likes [INTERESTS/GIFT IDEAS]
+(add more as needed)
 
-Let me dump my dates now.`;
+ANNIVERSARIES:
+- [EVENT]: [DATE]
+(wedding, dating anniversary, work anniversary, etc.)
+
+BILLS & PAYMENTS:
+- [BILL NAME]: [DUE DATE] - $[AMOUNT] - [MONTHLY/YEARLY]
+(rent, utilities, subscriptions, insurance, etc.)
+
+OTHER IMPORTANT DATES:
+- [EVENT]: [DATE]
+(license renewal, pet vet visits, car registration, etc.)
+
+For each date:
+1. Remind me [NUMBER] days before (default: 3 days)
+2. For birthdays, suggest a gift idea based on their interests
+3. For bills, include the amount in the reminder
+
+Right now, help me fill in each section above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -198,8 +218,141 @@ Let me dump my dates now.`;
                             <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
                                 <p className="text-green-400 text-sm flex items-start gap-2">
                                     <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
-                                    <span>It'll remember everything and remind you 3 days before each date.</span>
+                                    <span><strong>Enable notifications:</strong> In ChatGPT, use "Scheduled Tasks" to get automatic reminders. Or just ask "What's coming up this week?" anytime!</span>
                                 </p>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-pink-900/20 to-purple-900/20 rounded-xl border border-pink-500/30 text-left hover:from-pink-900/30 hover:to-purple-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-pink-400" />
+                                📝 Not sure what dates to add? See examples
+                            </span>
+                            <ChevronDown size={16} className={`text-pink-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Here are examples for each category:</p>
+
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-pink-400 text-xs font-bold mb-2 flex items-center gap-1"><Gift size={14} /> BIRTHDAYS</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Mom: March 15 - loves gardening and mystery novels"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Best friend Sam: July 4 - into tech gadgets, budget $50"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-red-400 text-xs font-bold mb-2 flex items-center gap-1"><Heart size={14} /> ANNIVERSARIES</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Wedding anniversary: June 22"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Started dating: February 14"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Work anniversary: August 1"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-green-400 text-xs font-bold mb-2 flex items-center gap-1"><CreditCard size={14} /> BILLS</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Rent: 1st of every month - $1,500"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Car insurance: Sept 10 yearly - $800"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Netflix: 15th monthly - $15.99"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-purple-400 text-xs font-bold mb-2 flex items-center gap-1"><Calendar size={14} /> OTHER</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Driver's license renewal: December 2025"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Dog's vet checkup: every 6 months"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Car registration: March yearly"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* VISUAL EXAMPLE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68 }} className="mb-6">
+                        <button
+                            onClick={() => setShowSampleOutput(!showSampleOutput)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl border border-green-500/30 text-left hover:from-green-900/30 hover:to-emerald-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Bell size={16} className="text-green-400" />
+                                👀 See what a reminder looks like
+                            </span>
+                            <ChevronDown size={16} className={`text-green-400 transition-transform ${showSampleOutput ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showSampleOutput && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-900/80 rounded-xl p-5 border border-green-500/30 space-y-4"
+                            >
+                                <p className="text-green-400 text-sm font-medium mb-3">✨ Example AI Reminder:</p>
+
+                                <div className="bg-slate-950 rounded-lg p-4 border border-slate-700 font-mono text-sm text-slate-300 space-y-4">
+                                    <div className="border-l-2 border-pink-500 pl-3">
+                                        <p className="text-pink-400 font-bold">🎂 Birthday Alert!</p>
+                                        <p className="mt-1">Mom's birthday is in <strong className="text-white">3 days</strong> (March 15)</p>
+                                        <p className="mt-2 text-slate-400">💡 Gift ideas based on her interests:</p>
+                                        <ul className="mt-1 ml-4 text-sm space-y-1">
+                                            <li>• Raised garden bed kit (~$45)</li>
+                                            <li>• "The Thursday Murder Club" mystery novel ($15)</li>
+                                            <li>• Personalized garden markers ($25)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div className="border-l-2 border-green-500 pl-3">
+                                        <p className="text-green-400 font-bold">💳 Bill Reminder</p>
+                                        <p className="mt-1">Rent is due in <strong className="text-white">3 days</strong> (April 1st)</p>
+                                        <p className="mt-1 text-amber-400">Amount: $1,500</p>
+                                    </div>
+
+                                    <div className="border-l-2 border-red-500 pl-3">
+                                        <p className="text-red-400 font-bold">❤️ Anniversary Coming Up</p>
+                                        <p className="mt-1">Wedding anniversary is in <strong className="text-white">5 days</strong> (June 22)</p>
+                                        <p className="mt-1 text-slate-400">This is your 8th anniversary! 🎉</p>
+                                    </div>
+                                </div>
+
+                                <p className="text-slate-400 text-xs mt-2">Your reminders will be personalized based on your dates and preferences!</p>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* ONGOING USAGE GUIDE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.69 }} className="mb-6">
+                        <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
+                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                                📅 How to Use It Going Forward
+                            </h3>
+                            <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-pink-400 font-bold mt-0.5">1</span>
+                                    <div>
+                                        <span className="text-white font-medium">Check what's coming up:</span>
+                                        <p className="text-slate-300">Say <span className="text-pink-400 font-mono">"What important dates are coming up this week?"</span></p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-pink-400 font-bold mt-0.5">2</span>
+                                    <div>
+                                        <span className="text-white font-medium">Add new dates anytime:</span>
+                                        <p className="text-slate-300">Say <span className="text-pink-400 font-mono">"Add my coworker Lisa's birthday: October 8"</span></p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-pink-400 font-bold mt-0.5">3</span>
+                                    <div>
+                                        <span className="text-white font-medium">Update or remove dates:</span>
+                                        <p className="text-slate-300">Say <span className="text-pink-400 font-mono">"Remove Jake's birthday"</span> or <span className="text-pink-400 font-mono">"Change rent to the 5th instead"</span></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </motion.section>

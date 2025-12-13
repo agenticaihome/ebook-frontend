@@ -22,16 +22,31 @@ const Chapter4 = () => {
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Email Triage Agent.
 
-Every morning, help me process my inbox in 10 minutes:
-1. Show me emails that need a response TODAY
-2. Draft quick replies I can approve or edit
-3. Tell me what can wait or be archived
+MY EMAIL SETUP:
+- Email provider: [GMAIL / OUTLOOK / APPLE MAIL / OTHER]
+- I check email [X] times per day
+- My biggest email pain: [TOO MANY / HARD TO PRIORITIZE / SLOW TO RESPOND / OTHER]
 
-Start by asking what email I use.`;
+VIP SENDERS (always priority):
+- [BOSS NAME / ROLE]
+- [KEY CLIENTS OR CONTACTS]
+- [FAMILY MEMBERS]
+
+MY RESPONSE STYLE:
+- Tone: [PROFESSIONAL / CASUAL / SHORT & DIRECT]
+- Typical reply length: [1-2 SENTENCES / A FEW LINES / DETAILED]
+
+Every morning when I come to you:
+1. Sort my emails into: Respond Today, Can Wait, Safe to Archive
+2. Draft quick replies for urgent ones (I'll approve/edit before sending)
+3. Tell me what to archive without reading
+
+Right now, help me fill in the blanks above so you know my preferences.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -172,20 +187,95 @@ Start by asking what email I use.`;
                     </motion.section>
 
                     {/* STEP 3 */}
-                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-sm">3</div>
-                            <h3 className="text-white font-bold">Tell your AI about your inbox</h3>
+                            <h3 className="text-white font-bold">Fill in your preferences</h3>
                         </div>
                         <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
                             <p className="text-slate-300 text-sm mb-3">
-                                Your AI will ask what email you use. Just tell it (Gmail, Outlook, etc.) and describe your typical inbox chaos.
+                                Your AI will help you fill in each section. Just answer naturally!
                             </p>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-medium">Gmail</span>
-                                <span className="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-medium">Outlook</span>
-                                <span className="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-medium">Apple Mail</span>
-                                <span className="px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-medium">Work email</span>
+                            <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
+                                <p className="text-green-400 text-sm flex items-start gap-2">
+                                    <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
+                                    <span><strong>Make it a daily habit:</strong> In ChatGPT, use "Scheduled Tasks" to get a morning reminder. Or set a phone alarm for "Email triage time."</span>
+                                </p>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl border border-blue-500/30 text-left hover:from-blue-900/30 hover:to-purple-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-blue-400" />
+                                📝 Not sure what to type? See examples
+                            </span>
+                            <ChevronDown size={16} className={`text-blue-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Here's how to fill in each section:</p>
+
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-blue-400 text-xs font-bold mb-2 flex items-center gap-1"><Mail size={14} /> EMAIL SETUP</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Gmail, I check it 3-4 times a day"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"My biggest pain: I get 100+ emails and can't tell what's urgent"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-amber-400 text-xs font-bold mb-2 flex items-center gap-1"><AlertCircle size={14} /> VIP SENDERS</p>
+                                        <p className="text-slate-300 text-sm font-mono">"My boss Sarah, anyone from @companyname.com"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Mom and Dad, my wife Lisa"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Key clients: John at Acme Corp, Mary at XYZ Inc"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-purple-400 text-xs font-bold mb-2 flex items-center gap-1"><Inbox size={14} /> RESPONSE STYLE</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Professional but friendly, 2-3 sentences max"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Casual with coworkers, formal with clients"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* DAILY USAGE GUIDE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68 }} className="mb-6">
+                        <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
+                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                                ☀️ Your 10-Minute Morning Routine
+                            </h3>
+                            <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-blue-400 font-bold mt-0.5">1</span>
+                                    <div>
+                                        <span className="text-white font-medium">Open AI + inbox side by side:</span>
+                                        <p className="text-slate-300">Say <span className="text-blue-400 font-mono">"Let's triage my inbox"</span> and paste or describe your unread emails</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-blue-400 font-bold mt-0.5">2</span>
+                                    <div>
+                                        <span className="text-white font-medium">Get your sorted list:</span>
+                                        <p className="text-slate-300">AI tells you: <span className="text-blue-400 font-mono">"3 need response today, 5 can wait, 20 safe to archive"</span></p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-blue-400 font-bold mt-0.5">3</span>
+                                    <div>
+                                        <span className="text-white font-medium">Approve the drafts:</span>
+                                        <p className="text-slate-300">Say <span className="text-blue-400 font-mono">"Draft a reply for the boss email"</span> — edit and send!</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </motion.section>
