@@ -22,16 +22,29 @@ const Chapter6 = () => {
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Fitness Agent.
 
-Every week, give me a workout plan that fits my life:
-1. Ask how many days I can exercise this week
-2. Ask what equipment I have (or none)
-3. Give me simple workouts I'll actually do
+MY FITNESS SITUATION:
+- Current activity level: [SEDENTARY / SOMEWHAT ACTIVE / PRETTY ACTIVE]
+- Fitness goal: [LOSE WEIGHT / BUILD MUSCLE / GET STRONGER / IMPROVE STAMINA / JUST STAY ACTIVE]
+- Any injuries or limitations: [BAD KNEE / BACK ISSUES / NONE / OTHER]
 
-No gym jargon. Keep each workout under 30 minutes.`;
+MY WORKOUT SETUP:
+- Equipment I have: [DUMBBELLS / RESISTANCE BANDS / NOTHING / GYM MEMBERSHIP / OTHER]
+- Where I workout: [HOME / GYM / OUTDOORS]
+- Days I can exercise: [NUMBER] days per week
+- Time per workout: [15 MIN / 30 MIN / 45 MIN / 1 HOUR]
+
+MY PREFERENCES:
+- I enjoy: [STRENGTH / CARDIO / YOGA / HIIT / WALKING / MIX]
+- I hate: [RUNNING / JUMPING / SPECIFIC EXERCISES]
+
+Every week, give me a workout plan that fits my schedule. Keep workouts simple with clear instructions - no gym jargon.
+
+Right now, help me fill in the blanks above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -143,13 +156,97 @@ No gym jargon. Keep each workout under 30 minutes.`;
                         </div>
                     </motion.section>
 
-                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
+                    {/* STEP 3 */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white font-bold text-sm">3</div>
-                            <h3 className="text-white font-bold">Be honest about your situation</h3>
+                            <h3 className="text-white font-bold">Fill in your fitness profile</h3>
                         </div>
                         <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                            <p className="text-slate-300 text-sm">Tell it: "I can only do 3 days this week, I have dumbbells at home, and I hate cardio." The more real you are, the better the plan.</p>
+                            <p className="text-slate-300 text-sm mb-3">
+                                Be honest - the more real you are, the better your workouts will fit your life.
+                            </p>
+                            <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
+                                <p className="text-green-400 text-sm flex items-start gap-2">
+                                    <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
+                                    <span><strong>Weekly planning:</strong> In ChatGPT, use "Scheduled Tasks" to get a Monday morning workout plan. Or just ask on Sunday night!</span>
+                                </p>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-red-900/20 to-orange-900/20 rounded-xl border border-red-500/30 text-left hover:from-red-900/30 hover:to-orange-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-red-400" />
+                                📝 Not sure what to type? See examples
+                            </span>
+                            <ChevronDown size={16} className={`text-red-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Here's how to fill in each section:</p>
+
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-red-400 text-xs font-bold mb-2 flex items-center gap-1"><Activity size={14} /> FITNESS SITUATION</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Somewhat active - I walk daily but don't work out"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Goal: build muscle and get stronger"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Bad knee from an old injury - no jumping"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-orange-400 text-xs font-bold mb-2 flex items-center gap-1"><Dumbbell size={14} /> WORKOUT SETUP</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I have dumbbells and resistance bands at home"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Can exercise 3 days a week, 30 min max"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-amber-400 text-xs font-bold mb-2 flex items-center gap-1"><Heart size={14} /> PREFERENCES</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I enjoy strength training, hate running"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"No burpees please - they're torture"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* WEEKLY USAGE GUIDE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68 }} className="mb-6">
+                        <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
+                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                                🏋️ Your Weekly Fitness Routine
+                            </h3>
+                            <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-red-400 font-bold mt-0.5">1</span>
+                                    <div>
+                                        <span className="text-white font-medium">Sunday night or Monday morning:</span>
+                                        <p className="text-slate-300">Say <span className="text-red-400 font-mono">"Give me this week's workout plan"</span> with any schedule changes</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-red-400 font-bold mt-0.5">2</span>
+                                    <div>
+                                        <span className="text-white font-medium">During workouts:</span>
+                                        <p className="text-slate-300">Ask <span className="text-red-400 font-mono">"How do I do [exercise] properly?"</span> for form tips</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-red-400 font-bold mt-0.5">3</span>
+                                    <div>
+                                        <span className="text-white font-medium">Adapt on the fly:</span>
+                                        <p className="text-slate-300">Say <span className="text-red-400 font-mono">"I only have 15 min today - give me a quick version"</span></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </motion.section>
 
