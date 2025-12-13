@@ -39,7 +39,7 @@ const MobileBottomNav = () => {
         <>
             {/* Tools Menu */}
             {showTools && (
-                <div className="fixed bottom-20 left-4 right-4 bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-2xl z-50 animate-in slide-in-from-bottom-5 fade-in duration-200">
+                <div className="fixed bottom-20 left-4 right-4 bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-2xl z-[65] animate-in slide-in-from-bottom-5 fade-in duration-200">
                     <div className="grid grid-cols-2 gap-4">
                         <Link
                             to="/tools"
@@ -73,7 +73,7 @@ const MobileBottomNav = () => {
                 <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setShowTools(false)} />
             )}
 
-            <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f1a]/95 backdrop-blur-lg border-t border-slate-800 md:hidden z-50 pb-safe">
+            <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f1a]/95 backdrop-blur-lg border-t border-slate-800 md:hidden z-[60] pb-safe">
                 <div className="flex justify-around items-center p-2">
                     <PrefetchLink to="/" className={`flex flex-col items-center gap-1 p-2 min-w-[48px] min-h-[48px] rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 ${isActive('/') ? 'text-cyan-400' : 'text-slate-300'}`}>
                         <Home size={22} />

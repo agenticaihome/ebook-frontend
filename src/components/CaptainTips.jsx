@@ -131,7 +131,7 @@ const CaptainTips = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 30, scale: 0.95 }}
                     transition={{ type: "spring", damping: 20, stiffness: 300 }}
-                    className="fixed bottom-4 right-4 z-50 max-w-xs md:max-w-sm"
+                    className="fixed bottom-20 md:bottom-4 right-4 z-[55] max-w-xs md:max-w-sm"
                 >
                     <div className="relative bg-slate-900/95 backdrop-blur-xl border border-teal-500/40 rounded-2xl p-5 shadow-2xl shadow-teal-900/30">
                         {/* Close button */}
