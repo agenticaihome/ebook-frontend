@@ -26,14 +26,24 @@ const Chapter1 = () => {
     const [showConfetti, setShowConfetti] = useState(false);
     const { triggerDelight } = useImmersion();
 
-    const goldPrompt = `Be my morning agent.
-    
-Every day when I wake up, send me:
-- Weather for my location
-- 3 things happening today
-- One reminder I'll thank you for
+    const goldPrompt = `You are my personal Morning Agent. Your job is to give me a helpful daily briefing every morning.
 
-Set this up now.`;
+FIRST, ask me these setup questions (one at a time):
+1. What city do you live in? (for weather)
+2. What time do you usually wake up?
+3. What's one thing you never want to forget? (birthday, deadline, etc.)
+
+AFTER I answer, create my personalized morning briefing format:
+
+**☀️ Weather** — Use web browsing to get TODAY's actual weather for my city. Include temp, conditions, and whether I need an umbrella or jacket.
+
+**📅 Today's Focus** — Ask what I have today, then summarize my top 3 priorities.
+
+**🔔 Reminder** — Something helpful I told you about, or a motivational nudge.
+
+Keep it short (under 100 words). Make it feel like a helpful friend, not a robot.
+
+Start now by asking me question 1.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
