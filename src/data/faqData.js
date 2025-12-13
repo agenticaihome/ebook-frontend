@@ -319,12 +319,12 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">Click "Start Free" and begin with Chapter 1 — no payment needed.</p>
-                <p className="mb-4">The first chapters are completely free. You'll meet Captain Efficiency, learn what AI agents are, and decide if this is for you.</p>
+                <p className="mb-4">Chapter 1 is completely free. You'll meet Captain Efficiency, learn what AI agents are, and decide if this is for you.</p>
                 <ol className="list-decimal pl-5 space-y-1 mb-4">
                     <li>Click "Start Free" on the welcome page</li>
                     <li>Chapter 1 opens immediately</li>
                     <li>Read at your own pace</li>
-                    <li>Decide if you want full access</li>
+                    <li>Decide if you want full access to all 10 chapters</li>
                 </ol>
             </>
         )
@@ -383,7 +383,7 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">No — the free preview requires no account.</p>
-                <p className="mb-4">Browse the free chapters freely. You only create an account when you decide to purchase full access.</p>
+                <p className="mb-4">Browse Chapter 1 freely. You only create an account when you decide to purchase full access to all chapters.</p>
                 <p>We don't collect your email until you choose to buy.</p>
             </>
         )
@@ -431,14 +431,15 @@ export const faqData = [
         question: 'Which chapters are free?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">The first three chapters are completely free.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">Chapter 1 is completely free.</p>
                 <p className="mb-4">This gives you enough to:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li>Meet Captain Efficiency</li>
                     <li>Understand what AI agents are</li>
-                    <li>Build your first simple agent</li>
+                    <li>See the teaching style and format</li>
                     <li>Decide if the full course is for you</li>
                 </ul>
+                <p>Chapters 2-10 unlock after purchase.</p>
             </>
         )
     },
