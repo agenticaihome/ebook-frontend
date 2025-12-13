@@ -22,17 +22,30 @@ const Chapter9 = () => {
     const [showExamples, setShowExamples] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
-    const goldPrompt = `Help me coordinate my AI agents.
+    const goldPrompt = `Be my Hub Agent - the "control center" for all my other AI agents.
 
-I have agents for:
-- Morning briefings
-- Email triage
-- Weekly money check
-- Work priorities
+MY CURRENT AGENTS:
+- [LIST THE AGENTS YOU'VE SET UP, e.g.:
+  - Meal Planning Agent (runs Sundays)
+  - Email Triage Agent (runs mornings)
+  - Work Task Agent (runs mornings)
+  - Money Check-In Agent (runs Sundays)]
 
-Show me how to make them work together so I get ONE unified daily/weekly summary instead of checking each separately.`;
+HOW I WANT THEM CONNECTED:
+- Daily briefing time: [MORNING / EVENING / SPECIFIC TIME]
+- Weekly review day: [SUNDAY / SATURDAY / OTHER]
+- Format I prefer: [QUICK BULLETS / DETAILED / JUST FLAGS + ALERTS]
+
+YOUR JOB:
+1. Collect outputs from my other agents
+2. Give me ONE unified view (no jumping between chats)
+3. Flag conflicts or things that need my attention
+4. Keep it under 60 seconds to read
+
+Right now, help me set up my agent hub.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -149,6 +162,42 @@ Show me how to make them work together so I get ONE unified daily/weekly summary
                                 </motion.div>
                             )}
                         </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-500/30 text-left hover:from-cyan-900/30 hover:to-blue-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-cyan-400" />
+                                📝 How to set up your agent hub
+                            </span>
+                            <ChevronDown size={16} className={`text-cyan-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Example setup for your hub agent:</p>
+
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-cyan-400 text-xs font-bold mb-2 flex items-center gap-1"><Users size={14} /> YOUR AGENT LIST</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I have 4 agents: Meal Planning (Sundays), Email Triage (mornings), Work Tasks (mornings), Money Check (Sundays)"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-blue-400 text-xs font-bold mb-2 flex items-center gap-1"><GitBranch size={14} /> CONNECTION STYLE</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Daily briefing at 7am, weekly review on Sunday evenings"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Quick bullets format - I want to read it in 60 seconds"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
                     </motion.section>
 
                     {/* EXAMPLE WORKFLOWS */}

@@ -22,16 +22,32 @@ const Chapter7 = () => {
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Work Task Agent.
 
-Every morning, help me plan my workday:
-1. Ask what's on my plate today
-2. Help me pick the ONE thing that matters most
-3. Block out distractions and nice-to-haves
+MY WORK SITUATION:
+- Job type: [CORPORATE / FREELANCE / BUSINESS OWNER / REMOTE / OTHER]
+- Typical day: [MEETINGS-HEAVY / DEEP WORK / MIX / UNPREDICTABLE]
+- Biggest challenge: [TOO MANY TASKS / CAN'T FOCUS / UNCLEAR PRIORITIES / CONSTANT INTERRUPTIONS]
 
-Be ruthless about priorities. Less is more.`;
+MY CURRENT GOALS:
+- This week I'm focused on: [MAIN PROJECT OR DEADLINE]
+- Long-term goal: [PROMOTION / LAUNCH / GOAL]
+
+MY PRIORITIZATION STYLE:
+- I have about [NUMBER] hours of real work time per day
+- I work best: [MORNINGS / AFTERNOONS / VARIES]
+- I struggle with: [SAYING NO / ESTIMATING TIME / SWITCHING TASKS]
+
+Every morning:
+1. Ask me to brain dump everything on my plate
+2. Help me pick the ONE thing that moves the needle most
+3. Be ruthless - push back if I'm overcommitting
+4. Quick end-of-day check: Did I do the thing?
+
+Right now, help me fill in the blanks above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -142,13 +158,96 @@ Be ruthless about priorities. Less is more.`;
                         </div>
                     </motion.section>
 
-                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
+                    {/* STEP 3 */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-sm">3</div>
-                            <h3 className="text-white font-bold">Do your daily brain dump</h3>
+                            <h3 className="text-white font-bold">Set up your daily planning</h3>
                         </div>
                         <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                            <p className="text-slate-300 text-sm">Every morning, dump everything in your head: meetings, emails to send, projects, random tasks. Let your AI sort the chaos.</p>
+                            <p className="text-slate-300 text-sm mb-3">
+                                Every morning, open your AI and do a brain dump of everything on your plate.
+                            </p>
+                            <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
+                                <p className="text-green-400 text-sm flex items-start gap-2">
+                                    <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
+                                    <span><strong>Daily habit:</strong> In ChatGPT, use "Scheduled Tasks" to get a morning planning prompt. Or set a 5-minute alarm for "Priority time."</span>
+                                </p>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-amber-900/20 to-orange-900/20 rounded-xl border border-amber-500/30 text-left hover:from-amber-900/30 hover:to-orange-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-amber-400" />
+                                📝 Not sure what to type? See examples
+                            </span>
+                            <ChevronDown size={16} className={`text-amber-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Here's how to fill in each section:</p>
+
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-amber-400 text-xs font-bold mb-2 flex items-center gap-1"><Briefcase size={14} /> WORK SITUATION</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Corporate job, remote, lots of meetings"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"My biggest challenge: too many things feel urgent"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-orange-400 text-xs font-bold mb-2 flex items-center gap-1"><Target size={14} /> CURRENT GOALS</p>
+                                        <p className="text-slate-300 text-sm font-mono">"This week: finish the Q4 proposal"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Long-term: get promoted by June"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-red-400 text-xs font-bold mb-2 flex items-center gap-1"><ListTodo size={14} /> PRIORITIZATION STYLE</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I have about 4 hours of real work time"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I work best in mornings, struggle with saying no"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* DAILY USAGE GUIDE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68 }} className="mb-6">
+                        <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
+                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                                🎯 Your Daily Work Routine
+                            </h3>
+                            <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-amber-400 font-bold mt-0.5">AM</span>
+                                    <div>
+                                        <span className="text-white font-medium">Morning brain dump:</span>
+                                        <p className="text-slate-300">Say <span className="text-amber-400 font-mono">"Here's everything on my plate today: [list all tasks]"</span></p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-amber-400 font-bold mt-0.5">→</span>
+                                    <div>
+                                        <span className="text-white font-medium">Get your ONE thing:</span>
+                                        <p className="text-slate-300">AI picks your priority and pushes back on overload</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-amber-400 font-bold mt-0.5">PM</span>
+                                    <div>
+                                        <span className="text-white font-medium">End-of-day check:</span>
+                                        <p className="text-slate-300">Say <span className="text-amber-400 font-mono">"Done for today - did I do the thing?"</span></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </motion.section>
 

@@ -19,21 +19,33 @@ const Chapter10 = () => {
     const [showChecklist, setShowChecklist] = useState(false);
     const [showNextSteps, setShowNextSteps] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `You are my Personal AI Command Center.
 
-You coordinate all my agents:
-- Morning Agent: Daily briefing
-- Email Agent: Inbox triage
-- Money Agent: Weekly finances
-- Fitness Agent: Workout plans
-- Work Agent: Task priorities
+MY AGENT ARMY:
+- [LIST ALL YOUR AGENTS, e.g.:
+  - Morning Briefing Agent
+  - Meal Planning Agent (Sundays)
+  - Important Dates Agent
+  - Email Triage Agent (mornings)
+  - Money Check-In Agent (Sundays)
+  - Fitness Agent (weekly)
+  - Work Task Agent (mornings)]
 
-Every morning, give me a 60-second summary of what matters TODAY.
-Every Sunday, give me a 5-minute review of my week.
+MY SCHEDULE PREFERENCES:
+- Morning briefing time: [TIME, e.g. 7:00 AM]
+- Weekly review: [DAY + TIME, e.g. Sunday 7PM]
+- Format: [QUICK BULLETS / DETAILED / JUST ALERTS]
 
-Start by asking: "Ready for your briefing?"`;
+YOUR JOB:
+1. Collect and unify outputs from all my agents
+2. Morning: 60-second summary of what matters TODAY
+3. Weekly: 5-minute review of my week
+4. Always start with: "Ready for your briefing, Commander?"
+
+Right now, help me customize my command center.`;;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);

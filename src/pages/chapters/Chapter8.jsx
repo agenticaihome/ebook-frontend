@@ -22,16 +22,27 @@ const Chapter8 = () => {
     const [showExamples, setShowExamples] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Help me create a custom AI agent.
 
-Ask me:
-1. What problem am I trying to solve?
-2. How often do I need this help? (daily, weekly, when triggered)
-3. What does success look like?
+MY AGENT IDEA:
+- Problem I'm solving: [WHAT FRUSTRATES ME OR TAKES TOO LONG]
+- How often I need help: [DAILY / WEEKLY / WHEN I ASK / TRIGGERED BY EVENT]
+- What success looks like: [SPECIFIC OUTCOME I WANT]
 
-Then design a simple agent prompt I can use.`;
+MY CONTEXT:
+- Who is this for: [JUST ME / MY FAMILY / MY TEAM]
+- Tools I already use: [APPS, CALENDARS, ETC.]
+- My skill level: [BEGINNER / COMFORTABLE / ADVANCED]
+
+Based on my answers:
+1. Design a simple, specific agent prompt I can use
+2. Suggest a name for the agent
+3. Tell me how to make it even better over time
+
+Right now, help me fill in the blanks above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -148,6 +159,51 @@ Then design a simple agent prompt I can use.`;
                                 </motion.div>
                             )}
                         </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-500/30 text-left hover:from-purple-900/30 hover:to-pink-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-purple-400" />
+                                📝 See example agent designs
+                            </span>
+                            <ChevronDown size={16} className={`text-purple-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Here's how to think through each section:</p>
+
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-purple-400 text-xs font-bold mb-2 flex items-center gap-1"><Wrench size={14} /> PROBLEM EXAMPLES</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I forget to water my plants"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I never know what to cook for dinner"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I lose track of my kid's activities"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-pink-400 text-xs font-bold mb-2 flex items-center gap-1"><Settings size={14} /> TRIGGER EXAMPLES</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Every morning at 8am"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"When I say 'shopping time'"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Every Sunday before the week starts"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-amber-400 text-xs font-bold mb-2 flex items-center gap-1"><Lightbulb size={14} /> SUCCESS EXAMPLES</p>
+                                        <p className="text-slate-300 text-sm font-mono">"A simple reminder with what to do"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"A list I can screenshot to the grocery store"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"A weekly calendar view of the family schedule"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
                     </motion.section>
 
                     {/* EXAMPLE AGENTS */}
