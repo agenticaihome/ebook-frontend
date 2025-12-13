@@ -226,7 +226,7 @@ const LoginPage = () => {
                                 className="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
                             >
                                 <Sparkles size={14} />
-                                Get Full Access
+                                🚀 Start My Agent Army
                             </Link>
                         </div>
 

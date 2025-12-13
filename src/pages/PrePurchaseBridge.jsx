@@ -76,15 +76,15 @@ const PrePurchaseBridge = () => {
     };
 
     const premiumAgents = [
-        { icon: <UtensilsCrossed size={16} />, name: 'Meal Planning', benefit: 'Weekly menus on autopilot', color: 'text-orange-400' },
-        { icon: <Calendar size={16} />, name: 'Important Dates', benefit: 'Never forget birthdays', color: 'text-pink-400' },
-        { icon: <Mail size={16} />, name: 'Email Triage', benefit: 'Inbox zero daily', color: 'text-blue-400' },
-        { icon: <DollarSign size={16} />, name: 'Money Check-In', benefit: 'Weekly financial clarity', color: 'text-green-400' },
-        { icon: <Dumbbell size={16} />, name: 'Fitness', benefit: 'Workouts that fit your life', color: 'text-red-400' },
-        { icon: <Briefcase size={16} />, name: 'Work Tasks', benefit: 'Always know what\'s next', color: 'text-amber-400' },
-        { icon: <Settings size={16} />, name: 'Custom Builder', benefit: 'Create any agent you want', color: 'text-purple-400' },
-        { icon: <Users size={16} />, name: 'Multi-Agent', benefit: 'Agents that coordinate', color: 'text-cyan-400' },
-        { icon: <Crown size={16} />, name: 'Agent Army', benefit: 'Your complete system', color: 'text-yellow-400' },
+        { icon: <UtensilsCrossed size={16} />, name: 'Meal Planning', benefit: 'Sunday prep: 90min → 20min', color: 'text-orange-400' },
+        { icon: <Calendar size={16} />, name: 'Important Dates', benefit: '0 missed birthdays ever', color: 'text-pink-400' },
+        { icon: <Mail size={16} />, name: 'Email Triage', benefit: 'Inbox: 500 → 15 unread', color: 'text-blue-400' },
+        { icon: <DollarSign size={16} />, name: 'Money Check-In', benefit: '5-min weekly finance clarity', color: 'text-green-400' },
+        { icon: <Dumbbell size={16} />, name: 'Fitness', benefit: 'Custom workouts in 30 seconds', color: 'text-red-400' },
+        { icon: <Briefcase size={16} />, name: 'Work Tasks', benefit: 'Leave work by 5pm', color: 'text-amber-400' },
+        { icon: <Settings size={16} />, name: 'Custom Builder', benefit: 'Build any agent in 10min', color: 'text-purple-400' },
+        { icon: <Users size={16} />, name: 'Multi-Agent', benefit: 'Agents that talk to each other', color: 'text-cyan-400' },
+        { icon: <Crown size={16} />, name: 'Agent Army', benefit: '5+ hours saved per week', color: 'text-yellow-400' },
     ];
 
     const faqs = [
@@ -513,7 +513,7 @@ const PrePurchaseBridge = () => {
                         onClick={handleCheckoutClick}
                         className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-teal-500/30"
                     >
-                        Unlock All 10 Chapters — $39.99
+                        🚀 Start My Agent Army — $39.99
                     </Link>
                     <p className="text-center text-slate-500 text-xs mt-2 flex items-center justify-center gap-2">
                         <Shield size={12} className="text-green-400" />

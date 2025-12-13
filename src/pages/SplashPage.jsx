@@ -36,9 +36,6 @@ const SplashPage = () => {
                         className="absolute bottom-1/4 right-1/4 w-[350px] md:w-[500px] h-[350px] md:h-[500px] bg-orange-500 rounded-full blur-[100px]"
                     />
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
-
-                    {/* Subtle scan lines for depth */}
-                    <div className="absolute inset-0 opacity-[0.03] bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(255,255,255,0.03)_2px,rgba(255,255,255,0.03)_4px)]" />
                 </div>
 
                 {/* Main Content */}

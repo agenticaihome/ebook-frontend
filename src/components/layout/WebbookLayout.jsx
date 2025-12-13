@@ -347,7 +347,7 @@ const WebbookLayout = ({ children }) => {
                                         >
                                             <div className="flex items-center gap-2 mb-2">
                                                 <Unlock size={16} className="text-amber-400" />
-                                                <span className="text-amber-400 font-bold text-sm tracking-wide">Get Full Access</span>
+                                                <span className="text-amber-400 font-bold text-sm tracking-wide">Start My Agent Army</span>
                                             </div>
                                             <div className="flex items-center justify-between">
                                                 <span className="text-slate-300 text-xs">9 more chapters</span>
@@ -435,7 +435,7 @@ const WebbookLayout = ({ children }) => {
                                     Login
                                 </Link>
                                 <Link to="/unlock" className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-2 rounded-2xl text-sm font-bold hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-900/30 hover:shadow-amber-500/20">
-                                    Get Full Access
+                                    🚀 Start My Agent Army
                                 </Link>
                             </>
                         )}

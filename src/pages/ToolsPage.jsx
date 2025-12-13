@@ -129,10 +129,10 @@ const ToolCard = ({ tool, isUnlocked, onSelect, isSelected }) => {
             whileTap={{ scale: canAccess ? 0.98 : 1 }}
             onClick={() => canAccess && onSelect(tool.id)}
             className={`relative p-5 rounded-2xl border cursor-pointer transition-all ${isSelected
-                    ? `bg-gradient-to-br ${tool.color} border-white/30 shadow-lg`
-                    : canAccess
-                        ? 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600'
-                        : 'bg-slate-800/30 border-slate-700/30 opacity-60 cursor-not-allowed'
+                ? `bg-gradient-to-br ${tool.color} border-white/30 shadow-lg`
+                : canAccess
+                    ? 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600'
+                    : 'bg-slate-800/30 border-slate-700/30 opacity-60 cursor-not-allowed'
                 }`}
         >
             {!canAccess && (
@@ -202,7 +202,7 @@ const ToolsPage = () => {
                                     <p className="text-slate-300 text-sm">Get full access to diagnose every area of your life.</p>
                                 </div>
                                 <Link to="/unlock" className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-colors">
-                                    Unlock All
+                                    🚀 Start My Agent Army
                                 </Link>
                             </div>
                         </div>
