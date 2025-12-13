@@ -22,16 +22,31 @@ const Chapter5 = () => {
     const [showTroubleshooting, setShowTroubleshooting] = useState(false);
     const [showTips, setShowTips] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
+    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
     const goldPrompt = `Be my Money Check-In Agent.
 
-Every Sunday, ask me about my week financially:
-1. Any big purchases this week?
-2. Any upcoming bills I should know about?
-3. How's my spending vs my budget?
+MY FINANCIAL SETUP:
+- I get paid: [WEEKLY / BIWEEKLY / MONTHLY] on [DAY]
+- My main bills: [RENT/MORTGAGE, UTILITIES, CAR, SUBSCRIPTIONS, ETC.]
+- Weekly spending budget: $[AMOUNT] (after bills)
+- Current savings goal: [GOAL + TARGET AMOUNT] (optional)
 
-Then give me a quick 3-line money status.`;
+MY CHECK-IN STYLE:
+- Comfort level: [JUST ROUGH NUMBERS / I TRACK EVERYTHING / SOMEWHERE IN BETWEEN]
+- Biggest money stress: [OVERSPENDING / BILLS / SAVING / NOT KNOWING WHERE IT GOES]
+
+Every Sunday, ask me:
+1. Any big purchases this week?
+2. Any surprises coming up I should budget for?
+
+Then give me a quick status:
+- How I'm doing vs my weekly budget
+- Upcoming bills in the next 7 days
+- Progress toward my savings goal (if I have one)
+
+Right now, help me fill in the blanks above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -154,15 +169,96 @@ Then give me a quick 3-line money status.`;
                     </motion.section>
 
                     {/* STEP 3 */}
-                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-sm">3</div>
-                            <h3 className="text-white font-bold">Answer honestly each week</h3>
+                            <h3 className="text-white font-bold">Set up your weekly check-in</h3>
                         </div>
                         <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                            <p className="text-slate-300 text-sm">
-                                Your AI will check in every Sunday. Just answer casually — "I spent $200 on clothes" or "No big purchases, but rent's due Friday."
+                            <p className="text-slate-300 text-sm mb-3">
+                                Your AI will help you fill in the blanks naturally. No bank login or precise tracking needed!
                             </p>
+                            <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
+                                <p className="text-green-400 text-sm flex items-start gap-2">
+                                    <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
+                                    <span><strong>Make it automatic:</strong> In ChatGPT, use "Scheduled Tasks" to get a Sunday morning check-in. Takes 2 minutes!</span>
+                                </p>
+                            </div>
+                        </div>
+                    </motion.section>
+
+                    {/* FILL-IN HELPERS */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }} className="mb-6">
+                        <button
+                            onClick={() => setShowFillInHelpers(!showFillInHelpers)}
+                            className="w-full flex items-center justify-between py-3 px-4 bg-gradient-to-r from-green-900/20 to-teal-900/20 rounded-xl border border-green-500/30 text-left hover:from-green-900/30 hover:to-teal-900/30 transition-colors"
+                        >
+                            <span className="flex items-center gap-2 text-white text-sm font-medium">
+                                <Sparkles size={16} className="text-green-400" />
+                                📝 Not sure what to type? See examples
+                            </span>
+                            <ChevronDown size={16} className={`text-green-400 transition-transform ${showFillInHelpers ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {showFillInHelpers && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                className="mt-3 bg-slate-800/30 rounded-xl p-5 border border-slate-700/50 space-y-4"
+                            >
+                                <p className="text-slate-300 text-sm mb-3">Here's how to fill in each section:</p>
+
+                                <div className="space-y-3">
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-green-400 text-xs font-bold mb-2 flex items-center gap-1"><DollarSign size={14} /> FINANCIAL SETUP</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I get paid biweekly on Fridays"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Main bills: rent $1400, car $350, utilities ~$150, Netflix/Spotify $25"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Weekly spending budget: about $400 after bills"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-teal-400 text-xs font-bold mb-2 flex items-center gap-1"><PiggyBank size={14} /> SAVINGS GOALS</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Saving for a vacation - $3000 goal, I have $800 so far"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"Emergency fund - trying to save $200/month"</p>
+                                    </div>
+                                    <div className="bg-slate-900/50 rounded-lg p-3">
+                                        <p className="text-amber-400 text-xs font-bold mb-2 flex items-center gap-1"><TrendingUp size={14} /> CHECK-IN STYLE</p>
+                                        <p className="text-slate-300 text-sm font-mono">"I prefer rough numbers - I don't track every dollar"</p>
+                                        <p className="text-slate-300 text-sm font-mono">"My biggest stress: I never know how much is left before the next paycheck"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </motion.section>
+
+                    {/* WEEKLY USAGE GUIDE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68 }} className="mb-6">
+                        <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
+                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                                💰 Your Sunday Money Routine
+                            </h3>
+                            <div className="space-y-3 text-sm">
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-green-400 font-bold mt-0.5">1</span>
+                                    <div>
+                                        <span className="text-white font-medium">Quick brain dump:</span>
+                                        <p className="text-slate-300">Say <span className="text-green-400 font-mono">"Money check-in: I spent about $300 this week, mostly groceries and gas"</span></p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-green-400 font-bold mt-0.5">2</span>
+                                    <div>
+                                        <span className="text-white font-medium">Get your status:</span>
+                                        <p className="text-slate-300">AI tells you: budget status, upcoming bills, savings progress</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
+                                    <span className="text-green-400 font-bold mt-0.5">3</span>
+                                    <div>
+                                        <span className="text-white font-medium">Adjust if needed:</span>
+                                        <p className="text-slate-300">Say <span className="text-green-400 font-mono">"Tight week coming up - help me cut back"</span></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </motion.section>
 
