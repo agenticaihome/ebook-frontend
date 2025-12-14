@@ -28,21 +28,33 @@ const Chapter8 = () => {
     const goldPrompt = `Help me create a custom AI agent.
 
 MY AGENT IDEA:
-- Problem I'm solving: [WHAT FRUSTRATES ME OR TAKES TOO LONG]
-- How often I need help: [DAILY / WEEKLY / WHEN I ASK / TRIGGERED BY EVENT]
-- What success looks like: [SPECIFIC OUTCOME I WANT]
+- Problem: [WHAT FRUSTRATES ME OR TAKES TOO LONG]
+- When it should run: [DAILY / WEEKLY / WHEN I ASK / SPECIFIC TIME / AFTER AN EVENT]
+- Success looks like: [EXACT OUTPUT I WANT IN PLAIN ENGLISH]
 
-MY CONTEXT:
-- Who is this for: [JUST ME / MY FAMILY / MY TEAM]
-- Tools I already use: [APPS, CALENDARS, ETC.]
-- My skill level: [BEGINNER / COMFORTABLE / ADVANCED]
+CONTEXT (optional but helpful):
+- Who it's for: [ME / FAMILY / TEAM]
+- Tools I use: [CALENDAR, NOTES APP, EMAIL, ETC.]
+- My style: [FAST + SIMPLE / DETAILED / JUST REMINDERS]
+- Skill level: [BEGINNER / COMFORTABLE / ADVANCED]
 
-Based on my answers:
-1. Design a simple, specific agent prompt I can use
-2. Suggest a name for the agent
-3. Tell me how to make it even better over time
+YOUR JOB:
+Ask me up to 3 clarifying questions only if needed.
+Then produce:
 
-Right now, help me fill in the blanks above.`;
+A) The Agent Prompt (copy/paste ready)
+Use this structure:
+- ROLE: (who the agent is)
+- GOAL: (what it's trying to accomplish)
+- INPUTS: (what I must tell it each time, if anything)
+- PROCESS: (3–5 steps it will follow)
+- OUTPUT FORMAT: (exact headings or bullets)
+- RULES: (keep it short, tone, boundaries)
+
+B) Agent Name (1–3 options)
+C) Make it better over time (3 upgrade ideas, simplest first)
+
+Start by asking me for my Problem, When it should run, and what Success looks like.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -84,6 +96,7 @@ Right now, help me fill in the blanks above.`;
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Custom Agent Builder</span>
                         </h1>
                         <p className="text-slate-300 text-lg">Build ANY agent you can imagine.</p>
+                        <p className="text-slate-400 text-sm mt-2">If you can describe the problem in one sentence, you can build an agent for it.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
@@ -106,7 +119,7 @@ Right now, help me fill in the blanks above.`;
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</div>
-                                    <div><span className="text-white font-medium">Trigger</span><p className="text-slate-300 text-sm">When should this agent activate? (time, event, request)</p></div>
+                                    <div><span className="text-white font-medium">When</span><p className="text-slate-300 text-sm">When should this agent activate? (time, event, on request)</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</div>
@@ -146,7 +159,7 @@ Right now, help me fill in the blanks above.`;
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-purple-500/20"
                                 >
-                                    <p className="text-purple-400 text-xs font-bold mb-2">🛠️ EXAMPLE CUSTOM AGENT DESIGN:</p>
+                                    <p className="text-purple-400 text-xs font-bold mb-2">🌱 EXAMPLE: Plant Watering Agent</p>
                                     <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
                                         <p><strong className="text-white">You said:</strong> "I keep forgetting to take my vitamins"</p>
                                         <p><strong className="text-purple-300">Your AI designed:</strong></p>
@@ -190,7 +203,7 @@ Right now, help me fill in the blanks above.`;
                                         <p className="text-slate-300 text-sm font-mono">"I lose track of my kid's activities"</p>
                                     </div>
                                     <div className="bg-slate-900/50 rounded-lg p-3">
-                                        <p className="text-pink-400 text-xs font-bold mb-2 flex items-center gap-1"><Settings size={14} /> TRIGGER EXAMPLES</p>
+                                        <p className="text-pink-400 text-xs font-bold mb-2 flex items-center gap-1"><Settings size={14} /> WHEN EXAMPLES</p>
                                         <p className="text-slate-300 text-sm font-mono">"Every morning at 8am"</p>
                                         <p className="text-slate-300 text-sm font-mono">"When I say 'shopping time'"</p>
                                         <p className="text-slate-300 text-sm font-mono">"Every Sunday before the week starts"</p>
@@ -244,8 +257,17 @@ Right now, help me fill in the blanks above.`;
                                 <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xs font-bold">1</div><p className="text-slate-300 text-sm"><strong>Start specific:</strong> "Remind me to drink water" beats "Be my health agent."</p></div>
                                 <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xs font-bold">2</div><p className="text-slate-300 text-sm"><strong>Define format:</strong> "Give me bullet points" or "One sentence max."</p></div>
                                 <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xs font-bold">3</div><p className="text-slate-300 text-sm"><strong>Iterate fast:</strong> Test, tweak, repeat. Your first version won't be perfect.</p></div>
+                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xs font-bold">4</div><p className="text-slate-300 text-sm"><strong>Fix vagueness:</strong> If your agent feels "meh," make the output more specific. Vagueness is the #1 reason agents disappoint.</p></div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* AGENT COUNT */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.63 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-purple-900/30 via-pink-900/20 to-amber-900/30 rounded-xl p-4 border border-purple-500/30">
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 8 <span className="text-slate-400 font-normal">down. 2 to go.</span></p>
+                            <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money + Fitness + Work + Custom Builder</p>
+                        </div>
                     </motion.section>
 
                     {/* SHARE */}
