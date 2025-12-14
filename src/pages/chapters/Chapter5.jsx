@@ -27,26 +27,34 @@ const Chapter5 = () => {
 
     const goldPrompt = `Be my Money Check-In Agent.
 
+Your job is to help me stay aware of my money without stress.
+
 MY FINANCIAL SETUP:
 - I get paid: [WEEKLY / BIWEEKLY / MONTHLY] on [DAY]
-- My main bills: [RENT/MORTGAGE, UTILITIES, CAR, SUBSCRIPTIONS, ETC.]
-- Weekly spending budget: $[AMOUNT] (after bills)
-- Current savings goal: [GOAL + TARGET AMOUNT] (optional)
+- Main bills: [RENT/MORTGAGE, UTILITIES, CAR, SUBSCRIPTIONS, ETC.]
+- Weekly spending target (after bills): $[AMOUNT] (rough estimate is fine)
+- Current savings goal: [GOAL + AMOUNT] (optional)
 
 MY CHECK-IN STYLE:
-- Comfort level: [JUST ROUGH NUMBERS / I TRACK EVERYTHING / SOMEWHERE IN BETWEEN]
-- Biggest money stress: [OVERSPENDING / BILLS / SAVING / NOT KNOWING WHERE IT GOES]
+- Comfort level: [ROUGH NUMBERS / DETAILED / SOMEWHERE IN BETWEEN]
+- Biggest money stress: [OVERSPENDING / BILLS / SAVING / UNCERTAINTY]
 
-Every Sunday, ask me:
-1. Any big purchases this week?
-2. Any surprises coming up I should budget for?
+On my weekly check-in (default: Sunday), ask me:
+1. Any big or unusual purchases this week?
+2. Any upcoming expenses or surprises I should plan for?
 
 Then give me a quick status:
-- How I'm doing vs my weekly budget
-- Upcoming bills in the next 7 days
-- Progress toward my savings goal (if I have one)
+- How I'm doing relative to my spending target (or recent average if no target set)
+- Bills due in the next 7 days
+- Progress toward my savings goal (if applicable)
 
-Right now, help me fill in the blanks above.`;
+Rules:
+- Keep it short and calm
+- No judgment or shaming
+- Rough numbers are always OK
+- Clarity > precision
+
+Start by helping me fill in the setup details above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -181,9 +189,12 @@ Right now, help me fill in the blanks above.`;
                             <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
                                 <p className="text-green-400 text-sm flex items-start gap-2">
                                     <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
-                                    <span><strong>Make it automatic:</strong> In ChatGPT, use "Scheduled Tasks" to get a Sunday morning check-in. Takes 2 minutes!</span>
+                                    <span><strong>Optional:</strong> If scheduling is available, set a weekly check-in. Otherwise, just open your AI anytime and say "Money check-in."</span>
                                 </p>
                             </div>
+                            <p className="text-slate-500 text-xs mt-3">
+                                🔒 Your AI doesn't connect to your bank — you share what you want, in rough numbers. Nothing is stored.
+                            </p>
                         </div>
                     </motion.section>
 
@@ -233,9 +244,10 @@ Right now, help me fill in the blanks above.`;
                     {/* WEEKLY USAGE GUIDE */}
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68 }} className="mb-6">
                         <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
-                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
-                                💰 Your Sunday Money Routine
+                            <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+                                💰 Your Weekly Money Routine
                             </h3>
+                            <p className="text-slate-400 text-xs mb-3">This isn't about being perfect — it's about staying informed.</p>
                             <div className="space-y-3 text-sm">
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <span className="text-green-400 font-bold mt-0.5">1</span>
@@ -274,7 +286,7 @@ Right now, help me fill in the blanks above.`;
                                     <CheckCircle className="text-green-400 mt-0.5" size={18} />
                                     <div>
                                         <span className="text-white font-medium">Weekly money pulse</span>
-                                        <p className="text-slate-300 text-sm">A 3-line summary of where you stand</p>
+                                        <p className="text-slate-300 text-sm">A 3-line summary of where you stand. No spreadsheets. No guilt.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
@@ -337,6 +349,14 @@ Right now, help me fill in the blanks above.`;
                                 </div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* AGENT COUNT */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.93 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-green-900/30 via-teal-900/20 to-blue-900/30 rounded-xl p-4 border border-green-500/30">
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 5 <span className="text-slate-400 font-normal">down. 5 to go. Halfway there!</span></p>
+                            <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money</p>
+                        </div>
                     </motion.section>
 
                     {/* SHARE */}
