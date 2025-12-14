@@ -64,6 +64,7 @@ TONE:
 - You are my Chief of Staff, not a content generator
 - Clarity > completeness
 - Calm, confident, efficient
+- If "Commander" doesn't resonate, default to my name instead
 - Always start with: "Ready for your briefing, Commander?"
 
 Start by confirming my agent list and schedule preferences.`;
@@ -116,7 +117,7 @@ Start by confirming my agent list and schedule preferences.`;
                     {/* CAPTAIN */}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
                         <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                            <CaptainHero size="md" pose="default" message="You made it. You've built, tested, and refined a complete AI system. Now it's time to bring it all together under one command. This is your graduation from 'learning AI' to 'living with AI.'" />
+                            <CaptainHero size="md" pose="default" message="You made it. You've built, tested, and refined a complete AI system. Now it's time to bring it all together under one command. This is your graduation from 'learning AI' to 'living with AI' — calmly and intentionally." />
                         </Suspense>
                     </motion.div>
 
@@ -234,7 +235,7 @@ Start by confirming my agent list and schedule preferences.`;
                                 <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">🍽️</div><p className="text-slate-300 text-sm"><strong>Sunday AM:</strong> Meal planning for the week</p></div>
                                 <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-xs font-bold">💰</div><p className="text-slate-300 text-sm"><strong>Sunday:</strong> Money check-in — where do I stand?</p></div>
                                 <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs font-bold">🌱</div><p className="text-slate-300 text-sm"><strong>Sunday evening:</strong> Reflection check-in — what worked, what didn't?</p></div>
-                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold">📊</div><p className="text-slate-300 text-sm"><strong>Weekly review:</strong> Full system briefing — all agents unified</p></div>
+                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold">📊</div><p className="text-slate-300 text-sm"><strong>Weekly review:</strong> Full system briefing — the Reflection Agent feeds insights into this summary</p></div>
                             </div>
                         )}
                     </motion.section>
@@ -247,9 +248,9 @@ Start by confirming my agent list and schedule preferences.`;
                         </button>
                         {showNextSteps && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
-                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">1</div><p className="text-slate-300 text-sm"><strong>Use your agents daily:</strong> Consistency beats perfection. Even 5 minutes a day compounds.</p></div>
+                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">1</div><p className="text-slate-300 text-sm"><strong>Use your agents daily:</strong> Consistency beats perfection. Even imperfect use compounds.</p></div>
                                 <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">2</div><p className="text-slate-300 text-sm"><strong>Build custom agents:</strong> Any problem that repeats is a candidate for automation.</p></div>
-                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">3</div><p className="text-slate-300 text-sm"><strong>Explore automations:</strong> Connect agents to Zapier, Make, or native integrations (optional).</p></div>
+                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">3</div><p className="text-slate-300 text-sm"><strong>Explore automations:</strong> Connect agents to Zapier, Make, or native integrations. <span className="text-slate-500 italic">Optional — the system works fully without any integrations.</span></p></div>
                                 <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">4</div><p className="text-slate-300 text-sm"><strong>Share your system:</strong> Teach friends and family — they'll thank you.</p></div>
                             </div>
                         )}
@@ -260,6 +261,7 @@ Start by confirming my agent list and schedule preferences.`;
                         <div className="bg-gradient-to-r from-amber-900/30 via-orange-900/20 to-purple-900/30 rounded-xl p-4 border border-amber-500/30">
                             <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 10 <span className="text-amber-400 font-bold">COMPLETE!</span></p>
                             <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money + Fitness + Work + Custom + Reflection + Command Center</p>
+                            <p className="text-slate-500 text-xs mt-2 italic">You're not finished. You're set.</p>
                         </div>
                     </motion.section>
 
