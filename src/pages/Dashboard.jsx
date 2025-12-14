@@ -22,7 +22,7 @@ const CHAPTER_TITLES = {
     6: 'Fitness Agent',
     7: 'Work Task Agent',
     8: 'Custom Agent Builder',
-    9: 'Multi-Agent Coordination',
+    9: 'Learning & Growth',
     10: 'Your Agent Army'
 };
 

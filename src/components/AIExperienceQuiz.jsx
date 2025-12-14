@@ -159,7 +159,7 @@ const AIExperienceQuiz = () => {
             scheduling: { name: 'Calendar Agent', chapter: 'Chapter 7', description: 'Manages your schedule and finds optimal meeting times' },
             decisions: { name: 'Decision Agent', chapter: 'Chapter 5', description: 'Helps you make faster, better decisions' },
             tasks: { name: 'Task Agent', chapter: 'Chapter 8', description: 'Tracks, prioritizes, and reminds you about tasks' },
-            research: { name: 'Research Agent', chapter: 'Chapter 9', description: 'Gathers and summarizes information for you' }
+            research: { name: 'Reflection Agent', chapter: 'Chapter 9', description: 'Helps your system learn and grow with you' }
         };
 
         const firstAgent = agentMap[timeDrain] || agentMap.morning;

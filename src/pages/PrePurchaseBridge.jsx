@@ -83,7 +83,7 @@ const PrePurchaseBridge = () => {
         { icon: <Dumbbell size={16} />, name: 'Fitness', benefit: 'Custom workouts in 30 seconds', color: 'text-red-400' },
         { icon: <Briefcase size={16} />, name: 'Work Tasks', benefit: 'Leave work by 5pm', color: 'text-amber-400' },
         { icon: <Settings size={16} />, name: 'Custom Builder', benefit: 'Build any agent in 10min', color: 'text-purple-400' },
-        { icon: <Users size={16} />, name: 'Multi-Agent', benefit: 'Agents that talk to each other', color: 'text-cyan-400' },
+        { icon: <Users size={16} />, name: 'Learning & Growth', benefit: 'Your system learns with you', color: 'text-cyan-400' },
         { icon: <Crown size={16} />, name: 'Agent Army', benefit: '5+ hours saved per week', color: 'text-yellow-400' },
     ];
 

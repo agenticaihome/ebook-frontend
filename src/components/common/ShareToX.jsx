@@ -17,7 +17,7 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
         6: `Built a fitness agent that creates workouts that actually fit my life.\n\nNo more generic plans that don't work.\n\nagenticaihome.com`,
         7: `Stop doing everything. Start doing what matters.\n\nJust built a work task agent that prioritizes my to-do list.\n\nagenticaihome.com`,
         8: `Learned how to build ANY AI agent I want from scratch.\n\nThe possibilities are wild.\n\nagenticaihome.com`,
-        9: `My AI agents now talk to each other. Multi-agent coordination unlocked.\n\nThis is the future.\n\nagenticaihome.com`,
+        9: `Set up a Reflection Agent. Now my AI system learns and improves WITH me.\n\nNo journaling. Just awareness.\n\nagenticaihome.com`,
         10: `Built my complete Agent Army. 10 AI agents handling my life logistics.\n\nTime reclaimed. ✅\n\nagenticaihome.com`,
     };
 

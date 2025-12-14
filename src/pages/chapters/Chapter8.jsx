@@ -281,7 +281,7 @@ Start by asking me for my Problem, When it should run, and what Success looks li
                         <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-2xl p-6 border border-purple-500/30 text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 text-green-400 font-bold text-sm mb-4"><CheckCircle size={16} />Chapter 8 Complete!</div>
                             <h3 className="text-white font-bold text-xl mb-2">Ready to make agents work together?</h3>
-                            <p className="text-slate-300 text-sm mb-4">Learn multi-agent coordination.</p>
+                            <p className="text-slate-300 text-sm mb-4">Learn how your system grows with you.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part3/chapter1" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
                                     ← Back to Chapter 7

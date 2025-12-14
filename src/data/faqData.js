@@ -35,7 +35,7 @@ export const faqData = [
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Part 1:</strong> The Foundation (Morning Agent, Meal Planning, Important Dates)</li>
                     <li><strong>Part 2:</strong> Daily Operations (Email Triage, Money Check-In, Fitness)</li>
-                    <li><strong>Part 3:</strong> Productivity (Work Tasks, Custom Builder, Multi-Agent)</li>
+                    <li><strong>Part 3:</strong> Productivity (Work Tasks, Custom Builder, Learning & Growth)</li>
                     <li><strong>Part 4:</strong> Mastery (Your Complete Agent Army)</li>
                 </ul>
             </>
@@ -400,7 +400,7 @@ export const faqData = [
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Part 1: The Foundation</strong> — Morning Agent, Meal Planning, Important Dates</li>
                     <li><strong>Part 2: Daily Operations</strong> — Email Triage, Money Check-In, Fitness</li>
-                    <li><strong>Part 3: Productivity</strong> — Work Tasks, Custom Builder, Multi-Agent</li>
+                    <li><strong>Part 3: Productivity</strong> — Work Tasks, Custom Builder, Learning & Growth</li>
                     <li><strong>Part 4: Mastery</strong> — Your Complete Agent Army</li>
                 </ul>
                 <p>Each chapter includes reading, actionable templates, and missions to complete.</p>
@@ -486,8 +486,8 @@ export const faqData = [
                     <li><strong>Fitness Agent</strong> — Custom workout plans</li>
                     <li><strong>Work Task Agent</strong> — Prioritize your to-do list</li>
                     <li><strong>Custom Agent Builder</strong> — Learn to build ANY agent</li>
-                    <li><strong>Multi-Agent Coordination</strong> — Make agents talk to each other</li>
-                    <li><strong>Your Agent Army</strong> — Your complete automated system</li>
+                    <li><strong>Reflection Agent</strong> — Your system learns and grows with you</li>
+                    <li><strong>Your Agent Army</strong> — Your complete command center</li>
                 </ol>
             </>
         )
