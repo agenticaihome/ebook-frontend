@@ -137,10 +137,10 @@ const CaptainTips = () => {
                         {/* Close button */}
                         <button
                             onClick={closeTip}
-                            className="absolute top-3 right-3 text-slate-500 hover:text-white transition-colors p-1"
+                            className="absolute top-2 right-2 text-slate-500 hover:text-white transition-colors p-2 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg hover:bg-slate-800/50"
                             aria-label="Close"
                         >
-                            <X size={16} />
+                            <X size={18} />
                         </button>
 
                         {/* Header */}

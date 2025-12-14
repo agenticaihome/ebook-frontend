@@ -46,7 +46,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                             {/* Close Button */}
                             <button
                                 onClick={handleDismiss}
-                                className="absolute top-4 right-4 text-slate-300 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition-colors z-10"
+                                className="absolute top-4 right-4 text-slate-300 hover:text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-slate-700/50 transition-colors z-10"
                                 aria-label="Close"
                             >
                                 <X size={20} />

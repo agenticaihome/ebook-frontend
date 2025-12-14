@@ -375,7 +375,7 @@ const WebbookLayout = ({ children }) => {
                     </div>
                     <PrefetchLink
                         to="/games"
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${location.pathname === '/games'
+                        className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all ${location.pathname === '/games'
                             ? 'bg-purple-600/90 text-white shadow-md'
                             : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
                             }`}
@@ -386,7 +386,7 @@ const WebbookLayout = ({ children }) => {
                     </PrefetchLink>
                     <PrefetchLink
                         to="/tools"
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${location.pathname === '/tools'
+                        className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all ${location.pathname === '/tools'
                             ? 'bg-teal-600/90 text-white shadow-md'
                             : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
                             }`}
@@ -397,7 +397,7 @@ const WebbookLayout = ({ children }) => {
                     </PrefetchLink>
                     <PrefetchLink
                         to="/why-ergo"
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${location.pathname === '/why-ergo'
+                        className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all ${location.pathname === '/why-ergo'
                             ? 'bg-green-600/90 text-white shadow-md'
                             : 'text-slate-300 hover:bg-slate-800/70 hover:text-white'
                             }`}
@@ -412,7 +412,7 @@ const WebbookLayout = ({ children }) => {
                 <div className="border-t border-slate-700/50 p-3">
                     <PrefetchLink
                         to="/faq"
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all text-sm ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white'}`}
+                        className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all text-sm ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white'}`}
                     >
                         <HelpCircle size={16} />
                         <span>FAQ & Support</span>

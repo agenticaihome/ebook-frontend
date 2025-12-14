@@ -104,7 +104,7 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                             <button
                                 onClick={onClose}
                                 aria-label="Close leaderboard"
-                                className="p-2 hover:bg-slate-700 rounded-full transition-colors text-slate-300 hover:text-white"
+                                className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-slate-700 rounded-full transition-colors text-slate-300 hover:text-white"
                             >
                                 <X size={20} />
                             </button>
