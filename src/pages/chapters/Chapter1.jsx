@@ -26,43 +26,49 @@ const Chapter1 = () => {
     const [showConfetti, setShowConfetti] = useState(false);
     const { triggerDelight } = useImmersion();
 
-    const goldPrompt = `You are my personal Morning Agent. Your job is to send me a helpful daily briefing every morning — automatically.
+    const goldPrompt = `You are my Morning Agent. Your job is to send me a short, helpful morning briefing every day.
 
-**SETUP (one time only):**
-1. Ask me: "What city are you in?" (for weather)
-2. Ask me: "What time should I send your morning briefing?" (e.g., 7:00 AM)
-3. Create a SCHEDULED TASK to send me this briefing every day at that time.
+**One-time setup (ask me these 3 questions):**
+1. What city am I in? (for weather)
+2. What time do I want this briefing? (ex: 7:00 AM)
+3. What's one thing I tend to forget? (vitamins, keys, calling someone, etc.)
 
-**MY DAILY BRIEFING FORMAT:**
+**Daily briefing (keep it under 120 words):**
 
-🌤️ **Weather** — Use web search to get the REAL current weather for my city. Include temperature, conditions, and what to wear.
+🌤️ **Weather** — Look up the real current weather for my city (temp + conditions) and tell me what to wear.
 
-📅 **Today's Focus** — Remind me it's [day of week] and ask what my #1 priority is today.
+📅 **Top 3 Today** — If I connected my calendar, list my next 3 events. If not, ask me for my 3 main things today.
 
-🎯 **Daily Intention** — Give me one short, powerful mindset line for the day.
+🧠 **One Reminder** — The thing I usually forget (or a quick question if you need it).
 
-✨ **Captain's Tip** — One tiny thing I can do today to make tomorrow easier.
+⚡ **Captain's Tip** — One tiny action today that makes tomorrow easier.
 
 ---
 
-**RULES:**
-- Keep it under 120 words — I'm busy in the morning!
-- Use emojis so it's easy to scan
-- Be warm and encouraging, like a supportive friend
-- THIS MUST RUN AUTOMATICALLY every morning. Set it as a scheduled task!
+**Rules:**
+- Friendly, warm, simple language
+- Emojis for easy scanning
+- Under 120 words total
+- If scheduling is available, set this to run daily at my chosen time
+- If scheduling isn't available, tell me: "Type 'Morning Briefing' anytime and I'll generate today's briefing instantly."
 
-Start now by asking my city.`;
+Start by asking me question #1.`;
 
     // Fallback simple version for AI platforms without web access
-    const simplePrompt = `You are my personal Chief of Staff delivering a morning briefing.
+    const simplePrompt = `You are my Morning Agent. Help me start each day focused.
 
-Every morning, give me:
-🌤️ Weather check (ask my city)
-📅 My top 3 priorities (I'll tell you)
-🎯 One motivational intention
+Ask me 3 quick questions:
+1. What city? (for weather)
+2. What time for briefings?
+3. What do I usually forget?
 
-Keep it under 100 words. Be warm and helpful.
+Then each morning give me:
+🌤️ Weather + what to wear
+📅 Top 3 things today
+🧠 My usual reminder
+⚡ One tiny win for the day
 
+Under 100 words. Warm and helpful.
 Start by asking my city.`;
 
     const handleCopy = () => {
@@ -175,8 +181,8 @@ Start by asking my city.`;
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <Calendar className="text-teal-400 mt-1" size={18} />
                                     <div>
-                                        <span className="text-white font-medium">3 things happening today</span>
-                                        <p className="text-slate-300 text-sm">Meetings, appointments, or tasks you mentioned</p>
+                                        <span className="text-white font-medium">Your top 3 today</span>
+                                        <p className="text-slate-300 text-sm">From your calendar if connected, or you tell it each morning</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
@@ -251,7 +257,7 @@ Start by asking my city.`;
 
                             {/* Reassurance for hesitant users */}
                             <p className="text-center text-slate-500 text-xs mt-2">
-                                🛡️ Don't worry — you can't break anything. Just paste and chat!
+                                🛡️ Don't worry — you can't break anything. It only knows what you tell it.
                             </p>
 
                             {/* See Example Output */}
@@ -306,7 +312,7 @@ Start by asking my city.`;
                                 </li>
                                 <li className="flex items-start gap-2 text-slate-300">
                                     <span className="text-teal-400 font-bold">2.</span>
-                                    <span><strong className="text-white">What's on your plate this week?</strong> - Work, appointments, etc.</span>
+                                    <span><strong className="text-white">What time for your briefing?</strong> - e.g., 7:00 AM</span>
                                 </li>
                                 <li className="flex items-start gap-2 text-slate-300">
                                     <span className="text-teal-400 font-bold">3.</span>
@@ -405,7 +411,7 @@ Start by asking my city.`;
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">You just built your first AI agent. 🎉</h3>
                             <p className="text-slate-300 text-sm mb-4">
-                                Most people never get past this point. You're already ahead.
+                                Most people stop before they ever try this. You actually did it.
                             </p>
                             <p className="text-teal-400 text-sm font-medium">
                                 ✨ Now imagine 9 more handling your meals, emails, money, fitness...
@@ -446,7 +452,7 @@ Start by asking my city.`;
                         </Link>
                         <div className="text-center mt-4 space-y-1">
                             <p className="text-slate-500 text-sm">
-                                Reclaim 5+ hours every week — 10 agents, 10 chapters, lifetime access
+                                Reclaim 5+ hours every week — even 30 min/day = 3.5 hrs saved
                             </p>
                             <p className="text-green-400/80 text-xs flex items-center justify-center gap-1">
                                 <Shield size={12} />
