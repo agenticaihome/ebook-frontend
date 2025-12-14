@@ -60,7 +60,7 @@ const WebbookLayout = ({ children }) => {
         '/part2/chapter6': { id: 'ch6_complete', title: '💪 Fitness Automator', description: 'Your workouts plan themselves. Consistency made easy.', image: '/og/badges/fitness-automator.png' },
         '/part3/chapter7': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.', image: '/og/badges/priority-pro.png' },
         '/part3/chapter8': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.', image: '/og/badges/agent-builder.png' },
-        '/part3/chapter9': { id: 'ch9_complete', title: '🤖 Team Architect', description: 'Your agents work together. You\'ve built a system, not just tools.', image: '/og/badges/team-architect.png' },
+        '/part3/chapter9': { id: 'ch9_complete', title: '🌱 Growth Mindset', description: 'Your system learns with you. You\'ve built a living, evolving ecosystem.', image: '/og/badges/growth-mindset.png' },
         '/part4/chapter10': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!', image: '/og/badges/automation-commander.png' }
     };
 
@@ -139,7 +139,7 @@ const WebbookLayout = ({ children }) => {
             subChapters: [
                 { title: '📋 Task Prioritizer', id: 'chapter7', path: '/part3/chapter7' },
                 { title: '🔧 Build-Your-Own', id: 'chapter8', path: '/part3/chapter8' },
-                { title: '🤖 Agent Teamwork', id: 'chapter9', path: '/part3/chapter9' }
+                { title: '🌱 Learning & Growth', id: 'chapter9', path: '/part3/chapter9' }
             ]
         },
         {
