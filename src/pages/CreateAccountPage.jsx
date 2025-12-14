@@ -75,8 +75,8 @@ const CreateAccountPage = () => {
             <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center p-6 relative overflow-hidden">
                 {/* Ambient Background */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-yellow-500/10 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] bg-orange-500/10 rounded-full blur-[100px]" />
+                    <div className="absolute top-[-20%] left-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-yellow-500/10 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                    <div className="absolute bottom-[-20%] right-[-10%] w-[120px] sm:w-[200px] md:w-[400px] h-[120px] sm:h-[200px] md:h-[400px] bg-orange-500/10 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px]" />
                 </div>
 
                 <m.div
@@ -104,9 +104,9 @@ const CreateAccountPage = () => {
         <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center p-6 relative overflow-hidden">
             {/* Ambient Background Orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
-                <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-teal-500/5 rounded-full blur-[100px]" />
+                <div className="absolute top-[-20%] left-[-10%] w-[200px] sm:w-[350px] md:w-[600px] h-[200px] sm:h-[350px] md:h-[600px] bg-purple-500/10 rounded-full blur-[60px] sm:blur-[90px] md:blur-[150px]" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-blue-500/10 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[120px] sm:w-[200px] md:w-[400px] h-[120px] sm:h-[200px] md:h-[400px] bg-teal-500/5 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px]" />
             </div>
 
             <m.div

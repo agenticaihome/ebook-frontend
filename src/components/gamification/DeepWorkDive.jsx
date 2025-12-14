@@ -680,15 +680,26 @@ const DeepWorkDive = ({ onBack }) => {
         }
         .animate-shake { animation: shake 0.12s ease-in-out; }
         @keyframes float {
-          0%, 100% { transform: translateY(0) rotate(-3deg); }
-          50% { transform: translateY(-12px) rotate(3deg); }
+          0%, 100% { transform: translateY(0) rotate(-3deg) translateZ(0); }
+          50% { transform: translateY(-12px) rotate(3deg) translateZ(0); }
         }
-        .animate-float { animation: float 2s ease-in-out infinite; }
+        .animate-float {
+          animation: float 2s ease-in-out infinite;
+          will-change: transform;
+        }
         @keyframes glow {
-          0%, 100% { filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.5)); }
-          50% { filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.8)); }
+          0%, 100% { opacity: 0.8; transform: scale(1) translateZ(0); }
+          50% { opacity: 1; transform: scale(1.05) translateZ(0); }
         }
-        .animate-glow { animation: glow 1.5s ease-in-out infinite; }
+        .animate-glow {
+          animation: glow 1.5s ease-in-out infinite;
+          will-change: transform, opacity;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-float, .animate-glow, .animate-shake {
+            animation: none !important;
+          }
+        }
       `}</style>
 
             {/* HUD */}

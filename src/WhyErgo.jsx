@@ -36,8 +36,8 @@ export default function WhyErgo() {
                 {/* HERO SECTION - The Opening */}
                 <section className="relative py-24 px-6 overflow-hidden border-b border-slate-800">
                     <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                        <div className="absolute top-20 right-10 w-96 h-96 bg-green-900/20 rounded-full blur-3xl animate-pulse"></div>
-                        <div className="absolute bottom-10 left-10 w-64 h-64 bg-amber-900/10 rounded-full blur-3xl"></div>
+                        <div className="absolute top-20 right-10 w-[150px] sm:w-[250px] md:w-96 h-[150px] sm:h-[250px] md:h-96 bg-green-900/20 rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute bottom-10 left-10 w-[100px] sm:w-[150px] md:w-64 h-[100px] sm:h-[150px] md:h-64 bg-amber-900/10 rounded-full blur-3xl"></div>
                     </div>
 
                     <div className="max-w-4xl mx-auto text-center relative z-10">

@@ -62,8 +62,8 @@ const PasswordGate = ({ children, partNumber }) => {
         <div className="min-h-screen bg-[#0a0a12] flex items-center justify-center p-4">
             {/* Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-900/15 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] left-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-teal-900/15 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-cyan-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
             </div>
 
             <m.div

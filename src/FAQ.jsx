@@ -68,8 +68,8 @@ export default function FAQ() {
                 <div className="relative pt-24 pb-16 px-6 overflow-hidden">
                     {/* Background blobs */}
                     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                        <div className="absolute top-20 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-[120px]" />
-                        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px]" />
+                        <div className="absolute top-20 left-1/4 w-[150px] sm:w-[250px] md:w-96 h-[150px] sm:h-[250px] md:h-96 bg-teal-500/10 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                        <div className="absolute bottom-0 right-1/4 w-[150px] sm:w-[250px] md:w-96 h-[150px] sm:h-[250px] md:h-96 bg-cyan-500/10 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
                     </div>
 
                     <div className="max-w-4xl mx-auto text-center relative z-10">

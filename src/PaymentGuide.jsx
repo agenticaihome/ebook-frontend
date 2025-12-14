@@ -81,9 +81,9 @@ export default function PaymentGuide() {
 
                 {/* Ambient Background Orbs */}
                 <div className="fixed inset-0 pointer-events-none overflow-hidden">
-                    <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[150px]" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
-                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[100px]" />
+                    <div className="absolute top-[-20%] left-[-10%] w-[200px] sm:w-[350px] md:w-[600px] h-[200px] sm:h-[350px] md:h-[600px] bg-teal-500/10 rounded-full blur-[60px] sm:blur-[90px] md:blur-[150px]" />
+                    <div className="absolute bottom-[-20%] right-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-cyan-500/10 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[120px] sm:w-[200px] md:w-[400px] h-[120px] sm:h-[200px] md:h-[400px] bg-purple-500/5 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px]" />
                 </div>
 
                 {/* HERO SECTION */}
