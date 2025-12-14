@@ -44,7 +44,7 @@ const MobileBottomNav = () => {
                         <Link
                             to="/tools"
                             onClick={() => setShowTools(false)}
-                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                            className="flex flex-col items-center justify-center gap-2 p-3 min-h-[56px] bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
                             <Calculator className="text-cyan-400" />
                             <span className="text-xs font-bold text-slate-300">Time Calc</span>
@@ -52,14 +52,14 @@ const MobileBottomNav = () => {
                         <Link
                             to="/part1/chapter1#experience-quiz"
                             onClick={() => setShowTools(false)}
-                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                            className="flex flex-col items-center justify-center gap-2 p-3 min-h-[56px] bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
                             <Activity className="text-purple-400" />
                             <span className="text-xs font-bold text-slate-300">Diagnostic</span>
                         </Link>
                         <button
                             onClick={toggleSound}
-                            className="flex flex-col items-center gap-2 p-3 bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors col-span-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                            className="flex flex-col items-center justify-center gap-2 p-3 min-h-[56px] bg-slate-700/50 rounded-lg hover:bg-slate-700 transition-colors col-span-2 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                         >
                             {isSoundEnabled ? <Volume2 className="text-purple-400" /> : <VolumeX className="text-slate-300" />}
                             <span className="text-xs font-bold text-slate-300">Sound: {isSoundEnabled ? 'On' : 'Off'}</span>
