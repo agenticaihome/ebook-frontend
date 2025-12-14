@@ -25,27 +25,81 @@ const Chapter9 = () => {
     const [showFillInHelpers, setShowFillInHelpers] = useState(false);
     const { triggerDelight } = useImmersion();
 
-    const goldPrompt = `Be my Hub Agent - the "control center" for all my other AI agents.
+    const goldPrompt = `Role: You are my Hub Agent — the control center for all my other AI agents.
+Your job is to coordinate, not replace, my other agents.
 
-MY CURRENT AGENTS:
-- [LIST THE AGENTS YOU'VE SET UP, e.g.:
-  - Meal Planning Agent (runs Sundays)
-  - Email Triage Agent (runs mornings)
-  - Work Task Agent (runs mornings)
-  - Money Check-In Agent (runs Sundays)]
+🧩 MY CURRENT AGENTS
+Here are the agents I've set up and when they run:
+- Meal Planning Agent — [WHEN IT RUNS]
+- Email Triage Agent — [WHEN IT RUNS]
+- Work Task Agent — [WHEN IT RUNS]
+- Money / Finance Agent — [WHEN IT RUNS]
+- Fitness / Health Agent — [WHEN IT RUNS]
+- Other Agents — [OPTIONAL]
 
-HOW I WANT THEM CONNECTED:
+(If I don't list an agent, ignore it.)
+
+🔗 HOW I WANT EVERYTHING CONNECTED
 - Daily briefing time: [MORNING / EVENING / SPECIFIC TIME]
 - Weekly review day: [SUNDAY / SATURDAY / OTHER]
-- Format I prefer: [QUICK BULLETS / DETAILED / JUST FLAGS + ALERTS]
+- Preferred format:
+  ☐ Ultra-quick bullets (headlines only)
+  ☐ Normal bullets (60-second read)
+  ☐ Flags + alerts only
 
-YOUR JOB:
-1. Collect outputs from my other agents
-2. Give me ONE unified view (no jumping between chats)
-3. Flag conflicts or things that need my attention
-4. Keep it under 60 seconds to read
+🎯 YOUR RESPONSIBILITIES AS HUB AGENT
+1. Collect outputs I paste from my other agents
+2. Merge them into ONE unified view
+3. Eliminate duplication and noise
+4. Flag conflicts, contradictions, or overload
+   (Example: calendar conflict, too many priorities, money anomalies)
+5. Highlight only what requires attention
+6. Keep everything under 60 seconds to read
 
-Right now, help me set up my agent hub.`;
+You do NOT:
+- Re-run agents
+- Expand details unless I ask
+- Add filler, motivation, or commentary
+
+🧠 HOW TO THINK (IMPORTANT)
+- You are my Chief of Staff, not a content generator
+- Default to clarity > completeness
+- If nothing is urgent, say: "No action needed today"
+- If two agents disagree, flag it and ask me to decide
+
+📥 HOW I WILL USE YOU
+Each day or week, I will paste outputs like this:
+
+[EMAIL AGENT OUTPUT]
+...
+
+[WORK TASK AGENT OUTPUT]
+...
+
+[MONEY AGENT OUTPUT]
+...
+
+You will wait until I say "Generate Hub Briefing" before summarizing.
+
+📊 OUTPUT FORMAT (STRICT)
+Always respond using this structure:
+
+🔥 Needs Attention
+(Only items requiring action or decision)
+
+📅 Today at a Glance
+(Top priorities, conflicts, or deadlines)
+
+📊 System Status
+(Quick health check: work, money, health, family)
+
+✅ Safe to Ignore
+(Anything handled or non-urgent)
+
+If a section is empty, omit it.
+
+🚀 START NOW
+Begin by helping me confirm my agents, schedule, and format, then wait for my first pasted agent outputs.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -149,16 +203,37 @@ Right now, help me set up my agent hub.`;
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-cyan-500/20"
                                 >
-                                    <p className="text-cyan-400 text-xs font-bold mb-2">📊 EXAMPLE UNIFIED MORNING BRIEFING:</p>
-                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
-                                        <p>☕ <strong className="text-white">Good morning! Here's your 60-second summary:</strong></p>
-                                        <p>📅 <strong className="text-cyan-300">Calendar:</strong> 2 meetings today (10am standup, 3pm client call)</p>
-                                        <p>📧 <strong className="text-cyan-300">Emails:</strong> 3 need replies today - boss asked about project timeline</p>
-                                        <p>🎯 <strong className="text-cyan-300">Priority:</strong> Finish proposal before 3pm call</p>
-                                        <p>☀️ <strong className="text-cyan-300">Weather:</strong> 68°F, sunny - good walking weather for lunch</p>
-                                        <p>💰 <strong className="text-cyan-300">Money note:</strong> Rent auto-pays tomorrow, all good!</p>
+                                    <p className="text-cyan-400 text-xs font-bold mb-3">📊 EXAMPLE HUB BRIEFING OUTPUT:</p>
+                                    <div className="bg-black/40 rounded-lg p-4 text-sm text-slate-300 space-y-4">
+                                        {/* Needs Attention */}
+                                        <div>
+                                            <p className="font-bold text-red-400">🔥 Needs Attention</p>
+                                            <p className="text-slate-300 text-sm mt-1">• Boss email needs reply by noon (project timeline question)</p>
+                                            <p className="text-slate-300 text-sm">• Calendar conflict: 2pm focus block vs. client call request</p>
+                                        </div>
+
+                                        {/* Today at a Glance */}
+                                        <div>
+                                            <p className="font-bold text-cyan-400">📅 Today at a Glance</p>
+                                            <p className="text-slate-300 text-sm mt-1">• 10am standup (30 min)</p>
+                                            <p className="text-slate-300 text-sm">• Top priority: Finish proposal before EOD</p>
+                                        </div>
+
+                                        {/* System Status */}
+                                        <div>
+                                            <p className="font-bold text-blue-400">📊 System Status</p>
+                                            <p className="text-slate-300 text-sm mt-1">• 💰 Money: Rent auto-pays tomorrow ✓</p>
+                                            <p className="text-slate-300 text-sm">• 🏃 Health: Rest day (per fitness agent)</p>
+                                        </div>
+
+                                        {/* Safe to Ignore */}
+                                        <div>
+                                            <p className="font-bold text-green-400">✅ Safe to Ignore</p>
+                                            <p className="text-slate-300 text-sm mt-1">• 12 newsletter emails archived</p>
+                                            <p className="text-slate-300 text-sm">• Grocery list already sent to phone</p>
+                                        </div>
                                     </div>
-                                    <p className="text-center text-slate-500 text-xs mt-3">👆 All your agents working together in one view!</p>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 All your agents unified in one 60-second briefing!</p>
                                 </motion.div>
                             )}
                         </div>
