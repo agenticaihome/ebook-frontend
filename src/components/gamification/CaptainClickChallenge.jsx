@@ -708,14 +708,14 @@ const CaptainClickChallenge = ({ onBack }) => {
                                 <div className="flex gap-3 justify-center">
                                     <m.button
                                         whileTap={{ scale: 0.95 }}
-                                        onClick={onBack}
+                                        onClick={(e) => { e.stopPropagation(); onBack?.(); }}
                                         className="bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white px-4 sm:px-5 py-3 rounded-xl font-bold transition-all flex items-center gap-2 text-sm sm:text-base"
                                     >
                                         <ArrowLeft size={18} /> Back
                                     </m.button>
                                     <m.button
                                         whileTap={{ scale: 0.95 }}
-                                        onClick={startGame}
+                                        onClick={(e) => { e.stopPropagation(); startGame(); }}
                                         className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-700 active:to-orange-600 text-white px-5 sm:px-6 py-3 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm sm:text-base"
                                     >
                                         <RotateCcw size={18} /> Again
@@ -728,7 +728,7 @@ const CaptainClickChallenge = ({ onBack }) => {
                                         📸 Screenshot this → Challenge a friend!
                                     </p>
                                     <button
-                                        onClick={shareScore}
+                                        onClick={(e) => { e.stopPropagation(); shareScore(); }}
                                         className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-400 hover:to-yellow-400 text-white px-4 py-2.5 rounded-lg font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2"
                                     >
                                         <Share2 size={16} />

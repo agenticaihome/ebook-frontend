@@ -562,6 +562,9 @@ const FocusFury = ({ onBack }) => {
         gameStateRef.current = 'dead';
         setGameState('dead');
 
+        // Track death time to prevent accidental restarts when clicking buttons
+        window._focusfuryDeathTime = Date.now();
+
         if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
         }
@@ -961,14 +964,14 @@ const FocusFury = ({ onBack }) => {
                                 <div className="flex gap-3 justify-center mb-4">
                                     <m.button
                                         whileTap={{ scale: 0.95 }}
-                                        onClick={() => onBack?.()}
+                                        onClick={(e) => { e.stopPropagation(); onBack?.(); }}
                                         className="bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white px-4 py-3 rounded-xl font-bold transition-all flex items-center gap-2 text-sm"
                                     >
                                         <ArrowLeft size={18} /> Back
                                     </m.button>
                                     <m.button
                                         whileTap={{ scale: 0.95 }}
-                                        onClick={startGame}
+                                        onClick={(e) => { e.stopPropagation(); startGame(); }}
                                         className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-400 hover:to-pink-500 text-white px-5 py-3 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm"
                                     >
                                         <RotateCcw size={18} /> Fury Again

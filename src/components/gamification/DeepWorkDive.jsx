@@ -332,6 +332,9 @@ const DeepWorkDive = ({ onBack }) => {
         gameStateRef.current = "dead";
         setGameState("dead");
 
+        // Track death time to prevent accidental restarts when clicking buttons
+        window._deepworkDeathTime = Date.now();
+
         if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
             animationFrameRef.current = null;
@@ -536,6 +539,16 @@ const DeepWorkDive = ({ onBack }) => {
         (e) => {
             e.preventDefault();
             e.stopPropagation();
+
+            // Don't restart game from taps if recently died (allows button clicks to work)
+            if (gameStateRef.current === "dead") {
+                // Check if enough time has passed since death to allow tap-to-restart
+                const timeSinceDeath = Date.now() - (window._deepworkDeathTime || 0);
+                if (timeSinceDeath < 500) {
+                    return; // Ignore tap, user is probably trying to click buttons
+                }
+            }
+
             jump();
         },
         [jump]

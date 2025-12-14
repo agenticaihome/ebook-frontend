@@ -114,22 +114,8 @@ const GamesPage = () => {
     ], []);
 
     const handleGameClick = (game) => {
-        // Check if unlocked
-        let isUnlocked = !game.unlockCondition;
-        try {
-            // Check if user has paid for full access (Ergo or Stripe)
-            const ergoPayment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
-            const stripePayment = JSON.parse(localStorage.getItem('stripe_payment') || '{}');
-            if (ergoPayment.paid === true || stripePayment.paid === true) isUnlocked = true;
-
-            isUnlocked = isUnlocked ||
-                localStorage.getItem(`unlocked_part_${game.unlockCondition}`) === 'true' ||
-                localStorage.getItem('beta_access') === 'true';
-        } catch (e) {
-            // Keep default locked state if storage fails
-        }
-
-        if (!isUnlocked) return; // Do nothing if locked (visuals handle the UI)
+        // Use the shared unlock check
+        if (!isGameUnlocked(game)) return;
 
         logEvent('Game', 'Select', game.id);
 
@@ -147,18 +133,22 @@ const GamesPage = () => {
         setLeaderboardOpen(true);
     };
 
-    // Helper to check unlock status
+    // Helper to check unlock status - ALL games unlock with purchase
     const isGameUnlocked = (game) => {
+        // Free games (no unlock condition) are always unlocked
         if (!game.unlockCondition) return true;
+
         try {
-            // Check if user has paid for full access (Ergo or Stripe)
+            // Check if user has paid for full access (Ergo or Stripe) - unlocks ALL games
             const ergoPayment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
             const stripePayment = JSON.parse(localStorage.getItem('stripe_payment') || '{}');
             if (ergoPayment.paid === true || stripePayment.paid === true) return true;
 
-            // Check beta access or individual part unlock
-            return localStorage.getItem(`unlocked_part_${game.unlockCondition}`) === 'true' ||
-                localStorage.getItem('beta_access') === 'true';
+            // Check beta access (also unlocks all games)
+            if (localStorage.getItem('beta_access') === 'true') return true;
+
+            // Not purchased - game is locked
+            return false;
         } catch (e) {
             return false;
         }
@@ -284,16 +274,16 @@ const GamesPage = () => {
                                                     </div>
                                                     <h3 className="text-xl font-bold text-white mb-2">Locked</h3>
                                                     <p className="text-slate-300 text-sm mb-4">
-                                                        Unlock by reading <strong className="text-teal-400">Part {game.unlockCondition}</strong>
+                                                        Unlock <strong className="text-teal-400">all games</strong> with full access
                                                     </p>
                                                     <button
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            navigate(`/part${game.unlockCondition}`);
+                                                            navigate('/unlock');
                                                         }}
-                                                        className="px-4 py-2 bg-teal-600 hover:bg-teal-500 rounded-lg text-xs text-white transition-all flex items-center gap-2 font-medium"
+                                                        className="px-4 py-2 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 rounded-lg text-sm text-white transition-all flex items-center gap-2 font-bold shadow-lg"
                                                     >
-                                                        Start Part {game.unlockCondition}
+                                                        Start My Agent Army
                                                     </button>
                                                 </div>
                                             )}
