@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import WebbookLayout from '../../components/layout/WebbookLayout';
 import React, { useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Crown, Trophy, Rocket, Star, HelpCircle, Zap, Eye } from 'lucide-react';
+import { Copy, CheckCircle, ChevronDown, ChevronUp, Sparkles, Crown, Trophy, Star, Rocket, Users, GitBranch, Eye } from 'lucide-react';
 import { useImmersion } from '../../hooks/useImmersion';
 
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
@@ -12,40 +12,61 @@ const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
 // ============================================
 // CHAPTER 10 - YOUR AGENT ARMY
 // The complete system - graduation chapter
+// Merged: Hub Agent + Command Center + Finale
 // ============================================
 
 const Chapter10 = () => {
     const [copied, setCopied] = useState(false);
-    const [showChecklist, setShowChecklist] = useState(false);
-    const [showNextSteps, setShowNextSteps] = useState(false);
+    const [showDailyRoutine, setShowDailyRoutine] = useState(false);
+    const [showWeeklyRoutine, setShowWeeklyRoutine] = useState(false);
     const [showExampleOutput, setShowExampleOutput] = useState(false);
-    const [showFillInHelpers, setShowFillInHelpers] = useState(false);
+    const [showNextSteps, setShowNextSteps] = useState(false);
     const { triggerDelight } = useImmersion();
 
-    const goldPrompt = `You are my Personal AI Command Center.
+    const goldPrompt = `You are my Command Center — the control hub for my entire Agent Army.
 
-MY AGENT ARMY:
-- [LIST ALL YOUR AGENTS, e.g.:
-  - Morning Briefing Agent
-  - Meal Planning Agent (Sundays)
-  - Important Dates Agent
-  - Email Triage Agent (mornings)
-  - Money Check-In Agent (Sundays)
-  - Fitness Agent (weekly)
-  - Work Task Agent (mornings)]
+MY AGENT SQUAD:
+- Morning Briefing Agent — every morning
+- Meal Planning Agent — Sundays
+- Important Dates Agent — ongoing
+- Email Triage Agent — mornings
+- Money Check-In Agent — Sundays  
+- Fitness Agent — weekly
+- Work Task Agent — workday mornings
+- Reflection Agent — Sunday evenings
+- [ADD ANY CUSTOM AGENTS]
 
-MY SCHEDULE PREFERENCES:
-- Morning briefing time: [TIME, e.g. 7:00 AM]
+MY OPERATING RHYTHM:
+- Daily briefing: [MORNING TIME, e.g. 7:00 AM]
 - Weekly review: [DAY + TIME, e.g. Sunday 7PM]
-- Format: [QUICK BULLETS / DETAILED / JUST ALERTS]
+- Format preference:
+  ☐ Ultra-quick (headlines only, 30 seconds)
+  ☐ Standard (60-second read)
+  ☐ Alerts only (just what needs attention)
 
-YOUR JOB:
-1. Collect and unify outputs from all my agents
-2. Morning: 60-second summary of what matters TODAY
-3. Weekly: 5-minute review of my week
-4. Always start with: "Ready for your briefing, Commander?"
+YOUR RESPONSIBILITIES:
+1. Collect and unify outputs from my agents
+2. Morning: 60-second briefing of what matters TODAY
+3. Weekly: 5-minute review covering all life areas
+4. Flag conflicts, contradictions, or overload
+5. Highlight only what requires my attention
+6. If nothing is urgent, tell me: "All clear, Commander"
 
-Right now, help me customize my command center.`;;
+OUTPUT FORMAT (STRICT):
+🔥 Needs Attention (actions or decisions required)
+📅 Today at a Glance (priorities, deadlines, conflicts)
+📊 System Status (work, money, health, family - quick health check)
+✅ Safe to Ignore (handled or non-urgent)
+
+If a section is empty, omit it.
+
+TONE:
+- You are my Chief of Staff, not a content generator
+- Clarity > completeness
+- Calm, confident, efficient
+- Always start with: "Ready for your briefing, Commander?"
+
+Start by confirming my agent list and schedule preferences.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -73,14 +94,14 @@ Right now, help me customize my command center.`;;
                     <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-center mb-6">
                         <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/20 to-purple-500/20 border border-amber-500/50">
                             <Crown className="text-amber-400" size={18} />
-                            <span className="text-amber-300 text-sm font-bold">Chapter 10 of 10 • FINAL</span>
+                            <span className="text-amber-300 text-sm font-bold">Chapter 10 of 10 • FINALE</span>
                         </div>
                     </motion.div>
 
-                    {/* WHY THIS MATTERS */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-center mb-4">
-                        <p className="text-slate-500 text-sm italic">
-                            "You didn't come this far to just manage life. You came to own it."
+                    {/* OPENING MANIFESTO */}
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-center mb-6">
+                        <p className="text-slate-400 text-sm italic leading-relaxed">
+                            "You didn't come this far to just manage life.<br />You came to own it."
                         </p>
                     </motion.div>
 
@@ -89,22 +110,22 @@ Right now, help me customize my command center.`;;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-purple-400">Agent Army</span>
                         </h1>
-                        <p className="text-slate-300 text-lg">The complete system. Welcome to the future.</p>
+                        <p className="text-slate-300 text-lg">One system. One command center. Complete ownership.</p>
                     </motion.div>
 
                     {/* CAPTAIN */}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
                         <Suspense fallback={<div className="h-24 animate-pulse bg-slate-800/50 rounded-xl" />}>
-                            <CaptainHero size="md" pose="default" message="You made it. You now have the skills to build, coordinate, and command an entire army of AI agents. This final chapter brings it all together." />
+                            <CaptainHero size="md" pose="default" message="You made it. You've built, tested, and refined a complete AI system. Now it's time to bring it all together under one command. This is your graduation from 'learning AI' to 'living with AI.'" />
                         </Suspense>
                     </motion.div>
 
-                    {/* WHAT YOU'VE BUILT */}
+                    {/* YOUR COMPLETE ARMY */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mb-8">
                         <div className="bg-gradient-to-r from-amber-500/10 to-purple-500/10 rounded-2xl p-6 border border-amber-500/30">
                             <h3 className="text-white font-bold mb-4 flex items-center gap-2">
                                 <Trophy className="text-amber-400" size={20} />
-                                Your Agent Army
+                                Your Complete Agent Army
                             </h3>
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Morning Agent</span></div>
@@ -115,11 +136,12 @@ Right now, help me customize my command center.`;;
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Fitness Agent</span></div>
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Work Agent</span></div>
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Custom Agents</span></div>
+                                <div className="col-span-2 flex items-center gap-2 p-3 bg-emerald-900/30 rounded-xl border border-emerald-500/30"><CheckCircle className="text-emerald-400" size={16} /><span className="text-emerald-300 text-sm font-medium">Reflection Agent (your system's feedback loop)</span></div>
                             </div>
                         </div>
                     </motion.section>
 
-                    {/* THE MASTER PROMPT */}
+                    {/* COMMAND CENTER PROMPT */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">★</div>
@@ -150,35 +172,69 @@ Right now, help me customize my command center.`;;
                                     animate={{ opacity: 1, height: 'auto' }}
                                     className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-amber-500/20"
                                 >
-                                    <p className="text-amber-400 text-xs font-bold mb-2">🌟 EXAMPLE COMMAND CENTER OUTPUT:</p>
-                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
-                                        <p>👑 <strong className="text-white">Good morning, Commander! Ready for your briefing?</strong></p>
-                                        <p>☀️ <strong className="text-amber-300">Weather:</strong> 72°F, clear skies</p>
-                                        <p>📅 <strong className="text-amber-300">Today:</strong> Team standup (10am), dentist (2pm), date night (7pm)</p>
-                                        <p>🎯 <strong className="text-amber-300">Priority:</strong> Finish quarterly report (due tomorrow)</p>
-                                        <p>📧 <strong className="text-amber-300">Inbox:</strong> 4 emails need replies - nothing urgent</p>
-                                        <p>💰 <strong className="text-amber-300">Money:</strong> On track for the week, $234 remaining in budget</p>
-                                        <p>🏋️ <strong className="text-amber-300">Fitness:</strong> Leg day scheduled - 25 min workout ready</p>
-                                        <p className="pt-2 text-white font-medium">"You've got this. Focus on that report and everything else will fall into place."</p>
+                                    <p className="text-amber-400 text-xs font-bold mb-3">👑 EXAMPLE COMMAND CENTER BRIEFING:</p>
+                                    <div className="bg-black/40 rounded-lg p-4 text-sm text-slate-300 space-y-4">
+                                        <p className="text-amber-300 font-medium">"Ready for your briefing, Commander?"</p>
+
+                                        <div>
+                                            <p className="font-bold text-red-400">🔥 Needs Attention</p>
+                                            <p className="text-sm mt-1">• Boss email needs reply by noon (project timeline)</p>
+                                            <p className="text-sm">• Calendar conflict: 2pm focus block vs. client call request</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="font-bold text-cyan-400">📅 Today at a Glance</p>
+                                            <p className="text-sm mt-1">• 10am standup (30 min), 7pm date night</p>
+                                            <p className="text-sm">• Top priority: Finish proposal before EOD</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="font-bold text-blue-400">📊 System Status</p>
+                                            <p className="text-sm mt-1">• 💰 Money: On track, $234 remaining this week</p>
+                                            <p className="text-sm">• 🏃 Fitness: Leg day scheduled (25 min)</p>
+                                            <p className="text-sm">• 🍽️ Meals: Chicken stir-fry planned for dinner</p>
+                                        </div>
+
+                                        <div>
+                                            <p className="font-bold text-green-400">✅ Safe to Ignore</p>
+                                            <p className="text-sm mt-1">• 12 newsletters archived</p>
+                                            <p className="text-sm">• Grocery list sent to phone</p>
+                                        </div>
                                     </div>
-                                    <p className="text-center text-slate-500 text-xs mt-3">👆 Your entire life, organized in 60 seconds!</p>
+                                    <p className="text-center text-slate-500 text-xs mt-3">👆 Your entire life, unified in 60 seconds!</p>
                                 </motion.div>
                             )}
                         </div>
                     </motion.section>
 
-                    {/* DAILY CHECKLIST */}
-                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-8">
-                        <button onClick={() => setShowChecklist(!showChecklist)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
-                            <span className="text-white font-bold flex items-center gap-2"><Star className="text-amber-400" size={18} />Your new daily routine</span>
-                            <ChevronDown className={`text-slate-300 transition-transform ${showChecklist ? 'rotate-180' : ''}`} size={20} />
+                    {/* DAILY OPERATING RHYTHM */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mb-6">
+                        <button onClick={() => setShowDailyRoutine(!showDailyRoutine)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
+                            <span className="text-white font-bold flex items-center gap-2"><Star className="text-amber-400" size={18} />Your daily operating rhythm</span>
+                            <ChevronDown className={`text-slate-300 transition-transform ${showDailyRoutine ? 'rotate-180' : ''}`} size={20} />
                         </button>
-                        {showChecklist && (
+                        {showDailyRoutine && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
-                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xs font-bold">☀️</div><p className="text-slate-300 text-sm"><strong>Morning (2 min):</strong> Ask your AI "What's my briefing?" — get weather, calendar, priorities</p></div>
+                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xs font-bold">☀️</div><p className="text-slate-300 text-sm"><strong>Morning (2 min):</strong> "What's my briefing?" — get weather, calendar, priorities</p></div>
                                 <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xs font-bold">📧</div><p className="text-slate-300 text-sm"><strong>Email time (10 min):</strong> Triage inbox with your Email Agent</p></div>
                                 <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-xs font-bold">🎯</div><p className="text-slate-300 text-sm"><strong>Focus time:</strong> Do your ONE thing identified by Work Agent</p></div>
-                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold">📊</div><p className="text-slate-300 text-sm"><strong>Sunday (5 min):</strong> Weekly review — money, fitness, accomplishments</p></div>
+                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold">🌙</div><p className="text-slate-300 text-sm"><strong>End of day (1 min):</strong> "Did I do the thing?" — quick reflection</p></div>
+                            </div>
+                        )}
+                    </motion.section>
+
+                    {/* WEEKLY OPERATING RHYTHM */}
+                    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="mb-8">
+                        <button onClick={() => setShowWeeklyRoutine(!showWeeklyRoutine)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
+                            <span className="text-white font-bold flex items-center gap-2"><Users className="text-cyan-400" size={18} />Your weekly operating rhythm</span>
+                            <ChevronDown className={`text-slate-300 transition-transform ${showWeeklyRoutine ? 'rotate-180' : ''}`} size={20} />
+                        </button>
+                        {showWeeklyRoutine && (
+                            <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
+                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">🍽️</div><p className="text-slate-300 text-sm"><strong>Sunday AM:</strong> Meal planning for the week</p></div>
+                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-xs font-bold">💰</div><p className="text-slate-300 text-sm"><strong>Sunday:</strong> Money check-in — where do I stand?</p></div>
+                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs font-bold">🌱</div><p className="text-slate-300 text-sm"><strong>Sunday evening:</strong> Reflection check-in — what worked, what didn't?</p></div>
+                                <div className="flex items-center gap-3"><div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold">📊</div><p className="text-slate-300 text-sm"><strong>Weekly review:</strong> Full system briefing — all agents unified</p></div>
                             </div>
                         )}
                     </motion.section>
@@ -186,17 +242,25 @@ Right now, help me customize my command center.`;;
                     {/* NEXT STEPS */}
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-8">
                         <button onClick={() => setShowNextSteps(!showNextSteps)} className="w-full flex items-center justify-between p-4 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-amber-500/30 transition-colors">
-                            <span className="text-white font-bold flex items-center gap-2"><Rocket className="text-cyan-400" size={18} />What's next?</span>
+                            <span className="text-white font-bold flex items-center gap-2"><Rocket className="text-cyan-400" size={18} />Growing your system over time</span>
                             <ChevronDown className={`text-slate-300 transition-transform ${showNextSteps ? 'rotate-180' : ''}`} size={20} />
                         </button>
                         {showNextSteps && (
                             <div className="mt-3 p-4 bg-slate-800/20 rounded-xl border border-slate-700/30 space-y-3">
-                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">1</div><p className="text-slate-300 text-sm"><strong>Expand your agents:</strong> Use the Custom Builder to create agents for your specific needs</p></div>
-                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">2</div><p className="text-slate-300 text-sm"><strong>Explore automations:</strong> Connect agents to Zapier, Make, or native integrations</p></div>
-                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">3</div><p className="text-slate-300 text-sm"><strong>Share your system:</strong> Teach friends and family — they'll thank you</p></div>
-                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">4</div><p className="text-slate-300 text-sm"><strong>Play the games:</strong> Sharpen your skills in the Games Hub</p></div>
+                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">1</div><p className="text-slate-300 text-sm"><strong>Use your agents daily:</strong> Consistency beats perfection. Even 5 minutes a day compounds.</p></div>
+                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">2</div><p className="text-slate-300 text-sm"><strong>Build custom agents:</strong> Any problem that repeats is a candidate for automation.</p></div>
+                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">3</div><p className="text-slate-300 text-sm"><strong>Explore automations:</strong> Connect agents to Zapier, Make, or native integrations (optional).</p></div>
+                                <div className="flex items-start gap-3"><div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs font-bold">4</div><p className="text-slate-300 text-sm"><strong>Share your system:</strong> Teach friends and family — they'll thank you.</p></div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* AGENT COUNT - COMPLETE */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.63 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-amber-900/30 via-orange-900/20 to-purple-900/30 rounded-xl p-4 border border-amber-500/30">
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 10 <span className="text-amber-400 font-bold">COMPLETE!</span></p>
+                            <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money + Fitness + Work + Custom + Reflection + Command Center</p>
+                        </div>
                     </motion.section>
 
                     {/* SHARE */}
@@ -225,10 +289,13 @@ Right now, help me customize my command center.`;;
                             </div>
 
                             <h2 className="text-2xl font-black text-white mb-3">
-                                🎉 You did it!
+                                🎉 You did it, Commander!
                             </h2>
-                            <p className="text-slate-300 mb-6">
-                                You've completed all 10 chapters. Your Agent Army is ready — AI is now working for you every day.
+                            <p className="text-slate-300 mb-2">
+                                You've built a complete AI life system. You don't just use AI — you command it.
+                            </p>
+                            <p className="text-slate-400 text-sm mb-6 italic">
+                                "I'm not managing life anymore. I own my system."
                             </p>
 
                             {/* Get Certificate - MAIN CTA */}
@@ -249,7 +316,7 @@ Right now, help me customize my command center.`;;
                             </div>
 
                             <p className="text-slate-300 text-sm">
-                                Thank you for trusting us with your AI journey. Now go save some time! 🚀
+                                Thank you for trusting us with your AI journey. Now go own your life! 🚀
                             </p>
                         </div>
                     </motion.section>
