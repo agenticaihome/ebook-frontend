@@ -46,7 +46,13 @@ Every morning when I come to you:
 2. Draft quick replies for urgent ones (I'll approve/edit before sending)
 3. Tell me what to archive without reading
 
-Right now, help me fill in the blanks above so you know my preferences.`;
+Rules:
+- Keep categorization clear and fast to scan
+- Draft replies in my tone (short and warm unless I say otherwise)
+- If scheduling is supported, remind me each morning
+- If not, I'll say "Let's triage" and you'll be ready
+
+Start by helping me fill in my preferences above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -193,15 +199,19 @@ Right now, help me fill in the blanks above so you know my preferences.`;
                             <h3 className="text-white font-bold">Fill in your preferences</h3>
                         </div>
                         <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                            <p className="text-slate-300 text-sm mb-3">
+                            <p className="text-slate-300 text-sm mb-1">
                                 Your AI will help you fill in each section. Just answer naturally!
                             </p>
+                            <p className="text-slate-500 text-xs mb-3">You don't need to be precise — talk to it like a helpful friend.</p>
                             <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
                                 <p className="text-green-400 text-sm flex items-start gap-2">
                                     <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
                                     <span><strong>Make it a daily habit:</strong> In ChatGPT, use "Scheduled Tasks" to get a morning reminder. Or set a phone alarm for "Email triage time."</span>
                                 </p>
                             </div>
+                            <p className="text-slate-500 text-xs mt-3">
+                                🔒 Your AI doesn't read your email directly — you paste or describe emails to it. Nothing is shared.
+                            </p>
                         </div>
                     </motion.section>
 
@@ -371,6 +381,14 @@ Right now, help me fill in the blanks above so you know my preferences.`;
                                 </div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* AGENT COUNT */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.93 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-blue-900/30 via-purple-900/20 to-teal-900/30 rounded-xl p-4 border border-blue-500/30">
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 4 <span className="text-slate-400 font-normal">down. 6 to go.</span></p>
+                            <p className="text-slate-300 text-sm">Morning + Meal Planning + Important Dates + Email Triage</p>
+                        </div>
                     </motion.section>
 
                     {/* SHARE */}
