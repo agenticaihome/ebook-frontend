@@ -6,6 +6,7 @@ import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import OfflineIndicator from './components/common/OfflineIndicator';
+import CookieConsent from './components/common/CookieConsent';
 
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
@@ -226,18 +227,30 @@ const AnimatedRoutes = () => {
 // ... imports
 
 function App() {
+  const [analyticsEnabled, setAnalyticsEnabled] = React.useState(false);
+
   useEffect(() => {
     const measurementId = process.env.REACT_APP_GA_MEASUREMENT_ID || 'G-QDYN0E69MT';
 
-    // Initialize GA4 (React-GA4 handles the script injection)
-    initGA(measurementId);
+    // Check if user has already consented
+    const consent = localStorage.getItem('cookie_consent');
+    if (consent === 'accepted') {
+      initGA(measurementId);
+      setAnalyticsEnabled(true);
+      if (window.grantAnalyticsConsent) {
+        window.grantAnalyticsConsent();
+      }
+    }
+  }, []);
 
-    // Auto-grant consent for now (TODO: Add cookie banner in future)
-    // This allows tracking to start immediately after consent mode default
+  const handleCookieAccept = () => {
+    const measurementId = process.env.REACT_APP_GA_MEASUREMENT_ID || 'G-QDYN0E69MT';
+    initGA(measurementId);
+    setAnalyticsEnabled(true);
     if (window.grantAnalyticsConsent) {
       window.grantAnalyticsConsent();
     }
-  }, []);
+  };
 
   return (
     <HelmetProvider>
@@ -259,6 +272,7 @@ function App() {
                   },
                 }}
               />
+              <CookieConsent onAccept={handleCookieAccept} />
             </Suspense>
           </UserProvider>
         </SoundProvider>

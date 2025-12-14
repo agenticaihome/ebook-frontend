@@ -15,8 +15,14 @@ export default defineConfig({
     build: {
         outDir: 'build',
         sourcemap: false,
-        // Minification options
-        minify: 'esbuild',
+        // Use terser to remove console statements in production
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true
+            }
+        },
         target: 'es2020',
         rollupOptions: {
             output: {
