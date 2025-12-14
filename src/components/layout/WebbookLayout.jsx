@@ -11,7 +11,13 @@ import { useUser } from '../../context/UserContext';
 import BadgeNotification from '../gamification/BadgeNotification';
 
 const WebbookLayout = ({ children }) => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    // Default sidebar closed on mobile, open on desktop
+    const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return window.innerWidth >= 768;
+        }
+        return true;
+    });
     const [scrollProgress, setScrollProgress] = useState(0);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [newBadge, setNewBadge] = useState(null);

@@ -20,6 +20,7 @@ const FocusFury = React.lazy(() => import('../components/gamification/FocusFury'
 
 const GamesPage = () => {
     const [activeGame, setActiveGame] = useState(null); // 'triage', 'calendar', 'clicker', 'deepwork'
+    const [isLoading, setIsLoading] = useState(false); // Loading state for game launch feedback
     const [highScores, setHighScores] = useState({});
     const [leaderboardOpen, setLeaderboardOpen] = useState(false);
     const [selectedLeaderboardGame, setSelectedLeaderboardGame] = useState(null);
@@ -131,7 +132,13 @@ const GamesPage = () => {
         if (!isUnlocked) return; // Do nothing if locked (visuals handle the UI)
 
         logEvent('Game', 'Select', game.id);
-        setActiveGame(game.id);
+
+        // Show loading feedback before game loads
+        setIsLoading(true);
+        setTimeout(() => {
+            setActiveGame(game.id);
+            setIsLoading(false);
+        }, 300); // Brief delay for visual feedback
     };
 
     const openLeaderboard = (e, game) => {
@@ -345,14 +352,23 @@ const GamesPage = () => {
                                                         Leaderboard
                                                     </button>
                                                     <button
-                                                        disabled={!unlocked}
+                                                        disabled={!unlocked || isLoading}
                                                         className={`px-4 py-3 rounded-xl font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2 ${unlocked
                                                             ? `bg-gradient-to-r ${game.color} text-white shadow-teal-900/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]`
                                                             : 'bg-slate-700 text-slate-300 cursor-not-allowed'
                                                             }`}
                                                     >
-                                                        {unlocked ? 'Play Now' : 'Locked'}
-                                                        {unlocked && <ArrowLeft className="rotate-180" size={16} />}
+                                                        {isLoading ? (
+                                                            <>
+                                                                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                                                Loading...
+                                                            </>
+                                                        ) : unlocked ? (
+                                                            <>
+                                                                Play Now
+                                                                <ArrowLeft className="rotate-180" size={16} />
+                                                            </>
+                                                        ) : 'Locked'}
                                                     </button>
                                                 </div>
                                             </div>

@@ -192,7 +192,7 @@ const SplashPage = () => {
                         className="mt-8"
                     >
                         <Link
-                            to="/dashboard"
+                            to="/login"
                             className="text-slate-500 hover:text-teal-400 text-sm transition-colors py-3 px-6 rounded-lg -mx-6 active:bg-slate-800/50"
                         >
                             Already a member? Sign in →
