@@ -28,29 +28,32 @@ const Chapter3 = () => {
 
     const goldPrompt = `Be my Important Dates Agent.
 
+Your job is to help me remember the things that matter — people, payments, and life events.
+
 BIRTHDAYS:
-- [NAME]: [DATE] - likes [INTERESTS/GIFT IDEAS]
-- [NAME]: [DATE] - likes [INTERESTS/GIFT IDEAS]
-(add more as needed)
+- [NAME]: [DATE] — likes [INTERESTS / GIFT IDEAS]
 
 ANNIVERSARIES:
 - [EVENT]: [DATE]
-(wedding, dating anniversary, work anniversary, etc.)
 
 BILLS & PAYMENTS:
-- [BILL NAME]: [DUE DATE] - $[AMOUNT] - [MONTHLY/YEARLY]
-(rent, utilities, subscriptions, insurance, etc.)
+- [BILL NAME]: [DUE DATE] — $[AMOUNT] — [MONTHLY / YEARLY]
 
 OTHER IMPORTANT DATES:
 - [EVENT]: [DATE]
-(license renewal, pet vet visits, car registration, etc.)
 
 For each date:
 1. Remind me [NUMBER] days before (default: 3 days)
-2. For birthdays, suggest a gift idea based on their interests
+2. For birthdays, suggest a gift idea based on interests
 3. For bills, include the amount in the reminder
 
-Right now, help me fill in each section above.`;
+Rules:
+- Keep reminders short and clear
+- Be friendly, not robotic
+- If scheduling is supported, set reminders automatically
+- If not, tell me what's coming up when I ask
+
+Start by helping me add my first few important dates.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -104,7 +107,7 @@ Right now, help me fill in each section above.`;
                             <CaptainHero
                                 size="md"
                                 pose="default"
-                                message="Don't be THAT person who texts 'happy belated.' Dump all your important dates into your AI once, and never embarrass yourself again."
+                                message="Don't be THAT person who texts 'happy belated.' Add your important dates to your AI once, and never embarrass yourself again. Start with the important ones — you can add more later."
                             />
                         </Suspense>
                     </motion.div>
@@ -203,11 +206,12 @@ Right now, help me fill in each section above.`;
                     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mb-6">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-sm">3</div>
-                            <h3 className="text-white font-bold">Dump ALL your important dates</h3>
+                            <h3 className="text-white font-bold">Start adding your important dates</h3>
                         </div>
 
                         <div className="bg-slate-800/30 rounded-xl p-5 border border-slate-700/50">
-                            <p className="text-slate-300 text-sm mb-4">Start telling it everything you need to remember:</p>
+                            <p className="text-slate-300 text-sm mb-1">Tell it everything you need to remember:</p>
+                            <p className="text-slate-500 text-xs mb-4">(You can add more anytime.)</p>
                             <div className="bg-slate-900/50 rounded-lg p-4 text-sm text-slate-300 font-mono mb-4">
                                 <div className="mb-2">"Mom's birthday is March 15"</div>
                                 <div className="mb-2">"Wedding anniversary is June 22"</div>
@@ -221,6 +225,9 @@ Right now, help me fill in each section above.`;
                                     <span><strong>Enable notifications:</strong> In ChatGPT, use "Scheduled Tasks" to get automatic reminders. Or just ask "What's coming up this week?" anytime!</span>
                                 </p>
                             </div>
+                            <p className="text-slate-500 text-xs mt-3">
+                                🔒 This agent only remembers what you tell it. Nothing is shared unless you connect other apps.
+                            </p>
                         </div>
                     </motion.section>
 
@@ -416,7 +423,7 @@ Right now, help me fill in each section above.`;
                             >
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"Will it actually remind me on the date?"</p>
-                                    <p className="text-slate-300 text-sm">Yes, ChatGPT can send scheduled notifications. Make sure notifications are enabled on your phone.</p>
+                                    <p className="text-slate-300 text-sm">If scheduling is available, ChatGPT can send reminders — make sure notifications are enabled. If not, you can always ask "What's coming up?" and it will instantly tell you.</p>
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm mb-1">"I have too many dates to type"</p>
@@ -433,7 +440,7 @@ Right now, help me fill in each section above.`;
                     {/* AGENT COUNT */}
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.85 }} className="mb-6">
                         <div className="bg-gradient-to-r from-teal-900/30 via-pink-900/20 to-orange-900/30 rounded-xl p-4 border border-teal-500/30">
-                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 3</p>
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 3 <span className="text-slate-400 font-normal">down. 7 to go.</span></p>
                             <p className="text-slate-300 text-sm">Morning Agent + Meal Planning Agent + Important Dates Agent</p>
                         </div>
                     </motion.section>
