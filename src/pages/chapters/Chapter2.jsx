@@ -27,23 +27,29 @@ const Chapter2 = () => {
 
     const goldPrompt = `Be my Meal Planning Agent.
 
+I want simple, stress-free dinners.
+
 About my household:
-- [NUMBER] people eating dinner
-- Dietary needs: [ANY ALLERGIES, VEGETARIAN, PICKY EATERS, ETC.]
-- Weekly grocery budget: $[AMOUNT]
+- Number of people eating dinner: [NUMBER]
+- Dietary needs: [ALLERGIES, VEGETARIAN, PICKY EATERS, ETC.]
+- Weekly grocery budget: $[AMOUNT] (rough estimate is fine)
 - Cooking skill: [BEGINNER / INTERMEDIATE / LOVE TO COOK]
 - Time for weeknight dinners: [15 MIN / 30 MIN / UP TO 1 HOUR]
-- Cuisines we like: [EXAMPLES: Mexican, Italian, Asian, American comfort]
+- Cuisines we like: [EXAMPLES]
 
-Every time I come to you for meal planning, give me:
-1. 5 dinner recipes for the week
-2. For each recipe: name, ingredients list, prep time, cook time, and numbered steps
-3. A combined shopping list organized by store section (produce, dairy, meat, pantry)
-4. Cost estimate for the shopping list
+Every time I ask for meal planning, give me:
+1. 5 dinner ideas for the week
+2. For each dinner: Name, Ingredients, Prep time + cook time, Simple numbered steps
+3. One combined shopping list, organized by store section
+4. Rough cost estimate for the list (doesn't have to be exact)
 
-Keep it simple. Real food, not fancy stuff.
+Rules:
+- Keep it simple — real food, not fancy. Think: weeknight dinners, not Pinterest meals.
+- Weeknight-friendly meals (nothing complicated)
+- Use overlapping ingredients when possible
+- If helpful, ask me what I already have in the fridge or pantry
 
-Right now, ask me to fill in the blanks above so you can create my first meal plan.`;
+Start by asking me to fill in the household details above so you can create my first weekly meal plan.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -86,8 +92,11 @@ Right now, ask me to fill in the blanks above so you can create my first meal pl
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your<span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400"> Meal Planning Agent</span>
                         </h1>
-                        <p className="text-slate-300 text-lg">
+                        <p className="text-slate-300 text-lg mb-2">
                             Never stare into the fridge wondering "what's for dinner?" again.
+                        </p>
+                        <p className="text-slate-500 text-sm">
+                            👋 You don't need to cook everything perfectly — this is about making dinner easier, not fancy.
                         </p>
                     </motion.div>
 
@@ -338,9 +347,10 @@ Right now, ask me to fill in the blanks above so you can create my first meal pl
                     {/* WEEKLY USAGE GUIDE */}
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.69 }} className="mb-6">
                         <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl p-5 border border-slate-700/50">
-                            <h3 className="text-white font-bold mb-3 flex items-center gap-2">
+                            <h3 className="text-white font-bold mb-2 flex items-center gap-2">
                                 📅 How to Use It Every Week
                             </h3>
+                            <p className="text-slate-400 text-xs mb-3">You don't need to be precise — talk to it like a helpful human.</p>
                             <div className="space-y-3 text-sm">
                                 <div className="flex items-start gap-3 bg-slate-900/50 rounded-lg p-3">
                                     <span className="text-orange-400 font-bold mt-0.5">1</span>
