@@ -254,7 +254,7 @@ const WebbookLayout = ({ children }) => {
                     </button>
                 </div>
 
-                <nav className="flex-1 overflow-y-auto p-3 space-y-1" aria-label="Chapter Navigation">
+                <nav className="flex-1 overflow-y-auto p-3 pb-20 md:pb-3 space-y-1" aria-label="Chapter Navigation">
                     {/* Progress Button - Full Width */}
                     <PrefetchLink
                         to="/dashboard"
@@ -409,7 +409,7 @@ const WebbookLayout = ({ children }) => {
                 </nav>
 
                 {/* FOOTER - Help + Support */}
-                <div className="border-t border-slate-700/50 p-3">
+                <div className="border-t border-slate-700/50 p-3 pb-20 md:pb-3">
                     <PrefetchLink
                         to="/faq"
                         className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all text-sm ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white'}`}
