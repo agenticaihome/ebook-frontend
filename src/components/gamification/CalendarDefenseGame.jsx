@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Calendar, XCircle, Shield, Clock, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Coffee, Zap, Battery, Keyboard, Share2 } from 'lucide-react';
+import { Calendar, XCircle, Shield, Clock, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Coffee, Zap, Battery, Keyboard, Share2, Pause } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 import { getCalendarBest, setCalendarBest } from '../../utils/typedStorage';
 
 const CalendarDefenseGame = ({ onBack }) => {
     // Core Game State
-    const [gameState, setGameState] = useState('start');
+    const [gameState, setGameState] = useState('start'); // start, playing, paused, won, lost
     const [score, setScore] = useState(0);
     const [deepWorkHours, setDeepWorkHours] = useState(8);
     const [enemies, setEnemies] = useState([]);
@@ -64,6 +64,40 @@ const CalendarDefenseGame = ({ onBack }) => {
     useEffect(() => {
         gameStateRef.current = gameState;
     }, [gameState]);
+
+    // Visibility pause refs
+    const pausedIntervalsRef = useRef(null);
+    const pausedTimeRef = useRef(null);
+
+    // Visibility pause - pause game when tab is hidden
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden && gameStateRef.current === 'playing') {
+                // Store current state and pause
+                pausedTimeRef.current = {
+                    timer: gameTimeRef.current,
+                    score: score,
+                    wave: wave
+                };
+                // Clear intervals
+                if (gameLoopRef.current) clearInterval(gameLoopRef.current);
+                if (spawnerRef.current) clearInterval(spawnerRef.current);
+                if (powerUpSpawnerRef.current) clearInterval(powerUpSpawnerRef.current);
+
+                setGameState('paused');
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, [score, wave]);
+
+    // Resume game from pause - will be called by button click
+    const resumeGame = useCallback(() => {
+        if (gameStateRef.current === 'paused') {
+            setGameState('playing');
+            pausedTimeRef.current = null;
+        }
+    }, []);
 
     // Meeting types with movement patterns
     const meetingTypes = [
@@ -990,6 +1024,31 @@ const CalendarDefenseGame = ({ onBack }) => {
                                 Personal Best: {personalBest.score} pts
                             </div>
                         )}
+                    </div>
+                )}
+
+                {/* Pause Screen */}
+                {gameState === 'paused' && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/85 z-40 backdrop-blur-md text-center p-4">
+                        <m.div
+                            initial={{ scale: 0.9 }}
+                            animate={{ scale: 1 }}
+                            className="text-center"
+                        >
+                            <div className="text-6xl mb-4">⏸️</div>
+                            <h2 className="text-2xl font-bold text-white mb-2">Game Paused</h2>
+                            <p className="text-slate-300 mb-2">Tab was hidden</p>
+                            <p className="text-sm text-slate-400 mb-6">
+                                Score: {score} • Wave: {wave} • Deep Work: {deepWorkHours}h
+                            </p>
+                            <m.button
+                                whileTap={{ scale: 0.95 }}
+                                onClick={resumeGame}
+                                className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:from-purple-400 hover:to-pink-500 transition-all flex items-center gap-2 mx-auto"
+                            >
+                                <Play size={20} fill="white" /> Resume
+                            </m.button>
+                        </m.div>
                     </div>
                 )}
 

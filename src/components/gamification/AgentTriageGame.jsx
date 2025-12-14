@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { m, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Clock, Flame, Keyboard, ChevronLeft, ChevronRight, Share2 } from 'lucide-react';
+import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Clock, Flame, Keyboard, ChevronLeft, ChevronRight, Share2, Pause } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 import { getTriageBest, setTriageBest } from '../../utils/typedStorage';
@@ -144,7 +144,7 @@ const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) =>
 
 const AgentTriageGame = ({ onBack }) => {
     // Core Game State
-    const [gameState, setGameState] = useState('start');
+    const [gameState, setGameState] = useState('start'); // start, playing, paused, won, lost
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(45);
     const [emails, setEmails] = useState([]);
@@ -184,6 +184,31 @@ const AgentTriageGame = ({ onBack }) => {
     // Keep refs in sync for use in callbacks
     useEffect(() => { scoreRef.current = score; }, [score]);
     useEffect(() => { emailsTriagedRef.current = emailsTriaged; }, [emailsTriaged]);
+
+    // Game state ref for visibility pause
+    const gameStateRef = useRef(gameState);
+    useEffect(() => { gameStateRef.current = gameState; }, [gameState]);
+
+    // Visibility pause - pause game when tab is hidden
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden && gameStateRef.current === 'playing') {
+                // Clear intervals
+                if (gameLoopRef.current) clearInterval(gameLoopRef.current);
+                if (timerRef.current) clearInterval(timerRef.current);
+                setGameState('paused');
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, []);
+
+    // Resume game from pause
+    const resumeGame = useCallback(() => {
+        if (gameStateRef.current === 'paused') {
+            setGameState('playing');
+        }
+    }, []);
 
     // Email Templates
     const emailTypes = useMemo(() => [
@@ -973,6 +998,31 @@ const AgentTriageGame = ({ onBack }) => {
                                     Personal Best: {personalBest.score} pts
                                 </div>
                             )}
+                        </m.div>
+                    </div>
+                )}
+
+                {/* Pause Screen */}
+                {gameState === 'paused' && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/85 z-40 backdrop-blur-md text-center p-4">
+                        <m.div
+                            initial={{ scale: 0.9 }}
+                            animate={{ scale: 1 }}
+                            className="text-center"
+                        >
+                            <div className="text-6xl mb-4">⏸️</div>
+                            <h2 className="text-2xl font-bold text-white mb-2">Game Paused</h2>
+                            <p className="text-slate-300 mb-2">Tab was hidden</p>
+                            <p className="text-sm text-slate-400 mb-6">
+                                Score: {score} • Time: {timeLeft}s • Triaged: {emailsTriaged}
+                            </p>
+                            <m.button
+                                whileTap={{ scale: 0.95 }}
+                                onClick={resumeGame}
+                                className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:from-cyan-400 hover:to-blue-500 transition-all flex items-center gap-2 mx-auto"
+                            >
+                                <Play size={20} fill="white" /> Resume
+                            </m.button>
                         </m.div>
                     </div>
                 )}

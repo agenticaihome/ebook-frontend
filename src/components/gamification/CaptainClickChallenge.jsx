@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft, Flame, Star, Share2 } from 'lucide-react';
+import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft, Flame, Star, Share2, Pause } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 import { useGameAudio } from '../../hooks/useGameAudio';
@@ -11,7 +11,7 @@ const CaptainClickChallenge = ({ onBack }) => {
     const { playSound, SoundToggle } = useGameAudio();
 
     // Game state
-    const [gameState, setGameState] = useState('idle'); // idle, playing, finished
+    const [gameState, setGameState] = useState('idle'); // idle, playing, paused, finished
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(() => getCaptainClickBest());
     const [timeLeft, setTimeLeft] = useState(30);
@@ -52,6 +52,34 @@ const CaptainClickChallenge = ({ onBack }) => {
     // Keep refs in sync
     useEffect(() => { scoreRef.current = score; }, [score]);
     useEffect(() => { frozenRef.current = isFrozen; }, [isFrozen]);
+
+    // Game state ref for visibility pause
+    const gameStateRef = useRef(gameState);
+    useEffect(() => { gameStateRef.current = gameState; }, [gameState]);
+
+    // Visibility pause - pause game when tab is hidden
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden && gameStateRef.current === 'playing') {
+                // Cancel game loop
+                if (gameLoopRef.current) {
+                    cancelAnimationFrame(gameLoopRef.current);
+                    gameLoopRef.current = null;
+                }
+                if (comboTimeoutRef.current) clearTimeout(comboTimeoutRef.current);
+                setGameState('paused');
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, []);
+
+    // Resume game from pause
+    const resumeGame = useCallback(() => {
+        if (gameStateRef.current === 'paused') {
+            setGameState('playing');
+        }
+    }, []);
 
     // Power-up definitions
     const POWER_UP_TYPES = [
@@ -638,6 +666,38 @@ const CaptainClickChallenge = ({ onBack }) => {
                                     className="w-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 active:from-orange-700 active:to-orange-600 text-white px-8 py-4 rounded-xl font-black text-lg shadow-lg shadow-orange-900/50 transition-all flex items-center justify-center gap-2"
                                 >
                                     <Play size={22} fill="white" /> TAP TO START
+                                </m.button>
+                            </m.div>
+                        </m.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Pause Screen */}
+                <AnimatePresence>
+                    {gameState === 'paused' && (
+                        <m.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-40 backdrop-blur-sm p-4"
+                        >
+                            <m.div
+                                initial={{ scale: 0.9 }}
+                                animate={{ scale: 1 }}
+                                className="text-center"
+                            >
+                                <div className="text-6xl mb-4">⏸️</div>
+                                <h2 className="text-2xl font-bold text-white mb-2">Game Paused</h2>
+                                <p className="text-slate-300 mb-2">Tab was hidden</p>
+                                <p className="text-sm text-slate-400 mb-6">
+                                    Score: {score} • Time: {timeLeft}s • Max Combo: {maxCombo}
+                                </p>
+                                <m.button
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={resumeGame}
+                                    className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:from-orange-400 hover:to-orange-500 transition-all flex items-center gap-2 mx-auto"
+                                >
+                                    <Play size={20} fill="white" /> Resume
                                 </m.button>
                             </m.div>
                         </m.div>
