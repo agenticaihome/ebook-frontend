@@ -3,12 +3,46 @@ import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 import {
     CreditCard, Coins, Check, ArrowRight, Shield, Zap,
-    Lock, Globe, Clock, Sparkles, Loader2, AlertCircle, ChevronDown, ChevronUp
+    Lock, Globe, Clock, Sparkles, Loader2, AlertCircle, ChevronDown, ChevronUp,
+    Star, Rocket
 } from 'lucide-react';
 import WebbookLayout from './components/layout/WebbookLayout';
 import CaptainHero from './components/CaptainHero';
 import { api } from './services/api';
 import { usePageTitle } from './hooks/usePageTitle';
+
+// Floating animation for premium feel
+const floatingAnimation = {
+    animate: {
+        y: [0, -8, 0],
+        transition: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+        }
+    }
+};
+
+// Sparkle component for premium accents
+const FloatingSparkle = ({ delay = 0, size = 12, className = "" }) => (
+    <m.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+            rotate: [0, 180]
+        }}
+        transition={{
+            duration: 2,
+            delay,
+            repeat: Infinity,
+            repeatDelay: 3
+        }}
+        className={`absolute ${className}`}
+    >
+        <Star size={size} className="text-amber-400/60 fill-amber-400/40" />
+    </m.div>
+);
 
 export default function PaymentGuide() {
     usePageTitle('Start My Agent Army');
@@ -43,127 +77,204 @@ export default function PaymentGuide() {
 
     return (
         <WebbookLayout>
-            <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-teal-500/30">
+            <div className="min-h-screen bg-[#0f0f1a] text-white font-sans selection:bg-teal-500/30 overflow-hidden">
+
+                {/* Ambient Background Orbs */}
+                <div className="fixed inset-0 pointer-events-none overflow-hidden">
+                    <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[150px]" />
+                    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
+                    <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[100px]" />
+                </div>
 
                 {/* HERO SECTION */}
-                <section className="py-12 px-6 border-b border-slate-800 bg-[#131320]">
-                    <div className="max-w-3xl mx-auto text-center">
+                <section className="py-12 px-6 border-b border-slate-800/50 bg-gradient-to-b from-[#131320] to-[#0f0f1a] relative">
+                    {/* Floating Sparkles */}
+                    <FloatingSparkle delay={0} size={14} className="top-8 left-[15%]" />
+                    <FloatingSparkle delay={1} size={10} className="top-16 right-[20%]" />
+                    <FloatingSparkle delay={2} size={12} className="bottom-12 left-[25%]" />
+
+                    <div className="max-w-3xl mx-auto text-center relative z-10">
                         <m.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
-                            <h1 className="text-3xl md:text-4xl font-bold mb-3">
-                                🚀 Start My <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Agent Army</span>
+                            {/* Launch Badge */}
+                            <m.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.2 }}
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 mb-4"
+                            >
+                                <Rocket size={14} className="text-amber-400" />
+                                <span className="text-xs font-bold text-amber-300 uppercase tracking-wider">Launch Pricing — Save 20%</span>
+                            </m.div>
+
+                            <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
+                                <span className="block text-white">🚀 Start My</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 animate-gradient-x">Agent Army</span>
                             </h1>
-                            <p className="text-lg text-slate-300 mb-2">
-                                One payment. Lifetime access. 10 agents ready to serve.
+                            <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-xl mx-auto">
+                                One payment. <span className="text-white font-semibold">Lifetime access.</span> 10 agents ready to serve.
                             </p>
-                            <div className="flex items-center justify-center gap-3 text-sm text-slate-400">
-                                <span className="flex items-center gap-1"><Shield size={14} className="text-green-400" /> 30-day guarantee</span>
-                                <span>•</span>
-                                <span>Instant access</span>
+                            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
+                                <span className="flex items-center gap-1.5 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
+                                    <Shield size={14} className="text-green-400" /> 30-day guarantee
+                                </span>
+                                <span className="flex items-center gap-1.5 bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
+                                    <Zap size={14} className="text-teal-400" /> Instant access
+                                </span>
                             </div>
                         </m.div>
                     </div>
                 </section>
 
                 {/* PRIMARY PAYMENT: STRIPE */}
-                <section className="py-12 px-6">
+                <section className="py-12 px-6 relative z-10">
                     <div className="max-w-xl mx-auto">
 
-                        {/* Main Card */}
+                        {/* Main Card with Floating Animation */}
                         <m.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-3xl p-8 border border-teal-500/30 shadow-xl shadow-teal-500/5 relative overflow-hidden"
+                            transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
+                            className="relative group"
                         >
-                            {/* Recommended Badge */}
-                            <div className="absolute top-0 right-0 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl">
-                                RECOMMENDED
-                            </div>
+                            {/* Outer Glow Effect */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500/30 via-cyan-500/30 to-teal-500/30 rounded-[2rem] blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
 
-                            {/* Price Section */}
-                            <div className="text-center mb-8">
-                                <div className="flex items-center justify-center gap-3 mb-2">
-                                    <CreditCard className="text-teal-400" size={28} />
-                                    <span className="text-xl font-bold">Credit/Debit Card</span>
-                                </div>
-                                <div className="flex items-baseline justify-center gap-2">
-                                    <span className="text-5xl font-black text-white">$39.99</span>
-                                    <span className="text-slate-400 line-through text-xl">$49.99</span>
-                                </div>
-                                <p className="text-teal-400 text-sm mt-1 font-medium">Launch pricing — limited time</p>
-                            </div>
-
-                            {/* What's Included */}
-                            <div className="space-y-3 mb-8">
-                                {[
-                                    'All 10 chapters (lifetime access)',
-                                    '10 ready-to-copy agent templates',
-                                    '5 productivity training games',
-                                    'Future updates included',
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3">
-                                        <Check className="text-teal-400 shrink-0" size={18} />
-                                        <span className="text-slate-200">{item}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Email Input */}
-                            <div className="mb-4">
-                                <label className="block text-sm text-slate-300 mb-2">Your Email Address</label>
-                                <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="name@example.com"
-                                    className="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3.5 text-base text-white focus:outline-none focus:border-teal-500 transition-colors"
-                                />
-                            </div>
-
-                            {/* Error */}
-                            {stripeError && (
-                                <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 p-3 rounded-lg mb-4">
-                                    <AlertCircle size={16} />
-                                    {stripeError}
-                                </div>
-                            )}
-
-                            {/* CTA Button */}
-                            <button
-                                disabled
-                                className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold text-lg cursor-not-allowed flex items-center justify-center gap-2"
+                            <m.div
+                                animate={{ y: [0, -6, 0] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                className="relative bg-gradient-to-br from-slate-800/95 to-slate-900/95 backdrop-blur-xl rounded-3xl p-8 border border-teal-500/40 shadow-2xl shadow-teal-500/10 overflow-hidden"
                             >
-                                Sales Paused
-                            </button>
+                                {/* Shimmer Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
-                            {/* Security Note */}
-                            <p className="text-xs text-slate-400 text-center mt-3 flex items-center justify-center gap-1">
-                                <Lock size={10} className="text-green-400" />
-                                Secure checkout powered by Stripe • 256-bit encryption
-                            </p>
+                                {/* Recommended Badge */}
+                                <div className="absolute top-0 right-0 overflow-hidden">
+                                    <m.div
+                                        initial={{ x: 20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: 0.3 }}
+                                        className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs font-bold px-5 py-2 rounded-bl-2xl shadow-lg flex items-center gap-1.5"
+                                    >
+                                        <Sparkles size={12} />
+                                        RECOMMENDED
+                                    </m.div>
+                                </div>
+
+                                {/* Price Section with Glow */}
+                                <div className="text-center mb-8 pt-4">
+                                    <div className="flex items-center justify-center gap-3 mb-3">
+                                        <div className="p-2.5 bg-teal-500/20 rounded-xl border border-teal-500/30">
+                                            <CreditCard className="text-teal-400" size={24} />
+                                        </div>
+                                        <span className="text-xl font-bold text-white">Credit/Debit Card</span>
+                                    </div>
+
+                                    {/* Price with Pulsing Glow */}
+                                    <div className="relative inline-block">
+                                        <div className="absolute inset-0 bg-teal-500/20 blur-2xl rounded-full animate-pulse" />
+                                        <div className="relative flex items-baseline justify-center gap-3">
+                                            <span className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-teal-100 to-white">$39.99</span>
+                                            <span className="text-slate-500 line-through text-xl">$49.99</span>
+                                        </div>
+                                    </div>
+
+                                    <m.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.5 }}
+                                        className="text-teal-400 text-sm mt-2 font-semibold inline-flex items-center gap-1.5"
+                                    >
+                                        <Clock size={12} />
+                                        Launch pricing — limited time
+                                    </m.p>
+                                </div>
+
+                                {/* What's Included - with hover effects */}
+                                <div className="space-y-3 mb-8">
+                                    {[
+                                        { text: 'All 10 chapters (lifetime access)', icon: '📚' },
+                                        { text: '10 ready-to-copy agent templates', icon: '🤖' },
+                                        { text: '5 productivity training games', icon: '🎮' },
+                                        { text: 'Future updates included', icon: '✨' },
+                                    ].map((item, i) => (
+                                        <m.div
+                                            key={i}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: 0.3 + i * 0.1 }}
+                                            whileHover={{ x: 4 }}
+                                            className="flex items-center gap-3 p-2 -mx-2 rounded-xl hover:bg-teal-500/5 transition-colors cursor-default"
+                                        >
+                                            <div className="w-6 h-6 rounded-lg bg-teal-500/20 flex items-center justify-center text-sm">
+                                                {item.icon}
+                                            </div>
+                                            <span className="text-slate-200 font-medium">{item.text}</span>
+                                            <Check className="text-teal-400 shrink-0 ml-auto" size={16} />
+                                        </m.div>
+                                    ))}
+                                </div>
+
+                                {/* Email Input */}
+                                <div className="mb-4">
+                                    <label className="block text-sm text-slate-300 mb-2">Your Email Address</label>
+                                    <input
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="name@example.com"
+                                        className="w-full bg-slate-900/50 border border-slate-600 rounded-xl px-4 py-3.5 text-base text-white focus:outline-none focus:border-teal-500 transition-colors"
+                                    />
+                                </div>
+
+                                {/* Error */}
+                                {stripeError && (
+                                    <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 p-3 rounded-lg mb-4">
+                                        <AlertCircle size={16} />
+                                        {stripeError}
+                                    </div>
+                                )}
+
+                                {/* CTA Button */}
+                                <button
+                                    disabled
+                                    className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold text-lg cursor-not-allowed flex items-center justify-center gap-2"
+                                >
+                                    Sales Paused
+                                </button>
+
+                                {/* Security Note */}
+                                <p className="text-xs text-slate-400 text-center mt-3 flex items-center justify-center gap-1">
+                                    <Lock size={10} className="text-green-400" />
+                                    Secure checkout powered by Stripe • 256-bit encryption
+                                </p>
+                            </m.div>
                         </m.div>
 
                         {/* CRYPTO OPTION (Collapsed) */}
                         <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 }}
+                            transition={{ delay: 0.4 }}
                             className="mt-6"
                         >
                             <button
                                 onClick={() => setShowCrypto(!showCrypto)}
-                                className="w-full flex items-center justify-between px-5 py-4 bg-slate-800/50 hover:bg-slate-800/70 border border-slate-700 rounded-2xl transition-all"
+                                className="w-full flex items-center justify-between px-5 py-4 bg-slate-800/50 hover:bg-slate-800/70 border border-slate-700 hover:border-green-500/50 rounded-2xl transition-all group"
                             >
                                 <div className="flex items-center gap-3">
-                                    <Coins className="text-green-400" size={20} />
+                                    <div className="p-2 bg-green-500/20 rounded-lg border border-green-500/30">
+                                        <Coins className="text-green-400" size={18} />
+                                    </div>
                                     <span className="font-medium">
                                         💰 Save 50% with Crypto — <span className="text-green-400 font-bold">$19.99</span>
                                     </span>
                                 </div>
-                                {showCrypto ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                                <m.div animate={{ rotate: showCrypto ? 180 : 0 }} transition={{ duration: 0.2 }}>
+                                    <ChevronDown size={20} className="text-slate-400" />
+                                </m.div>
                             </button>
 
                             {showCrypto && (
@@ -199,7 +310,7 @@ export default function PaymentGuide() {
                                     <div className="space-y-3">
                                         <Link
                                             to="/ergo-guide"
-                                            className="block w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white py-3.5 rounded-xl font-bold text-center transition-all"
+                                            className="block w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white py-3.5 rounded-xl font-bold text-center transition-all shadow-lg shadow-green-500/20"
                                         >
                                             Complete Ergo Guide (15-20 min)
                                         </Link>
@@ -221,10 +332,10 @@ export default function PaymentGuide() {
                         {/* Trust Signals */}
                         <div className="mt-8 text-center">
                             <p className="text-slate-500 text-sm mb-4">Trusted by students learning AI automation</p>
-                            <div className="flex items-center justify-center gap-6 text-slate-400 text-xs">
-                                <span className="flex items-center gap-1"><Shield size={12} className="text-green-400" /> 30-day guarantee</span>
-                                <span className="flex items-center gap-1"><Clock size={12} className="text-teal-400" /> Instant access</span>
-                                <span className="flex items-center gap-1"><Sparkles size={12} className="text-amber-400" /> Lifetime updates</span>
+                            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-slate-400 text-xs">
+                                <span className="flex items-center gap-1.5 bg-green-500/10 px-3 py-1.5 rounded-full"><Shield size={12} className="text-green-400" /> 30-day guarantee</span>
+                                <span className="flex items-center gap-1.5 bg-teal-500/10 px-3 py-1.5 rounded-full"><Clock size={12} className="text-teal-400" /> Instant access</span>
+                                <span className="flex items-center gap-1.5 bg-amber-500/10 px-3 py-1.5 rounded-full"><Sparkles size={12} className="text-amber-400" /> Lifetime updates</span>
                             </div>
                         </div>
 
