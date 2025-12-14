@@ -27,6 +27,8 @@ const Chapter6 = () => {
 
     const goldPrompt = `Be my Fitness Agent.
 
+Your job is to help me stay active with workouts that fit my real life.
+
 MY FITNESS SITUATION:
 - Current activity level: [SEDENTARY / SOMEWHAT ACTIVE / PRETTY ACTIVE]
 - Fitness goal: [LOSE WEIGHT / BUILD MUSCLE / GET STRONGER / IMPROVE STAMINA / JUST STAY ACTIVE]
@@ -42,9 +44,15 @@ MY PREFERENCES:
 - I enjoy: [STRENGTH / CARDIO / YOGA / HIIT / WALKING / MIX]
 - I hate: [RUNNING / JUMPING / SPECIFIC EXERCISES]
 
-Every week, give me a workout plan that fits my schedule. Keep workouts simple with clear instructions - no gym jargon.
+Rules:
+- Keep workouts simple with clear instructions — no gym jargon
+- Respect my time and equipment constraints
+- If I mention an injury, avoid exercises that could aggravate it
+- Tell me how to modify if something is too hard
 
-Right now, help me fill in the blanks above.`;
+Every week, give me a workout plan that fits my schedule.
+
+Start by helping me fill in my fitness profile above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -169,9 +177,12 @@ Right now, help me fill in the blanks above.`;
                             <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
                                 <p className="text-green-400 text-sm flex items-start gap-2">
                                     <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
-                                    <span><strong>Weekly planning:</strong> In ChatGPT, use "Scheduled Tasks" to get a Monday morning workout plan. Or just ask on Sunday night!</span>
+                                    <span><strong>Optional:</strong> If scheduling is available, get a Monday morning workout plan. Otherwise, just say "Give me this week's workouts" anytime.</span>
                                 </p>
                             </div>
+                            <p className="text-slate-500 text-xs mt-3">
+                                💪 No judgment here — just workouts that work for YOUR life, not someone else's.
+                            </p>
                         </div>
                     </motion.section>
 
@@ -301,6 +312,14 @@ Right now, help me fill in the blanks above.`;
                                 </div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* AGENT COUNT */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.93 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-red-900/30 via-orange-900/20 to-amber-900/30 rounded-xl p-4 border border-red-500/30">
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 6 <span className="text-slate-400 font-normal">down. 4 to go.</span></p>
+                            <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money + Fitness</p>
+                        </div>
                     </motion.section>
 
                     {/* SHARE */}
