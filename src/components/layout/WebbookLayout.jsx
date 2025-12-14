@@ -206,7 +206,7 @@ const WebbookLayout = ({ children }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden"
+                        className="fixed inset-0 z-[65] bg-black/60 backdrop-blur-sm md:hidden"
                         onClick={() => setIsSidebarOpen(false)}
                         aria-hidden="true"
                     />
@@ -227,7 +227,7 @@ const WebbookLayout = ({ children }) => {
                     damping: 30,
                     opacity: { duration: 0.2 }
                 }}
-                className="fixed md:relative z-40 h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 shadow-2xl overflow-hidden flex flex-col"
+                className="fixed md:relative z-[70] h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 shadow-2xl overflow-hidden flex flex-col"
                 aria-label="Main Navigation"
             >
                 {/* HEADER - Brand Logo */}
@@ -254,7 +254,7 @@ const WebbookLayout = ({ children }) => {
                     </button>
                 </div>
 
-                <nav className="flex-1 overflow-y-auto p-3 space-y-1" aria-label="Chapter Navigation">
+                <nav className="flex-1 overflow-y-auto p-3 pb-28 md:pb-3 space-y-1" aria-label="Chapter Navigation">
                     {/* Progress Button - Full Width */}
                     <PrefetchLink
                         to="/dashboard"
@@ -409,7 +409,7 @@ const WebbookLayout = ({ children }) => {
                 </nav>
 
                 {/* FOOTER - Help + Support */}
-                <div className="border-t border-slate-700/50 p-3">
+                <div className="border-t border-slate-700/50 p-3 pb-28 md:pb-3">
                     <PrefetchLink
                         to="/faq"
                         className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all text-sm ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white'}`}
