@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Play, RotateCcw, Trophy, Share2, ArrowLeft, Zap } from 'lucide-react';
+import { Play, RotateCcw, Trophy, Share2, ArrowLeft, Zap, Pause } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 import { useGameAudio } from '../../hooks/useGameAudio';
+import { getGameBest, setGameBest } from '../../utils/typedStorage';
 
 // ===================
 // CSS CAPTAIN EFFICIENCY COMPONENT
@@ -142,12 +143,9 @@ const FocusFury = ({ onBack }) => {
     // ===================
     // GAME STATE
     // ===================
-    const [gameState, setGameState] = useState('idle'); // idle, playing, dead
+    const [gameState, setGameState] = useState('idle'); // idle, playing, paused, dead
     const [kills, setKills] = useState(0);
-    const [bestKills, setBestKills] = useState(() => {
-        try { return parseInt(localStorage.getItem('focusfury_best') || '0', 10); }
-        catch { return 0; }
-    });
+    const [bestKills, setBestKills] = useState(() => getGameBest('focusfury'));
     const [isNewBest, setIsNewBest] = useState(false);
     const [timer, setTimer] = useState(60);
     const [combo, setCombo] = useState(0);
@@ -176,6 +174,41 @@ const FocusFury = ({ onBack }) => {
     const particlesRef = useRef([]);
     const lastSpawnRef = useRef(0);
     const comboTimeoutRef = useRef(null);
+    const pausedStateRef = useRef(null); // Store state when pausing
+
+    // Visibility pause - pause game when tab is hidden
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden && gameStateRef.current === 'playing') {
+                // Pause the game
+                pausedStateRef.current = {
+                    timer: timerRef.current,
+                    kills: killsRef.current,
+                    combo: comboRef.current,
+                    maxCombo: maxComboRef.current
+                };
+                gameStateRef.current = 'paused';
+                setGameState('paused');
+                if (animationFrameRef.current) {
+                    cancelAnimationFrame(animationFrameRef.current);
+                    animationFrameRef.current = null;
+                }
+            }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, []);
+
+    // Resume from pause - triggers gameLoop via the main effect
+    const resumeGame = useCallback(() => {
+        if (gameStateRef.current === 'paused') {
+            gameStateRef.current = 'playing';
+            setGameState('playing');
+            lastTimeRef.current = performance.now();
+            // The gameLoop will be started by the playing state effect
+        }
+    }, []);
 
     // ===================
     // CONSTANTS
@@ -581,8 +614,7 @@ const FocusFury = ({ onBack }) => {
         if (finalKills > bestKills) {
             setIsNewBest(true);
             setBestKills(finalKills);
-            try { localStorage.setItem('focusfury_best', finalKills.toString()); }
-            catch { }
+            setGameBest('focusfury', finalKills);
 
             setTimeout(() => {
                 confetti({
@@ -625,6 +657,16 @@ const FocusFury = ({ onBack }) => {
             if (comboTimeoutRef.current) clearTimeout(comboTimeoutRef.current);
         };
     }, []);
+
+    // Effect to restart game loop when resuming from pause
+    useEffect(() => {
+        if (gameState === 'playing' && pausedStateRef.current !== null) {
+            // We're resuming from pause
+            pausedStateRef.current = null;
+            lastTimeRef.current = performance.now();
+            animationFrameRef.current = requestAnimationFrame(gameLoop);
+        }
+    }, [gameState, gameLoop]);
 
     const rank = getRank(kills);
     const diffSettings = getDifficultySettings(timer);
@@ -894,6 +936,38 @@ const FocusFury = ({ onBack }) => {
                                 <p className="text-slate-300 text-xs mt-4">
                                     Tap/click anywhere to fire focus beams
                                 </p>
+                            </m.div>
+                        </m.div>
+                    )}
+                </AnimatePresence>
+
+                {/* PAUSE SCREEN */}
+                <AnimatePresence>
+                    {gameState === 'paused' && (
+                        <m.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-40 backdrop-blur-sm p-4"
+                        >
+                            <m.div
+                                initial={{ scale: 0.9 }}
+                                animate={{ scale: 1 }}
+                                className="text-center"
+                            >
+                                <div className="text-6xl mb-4">⏸️</div>
+                                <h2 className="text-2xl font-bold text-white mb-2">Game Paused</h2>
+                                <p className="text-slate-300 mb-2">Tab was hidden</p>
+                                <p className="text-sm text-slate-400 mb-6">
+                                    Score: {kills} • Time: {timer}s left
+                                </p>
+                                <m.button
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={resumeGame}
+                                    className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:from-cyan-400 hover:to-blue-500 transition-all flex items-center gap-2 mx-auto"
+                                >
+                                    <Play size={20} fill="white" /> Resume
+                                </m.button>
                             </m.div>
                         </m.div>
                     )}

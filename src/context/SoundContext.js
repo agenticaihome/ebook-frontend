@@ -1,19 +1,18 @@
 import React, { createContext, useState, useContext, useEffect, useRef, useMemo, useCallback } from 'react';
+import { getSoundEnabled, setSoundEnabled as saveSoundEnabled } from '../utils/typedStorage';
 
 const SoundContext = createContext();
 
 export const useSound = () => useContext(SoundContext);
 
 export const SoundProvider = ({ children }) => {
-    const [isSoundEnabled, setIsSoundEnabled] = useState(() => {
-        const saved = localStorage.getItem('sound_enabled');
-        return saved !== null ? JSON.parse(saved) : true;
-    });
+    // Use typedStorage which handles corruption gracefully
+    const [isSoundEnabled, setIsSoundEnabled] = useState(() => getSoundEnabled());
 
     const audioContextRef = useRef(null);
 
     useEffect(() => {
-        localStorage.setItem('sound_enabled', JSON.stringify(isSoundEnabled));
+        saveSoundEnabled(isSoundEnabled);
     }, [isSoundEnabled]);
 
     const initAudioContext = () => {

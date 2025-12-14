@@ -3,6 +3,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Calendar, XCircle, Shield, Clock, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Coffee, Zap, Battery, Keyboard, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
+import { getCalendarBest, setCalendarBest } from '../../utils/typedStorage';
 
 const CalendarDefenseGame = ({ onBack }) => {
     // Core Game State
@@ -40,10 +41,7 @@ const CalendarDefenseGame = ({ onBack }) => {
         powerUpsCollected: 0,
         damagesTaken: 0
     });
-    const [personalBest, setPersonalBest] = useState(() => {
-        const saved = localStorage.getItem('calendarBest');
-        return saved ? JSON.parse(saved) : { score: 0, survived: false };
-    });
+    const [personalBest, setPersonalBest] = useState(() => getCalendarBest());
 
     // UI State
     const [captainMessage, setCaptainMessage] = useState({ text: "Protect your Deep Work blocks!", mood: 'neutral' });
@@ -700,7 +698,7 @@ const CalendarDefenseGame = ({ onBack }) => {
         if (finalScore > personalBest.score) {
             const newBest = { score: finalScore, survived: win };
             setPersonalBest(newBest);
-            localStorage.setItem('calendarBest', JSON.stringify(newBest));
+            setCalendarBest(newBest);
         }
 
         try {

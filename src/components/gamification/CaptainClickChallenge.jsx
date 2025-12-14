@@ -4,6 +4,7 @@ import { Zap, Target, Clock, Trophy, Play, RotateCcw, ArrowLeft, Flame, Star, Sh
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 import { useGameAudio } from '../../hooks/useGameAudio';
+import { getCaptainClickBest, setCaptainClickBest } from '../../utils/typedStorage';
 
 const CaptainClickChallenge = ({ onBack }) => {
     // Audio hook
@@ -12,13 +13,7 @@ const CaptainClickChallenge = ({ onBack }) => {
     // Game state
     const [gameState, setGameState] = useState('idle'); // idle, playing, finished
     const [score, setScore] = useState(0);
-    const [highScore, setHighScore] = useState(() => {
-        try {
-            return parseInt(localStorage.getItem('captainClickHighScore') || '0', 10);
-        } catch {
-            return 0;
-        }
-    });
+    const [highScore, setHighScore] = useState(() => getCaptainClickBest());
     const [timeLeft, setTimeLeft] = useState(30);
     const [isNewHighScore, setIsNewHighScore] = useState(false);
 
@@ -378,9 +373,7 @@ const CaptainClickChallenge = ({ onBack }) => {
             setIsNewHighScore(true);
             setHighScore(finalScore);
             playSound('highScore');
-            try {
-                localStorage.setItem('captainClickHighScore', finalScore.toString());
-            } catch { }
+            setCaptainClickBest(finalScore);
 
             // Big celebration
             setTimeout(() => {

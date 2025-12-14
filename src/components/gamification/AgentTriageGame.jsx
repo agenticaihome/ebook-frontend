@@ -3,6 +3,7 @@ import { m, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
 import { Mail, Check, Trash2, Play, RotateCcw, ArrowLeft, Trophy, Volume2, VolumeX, Clock, Flame, Keyboard, ChevronLeft, ChevronRight, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
+import { getTriageBest, setTriageBest } from '../../utils/typedStorage';
 
 // Swipeable Email Card Component
 const SwipeableEmailCard = ({ email, onAction, isSelected, onSelect, index }) => {
@@ -160,14 +161,7 @@ const AgentTriageGame = ({ onBack }) => {
 
     // Stats
     const [stats, setStats] = useState({ correct: 0, wrong: 0, fastActions: 0, criticalSaved: 0 });
-    const [personalBest, setPersonalBest] = useState(() => {
-        try {
-            const saved = localStorage.getItem('triageBest');
-            return saved ? JSON.parse(saved) : { score: 0, triaged: 0 };
-        } catch {
-            return { score: 0, triaged: 0 };
-        }
-    });
+    const [personalBest, setPersonalBest] = useState(() => getTriageBest());
 
     // UI State
     const [captainMessage, setCaptainMessage] = useState({ text: "Ready to master your inbox?", mood: 'neutral' });
@@ -351,11 +345,7 @@ const AgentTriageGame = ({ onBack }) => {
                     score: Math.max(finalScore, prev.score),
                     triaged: Math.max(finalTriaged, prev.triaged)
                 };
-                try {
-                    localStorage.setItem('triageBest', JSON.stringify(newBest));
-                } catch (e) {
-                    console.warn('Could not save to localStorage:', e);
-                }
+                setTriageBest(newBest);
                 return newBest;
             }
             return prev;

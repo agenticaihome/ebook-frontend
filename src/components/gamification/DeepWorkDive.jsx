@@ -6,10 +6,11 @@ import React, {
     useMemo,
 } from "react";
 import { m, AnimatePresence } from 'framer-motion';
-import { Play, Trophy, ArrowLeft, RotateCcw, Share2 } from "lucide-react";
+import { Play, Trophy, ArrowLeft, RotateCcw, Share2, Pause } from "lucide-react";
 import confetti from "canvas-confetti";
 import { api } from '../../services/api';
 import { useGameAudio } from '../../hooks/useGameAudio';
+import { getDeepWorkBest, setDeepWorkBest } from '../../utils/typedStorage';
 
 const DeepWorkDive = ({ onBack }) => {
     // Audio hook
@@ -18,15 +19,9 @@ const DeepWorkDive = ({ onBack }) => {
     // ===================
     // STATE
     // ===================
-    const [gameState, setGameState] = useState("idle"); // idle, playing, dead
+    const [gameState, setGameState] = useState("idle"); // idle, playing, paused, dead
     const [score, setScore] = useState(0);
-    const [bestScore, setBestScore] = useState(() => {
-        try {
-            return parseInt(localStorage.getItem("deepwork_best") || "0", 10);
-        } catch {
-            return 0;
-        }
-    });
+    const [bestScore, setBestScore] = useState(() => getDeepWorkBest());
     const [isNewBest, setIsNewBest] = useState(false);
 
     // Visual state
@@ -54,6 +49,48 @@ const DeepWorkDive = ({ onBack }) => {
     const lastSpawnRef = useRef(0);
     const gameStartTimeRef = useRef(0);
     const difficultyRef = useRef(1);
+    const pausedStateRef = useRef(null);
+
+    // ===================
+    // VISIBILITY PAUSE
+    // ===================
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden && gameStateRef.current === 'playing') {
+                // Pause the game
+                pausedStateRef.current = {
+                    captainY: captainYRef.current,
+                    score: scoreRef.current,
+                    velocity: velocityRef.current
+                };
+                gameStateRef.current = 'paused';
+                setGameState('paused');
+                if (animationFrameRef.current) {
+                    cancelAnimationFrame(animationFrameRef.current);
+                    animationFrameRef.current = null;
+                }
+            }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }, []);
+
+    const resumeGame = useCallback(() => {
+        if (gameStateRef.current === 'paused') {
+            gameStateRef.current = 'playing';
+            setGameState('playing');
+            pausedStateRef.current = null;
+            lastTimeRef.current = performance.now();
+            accumulatorRef.current = 0;
+        }
+    }, []);
+
+    // Effect to restart game loop when resuming
+    useEffect(() => {
+        if (gameState === 'playing' && pausedStateRef.current === null && animationFrameRef.current === null && gameStateRef.current === 'playing') {
+            animationFrameRef.current = requestAnimationFrame(gameLoop);
+        }
+    }, [gameState]);
 
     // ===================
     // CONSTANTS
@@ -347,11 +384,7 @@ const DeepWorkDive = ({ onBack }) => {
         if (finalScore > bestScore) {
             setIsNewBest(true);
             setBestScore(finalScore);
-            try {
-                localStorage.setItem("deepwork_best", finalScore.toString());
-            } catch {
-                // ignore
-            }
+            setDeepWorkBest(finalScore);
 
             confetti({
                 particleCount: 120,
@@ -918,6 +951,39 @@ const DeepWorkDive = ({ onBack }) => {
                                 <p className="text-slate-300 text-xs mt-4">
                                     Tap anywhere or press SPACE to fly
                                 </p>
+                            </m.div>
+                        </m.div>
+                    )}
+                </AnimatePresence>
+
+                {/* PAUSE SCREEN */}
+                <AnimatePresence>
+                    {gameState === "paused" && (
+                        <m.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-40 backdrop-blur-sm p-4"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <m.div
+                                initial={{ scale: 0.9 }}
+                                animate={{ scale: 1 }}
+                                className="text-center"
+                            >
+                                <div className="text-6xl mb-4">⏸️</div>
+                                <h2 className="text-2xl font-bold text-white mb-2">Game Paused</h2>
+                                <p className="text-slate-300 mb-2">Tab was hidden</p>
+                                <p className="text-sm text-slate-400 mb-6">
+                                    Current Score: {score}
+                                </p>
+                                <m.button
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={resumeGame}
+                                    className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:from-cyan-400 hover:to-blue-500 transition-all flex items-center gap-2 mx-auto"
+                                >
+                                    <Play size={20} fill="white" /> Resume
+                                </m.button>
                             </m.div>
                         </m.div>
                     )}

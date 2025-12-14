@@ -5,8 +5,10 @@ import { AnimatePresence, LazyMotion, domAnimation, MotionConfig } from 'framer-
 import { SoundProvider } from './context/SoundContext';
 import { UserProvider } from './context/UserContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import RouteErrorBoundary from './components/common/RouteErrorBoundary';
 import OfflineIndicator from './components/common/OfflineIndicator';
 import CookieConsent from './components/common/CookieConsent';
+import { getLastVisitedRoute, setLastVisitedRoute, getCookieConsent } from './utils/typedStorage';
 
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
@@ -74,13 +76,13 @@ const AnimatedRoutes = () => {
 
     // Track last visited route for resume functionality
     if (location.pathname !== '/' && location.pathname !== '/welcome' && location.pathname !== '/success' && !location.pathname.includes('widget')) {
-      localStorage.setItem('last_visited_route', location.pathname);
+      setLastVisitedRoute(location.pathname);
     }
   }, [location]);
 
   // Personalization: Resume prompt
   useEffect(() => {
-    const lastRoute = localStorage.getItem('last_visited_route');
+    const lastRoute = getLastVisitedRoute();
     const hasPrompted = sessionStorage.getItem('resume_prompted');
 
     if (lastRoute && lastRoute !== '/' && location.pathname === '/' && !hasPrompted) {
@@ -141,9 +143,11 @@ const AnimatedRoutes = () => {
             <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
             <Route path="/dashboard" element={<PageTransition><routeConfig.dashboard.Component /></PageTransition>} />
             <Route path="/tools" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><ToolsPage /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><ToolsPage /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
             <Route path="/chaos-quiz-widget" element={<routeConfig.infectionDiagnostic.Component />} />
             <Route path="/login" element={<PageTransition><routeConfig.login.Component /></PageTransition>} />
@@ -156,56 +160,72 @@ const AnimatedRoutes = () => {
 
             {/* Password Reset Routes */}
             <Route path="/forgot-password" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><ForgotPasswordPage /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><ForgotPasswordPage /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
             <Route path="/reset-password" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><ResetPasswordPage /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><ResetPasswordPage /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
 
             {/* Claim Access Route */}
             <Route path="/claim-access" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><ClaimAccessPage /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><ClaimAccessPage /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
 
             {/* Pre-Purchase Bridge - Between free chapters and paywall */}
             <Route path="/unlock" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><PrePurchaseBridge /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><PrePurchaseBridge /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
 
             {/* Game Landing Page */}
             <Route path="/challenge" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><GameLandingPage /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><GameLandingPage /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
 
             {/* Games Hub */}
             <Route path="/games" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><GamesPage /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><GamesPage /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
 
             {/* Hall of Fame - All-Time Leaderboards */}
             <Route path="/hall-of-fame" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><HallOfFame /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><HallOfFame /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
 
             {/* Agent Wallet / Deck */}
             <Route path="/deck" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><AgentWallet /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><AgentWallet /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
 
             {/* Graduation Page - Commander Certificate */}
@@ -213,9 +233,11 @@ const AnimatedRoutes = () => {
 
             {/* 404 Route */}
             <Route path="*" element={
-              <Suspense fallback={<Loading />}>
-                <PageTransition><NotFoundPage /></PageTransition>
-              </Suspense>
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><NotFoundPage /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
             } />
           </Routes>
         </AnimatePresence>
@@ -232,8 +254,8 @@ function App() {
   useEffect(() => {
     const measurementId = process.env.REACT_APP_GA_MEASUREMENT_ID || 'G-QDYN0E69MT';
 
-    // Check if user has already consented
-    const consent = localStorage.getItem('cookie_consent');
+    // Check if user has already consented (use typedStorage for safe access)
+    const consent = getCookieConsent();
     if (consent === 'accepted') {
       initGA(measurementId);
       setAnalyticsEnabled(true);

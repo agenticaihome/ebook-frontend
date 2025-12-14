@@ -6,6 +6,16 @@ import { BookOpen, Gamepad2, Trophy, Settings, LogOut, ChevronRight, CheckCircle
 import WebbookLayout from '../components/layout/WebbookLayout';
 import WelcomeModal from '../components/common/WelcomeModal';
 import ChapterBadge from '../components/gamification/ChapterBadge';
+import {
+    getToken,
+    getStripePayment,
+    getErgoPayment,
+    getBetaAccess,
+    getCompletedChapters,
+    hasSeenWelcomeModal,
+    isPartUnlocked,
+    removeToken
+} from '../utils/typedStorage';
 
 // ============================================
 // GRANDMA DASHBOARD - Ultra Simple Version
@@ -95,23 +105,22 @@ const Dashboard = () => {
     const [showSettings, setShowSettings] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        const hasPurchased = localStorage.getItem('stripe_payment') || localStorage.getItem('ergo_payment');
-        const hasBetaAccess = localStorage.getItem('beta_access') === 'true';
+        // Use typedStorage for safe localStorage access (prevents crash on corrupt data)
+        const token = getToken();
+        const hasPurchased = getStripePayment() || getErgoPayment();
+        const hasBetaAccess = getBetaAccess();
 
         // Consider user "logged in" if they have token OR have purchased
         const loggedIn = !!token || !!hasPurchased || hasBetaAccess;
         setIsLoggedIn(loggedIn);
 
-        // Load progress
-        const completed = JSON.parse(localStorage.getItem('completed_chapters') || '[]');
+        // Load progress (typedStorage returns [] on corruption)
+        const completed = getCompletedChapters();
         setCompletedChapters(completed);
 
         // Show welcome modal for purchasers
-        const hasSeenWelcome = localStorage.getItem('welcome_modal_seen');
-        const isPurchaser = localStorage.getItem('unlocked_part_2') === 'true' ||
-            hasBetaAccess ||
-            !!token;
+        const hasSeenWelcome = hasSeenWelcomeModal();
+        const isPurchaser = isPartUnlocked(2) || hasBetaAccess || !!token;
         if (!hasSeenWelcome && isPurchaser) {
             setShowWelcome(true);
         }
@@ -324,6 +333,7 @@ const Dashboard = () => {
                                                         // Continue with logout even if API fails
                                                     }
                                                     localStorage.removeItem('token');
+                                                    removeToken();
                                                     navigate('/login');
                                                 }}
                                                 className="w-full flex items-center justify-center gap-3 p-4 bg-red-900/30 hover:bg-red-900/50 border border-red-500/30 rounded-xl text-red-400 font-bold text-lg transition-colors"

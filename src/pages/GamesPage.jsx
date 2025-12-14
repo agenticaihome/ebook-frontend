@@ -8,6 +8,7 @@ import LeaderboardModal from '../components/gamification/LeaderboardModal';
 import PasswordGate from '../components/common/PasswordGate';
 import { api } from '../services/api';
 import { logEvent } from '../utils/analytics';
+import { getHighScore, getErgoPayment, getStripePayment, getBetaAccess } from '../utils/typedStorage';
 
 // Lazy load games
 const AgentTriageGame = React.lazy(() => import('../components/gamification/AgentTriageGame'));
@@ -38,9 +39,9 @@ const GamesPage = () => {
                     const response = await api.getMyBestScore(gameId);
                     scores[gameId] = response.score || 0;
                 } catch (e) {
-                    // Fallback to localStorage if backend fails or offline
+                    // Fallback to typedStorage if backend fails or offline
                     console.warn(`Failed to fetch score for ${gameId}, falling back to local storage`);
-                    scores[gameId] = parseInt(localStorage.getItem(`highscore_${gameId}`) || '0');
+                    scores[gameId] = getHighScore(gameId);
                 }
             }
             setHighScores(scores);
@@ -138,20 +139,17 @@ const GamesPage = () => {
         // Free games (no unlock condition) are always unlocked
         if (!game.unlockCondition) return true;
 
-        try {
-            // Check if user has paid for full access (Ergo or Stripe) - unlocks ALL games
-            const ergoPayment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
-            const stripePayment = JSON.parse(localStorage.getItem('stripe_payment') || '{}');
-            if (ergoPayment.paid === true || stripePayment.paid === true) return true;
+        // Use typedStorage for safe access (auto-recovers from corruption)
+        // Check if user has paid for full access (Ergo or Stripe) - unlocks ALL games
+        const ergoPayment = getErgoPayment();
+        const stripePayment = getStripePayment();
+        if (ergoPayment?.paid === true || stripePayment?.paid === true) return true;
 
-            // Check beta access (also unlocks all games)
-            if (localStorage.getItem('beta_access') === 'true') return true;
+        // Check beta access (also unlocks all games)
+        if (getBetaAccess()) return true;
 
-            // Not purchased - game is locked
-            return false;
-        } catch (e) {
-            return false;
-        }
+        // Not purchased - game is locked
+        return false;
     };
 
     return (

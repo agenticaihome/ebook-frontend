@@ -1,22 +1,14 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import { getUserState, setUserState as saveUserState } from '../utils/typedStorage';
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [userState, setUserState] = useState(() => {
-        const saved = localStorage.getItem('agentic_user_state');
-        return saved ? JSON.parse(saved) : {
-            persona: 'general', // 'parent', 'professional', 'student', 'general'
-            name: '',
-            progress: {}, // { part1: 0, part2: 0 ... }
-            unlockedBadges: [],
-            quizResults: null,
-            lastVisit: Date.now()
-        };
-    });
+    // Use typedStorage which handles corruption gracefully with automatic recovery
+    const [userState, setUserState] = useState(() => getUserState());
 
     useEffect(() => {
-        localStorage.setItem('agentic_user_state', JSON.stringify(userState));
+        saveUserState(userState);
     }, [userState]);
 
     const updatePersona = (quizResults) => {
