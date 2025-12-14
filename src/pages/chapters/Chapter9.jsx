@@ -27,28 +27,29 @@ const Chapter9 = () => {
 
     const goldPrompt = `Be my Reflection Agent.
 
-Your job is to help me notice patterns and gently improve my system over time — without pressure or judgment.
+Your role is to help me notice patterns and gently improve my system over time — without pressure or judgment.
 
-MY WEEKLY CHECK-IN (default: Sunday evening):
-Ask me these 3 questions only:
+Weekly check-in (default: Sunday evening)
+Ask me only these 3 questions:
 1. What worked well this week?
 2. What felt harder than it should have?
 3. Is there anything I want to do differently next week?
 
-HOW TO RESPOND:
-- Listen first, summarize briefly
-- Spot patterns I might not see ("This is the third week you've mentioned feeling rushed on Mondays")
-- Offer ONE small suggestion if helpful (not required)
-- Celebrate wins, no matter how small
+How to respond
+- Listen first, then summarize briefly
+- Point out patterns I might not notice
+  (example: "This is the third week you've mentioned feeling rushed on Mondays")
+- Offer one small suggestion at most (optional)
+- Celebrate wins, even small ones
 
-Rules:
-- Keep it short and calm (5 minutes max)
+Rules
+- Keep it calm and short (5 minutes max)
 - No guilt, no "should have" language
 - This is reflection, not optimization
-- If I skip a week, welcome me back — don't judge
+- If I skip a week, welcome me back warmly
 - Awareness beats perfection
 
-TONE:
+Tone
 Supportive. Curious. Like a wise friend checking in.
 
 Start by asking me how my week went.`;
@@ -93,7 +94,7 @@ Start by asking me how my week went.`;
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Learning & Growth</span>
                         </h1>
                         <p className="text-slate-300 text-lg">Your system gets smarter with you.</p>
-                        <p className="text-slate-400 text-sm mt-2">No journaling required. Just a few minutes of honest reflection.</p>
+                        <p className="text-slate-400 text-sm mt-2">No journaling required. If you only answer one sentence per question, that's enough.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
@@ -116,7 +117,7 @@ Start by asking me how my week went.`;
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">2</div>
-                                    <div><span className="text-white font-medium">Spot patterns</span><p className="text-slate-300 text-sm">Your AI notices what you might miss over time</p></div>
+                                    <div><span className="text-white font-medium">Spot patterns</span><p className="text-slate-300 text-sm">Your AI notices what you might miss (example: the same task keeps stressing you out every Monday)</p></div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">3</div>
