@@ -27,27 +27,35 @@ const Chapter7 = () => {
 
     const goldPrompt = `Be my Work Task Agent.
 
+Your job is to help me focus on what actually matters — not just what's loudest.
+
 MY WORK SITUATION:
 - Job type: [CORPORATE / FREELANCE / BUSINESS OWNER / REMOTE / OTHER]
 - Typical day: [MEETINGS-HEAVY / DEEP WORK / MIX / UNPREDICTABLE]
-- Biggest challenge: [TOO MANY TASKS / CAN'T FOCUS / UNCLEAR PRIORITIES / CONSTANT INTERRUPTIONS]
+- Biggest challenge: [TOO MANY TASKS / CAN'T FOCUS / UNCLEAR PRIORITIES / INTERRUPTIONS]
 
 MY CURRENT GOALS:
-- This week I'm focused on: [MAIN PROJECT OR DEADLINE]
-- Long-term goal: [PROMOTION / LAUNCH / GOAL]
+- This week's main focus: [PROJECT / DEADLINE]
+- Longer-term goal: [PROMOTION / LAUNCH / PERSONAL GOAL]
 
-MY PRIORITIZATION STYLE:
-- I have about [NUMBER] hours of real work time per day
-- I work best: [MORNINGS / AFTERNOONS / VARIES]
-- I struggle with: [SAYING NO / ESTIMATING TIME / SWITCHING TASKS]
+HOW I WORK BEST:
+- Real work time per day: ~[NUMBER] hours
+- Best focus time: [MORNINGS / AFTERNOONS / VARIES]
+- I struggle with: [SAYING NO / ESTIMATING TIME / CONTEXT SWITCHING]
 
-Every morning:
+On each workday (default: morning):
 1. Ask me to brain dump everything on my plate
-2. Help me pick the ONE thing that moves the needle most
-3. Be ruthless - push back if I'm overcommitting
-4. Quick end-of-day check: Did I do the thing?
+2. Help me choose the ONE task that will have the biggest impact
+3. Push back if I'm overcommitting or being unrealistic
+4. At the end of the day, ask: Did I do the thing? What got in the way?
 
-Right now, help me fill in the blanks above.`;
+Rules:
+- Be honest, not polite
+- One priority comes first — everything else is secondary
+- If everything feels urgent, help me decide what actually matters most
+- Clarity > completeness
+
+Start by helping me fill in the setup details above.`;
 
     const handleCopy = () => {
         navigator.clipboard.writeText(goldPrompt);
@@ -88,7 +96,7 @@ Right now, help me fill in the blanks above.`;
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
                             Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">Work Task Agent</span>
                         </h1>
-                        <p className="text-slate-300 text-lg">Stop doing everything. Start doing what matters.</p>
+                        <p className="text-slate-300 text-lg">Stop trying to do everything. Start doing what matters.</p>
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="mb-8">
@@ -171,9 +179,12 @@ Right now, help me fill in the blanks above.`;
                             <div className="bg-green-900/20 rounded-lg p-3 border border-green-500/30">
                                 <p className="text-green-400 text-sm flex items-start gap-2">
                                     <CheckCircle size={16} className="mt-0.5 flex-shrink-0" />
-                                    <span><strong>Daily habit:</strong> In ChatGPT, use "Scheduled Tasks" to get a morning planning prompt. Or set a 5-minute alarm for "Priority time."</span>
+                                    <span><strong>Optional:</strong> If scheduling is available, set a morning planning prompt. Otherwise, just open your AI and say "Let's prioritize today."</span>
                                 </p>
                             </div>
+                            <p className="text-slate-500 text-xs mt-3">
+                                🎯 You're not committing to doing everything — just choosing what deserves your best energy.
+                            </p>
                         </div>
                     </motion.section>
 
@@ -285,7 +296,7 @@ Right now, help me fill in the blanks above.`;
                             <div className="mt-3 space-y-3">
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"Everything feels urgent"</p>
-                                    <p className="text-slate-300 text-sm">Tell your AI: "If I could only do ONE thing today and nothing else, which task would have the biggest impact in a week?"</p>
+                                    <p className="text-slate-300 text-sm">Ask your AI: "What happens if I don't do this today?" — that one question changes everything. If nothing bad happens, it's not urgent.</p>
                                 </div>
                                 <div className="p-4 bg-slate-800/20 rounded-xl border border-slate-700/30">
                                     <p className="text-white font-medium text-sm mb-1">"I have too many meetings"</p>
@@ -293,6 +304,14 @@ Right now, help me fill in the blanks above.`;
                                 </div>
                             </div>
                         )}
+                    </motion.section>
+
+                    {/* AGENT COUNT */}
+                    <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.93 }} className="mb-6">
+                        <div className="bg-gradient-to-r from-amber-900/30 via-orange-900/20 to-red-900/30 rounded-xl p-4 border border-amber-500/30">
+                            <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 7 <span className="text-slate-400 font-normal">down. 3 to go.</span></p>
+                            <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money + Fitness + Work</p>
+                        </div>
                     </motion.section>
 
                     {/* SHARE */}
