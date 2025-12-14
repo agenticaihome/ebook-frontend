@@ -46,10 +46,10 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                             {/* Close Button */}
                             <button
                                 onClick={handleDismiss}
-                                className="absolute top-4 right-4 text-slate-300 hover:text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-slate-700/50 transition-colors z-10"
+                                className="absolute top-4 right-4 text-slate-300 hover:text-white active:text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg hover:bg-slate-700/50 active:bg-slate-600/50 active:scale-95 transition-all z-10 touch-manipulation"
                                 aria-label="Close"
                             >
-                                <X size={20} />
+                                <X size={22} />
                             </button>
 
                             {/* Header Celebration */}
@@ -102,7 +102,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                                     <Link
                                         to="/part2/chapter4"
                                         onClick={handleDismiss}
-                                        className="group flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 text-white py-3 rounded-xl font-bold text-sm transition-all"
+                                        className="group flex items-center justify-center gap-2 w-full min-h-[48px] bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 active:from-blue-600 active:to-purple-600 text-white py-3 rounded-xl font-bold text-sm transition-all active:scale-[0.98] touch-manipulation"
                                     >
                                         Start Chapter 4
                                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

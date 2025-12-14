@@ -85,8 +85,8 @@ Start by confirming my agent list and schedule preferences.`;
 
             <div className="min-h-screen bg-[#0a0a12]">
                 <div className="fixed inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] animate-pulse" />
-                    <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-[100px] animate-pulse" />
+                    <div className="absolute top-1/4 left-1/4 sm:left-1/3 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-amber-500/10 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                    <div className="absolute bottom-1/4 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-purple-500/10 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px]" />
                 </div>
 
                 <div className="relative max-w-3xl mx-auto px-6 py-10">

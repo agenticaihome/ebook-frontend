@@ -227,7 +227,8 @@ const WebbookLayout = ({ children }) => {
                     damping: 30,
                     opacity: { duration: 0.2 }
                 }}
-                className="fixed md:relative z-[70] h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 shadow-2xl overflow-hidden flex flex-col"
+                className="fixed md:relative z-[70] h-screen bg-slate-900/95 backdrop-blur-xl border-r border-slate-700/50 shadow-2xl overflow-hidden flex flex-col will-change-transform"
+                style={{ WebkitOverflowScrolling: 'touch' }}
                 aria-label="Main Navigation"
             >
                 {/* HEADER - Brand Logo */}
@@ -247,14 +248,21 @@ const WebbookLayout = ({ children }) => {
                     </Link>
                     <button
                         onClick={() => setIsSidebarOpen(false)}
-                        className="md:hidden absolute top-3 right-3 text-slate-300 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors"
+                        className="md:hidden absolute top-2 right-2 text-slate-300 hover:text-white p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl hover:bg-slate-800 active:bg-slate-700 active:scale-95 transition-all touch-manipulation"
                         aria-label="Close Menu"
                     >
-                        <X size={20} />
+                        <X size={22} />
                     </button>
                 </div>
 
-                <nav className="flex-1 overflow-y-auto p-3 pb-28 md:pb-3 space-y-1" aria-label="Chapter Navigation">
+                <nav
+                    className="flex-1 overflow-y-auto p-3 space-y-1 overscroll-contain"
+                    style={{
+                        WebkitOverflowScrolling: 'touch',
+                        paddingBottom: 'max(7rem, calc(env(safe-area-inset-bottom) + 5rem))'
+                    }}
+                    aria-label="Chapter Navigation"
+                >
                     {/* Progress Button - Full Width */}
                     <PrefetchLink
                         to="/dashboard"
@@ -303,11 +311,11 @@ const WebbookLayout = ({ children }) => {
                                     </Link>
                                     <button
                                         onClick={(e) => toggleChapter(e, chapter.id)}
-                                        className={`p-2 min-w-[36px] min-h-[36px] rounded hover:bg-white/10 transition-colors flex items-center justify-center ${isFreeSection ? 'text-green-400' : isActive ? 'text-teal-200' : 'text-slate-500'}`}
+                                        className={`p-2 min-w-[44px] min-h-[44px] rounded-lg hover:bg-white/10 active:bg-white/20 active:scale-95 transition-all flex items-center justify-center touch-manipulation ${isFreeSection ? 'text-green-400' : isActive ? 'text-teal-200' : 'text-slate-500'}`}
                                         aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${chapter.title}`}
                                         aria-expanded={isExpanded}
                                     >
-                                        {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                                        {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
                                     </button>
                                 </div>
 
@@ -324,9 +332,9 @@ const WebbookLayout = ({ children }) => {
                                                         <Link
                                                             key={sub.id}
                                                             to={sub.path}
-                                                            className={`flex items-center gap-2 text-xs py-3 px-3 min-h-[44px] transition-colors rounded-lg ${isSubActive
+                                                            className={`flex items-center gap-2 text-sm py-3 px-3 min-h-[48px] transition-all rounded-lg touch-manipulation ${isSubActive
                                                                 ? 'text-teal-400 font-semibold bg-teal-900/30'
-                                                                : 'text-slate-300 hover:text-slate-200 hover:bg-slate-800/50'
+                                                                : 'text-slate-300 hover:text-slate-200 hover:bg-slate-800/50 active:bg-slate-700/50 active:scale-[0.98]'
                                                                 }`}
                                                         >
                                                             {isCompleted ? (
@@ -409,10 +417,13 @@ const WebbookLayout = ({ children }) => {
                 </nav>
 
                 {/* FOOTER - Help + Support */}
-                <div className="border-t border-slate-700/50 p-3 pb-28 md:pb-3">
+                <div
+                    className="border-t border-slate-700/50 p-3"
+                    style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+                >
                     <PrefetchLink
                         to="/faq"
-                        className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all text-sm ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white'}`}
+                        className={`flex items-center gap-3 px-3 py-3 min-h-[48px] rounded-xl transition-all text-sm touch-manipulation ${location.pathname === '/faq' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:bg-slate-800/70 hover:text-white active:bg-slate-700 active:scale-[0.98]'}`}
                     >
                         <HelpCircle size={16} />
                         <span>FAQ & Support</span>
@@ -429,10 +440,10 @@ const WebbookLayout = ({ children }) => {
                         {!isSidebarOpen && (
                             <button
                                 onClick={() => setIsSidebarOpen(true)}
-                                className="p-2 hover:bg-slate-800 rounded-xl text-slate-300 hover:text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-400 flex-shrink-0"
+                                className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-slate-800 active:bg-slate-700 active:scale-95 rounded-xl text-slate-300 hover:text-slate-200 transition-all focus:outline-none focus:ring-2 focus:ring-teal-400 flex-shrink-0 touch-manipulation"
                                 aria-label="Open Sidebar"
                             >
-                                <Menu size={22} />
+                                <Menu size={24} />
                             </button>
                         )}
 
@@ -475,8 +486,13 @@ const WebbookLayout = ({ children }) => {
                     </div>
                 </header>
 
-                {/* Page Content */}
-                <main id="main-content" className="flex-1 overflow-x-hidden focus:outline-none pb-24 md:pb-0" tabIndex="-1">
+                {/* Page Content - Safe area padding for mobile bottom nav */}
+                <main
+                    id="main-content"
+                    className="flex-1 overflow-x-hidden focus:outline-none md:pb-0"
+                    style={{ paddingBottom: 'max(6rem, calc(env(safe-area-inset-bottom) + 5rem))' }}
+                    tabIndex="-1"
+                >
                     {children}
                 </main>
             </div>

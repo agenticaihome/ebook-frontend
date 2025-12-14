@@ -110,14 +110,16 @@
   background-size: 40px 40px;
 }
 
-/* Tactical HUD Card */
+/* Tactical HUD Card - GPU accelerated */
 .tactical-card {
   position: relative;
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(20, 184, 166, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  will-change: transform, border-color;
+  transform: translateZ(0); /* Force GPU layer */
 }
 
 .tactical-card::before,
@@ -143,13 +145,20 @@
   border-width: 0 2px 2px 0;
 }
 
-.tactical-card:hover {
+.tactical-card:hover,
+.tactical-card:active {
   border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: translateZ(0) scale(1.01);
+}
+
+.tactical-card:active {
+  transform: translateZ(0) scale(0.99);
 }
 
 .tactical-card:hover::before,
-.tactical-card:hover::after {
+.tactical-card:hover::after,
+.tactical-card:active::before,
+.tactical-card:active::after {
   border-color: rgba(245, 158, 11, 1);
 }
 
@@ -180,15 +189,18 @@
 
 @keyframes pulse-glow {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 221, 221, 0.4);
+    opacity: 1;
+    transform: scale(1);
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgba(0, 221, 221, 0);
+    opacity: 0.7;
+    transform: scale(1.02);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 221, 221, 0);
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -281,15 +293,19 @@
   letter-spacing: -0.01em;
 }
 
-/* Floating Effect */
+/* Floating Effect - GPU accelerated with touch support */
 .float-effect {
-  transform: translateY(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0) translateZ(0);
+  transition: transform 0.2s ease;
+  will-change: transform;
 }
 
 .float-effect:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 48px rgba(0, 85, 255, 0.2);
+  transform: translateY(-4px) translateZ(0);
+}
+
+.float-effect:active {
+  transform: translateY(-2px) translateZ(0) scale(0.98);
 }
 
 /* Sterile Background */
@@ -326,20 +342,27 @@
   border: 1px solid rgba(0, 221, 221, 0.3);
 }
 
-/* Glass Button */
+/* Glass Button - Touch optimized */
 .glass-button {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 16px rgba(0, 85, 255, 0.08);
-  transition: all 0.3s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
+  transform: translateY(0) translateZ(0);
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .glass-button:hover {
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 6px 24px rgba(0, 85, 255, 0.15);
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
+}
+
+.glass-button:active {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(0) translateZ(0) scale(0.97);
 }
 
 /* Diagnostic Badge */
@@ -526,31 +549,37 @@
   }
 }
 
-/* Card hover glow effect */
+/* Card hover glow effect - Touch optimized */
 .card-glow-hover {
-  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card-glow-hover:hover {
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.15);
   border-color: rgba(20, 184, 166, 0.4);
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
 }
 
-/* Captain E idle animation */
+.card-glow-hover:active {
+  border-color: rgba(20, 184, 166, 0.6);
+  transform: translateY(0) translateZ(0) scale(0.98);
+}
+
+/* Captain E idle animation - GPU accelerated */
 .captain-idle {
   animation: captainIdle 3s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @keyframes captainIdle {
-
-  0%,
-  100% {
-    transform: translateY(0);
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
   }
-
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-4px) translateZ(0);
   }
 }
 
@@ -576,20 +605,21 @@
 /* STEVE JOBS AUDIT: Micro-Delight Animations  */
 /* ============================================ */
 
-/* Breathing glow for primary CTAs */
+/* Breathing glow for primary CTAs - GPU accelerated */
 .cta-breathe {
   animation: ctaBreathe 3s ease-in-out infinite;
+  will-change: opacity, transform;
+  transform: translateZ(0);
 }
 
 @keyframes ctaBreathe {
-
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
   }
-
   50% {
-    box-shadow: 0 0 40px rgba(20, 184, 166, 0.5);
+    opacity: 0.95;
+    transform: scale(1.02) translateZ(0);
   }
 }
 
@@ -612,14 +642,21 @@
   }
 }
 
-/* Subtle scale on game card hover */
+/* Subtle scale on game card hover - Touch optimized */
 .game-card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .game-card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(20, 184, 166, 0.15);
+  transform: translateY(-4px) translateZ(0);
+}
+
+.game-card-hover:active {
+  transform: translateY(-2px) translateZ(0) scale(0.98);
 }
 
 /* ============================================ */
@@ -763,18 +800,58 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
-  /* Disable specific problematic animations */
+
+  /* Disable ALL animated classes for vestibular safety */
   .animate-pulse,
   .animate-pulse-subtle,
   .captain-idle,
-  .cta-breathe {
+  .cta-breathe,
+  .float-effect,
+  .game-card-hover,
+  .card-glow-hover,
+  .progress-shimmer::after {
     animation: none !important;
+    will-change: auto !important;
   }
-  
-  /* Allow transform for non-motion purposes but disable animated transforms */
+
+  /* Disable transform animations but keep layout transforms */
+  .float-effect:hover,
+  .game-card-hover:hover,
+  .card-glow-hover:hover,
+  .tactical-card:hover {
+    transform: none !important;
+  }
+
+  /* Hide confetti entirely */
   .confetti-piece,
   .confetti-celebration {
     display: none !important;
+  }
+}
+
+/* ============================================ */
+/* MOBILE-SPECIFIC OPTIMIZATIONS               */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile for better performance */
+  .cta-breathe,
+  .captain-idle {
+    animation-duration: 4s; /* Slower = less CPU */
+  }
+
+  /* Disable hover effects that don't work well on touch */
+  .float-effect:hover,
+  .game-card-hover:hover,
+  .card-glow-hover:hover {
+    transform: translateZ(0); /* Reset hover transform on mobile */
+  }
+
+  /* Ensure active states work on mobile */
+  .float-effect:active,
+  .game-card-hover:active,
+  .card-glow-hover:active,
+  .tactical-card:active {
+    transform: scale(0.98) translateZ(0) !important;
   }
 }

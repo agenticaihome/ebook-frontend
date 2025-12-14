@@ -48,8 +48,8 @@ const ClaimAccessPage = () => {
             </Helmet>
             <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center p-6 relative overflow-hidden">
                 {/* Background Ambience */}
-                <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px]" />
+                <div className="absolute top-[-20%] left-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-purple-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-cyan-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
 
                 <m.div
                     initial={{ opacity: 0, scale: 0.95 }}

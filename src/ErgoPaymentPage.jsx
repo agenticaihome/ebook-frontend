@@ -349,8 +349,8 @@ const ErgoPaymentPage = () => {
         return (
             <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center relative overflow-hidden">
                 {/* Background Blobs */}
-                <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px]" />
+                <div className="absolute top-[-20%] left-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-cyan-500/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-purple-500/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
 
                 <div className="flex flex-col items-center gap-6 relative z-10">
                     <div className="relative">
@@ -367,8 +367,8 @@ const ErgoPaymentPage = () => {
         <div className="min-h-screen bg-[#0f0f1a] text-white py-12 px-4 relative overflow-hidden font-sans">
             {/* Ambient Background */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-purple-900/20 rounded-full blur-[120px] opacity-50" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-cyan-900/20 rounded-full blur-[100px] opacity-50" />
+                <div className="absolute top-[-10%] left-[-10%] w-[250px] sm:w-[450px] md:w-[800px] h-[250px] sm:h-[450px] md:h-[800px] bg-purple-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px] opacity-50" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[200px] sm:w-[350px] md:w-[600px] h-[200px] sm:h-[350px] md:h-[600px] bg-cyan-900/20 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px] opacity-50" />
             </div>
 
             <div className="max-w-5xl mx-auto relative z-10">

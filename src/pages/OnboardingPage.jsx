@@ -24,12 +24,12 @@ const OnboardingPage = () => {
                     <motion.div
                         animate={{ scale: [1, 1.2, 1], opacity: [0.05, 0.15, 0.05] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-teal-500 rounded-full blur-[150px]"
+                        className="absolute top-1/4 left-1/4 w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-teal-500 rounded-full blur-[60px] sm:blur-[90px] md:blur-[150px]"
                     />
                     <motion.div
                         animate={{ scale: [1.2, 1, 1.2], opacity: [0.05, 0.1, 0.05] }}
                         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-orange-500 rounded-full blur-[120px]"
+                        className="absolute bottom-1/4 right-1/4 w-[120px] sm:w-[200px] md:w-[400px] h-[120px] sm:h-[200px] md:h-[400px] bg-orange-500 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]"
                     />
                 </div>
 

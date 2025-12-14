@@ -25,7 +25,7 @@ const SplashPage = () => {
                             opacity: [0.1, 0.2, 0.1]
                         }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-1/4 left-1/4 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-teal-500 rounded-full blur-[120px]"
+                        className="absolute top-1/4 left-1/4 w-[200px] sm:w-[300px] md:w-[600px] h-[200px] sm:h-[300px] md:h-[600px] bg-teal-500 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]"
                     />
                     <motion.div
                         animate={{
@@ -33,7 +33,7 @@ const SplashPage = () => {
                             opacity: [0.05, 0.15, 0.05]
                         }}
                         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute bottom-1/4 right-1/4 w-[350px] md:w-[500px] h-[350px] md:h-[500px] bg-orange-500 rounded-full blur-[100px]"
+                        className="absolute bottom-1/4 right-1/4 w-[175px] sm:w-[280px] md:w-[500px] h-[175px] sm:h-[280px] md:h-[500px] bg-orange-500 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px]"
                     />
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
                 </div>

@@ -71,7 +71,7 @@ Start by helping me add my first few important dates.`;
 
             <div className="min-h-screen bg-[#0a0a12]">
                 <div className="fixed inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-1/4 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-[120px] animate-pulse" />
+                    <div className="absolute top-1/4 left-1/4 sm:left-1/2 w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-pink-500/10 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
                 </div>
 
                 <div className="relative max-w-3xl mx-auto px-6 py-10">

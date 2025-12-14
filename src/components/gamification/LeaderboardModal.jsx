@@ -104,9 +104,9 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                             <button
                                 onClick={onClose}
                                 aria-label="Close leaderboard"
-                                className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-slate-700 rounded-full transition-colors text-slate-300 hover:text-white"
+                                className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-slate-700 active:bg-slate-600 rounded-full transition-all text-slate-300 hover:text-white active:scale-95 touch-manipulation"
                             >
-                                <X size={20} />
+                                <X size={22} />
                             </button>
                         </div>
                     </div>
@@ -129,8 +129,11 @@ const LeaderboardModal = ({ gameId, gameTitle, isOpen, onClose, currentUserScore
                         )}
                     </AnimatePresence>
 
-                    {/* Content */}
-                    <div className="max-h-[55vh] overflow-y-auto p-4 custom-scrollbar">
+                    {/* Content - Touch-optimized scrolling */}
+                    <div
+                        className="max-h-[55vh] overflow-y-auto p-4 custom-scrollbar overscroll-contain"
+                        style={{ WebkitOverflowScrolling: 'touch' }}
+                    >
                         {loading ? (
                             <div className="flex flex-col items-center justify-center py-12 gap-3">
                                 <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-cyan-500"></div>
