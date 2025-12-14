@@ -2,7 +2,11 @@ User-agent: *
 Allow: /
 Disallow: /dashboard
 Disallow: /create-account
-Disallow: /success
 Disallow: /login
+Disallow: /reset-password
+Disallow: /forgot-password
+Disallow: /deck
+Disallow: /graduation
+Disallow: /claim-access
 
 Sitemap: https://agenticaihome.com/sitemap.xml

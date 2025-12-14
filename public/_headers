@@ -1,12 +1,22 @@
 /*
-  /*.js
-    Cache-Control: public, max-age=31536000, immutable
-  /*.css
-    Cache-Control: public, max-age=31536000, immutable
-  /*.woff2
-    Cache-Control: public, max-age=31536000, immutable
-  /*.woff
-    Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  X-XSS-Protection: 1; mode=block
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
@@ -19,8 +29,3 @@
 
 /*.mp4
   Cache-Control: public, max-age=31536000, immutable
-
-/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
