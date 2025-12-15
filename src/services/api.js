@@ -36,18 +36,26 @@ const getHeaders = () => {
   };
 };
 
+// Import logger for structured API error tracking
+import { logApiError } from '../utils/logger';
+
 /**
  * Handle API responses with automatic redirect on 401
  * Includes safe JSON parsing and basic shape validation
  */
-const handleResponse = async (response) => {
+const handleResponse = async (response, endpointLabel = 'unknown') => {
   if (!response.ok) {
     if (response.status === 401) {
       // Clear any frontend state and redirect to login
       window.location.href = '/login';
     }
     const error = await response.json().catch(() => ({ message: 'An error occurred' }));
-    throw new Error(error.message || error.error || 'Request failed');
+    const err = new Error(error.message || error.error || 'Request failed');
+
+    // Log structured API error
+    logApiError(endpointLabel, err, response.status);
+
+    throw err;
   }
 
   // Safe JSON parsing with validation

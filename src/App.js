@@ -9,7 +9,9 @@ import RouteErrorBoundary from './components/common/RouteErrorBoundary';
 import OfflineIndicator from './components/common/OfflineIndicator';
 import CookieConsent from './components/common/CookieConsent';
 import VersionCheckToast from './components/common/VersionCheckToast';
+import DiagnosticsPanel from './components/common/DiagnosticsPanel';
 import { getLastVisitedRoute, setLastVisitedRoute, getCookieConsent } from './utils/typedStorage';
+import { installGlobalErrorHandlers } from './utils/logger';
 
 import PageTransition from './components/layout/PageTransition';
 import MobileBottomNav from './components/layout/MobileBottomNav';
@@ -17,6 +19,9 @@ import { Toaster, toast } from 'react-hot-toast';
 import { routeConfig } from './config/routes';
 import { initGA, logPageView } from './utils/analytics';
 import PasswordGate from './components/common/PasswordGate';
+
+// Install global error handlers immediately
+installGlobalErrorHandlers();
 
 // Eager load SplashPage
 import SplashPage from './pages/SplashPage';
@@ -297,6 +302,7 @@ function App() {
               />
               <CookieConsent onAccept={handleCookieAccept} />
               <VersionCheckToast />
+              <DiagnosticsPanel />
             </Suspense>
           </UserProvider>
         </SoundProvider>
