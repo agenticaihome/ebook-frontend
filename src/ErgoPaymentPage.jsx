@@ -154,59 +154,21 @@ const ErgoPaymentPage = () => {
     }, [step, paymentStatus, accessCode, isOffline]);
 
     const fetchLivePrice = async () => {
-        // Try multiple sources in order of reliability
-
-        // 1. Try backend first (most reliable for our use case)
+        // Use backend API - this already works on production
         try {
             const result = await api.getErgoQuote(19.99);
             if (result.success && result.ergAmount > 0 && result.ergPriceUsd > 0) {
                 setErgAmount(result.ergAmount);
                 setErgPrice(result.ergPriceUsd);
-                return;
+                setError(''); // Clear any previous errors
             }
         } catch (err) {
-            console.warn('Backend price fetch failed:', err);
-        }
-
-        // 2. Try CoinGecko API
-        try {
-            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=usd', {
-                headers: { 'Accept': 'application/json' }
-            });
-            if (response.ok) {
-                const data = await response.json();
-                if (data.ergo?.usd) {
-                    const price = data.ergo.usd;
-                    setErgPrice(price);
-                    setErgAmount(19.99 / price);
-                    return;
-                }
+            console.error('Price fetch failed:', err);
+            // Only show error if we don't already have a price
+            if (!ergPrice) {
+                setError('Unable to fetch price. Please refresh.');
             }
-        } catch (err) {
-            console.warn('CoinGecko price fetch failed:', err);
         }
-
-        // 3. Try Spectrum Finance API (Ergo DEX)
-        try {
-            const response = await fetch('https://api.spectrum.fi/v1/price-tracking/markets');
-            if (response.ok) {
-                const data = await response.json();
-                // Find ERG/USD or ERG/SigUSD pair
-                const ergMarket = data.find(m => m.baseSymbol === 'ERG' && (m.quoteSymbol === 'SigUSD' || m.quoteSymbol === 'USD'));
-                if (ergMarket?.lastPrice) {
-                    const price = parseFloat(ergMarket.lastPrice);
-                    setErgPrice(price);
-                    setErgAmount(19.99 / price);
-                    return;
-                }
-            }
-        } catch (err) {
-            console.warn('Spectrum price fetch failed:', err);
-        }
-
-        // 4. If all fails, show an error - don't use hardcoded prices
-        console.error('All price sources failed - cannot fetch ERG price');
-        setError('Unable to fetch current ERG price. Please refresh the page or try again later.');
     };
 
     // Poll for price updates while in Step 1
