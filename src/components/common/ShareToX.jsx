@@ -17,6 +17,7 @@ import { MessageCircle, Send, Check, Share2 } from 'lucide-react';
 const ShareToX = ({ chapterNumber, chapterTitle }) => {
     const [copied, setCopied] = useState(false);
     const [showOptions, setShowOptions] = useState(false);
+    const [showGratitude, setShowGratitude] = useState(false);
 
     // Check if native share is available (mobile browsers)
     const canShare = typeof navigator !== 'undefined' && navigator.share;
@@ -81,6 +82,9 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
                 text: privateText,
                 url: 'https://agenticaihome.com'
             });
+            // Show gratitude after successful share
+            setShowGratitude(true);
+            setTimeout(() => setShowGratitude(false), 3000);
         } catch (err) {
             // User cancelled or error - fall back to showing options
             if (err.name !== 'AbortError') {
@@ -119,6 +123,9 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
         navigator.clipboard.writeText(privateText);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+        // Show gratitude after copy
+        setShowGratitude(true);
+        setTimeout(() => setShowGratitude(false), 3000);
     };
 
     return (
@@ -260,10 +267,19 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
                 </div>
             )}
 
-            {/* Social proof + helpful nudge */}
-            <p className="text-slate-400 text-xs text-center">
-                💡 500+ people already shared this with someone they care about
-            </p>
+            {/* Gratitude toast */}
+            {showGratitude && (
+                <div className="text-green-400 text-sm font-medium text-center py-2 px-4 bg-green-500/10 rounded-lg border border-green-500/20">
+                    ✅ Sent! Thanks for sharing — that means a lot.
+                </div>
+            )}
+
+            {/* Helpful nudge (only show when not showing gratitude) */}
+            {!showGratitude && (
+                <p className="text-slate-500 text-xs text-center">
+                    💡 Know someone this could help?
+                </p>
+            )}
         </div>
     );
 };
