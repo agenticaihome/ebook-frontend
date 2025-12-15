@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { m, AnimatePresence } from 'framer-motion';
 import {
     Wallet, Copy, Check, AlertTriangle, ArrowRight, ArrowLeft,
     CheckCircle2, Clock, Smartphone, Loader2, Monitor, ExternalLink, ShieldCheck,
-    HelpCircle, BookOpen, X
+    HelpCircle, BookOpen, X, Timer
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from './services/api';
@@ -363,441 +364,470 @@ const ErgoPaymentPage = () => {
         );
     }
 
+    // Format timer for display
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
     return (
-        <div className="min-h-screen bg-[#0f0f1a] text-white py-12 px-4 relative overflow-hidden font-sans">
-            {/* Ambient Background */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[250px] sm:w-[450px] md:w-[800px] h-[250px] sm:h-[450px] md:h-[800px] bg-purple-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px] opacity-50" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[200px] sm:w-[350px] md:w-[600px] h-[200px] sm:h-[350px] md:h-[600px] bg-cyan-900/20 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px] opacity-50" />
-            </div>
+        <>
+            <Helmet>
+                <title>Pay with Ergo | Agentic AI Home</title>
+                <meta name="description" content="Pay with Ergo cryptocurrency and save 50%. Secure, private, blockchain-based payment." />
+            </Helmet>
+            <div className="min-h-screen bg-[#0f0f1a] text-white py-12 px-4 relative overflow-hidden font-sans">
+                {/* Ambient Background */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                    <div className="absolute top-[-10%] left-[-10%] w-[250px] sm:w-[450px] md:w-[800px] h-[250px] sm:h-[450px] md:h-[800px] bg-purple-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px] opacity-50" />
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[200px] sm:w-[350px] md:w-[600px] h-[200px] sm:h-[350px] md:h-[600px] bg-cyan-900/20 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px] opacity-50" />
+                </div>
 
-            <div className="max-w-5xl mx-auto relative z-10">
-                {/* Back Button */}
-                <button
-                    onClick={() => navigate('/payment-guide')}
-                    className="mb-8 flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
-                >
-                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                    <span>Back to Payment Options</span>
-                </button>
+                <div className="max-w-5xl mx-auto relative z-10">
+                    {/* Back Button */}
+                    <button
+                        onClick={() => navigate('/payment-guide')}
+                        className="mb-8 flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
+                    >
+                        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                        <span>Back to Payment Options</span>
+                    </button>
 
-                {/* Offline Warning */}
-                {isOffline && (
-                    <div className="fixed top-0 left-0 w-full bg-red-600 text-white p-4 text-center z-50 shadow-lg">
-                        <div className="flex items-center justify-center gap-2">
-                            <AlertTriangle className="w-5 h-5" />
-                            <span className="font-semibold">You're offline. Payment verification requires internet connection.</span>
+                    {/* Offline Warning */}
+                    {isOffline && (
+                        <div className="fixed top-0 left-0 w-full bg-red-600 text-white p-4 text-center z-50 shadow-lg">
+                            <div className="flex items-center justify-center gap-2">
+                                <AlertTriangle className="w-5 h-5" />
+                                <span className="font-semibold">You're offline. Payment verification requires internet connection.</span>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
 
-                {/* Header */}
-                <m.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
-                        <img src="/assets/ergo-logo.png" alt="Ergo" className="w-4 h-4 object-contain invert" />
-                        <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">Step 1 of 2: Secure Setup</span>
-                    </div>
-                    <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 mb-6 tracking-tight">
-                        Unlock <span className="text-cyan-400">Full Access</span>
-                    </h1>
-                    <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                        Pay with crypto & save 50%. <span className="text-white font-semibold">Early supporter price: $19.99</span>
-                    </p>
-                    <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-slate-300">
-                        <span className="flex items-center gap-1.5">🔒 Instant access</span>
-                        <span className="flex items-center gap-1.5">💳 No recurring fees</span>
-                        <span className="flex items-center gap-1.5">✅ 30-day money-back</span>
-                    </div>
-                </m.div>
+                    {/* Header */}
+                    <m.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-16"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
+                            <img src="/assets/ergo-logo.png" alt="Ergo" className="w-4 h-4 object-contain invert" />
+                            <span className="text-xs font-medium text-slate-300 tracking-wider uppercase">
+                                Step {step} of 2: {step === 1 ? 'Secure Setup' : 'Complete Payment'}
+                            </span>
+                        </div>
+                        <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 mb-6 tracking-tight">
+                            Unlock <span className="text-cyan-400">Full Access</span>
+                        </h1>
+                        <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                            Pay with crypto & save 50%. <span className="text-white font-semibold">Early supporter price: $19.99</span>
+                        </p>
+                        <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-sm text-slate-300">
+                            <span className="flex items-center gap-1.5">🔒 Instant access</span>
+                            <span className="flex items-center gap-1.5">💳 No recurring fees</span>
+                            <span className="flex items-center gap-1.5">✅ 30-day money-back</span>
+                        </div>
+                    </m.div>
 
-                <AnimatePresence mode="wait">
-                    {step === 1 && (
-                        <m.div
-                            key="step1"
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                            transition={{ duration: 0.5 }}
-                            className="max-w-2xl mx-auto"
-                        >
-                            <div className="group relative">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
-                                <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center shadow-2xl">
-                                    <div className="w-24 h-24 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-white/10 shadow-inner">
-                                        <Wallet className="w-10 h-10 text-cyan-400" />
-                                    </div>
-
-                                    <div className="mb-10">
-                                        <p className="text-slate-300 text-sm uppercase tracking-widest mb-2">Total Amount</p>
-                                        <div className="flex items-baseline justify-center gap-3">
-                                            <span className="text-3xl md:text-5xl font-bold text-white">$19.99</span>
-                                            <span className="text-xl text-slate-300 line-through">$24.99</span>
-                                        </div>
-                                        <div className="text-xs text-amber-400/80 font-medium mt-1">
-                                            ⏰ Early adopter price — Limited time offer
-                                        </div>
-                                    </div>
-
-                                    {/* Live ERG Conversion */}
-                                    <div className="mt-6 space-y-3">
-                                        <div className="inline-flex items-center gap-2 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
-                                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                                            <span className="text-green-400 text-xs font-bold uppercase tracking-wider">Live Price</span>
+                    <AnimatePresence mode="wait">
+                        {step === 1 && (
+                            <m.div
+                                key="step1"
+                                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                                transition={{ duration: 0.5 }}
+                                className="max-w-2xl mx-auto"
+                            >
+                                <div className="group relative">
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+                                    <div className="relative bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-10 text-center shadow-2xl">
+                                        <div className="w-24 h-24 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-white/10 shadow-inner">
+                                            <Wallet className="w-10 h-10 text-cyan-400" />
                                         </div>
 
-                                        <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-4 max-w-md mx-auto">
-                                            <div className="flex items-center justify-center gap-2 mb-2">
-                                                <img src="/assets/ergo-logo.png" alt="Ergo" className="w-5 h-5 object-contain invert" />
-                                                <p className="text-cyan-400 text-2xl font-bold font-mono">{ergAmount?.toFixed(4)} ERG</p>
+                                        <div className="mb-10">
+                                            <p className="text-slate-300 text-sm uppercase tracking-widest mb-2">Total Amount</p>
+                                            <div className="flex items-baseline justify-center gap-3">
+                                                <span className="text-3xl md:text-5xl font-bold text-white">$19.99</span>
+                                                <span className="text-xl text-slate-300 line-through">$24.99</span>
                                             </div>
-                                            {ergPrice && (
-                                                <p className="text-slate-300 text-xs text-center">
-                                                    $19.99 ÷ ${ergPrice.toFixed(4)}/ERG = {ergAmount?.toFixed(4)} ERG
-                                                </p>
-                                            )}
-                                            <p className="text-cyan-300/80 text-xs text-center mt-1 font-semibold">
-                                                Current Rate: ${ergPrice?.toFixed(4)} per ERG
-                                            </p>
+                                            <div className="text-xs text-amber-400/80 font-medium mt-1">
+                                                ⏰ Early adopter price — Limited time offer
+                                            </div>
+                                        </div>
+
+                                        {/* Live ERG Conversion */}
+                                        <div className="mt-6 space-y-3">
+                                            <div className="inline-flex items-center gap-2 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
+                                                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                                                <span className="text-green-400 text-xs font-bold uppercase tracking-wider">Live Price</span>
+                                            </div>
+
+                                            <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-4 max-w-md mx-auto">
+                                                {ergPrice ? (
+                                                    <>
+                                                        <div className="flex items-center justify-center gap-2 mb-2">
+                                                            <img src="/assets/ergo-logo.png" alt="Ergo" className="w-5 h-5 object-contain invert" />
+                                                            <p className="text-cyan-400 text-2xl font-bold font-mono">{ergAmount?.toFixed(4)} ERG</p>
+                                                        </div>
+                                                        <p className="text-slate-300 text-xs text-center">
+                                                            $19.99 ÷ ${ergPrice.toFixed(4)}/ERG = {ergAmount?.toFixed(4)} ERG
+                                                        </p>
+                                                        <p className="text-cyan-300/80 text-xs text-center mt-1 font-semibold">
+                                                            Current Rate: ${ergPrice?.toFixed(4)} per ERG
+                                                        </p>
+                                                    </>
+                                                ) : (
+                                                    <div className="flex items-center justify-center gap-2 py-2">
+                                                        <Loader2 className="w-5 h-5 text-cyan-400 animate-spin" />
+                                                        <span className="text-slate-400 text-sm">Fetching live price...</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={handleStartPayment}
+                                        className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white p-5 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/20 hover:shadow-cyan-900/40 hover:scale-[1.02] flex items-center justify-center gap-3 group"
+                                    >
+                                        Proceed to Payment
+                                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+
+                                    {/* After Purchase Expectations - Trust Block */}
+                                    <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
+                                        <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-2">
+                                            <span className="text-green-400 font-medium">✓ Instant Access</span>
+                                        </div>
+                                        <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-2">
+                                            <span className="text-cyan-400 font-medium">✓ Lifetime Updates</span>
+                                        </div>
+                                        <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-2">
+                                            <span className="text-purple-400 font-medium">✓ No Subscription</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Payment Security Microcopy */}
+                                    <div className="mt-3 flex items-center justify-center gap-2 text-slate-500 text-xs">
+                                        <ShieldCheck size={14} className="text-green-500" />
+                                        <span>Secured by blockchain • Your wallet, your keys • No card data stored</span>
+                                    </div>
+
+                                    <div className="mt-4 text-center">
+                                        <button
+                                            onClick={() => navigate('/payment-guide')}
+                                            className="text-sm text-slate-300 hover:text-white underline decoration-slate-600 hover:decoration-white transition-all"
+                                        >
+                                            Don't have crypto? Pay with Card ($39.99)
+                                        </button>
+                                    </div>
+
+                                    <div className="mt-8 bg-slate-800/50 rounded-xl p-4 border border-slate-600/50 text-left">
+                                        <div className="flex items-center gap-2 mb-3 text-sm font-bold text-white">
+                                            <Clock size={16} className="text-cyan-400" />
+                                            <span>Time to Complete:</span>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-4 text-xs">
+                                            <div>
+                                                <div className="text-slate-300 mb-1">New to Ergo?</div>
+                                                <div className="text-white font-bold text-sm">~15-20 mins</div>
+                                                <div className="text-slate-300">To setup wallet & buy</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-slate-300 mb-1">Have Ergo?</div>
+                                                <div className="text-white font-bold text-sm">~1-2 mins</div>
+                                                <div className="text-slate-300">To send & confirm</div>
+                                            </div>
+                                        </div>
+                                        <div className="mt-3 pt-2 border-t border-slate-600/50 text-[10px] text-slate-300 italic">
+                                            *Current block time ~2 mins. Soon with sub-blocks, transactions could be confirmed in seconds.
                                         </div>
                                     </div>
                                 </div>
 
-                                <button
-                                    onClick={handleStartPayment}
-                                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white p-5 rounded-2xl font-bold text-lg transition-all shadow-lg shadow-cyan-900/20 hover:shadow-cyan-900/40 hover:scale-[1.02] flex items-center justify-center gap-3 group"
-                                >
-                                    Proceed to Payment
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                </button>
+                            </m.div>
+                        )}
 
-                                {/* After Purchase Expectations - Trust Block */}
-                                <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
-                                    <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-2">
-                                        <span className="text-green-400 font-medium">✓ Instant Access</span>
-                                    </div>
-                                    <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-2">
-                                        <span className="text-cyan-400 font-medium">✓ Lifetime Updates</span>
-                                    </div>
-                                    <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-2">
-                                        <span className="text-purple-400 font-medium">✓ No Subscription</span>
-                                    </div>
+                        {step === 2 && paymentStatus === 'WAITING' && (
+                            <m.div
+                                key="step2"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="space-y-8"
+                            >
+                                {/* Payment Timer */}
+                                <div className="flex items-center justify-center gap-3 bg-slate-800/50 border border-slate-700/50 rounded-xl py-3 px-4">
+                                    <Timer className={`w-5 h-5 ${timeRemaining < 300 ? 'text-red-400' : 'text-cyan-400'}`} />
+                                    <span className="text-slate-300 text-sm">Payment window expires in:</span>
+                                    <span className={`font-mono font-bold text-lg ${timeRemaining < 300 ? 'text-red-400' : 'text-white'}`} aria-live="polite" aria-label={`${Math.floor(timeRemaining / 60)} minutes remaining`}>
+                                        {formatTime(timeRemaining)}
+                                    </span>
                                 </div>
 
-                                {/* Payment Security Microcopy */}
-                                <div className="mt-3 flex items-center justify-center gap-2 text-slate-500 text-xs">
-                                    <ShieldCheck size={14} className="text-green-500" />
-                                    <span>Secured by blockchain • Your wallet, your keys • No card data stored</span>
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    {/* Left Column: QR & Mobile */}
+                                    <div className="space-y-6">
+                                        <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                            <div className="flex items-center gap-4 mb-6">
+                                                <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
+                                                    <Smartphone className="w-6 h-6 text-cyan-400" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-xl font-bold text-white">Scan to Pay</h3>
+                                                    <p className="text-sm text-slate-300">Use Ergo Wallet App</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-white p-6 rounded-2xl shadow-inner mx-auto max-w-[280px]" role="img" aria-label="QR Code for payment">
+                                                <QRCodeSVG value={ergoPayUrl} size={232} className="w-full h-auto" />
+                                            </div>
+
+                                            <div className="mt-8 text-center">
+                                                <a
+                                                    href={ergoPayUrl}
+                                                    className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-medium transition-colors border-b border-green-400/30 hover:border-green-400 pb-0.5"
+                                                >
+                                                    <ExternalLink className="w-4 h-4" />
+                                                    Open directly in Wallet App
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Right Column: Manual & Browser */}
+                                    <div className="space-y-6">
+                                        {/* Browser Wallet Card */}
+                                        <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                            <div className="flex items-center gap-4 mb-6">
+                                                <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
+                                                    <Monitor className="w-6 h-6 text-cyan-400" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-xl font-bold text-white">Browser Wallet</h3>
+                                                    <p className="text-sm text-slate-300">Nautilus / SAFEW</p>
+                                                </div>
+                                            </div>
+
+                                            {!nautilusConnected ? (
+                                                <button
+                                                    onClick={connectNautilus}
+                                                    disabled={isConnectingWallet}
+                                                    className="w-full bg-slate-800 hover:bg-slate-700 text-white p-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-3 border border-white/5"
+                                                >
+                                                    {isConnectingWallet ? <Loader2 className="w-5 h-5 animate-spin" /> : <Wallet className="w-5 h-5" />}
+                                                    {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus'}
+                                                </button>
+                                            ) : (
+                                                <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 flex justify-between items-center">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                                                        <span className="text-sm text-blue-200 font-mono">
+                                                            {userWalletAddress.substring(0, 8)}...{userWalletAddress.substring(userWalletAddress.length - 8)}
+                                                        </span>
+                                                    </div>
+                                                    <button onClick={() => setNautilusConnected(false)} className="text-xs text-slate-300 hover:text-white">Disconnect</button>
+                                                </div>
+                                            )}
+                                            {walletError && <p className="mt-3 text-red-400 text-sm">{walletError}</p>}
+                                        </div>
+
+                                        {/* Manual Transfer Card */}
+                                        <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
+                                            <div className="flex items-center gap-4 mb-6">
+                                                <div className="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center border border-purple-500/20">
+                                                    <Copy className="w-6 h-6 text-purple-400" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-xl font-bold text-white">Manual Transfer</h3>
+                                                    <p className="text-sm text-slate-300">Copy & Send from any wallet</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-5">
+                                                {/* Big Prominent Amount Box */}
+                                                <div className="relative group">
+                                                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
+                                                    <div className="relative bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-2 border-purple-500/50 rounded-2xl p-6">
+                                                        <div className="text-center mb-4">
+                                                            <p className="text-xs text-purple-300 uppercase tracking-widest mb-2 font-bold">⚡ EXACT AMOUNT TO SEND ⚡</p>
+                                                            <p className="text-[10px] text-slate-300">Copy this exact amount - DO NOT round or change it</p>
+                                                        </div>
+
+                                                        <button
+                                                            onClick={() => copyToClipboard(ergAmount?.toFixed(4) || '0', setCopiedAmount)}
+                                                            className="w-full bg-black/40 hover:bg-black/60 border-2 border-purple-400/50 hover:border-purple-400 rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                                        >
+                                                            <div className="flex items-center justify-between mb-2">
+                                                                <span className="text-xs text-purple-300 font-semibold">CLICK TO COPY</span>
+                                                                {copiedAmount ? (
+                                                                    <div className="flex items-center gap-2 text-green-400">
+                                                                        <Check className="w-5 h-5" />
+                                                                        <span className="text-sm font-bold">Copied!</span>
+                                                                    </div>
+                                                                ) : (
+                                                                    <Copy className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
+                                                                )}
+                                                            </div>
+                                                            <div className="text-center">
+                                                                <span className="text-4xl md:text-5xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300">
+                                                                    {ergAmount?.toFixed(4) || '0.0000'}
+                                                                </span>
+                                                                <div className="text-xl text-purple-300/80 font-bold mt-2">ERG</div>
+                                                            </div>
+                                                            <div className="mt-3 text-xs text-slate-300">
+                                                                ≈ $19.99 USD {ergPrice && <span className="text-slate-300">(@ ${ergPrice?.toFixed(2)}/ERG)</span>}
+                                                            </div>
+                                                        </button>
+
+                                                        <div className="mt-4 flex items-start gap-2 text-xs text-amber-300/90 bg-amber-900/20 border border-amber-500/20 rounded-lg p-3">
+                                                            <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                                                            <p><strong>Important:</strong> Send this EXACT amount. Rounding will cause your payment to fail.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Wallet Address */}
+                                                <div className="group">
+                                                    <label className="text-xs text-slate-300 uppercase tracking-wider mb-2 block font-semibold">Send to this address:</label>
+                                                    <button
+                                                        onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
+                                                        className="w-full bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600/50 hover:border-slate-500 rounded-xl p-4 flex items-center justify-between transition-all hover:scale-[1.01]"
+                                                    >
+                                                        <span className="text-sm font-mono text-slate-200 truncate mr-4">{walletAddress}</span>
+                                                        {copiedAddress ? (
+                                                            <div className="flex items-center gap-2 text-green-400 flex-shrink-0">
+                                                                <Check className="w-4 h-4" />
+                                                                <span className="text-xs">Copied</span>
+                                                            </div>
+                                                        ) : (
+                                                            <Copy className="w-4 h-4 text-slate-300 group-hover:text-slate-200 flex-shrink-0" />
+                                                        )}
+                                                    </button>
+                                                </div>
+
+                                                <button
+                                                    onClick={handleManualCheck}
+                                                    className="w-full mt-4 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 border border-cyan-500/30 hover:border-cyan-500/50 rounded-xl p-3 font-bold transition-all flex items-center justify-center gap-2"
+                                                >
+                                                    <CheckCircle2 size={18} />
+                                                    I've Sent the Payment
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <div className="mt-4 text-center">
+                                <div className="mt-8 text-center">
+                                    <p className="text-slate-300 text-sm mb-2">Having trouble?</p>
                                     <button
                                         onClick={() => navigate('/payment-guide')}
-                                        className="text-sm text-slate-300 hover:text-white underline decoration-slate-600 hover:decoration-white transition-all"
+                                        className="text-sm text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center justify-center gap-2 mx-auto"
                                     >
-                                        Don't have crypto? Pay with Card ($39.99)
+                                        Switch to Credit Card Payment ($39.99)
+                                        <ArrowRight className="w-4 h-4" />
                                     </button>
                                 </div>
 
-                                <div className="mt-8 bg-slate-800/50 rounded-xl p-4 border border-slate-600/50 text-left">
-                                    <div className="flex items-center gap-2 mb-3 text-sm font-bold text-white">
-                                        <Clock size={16} className="text-cyan-400" />
-                                        <span>Time to Complete:</span>
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-4 text-xs">
-                                        <div>
-                                            <div className="text-slate-300 mb-1">New to Ergo?</div>
-                                            <div className="text-white font-bold text-sm">~15-20 mins</div>
-                                            <div className="text-slate-300">To setup wallet & buy</div>
-                                        </div>
-                                        <div>
-                                            <div className="text-slate-300 mb-1">Have Ergo?</div>
-                                            <div className="text-white font-bold text-sm">~1-2 mins</div>
-                                            <div className="text-slate-300">To send & confirm</div>
-                                        </div>
-                                    </div>
-                                    <div className="mt-3 pt-2 border-t border-slate-600/50 text-[10px] text-slate-300 italic">
-                                        *Current block time ~2 mins. Soon with sub-blocks, transactions could be confirmed in seconds.
-                                    </div>
-                                </div>
-                            </div>
-
-                        </m.div>
-                    )}
-
-                    {step === 2 && paymentStatus === 'WAITING' && (
-                        <m.div
-                            key="step2"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            className="space-y-8"
-                        >
-
-
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                {/* Left Column: QR & Mobile */}
-                                <div className="space-y-6">
-                                    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-                                        <div className="flex items-center gap-4 mb-6">
-                                            <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
-                                                <Smartphone className="w-6 h-6 text-cyan-400" />
+                                {/* Status Bar */}
+                                <div>
+                                    <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+                                        <div className="flex items-center gap-4" aria-live="polite">
+                                            <div className="relative">
+                                                <div className="w-3 h-3 bg-cyan-500 rounded-full animate-ping absolute inset-0" />
+                                                <div className="w-3 h-3 bg-cyan-500 rounded-full relative" />
                                             </div>
                                             <div>
-                                                <h3 className="text-xl font-bold text-white">Scan to Pay</h3>
-                                                <p className="text-sm text-slate-300">Use Ergo Wallet App</p>
+                                                <p className="text-white font-medium">Awaiting Transaction...</p>
+                                                <p className="text-xs text-slate-300">
+                                                    Scanning blockchain for incoming transaction...
+                                                </p>
                                             </div>
                                         </div>
-
-                                        <div className="bg-white p-6 rounded-2xl shadow-inner mx-auto max-w-[280px]" role="img" aria-label="QR Code for payment">
-                                            <QRCodeSVG value={ergoPayUrl} size={232} className="w-full h-auto" />
-                                        </div>
-
-                                        <div className="mt-8 text-center">
-                                            <a
-                                                href={ergoPayUrl}
-                                                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-medium transition-colors border-b border-green-400/30 hover:border-green-400 pb-0.5"
-                                            >
-                                                <ExternalLink className="w-4 h-4" />
-                                                Open directly in Wallet App
-                                            </a>
+                                        <div className="text-right hidden md:block">
+                                            <div className="inline-block px-2 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300 border border-slate-600">
+                                                Session ID: {accessCode}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Right Column: Manual & Browser */}
-                                <div className="space-y-6">
-                                    {/* Browser Wallet Card */}
-                                    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-                                        <div className="flex items-center gap-4 mb-6">
-                                            <div className="w-12 h-12 bg-cyan-500/10 rounded-2xl flex items-center justify-center border border-cyan-500/20">
-                                                <Monitor className="w-6 h-6 text-cyan-400" />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-bold text-white">Browser Wallet</h3>
-                                                <p className="text-sm text-slate-300">Nautilus / SAFEW</p>
-                                            </div>
-                                        </div>
-
-                                        {!nautilusConnected ? (
-                                            <button
-                                                onClick={connectNautilus}
-                                                disabled={isConnectingWallet}
-                                                className="w-full bg-slate-800 hover:bg-slate-700 text-white p-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-3 border border-white/5"
-                                            >
-                                                {isConnectingWallet ? <Loader2 className="w-5 h-5 animate-spin" /> : <Wallet className="w-5 h-5" />}
-                                                {isConnectingWallet ? 'Connecting...' : 'Connect Nautilus'}
-                                            </button>
-                                        ) : (
-                                            <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-xl p-4 flex justify-between items-center">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                                                    <span className="text-sm text-blue-200 font-mono">
-                                                        {userWalletAddress.substring(0, 8)}...{userWalletAddress.substring(userWalletAddress.length - 8)}
-                                                    </span>
+                                {/* Gentle Helper Card (appears after 20 min) */}
+                                {showHelper && (
+                                    <m.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="mt-4"
+                                    >
+                                        <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6">
+                                            <div className="flex items-start gap-4">
+                                                <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                                                    <HelpCircle className="w-5 h-5 text-blue-400" />
                                                 </div>
-                                                <button onClick={() => setNautilusConnected(false)} className="text-xs text-slate-300 hover:text-white">Disconnect</button>
-                                            </div>
-                                        )}
-                                        {walletError && <p className="mt-3 text-red-400 text-sm">{walletError}</p>}
-                                    </div>
-
-                                    {/* Manual Transfer Card */}
-                                    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-colors">
-                                        <div className="flex items-center gap-4 mb-6">
-                                            <div className="w-12 h-12 bg-purple-500/10 rounded-2xl flex items-center justify-center border border-purple-500/20">
-                                                <Copy className="w-6 h-6 text-purple-400" />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-bold text-white">Manual Transfer</h3>
-                                                <p className="text-sm text-slate-300">Copy & Send from any wallet</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-5">
-                                            {/* Big Prominent Amount Box */}
-                                            <div className="relative group">
-                                                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
-                                                <div className="relative bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-2 border-purple-500/50 rounded-2xl p-6">
-                                                    <div className="text-center mb-4">
-                                                        <p className="text-xs text-purple-300 uppercase tracking-widest mb-2 font-bold">⚡ EXACT AMOUNT TO SEND ⚡</p>
-                                                        <p className="text-[10px] text-slate-300">Copy this exact amount - DO NOT round or change it</p>
-                                                    </div>
-
-                                                    <button
-                                                        onClick={() => copyToClipboard(ergAmount?.toFixed(4) || '0', setCopiedAmount)}
-                                                        className="w-full bg-black/40 hover:bg-black/60 border-2 border-purple-400/50 hover:border-purple-400 rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                                                    >
-                                                        <div className="flex items-center justify-between mb-2">
-                                                            <span className="text-xs text-purple-300 font-semibold">CLICK TO COPY</span>
-                                                            {copiedAmount ? (
-                                                                <div className="flex items-center gap-2 text-green-400">
-                                                                    <Check className="w-5 h-5" />
-                                                                    <span className="text-sm font-bold">Copied!</span>
-                                                                </div>
-                                                            ) : (
-                                                                <Copy className="w-5 h-5 text-purple-400 group-hover:text-purple-300" />
-                                                            )}
-                                                        </div>
-                                                        <div className="text-center">
-                                                            <span className="text-4xl md:text-5xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300">
-                                                                {ergAmount?.toFixed(4) || '0.0000'}
-                                                            </span>
-                                                            <div className="text-xl text-purple-300/80 font-bold mt-2">ERG</div>
-                                                        </div>
-                                                        <div className="mt-3 text-xs text-slate-300">
-                                                            ≈ $19.99 USD {ergPrice && <span className="text-slate-300">(@ ${ergPrice?.toFixed(2)}/ERG)</span>}
-                                                        </div>
-                                                    </button>
-
-                                                    <div className="mt-4 flex items-start gap-2 text-xs text-amber-300/90 bg-amber-900/20 border border-amber-500/20 rounded-lg p-3">
-                                                        <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                                                        <p><strong>Important:</strong> Send this EXACT amount. Rounding will cause your payment to fail.</p>
+                                                <div className="flex-1">
+                                                    <h3 className="text-white font-bold mb-2">Taking longer than expected?</h3>
+                                                    <p className="text-slate-300 text-sm mb-4">
+                                                        No worries! Blockchain transactions can sometimes take a bit longer. Here are some options:
+                                                    </p>
+                                                    <div className="flex flex-col sm:flex-row gap-3">
+                                                        <a
+                                                            href="/why-ergo"
+                                                            className="flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-lg text-blue-300 text-sm font-medium transition-colors"
+                                                        >
+                                                            <BookOpen size={16} />
+                                                            Troubleshooting Guide
+                                                        </a>
+                                                        <a
+                                                            href="/payment-guide"
+                                                            className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-slate-300 text-sm font-medium transition-colors"
+                                                        >
+                                                            Or try Stripe checkout
+                                                        </a>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            {/* Wallet Address */}
-                                            <div className="group">
-                                                <label className="text-xs text-slate-300 uppercase tracking-wider mb-2 block font-semibold">Send to this address:</label>
                                                 <button
-                                                    onClick={() => copyToClipboard(walletAddress, setCopiedAddress)}
-                                                    className="w-full bg-slate-800/50 hover:bg-slate-700/50 border border-slate-600/50 hover:border-slate-500 rounded-xl p-4 flex items-center justify-between transition-all hover:scale-[1.01]"
+                                                    onClick={() => setShowHelper(false)}
+                                                    className="text-slate-300 hover:text-white transition-colors"
                                                 >
-                                                    <span className="text-sm font-mono text-slate-200 truncate mr-4">{walletAddress}</span>
-                                                    {copiedAddress ? (
-                                                        <div className="flex items-center gap-2 text-green-400 flex-shrink-0">
-                                                            <Check className="w-4 h-4" />
-                                                            <span className="text-xs">Copied</span>
-                                                        </div>
-                                                    ) : (
-                                                        <Copy className="w-4 h-4 text-slate-300 group-hover:text-slate-200 flex-shrink-0" />
-                                                    )}
+                                                    <X size={20} />
                                                 </button>
                                             </div>
-
-                                            <button
-                                                onClick={handleManualCheck}
-                                                className="w-full mt-4 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 border border-cyan-500/30 hover:border-cyan-500/50 rounded-xl p-3 font-bold transition-all flex items-center justify-center gap-2"
-                                            >
-                                                <CheckCircle2 size={18} />
-                                                I've Sent the Payment
-                                            </button>
                                         </div>
+                                    </m.div>
+                                )}
+                            </m.div>
+                        )}
+
+                        {paymentStatus === 'CONFIRMED' && (
+                            <m.div
+                                key="confirmed"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="max-w-xl mx-auto text-center"
+                            >
+                                <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-xl border border-green-500/20 rounded-3xl p-12">
+                                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-green-500/30 shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]">
+                                        <CheckCircle2 className="w-12 h-12 text-green-400" />
+                                    </div>
+                                    <h2 className="text-4xl font-bold text-white mb-4">Payment Verified</h2>
+                                    <p className="text-slate-300 text-lg mb-8">
+                                        Your access has been granted. Initializing your workspace...
+                                    </p>
+                                    <div className="flex items-center justify-center gap-3 text-green-400 bg-green-500/10 py-2 px-4 rounded-full inline-flex">
+                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                        <span className="font-medium text-sm">Redirecting</span>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div className="mt-8 text-center">
-                                <p className="text-slate-300 text-sm mb-2">Having trouble?</p>
-                                <button
-                                    onClick={() => navigate('/payment-guide')}
-                                    className="text-sm text-cyan-400 hover:text-cyan-300 font-medium transition-colors flex items-center justify-center gap-2 mx-auto"
-                                >
-                                    Switch to Credit Card Payment ($39.99)
-                                    <ArrowRight className="w-4 h-4" />
-                                </button>
-                            </div>
-
-                            {/* Status Bar */}
-                            <div>
-                                <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
-                                    <div className="flex items-center gap-4" aria-live="polite">
-                                        <div className="relative">
-                                            <div className="w-3 h-3 bg-cyan-500 rounded-full animate-ping absolute inset-0" />
-                                            <div className="w-3 h-3 bg-cyan-500 rounded-full relative" />
-                                        </div>
-                                        <div>
-                                            <p className="text-white font-medium">Awaiting Transaction...</p>
-                                            <p className="text-xs text-slate-300">
-                                                Scanning blockchain for incoming transaction...
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="text-right hidden md:block">
-                                        <div className="inline-block px-2 py-1 bg-slate-800 rounded text-xs font-mono text-slate-300 border border-slate-600">
-                                            Session ID: {accessCode}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Gentle Helper Card (appears after 20 min) */}
-                            {showHelper && (
-                                <m.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="mt-4"
-                                >
-                                    <div className="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6">
-                                        <div className="flex items-start gap-4">
-                                            <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                                <HelpCircle className="w-5 h-5 text-blue-400" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <h3 className="text-white font-bold mb-2">Taking longer than expected?</h3>
-                                                <p className="text-slate-300 text-sm mb-4">
-                                                    No worries! Blockchain transactions can sometimes take a bit longer. Here are some options:
-                                                </p>
-                                                <div className="flex flex-col sm:flex-row gap-3">
-                                                    <a
-                                                        href="/why-ergo"
-                                                        className="flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-lg text-blue-300 text-sm font-medium transition-colors"
-                                                    >
-                                                        <BookOpen size={16} />
-                                                        Troubleshooting Guide
-                                                    </a>
-                                                    <a
-                                                        href="/payment-guide"
-                                                        className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-slate-300 text-sm font-medium transition-colors"
-                                                    >
-                                                        Or try Stripe checkout
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <button
-                                                onClick={() => setShowHelper(false)}
-                                                className="text-slate-300 hover:text-white transition-colors"
-                                            >
-                                                <X size={20} />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </m.div>
-                            )}
-                        </m.div>
-                    )}
-
-                    {paymentStatus === 'CONFIRMED' && (
-                        <m.div
-                            key="confirmed"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="max-w-xl mx-auto text-center"
-                        >
-                            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-xl border border-green-500/20 rounded-3xl p-12">
-                                <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-green-500/30 shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]">
-                                    <CheckCircle2 className="w-12 h-12 text-green-400" />
-                                </div>
-                                <h2 className="text-4xl font-bold text-white mb-4">Payment Verified</h2>
-                                <p className="text-slate-300 text-lg mb-8">
-                                    Your access has been granted. Initializing your workspace...
-                                </p>
-                                <div className="flex items-center justify-center gap-3 text-green-400 bg-green-500/10 py-2 px-4 rounded-full inline-flex">
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    <span className="font-medium text-sm">Redirecting</span>
-                                </div>
-                            </div>
-                        </m.div>
-                    )}
-                </AnimatePresence>
+                            </m.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
-        </div >
+        </>
     );
 };
 
