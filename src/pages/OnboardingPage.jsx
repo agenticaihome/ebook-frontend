@@ -151,21 +151,34 @@ const OnboardingPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="max-w-xl mx-auto text-center"
+                        className="max-w-2xl mx-auto"
                     >
-                        <div className="relative inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-gradient-to-r from-teal-500/15 to-cyan-500/15 border-2 border-teal-500/50 rounded-2xl shadow-lg shadow-teal-500/10">
+                        {/* INSTANT GRATIFICATION: Show preview before action */}
+                        <div className="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/30 rounded-2xl p-5 mb-4">
+                            <p className="text-teal-400 text-xs font-bold mb-2 text-center">👀 PREVIEW: Your First Morning Briefing</p>
+                            <div className="bg-black/30 rounded-xl p-4 text-sm space-y-2">
+                                <p className="text-slate-300">☀️ <span className="text-white font-medium">Weather:</span> 72°F, partly cloudy. No umbrella needed!</p>
+                                <p className="text-slate-300">📅 <span className="text-white font-medium">Today:</span> Your top 3 priorities, ready to go</p>
+                                <p className="text-slate-300">🔔 <span className="text-white font-medium">Reminder:</span> That thing you always forget? Handled.</p>
+                            </div>
+                            <p className="text-slate-400 text-xs text-center mt-3 italic">
+                                ✨ This arrives every morning. Under 2 minutes to set up.
+                            </p>
+                        </div>
+
+                        <div className="relative inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-gradient-to-r from-teal-500/15 to-cyan-500/15 border-2 border-teal-500/50 rounded-2xl shadow-lg shadow-teal-500/10 w-full justify-center">
                             {/* Animated glow effect */}
                             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/20 to-cyan-500/20 blur-xl animate-pulse -z-10" />
 
                             <div className="text-center sm:text-left">
-                                <p className="text-white text-lg font-bold mb-1">🚀 Ready to start now?</p>
-                                <p className="text-slate-400 text-sm">Skip the intro and jump right in</p>
+                                <p className="text-white text-lg font-bold mb-1">🚀 Ready to make this yours?</p>
+                                <p className="text-slate-400 text-sm">5 minutes → calm mornings forever</p>
                             </div>
                             <Link to="/part1/chapter1" className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold text-lg rounded-xl transition-all shadow-lg shadow-teal-500/30 hover:scale-[1.02] whitespace-nowrap">
                                 Begin Chapter 1 <ArrowRight size={20} />
                             </Link>
                         </div>
-                        <p className="text-slate-500 text-xs mt-4">Or keep scrolling to learn more ↓</p>
+                        <p className="text-slate-500 text-xs mt-4 text-center">Or keep scrolling to learn more ↓</p>
                     </motion.div>
                 </section>
 

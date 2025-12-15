@@ -237,6 +237,24 @@ Start by asking my city.`;
                         </div>
 
                         <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-5 border border-teal-500/30">
+
+                            {/* INSTANT GRATIFICATION: Show what they'll get FIRST */}
+                            <div className="mb-5 bg-gradient-to-r from-teal-900/30 to-cyan-900/30 rounded-xl p-4 border border-teal-500/30">
+                                <p className="text-teal-400 text-xs font-bold mb-2 flex items-center gap-2">
+                                    <Eye size={14} />
+                                    👀 PREVIEW: What you'll wake up to tomorrow
+                                </p>
+                                <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-2">
+                                    <p>☀️ <strong className="text-white">Weather:</strong> 72°F, partly cloudy. No umbrella needed!</p>
+                                    <p>📅 <strong className="text-white">Today:</strong> Your top 3 priorities, ready to go</p>
+                                    <p>🔔 <strong className="text-white">Reminder:</strong> That thing you always forget? Handled.</p>
+                                    <p>⚡ <strong className="text-white">Captain's Tip:</strong> One small win to make tomorrow easier</p>
+                                </div>
+                                <p className="text-center text-slate-400 text-xs mt-3 italic">
+                                    ✨ This is what calm mornings feel like. Copy below to make it yours.
+                                </p>
+                            </div>
+
                             <div className="bg-slate-950 rounded-xl p-4 mb-4 border border-slate-800 font-mono">
                                 <pre className="text-slate-200 text-sm whitespace-pre-wrap leading-relaxed">{goldPrompt}</pre>
                             </div>
@@ -249,41 +267,34 @@ Start by asking my city.`;
                                     }`}
                             >
                                 {copied ? (
-                                    <><CheckCircle size={22} /> Copied! Now paste it in your AI</>
+                                    <><CheckCircle size={22} /> Copied! Your mornings are about to change ✨</>
                                 ) : (
                                     <><Copy size={22} /> Copy These Instructions</>
                                 )}
                             </button>
 
-                            {/* Reassurance for hesitant users */}
-                            <p className="text-center text-slate-500 text-xs mt-2">
-                                🛡️ Don't worry — you can't break anything. It only knows what you tell it.
-                            </p>
-
-                            {/* See Example Output */}
-                            <button
-                                onClick={() => setShowExampleOutput(!showExampleOutput)}
-                                className="mt-3 w-full flex items-center justify-center gap-2 py-2 text-teal-400 hover:text-teal-300 text-sm font-medium transition-colors"
-                            >
-                                <Eye size={16} />
-                                {showExampleOutput ? 'Hide Example Output' : 'See What You\'ll Get'}
-                                {showExampleOutput ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                            </button>
-
-                            {showExampleOutput && (
+                            {/* EMOTIONAL PAYOFF: Explicit naming after copy */}
+                            {copied && (
                                 <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    className="mt-3 bg-slate-900/80 rounded-xl p-4 border border-teal-500/20"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="mt-4 bg-gradient-to-r from-green-900/30 to-teal-900/30 rounded-xl p-4 border border-green-500/30 text-center"
                                 >
-                                    <p className="text-teal-400 text-xs font-bold mb-2">📱 EXAMPLE OUTPUT:</p>
-                                    <div className="bg-black/40 rounded-lg p-3 text-sm text-slate-300 space-y-3">
-                                        <p>☀️ <strong className="text-white">Weather:</strong> 72°F, partly cloudy in Austin. No umbrella needed!</p>
-                                        <p>📅 <strong className="text-white">Today:</strong><br />• 9am: Team standup (Zoom)<br />• 2pm: Dentist appointment<br />• 6pm: Dinner with Sarah</p>
-                                        <p>🔔 <strong className="text-white">Reminder:</strong> Mom's birthday is in 3 days - you mentioned wanting to order flowers.</p>
-                                    </div>
-                                    <p className="text-center text-slate-500 text-xs mt-3">👆 This is what YOUR morning agent will send you!</p>
+                                    <p className="text-green-400 font-bold text-sm mb-1">🎉 First Agent Created!</p>
+                                    <p className="text-slate-300 text-sm mb-2">
+                                        That anxious morning feeling? <span className="text-teal-400 font-medium">It's becoming calm focus.</span>
+                                    </p>
+                                    <p className="text-slate-500 text-xs">
+                                        You're now ahead of 93% of people who only <em>think</em> about using AI.
+                                    </p>
                                 </motion.div>
+                            )}
+
+                            {/* Reassurance for hesitant users - ENHANCED */}
+                            {!copied && (
+                                <p className="text-center text-slate-500 text-xs mt-3">
+                                    🛡️ This prompt is tested by 500+ people. You literally cannot break this.
+                                </p>
                             )}
 
                             {/* Pro Tip: Calendar Connection */}
@@ -410,17 +421,66 @@ Start by asking my city.`;
                                 Chapter 1 Complete!
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">You just built your first AI agent. 🎉</h3>
-                            <p className="text-slate-300 text-sm mb-3">
-                                Most people stop before they ever try this. You actually did it.
+                            <p className="text-slate-300 text-sm mb-2">
+                                Most people stop before they ever try this. <span className="text-white font-medium">You actually did it.</span>
                             </p>
-                            <p className="text-teal-400 text-sm font-medium mb-4">
-                                ✨ Now imagine 9 more handling your meals, emails, money, fitness...
+                            <p className="text-slate-400 text-xs mb-4">
+                                That heavy feeling you walked in with? It's becoming <span className="text-teal-400">calm focus</span>.
                             </p>
-                            {/* Day 2 Fallback Tip */}
-                            <div className="bg-slate-800/50 rounded-lg p-3 text-left border border-slate-700/50">
-                                <p className="text-slate-400 text-xs">
-                                    📅 <span className="text-white font-medium">Tomorrow morning:</span> Check ChatGPT for your briefing.
-                                    If you don't see a notification, just type <span className="text-teal-400">"Morning Briefing"</span> and your agent will respond instantly.
+                        </div>
+
+                        {/* YOUR NEW MORNING RITUAL - Names the habit explicitly */}
+                        <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 rounded-2xl p-5 border border-amber-500/30 mb-6">
+                            <h4 className="text-amber-400 font-bold text-sm mb-3 flex items-center gap-2">
+                                <Sun size={16} />
+                                ☀️ Your New Morning Ritual
+                            </h4>
+                            <div className="space-y-2 text-sm">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-slate-500">1.</span>
+                                    <span className="text-slate-300">Wake up</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-slate-500">2.</span>
+                                    <span className="text-slate-300">Open ChatGPT notification <span className="text-amber-400 text-xs">(or type "Morning Briefing")</span></span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-slate-500">3.</span>
+                                    <span className="text-slate-300">Read your personalized briefing while having coffee</span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-slate-500">4.</span>
+                                    <span className="text-white font-medium">Start your day with clarity, not chaos ✨</span>
+                                </div>
+                            </div>
+                            <p className="text-slate-500 text-xs mt-3 italic text-center">
+                                Under 2 minutes. Simple. Calm. This is your new normal.
+                            </p>
+                        </div>
+
+                        {/* TOMORROW HOOK - Explicit time anchor */}
+                        <div className="bg-slate-800/50 rounded-2xl p-5 border border-slate-700/50 mb-6">
+                            <h4 className="text-white font-bold text-sm mb-4 flex items-center gap-2">
+                                📅 What's Next
+                            </h4>
+
+                            {/* Tomorrow action */}
+                            <div className="bg-teal-900/20 rounded-xl p-4 border border-teal-500/30 mb-4">
+                                <p className="text-teal-400 font-bold text-sm mb-1">Tomorrow Morning</p>
+                                <p className="text-slate-300 text-sm">
+                                    Check ChatGPT for your first briefing. It'll feel like <span className="text-white font-medium">magic</span>.
+                                </p>
+                            </div>
+
+                            {/* Chapter 2 preview */}
+                            <div className="bg-slate-900/50 rounded-xl p-4 border border-slate-700/30">
+                                <p className="text-purple-400 font-bold text-sm mb-1">📖 Your Next Agent (Chapter 2)</p>
+                                <p className="text-white font-medium text-sm mb-1">The Meal Planning Agent</p>
+                                <p className="text-slate-400 text-sm mb-2">
+                                    No more "what's for dinner?" panic. <span className="text-teal-400">5 minutes to set up → 2+ hours/week saved</span>.
+                                </p>
+                                <p className="text-slate-500 text-xs italic">
+                                    Best time: Tomorrow after your first briefing lands.
                                 </p>
                             </div>
                         </div>

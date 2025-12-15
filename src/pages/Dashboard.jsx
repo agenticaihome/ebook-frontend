@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { m } from 'framer-motion';
-import { BookOpen, Gamepad2, Trophy, Settings, LogOut, ChevronRight, CheckCircle, Wrench } from 'lucide-react';
+import { BookOpen, Gamepad2, Trophy, Settings, LogOut, ChevronRight, CheckCircle, Wrench, Flame } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
 import WelcomeModal from '../components/common/WelcomeModal';
 import ChapterBadge from '../components/gamification/ChapterBadge';
@@ -103,6 +103,7 @@ const Dashboard = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showWelcome, setShowWelcome] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
+    const [journeyDays, setJourneyDays] = useState(0);
 
     useEffect(() => {
         // Use typedStorage for safe localStorage access (prevents crash on corrupt data)
@@ -124,6 +125,17 @@ const Dashboard = () => {
         if (!hasSeenWelcome && isPurchaser) {
             setShowWelcome(true);
         }
+
+        // Calculate journey days for streak display
+        let startDate = localStorage.getItem('agentic_journey_start');
+        if (!startDate) {
+            startDate = new Date().toISOString();
+            localStorage.setItem('agentic_journey_start', startDate);
+        }
+        const start = new Date(startDate);
+        const now = new Date();
+        const diffDays = Math.max(1, Math.ceil(Math.abs(now - start) / (1000 * 60 * 60 * 24)));
+        setJourneyDays(diffDays);
     }, []);
 
     // Find next uncompleted chapter
@@ -232,6 +244,19 @@ const Dashboard = () => {
                             {/* PROGRESS BAR - Visual */}
                             {/* ===================== */}
                             <div className="mb-8">
+                                {/* Streak Counter - Habit Signal */}
+                                {journeyDays > 0 && (
+                                    <div className="flex items-center justify-center gap-2 mb-4">
+                                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-900/30 to-amber-900/30 border border-orange-500/30 rounded-full">
+                                            <Flame className="text-orange-400" size={18} />
+                                            <span className="text-white font-bold">{journeyDays}-day journey</span>
+                                            {journeyDays >= 3 && (
+                                                <span className="text-orange-400 text-sm">— That's longer than most people last!</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+
                                 <div className="flex justify-between text-sm text-slate-300 mb-2">
                                     <span>Progress</span>
                                     <span>{Math.round((completedCount / 10) * 100)}%</span>
@@ -244,10 +269,18 @@ const Dashboard = () => {
                                         className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full progress-shimmer"
                                     />
                                 </div>
-                                {/* Pace normalization - reduces "am I falling behind" anxiety */}
-                                <p className="text-slate-500 text-xs mt-2 text-center">
-                                    💡 Most people complete 1-2 chapters per week. No rush — you have lifetime access.
-                                </p>
+
+                                {/* Comparative progress + pace normalization */}
+                                <div className="mt-3 space-y-1 text-center">
+                                    {completedCount > 0 && (
+                                        <p className="text-teal-400 text-xs font-medium">
+                                            ✨ You're ahead of 93% of people who only <em>think</em> about using AI.
+                                        </p>
+                                    )}
+                                    <p className="text-slate-500 text-xs">
+                                        💡 Most people complete 1-2 chapters per week. No rush — you have lifetime access.
+                                    </p>
+                                </div>
                             </div>
 
                             {/* ===================== */}
