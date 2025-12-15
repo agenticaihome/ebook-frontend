@@ -33,6 +33,7 @@ const ErgoPaymentPage = () => {
     const [isOffline, setIsOffline] = useState(!navigator.onLine);
     const [timeRemaining, setTimeRemaining] = useState(30 * 60); // 30 minutes in seconds
     const [isProcessing, setIsProcessing] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
 
     // Initialize payment on mount  
     useEffect(() => {
@@ -261,6 +262,7 @@ const ErgoPaymentPage = () => {
 
     const confirmPayment = (txId) => {
         setPaymentStatus('CONFIRMED');
+        setShowConfetti(true); // Trigger celebration!
 
         // Update localStorage
         const payment = JSON.parse(localStorage.getItem('ergo_payment') || '{}');
@@ -807,19 +809,100 @@ const ErgoPaymentPage = () => {
                                 key="confirmed"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="max-w-xl mx-auto text-center"
+                                className="max-w-xl mx-auto text-center relative"
                             >
-                                <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-xl border border-green-500/20 rounded-3xl p-12">
-                                    <div className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 ring-1 ring-green-500/30 shadow-[0_0_40px_-10px_rgba(34,197,94,0.4)]">
-                                        <CheckCircle2 className="w-12 h-12 text-green-400" />
+                                {/* Confetti Celebration */}
+                                {showConfetti && (
+                                    <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+                                        {[...Array(50)].map((_, i) => (
+                                            <m.div
+                                                key={i}
+                                                initial={{
+                                                    y: -20,
+                                                    x: Math.random() * window.innerWidth,
+                                                    rotate: 0,
+                                                    opacity: 1
+                                                }}
+                                                animate={{
+                                                    y: window.innerHeight + 100,
+                                                    rotate: Math.random() * 720 - 360,
+                                                    opacity: 0
+                                                }}
+                                                transition={{
+                                                    duration: 3 + Math.random() * 2,
+                                                    delay: Math.random() * 0.5,
+                                                    ease: "easeOut"
+                                                }}
+                                                className="absolute w-3 h-3 rounded-sm"
+                                                style={{
+                                                    backgroundColor: ['#10b981', '#06b6d4', '#8b5cf6', '#f59e0b', '#ec4899'][i % 5],
+                                                    left: Math.random() * 100 + '%'
+                                                }}
+                                            />
+                                        ))}
                                     </div>
-                                    <h2 className="text-4xl font-bold text-white mb-4">Payment Verified</h2>
-                                    <p className="text-slate-300 text-lg mb-8">
-                                        Your access has been granted. Initializing your workspace...
-                                    </p>
-                                    <div className="flex items-center justify-center gap-3 text-green-400 bg-green-500/10 py-2 px-4 rounded-full inline-flex">
-                                        <Loader2 className="w-4 h-4 animate-spin" />
-                                        <span className="font-medium text-sm">Redirecting</span>
+                                )}
+
+                                <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-xl border-2 border-green-500/40 rounded-3xl p-12 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
+                                    {/* Animated Success Icon */}
+                                    <m.div
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 15, delay: 0.2 }}
+                                        className="w-28 h-28 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_50px_-10px_rgba(34,197,94,0.6)]"
+                                    >
+                                        <m.div
+                                            initial={{ scale: 0 }}
+                                            animate={{ scale: 1 }}
+                                            transition={{ delay: 0.5, type: "spring", stiffness: 400 }}
+                                        >
+                                            <CheckCircle2 className="w-14 h-14 text-white" />
+                                        </m.div>
+                                    </m.div>
+
+                                    <m.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 }}
+                                    >
+                                        <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+                                            🎉 You're In!
+                                        </h2>
+                                        <p className="text-emerald-300 text-xl font-bold mb-2">
+                                            Payment Verified on Blockchain
+                                        </p>
+                                        <p className="text-slate-300 text-lg mb-8">
+                                            Welcome to the Agent Army, Commander.
+                                        </p>
+                                    </m.div>
+
+                                    {/* What happens next */}
+                                    <m.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.6 }}
+                                        className="bg-slate-900/50 rounded-2xl p-6 mb-6 border border-slate-700/50"
+                                    >
+                                        <p className="text-white font-bold text-sm mb-3">✨ What happens next:</p>
+                                        <div className="space-y-2 text-left">
+                                            <div className="flex items-center gap-3 text-slate-300 text-sm">
+                                                <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                                                <span>Create your account (30 seconds)</span>
+                                            </div>
+                                            <div className="flex items-center gap-3 text-slate-300 text-sm">
+                                                <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                                                <span>Unlock all 10 chapters instantly</span>
+                                            </div>
+                                            <div className="flex items-center gap-3 text-slate-300 text-sm">
+                                                <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                                                <span>Build your first agent in 5 minutes</span>
+                                            </div>
+                                        </div>
+                                    </m.div>
+
+                                    <div className="flex items-center justify-center gap-3 text-green-400 bg-green-500/20 py-3 px-6 rounded-full">
+                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                        <span className="font-bold">Taking you to account setup...</span>
                                     </div>
                                 </div>
                             </m.div>
