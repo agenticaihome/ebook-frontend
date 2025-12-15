@@ -58,10 +58,10 @@ const SuccessPage = () => {
                         }]
                     });
 
-                    // Wait 3 seconds (slightly longer to enjoy confetti) then redirect
+                    // Wait 2 seconds (enjoy confetti) then redirect
                     setTimeout(() => {
                         navigate(`/create-account?payment_id=${result.paymentId}&email=${result.email}&type=stripe`);
-                    }, 3000);
+                    }, 2000);
                 } else {
                     setStatus('error');
                     setMessage('Payment verification failed: ' + (result.status || 'Unknown status'));

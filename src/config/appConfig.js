@@ -18,6 +18,8 @@ export const FEATURES = {
     VERSION_CHECK: true,
     ORIENTATION_PAUSE: true,
     ANALYTICS: true,
+    SALES_ENABLED: true,      // Enable payment buttons and purchase flow
+    PASSWORD_GATE: true,      // Enable password protection on chapters
 };
 
 // API Configuration

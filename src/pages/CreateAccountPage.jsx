@@ -189,9 +189,12 @@ const CreateAccountPage = () => {
                                     />
                                 </div>
                                 {email.includes('@temp.ergo') && (
-                                    <p className="text-xs text-yellow-400 mt-2">
-                                        * This is a temporary ID. You can update your email in the Dashboard after logging in.
-                                    </p>
+                                    <div className="mt-2 p-3 bg-amber-900/30 border border-amber-500/40 rounded-lg">
+                                        <p className="text-amber-300 text-sm font-medium mb-1">⚠️ Enter your real email above!</p>
+                                        <p className="text-amber-200/70 text-xs">
+                                            Replace the temporary ID with your actual email address. This is how you'll log in and receive important updates.
+                                        </p>
+                                    </div>
                                 )}
                             </div>
 
@@ -214,9 +217,14 @@ const CreateAccountPage = () => {
 
                             {/* Error Message */}
                             {error && (
-                                <div className="flex items-center gap-2 text-red-400 text-sm bg-red-900/20 border border-red-500/30 rounded-lg p-3">
-                                    <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                                    {error}
+                                <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-3">
+                                    <div className="flex items-center gap-2 text-red-400 text-sm">
+                                        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                                        {error}
+                                    </div>
+                                    <p className="text-red-300/70 text-xs mt-2">
+                                        Need help? <a href="/faq" className="text-red-300 underline hover:text-white">Check our FAQ</a> or email support@agenticaihome.com
+                                    </p>
                                 </div>
                             )}
 
