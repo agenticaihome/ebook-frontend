@@ -8,7 +8,7 @@ import {
     Sparkles, Star, Calendar, UtensilsCrossed
 } from 'lucide-react';
 import WebbookLayout from '../components/layout/WebbookLayout';
-import { logViewItem, logBeginCheckout } from '../utils/analytics';
+import { logViewItem, logBeginCheckout, logSubscription } from '../utils/analytics';
 
 // ============================================
 // OPTIMIZED PRE-PURCHASE BRIDGE
@@ -66,7 +66,11 @@ const PrePurchaseBridge = () => {
                 credentials: 'include',
                 body: JSON.stringify({ email, source: 'unlock_page' }),
             });
-            if (response.ok) setSubscribed(true);
+            if (response.ok) {
+                setSubscribed(true);
+                // Track email signup
+                logSubscription('unlock_page');
+            }
         } catch (err) {
             console.error(err);
         } finally {

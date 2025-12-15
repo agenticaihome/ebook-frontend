@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MessageCircle, Send, Check, Share2 } from 'lucide-react';
+import { logShare } from '../../utils/analytics';
 
 /**
  * ShareToX - Multi-platform share component optimized for organic sharing
@@ -82,6 +83,8 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
                 text: privateText,
                 url: 'https://agenticaihome.com'
             });
+            // Track share event
+            logShare('native', `chapter_${chapterNumber}`);
             // Show gratitude after successful share
             setShowGratitude(true);
             setTimeout(() => setShowGratitude(false), 3000);
@@ -95,11 +98,13 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
 
     // WhatsApp share
     const handleWhatsApp = () => {
+        logShare('whatsapp', `chapter_${chapterNumber}`);
         window.open(`https://wa.me/?text=${encodedPrivate}`, '_blank');
     };
 
     // SMS share
     const handleSMS = () => {
+        logShare('sms', `chapter_${chapterNumber}`);
         // iOS uses &body=, Android uses ?body=
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const smsUrl = isIOS
@@ -110,17 +115,20 @@ const ShareToX = ({ chapterNumber, chapterTitle }) => {
 
     // X (Twitter) share - uses public text
     const handleX = () => {
+        logShare('x_twitter', `chapter_${chapterNumber}`);
         window.open(`https://x.com/intent/tweet?text=${encodedPublic}`, '_blank', 'width=550,height=420');
     };
 
     // Facebook share
     const handleFacebook = () => {
+        logShare('facebook', `chapter_${chapterNumber}`);
         window.open(`https://www.facebook.com/sharer/sharer.php?quote=${encodedPublic}`, '_blank', 'width=550,height=420');
     };
 
     // Copy for DM
     const handleCopy = () => {
         navigator.clipboard.writeText(privateText);
+        logShare('copy_dm', `chapter_${chapterNumber}`);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
         // Show gratitude after copy
