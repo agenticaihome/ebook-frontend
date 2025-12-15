@@ -5,6 +5,8 @@ import confetti from 'canvas-confetti';
 import { api } from '../../services/api';
 import { useGameAudio } from '../../hooks/useGameAudio';
 import { getGameBest, setGameBest } from '../../utils/typedStorage';
+import { useActiveTabLock } from '../../hooks/useCrossTabSync';
+import CrossTabGameLock from '../common/CrossTabGameLock';
 
 // ===================
 // CSS CAPTAIN EFFICIENCY COMPONENT
@@ -139,6 +141,9 @@ const CaptainEfficiency = ({ size = 60, isDefending = false, isFiring = false })
 const FocusFury = ({ onBack }) => {
     // Audio hook
     const { playSound, SoundToggle } = useGameAudio();
+
+    // Cross-tab lock - prevent multiple tabs playing simultaneously
+    const isTabLocked = useActiveTabLock('focusfury');
 
     // ===================
     // GAME STATE

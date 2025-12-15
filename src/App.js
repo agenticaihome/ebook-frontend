@@ -8,6 +8,7 @@ import ErrorBoundary from './components/common/ErrorBoundary';
 import RouteErrorBoundary from './components/common/RouteErrorBoundary';
 import OfflineIndicator from './components/common/OfflineIndicator';
 import CookieConsent from './components/common/CookieConsent';
+import VersionCheckToast from './components/common/VersionCheckToast';
 import { getLastVisitedRoute, setLastVisitedRoute, getCookieConsent } from './utils/typedStorage';
 
 import PageTransition from './components/layout/PageTransition';
@@ -295,6 +296,7 @@ function App() {
                 }}
               />
               <CookieConsent onAccept={handleCookieAccept} />
+              <VersionCheckToast />
             </Suspense>
           </UserProvider>
         </SoundProvider>
