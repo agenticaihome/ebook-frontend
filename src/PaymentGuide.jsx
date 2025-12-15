@@ -52,6 +52,12 @@ export default function PaymentGuide() {
     const [showCrypto, setShowCrypto] = useState(false);
 
     const handleStripePayment = async () => {
+        // Check for internet connection first
+        if (!navigator.onLine) {
+            setStripeError("You appear to be offline. Please check your internet connection and try again.");
+            return;
+        }
+
         if (!email || !email.includes('@')) {
             setStripeError("Please enter a valid email address.");
             return;
@@ -69,7 +75,12 @@ export default function PaymentGuide() {
             }
         } catch (err) {
             console.error(err);
-            setStripeError(err.message || "Connection error. Please try again.");
+            // More helpful error message for network issues
+            if (!navigator.onLine) {
+                setStripeError("Connection lost. Please check your internet and try again.");
+            } else {
+                setStripeError(err.message || "Connection error. Please try again.");
+            }
         } finally {
             setIsStripeLoading(false);
         }
