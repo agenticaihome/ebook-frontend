@@ -204,12 +204,9 @@ const ErgoPaymentPage = () => {
             console.warn('Spectrum price fetch failed:', err);
         }
 
-        // 4. Fallback to a reasonable estimate if all else fails
-        // Use last known good price or a conservative estimate
-        const fallbackPrice = 0.80; // Conservative fallback
-        console.warn('Using fallback ERG price:', fallbackPrice);
-        setErgPrice(fallbackPrice);
-        setErgAmount(19.99 / fallbackPrice);
+        // 4. If all fails, show an error - don't use hardcoded prices
+        console.error('All price sources failed - cannot fetch ERG price');
+        setError('Unable to fetch current ERG price. Please refresh the page or try again later.');
     };
 
     // Poll for price updates while in Step 1
@@ -383,9 +380,9 @@ const ErgoPaymentPage = () => {
     if (isLoading) {
         return (
             <div className="min-h-screen bg-[#0f0f1a] flex items-center justify-center relative overflow-hidden">
-                {/* Background Blobs */}
-                <div className="absolute top-[-20%] left-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-cyan-500/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-purple-500/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px]" />
+                {/* Background Blobs - pointer-events-none */}
+                <div className="absolute top-[-20%] left-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-cyan-500/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[150px] sm:w-[250px] md:w-[500px] h-[150px] sm:h-[250px] md:h-[500px] bg-purple-500/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px] pointer-events-none" />
 
                 <div className="flex flex-col items-center gap-6 relative z-10">
                     <div className="relative">
@@ -412,10 +409,10 @@ const ErgoPaymentPage = () => {
                 <meta name="description" content="Pay with Ergo cryptocurrency and save 50%. Secure, private, blockchain-based payment." />
             </Helmet>
             <div className="min-h-screen bg-[#0f0f1a] text-white py-12 px-4 relative overflow-hidden font-sans">
-                {/* Ambient Background */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-10%] left-[-10%] w-[250px] sm:w-[450px] md:w-[800px] h-[250px] sm:h-[450px] md:h-[800px] bg-purple-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px] opacity-50" />
-                    <div className="absolute bottom-[-10%] right-[-10%] w-[200px] sm:w-[350px] md:w-[600px] h-[200px] sm:h-[350px] md:h-[600px] bg-cyan-900/20 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px] opacity-50" />
+                {/* Ambient Background - MUST have pointer-events-none on wrapper AND children */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+                    <div className="absolute top-[-10%] left-[-10%] w-[250px] sm:w-[450px] md:w-[800px] h-[250px] sm:h-[450px] md:h-[800px] bg-purple-900/20 rounded-full blur-[60px] sm:blur-[80px] md:blur-[120px] opacity-50 pointer-events-none" />
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[200px] sm:w-[350px] md:w-[600px] h-[200px] sm:h-[350px] md:h-[600px] bg-cyan-900/20 rounded-full blur-[50px] sm:blur-[70px] md:blur-[100px] opacity-50 pointer-events-none" />
                 </div>
 
                 <div className="max-w-5xl mx-auto relative z-10">
@@ -500,7 +497,25 @@ const ErgoPaymentPage = () => {
                                             </div>
 
                                             <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-4 max-w-md mx-auto">
-                                                {ergPrice ? (
+                                                {error && !ergPrice ? (
+                                                    /* Error state - price fetch failed */
+                                                    <div className="text-center">
+                                                        <div className="flex items-center justify-center gap-2 mb-3">
+                                                            <AlertTriangle className="w-5 h-5 text-amber-400" />
+                                                            <span className="text-amber-400 text-sm font-medium">Unable to fetch live price</span>
+                                                        </div>
+                                                        <p className="text-slate-400 text-xs mb-3">{error}</p>
+                                                        <button
+                                                            onClick={() => {
+                                                                setError('');
+                                                                fetchLivePrice();
+                                                            }}
+                                                            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-sm font-medium rounded-lg transition-colors"
+                                                        >
+                                                            Try Again
+                                                        </button>
+                                                    </div>
+                                                ) : ergPrice ? (
                                                     <>
                                                         <div className="flex items-center justify-center gap-2 mb-2">
                                                             <img src="/assets/ergo-logo.png" alt="Ergo" className="w-5 h-5 object-contain invert" />
