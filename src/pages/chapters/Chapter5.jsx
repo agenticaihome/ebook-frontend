@@ -373,7 +373,8 @@ Start by helping me fill in the setup details above.`;
                                 <CheckCircle size={16} />
                                 Chapter 5 Complete!
                             </div>
-                            <h3 className="text-white font-bold text-xl mb-2">Ready for your Fitness Agent?</h3>
+                            <h3 className="text-white font-bold text-xl mb-2">Ready for your Wellness Agent?</h3>
+                            <p className="text-slate-300 text-sm mb-4">Fitness + health management in one powerful agent.</p>
                             <p className="text-slate-300 text-sm mb-4">Workouts that actually fit your life.</p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                                 <Link to="/part2/chapter2" className="text-slate-500 hover:text-white text-sm font-medium transition-colors">
