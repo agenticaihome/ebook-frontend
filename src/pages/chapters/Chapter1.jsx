@@ -410,12 +410,19 @@ Start by asking my city.`;
                                 Chapter 1 Complete!
                             </div>
                             <h3 className="text-white font-bold text-xl mb-2">You just built your first AI agent. 🎉</h3>
-                            <p className="text-slate-300 text-sm mb-4">
+                            <p className="text-slate-300 text-sm mb-3">
                                 Most people stop before they ever try this. You actually did it.
                             </p>
-                            <p className="text-teal-400 text-sm font-medium">
+                            <p className="text-teal-400 text-sm font-medium mb-4">
                                 ✨ Now imagine 9 more handling your meals, emails, money, fitness...
                             </p>
+                            {/* Day 2 Fallback Tip */}
+                            <div className="bg-slate-800/50 rounded-lg p-3 text-left border border-slate-700/50">
+                                <p className="text-slate-400 text-xs">
+                                    📅 <span className="text-white font-medium">Tomorrow morning:</span> Check ChatGPT for your briefing.
+                                    If you don't see a notification, just type <span className="text-teal-400">"Morning Briefing"</span> and your agent will respond instantly.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Share to X */}

@@ -244,6 +244,10 @@ const Dashboard = () => {
                                         className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full progress-shimmer"
                                     />
                                 </div>
+                                {/* Pace normalization - reduces "am I falling behind" anxiety */}
+                                <p className="text-slate-500 text-xs mt-2 text-center">
+                                    💡 Most people complete 1-2 chapters per week. No rush — you have lifetime access.
+                                </p>
                             </div>
 
                             {/* ===================== */}

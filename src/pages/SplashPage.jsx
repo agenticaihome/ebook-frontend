@@ -107,7 +107,7 @@ const SplashPage = () => {
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Your Time Back.</span>
                         </h1>
                         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                            Reclaim <span className="text-white font-bold">5+ hours/week</span> with your own AI agents.
+                            Set up once. AI handles it daily. Reclaim <span className="text-white font-bold">5+ hours/week</span>.
                         </p>
                     </motion.div>
 
