@@ -239,10 +239,21 @@ export default function PaymentGuide() {
 
                                 {/* CTA Button */}
                                 <button
-                                    disabled
-                                    className="w-full bg-slate-700/50 text-slate-400 py-4 rounded-xl font-bold text-lg cursor-not-allowed flex items-center justify-center gap-2"
+                                    onClick={handleStripePayment}
+                                    disabled={isStripeLoading}
+                                    className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-teal-500/20 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    Sales Paused
+                                    {isStripeLoading ? (
+                                        <>
+                                            <Loader2 size={20} className="animate-spin" />
+                                            Processing...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Zap size={20} />
+                                            Pay Now — $39.99
+                                        </>
+                                    )}
                                 </button>
 
                                 {/* Security Note */}
@@ -314,12 +325,12 @@ export default function PaymentGuide() {
                                         >
                                             Complete Ergo Guide (15-20 min)
                                         </Link>
-                                        <button
-                                            disabled
-                                            className="w-full bg-slate-700/50 text-slate-400 py-3 rounded-xl font-medium cursor-not-allowed"
+                                        <Link
+                                            to="/pay-ergo"
+                                            className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white py-3 rounded-xl font-medium text-center transition-all block"
                                         >
-                                            Sales Paused
-                                        </button>
+                                            Already have ERG? Pay Now →
+                                        </Link>
                                     </div>
 
                                     <p className="text-xs text-slate-500 text-center mt-3">

@@ -137,12 +137,36 @@ const SuccessPage = () => {
                                 <h2 className="text-2xl font-bold text-white mb-2">Something went wrong</h2>
                                 <p className="text-red-300">{message}</p>
                             </div>
-                            <button
-                                onClick={() => navigate('/')}
-                                className="mt-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-colors w-full"
-                            >
-                                Return Home
-                            </button>
+
+                            {/* Recovery Options */}
+                            <div className="w-full space-y-3">
+                                <button
+                                    onClick={() => window.location.reload()}
+                                    className="w-full bg-teal-600 hover:bg-teal-500 text-white px-6 py-3 rounded-xl font-bold transition-colors flex items-center justify-center gap-2"
+                                >
+                                    <Loader2 size={18} />
+                                    Try Again
+                                </button>
+                                <button
+                                    onClick={() => navigate('/')}
+                                    className="w-full bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-bold transition-colors"
+                                >
+                                    Return Home
+                                </button>
+                            </div>
+
+                            {/* Support Info */}
+                            <div className="text-center p-4 bg-slate-900/50 rounded-xl border border-slate-700 w-full">
+                                <p className="text-slate-300 text-sm mb-2">
+                                    If your card was charged, don't worry — your purchase is safe.
+                                </p>
+                                <p className="text-slate-400 text-xs">
+                                    Check your email for a receipt, or contact{' '}
+                                    <a href="mailto:support@agenticaihome.com" className="text-teal-400 hover:underline">
+                                        support@agenticaihome.com
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     )}
                 </m.div>
