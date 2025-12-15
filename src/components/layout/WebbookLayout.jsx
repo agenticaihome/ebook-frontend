@@ -63,7 +63,7 @@ const WebbookLayout = ({ children }) => {
         '/part1/chapter3': { id: 'ch3_complete', title: '🎂 Memory Keeper', description: 'You\'ll never forget an important date again. Relationships saved!', image: '/og/badges/memory-keeper.png' },
         '/part2/chapter4': { id: 'ch4_complete', title: '📧 Inbox Zero Hero', description: 'Email no longer controls you. You control it.', image: '/og/badges/inbox-zero-hero.png' },
         '/part2/chapter5': { id: 'ch5_complete', title: '💰 Money Clarity', description: 'Your finances have a guardian now. Peace of mind unlocked.', image: '/og/badges/money-clarity.png' },
-        '/part2/chapter6': { id: 'ch6_complete', title: '💪 Fitness Automator', description: 'Your workouts plan themselves. Consistency made easy.', image: '/og/badges/fitness-automator.png' },
+        '/part2/chapter6': { id: 'ch6_complete', title: '💪 Wellness Warrior', description: 'Your health and fitness have a guardian now. Mind and body aligned.', image: '/og/badges/wellness-warrior.png' },
         '/part3/chapter7': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.', image: '/og/badges/priority-pro.png' },
         '/part3/chapter8': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.', image: '/og/badges/agent-builder.png' },
         '/part3/chapter9': { id: 'ch9_complete', title: '🌱 Growth Mindset', description: 'Your system learns with you. You\'ve built a living, evolving ecosystem.', image: '/og/badges/growth-mindset.png' },
@@ -132,7 +132,7 @@ const WebbookLayout = ({ children }) => {
             subChapters: [
                 { title: '📧 Inbox Zero', id: 'chapter4', path: '/part2/chapter4' },
                 { title: '💰 Money Clarity', id: 'chapter5', path: '/part2/chapter5' },
-                { title: '💪 Workout Planner', id: 'chapter6', path: '/part2/chapter6' }
+                { title: '💪 Wellness Agent', id: 'chapter6', path: '/part2/chapter6' }
             ]
         },
         {

@@ -29,7 +29,7 @@ const CHAPTER_TITLES = {
     3: 'Important Dates Agent',
     4: 'Email Triage Agent',
     5: 'Money Check-In Agent',
-    6: 'Fitness Agent',
+    6: 'Wellness Agent',
     7: 'Work Task Agent',
     8: 'Custom Agent Builder',
     9: 'Learning & Growth',

@@ -35,11 +35,11 @@ const CAPTAIN_TIPS = [
         chapter: 5,
         cta: { text: "Build it in Chapter 5", link: "/unlock" }
     },
-    // Chapter 6: Fitness
+    // Chapter 6: Wellness
     {
-        tip: "No more gym guilt. The Fitness Agent creates workouts that fit YOUR schedule.",
+        tip: "No more gym guilt. The Wellness Agent creates plans that fit YOUR schedule and energy.",
         chapter: 6,
-        cta: { text: "Get fit in Chapter 6", link: "/unlock" }
+        cta: { text: "Get healthy in Chapter 6", link: "/unlock" }
     },
     // General productivity insights
     {

@@ -483,7 +483,7 @@ export const faqData = [
                     <li><strong>Important Dates Agent</strong> — Never forget a birthday</li>
                     <li><strong>Email Triage Agent</strong> — Sort inbox and draft responses</li>
                     <li><strong>Money Check-In Agent</strong> — Weekly financial clarity</li>
-                    <li><strong>Fitness Agent</strong> — Custom workout plans</li>
+                    <li><strong>Wellness Agent</strong> — Custom workout and wellness plans</li>
                     <li><strong>Work Task Agent</strong> — Prioritize your to-do list</li>
                     <li><strong>Custom Agent Builder</strong> — Learn to build ANY agent</li>
                     <li><strong>Reflection Agent</strong> — Your system learns and grows with you</li>

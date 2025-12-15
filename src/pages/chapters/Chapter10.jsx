@@ -31,7 +31,7 @@ MY AGENT SQUAD:
 - Important Dates Agent — ongoing
 - Email Triage Agent — mornings
 - Money Check-In Agent — Sundays  
-- Fitness Agent — weekly
+- Wellness Agent — weekly
 - Work Task Agent — workday mornings
 - Reflection Agent — Sunday evenings
 - [ADD ANY CUSTOM AGENTS]
@@ -134,7 +134,7 @@ Start by confirming my agent list and schedule preferences.`;
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Dates Agent</span></div>
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Email Agent</span></div>
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Money Agent</span></div>
-                                <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Fitness Agent</span></div>
+                                <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Wellness Agent</span></div>
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Work Agent</span></div>
                                 <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl"><CheckCircle className="text-green-400" size={16} /><span className="text-slate-300 text-sm">Custom Agents</span></div>
                                 <div className="col-span-2 flex items-center gap-2 p-3 bg-emerald-900/30 rounded-xl border border-emerald-500/30"><CheckCircle className="text-emerald-400" size={16} /><span className="text-emerald-300 text-sm font-medium">Reflection Agent (your system's feedback loop)</span></div>
@@ -260,7 +260,7 @@ Start by confirming my agent list and schedule preferences.`;
                     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.63 }} className="mb-6">
                         <div className="bg-gradient-to-r from-amber-900/30 via-orange-900/20 to-purple-900/30 rounded-xl p-4 border border-amber-500/30">
                             <p className="text-white font-bold text-sm mb-1">🎯 Your Agent Squad: 10 <span className="text-amber-400 font-bold">COMPLETE!</span></p>
-                            <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money + Fitness + Work + Custom + Reflection + Command Center</p>
+                            <p className="text-slate-300 text-sm">Morning + Meal + Dates + Email + Money + Wellness + Work + Custom + Reflection + Command Center</p>
                             <p className="text-slate-500 text-xs mt-2 italic">You're not finished. You're set.</p>
                         </div>
                     </motion.section>
