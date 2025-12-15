@@ -38,6 +38,7 @@ const getHeaders = () => {
 
 /**
  * Handle API responses with automatic redirect on 401
+ * Includes safe JSON parsing and basic shape validation
  */
 const handleResponse = async (response) => {
   if (!response.ok) {
@@ -48,7 +49,20 @@ const handleResponse = async (response) => {
     const error = await response.json().catch(() => ({ message: 'An error occurred' }));
     throw new Error(error.message || error.error || 'Request failed');
   }
-  return response.json();
+
+  // Safe JSON parsing with validation
+  try {
+    const data = await response.json();
+    // Validate response is an object or array (not null/undefined)
+    if (data === null || data === undefined) {
+      console.warn('[API] Response was null or undefined');
+      return {};
+    }
+    return data;
+  } catch (e) {
+    console.warn('[API] Failed to parse JSON response:', e);
+    return {};
+  }
 };
 
 export const api = {

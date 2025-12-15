@@ -552,6 +552,9 @@ const FocusFury = ({ onBack }) => {
     // START GAME
     // ===================
     const startGame = useCallback(() => {
+        // Double-fire guard - prevent starting game while already playing
+        if (gameStateRef.current === 'playing' || gameStateRef.current === 'paused') return;
+
         gameStateRef.current = 'playing';
         setGameState('playing');
 

@@ -65,13 +65,33 @@ export const useVisibilityPause = ({
             }
         };
 
+        // Handle orientation change on mobile - pause to prevent layout issues
+        const handleOrientationChange = () => {
+            if (isPlaying && !isPausedRef.current) {
+                isPausedRef.current = true;
+                pauseTimeRef.current = Date.now();
+                wasPlayingRef.current = true;
+                onPause?.('orientation');
+            }
+        };
+
         window.addEventListener('blur', handleBlur);
         window.addEventListener('focus', handleFocus);
+
+        // Listen for orientation changes
+        if (window.screen?.orientation) {
+            window.screen.orientation.addEventListener('change', handleOrientationChange);
+        }
+        window.addEventListener('orientationchange', handleOrientationChange);
 
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
             window.removeEventListener('blur', handleBlur);
             window.removeEventListener('focus', handleFocus);
+            if (window.screen?.orientation) {
+                window.screen.orientation.removeEventListener('change', handleOrientationChange);
+            }
+            window.removeEventListener('orientationchange', handleOrientationChange);
         };
     }, [handleVisibilityChange, isPlaying, onPause, onResume]);
 

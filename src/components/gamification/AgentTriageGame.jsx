@@ -455,6 +455,9 @@ const AgentTriageGame = ({ onBack }) => {
 
     // Start Game
     const startGame = useCallback(() => {
+        // Double-fire guard - prevent starting game while already playing
+        if (gameStateRef.current === 'playing' || gameStateRef.current === 'paused') return;
+
         // Clear any existing intervals
         if (gameLoopRef.current) clearInterval(gameLoopRef.current);
         if (timerRef.current) clearInterval(timerRef.current);

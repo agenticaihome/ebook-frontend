@@ -427,6 +427,9 @@ const CalendarDefenseGame = ({ onBack }) => {
 
     // Start game
     const startGame = () => {
+        // Double-fire guard - prevent starting game while already playing
+        if (gameStateRef.current === 'playing' || gameStateRef.current === 'paused') return;
+
         setGameState('playing');
         setScore(0);
         setDeepWorkHours(6);
