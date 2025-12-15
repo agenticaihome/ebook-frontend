@@ -154,30 +154,62 @@ const ErgoPaymentPage = () => {
     }, [step, paymentStatus, accessCode, isOffline]);
 
     const fetchLivePrice = async () => {
+        // Try multiple sources in order of reliability
+
+        // 1. Try backend first (most reliable for our use case)
         try {
-            // Try CoinGecko first for real-time data
-            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=usd');
-            const data = await response.json();
-            if (data.ergo?.usd) {
-                const price = data.ergo.usd;
-                setErgPrice(price);
-                setErgAmount(19.99 / price);
+            const result = await api.getErgoQuote(19.99);
+            if (result.success && result.ergAmount > 0 && result.ergPriceUsd > 0) {
+                setErgAmount(result.ergAmount);
+                setErgPrice(result.ergPriceUsd);
                 return;
             }
         } catch (err) {
-            // Silent fail
+            console.warn('Backend price fetch failed:', err);
         }
 
-        // Fallback to backend if CoinGecko fails
+        // 2. Try CoinGecko API
         try {
-            const result = await api.getErgoQuote(19.99);
-            if (result.success) {
-                setErgAmount(result.ergAmount);
-                setErgPrice(result.ergPriceUsd);
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=usd', {
+                headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+                const data = await response.json();
+                if (data.ergo?.usd) {
+                    const price = data.ergo.usd;
+                    setErgPrice(price);
+                    setErgAmount(19.99 / price);
+                    return;
+                }
             }
         } catch (err) {
-            // Silent fail
+            console.warn('CoinGecko price fetch failed:', err);
         }
+
+        // 3. Try Spectrum Finance API (Ergo DEX)
+        try {
+            const response = await fetch('https://api.spectrum.fi/v1/price-tracking/markets');
+            if (response.ok) {
+                const data = await response.json();
+                // Find ERG/USD or ERG/SigUSD pair
+                const ergMarket = data.find(m => m.baseSymbol === 'ERG' && (m.quoteSymbol === 'SigUSD' || m.quoteSymbol === 'USD'));
+                if (ergMarket?.lastPrice) {
+                    const price = parseFloat(ergMarket.lastPrice);
+                    setErgPrice(price);
+                    setErgAmount(19.99 / price);
+                    return;
+                }
+            }
+        } catch (err) {
+            console.warn('Spectrum price fetch failed:', err);
+        }
+
+        // 4. Fallback to a reasonable estimate if all else fails
+        // Use last known good price or a conservative estimate
+        const fallbackPrice = 0.80; // Conservative fallback
+        console.warn('Using fallback ERG price:', fallbackPrice);
+        setErgPrice(fallbackPrice);
+        setErgAmount(19.99 / fallbackPrice);
     };
 
     // Poll for price updates while in Step 1
