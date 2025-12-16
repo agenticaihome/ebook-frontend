@@ -102,7 +102,42 @@
     }
     </script>
 
-    <!-- Google Analytics is loaded dynamically in App.js via react-ga4 after cookie consent -->
+    <!-- Google Analytics 4 with Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QDYN0E69MT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Default consent state - denied until user accepts
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'wait_for_update': 500
+        });
+        
+        gtag('js', new Date());
+        gtag('config', 'G-QDYN0E69MT', {
+            send_page_view: false // We'll send page views from React for SPA routing
+        });
+        
+        // Function to grant consent - called from React after cookie acceptance
+        window.grantAnalyticsConsent = function() {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+            // Send initial page view after consent granted
+            gtag('event', 'page_view', {
+                page_title: document.title,
+                page_location: window.location.href,
+                page_path: window.location.pathname
+            });
+        };
+        
+        // Check if user already consented (from previous visit)
+        if (localStorage.getItem('cookie_consent') === 'accepted') {
+            window.grantAnalyticsConsent();
+        }
+    </script>
 </head>
 
 <body>

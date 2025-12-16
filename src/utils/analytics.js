@@ -1,18 +1,23 @@
-import ReactGA from 'react-ga4';
+/**
+ * Google Analytics 4 Tracking Module
+ * Uses native window.gtag loaded from index.html for reliability
+ */
+
+// Helper to safely call gtag
+const safeGtag = (...args) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag(...args);
+    }
+};
 
 /**
  * Initialize Google Analytics 4
- * @param {string} measurementId - The GA4 Measurement ID (G-XXXXXXXXXX)
+ * Note: gtag is now loaded directly in index.html, this just grants consent
  */
-export const initGA = (measurementId) => {
-    const id = measurementId || 'G-QDYN0E69MT';
-    if (id) {
-        ReactGA.initialize(id, {
-            gaOptions: {
-                // Enable debug mode in development
-                debug_mode: process.env.NODE_ENV === 'development'
-            }
-        });
+export const initGA = () => {
+    // Grant consent via the function defined in index.html
+    if (typeof window !== 'undefined' && window.grantAnalyticsConsent) {
+        window.grantAnalyticsConsent();
     }
 };
 
@@ -30,10 +35,16 @@ export const logPageView = (path) => {
         utm_term: sessionStorage.getItem('initial_utm_term') || undefined
     };
 
-    ReactGA.send({
-        hitType: "pageview",
-        page: path,
-        ...utmParams
+    // Filter out undefined values
+    const cleanParams = Object.fromEntries(
+        Object.entries(utmParams).filter(([_, v]) => v !== undefined)
+    );
+
+    safeGtag('event', 'page_view', {
+        page_path: path,
+        page_location: window.location.href,
+        page_title: document.title,
+        ...cleanParams
     });
 };
 
@@ -43,7 +54,7 @@ export const logPageView = (path) => {
  * @param {object} params - Event parameters
  */
 export const logEvent = (eventName, params = {}) => {
-    ReactGA.event(eventName, params);
+    safeGtag('event', eventName, params);
 };
 
 /**
@@ -51,7 +62,7 @@ export const logEvent = (eventName, params = {}) => {
  * @param {object} transactionDetails - { transaction_id, value, currency, items, payment_method }
  */
 export const logPurchase = (transactionDetails) => {
-    ReactGA.gtag("event", "purchase", transactionDetails);
+    safeGtag('event', 'purchase', transactionDetails);
 };
 
 /**
@@ -59,7 +70,7 @@ export const logPurchase = (transactionDetails) => {
  * @param {object} itemDetails - { currency, value, items }
  */
 export const logViewItem = (itemDetails) => {
-    ReactGA.gtag("event", "view_item", itemDetails);
+    safeGtag('event', 'view_item', itemDetails);
 };
 
 /**
@@ -67,7 +78,7 @@ export const logViewItem = (itemDetails) => {
  * @param {object} itemDetails - { currency, value, items }
  */
 export const logAddToCart = (itemDetails) => {
-    ReactGA.gtag("event", "add_to_cart", itemDetails);
+    safeGtag('event', 'add_to_cart', itemDetails);
 };
 
 /**
@@ -75,7 +86,7 @@ export const logAddToCart = (itemDetails) => {
  * @param {object} itemDetails - { currency, value, items }
  */
 export const logBeginCheckout = (itemDetails) => {
-    ReactGA.gtag("event", "begin_checkout", itemDetails);
+    safeGtag('event', 'begin_checkout', itemDetails);
 };
 
 // ==================== CONVERSION EVENTS ====================
@@ -85,13 +96,13 @@ export const logBeginCheckout = (itemDetails) => {
  * @param {string} source - Where they signed up (splash_page, chapter3, etc.)
  */
 export const logSubscription = (source) => {
-    ReactGA.gtag("event", "sign_up", {
+    safeGtag('event', 'sign_up', {
         method: 'email',
         source: source
     });
 
     // Also track as generate_lead for conversion value
-    ReactGA.gtag("event", "generate_lead", {
+    safeGtag('event', 'generate_lead', {
         currency: 'USD',
         value: 2.00, // Estimated value of a lead
         source: source
@@ -105,7 +116,7 @@ export const logSubscription = (source) => {
  * @param {number} chapterNumber - Chapter 1-10
  */
 export const logChapterStart = (chapterNumber) => {
-    ReactGA.gtag("event", "tutorial_begin", {
+    safeGtag('event', 'tutorial_begin', {
         chapter_number: chapterNumber,
         chapter_name: `Chapter ${chapterNumber}`
     });
@@ -116,18 +127,18 @@ export const logChapterStart = (chapterNumber) => {
  * @param {number} chapterNumber - Chapter 1-10
  */
 export const logChapterComplete = (chapterNumber) => {
-    ReactGA.gtag("event", "tutorial_complete", {
+    safeGtag('event', 'tutorial_complete', {
         chapter_number: chapterNumber,
         chapter_name: `Chapter ${chapterNumber}`
     });
 
     // Track milestone achievements
     if (chapterNumber === 1) {
-        ReactGA.gtag("event", "unlock_achievement", { achievement_id: 'first_chapter' });
+        safeGtag('event', 'unlock_achievement', { achievement_id: 'first_chapter' });
     } else if (chapterNumber === 3) {
-        ReactGA.gtag("event", "unlock_achievement", { achievement_id: 'free_chapters_complete' });
+        safeGtag('event', 'unlock_achievement', { achievement_id: 'free_chapters_complete' });
     } else if (chapterNumber === 10) {
-        ReactGA.gtag("event", "unlock_achievement", { achievement_id: 'all_chapters_complete' });
+        safeGtag('event', 'unlock_achievement', { achievement_id: 'all_chapters_complete' });
     }
 };
 
@@ -137,7 +148,7 @@ export const logChapterComplete = (chapterNumber) => {
  * @param {string} location - Page location
  */
 export const logButtonClick = (buttonName, location) => {
-    ReactGA.gtag("event", "select_content", {
+    safeGtag('event', 'select_content', {
         content_type: 'button',
         content_id: buttonName,
         location: location
@@ -150,7 +161,7 @@ export const logButtonClick = (buttonName, location) => {
  * @param {number} score - Final score
  */
 export const logGamePlayed = (gameId, score) => {
-    ReactGA.gtag("event", "post_score", {
+    safeGtag('event', 'post_score', {
         score: score,
         level: gameId,
         character: 'captain_efficiency'
@@ -163,7 +174,7 @@ export const logGamePlayed = (gameId, score) => {
  * @param {string} contentType - What was shared
  */
 export const logShare = (method, contentType) => {
-    ReactGA.gtag("event", "share", {
+    safeGtag('event', 'share', {
         method: method,
         content_type: contentType
     });

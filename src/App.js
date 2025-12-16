@@ -261,26 +261,17 @@ function App() {
   const [analyticsEnabled, setAnalyticsEnabled] = React.useState(false);
 
   useEffect(() => {
-    const measurementId = process.env.REACT_APP_GA_MEASUREMENT_ID || 'G-QDYN0E69MT';
-
     // Check if user has already consented (use typedStorage for safe access)
     const consent = getCookieConsent();
     if (consent === 'accepted') {
-      initGA(measurementId);
+      initGA();
       setAnalyticsEnabled(true);
-      if (window.grantAnalyticsConsent) {
-        window.grantAnalyticsConsent();
-      }
     }
   }, []);
 
   const handleCookieAccept = () => {
-    const measurementId = process.env.REACT_APP_GA_MEASUREMENT_ID || 'G-QDYN0E69MT';
-    initGA(measurementId);
+    initGA();
     setAnalyticsEnabled(true);
-    if (window.grantAnalyticsConsent) {
-      window.grantAnalyticsConsent();
-    }
   };
 
   return (
