@@ -237,6 +237,9 @@ const AnimatedRoutes = () => {
             {/* Graduation Page - Commander Certificate */}
             <Route path="/graduation" element={<PageTransition><routeConfig.graduation.Component /></PageTransition>} />
 
+            {/* Status Page - System Status & Troubleshooting */}
+            <Route path="/status" element={<PageTransition><routeConfig.status.Component /></PageTransition>} />
+
             {/* 404 Route */}
             <Route path="*" element={
               <RouteErrorBoundary>

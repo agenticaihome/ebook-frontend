@@ -39,6 +39,7 @@ export const routeConfig = {
     games: createRoute(() => import('../pages/GamesPage')),
     hallOfFame: createRoute(() => import('../pages/HallOfFame')),
     graduation: createRoute(() => import('../pages/GraduationPage')),
+    status: createRoute(() => import('../pages/StatusPage')),
 
     notFound: createRoute(() => import('../pages/NotFoundPage')),
     // Tools

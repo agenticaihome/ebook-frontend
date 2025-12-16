@@ -233,7 +233,7 @@ const LoginPage = () => {
                         {/* Support */}
                         <div className="text-center pt-2 border-t border-slate-700/30">
                             <p className="text-slate-500 text-xs pt-3">
-                                Need help? <Link to="/faq" className="text-teal-400 hover:text-teal-300 hover:underline">Contact Support</Link>
+                                Need help? <Link to="/faq" className="text-teal-400 hover:text-teal-300 hover:underline">FAQ</Link> | <Link to="/status" className="text-teal-400 hover:text-teal-300 hover:underline">System Status</Link>
                             </p>
                         </div>
                     </div>
