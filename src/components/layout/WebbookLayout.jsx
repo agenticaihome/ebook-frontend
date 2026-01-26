@@ -67,7 +67,8 @@ const WebbookLayout = ({ children }) => {
         '/part3/chapter7': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.', image: '/og/badges/priority-pro.png' },
         '/part3/chapter8': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.', image: '/og/badges/agent-builder.png' },
         '/part3/chapter9': { id: 'ch9_complete', title: '🌱 Growth Mindset', description: 'Your system learns with you. You\'ve built a living, evolving ecosystem.', image: '/og/badges/growth-mindset.png' },
-        '/part4/chapter10': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!', image: '/og/badges/automation-commander.png' }
+        '/part4/chapter10': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!', image: '/og/badges/automation-commander.png' },
+        '/bonus/chapter11': { id: 'ch11_complete', title: '⚡ Always-On Master', description: 'You\'ve graduated to 24/7 AI agents. Welcome to the future!', image: '/og/badges/always-on-master.png' }
     };
 
     useEffect(() => {
@@ -103,10 +104,11 @@ const WebbookLayout = ({ children }) => {
             id: 'free',
             title: '🆓 Start Here',
             subtitle: 'Your first AI agent',
-            path: '/part1/chapter1',
+            path: '/intro',
             icon: <BookOpen size={18} />,
             isFree: true,
             subChapters: [
+                { title: '🚀 AI in 2026', id: 'intro', path: '/intro' },
                 { title: '☀️ Morning Briefing', id: 'chapter1', path: '/part1/chapter1' }
             ]
         },
@@ -156,7 +158,8 @@ const WebbookLayout = ({ children }) => {
             icon: <Zap size={18} />,
             locked: true,
             subChapters: [
-                { title: '👑 Your Agent Army', id: 'chapter10', path: '/part4/chapter10' }
+                { title: '👑 Your Agent Army', id: 'chapter10', path: '/part4/chapter10' },
+                { title: '⚡ Going Always-On', id: 'chapter11', path: '/bonus/chapter11' }
             ]
         },
     ];
