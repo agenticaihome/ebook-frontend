@@ -40,13 +40,13 @@ const CHAPTER_ROUTES = {
     1: '/part1/chapter1',
     2: '/part1/chapter2',
     3: '/part1/chapter3',
-    4: '/part2/chapter4',
-    5: '/part2/chapter5',
-    6: '/part2/chapter6',
-    7: '/part3/chapter7',
-    8: '/part3/chapter8',
-    9: '/part3/chapter9',
-    10: '/part4/chapter10'
+    4: '/part2/chapter1',
+    5: '/part2/chapter2',
+    6: '/part2/chapter3',
+    7: '/part3/chapter1',
+    8: '/part3/chapter2',
+    9: '/part3/chapter3',
+    10: '/part4/chapter1'
 };
 
 // ============================================

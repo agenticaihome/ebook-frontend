@@ -61,13 +61,13 @@ const WebbookLayout = ({ children }) => {
         '/part1/chapter1': { id: 'ch1_complete', title: '☀️ Morning Commander', description: 'You built your first AI agent! Your mornings will never be the same.', image: '/og/badges/morning-commander.png' },
         '/part1/chapter2': { id: 'ch2_complete', title: '🍽️ Meal Master', description: 'No more "what\'s for dinner?" stress. Your family eats better now.', image: '/og/badges/meal-master.png' },
         '/part1/chapter3': { id: 'ch3_complete', title: '🎂 Memory Keeper', description: 'You\'ll never forget an important date again. Relationships saved!', image: '/og/badges/memory-keeper.png' },
-        '/part2/chapter4': { id: 'ch4_complete', title: '📧 Inbox Zero Hero', description: 'Email no longer controls you. You control it.', image: '/og/badges/inbox-zero-hero.png' },
-        '/part2/chapter5': { id: 'ch5_complete', title: '💰 Money Clarity', description: 'Your finances have a guardian now. Peace of mind unlocked.', image: '/og/badges/money-clarity.png' },
-        '/part2/chapter6': { id: 'ch6_complete', title: '💪 Wellness Warrior', description: 'Your health and fitness have a guardian now. Mind and body aligned.', image: '/og/badges/wellness-warrior.png' },
-        '/part3/chapter7': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.', image: '/og/badges/priority-pro.png' },
-        '/part3/chapter8': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.', image: '/og/badges/agent-builder.png' },
-        '/part3/chapter9': { id: 'ch9_complete', title: '🌱 Growth Mindset', description: 'Your system learns with you. You\'ve built a living, evolving ecosystem.', image: '/og/badges/growth-mindset.png' },
-        '/part4/chapter10': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!', image: '/og/badges/automation-commander.png' },
+        '/part2/chapter1': { id: 'ch4_complete', title: '📧 Inbox Zero Hero', description: 'Email no longer controls you. You control it.', image: '/og/badges/inbox-zero-hero.png' },
+        '/part2/chapter2': { id: 'ch5_complete', title: '💰 Money Clarity', description: 'Your finances have a guardian now. Peace of mind unlocked.', image: '/og/badges/money-clarity.png' },
+        '/part2/chapter3': { id: 'ch6_complete', title: '💪 Wellness Warrior', description: 'Your health and fitness have a guardian now. Mind and body aligned.', image: '/og/badges/wellness-warrior.png' },
+        '/part3/chapter1': { id: 'ch7_complete', title: '📋 Priority Pro', description: 'You now know exactly what to do first. Decision fatigue: eliminated.', image: '/og/badges/priority-pro.png' },
+        '/part3/chapter2': { id: 'ch8_complete', title: '🔧 Agent Builder', description: 'You can build ANY agent now. The skill is yours forever.', image: '/og/badges/agent-builder.png' },
+        '/part3/chapter3': { id: 'ch9_complete', title: '🌱 Growth Mindset', description: 'Your system learns with you. You\'ve built a living, evolving ecosystem.', image: '/og/badges/growth-mindset.png' },
+        '/part4/chapter1': { id: 'ch10_complete', title: '👑 Automation Commander', description: 'You\'ve completed the entire journey. Your Agent Army is deployed!', image: '/og/badges/automation-commander.png' },
         '/bonus/chapter11': { id: 'ch11_complete', title: '⚡ Always-On Master', description: 'You\'ve graduated to 24/7 AI agents. Welcome to the future!', image: '/og/badges/always-on-master.png' }
     };
 
@@ -128,37 +128,37 @@ const WebbookLayout = ({ children }) => {
             id: 'part2',
             title: 'Part 2: Daily Systems',
             subtitle: 'Email, money, health',
-            path: '/part2/chapter4',
+            path: '/part2/chapter1',
             icon: <Zap size={18} />,
             locked: true,
             subChapters: [
-                { title: '📧 Inbox Zero', id: 'chapter4', path: '/part2/chapter4' },
-                { title: '💰 Money Clarity', id: 'chapter5', path: '/part2/chapter5' },
-                { title: '💪 Wellness Agent', id: 'chapter6', path: '/part2/chapter6' }
+                { title: '📧 Inbox Zero', id: 'chapter4', path: '/part2/chapter1' },
+                { title: '💰 Money Clarity', id: 'chapter5', path: '/part2/chapter2' },
+                { title: '💪 Wellness Agent', id: 'chapter6', path: '/part2/chapter3' }
             ]
         },
         {
             id: 'part3',
             title: 'Part 3: Deep Automation',
             subtitle: 'Build anything you need',
-            path: '/part3/chapter7',
+            path: '/part3/chapter1',
             icon: <Zap size={18} />,
             locked: true,
             subChapters: [
-                { title: '📋 Task Prioritizer', id: 'chapter7', path: '/part3/chapter7' },
-                { title: '🔧 Build-Your-Own', id: 'chapter8', path: '/part3/chapter8' },
-                { title: '🌱 Learning & Growth', id: 'chapter9', path: '/part3/chapter9' }
+                { title: '📋 Task Prioritizer', id: 'chapter7', path: '/part3/chapter1' },
+                { title: '🔧 Build-Your-Own', id: 'chapter8', path: '/part3/chapter2' },
+                { title: '🌱 Learning & Growth', id: 'chapter9', path: '/part3/chapter3' }
             ]
         },
         {
             id: 'part4',
             title: 'Part 4: Mastery',
             subtitle: 'Your complete system',
-            path: '/part4/chapter10',
+            path: '/part4/chapter1',
             icon: <Zap size={18} />,
             locked: true,
             subChapters: [
-                { title: '👑 Your Agent Army', id: 'chapter10', path: '/part4/chapter10' },
+                { title: '👑 Your Agent Army', id: 'chapter10', path: '/part4/chapter1' },
                 { title: '⚡ Going Always-On', id: 'chapter11', path: '/bonus/chapter11' }
             ]
         },

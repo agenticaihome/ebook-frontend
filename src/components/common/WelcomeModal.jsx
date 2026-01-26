@@ -100,7 +100,7 @@ const WelcomeModal = ({ isOpen, onClose }) => {
                                         </div>
                                     </div>
                                     <Link
-                                        to="/part2/chapter4"
+                                        to="/part2/chapter1"
                                         onClick={handleDismiss}
                                         className="group flex items-center justify-center gap-2 w-full min-h-[48px] bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-400 hover:to-purple-400 active:from-blue-600 active:to-purple-600 text-white py-3 rounded-xl font-bold text-sm transition-all active:scale-[0.98] touch-manipulation"
                                     >
