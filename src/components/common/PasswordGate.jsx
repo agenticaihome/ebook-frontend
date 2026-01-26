@@ -98,11 +98,9 @@ const PasswordGate = ({ children, partNumber }) => {
 
                     {/* Price */}
                     <div className="text-center mb-6">
-                        <div className="flex items-center justify-center gap-2 mb-1">
-                            <span className="text-slate-500 line-through text-lg">$99</span>
-                            <span className="text-3xl font-black text-white">$19.99</span>
-                        </div>
-                        <p className="text-amber-400 text-sm font-medium">Launch pricing — 80% off</p>
+                        <div className="text-teal-400 font-bold text-xs tracking-wider uppercase mb-2">🚀 Launch Pricing</div>
+                        <span className="text-3xl font-black text-white">$39.99</span>
+                        <p className="text-slate-400 text-sm mt-1">or $19.99 with crypto</p>
                     </div>
 
                     {/* CTA Buttons */}
@@ -112,7 +110,7 @@ const PasswordGate = ({ children, partNumber }) => {
                             className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white py-3 rounded-xl font-bold transition-all shadow-lg shadow-amber-900/30 hover:shadow-amber-900/50 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
                         >
                             <CreditCard size={18} />
-                            Get Instant Access
+                            Get Instant Access — $39.99
                             <ArrowRight size={18} />
                         </Link>
                         
@@ -121,7 +119,7 @@ const PasswordGate = ({ children, partNumber }) => {
                             className="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white py-3 rounded-xl font-medium transition-all border border-slate-600/50 hover:border-slate-500 flex items-center justify-center gap-2 text-sm"
                         >
                             <Coins size={16} />
-                            Pay with Crypto (Save 10%)
+                            Pay with Crypto — Save 50%
                         </Link>
                     </div>
 
