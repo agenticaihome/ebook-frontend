@@ -9,6 +9,9 @@ const createRoute = (importFn) => {
 };
 
 export const routeConfig = {
+    // Intro (No password gate)
+    intro: createRoute(() => import('../pages/chapters/Intro')),
+
     // Part 1 Chapters (No password gate)
     part1chapter1: createRoute(() => import('../pages/chapters/Chapter1')),
     part1chapter2: createRoute(() => import('../pages/chapters/Chapter2')),
@@ -26,6 +29,9 @@ export const routeConfig = {
 
     // Part 4 Chapter (Password protected)
     part4chapter1: createRoute(() => import('../pages/chapters/Chapter10')),
+
+    // Bonus Chapter (Password protected)
+    chapter11: createRoute(() => import('../pages/chapters/Chapter11')),
 
     success: createRoute(() => import('../pages/SuccessPage')),
     createAccount: createRoute(() => import('../pages/CreateAccountPage')),

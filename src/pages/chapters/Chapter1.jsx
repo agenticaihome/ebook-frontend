@@ -9,6 +9,7 @@ import { useImmersion } from '../../hooks/useImmersion';
 const CaptainHero = React.lazy(() => import('../../components/CaptainHero'));
 const ProgressTracker = React.lazy(() => import('../../components/common/ProgressTracker'));
 const ShareToX = React.lazy(() => import('../../components/common/ShareToX'));
+const MakeItStick = React.lazy(() => import('../../components/common/MakeItStick'));
 
 // ============================================
 // CHAPTER 1 - SIMPLE, EFFECTIVE, HELPFUL
@@ -389,6 +390,27 @@ Start by asking my city.`;
                             </motion.div>
                         )}
                     </motion.section>
+
+                    {/* MAKE IT STICK */}
+                    <Suspense fallback={<div className="h-20" />}>
+                        <MakeItStick 
+                            tips={[
+                                {
+                                    title: "Enable Memory",
+                                    description: "After your first conversation, ChatGPT will remember your city, wake time, and preferences. Go to Settings → Personalization → Memory."
+                                },
+                                {
+                                    title: "Set up a Task",
+                                    description: "Say: \"Send me this morning briefing every day at 7am\" — ChatGPT will create a scheduled task and notify you automatically. (Requires Plus or Pro)"
+                                },
+                                {
+                                    title: "Claude Project alternative",
+                                    description: "Create a Project called \"Morning Briefing\" with your preferences in the custom instructions. Open it each morning for a consistent experience."
+                                }
+                            ]}
+                            note="The goal: You shouldn't paste this prompt every day. Set it once, let it run."
+                        />
+                    </Suspense>
 
                     {/* NEXT - Jobs/Bezos Exclusivity Framing */}
                     <motion.section

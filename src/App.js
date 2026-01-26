@@ -121,6 +121,10 @@ const AnimatedRoutes = () => {
             <Route path="/privacy" element={<PageTransition><PrivacyPolicyPage /></PageTransition>} />
             <Route path="/terms" element={<PageTransition><TermsOfServicePage /></PageTransition>} />
 
+            {/* Intro - Before Chapter 1 */}
+            <Route path="/intro" element={<PageTransition><routeConfig.intro.Component /></PageTransition>} />
+            <Route path="/before-you-begin" element={<Navigate to="/intro" replace />} />
+
             {/* Part Redirects - redirect to first chapter of each part */}
             <Route path="/part1" element={<Navigate to="/part1/chapter1" replace />} />
             <Route path="/part2" element={<Navigate to="/part2/chapter1" replace />} />
@@ -144,6 +148,11 @@ const AnimatedRoutes = () => {
 
             {/* Part 4 Chapters */}
             <Route path="/part4/chapter1" element={<PasswordGate partNumber={4}><PageTransition><routeConfig.part4chapter1.Component /></PageTransition></PasswordGate>} />
+
+            {/* Bonus Chapter - Going Always-On */}
+            <Route path="/bonus/chapter11" element={<PasswordGate partNumber={4}><PageTransition><routeConfig.chapter11.Component /></PageTransition></PasswordGate>} />
+            <Route path="/chapter11" element={<Navigate to="/bonus/chapter11" replace />} />
+            <Route path="/always-on" element={<Navigate to="/bonus/chapter11" replace />} />
 
             <Route path="/success" element={<PageTransition><routeConfig.success.Component /></PageTransition>} />
             <Route path="/create-account" element={<PageTransition><routeConfig.createAccount.Component /></PageTransition>} />
