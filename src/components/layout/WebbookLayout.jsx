@@ -98,8 +98,53 @@ const WebbookLayout = ({ children }) => {
         }
     }, [location]);
 
-    // OPTIMIZED CHAPTER STRUCTURE - Benefit-focused with emojis
-    const chapters = [
+    // Detect which course we're in
+    const isBusinessCourse = location.pathname.includes('/courses/business');
+    
+    // Business course chapter structure
+    const businessChapters = [
+        {
+            id: 'business-intro',
+            title: '🚀 Start Here',
+            subtitle: 'Your AI hiring strategy',
+            path: '/courses/business',
+            icon: <BookOpen size={18} />,
+            isFree: true,
+            subChapters: [
+                { title: '📋 Course Overview', id: 'intro', path: '/courses/business' },
+                { title: '👔 Week 1: Chief of Staff', id: 'week1', path: '/courses/business/week1' }
+            ]
+        },
+        {
+            id: 'business-team',
+            title: 'Build Your Team',
+            subtitle: 'AI employees that work',
+            path: '/courses/business/week2',
+            icon: <Zap size={18} />,
+            locked: true,
+            subChapters: [
+                { title: '📞 Week 2: Receptionist', id: 'week2', path: '/courses/business/week2' },
+                { title: '📣 Week 3: Marketing', id: 'week3', path: '/courses/business/week3' },
+                { title: '🤝 Week 4: Sales', id: 'week4', path: '/courses/business/week4' }
+            ]
+        },
+        {
+            id: 'business-ops',
+            title: 'Run Your Business',
+            subtitle: 'Finance, IT, Operations',
+            path: '/courses/business/week5',
+            icon: <Zap size={18} />,
+            locked: true,
+            subChapters: [
+                { title: '💰 Week 5: Bookkeeper', id: 'week5', path: '/courses/business/week5' },
+                { title: '🖥️ Week 6: IT Manager', id: 'week6', path: '/courses/business/week6' },
+                { title: '⚙️ Week 7: Operations', id: 'week7', path: '/courses/business/week7' }
+            ]
+        },
+    ];
+    
+    // AI at Home chapter structure (original)
+    const homeChapters = [
         {
             id: 'free',
             title: '🆓 Start Here',
@@ -163,6 +208,9 @@ const WebbookLayout = ({ children }) => {
             ]
         },
     ];
+    
+    // Select chapters based on current course
+    const chapters = isBusinessCourse ? businessChapters : homeChapters;
 
     // Accordion State
     const [expandedChapter, setExpandedChapter] = useState(() => localStorage.getItem('expanded_chapter') || 'free');
@@ -359,17 +407,23 @@ const WebbookLayout = ({ children }) => {
                                 {isFreeSection && (
                                     <div className="mx-2 my-3">
                                         <Link
-                                            to="/unlock"
-                                            className="block bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 hover:border-amber-400/50 rounded-2xl p-4 transition-all hover:scale-[1.02] active:scale-[0.98] group"
+                                            to="/courses"
+                                            className={`block bg-gradient-to-r ${isBusinessCourse ? 'from-amber-500/10 to-orange-500/10 border-amber-500/30 hover:border-amber-400/50' : 'from-teal-500/10 to-cyan-500/10 border-teal-500/30 hover:border-teal-400/50'} border rounded-2xl p-4 transition-all hover:scale-[1.02] active:scale-[0.98] group`}
                                         >
                                             <div className="flex items-center gap-2 mb-2">
-                                                <Unlock size={16} className="text-amber-400" />
-                                                <span className="text-amber-400 font-bold text-sm tracking-wide">Start My Agent Army</span>
+                                                <Unlock size={16} className={isBusinessCourse ? 'text-amber-400' : 'text-teal-400'} />
+                                                <span className={`font-bold text-sm tracking-wide ${isBusinessCourse ? 'text-amber-400' : 'text-teal-400'}`}>
+                                                    {isBusinessCourse ? 'Unlock Full Course' : 'Start My Agent Army'}
+                                                </span>
                                             </div>
                                             <div className="flex items-center justify-between">
-                                                <span className="text-slate-300 text-xs">9 more chapters</span>
+                                                <span className="text-slate-300 text-xs">
+                                                    {isBusinessCourse ? '5 more weeks' : '9 more chapters'}
+                                                </span>
                                                 <div className="text-right">
-                                                    <span className="text-white font-bold text-sm group-hover:translate-x-0.5 transition-transform">$39.99 →</span>
+                                                    <span className="text-white font-bold text-sm group-hover:translate-x-0.5 transition-transform">
+                                                        {isBusinessCourse ? '$99 →' : '$39.99 →'}
+                                                    </span>
                                                     <span className="text-green-400/70 text-[9px] block">🛡️ 30-day guarantee</span>
                                                 </div>
                                             </div>
@@ -500,8 +554,8 @@ const WebbookLayout = ({ children }) => {
                 </main>
             </div>
 
-            {/* Floating Captain Helper */}
-            <CaptainTips />
+            {/* Floating Captain Helper - only show on AI at Home course */}
+            {!isBusinessCourse && <CaptainTips />}
 
             {/* Gamification Badge Modal */}
             <BadgeNotification badge={newBadge} onClose={() => setNewBadge(null)} />
