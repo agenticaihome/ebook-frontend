@@ -46,6 +46,16 @@ const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 const CourseCatalog = lazy(() => import('./pages/CourseCatalog'));
 const CourseDetail = lazy(() => import('./pages/CourseDetail'));
 
+// Business course chapters
+const BusinessIntro = lazy(() => import('./pages/courses/business/Intro'));
+const BusinessWeek1 = lazy(() => import('./pages/courses/business/Week1'));
+const BusinessWeek2 = lazy(() => import('./pages/courses/business/Week2'));
+const BusinessWeek3 = lazy(() => import('./pages/courses/business/Week3'));
+const BusinessWeek4 = lazy(() => import('./pages/courses/business/Week4'));
+const BusinessWeek5 = lazy(() => import('./pages/courses/business/Week5'));
+const BusinessWeek6 = lazy(() => import('./pages/courses/business/Week6'));
+const BusinessWeek7 = lazy(() => import('./pages/courses/business/Week7'));
+
 import Loading from './components/common/Loading';
 
 const ScrollToTop = () => {
@@ -138,6 +148,65 @@ const AnimatedRoutes = () => {
                 </Suspense>
               </RouteErrorBoundary>
             } />
+
+            {/* Business Course Routes */}
+            <Route path="/courses/business" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessIntro /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/business/week1" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessWeek1 /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/business/week2" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessWeek2 /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/business/week3" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessWeek3 /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/business/week4" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessWeek4 /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/business/week5" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessWeek5 /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/business/week6" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessWeek6 /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/business/week7" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><BusinessWeek7 /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+
             <Route path="/privacy" element={<PageTransition><PrivacyPolicyPage /></PageTransition>} />
             <Route path="/terms" element={<PageTransition><TermsOfServicePage /></PageTransition>} />
 
