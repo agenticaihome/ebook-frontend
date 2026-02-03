@@ -140,16 +140,16 @@ const SplashPage = () => {
                         className="mb-6"
                     >
                         <Link
-                            to="/start"
+                            to="/courses"
                             className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 bg-[length:200%_100%] hover:bg-right text-white px-10 md:px-14 py-5 md:py-6 rounded-2xl font-bold text-xl md:text-2xl transition-all duration-500 shadow-2xl shadow-teal-500/30 hover:shadow-teal-500/50 hover:scale-[1.02] active:scale-[0.98] border border-teal-400/50"
                         >
-                            <span>Start Free</span>
+                            <span>Browse Courses</span>
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
 
                             {/* Glow pulse */}
                             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-400 to-cyan-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
                         </Link>
-                        <p className="mt-3 text-slate-500 text-sm font-medium">✨ No credit card required</p>
+                        <p className="mt-3 text-slate-500 text-sm font-medium">✨ AI at Home • AI for Business</p>
                     </motion.div>
 
                     {/* Social Proof - Clean & Consolidated */}
