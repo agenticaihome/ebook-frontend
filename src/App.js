@@ -166,46 +166,58 @@ const AnimatedRoutes = () => {
               </RouteErrorBoundary>
             } />
             <Route path="/courses/business/week2" element={
-              <RouteErrorBoundary>
-                <Suspense fallback={<Loading />}>
-                  <PageTransition><BusinessWeek2 /></PageTransition>
-                </Suspense>
-              </RouteErrorBoundary>
+              <PasswordGate partNumber={1}>
+                <RouteErrorBoundary>
+                  <Suspense fallback={<Loading />}>
+                    <PageTransition><BusinessWeek2 /></PageTransition>
+                  </Suspense>
+                </RouteErrorBoundary>
+              </PasswordGate>
             } />
             <Route path="/courses/business/week3" element={
-              <RouteErrorBoundary>
-                <Suspense fallback={<Loading />}>
-                  <PageTransition><BusinessWeek3 /></PageTransition>
-                </Suspense>
-              </RouteErrorBoundary>
+              <PasswordGate partNumber={1}>
+                <RouteErrorBoundary>
+                  <Suspense fallback={<Loading />}>
+                    <PageTransition><BusinessWeek3 /></PageTransition>
+                  </Suspense>
+                </RouteErrorBoundary>
+              </PasswordGate>
             } />
             <Route path="/courses/business/week4" element={
-              <RouteErrorBoundary>
-                <Suspense fallback={<Loading />}>
-                  <PageTransition><BusinessWeek4 /></PageTransition>
-                </Suspense>
-              </RouteErrorBoundary>
+              <PasswordGate partNumber={1}>
+                <RouteErrorBoundary>
+                  <Suspense fallback={<Loading />}>
+                    <PageTransition><BusinessWeek4 /></PageTransition>
+                  </Suspense>
+                </RouteErrorBoundary>
+              </PasswordGate>
             } />
             <Route path="/courses/business/week5" element={
-              <RouteErrorBoundary>
-                <Suspense fallback={<Loading />}>
-                  <PageTransition><BusinessWeek5 /></PageTransition>
-                </Suspense>
-              </RouteErrorBoundary>
+              <PasswordGate partNumber={1}>
+                <RouteErrorBoundary>
+                  <Suspense fallback={<Loading />}>
+                    <PageTransition><BusinessWeek5 /></PageTransition>
+                  </Suspense>
+                </RouteErrorBoundary>
+              </PasswordGate>
             } />
             <Route path="/courses/business/week6" element={
-              <RouteErrorBoundary>
-                <Suspense fallback={<Loading />}>
-                  <PageTransition><BusinessWeek6 /></PageTransition>
-                </Suspense>
-              </RouteErrorBoundary>
+              <PasswordGate partNumber={1}>
+                <RouteErrorBoundary>
+                  <Suspense fallback={<Loading />}>
+                    <PageTransition><BusinessWeek6 /></PageTransition>
+                  </Suspense>
+                </RouteErrorBoundary>
+              </PasswordGate>
             } />
             <Route path="/courses/business/week7" element={
-              <RouteErrorBoundary>
-                <Suspense fallback={<Loading />}>
-                  <PageTransition><BusinessWeek7 /></PageTransition>
-                </Suspense>
-              </RouteErrorBoundary>
+              <PasswordGate partNumber={1}>
+                <RouteErrorBoundary>
+                  <Suspense fallback={<Loading />}>
+                    <PageTransition><BusinessWeek7 /></PageTransition>
+                  </Suspense>
+                </RouteErrorBoundary>
+              </PasswordGate>
             } />
 
             <Route path="/privacy" element={<PageTransition><PrivacyPolicyPage /></PageTransition>} />
