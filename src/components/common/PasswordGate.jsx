@@ -1,6 +1,6 @@
 import React from 'react';
 import { m } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Lock, Sparkles, CreditCard, Coins, ArrowRight, CheckCircle, Shield } from 'lucide-react';
 import { getStripePayment, getErgoPayment, getBetaAccess } from '../../utils/typedStorage';
 
@@ -12,6 +12,10 @@ const BENEFITS = [
 ];
 
 const PasswordGate = ({ children }) => {
+    const location = useLocation();
+    const isBusinessCourse = location.pathname.includes('/courses/business');
+    const price = isBusinessCourse ? '$99' : '$39.99';
+    const courseName = isBusinessCourse ? 'AI for Small Business' : 'AI at Home';
     // Check if user has paid (Stripe or Ergo) or has beta access
     const checkAccess = () => {
         try {
@@ -47,7 +51,7 @@ const PasswordGate = ({ children }) => {
         <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
             {/* Subtle background glow */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px]" />
+                <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] ${isBusinessCourse ? 'bg-amber-500/10' : 'bg-teal-500/10'} rounded-full blur-[100px]`} />
             </div>
 
             <m.div
@@ -59,7 +63,7 @@ const PasswordGate = ({ children }) => {
                 <div className="bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-8 shadow-2xl">
                     {/* Header */}
                     <div className="text-center mb-6">
-                        <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-teal-500/20">
+                        <div className={`w-14 h-14 bg-gradient-to-br ${isBusinessCourse ? 'from-amber-500 to-orange-500 shadow-amber-500/20' : 'from-teal-500 to-cyan-500 shadow-teal-500/20'} rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
                             <Lock className="w-7 h-7 text-white" />
                         </div>
                         <h2 className="text-2xl font-bold text-white mb-2">Premium Content</h2>
@@ -89,18 +93,18 @@ const PasswordGate = ({ children }) => {
                         <p className="text-teal-400 text-xs font-semibold tracking-wider uppercase mb-2">
                             Launch Price
                         </p>
-                        <div className="text-4xl font-black text-white mb-1">$39.99</div>
+                        <div className="text-4xl font-black text-white mb-1">{price}</div>
                         <p className="text-slate-500 text-sm">One-time payment • Lifetime access</p>
                     </div>
 
                     {/* CTA Buttons */}
                     <div className="space-y-3">
                         <Link
-                            to="/unlock"
-                            className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-teal-500/20 hover:shadow-teal-500/30 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+                            to="/courses"
+                            className={`w-full bg-gradient-to-r ${isBusinessCourse ? 'from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 shadow-amber-500/20 hover:shadow-amber-500/30' : 'from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 shadow-teal-500/20 hover:shadow-teal-500/30'} text-white py-3.5 rounded-xl font-bold transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2`}
                         >
                             <CreditCard size={18} />
-                            Get Full Access
+                            Get Full Access — {price}
                             <ArrowRight size={18} />
                         </Link>
                         
