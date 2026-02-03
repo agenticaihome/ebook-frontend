@@ -5,7 +5,7 @@ import { Lock, Sparkles, CreditCard, Coins, ArrowRight, CheckCircle, Shield } fr
 import { getStripePayment, getErgoPayment, getBetaAccess } from '../../utils/typedStorage';
 
 const BENEFITS = [
-    '10 chapters of hands-on AI automation',
+    'Full course access with hands-on AI automation',
     'Build real agents that save you 5+ hrs/week',
     'Lifetime access — no subscriptions',
     '30-day money-back guarantee'

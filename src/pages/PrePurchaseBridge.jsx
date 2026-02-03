@@ -140,7 +140,7 @@ const PrePurchaseBridge = () => {
                         </h1>
 
                         <p className="text-slate-300 text-lg md:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-                            Unlock the full army of 10 agents to handle your emails, meals, money, and admin. <span className="text-teal-400 font-medium">Your future self will thank you.</span>
+                            Unlock the full AI team to handle your emails, meals, money, and admin. <span className="text-teal-400 font-medium">Your future self will thank you.</span>
                         </p>
 
                         {/* Price Anchor - Evergreen Milestone */}
@@ -318,7 +318,7 @@ const PrePurchaseBridge = () => {
                                 <div className="text-center p-4 bg-slate-900/50 rounded-xl border border-slate-700/30">
                                     <div className="w-10 h-10 mx-auto mb-3 bg-teal-500/20 rounded-full flex items-center justify-center text-teal-400 font-bold">1</div>
                                     <div className="text-white font-medium mb-1">Instant Access</div>
-                                    <div className="text-slate-400 text-sm">All 10 chapters unlock immediately</div>
+                                    <div className="text-slate-400 text-sm">Full course unlocks immediately</div>
                                 </div>
                                 <div className="text-center p-4 bg-slate-900/50 rounded-xl border border-slate-700/30">
                                     <div className="w-10 h-10 mx-auto mb-3 bg-teal-500/20 rounded-full flex items-center justify-center text-teal-400 font-bold">2</div>

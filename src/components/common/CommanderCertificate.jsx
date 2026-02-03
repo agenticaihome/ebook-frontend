@@ -14,7 +14,7 @@ const CommanderCertificate = ({
     const certificateRef = useRef(null);
 
     const handleShare = () => {
-        const shareText = `🎉 I just finished all 10 chapters at @agenticaihome!\n\n✅ 10 AI agents helping me daily\n✅ Mornings, emails, meals on autopilot\n✅ 5+ hours saved every week\n\nCheck it out → agenticaihome.com`;
+        const shareText = `🎉 I just finished the AI at Home course at @agenticaihome!\n\n✅ AI agents helping me daily\n✅ Mornings, emails, meals on autopilot\n✅ 5+ hours saved every week\n\nCheck it out → agenticaihome.com`;
         const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
         window.open(url, '_blank');
     };
@@ -73,7 +73,7 @@ const CommanderCertificate = ({
 
                     {/* Description */}
                     <p className="text-slate-300 max-w-md mx-auto mb-8 leading-relaxed">
-                        has successfully completed all 10 chapters of the Agentic AI at Home training and built a full <span className="text-white font-semibold">Agent Army</span> to automate their daily life.
+                        has successfully completed the AI at Home course of the Agentic AI at Home training and built a full <span className="text-white font-semibold">Agent Army</span> to automate their daily life.
                     </p>
 
                     {/* Stats */}

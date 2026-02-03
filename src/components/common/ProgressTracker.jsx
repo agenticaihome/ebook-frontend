@@ -6,7 +6,7 @@ import { m } from 'framer-motion';
  * ProgressTracker - Shows streak and journey progress
  * Uses localStorage to track first visit date and current streak
  */
-const ProgressTracker = ({ currentChapter = 1 }) => {
+const ProgressTracker = ({ currentChapter = 1, totalChapters = 10 }) => {
     const [journeyDays, setJourneyDays] = useState(0);
     const [showDetails, setShowDetails] = useState(false);
 
@@ -30,7 +30,7 @@ const ProgressTracker = ({ currentChapter = 1 }) => {
     }, []);
 
     // Calculate completion percentage
-    const completionPercent = Math.round((currentChapter / 10) * 100);
+    const completionPercent = Math.round((currentChapter / totalChapters) * 100);
 
     return (
         <m.div
@@ -47,7 +47,7 @@ const ProgressTracker = ({ currentChapter = 1 }) => {
                         {/* Agent Count */}
                         <div className="flex items-center gap-2">
                             <Trophy className="text-amber-400" size={18} />
-                            <span className="text-white font-bold">{currentChapter}/10</span>
+                            <span className="text-white font-bold">{currentChapter}/{totalChapters}</span>
                             <span className="text-slate-300 text-sm hidden sm:inline">agents</span>
                         </div>
 
@@ -91,7 +91,7 @@ const ProgressTracker = ({ currentChapter = 1 }) => {
                                 </div>
                                 <p className="text-slate-300">
                                     {currentChapter === 10
-                                        ? "🎉 You've completed all 10 agents!"
+                                        ? "🎉 You've completed the course!"
                                         : `${10 - currentChapter} more agents to go`}
                                 </p>
                             </div>

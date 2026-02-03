@@ -162,7 +162,7 @@ const ChapterCelebration = ({
                                     <button
                                         onClick={() => {
                                             // Share functionality
-                                            const shareText = "🎉 I just finished all 10 chapters at @agenticaihome! My AI agents now handle my mornings, meals, emails, and more. The future is here. agenticaihome.com";
+                                            const shareText = "🎉 I just finished the full course at @agenticaihome! My AI agents now handle my mornings, meals, emails, and more. The future is here. agenticaihome.com";
                                             const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
                                             window.open(url, '_blank');
                                         }}
@@ -196,7 +196,7 @@ const ChapterCelebration = ({
                         {/* Agent count */}
                         <div className="mt-6 pt-4 border-t border-slate-700/50">
                             <p className="text-slate-500 text-sm">
-                                🤖 {chapterNumber} of 10 agents deployed
+                                🤖 {chapterNumber} of agents deployed
                             </p>
                             <div className="flex justify-center gap-1 mt-2">
                                 {[...Array(10)].map((_, i) => (

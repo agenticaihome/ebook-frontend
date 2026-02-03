@@ -900,7 +900,7 @@ const ErgoPaymentPage = () => {
                                             </div>
                                             <div className="flex items-center gap-3 text-slate-300 text-sm">
                                                 <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
-                                                <span>Unlock all 10 chapters instantly</span>
+                                                <span>Unlock full course instantly</span>
                                             </div>
                                             <div className="flex items-center gap-3 text-slate-300 text-sm">
                                                 <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />

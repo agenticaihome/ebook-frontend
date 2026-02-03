@@ -125,7 +125,7 @@ export default function PaymentGuide() {
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 animate-gradient-x">Agent Army</span>
                             </h1>
                             <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-xl mx-auto">
-                                One payment. <span className="text-white font-semibold">Lifetime access.</span> 10 agents ready to serve.
+                                One payment. <span className="text-white font-semibold">Lifetime access.</span> Your AI team ready to serve.
                             </p>
                             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
                                 <span className="flex items-center gap-1.5 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
@@ -206,7 +206,7 @@ export default function PaymentGuide() {
                                 {/* What's Included - with hover effects */}
                                 <div className="space-y-3 mb-8">
                                     {[
-                                        { text: 'All 10 chapters (lifetime access)', icon: '📚' },
+                                        { text: 'Full course access (lifetime)', icon: '📚' },
                                         { text: '10 ready-to-copy agent templates', icon: '🤖' },
                                         { text: '5 productivity training games', icon: '🎮' },
                                         { text: 'Future updates included', icon: '✨' },

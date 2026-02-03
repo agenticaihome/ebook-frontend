@@ -232,7 +232,8 @@ const WebbookLayout = ({ children }) => {
 
     // Calculate progress
     const completedChapters = Object.keys(userState?.progress || {}).length;
-    const progressPercent = Math.round((completedChapters / 10) * 100);
+    const totalChapters = chapters.reduce((acc, ch) => acc + (ch.subChapters?.length || 0), 0);
+    const progressPercent = Math.round((completedChapters / Math.max(totalChapters, 1)) * 100);
 
     return (
         <div className="min-h-screen bg-slate-950 flex">

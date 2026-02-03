@@ -84,7 +84,7 @@ const OnboardingPage = () => {
 
                             <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
                                 Stop meal planning at midnight. Stop stressing over emails.
-                                Build your own <span className="text-white font-bold">team of 10 AI agents</span> to handle it all for you.
+                                Build your own <span className="text-white font-bold">team of AI agents</span> to handle it all for you.
                             </p>
                         </motion.div>
 

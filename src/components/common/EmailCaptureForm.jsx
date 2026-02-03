@@ -9,7 +9,7 @@ import { logSubscription } from '../../utils/analytics';
 const EmailCaptureForm = ({
     source = 'unknown',
     headline = "📬 Get Free AI Tips",
-    subheadline = "Join 1,000+ people getting weekly AI tips from Captain Efficiency",
+    subheadline = "Join 1,000+ people getting weekly AI tips",
     buttonText = "Send Me Tips",
     successMessage = "You're in! Check your inbox.",
     showTrustLine = true,

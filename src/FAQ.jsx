@@ -22,7 +22,7 @@ export default function FAQ() {
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What exactly is Agentic AI at Home?",
+                "name": "What exactly is Agentic AI Home?",
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "An interactive webbook that teaches you how to use AI tools to automate your daily life — morning routines, meal planning, email management, calendar optimization, household maintenance, finances, health tracking, and more."
@@ -57,9 +57,9 @@ export default function FAQ() {
     return (
         <WebbookLayout>
             <SEO
-                title="FAQ - Agentic AI at Home"
-                description="Frequently asked questions about Agentic AI at Home. Learn about AI helpers, getting started, privacy, and more."
-                keywords={["FAQ", "Agentic AI at Home", "AI Helpers", "Learn AI", "Pricing", "Privacy"]}
+                title="FAQ - Agentic AI Home Courses"
+                description="Frequently asked questions about Agentic AI Home. Learn about AI helpers, getting started, privacy, and more."
+                keywords={["FAQ", "Agentic AI Home", "AI Helpers", "Learn AI", "Pricing", "Privacy"]}
                 schema={faqSchema}
             />
 

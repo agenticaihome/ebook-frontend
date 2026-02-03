@@ -50,7 +50,7 @@ export const faqData = [
                 <p className="mb-4 font-bold text-lg text-teal-400">Because reading a PDF or watching videos isn't the same as DOING.</p>
                 <p className="mb-4">This isn't passive learning. It's an interactive experience with:</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
-                    <li>10 chapters you can read at your own pace</li>
+                    <li>chapters you can read at your own pace</li>
                     <li>Copy-ready templates you can use immediately</li>
                     <li>Interactive quizzes and calculators</li>
                     <li>Games that make learning fun</li>
@@ -126,7 +126,7 @@ export const faqData = [
                 <div className="mt-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
                     <p className="text-slate-300 mb-3">— <span className="text-white font-bold">DDS</span></p>
                     <p className="text-slate-500 text-sm leading-relaxed">
-                        P.S. — DDS is my actual degree (Doctor of Dental Surgery). But honestly? These days I think of it more as <em className="text-slate-300">Dad Deploying Systems</em>. And by the time you finish all 10 chapters, you'll have cured your own <em className="text-slate-300">Digital Drowning Syndrome</em> and be on your way to becoming a <em className="text-slate-300">Doctor of Digital Systems</em> yourself.
+                        P.S. — DDS is my actual degree (Doctor of Dental Surgery). But honestly? These days I think of it more as <em className="text-slate-300">Dad Deploying Systems</em>. And by the time you finish all chapters, you'll have cured your own <em className="text-slate-300">Digital Drowning Syndrome</em> and be on your way to becoming a <em className="text-slate-300">Doctor of Digital Systems</em> yourself.
                     </p>
                 </div>
             </>
@@ -324,7 +324,7 @@ export const faqData = [
                     <li>Click "Start Free" on the welcome page</li>
                     <li>Chapter 1 opens immediately</li>
                     <li>Read at your own pace</li>
-                    <li>Decide if you want full access to all 10 chapters</li>
+                    <li>Decide if you want full access to all chapters</li>
                 </ol>
             </>
         )
@@ -396,7 +396,7 @@ export const faqData = [
         question: 'How many chapters are there?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">10 chapters organized into 4 Parts.</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">The AI at Home course has 10 chapters organized into 4 Parts.</p>
                 <ul className="list-disc pl-5 space-y-1 mb-4">
                     <li><strong>Part 1: The Foundation</strong> — Morning Agent, Meal Planning, Important Dates</li>
                     <li><strong>Part 2: Daily Operations</strong> — Email Triage, Money Check-In, Fitness</li>
@@ -476,7 +476,7 @@ export const faqData = [
         question: 'What agents will I learn to build?',
         answer: (
             <>
-                <p className="mb-4 font-bold text-lg text-teal-400">10 agents covering every area of daily life:</p>
+                <p className="mb-4 font-bold text-lg text-teal-400">The AI at Home course includes agents covering every area of daily life:</p>
                 <ol className="list-decimal pl-5 space-y-1 mb-4">
                     <li><strong>Morning Agent</strong> — Daily briefings and priority setting</li>
                     <li><strong>Meal Planning Agent</strong> — Weekly menus and grocery lists</li>
@@ -563,7 +563,7 @@ export const faqData = [
         answer: (
             <>
                 <p className="mb-4 font-bold text-lg text-teal-400">No — games are optional fun, not required.</p>
-                <p>You can complete all 10 chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
+                <p>You can complete all chapters without touching the Games Hub. Games are there for people who enjoy gamified learning. Skip them if that's not your style.</p>
             </>
         )
     },

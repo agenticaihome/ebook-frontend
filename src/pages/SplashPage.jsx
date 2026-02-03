@@ -10,7 +10,7 @@ const SplashPage = () => {
         <>
             <Helmet>
                 <title>Agentic AI Home - Stop Doing Everything. Start Delegating to AI.</title>
-                <meta name="description" content="Captain Efficiency guides you through 10 chapters to automate your life. Reclaim 5+ hours every week with AI agents." />
+                <meta name="description" content="Learn to automate your life with AI. Browse courses for home and business. Reclaim 5+ hours every week with AI agents." />
                 {/* Preload critical hero assets for faster LCP */}
                 <link rel="preload" as="image" href="/assets/captain-pointing-transparent.webp" />
             </Helmet>

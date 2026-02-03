@@ -10,7 +10,7 @@ const Loading = ({ message = "Loading..." }) => {
     const loadingMessages = [
         "Deploying agents...",
         "Organizing your life...",
-        "Captain Efficiency is on it...",
+        "Loading your content...",
         "Almost there...",
         "Loading awesome stuff..."
     ];

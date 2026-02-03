@@ -9,7 +9,7 @@ import confetti from 'canvas-confetti';
 
 /**
  * GraduationPage - The ultimate "Pixar Moment"
- * When users complete all 10 chapters, they see this celebration
+ * When users complete the entire AI at Home course, they see this celebration
  */
 const GraduationPage = () => {
     const [commanderName, setCommanderName] = useState('Commander');
@@ -61,7 +61,7 @@ const GraduationPage = () => {
         <WebbookLayout>
             <Helmet>
                 <title>🎉 Congratulations! | Agentic AI Home</title>
-                <meta name="description" content="You've completed all 10 chapters and built your Agent Army!" />
+                <meta name="description" content="You've completed the entire AI at Home course and built your Agent Army!" />
             </Helmet>
 
             <div className="min-h-screen bg-[#0a0a12] text-white py-12 px-6">
@@ -202,7 +202,7 @@ const GraduationPage = () => {
                             </Link>
                             <button
                                 onClick={() => {
-                                    const text = "🎉 I just finished all 10 chapters at @agenticaihome! My AI agents now handle my mornings, meals, emails, and more. The future is here! agenticaihome.com";
+                                    const text = "🎉 I just finished the entire AI at Home course at @agenticaihome! My AI agents now handle my mornings, meals, emails, and more. The future is here! agenticaihome.com";
                                     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
                                 }}
                                 className="p-4 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all group"
