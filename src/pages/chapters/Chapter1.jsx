@@ -533,7 +533,7 @@ Start by asking my city.`;
                         </Link>
 
                         <Link
-                            to="/unlock"
+                            to="/courses"
                             className="group flex items-center justify-center gap-3 w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white py-5 rounded-2xl font-bold text-xl transition-all shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 hover:scale-[1.02] active:scale-[0.98]"
                         >
                             Continue Your Journey

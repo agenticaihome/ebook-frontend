@@ -531,7 +531,7 @@ const WebbookLayout = ({ children }) => {
                                 <Link to="/login" className="text-sm font-medium text-slate-300 hover:text-teal-400 rounded-xl px-3 py-1.5 transition-colors">
                                     Login
                                 </Link>
-                                <Link to="/unlock" className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-2 rounded-2xl text-sm font-bold hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-900/30 hover:shadow-amber-500/20">
+                                <Link to="/courses" className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-5 py-2 rounded-2xl text-sm font-bold hover:from-amber-400 hover:to-orange-400 transition-all shadow-lg shadow-amber-900/30 hover:shadow-amber-500/20">
                                     🚀 Start My Agent Army
                                 </Link>
                             </>

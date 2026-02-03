@@ -222,7 +222,7 @@ const LoginPage = () => {
                                 Don't have access yet?
                             </p>
                             <Link
-                                to="/unlock"
+                                to="/courses"
                                 className="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
                             >
                                 <Sparkles size={14} />
