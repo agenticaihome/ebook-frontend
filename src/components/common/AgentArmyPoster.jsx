@@ -34,8 +34,8 @@ const AgentArmyPoster = ({ completedChapters = [] }) => {
                 </h2>
                 <p className="text-slate-300">
                     {allComplete
-                        ? "All 10 agents deployed! Your life is on autopilot. 🎉"
-                        : `${completedCount} of 10 agents deployed`
+                        ? "All agents deployed! Your life is on autopilot. 🎉"
+                        : `${completedCount} agents deployed`
                     }
                 </p>
             </div>

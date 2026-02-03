@@ -220,7 +220,7 @@ const Dashboard = () => {
                                     <div className="bg-slate-800 border border-teal-500/30 rounded-2xl p-4 max-w-sm mx-auto shadow-lg shadow-teal-900/20 relative z-10">
                                         <p className="text-white text-base">
                                             {allComplete
-                                                ? "All 10 agents deployed. Life on autopilot. 🎉"
+                                                ? "All agents deployed. Life on autopilot. 🎉"
                                                 : completedCount === 0
                                                     ? "Ready for your first agent? Let's go!"
                                                     : "Nice progress! One more today?"}
@@ -235,7 +235,7 @@ const Dashboard = () => {
                                         My Dashboard
                                     </h1>
                                     <p className="text-xl text-slate-300">
-                                        <span className="text-teal-400 font-bold">{completedCount}</span> of 10 complete.
+                                        <span className="text-teal-400 font-bold">{completedCount}</span> chapters complete.
                                     </p>
                                 </div>
                             </div>
@@ -259,14 +259,14 @@ const Dashboard = () => {
 
                                 <div className="flex justify-between text-sm text-slate-300 mb-2">
                                     <span>Progress</span>
-                                    <span>{Math.round((completedCount / 10) * 100)}%</span>
+                                    <span>{Math.round((completedCount / Math.max(10, 1)) * 100)}%</span>
                                 </div>
                                 <div className="h-4 bg-slate-800 rounded-full overflow-hidden">
                                     <m.div
                                         initial={{ width: 0 }}
                                         animate={{ width: `${(completedCount / 10) * 100}%` }}
                                         transition={{ duration: 1, ease: "easeOut" }}
-                                        className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full progress-shimmer"
+                                        className="h-full bg-gradient-to-r from-teal-500 to-cyan-400 rounded-full"
                                     />
                                 </div>
 
@@ -300,9 +300,22 @@ const Dashboard = () => {
                                 <div className="mb-8 p-6 bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl text-center">
                                     <div className="text-4xl mb-3">🎉</div>
                                     <div className="text-2xl font-bold mb-2">You did it!</div>
-                                    <div className="text-white/80">All 10 agents are deployed. Your life is officially on autopilot!</div>
+                                    <div className="text-white/80">All agents are deployed. Your life is officially on autopilot!</div>
                                 </div>
                             )}
+
+                            {/* ===================== */}
+                            {/* BUSINESS COURSE CTA */}
+                            {/* ===================== */}
+                            <div className="mb-8">
+                                <BigButton
+                                    to="/courses/business"
+                                    icon={BookOpen}
+                                    title="AI for Small Business"
+                                    subtitle="Build a 7-agent team for your business"
+                                    color="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500"
+                                />
+                            </div>
 
                             {/* ===================== */}
                             {/* SECTION DIVIDER */}
