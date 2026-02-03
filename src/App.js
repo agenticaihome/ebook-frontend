@@ -131,6 +131,7 @@ const AnimatedRoutes = () => {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<PageTransition><SplashPage /></PageTransition>} />
             <Route path="/start" element={<Navigate to="/part1/chapter1" replace />} />
+            <Route path="/checkout" element={<Navigate to="/payment-guide" replace />} />
             <Route path="/onboarding" element={<PageTransition><OnboardingPage /></PageTransition>} />
             
             {/* Multi-Course Platform Routes */}

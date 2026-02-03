@@ -192,20 +192,20 @@ const Week7 = () => {
                             <Link to="/courses" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-3 rounded-xl font-bold transition-all hover:scale-[1.02]">
                                 Explore More Courses <ArrowRight size={18} />
                             </Link>
-                            <Link to="/courses/home" className="inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-medium transition-all">
+                            <Link to="/courses" className="inline-flex items-center justify-center gap-2 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-xl font-medium transition-all">
                                 Try AI at Home <ArrowRight size={18} />
                             </Link>
                         </div>
                     </motion.div>
 
-                    {/* Dr. Nate Sign Off */}
+                    {/* Sign Off */}
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="mt-8 text-center">
                         <div className="inline-flex items-center gap-3 bg-slate-800/30 rounded-full px-6 py-3">
                             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-lg">
-                                👨‍⚕️
+                                ⚡
                             </div>
                             <div className="text-left">
-                                <p className="text-white font-medium text-sm">Dr. Nate Hubert</p>
+                                <p className="text-white font-medium text-sm">The Efficiency Team</p>
                                 <p className="text-slate-400 text-xs">Proud of you. Now go build something.</p>
                             </div>
                         </div>

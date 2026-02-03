@@ -158,10 +158,10 @@ Keep alerts short — under 50 words each.`;
                     {/* Automation */}
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="bg-amber-900/20 border border-amber-500/30 rounded-2xl p-5 mb-8">
                         <p className="text-amber-400 font-bold mb-3">💡 Automation Setup</p>
-                        <p className="text-slate-300 text-sm mb-3">Connect QuickBooks + Zapier + ChatGPT:</p>
+                        <p className="text-slate-300 text-sm mb-3">Connect QuickBooks + Zapier + ChatGPT, Claude, or Gemini:</p>
                         <ol className="text-slate-300 text-sm space-y-2">
                             <li>1. Zapier pulls weekly numbers from QuickBooks every Monday</li>
-                            <li>2. Sends data to ChatGPT with your report prompt</li>
+                            <li>2. Sends data to ChatGPT, Claude, or Gemini with your report prompt</li>
                             <li>3. Emails you the formatted report automatically</li>
                         </ol>
                         <p className="text-amber-400 text-sm mt-3">Total setup time: ~20 minutes. Then it runs forever.</p>

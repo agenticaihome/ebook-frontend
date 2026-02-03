@@ -257,12 +257,12 @@ What do you have on your plate this week?`;
                     >
                         <div className="flex items-center gap-3 mb-4">
                             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-white font-bold">1</div>
-                            <h3 className="text-xl font-bold text-white">Set Up ChatGPT (5 min)</h3>
+                            <h3 className="text-xl font-bold text-white">Set Up ChatGPT, Claude, or Gemini (5 min)</h3>
                         </div>
 
                         <div className="bg-slate-800/30 rounded-2xl p-5 border border-slate-700/50 space-y-4">
                             <p className="text-slate-300">
-                                We'll use ChatGPT as your Chief of Staff's "brain." Here's why:
+                                We'll use ChatGPT, Claude, or Gemini as your Chief of Staff's "brain." Here's why:
                             </p>
                             <ul className="space-y-2 text-sm text-slate-300">
                                 <li className="flex items-start gap-2">
@@ -285,13 +285,13 @@ What do you have on your plate this week?`;
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-medium transition-all"
                             >
-                                Open ChatGPT <ExternalLink size={16} />
+                                Open ChatGPT, Claude, or Gemini <ExternalLink size={16} />
                             </a>
 
                             <div className="bg-amber-900/20 border border-amber-500/30 rounded-lg p-3">
                                 <p className="text-amber-400 text-sm font-bold mb-1">💡 Pro Tip</p>
                                 <p className="text-slate-300 text-sm">
-                                    Already have ChatGPT Plus ($20/mo)? Go to Settings → Personalization → Memory and turn it ON. This lets your Chief of Staff remember your preferences.
+                                    Already have ChatGPT Plus (or Claude Pro) ($20/mo)? Go to Settings → Personalization → Memory and turn it ON. This lets your Chief of Staff remember your preferences.
                                 </p>
                             </div>
                         </div>
@@ -310,7 +310,7 @@ What do you have on your plate this week?`;
                         </div>
 
                         <p className="text-slate-300 mb-4">
-                            Your Chief of Staff has <span className="text-white font-medium">3 core capabilities</span>. Set each one up by copying the prompt into ChatGPT:
+                            Your Chief of Staff has <span className="text-white font-medium">3 core capabilities</span>. Set each one up by copying the prompt into ChatGPT, Claude, or Gemini:
                         </p>
 
                         <div className="space-y-4">
@@ -437,8 +437,8 @@ What do you have on your plate this week?`;
                                 className="mt-4 bg-slate-800/30 rounded-2xl p-5 border border-slate-700/50 space-y-4"
                             >
                                 <div>
-                                    <p className="text-white font-medium mb-1">"ChatGPT doesn't know my calendar"</p>
-                                    <p className="text-slate-400 text-sm">Go to Settings → Connected Apps → Connect Google Calendar. Then ask ChatGPT to check your schedule.</p>
+                                    <p className="text-white font-medium mb-1">"ChatGPT, Claude, or Gemini doesn't know my calendar"</p>
+                                    <p className="text-slate-400 text-sm">Go to Settings → Connected Apps → Connect Google Calendar (ChatGPT). For Claude/Gemini, paste your calendar info directly to check your schedule.</p>
                                 </div>
                                 <div>
                                     <p className="text-white font-medium mb-1">"The responses are too long"</p>
@@ -446,7 +446,7 @@ What do you have on your plate this week?`;
                                 </div>
                                 <div>
                                     <p className="text-white font-medium mb-1">"It forgot my preferences"</p>
-                                    <p className="text-slate-400 text-sm">Make sure Memory is enabled in ChatGPT settings. Or save the prompt as a "Custom GPT" for persistence.</p>
+                                    <p className="text-slate-400 text-sm">Make sure Memory is enabled (ChatGPT settings) or use Projects (Claude). Save as a Custom GPT for persistence.</p>
                                 </div>
                                 <div>
                                     <p className="text-white font-medium mb-1">"Zapier costs money"</p>

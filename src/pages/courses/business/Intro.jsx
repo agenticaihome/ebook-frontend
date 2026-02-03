@@ -62,40 +62,26 @@ const BusinessIntro = () => {
                     >
                         <div className="flex items-start gap-4 mb-4">
                             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center text-2xl flex-shrink-0">
-                                👨‍⚕️
+                                🚀
                             </div>
                             <div>
-                                <p className="text-white font-bold">From Dr. Nate Hubert</p>
-                                <p className="text-slate-400 text-sm">Endodontic Resident • Founder of 4 Businesses</p>
+                                <p className="text-white font-bold">Why This Course Exists</p>
+                                <p className="text-slate-400 text-sm">Built by business owners, for business owners</p>
                             </div>
                         </div>
                         <div className="text-slate-300 space-y-4 leading-relaxed">
                             <p>
-                                I'm going to be honest with you: <span className="text-white font-medium">I don't have time.</span>
+                                Let's be real: <span className="text-white font-medium">you don't have time.</span>
                             </p>
                             <p>
-                                I'm in the middle of a 2-year dental residency. I have two toddlers. And somehow, I'm running four online businesses:
+                                You're running a business. Wearing 10 hats. Every "productivity hack" just adds more to your plate.
                             </p>
-                            <div className="grid grid-cols-2 gap-3 my-4">
-                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
-                                    <p className="text-amber-400 font-bold">DentDx</p>
-                                    <p className="text-slate-400 text-xs">Dental education</p>
-                                </div>
-                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
-                                    <p className="text-amber-400 font-bold">HoopLog</p>
-                                    <p className="text-slate-400 text-xs">Basketball stats</p>
-                                </div>
-                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
-                                    <p className="text-amber-400 font-bold">FitRate</p>
-                                    <p className="text-slate-400 text-xs">AI fashion app</p>
-                                </div>
-                                <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-700/50">
-                                    <p className="text-amber-400 font-bold">This Site</p>
-                                    <p className="text-slate-400 text-xs">Agentic AI Home</p>
-                                </div>
+                            <div className="bg-slate-800/50 rounded-lg p-4 my-4 border border-amber-500/30">
+                                <p className="text-amber-400 font-bold mb-2">This course was built by business owners who figured it out</p>
+                                <p className="text-slate-400 text-sm">SaaS apps, e-commerce, service businesses — all managed with AI teams that cost under $100/month total.</p>
                             </div>
                             <p>
-                                How? <span className="text-amber-400 font-bold">I have an AI assistant.</span>
+                                The secret? <span className="text-amber-400 font-bold">AI employees that actually work.</span>
                             </p>
                             <p>
                                 Not a chatbot I talk to sometimes. An actual AI that monitors my sites, handles customer emails, tracks payments, sends me alerts when something's wrong, and gives me a briefing every morning.
@@ -157,7 +143,7 @@ const BusinessIntro = () => {
                             </p>
                             <div className="space-y-3">
                                 {[
-                                    { week: 1, role: 'Chief of Staff', desc: 'Morning briefings, email triage, calendar management', tools: 'ChatGPT, Zapier' },
+                                    { week: 1, role: 'Chief of Staff', desc: 'Morning briefings, email triage, calendar management', tools: 'ChatGPT, Claude, or Gemini, Zapier' },
                                     { week: 2, role: 'AI Receptionist', desc: '24/7 phone answering, lead qualification', tools: 'Upfirst, Intercom' },
                                     { week: 3, role: 'Marketing Manager', desc: 'Social content, email campaigns, blog drafts', tools: 'Canva AI, Copy.ai' },
                                     { week: 4, role: 'Sales Rep', desc: 'Lead follow-ups, CRM updates, pipeline tracking', tools: 'HubSpot AI, Lindy' },
@@ -207,7 +193,7 @@ const BusinessIntro = () => {
                                     <p className="text-slate-400 text-sm mb-2">Your AI Team</p>
                                     <p className="text-3xl font-black text-green-400">~$100<span className="text-lg text-slate-500">/mo</span></p>
                                     <ul className="mt-4 space-y-2 text-sm text-slate-400">
-                                        <li>• ChatGPT Plus: $20</li>
+                                        <li>• ChatGPT, Claude, or Gemini Plus: $20</li>
                                         <li>• Zapier: $20</li>
                                         <li>• Upfirst: $25</li>
                                         <li>• Canva Pro: $15</li>
