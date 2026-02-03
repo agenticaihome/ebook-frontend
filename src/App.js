@@ -42,6 +42,10 @@ const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 
+// Multi-course platform pages
+const CourseCatalog = lazy(() => import('./pages/CourseCatalog'));
+const CourseDetail = lazy(() => import('./pages/CourseDetail'));
+
 import Loading from './components/common/Loading';
 
 const ScrollToTop = () => {
@@ -118,6 +122,22 @@ const AnimatedRoutes = () => {
             <Route path="/" element={<PageTransition><SplashPage /></PageTransition>} />
             <Route path="/start" element={<Navigate to="/part1/chapter1" replace />} />
             <Route path="/onboarding" element={<PageTransition><OnboardingPage /></PageTransition>} />
+            
+            {/* Multi-Course Platform Routes */}
+            <Route path="/courses" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><CourseCatalog /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
+            <Route path="/courses/:courseId" element={
+              <RouteErrorBoundary>
+                <Suspense fallback={<Loading />}>
+                  <PageTransition><CourseDetail /></PageTransition>
+                </Suspense>
+              </RouteErrorBoundary>
+            } />
             <Route path="/privacy" element={<PageTransition><PrivacyPolicyPage /></PageTransition>} />
             <Route path="/terms" element={<PageTransition><TermsOfServicePage /></PageTransition>} />
 
